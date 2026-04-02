@@ -16,21 +16,23 @@ import org.http4s.Uri
 import org.http4s.client.Client as Http4sClient
 import org.openapitools.client.models.ChargeInvoiceRows
 import org.openapitools.client.models.GetAccountInfo401Response
+import io.circe.Json
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SslCancel200Response
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.*
 
 trait SSLCertificatesApiEndpoints[F[*]] {
 
-  def addSsl()(using auth: _Authorization.ApiKey): F[Unit]
-  def getNewSsl()(using auth: _Authorization.ApiKey): F[Unit]
-  def getSslInfo(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
+  def addSsl()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
+  def getNewSsl()(using auth: _Authorization.ApiKey): F[Json]
+  def getSslInfo(id: Int)(using auth: _Authorization.ApiKey): F[Json]
   def getSslInvoices(id: Int)(using auth: _Authorization.ApiKey): F[ChargeInvoiceRows]
   def getSslList()(using auth: _Authorization.ApiKey): F[Unit]
   def getSslWelcomeEmail(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def putSsl()(using auth: _Authorization.ApiKey): F[Unit]
   def sslCancel(id: Int)(using auth: _Authorization.ApiKey): F[SslCancel200Response]
-  def updateSslInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateSslInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
 }
 
@@ -44,12 +46,12 @@ class SSLCertificatesApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addSsl()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def addSsl()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, ServiceOrderPostResponse](
       method = "POST",
       path = s"/ssl/order",
       body = None,
@@ -58,17 +60,17 @@ class SSLCertificatesApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, ServiceOrderPostResponse]("ServiceOrderPostResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
-  override def getNewSsl()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def getNewSsl()(using auth: _Authorization.ApiKey): F[Json] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, Json](
       method = "GET",
       path = s"/ssl/order",
       body = None,
@@ -77,17 +79,17 @@ class SSLCertificatesApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, Json]("Json", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
-  override def getSslInfo(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def getSslInfo(id: Int)(using auth: _Authorization.ApiKey): F[Json] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, Json](
       method = "GET",
       path = s"/ssl/${id}",
       body = None,
@@ -96,8 +98,8 @@ class SSLCertificatesApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, Json]("Json", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -197,12 +199,12 @@ class SSLCertificatesApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateSslInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateSslInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/ssl/${id}",
       body = None,
@@ -211,8 +213,8 @@ class SSLCertificatesApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

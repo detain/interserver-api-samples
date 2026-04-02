@@ -857,8 +857,8 @@ open class AccountAPI {
     /// - parameter disableServerNotifications: (form) Set to &#x60;true&#x60; to disable server notifications, or &#x60;false&#x60; to enable them. (optional)
     /// - parameter disableEmailNotifications: (form) Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them. (optional)
     /// - parameter gstin: (form) Your GST identification number (if applicable). (optional)
-    /// - returns: AnyPublisher<Void, Error> 
-    open func updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String? = nil, address2: String? = nil, locale: String? = nil, emailInvoices: String? = nil, emailAbuse: String? = nil, disableReset: Bool? = nil, disableReinstall: Bool? = nil, disableServerNotifications: Bool? = nil, disableEmailNotifications: Bool? = nil, gstin: String? = nil) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String? = nil, address2: String? = nil, locale: String? = nil, emailInvoices: String? = nil, emailAbuse: String? = nil, disableReset: Bool? = nil, disableReinstall: Bool? = nil, disableServerNotifications: Bool? = nil, disableEmailNotifications: Bool? = nil, gstin: String? = nil) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -1018,7 +1018,7 @@ open class AccountAPI {
                 request.setValue("multipart/form-data; boundary=\(multipartBoundary)", forHTTPHeaderField: "Content-Type")
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -1040,7 +1040,7 @@ open class AccountAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -1076,8 +1076,8 @@ open class AccountAPI {
     /// - name: sessionIdHeaderAuth
     /// - parameter start: (form) The begining (or first) IP address in the range. 
     /// - parameter end: (form) The ending (or last) IP address in the range. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func updateAccountIpLimits(start: String, end: String) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func updateAccountIpLimits(start: String, end: String) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -1112,7 +1112,7 @@ open class AccountAPI {
                 request.setValue("multipart/form-data; boundary=\(multipartBoundary)", forHTTPHeaderField: "Content-Type")
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -1134,7 +1134,7 @@ open class AccountAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()

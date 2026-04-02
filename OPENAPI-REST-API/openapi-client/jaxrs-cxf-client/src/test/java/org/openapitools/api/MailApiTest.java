@@ -33,6 +33,7 @@ import org.openapitools.model.MailSchema;
 import org.openapitools.model.MailStatsType;
 import org.openapitools.model.SendMail;
 import org.openapitools.model.SendMailAdv;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.ViewMailLogStartDateParameter;
 import org.junit.Test;
@@ -90,8 +91,8 @@ public class MailApiTest {
      */
     @Test
     public void addMailTest() {
-        //api.addMail();
-        
+        //ServiceOrderPostResponse response = api.addMail();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -529,8 +530,8 @@ public class MailApiTest {
     @Test
     public void updateMailInfoTest() {
         String id = null;
-        //api.updateMailInfo(id);
-        
+        //SuccessTextResponse response = api.updateMailInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 

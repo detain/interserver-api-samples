@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Object containing switchport information.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-25T16:38:48.461562589-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class ServerNetworkInfoSwitchports {
   public static final String SERIALIZED_NAME_10414 = "10414";
   @SerializedName(SERIALIZED_NAME_10414)

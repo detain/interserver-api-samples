@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'server_ipmi_live_info.g.dart';
 
-/// Information about the IPMI connectioj.
+/// Information about the IPMI connection.
 ///
 /// Properties:
 /// * [text] 

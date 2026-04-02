@@ -49,11 +49,19 @@ class FloatingIPsApi {
   /// Place Floating IP Order
   ///
   /// Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
-  Future<void> addFloatingIp() async {
+  Future<ServiceOrderPostResponse?> addFloatingIp() async {
     final response = await addFloatingIpWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ServiceOrderPostResponse',) as ServiceOrderPostResponse;
+    
+    }
+    return null;
   }
 
   /// Cancel Floating IP
@@ -159,11 +167,19 @@ class FloatingIPsApi {
   ///
   /// * [int] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<void> getFloatingIpInfo(int id,) async {
+  Future<Object?> getFloatingIpInfo(int id,) async {
     final response = await getFloatingIpInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+    
+    }
+    return null;
   }
 
   /// Get Floating IP Invoices
@@ -357,11 +373,19 @@ class FloatingIPsApi {
   /// Get Floating IP Ordering Information
   ///
   /// Retrieves available options and pricing for ordering a new Floating IP.
-  Future<void> getNewFloatingIp() async {
+  Future<Object?> getNewFloatingIp() async {
     final response = await getNewFloatingIpWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+    
+    }
+    return null;
   }
 
   /// Change Floating IP Target
@@ -522,10 +546,18 @@ class FloatingIPsApi {
   ///
   /// * [String] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<void> updateFloatingIpInfo(String id,) async {
+  Future<SuccessTextResponse?> updateFloatingIpInfo(String id,) async {
     final response = await updateFloatingIpInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 }

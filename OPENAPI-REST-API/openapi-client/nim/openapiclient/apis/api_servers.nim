@@ -29,6 +29,7 @@ import ../models/model_servers_buy_now_error
 import ../models/model_servers_buy_now_response
 import ../models/model_success_text_response
 import ../models/model_text_response
+import ../models/model_add_server200response
 import ../models/model_buy_it_now_server_order200response
 import ../models/model_get_account_info401response
 import ../models/model_place_buy_now_server_request
@@ -49,10 +50,11 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addServer*(httpClient: HttpClient): Response =
+proc addServer*(httpClient: HttpClient): (Option[addServer_200_response], Response) =
   ## Place Server Order
-  httpClient.post(basepath & "/servers/order")
 
+  let response = httpClient.post(basepath & "/servers/order")
+  constructResult[addServer_200_response](response)
 
 
 proc buyItNowServerOrder*(httpClient: HttpClient): (Option[buyItNowServerOrder_200_response], Response) =
@@ -178,8 +180,9 @@ proc serversCancel*(httpClient: HttpClient, id: int): (Option[serversCancel_200_
   constructResult[serversCancel_200_response](response)
 
 
-proc updateServerInfo*(httpClient: HttpClient, id: string): Response =
+proc updateServerInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Update Server Order
-  httpClient.post(basepath & fmt"/servers/{id}")
 
+  let response = httpClient.post(basepath & fmt"/servers/{id}")
+  constructResult[SuccessTextResponse](response)
 

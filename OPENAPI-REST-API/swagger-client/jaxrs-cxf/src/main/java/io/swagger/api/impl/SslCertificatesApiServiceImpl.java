@@ -2,8 +2,9 @@ package io.swagger.api.impl;
 
 import io.swagger.api.*;
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20021;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 
 import java.io.InputStream;
@@ -31,10 +32,10 @@ public class SslCertificatesApiServiceImpl implements SslCertificatesApi {
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
      *
      */
-    public void addSsl() {
+    public ServiceOrderPostResponse addSsl() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -43,10 +44,10 @@ public class SslCertificatesApiServiceImpl implements SslCertificatesApi {
      * Retrieves available SSL certificate types and pricing for ordering.
      *
      */
-    public void getNewSsl() {
+    public Object getNewSsl() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -55,10 +56,10 @@ public class SslCertificatesApiServiceImpl implements SslCertificatesApi {
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      *
      */
-    public void getSslInfo(Integer id) {
+    public Object getSslInfo(Integer id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -115,7 +116,7 @@ public class SslCertificatesApiServiceImpl implements SslCertificatesApi {
      * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
      *
      */
-    public InlineResponse20020 sslCancel(Integer id) {
+    public InlineResponse20021 sslCancel(Integer id) {
         // TODO: Implement...
         
         return null;
@@ -127,10 +128,10 @@ public class SslCertificatesApiServiceImpl implements SslCertificatesApi {
      * Updates settings on an SSL certificate order.
      *
      */
-    public void updateSslInfo(String id) {
+    public SuccessTextResponse updateSslInfo(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

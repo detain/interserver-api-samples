@@ -7,6 +7,7 @@ import org.openapitools.model.GetAccountInfo401Response;
 import org.openapitools.model.QueueResponse;
 import org.openapitools.model.RestoreRequest;
 import org.openapitools.model.ReverseDnsEntries;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import org.openapitools.model.VPSCancel200Response;
@@ -53,7 +54,7 @@ public class VpsApiTest {
         VpsOrderPostRequest vpsOrderPostRequest = new VpsOrderPostRequest("example", 1, "example", 1, 1, "example", "\"\"", "example");
 
         // when
-        api.addVps(vpsOrderPostRequest).block();
+        ServiceOrderPostResponse body = api.addVps(vpsOrderPostRequest).block();
 
         // then
         // TODO implement the addVpsTest()
@@ -864,7 +865,7 @@ public class VpsApiTest {
         String id = "example";
 
         // when
-        api.updateVpsInfo(id).block();
+        SuccessTextResponse body = api.updateVpsInfo(id).block();
 
         // then
         // TODO implement the updateVpsInfoTest()

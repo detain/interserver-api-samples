@@ -17,7 +17,7 @@ import io.vertx.codegen.annotations.DataObject;
 public class CreateFirewallRule   {
   private Integer destinationPort = 80;
 
-  private String sourceIp = "0";
+  private String sourceIp = "0.0.0.0";
 
   private Integer sourcePort = 0;
 
@@ -112,7 +112,7 @@ public class CreateFirewallRule   {
   }
 
   /**
-   * Get sourceIp
+   * Source IP address to match. Use '0.0.0.0' to match any source.
    * @return sourceIp
    **/
     public String getSourceIp() {

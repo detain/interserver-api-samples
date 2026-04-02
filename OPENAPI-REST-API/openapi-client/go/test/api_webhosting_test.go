@@ -26,9 +26,10 @@ func Test_myadmin_WebhostingAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.WebhostingAPI.AddWebsite(context.Background()).Execute()
+		resp, httpRes, err := apiClient.WebhostingAPI.AddWebsite(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -214,9 +215,10 @@ func Test_myadmin_WebhostingAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.WebhostingAPI.UpdateWebsiteInfo(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.WebhostingAPI.UpdateWebsiteInfo(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

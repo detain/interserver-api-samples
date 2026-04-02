@@ -13,8 +13,9 @@
 package io.swagger.client.api;
 
 import io.swagger.client.model.ChargeInvoiceRows;
-import io.swagger.client.model.InlineResponse20020;
+import io.swagger.client.model.InlineResponse20021;
 import io.swagger.client.model.InlineResponse401;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -44,7 +45,7 @@ public class SslCertificatesApiTest {
      */
     @Test
     public void addSslTest() throws Exception {
-        api.addSsl();
+        ServiceOrderPostResponse response = api.addSsl();
 
         // TODO: test validations
     }
@@ -58,7 +59,7 @@ public class SslCertificatesApiTest {
      */
     @Test
     public void getNewSslTest() throws Exception {
-        api.getNewSsl();
+        Object response = api.getNewSsl();
 
         // TODO: test validations
     }
@@ -73,7 +74,7 @@ public class SslCertificatesApiTest {
     @Test
     public void getSslInfoTest() throws Exception {
         Integer id = null;
-        api.getSslInfo(id);
+        Object response = api.getSslInfo(id);
 
         // TODO: test validations
     }
@@ -146,7 +147,7 @@ public class SslCertificatesApiTest {
     @Test
     public void sslCancelTest() throws Exception {
         Integer id = null;
-        InlineResponse20020 response = api.sslCancel(id);
+        InlineResponse20021 response = api.sslCancel(id);
 
         // TODO: test validations
     }
@@ -161,7 +162,7 @@ public class SslCertificatesApiTest {
     @Test
     public void updateSslInfoTest() throws Exception {
         String id = null;
-        api.updateSslInfo(id);
+        SuccessTextResponse response = api.updateSslInfo(id);
 
         // TODO: test validations
     }

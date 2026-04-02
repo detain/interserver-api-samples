@@ -24,6 +24,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -73,9 +74,18 @@ public class MailApiController implements MailApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> addMail() {
+    public ResponseEntity<ServiceOrderPostResponse> addMail() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<ServiceOrderPostResponse>(objectMapper.readValue("{\n  \"continue\" : true,\n  \"errors\" : [ ],\n  \"total_cost\" : \"5.00\",\n  \"iid\" : \"25296600\",\n  \"iids\" : [ \"SERVICE12345\" ],\n  \"real_iids\" : [ \"25296600\" ],\n  \"serviceId\" : 12345,\n  \"invoice_description\" : \"New Service Order\"\n}", ServiceOrderPostResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<GenericResponse> addRule(@Parameter(in = ParameterIn.PATH, description = "The mail service ID. Use `mail_id` from `GET /mail`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -422,10 +432,19 @@ public class MailApiController implements MailApi {
         return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateMailInfo(@Parameter(in = ParameterIn.PATH, description = "The mail service ID. Use `mail_id` from `GET /mail`.", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<SuccessTextResponse> updateMailInfo(@Parameter(in = ParameterIn.PATH, description = "The mail service ID. Use `mail_id` from `GET /mail`.", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<MailLog> viewMailLog(@Parameter(in = ParameterIn.PATH, description = "The mail service ID. Use `mail_id` from `GET /mail`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -436,7 +455,7 @@ public class MailApiController implements MailApi {
 ,@Parameter(in = ParameterIn.QUERY, description = "Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved." ,schema=@Schema()) @Valid @RequestParam(value = "to", required = false) String to
 ,@Parameter(in = ParameterIn.QUERY, description = "Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response." ,schema=@Schema()) @Valid @RequestParam(value = "subject", required = false) String subject
 ,@Size(min=18,max=19) @Parameter(in = ParameterIn.QUERY, description = "Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`." ,schema=@Schema()) @Valid @RequestParam(value = "mailid", required = false) String mailid
-,@Parameter(in = ParameterIn.QUERY, description = "Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`." ,schema=@Schema()) @Valid @RequestParam(value = "messageId", required = false) String messageId
+,@Parameter(in = ParameterIn.QUERY, description = "Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`." ,schema=@Schema()) @Valid @RequestParam(value = "messageId", required = false) String messageId
 ,@Parameter(in = ParameterIn.QUERY, description = "Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set." ,schema=@Schema()) @Valid @RequestParam(value = "replyto", required = false) String replyto
 ,@Parameter(in = ParameterIn.QUERY, description = "Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address." ,schema=@Schema()) @Valid @RequestParam(value = "headerfrom", required = false) String headerfrom
 ,@Parameter(in = ParameterIn.QUERY, description = "Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status." ,schema=@Schema(allowableValues={ "0", "1" }
@@ -446,7 +465,7 @@ public class MailApiController implements MailApi {
 ,@Min(1) @Max(10000) @Parameter(in = ParameterIn.QUERY, description = "Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages." ,schema=@Schema(allowableValues={ "1", "10000" }, minimum="1", maximum="10000"
 , defaultValue="100")) @Valid @RequestParam(value = "limit", required = false, defaultValue="100") Integer limit
 ,@Parameter(in = ParameterIn.QUERY, description = "Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included." ,schema=@Schema()) @Valid @RequestParam(value = "startDate", required = false) StartDate startDate
-,@Parameter(in = ParameterIn.QUERY, description = "Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included." ,schema=@Schema()) @Valid @RequestParam(value = "endDate", required = false) EndDate endDate
+,@Parameter(in = ParameterIn.QUERY, description = "Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included." ,schema=@Schema()) @Valid @RequestParam(value = "endDate", required = false) EndDate endDate
 ,@Parameter(in = ParameterIn.QUERY, description = "Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order)." ,schema=@Schema(allowableValues={ "time" }
 , defaultValue="time")) @Valid @RequestParam(value = "sort", required = false, defaultValue="time") String sort
 ,@Parameter(in = ParameterIn.QUERY, description = "Sort direction.  `desc` returns newest first (default), `asc` returns oldest first." ,schema=@Schema(allowableValues={ "asc", "desc" }

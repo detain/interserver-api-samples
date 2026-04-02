@@ -303,9 +303,9 @@ class BackupsApi(
    * Updates backup storage service metadata, such as stored credentials or settings for the order.
    *
    * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateBackupInfo(id: Integer) = {
+  def updateBackupInfo(id: Integer): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateBackupInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -318,9 +318,9 @@ class BackupsApi(
    * Updates backup storage service metadata, such as stored credentials or settings for the order.
    *
    * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateBackupInfoAsync(id: Integer) = {
+  def updateBackupInfoAsync(id: Integer): Future[SuccessTextResponse] = {
       helper.updateBackupInfo(id)
   }
 
@@ -491,7 +491,7 @@ class BackupsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def updateBackupInfo(id: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateBackupInfo(id: Integer)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/backups/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

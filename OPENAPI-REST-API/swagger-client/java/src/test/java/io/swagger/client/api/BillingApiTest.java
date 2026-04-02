@@ -112,7 +112,7 @@ public class BillingApiTest {
     @Test
     public void deleteAccountCreditCardTest() throws Exception {
         String id = null;
-        api.deleteAccountCreditCard(id);
+        String response = api.deleteAccountCreditCard(id);
 
         // TODO: test validations
     }
@@ -257,7 +257,7 @@ public class BillingApiTest {
      */
     @Test
     public void getBillingCartTest() throws Exception {
-        api.getBillingCart();
+        Object response = api.getBillingCart();
 
         // TODO: test validations
     }
@@ -315,7 +315,7 @@ public class BillingApiTest {
      */
     @Test
     public void getBillingPrePaysTest() throws Exception {
-        api.getBillingPrePays();
+        Object response = api.getBillingPrePays();
 
         // TODO: test validations
     }
@@ -379,7 +379,7 @@ public class BillingApiTest {
     @Test
     public void updateAccountCreditCardTest() throws Exception {
         Integer id = null;
-        api.updateAccountCreditCard(id);
+        String response = api.updateAccountCreditCard(id);
 
         // TODO: test validations
     }

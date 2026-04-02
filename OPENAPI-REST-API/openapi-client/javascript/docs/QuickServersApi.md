@@ -53,7 +53,7 @@ Method | HTTP request | Description
 
 ## addQs
 
-> addQs()
+> ServiceOrderPostResponse addQs()
 
 Place QuickServer Order
 
@@ -85,7 +85,7 @@ apiInstance.addQs((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -96,7 +96,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2682,7 +2682,7 @@ Name | Type | Description  | Notes
 
 ## updateQsInfo
 
-> updateQsInfo(id)
+> SuccessTextResponse updateQsInfo(id)
 
 Update QuickServer Order
 
@@ -2715,7 +2715,7 @@ apiInstance.updateQsInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -2729,7 +2729,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

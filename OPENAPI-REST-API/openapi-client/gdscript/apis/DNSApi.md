@@ -53,9 +53,9 @@ api.add_dns_domain(
 	# IP Address to point the domain to.
 	some_ipnull,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_dns_domain", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -165,9 +165,9 @@ api.delete_dns_domain(
 	# The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "delete_dns_domain", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -217,9 +217,9 @@ api.delete_dns_record(
 	# The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 	recordId,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "delete_dns_record", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -380,9 +380,9 @@ api.update_dns_record(
 	# auth: String = ""   Eg: auth_example
 	auth,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_dns_record", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

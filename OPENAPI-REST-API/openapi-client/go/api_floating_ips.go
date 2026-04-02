@@ -29,7 +29,7 @@ type ApiAddFloatingIpRequest struct {
 	ApiService *FloatingIPsAPIService
 }
 
-func (r ApiAddFloatingIpRequest) Execute() (*http.Response, error) {
+func (r ApiAddFloatingIpRequest) Execute() (*ServiceOrderPostResponse, *http.Response, error) {
 	return r.ApiService.AddFloatingIpExecute(r)
 }
 
@@ -49,16 +49,18 @@ func (a *FloatingIPsAPIService) AddFloatingIp(ctx context.Context) ApiAddFloatin
 }
 
 // Execute executes the request
-func (a *FloatingIPsAPIService) AddFloatingIpExecute(r ApiAddFloatingIpRequest) (*http.Response, error) {
+//  @return ServiceOrderPostResponse
+func (a *FloatingIPsAPIService) AddFloatingIpExecute(r ApiAddFloatingIpRequest) (*ServiceOrderPostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ServiceOrderPostResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FloatingIPsAPIService.AddFloatingIp")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/floating_ips/order"
@@ -114,19 +116,19 @@ func (a *FloatingIPsAPIService) AddFloatingIpExecute(r ApiAddFloatingIpRequest) 
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -139,16 +141,24 @@ func (a *FloatingIPsAPIService) AddFloatingIpExecute(r ApiAddFloatingIpRequest) 
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiFloatingIpsCancelRequest struct {
@@ -298,7 +308,7 @@ type ApiGetFloatingIpInfoRequest struct {
 	id int32
 }
 
-func (r ApiGetFloatingIpInfoRequest) Execute() (*http.Response, error) {
+func (r ApiGetFloatingIpInfoRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.GetFloatingIpInfoExecute(r)
 }
 
@@ -320,16 +330,18 @@ func (a *FloatingIPsAPIService) GetFloatingIpInfo(ctx context.Context, id int32)
 }
 
 // Execute executes the request
-func (a *FloatingIPsAPIService) GetFloatingIpInfoExecute(r ApiGetFloatingIpInfoRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *FloatingIPsAPIService) GetFloatingIpInfoExecute(r ApiGetFloatingIpInfoRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FloatingIPsAPIService.GetFloatingIpInfo")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/floating_ips/{id}"
@@ -386,19 +398,19 @@ func (a *FloatingIPsAPIService) GetFloatingIpInfoExecute(r ApiGetFloatingIpInfoR
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -411,16 +423,24 @@ func (a *FloatingIPsAPIService) GetFloatingIpInfoExecute(r ApiGetFloatingIpInfoR
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetFloatingIpInvoicesRequest struct {
@@ -837,7 +857,7 @@ type ApiGetNewFloatingIpRequest struct {
 	ApiService *FloatingIPsAPIService
 }
 
-func (r ApiGetNewFloatingIpRequest) Execute() (*http.Response, error) {
+func (r ApiGetNewFloatingIpRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.GetNewFloatingIpExecute(r)
 }
 
@@ -857,16 +877,18 @@ func (a *FloatingIPsAPIService) GetNewFloatingIp(ctx context.Context) ApiGetNewF
 }
 
 // Execute executes the request
-func (a *FloatingIPsAPIService) GetNewFloatingIpExecute(r ApiGetNewFloatingIpRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *FloatingIPsAPIService) GetNewFloatingIpExecute(r ApiGetNewFloatingIpRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FloatingIPsAPIService.GetNewFloatingIp")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/floating_ips/order"
@@ -922,19 +944,19 @@ func (a *FloatingIPsAPIService) GetNewFloatingIpExecute(r ApiGetNewFloatingIpReq
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -947,16 +969,24 @@ func (a *FloatingIPsAPIService) GetNewFloatingIpExecute(r ApiGetNewFloatingIpReq
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiPostFloatingIpsChangeIpRequest struct {
@@ -1243,7 +1273,7 @@ type ApiUpdateFloatingIpInfoRequest struct {
 	id string
 }
 
-func (r ApiUpdateFloatingIpInfoRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateFloatingIpInfoRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.UpdateFloatingIpInfoExecute(r)
 }
 
@@ -1265,16 +1295,18 @@ func (a *FloatingIPsAPIService) UpdateFloatingIpInfo(ctx context.Context, id str
 }
 
 // Execute executes the request
-func (a *FloatingIPsAPIService) UpdateFloatingIpInfoExecute(r ApiUpdateFloatingIpInfoRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *FloatingIPsAPIService) UpdateFloatingIpInfoExecute(r ApiUpdateFloatingIpInfoRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FloatingIPsAPIService.UpdateFloatingIpInfo")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/floating_ips/{id}"
@@ -1331,19 +1363,19 @@ func (a *FloatingIPsAPIService) UpdateFloatingIpInfoExecute(r ApiUpdateFloatingI
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1356,14 +1388,22 @@ func (a *FloatingIPsAPIService) UpdateFloatingIpInfoExecute(r ApiUpdateFloatingI
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

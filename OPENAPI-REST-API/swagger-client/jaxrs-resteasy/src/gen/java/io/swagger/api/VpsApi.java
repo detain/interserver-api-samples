@@ -16,12 +16,13 @@ import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
 import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TemplateRequest;
 import io.swagger.model.TextResponse;
@@ -74,9 +75,9 @@ public class VpsApi  {
 @SecurityRequirement(name = "sessionIdHeaderAuth")
     }, tags={ "VPS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response addVps(
 @Parameter(description = "" ) VpsOrderPostRequest body
 ,@Context SecurityContext securityContext)
@@ -93,9 +94,9 @@ public class VpsApi  {
 @SecurityRequirement(name = "sessionIdHeaderAuth")
     }, tags={ "VPS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response addVps(@Parameter(description = "")@FormParam("osDistro")  String osDistro,@Parameter(description = "", schema=@Schema(allowableValues={ "32", "1" }, minimum="1", maximum="32")
 )@FormParam("slices")  Integer slices,@Parameter(description = "", schema=@Schema(allowableValues={ "kvm", "hyperv", "kvmstorage" })
 )@FormParam("vpsPlatform")  String vpsPlatform,@Parameter(description = "", schema=@Schema(allowableValues={ "none", "cpanel", "da" })
@@ -1011,9 +1012,9 @@ public class VpsApi  {
 @SecurityRequirement(name = "sessionIdHeaderAuth")
     }, tags={ "VPS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response updateVpsInfo( @PathParam("id") String id,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.updateVpsInfo(id,securityContext);
@@ -1028,7 +1029,7 @@ public class VpsApi  {
 @SecurityRequirement(name = "sessionIdHeaderAuth")
     }, tags={ "VPS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "VPS Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20021.class))),
+        @ApiResponse(responseCode = "200", description = "VPS Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20022.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response vPSCancel( @PathParam("id") Integer id,@Context SecurityContext securityContext)

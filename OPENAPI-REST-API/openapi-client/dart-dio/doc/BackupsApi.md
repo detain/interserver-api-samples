@@ -458,7 +458,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateBackupInfo**
-> updateBackupInfo(id)
+> SuccessTextResponse updateBackupInfo(id)
 
 Update Backup Information
 
@@ -484,7 +484,8 @@ final api = Openapi().getBackupsApi();
 final int id = 56; // int | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 try {
-    api.updateBackupInfo(id);
+    final response = api.updateBackupInfo(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling BackupsApi->updateBackupInfo: $e\n');
 }
@@ -498,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

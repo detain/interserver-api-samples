@@ -35,7 +35,7 @@ public interface TicketsApi {
 
 
     @Operation(summary = "Create New Ticket", operationId = "addNewTicket", description = "Creates a new support ticket. Optionally link it to a specific service by providing the service ID and module." , tags = {"Tickets"})
-    @ApiResponse(responseCode = "200", description = "A successful response after creating a ticket")
+    @ApiResponse(responseCode = "200", description = "A successful response after creating a ticket.")
     @ApiResponse(responseCode = "400", description = "A successful response after creating a ticket")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Post(value = "/tickets/new", produces = { "application/json" }, consumes = {"application/json", "multipart/form-data"})
@@ -47,7 +47,7 @@ public interface TicketsApi {
 
 
     @Operation(summary = "Create New Ticket", operationId = "addNewTicket", description = "Creates a new support ticket. Optionally link it to a specific service by providing the service ID and module." , tags = {"Tickets"})
-    @ApiResponse(responseCode = "200", description = "A successful response after creating a ticket")
+    @ApiResponse(responseCode = "200", description = "A successful response after creating a ticket.")
     @ApiResponse(responseCode = "400", description = "A successful response after creating a ticket")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Post(value = "/tickets/new", produces = { "application/json" }, consumes = {"application/json", "multipart/form-data"})

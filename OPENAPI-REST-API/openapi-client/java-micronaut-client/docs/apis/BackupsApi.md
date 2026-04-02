@@ -265,7 +265,7 @@ Returns available backup storage plans, pricing tiers, and form metadata needed 
 <a id="updateBackupInfo"></a>
 # **updateBackupInfo**
 ```java
-Mono<Void> BackupsApi.updateBackupInfo(id)
+Mono<SuccessTextResponse> BackupsApi.updateBackupInfo(id)
 ```
 
 Update Backup Information
@@ -278,7 +278,8 @@ Updates backup storage service metadata, such as stored credentials or settings 
 | **id** | `Integer`| The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

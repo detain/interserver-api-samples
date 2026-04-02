@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat
 
 import io.swagger.client.model.ChargeInvoiceRows
 import io.swagger.client.model.IpObject
+import io.swagger.client.model.ServiceOrderPostResponse
 import io.swagger.client.model.SuccessTextResponse
 import io.swagger.client.model.inline_response_200_3
 import io.swagger.client.model.inline_response_401
@@ -86,9 +87,9 @@ class FloatingIPsApi(
    * Place Floating IP Order
    * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
    *
-   * @return void
+   * @return ServiceOrderPostResponse
    */
-  def addFloatingIp() = {
+  def addFloatingIp(): Option[ServiceOrderPostResponse] = {
     val await = Try(Await.result(addFloatingIpAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -100,9 +101,9 @@ class FloatingIPsApi(
    * Place Floating IP Order asynchronously
    * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
    *
-   * @return Future(void)
+   * @return Future(ServiceOrderPostResponse)
    */
-  def addFloatingIpAsync() = {
+  def addFloatingIpAsync(): Future[ServiceOrderPostResponse] = {
       helper.addFloatingIp()
   }
 
@@ -137,9 +138,9 @@ class FloatingIPsApi(
    * Returns detailed information about a specific Floating IP service including its current target IP assignment.
    *
    * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
-   * @return void
+   * @return Any
    */
-  def getFloatingIpInfo(id: Integer) = {
+  def getFloatingIpInfo(id: Integer): Option[Any] = {
     val await = Try(Await.result(getFloatingIpInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -152,9 +153,9 @@ class FloatingIPsApi(
    * Returns detailed information about a specific Floating IP service including its current target IP assignment.
    *
    * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
-   * @return Future(void)
+   * @return Future(Any)
    */
-  def getFloatingIpInfoAsync(id: Integer) = {
+  def getFloatingIpInfoAsync(id: Integer): Future[Any] = {
       helper.getFloatingIpInfo(id)
   }
 
@@ -238,9 +239,9 @@ class FloatingIPsApi(
    * Get Floating IP Ordering Information
    * Retrieves available options and pricing for ordering a new Floating IP.
    *
-   * @return void
+   * @return Any
    */
-  def getNewFloatingIp() = {
+  def getNewFloatingIp(): Option[Any] = {
     val await = Try(Await.result(getNewFloatingIpAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -252,9 +253,9 @@ class FloatingIPsApi(
    * Get Floating IP Ordering Information asynchronously
    * Retrieves available options and pricing for ordering a new Floating IP.
    *
-   * @return Future(void)
+   * @return Future(Any)
    */
-  def getNewFloatingIpAsync() = {
+  def getNewFloatingIpAsync(): Future[Any] = {
       helper.getNewFloatingIp()
   }
 
@@ -317,9 +318,9 @@ class FloatingIPsApi(
    * Updates settings on a Floating IP service, such as its label or configuration metadata.
    *
    * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateFloatingIpInfo(id: String) = {
+  def updateFloatingIpInfo(id: String): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateFloatingIpInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -332,9 +333,9 @@ class FloatingIPsApi(
    * Updates settings on a Floating IP service, such as its label or configuration metadata.
    *
    * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateFloatingIpInfoAsync(id: String) = {
+  def updateFloatingIpInfoAsync(id: String): Future[SuccessTextResponse] = {
       helper.updateFloatingIpInfo(id)
   }
 
@@ -342,7 +343,7 @@ class FloatingIPsApi(
 
 class FloatingIPsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def addFloatingIp()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def addFloatingIp()(implicit reader: ClientResponseReader[ServiceOrderPostResponse]): Future[ServiceOrderPostResponse] = {
     // create path and map variables
     val path = (addFmt("/floating_ips/order"))
 
@@ -373,7 +374,7 @@ class FloatingIPsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
-  def getFloatingIpInfo(id: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def getFloatingIpInfo(id: Integer)(implicit reader: ClientResponseReader[Any]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/floating_ips/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -436,7 +437,7 @@ class FloatingIPsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
-  def getNewFloatingIp()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def getNewFloatingIp()(implicit reader: ClientResponseReader[Any]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/floating_ips/order"))
 
@@ -487,7 +488,7 @@ class FloatingIPsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
-  def updateFloatingIpInfo(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateFloatingIpInfo(id: String)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/floating_ips/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

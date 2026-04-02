@@ -39,24 +39,22 @@ export default class InlineResponse20025 {
   static constructFromObject(data, obj) {
     if (data) {
       obj = obj || new InlineResponse20025();
-      if (data.hasOwnProperty('text'))
-        obj.text = ApiClient.convertToType(data['text'], 'String');
-      if (data.hasOwnProperty('ticket'))
-        obj.ticket = ApiClient.convertToType(data['ticket'], 'Number');
+      if (data.hasOwnProperty('message'))
+        obj.message = ApiClient.convertToType(data['message'], 'String');
+      if (data.hasOwnProperty('success'))
+        obj.success = ApiClient.convertToType(data['success'], 'Boolean');
     }
     return obj;
   }
 }
 
 /**
- * Confirmation message.
- * @member {String} text
+ * @member {String} message
  */
-InlineResponse20025.prototype.text = undefined;
+InlineResponse20025.prototype.message = undefined;
 
 /**
- * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
- * @member {Number} ticket
+ * @member {Boolean} success
  */
-InlineResponse20025.prototype.ticket = undefined;
+InlineResponse20025.prototype.success = undefined;
 

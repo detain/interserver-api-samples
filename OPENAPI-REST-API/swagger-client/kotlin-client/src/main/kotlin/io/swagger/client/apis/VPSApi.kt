@@ -15,12 +15,13 @@ import io.swagger.client.models.ChargeInvoiceRows
 import io.swagger.client.models.HostnameObject
 import io.swagger.client.models.IdBackupsBody2
 import io.swagger.client.models.InlineResponse20011
-import io.swagger.client.models.InlineResponse20021
+import io.swagger.client.models.InlineResponse20022
 import io.swagger.client.models.InlineResponse401
 import io.swagger.client.models.PasswordRequest
 import io.swagger.client.models.QueueResponse
 import io.swagger.client.models.RestoreRequest
 import io.swagger.client.models.ReverseDnsEntries
+import io.swagger.client.models.ServiceOrderPostResponse
 import io.swagger.client.models.SuccessTextResponse
 import io.swagger.client.models.TemplateRequest
 import io.swagger.client.models.TextResponse
@@ -44,9 +45,10 @@ class VPSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * Place VPS Order
      * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
      * @param body  (optional)
-     * @return void
+     * @return ServiceOrderPostResponse
      */
-    fun addVps(body: VpsOrderPostRequest? = null): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addVps(body: VpsOrderPostRequest? = null): ServiceOrderPostResponse {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -56,12 +58,12 @@ class VPSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
                 RequestMethod.POST,
                 "/vps/order", query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<ServiceOrderPostResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -82,9 +84,10 @@ class VPSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * @param coupon  (optional)
      * @param rootpass  (optional)
      * @param comment  (optional)
-     * @return void
+     * @return ServiceOrderPostResponse
      */
-    fun addVps(osDistro: kotlin.String? = null, slices: kotlin.Int? = null, vpsPlatform: kotlin.String? = null, controlpanel: kotlin.String? = null, period: kotlin.Int? = null, location: kotlin.Int? = null, osVersion: kotlin.String? = null, hostname: kotlin.String? = null, coupon: kotlin.String? = null, rootpass: kotlin.String? = null, comment: kotlin.String? = null): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addVps(osDistro: kotlin.String? = null, slices: kotlin.Int? = null, vpsPlatform: kotlin.String? = null, controlpanel: kotlin.String? = null, period: kotlin.Int? = null, location: kotlin.Int? = null, osVersion: kotlin.String? = null, hostname: kotlin.String? = null, coupon: kotlin.String? = null, rootpass: kotlin.String? = null, comment: kotlin.String? = null): ServiceOrderPostResponse {
         val localVariableBody: kotlin.Any? = mapOf("osDistro" to "$osDistro", "slices" to "$slices", "vpsPlatform" to "$vpsPlatform", "controlpanel" to "$controlpanel", "period" to "$period", "location" to "$location", "osVersion" to "$osVersion", "hostname" to "$hostname", "coupon" to "$coupon", "rootpass" to "$rootpass", "comment" to "$comment")
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -94,12 +97,12 @@ class VPSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
                 RequestMethod.POST,
                 "/vps/order", query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<ServiceOrderPostResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -1534,21 +1537,22 @@ class VPSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * Update VPS Order
      * Updates settings on a VPS order.
      * @param id VPS ID number. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateVpsInfo(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateVpsInfo(id: kotlin.String): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/vps/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -1559,22 +1563,22 @@ class VPSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * Cancel VPS Service
      * Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
      * @param id VPS ID number 
-     * @return InlineResponse20021
+     * @return InlineResponse20022
      */
     @Suppress("UNCHECKED_CAST")
-    fun vPSCancel(id: kotlin.Int): InlineResponse20021 {
+    fun vPSCancel(id: kotlin.Int): InlineResponse20022 {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.DELETE,
                 "/vps/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<InlineResponse20021>(
+        val response = request<InlineResponse20022>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20021
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20022
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

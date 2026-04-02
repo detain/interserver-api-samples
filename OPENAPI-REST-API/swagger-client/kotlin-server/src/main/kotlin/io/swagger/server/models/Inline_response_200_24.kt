@@ -13,12 +13,11 @@
 
 /**
  * 
- * @param message 
- * @param success 
+ * @param ips A map of IP addresses to their current reverse DNS hostnames.
  */
 data class InlineResponse20024 (
 
-    val message: kotlin.String? = null,
-    val success: kotlin.Boolean? = null
+    /* A map of IP addresses to their current reverse DNS hostnames. */
+    val ips: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
 ) {
 }

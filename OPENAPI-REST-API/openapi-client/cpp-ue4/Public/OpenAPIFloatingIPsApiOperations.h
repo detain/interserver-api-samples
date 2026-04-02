@@ -18,6 +18,7 @@
 #include "OpenAPIChargeInvoiceRows.h"
 #include "OpenAPIFloatingIpsCancel200Response.h"
 #include "OpenAPIGetAccountInfo401Response.h"
+#include "OpenAPIServiceOrderPostResponse.h"
 #include "OpenAPISuccessTextResponse.h"
 
 namespace OpenAPI
@@ -43,7 +44,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPIServiceOrderPostResponse Content;
 };
 
 /* Cancel Floating IP
@@ -93,7 +94,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    TSharedPtr<FJsonObject> Content;
 };
 
 /* Get Floating IP Invoices
@@ -189,7 +190,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    TSharedPtr<FJsonObject> Content;
 };
 
 /* Change Floating IP Target
@@ -264,7 +265,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 }

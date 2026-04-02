@@ -78,37 +78,16 @@ class InlineResponse20026Test extends TestCase
     }
 
     /**
-     * Test attribute "bandwidth"
+     * Test attribute "text"
      */
-    public function testPropertyBandwidth()
+    public function testPropertyText()
     {
     }
 
     /**
-     * Test attribute "ips"
+     * Test attribute "ticket"
      */
-    public function testPropertyIps()
-    {
-    }
-
-    /**
-     * Test attribute "os"
-     */
-    public function testPropertyOs()
-    {
-    }
-
-    /**
-     * Test attribute "cp"
-     */
-    public function testPropertyCp()
-    {
-    }
-
-    /**
-     * Test attribute "raid"
-     */
-    public function testPropertyRaid()
+    public function testPropertyTicket()
     {
     }
 }

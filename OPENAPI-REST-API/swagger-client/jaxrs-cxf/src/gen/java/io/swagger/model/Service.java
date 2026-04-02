@@ -28,7 +28,7 @@ public class Service   {
   @Schema(example = "OpenVZ VPS Slice", required = true, description = "")
   private String servicesName = null;
   
-  @Schema(example = "6.0", required = true, description = "")
+  @Schema(example = "6", required = true, description = "")
   private BigDecimal servicesCost = null;
   
   @Schema(example = "USD", required = true, description = "")

@@ -26,6 +26,7 @@ import org.openapitools.model.PostWebsiteMigration200Response;
 import org.openapitools.model.PostWebsiteMigrationRequest;
 import org.openapitools.model.PostWebsiteMigrationRequest1;
 import org.openapitools.model.ReverseDnsEntries;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import org.openapitools.model.WebhostingCancel200Response;
@@ -42,17 +43,18 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface WebhostingApi {
     /**
      * Place Website Order
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
      *
+     * @return ServiceOrderPostResponse
      */
     @Post(uri="/websites/order")
     @Consumes({"application/json"})
-    Mono<Void> addWebsite();
+    Mono<ServiceOrderPostResponse> addWebsite();
 
     /**
      * Website Ordering Information
@@ -227,10 +229,11 @@ public interface WebhostingApi {
      * Updates settings on a webhosting order.
      *
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/websites/{id}")
     @Consumes({"application/json"})
-    Mono<Void> updateWebsiteInfo(
+    Mono<SuccessTextResponse> updateWebsiteInfo(
         @PathVariable(name="id") @NotNull String id
     );
 

@@ -13,9 +13,9 @@ open class DomainsAPI {
      Place Domain Order
      
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: ServiceOrderPostResponse
      */
-    open class func addDomain(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func addDomain(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ServiceOrderPostResponse {
         return try await addDomainWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -33,9 +33,9 @@ open class DomainsAPI {
        - type: apiKey sessionid (HEADER)
        - name: sessionIdHeaderAuth
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addDomainWithRequestBuilder(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func addDomainWithRequestBuilder(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<ServiceOrderPostResponse> {
         let localVariablePath = "/domains/order"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -48,7 +48,7 @@ open class DomainsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -1284,9 +1284,9 @@ open class DomainsAPI {
      
      - parameter id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: SuccessTextResponse
      */
-    open class func updateDomainInfo(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func updateDomainInfo(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SuccessTextResponse {
         return try await updateDomainInfoWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -1305,9 +1305,9 @@ open class DomainsAPI {
        - name: sessionIdHeaderAuth
      - parameter id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateDomainInfoWithRequestBuilder(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func updateDomainInfoWithRequestBuilder(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<SuccessTextResponse> {
         var localVariablePath = "/domains/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1323,7 +1323,7 @@ open class DomainsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SuccessTextResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }

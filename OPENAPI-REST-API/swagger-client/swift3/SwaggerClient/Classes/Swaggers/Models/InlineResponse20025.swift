@@ -9,18 +9,16 @@ import Foundation
 
 
 open class InlineResponse20025: JSONEncodable {
-    /** Confirmation message. */
-    public var text: String?
-    /** The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. */
-    public var ticket: Int32?
+    public var message: String?
+    public var success: Bool?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["text"] = self.text
-        nillableDictionary["ticket"] = self.ticket?.encodeToJSON()
+        nillableDictionary["message"] = self.message
+        nillableDictionary["success"] = self.success
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

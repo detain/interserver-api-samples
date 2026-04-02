@@ -28,6 +28,7 @@ import DomainRow from '../model/DomainRow';
 import DomainSearchResponse from '../model/DomainSearchResponse';
 import DomainWhoisPrivacyRequest from '../model/DomainWhoisPrivacyRequest';
 import GetAccountInfo401Response from '../model/GetAccountInfo401Response';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 import TextResponse from '../model/TextResponse';
 
@@ -54,7 +55,7 @@ export default class DomainsApi {
      * Callback function to receive the result of the addDomain operation.
      * @callback module:api/DomainsApi~addDomainCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -62,6 +63,7 @@ export default class DomainsApi {
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
      * @param {module:api/DomainsApi~addDomainCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceOrderPostResponse}
      */
     addDomain(callback) {
       let postBody = null;
@@ -78,7 +80,7 @@ export default class DomainsApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
       return this.apiClient.callApi(
         '/domains/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1170,7 +1172,7 @@ export default class DomainsApi {
      * Callback function to receive the result of the updateDomainInfo operation.
      * @callback module:api/DomainsApi~updateDomainInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -1179,6 +1181,7 @@ export default class DomainsApi {
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      * @param {String} id The domain service ID. Use `domain_id` from `GET /domains`.
      * @param {module:api/DomainsApi~updateDomainInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateDomainInfo(id, callback) {
       let postBody = null;
@@ -1200,7 +1203,7 @@ export default class DomainsApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/domains/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

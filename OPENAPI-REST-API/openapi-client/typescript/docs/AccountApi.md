@@ -614,7 +614,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateAccountInfo**
-> updateAccountInfo()
+> SuccessTextResponse updateAccountInfo()
 
 Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
 
@@ -695,7 +695,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -710,14 +710,14 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | A response indicating the operation completed successfully with a text message. |  -  |
 **401** | Unauthorized |  -  |
 **422** | Validation error while updating account data. |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateAccountIpLimits**
-> updateAccountIpLimits()
+> SuccessTextResponse updateAccountIpLimits()
 
 Adds an IP address range to the account\'s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
 
@@ -753,7 +753,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -768,9 +768,9 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | A response indicating the operation completed successfully with a text message. |  -  |
 **401** | Unauthorized |  -  |
 **422** | IP limit payload contains an invalid address. |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

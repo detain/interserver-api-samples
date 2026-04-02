@@ -101,27 +101,27 @@ namespace IO.Swagger.Api
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns></returns>
-        void UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
         /// <summary>
         /// Update Account Information Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
         /// </summary>
         /// <param name="body"></param>
-        /// <returns></returns>
-        void UpdateAccountInfo (AccountInfoPost body);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateAccountInfo (AccountInfoPost body);
         /// <summary>
         /// Add IP Access Restriction Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns></returns>
-        void UpdateAccountIpLimits (string start, string end);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateAccountIpLimits (string start, string end);
         /// <summary>
         /// Add IP Access Restriction Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
         /// </summary>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns></returns>
-        void UpdateAccountIpLimits (IpLimitRange body);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateAccountIpLimits (IpLimitRange body);
         /// <summary>
         /// Change Account Password Changes the account login password. The current password must be provided for verification. After a successful change, existing API keys remain valid but active sessions may require re-authentication.
         /// </summary>
@@ -656,8 +656,8 @@ if (disableReinstall != null) formParams.Add("disable_reinstall", ApiClient.Para
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns></returns>
-        public void UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
         {
             // verify the required parameter 'name' is set
             if (name == null) throw new ApiException(400, "Missing required parameter 'name' when calling UpdateAccountInfo");
@@ -732,15 +732,15 @@ if (gstin != null) formParams.Add("gstin", ApiClient.ParameterToString(gstin)); 
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateAccountInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
         /// Update Account Information Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
         /// </summary>
         /// <param name="body"></param>
-        /// <returns></returns>
-        public void UpdateAccountInfo (AccountInfoPost body)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateAccountInfo (AccountInfoPost body)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling UpdateAccountInfo");
@@ -767,7 +767,7 @@ if (gstin != null) formParams.Add("gstin", ApiClient.ParameterToString(gstin)); 
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateAccountInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
@@ -775,8 +775,8 @@ if (gstin != null) formParams.Add("gstin", ApiClient.ParameterToString(gstin)); 
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns></returns>
-        public void UpdateAccountIpLimits (string start, string end)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateAccountIpLimits (string start, string end)
         {
             // verify the required parameter 'start' is set
             if (start == null) throw new ApiException(400, "Missing required parameter 'start' when calling UpdateAccountIpLimits");
@@ -806,15 +806,15 @@ if (end != null) formParams.Add("end", ApiClient.ParameterToString(end)); // for
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateAccountIpLimits: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
         /// Add IP Access Restriction Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
         /// </summary>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns></returns>
-        public void UpdateAccountIpLimits (IpLimitRange body)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateAccountIpLimits (IpLimitRange body)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling UpdateAccountIpLimits");
@@ -841,7 +841,7 @@ if (end != null) formParams.Add("end", ApiClient.ParameterToString(end)); // for
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateAccountIpLimits: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>

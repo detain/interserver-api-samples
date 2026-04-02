@@ -22,6 +22,7 @@ import io.swagger.client.models.QuickserverOrder
 import io.swagger.client.models.QuickserverRow
 import io.swagger.client.models.RestoreRequest
 import io.swagger.client.models.ReverseDnsEntries
+import io.swagger.client.models.ServiceOrderPostResponse
 import io.swagger.client.models.SuccessTextResponse
 import io.swagger.client.models.TextResponse
 import io.swagger.client.models.TimezoneUpdate
@@ -35,21 +36,22 @@ class QuickServersApi(basePath: kotlin.String = "https://my.interserver.net/apiv
     /**
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
-     * @return void
+     * @return ServiceOrderPostResponse
      */
-    fun addQs(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addQs(): ServiceOrderPostResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/qs/order", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<ServiceOrderPostResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -1293,21 +1295,22 @@ class QuickServersApi(basePath: kotlin.String = "https://my.interserver.net/apiv
      * Update QuickServer Order
      * Updates QuickServer metadata or stored settings associated with the order.
      * @param id QuickServer ID number. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateQsInfo(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateQsInfo(id: kotlin.String): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/qs/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

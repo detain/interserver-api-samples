@@ -29,7 +29,7 @@ type ApiAddQsRequest struct {
 	ApiService *QuickServersAPIService
 }
 
-func (r ApiAddQsRequest) Execute() (*http.Response, error) {
+func (r ApiAddQsRequest) Execute() (*ServiceOrderPostResponse, *http.Response, error) {
 	return r.ApiService.AddQsExecute(r)
 }
 
@@ -49,16 +49,18 @@ func (a *QuickServersAPIService) AddQs(ctx context.Context) ApiAddQsRequest {
 }
 
 // Execute executes the request
-func (a *QuickServersAPIService) AddQsExecute(r ApiAddQsRequest) (*http.Response, error) {
+//  @return ServiceOrderPostResponse
+func (a *QuickServersAPIService) AddQsExecute(r ApiAddQsRequest) (*ServiceOrderPostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ServiceOrderPostResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QuickServersAPIService.AddQs")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/qs/order"
@@ -114,19 +116,19 @@ func (a *QuickServersAPIService) AddQsExecute(r ApiAddQsRequest) (*http.Response
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -139,16 +141,24 @@ func (a *QuickServersAPIService) AddQsExecute(r ApiAddQsRequest) (*http.Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiDeleteQsBackupRequest struct {
@@ -6043,7 +6053,7 @@ type ApiUpdateQsInfoRequest struct {
 	id string
 }
 
-func (r ApiUpdateQsInfoRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateQsInfoRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.UpdateQsInfoExecute(r)
 }
 
@@ -6065,16 +6075,18 @@ func (a *QuickServersAPIService) UpdateQsInfo(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-func (a *QuickServersAPIService) UpdateQsInfoExecute(r ApiUpdateQsInfoRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *QuickServersAPIService) UpdateQsInfoExecute(r ApiUpdateQsInfoRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QuickServersAPIService.UpdateQsInfo")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/qs/{id}"
@@ -6131,19 +6143,19 @@ func (a *QuickServersAPIService) UpdateQsInfoExecute(r ApiUpdateQsInfoRequest) (
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -6156,14 +6168,22 @@ func (a *QuickServersAPIService) UpdateQsInfoExecute(r ApiUpdateQsInfoRequest) (
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

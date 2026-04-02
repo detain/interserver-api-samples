@@ -66,9 +66,9 @@ var api = MailApi.new(config)
 # Invoke an endpoint
 api.add_mail(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_mail", response)
-		
+		assert(response.data is ServiceOrderPostResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -1270,9 +1270,9 @@ api.update_mail_info(
 	# The mail service ID. Use `mail_id` from `GET /mail`.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_mail_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -1340,7 +1340,7 @@ api.view_mail_log(
 	# Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
 	mailid,
 	# messageId: String = ""   Eg: <abc123@yourdomain.com>
-	# Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+	# Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
 	messageId,
 	# replyto: String   Eg: replies@sender.com
 	# Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
@@ -1361,7 +1361,7 @@ api.view_mail_log(
 	# Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
 	startDate,
 	# endDate: ViewMailLogStartDateParameter   Eg: 1673317008
-	# Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+	# Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
 	endDate,
 	# sort: String = "time"   Eg: time
 	# Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).

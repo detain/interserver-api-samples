@@ -189,7 +189,7 @@ public:
     * \param gstin Your GST identification number (if applicable).
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateAccountInfo(
             
@@ -252,7 +252,7 @@ public:
     * \param end The ending (or last) IP address in the range. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateAccountIpLimits(
             

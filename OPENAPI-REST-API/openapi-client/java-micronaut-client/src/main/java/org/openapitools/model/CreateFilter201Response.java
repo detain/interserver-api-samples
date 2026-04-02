@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   CreateFilter201Response.JSON_PROPERTY_TEXT
 })
 @JsonTypeName("createFilter_201_response")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class CreateFilter201Response {
     public static final String JSON_PROPERTY_SUCCESS = "success";

@@ -28,13 +28,14 @@ public class OASDomainsApi {
     /**
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
+     * @return OASServiceOrderPostResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void addDomain() {
+    public OASServiceOrderPostResponse addDomain() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASServiceOrderPostResponse) client.invoke(
             'POST', '/domains/order', '',
             query, form,
             new Map<String, Object>(),
@@ -42,7 +43,7 @@ public class OASDomainsApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASServiceOrderPostResponse.class
         );
     }
     /**
@@ -678,14 +679,15 @@ public class OASDomainsApi {
      * Update Domain Order
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateDomainInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateDomainInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/domains/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -695,7 +697,7 @@ public class OASDomainsApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
     /**

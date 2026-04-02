@@ -15,11 +15,11 @@
 
 %% @doc Place Floating IP Order
 %% Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
--spec add_floating_ip(ctx:ctx()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec add_floating_ip(ctx:ctx()) -> {ok, openapi_service_order_post_response:openapi_service_order_post_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 add_floating_ip(Ctx) ->
     add_floating_ip(Ctx, #{}).
 
--spec add_floating_ip(ctx:ctx(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec add_floating_ip(ctx:ctx(), maps:map()) -> {ok, openapi_service_order_post_response:openapi_service_order_post_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 add_floating_ip(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -57,11 +57,11 @@ floating_ips_cancel(Ctx, Id, Optional) ->
 
 %% @doc View Floating IP
 %% Returns detailed information about a specific Floating IP service including its current target IP assignment.
--spec get_floating_ip_info(ctx:ctx(), integer()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec get_floating_ip_info(ctx:ctx(), integer()) -> {ok, maps:map(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 get_floating_ip_info(Ctx, Id) ->
     get_floating_ip_info(Ctx, Id, #{}).
 
--spec get_floating_ip_info(ctx:ctx(), integer(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec get_floating_ip_info(ctx:ctx(), integer(), maps:map()) -> {ok, maps:map(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 get_floating_ip_info(Ctx, Id, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -141,11 +141,11 @@ get_floating_ips_welcome_email(Ctx, Id, Optional) ->
 
 %% @doc Get Floating IP Ordering Information
 %% Retrieves available options and pricing for ordering a new Floating IP.
--spec get_new_floating_ip(ctx:ctx()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec get_new_floating_ip(ctx:ctx()) -> {ok, maps:map(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 get_new_floating_ip(Ctx) ->
     get_new_floating_ip(Ctx, #{}).
 
--spec get_new_floating_ip(ctx:ctx(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec get_new_floating_ip(ctx:ctx(), maps:map()) -> {ok, maps:map(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 get_new_floating_ip(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -204,11 +204,11 @@ put_floating_ips(Ctx, Optional) ->
 
 %% @doc Update Floating IP
 %% Updates settings on a Floating IP service, such as its label or configuration metadata.
--spec update_floating_ip_info(ctx:ctx(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec update_floating_ip_info(ctx:ctx(), binary()) -> {ok, openapi_success_text_response:openapi_success_text_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 update_floating_ip_info(Ctx, Id) ->
     update_floating_ip_info(Ctx, Id, #{}).
 
--spec update_floating_ip_info(ctx:ctx(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec update_floating_ip_info(ctx:ctx(), binary(), maps:map()) -> {ok, openapi_success_text_response:openapi_success_text_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 update_floating_ip_info(Ctx, Id, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),

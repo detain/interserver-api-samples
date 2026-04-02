@@ -37,7 +37,7 @@ trait BackupsApiEndpoints[F[*]] {
   def getBackupsList()(using auth: _Authorization.ApiKey): F[Seq[BackupRow]]
   def getBackupsWelcomeEmail(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def getNewBackup()(using auth: _Authorization.ApiKey): F[BackupsOrder]
-  def updateBackupInfo(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateBackupInfo(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def validateBackupOrder(validateOnly: Option[Boolean] = None, serviceType: Option[Int] = None, coupon: Option[String] = None)(using auth: _Authorization.ApiKey): F[BackupOrderPutResponse]
 
 }
@@ -210,12 +210,12 @@ class BackupsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateBackupInfo(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateBackupInfo(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/backups/${id}",
       body = None,
@@ -224,8 +224,8 @@ class BackupsApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

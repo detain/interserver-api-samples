@@ -8,6 +8,7 @@ from myadmin-client-python-flask.models.dns_record import DnsRecord  # noqa: E50
 from myadmin-client-python-flask.models.dns_record_type import DnsRecordType  # noqa: E501
 from myadmin-client-python-flask.models.dns_update_record import DnsUpdateRecord  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
+from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask import util
 
 
@@ -21,7 +22,7 @@ def add_dns_domain(domain, ip):  # noqa: E501
     :param ip: 
     :type ip: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'
 
@@ -34,7 +35,7 @@ def add_dns_domain(body):  # noqa: E501
     :param body: 
     :type body: dict | bytes
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     if connexion.request.is_json:
         body = DnsNewDomain.from_dict(connexion.request.get_json())  # noqa: E501
@@ -91,7 +92,7 @@ def delete_dns_domain(id):  # noqa: E501
     :param id: The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     :type id: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'
 
@@ -106,7 +107,7 @@ def delete_dns_record(domain_id, record_id):  # noqa: E501
     :param record_id: The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
     :type record_id: int
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'
 
@@ -161,7 +162,7 @@ def update_dns_record(name, type, content, ttl, prio, disabled, ordername, auth,
     :param record_id: The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
     :type record_id: int
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     if connexion.request.is_json:
         type = DnsRecordType.from_dict(connexion.request.get_json())  # noqa: E501
@@ -180,7 +181,7 @@ def update_dns_record(body, domain_id, record_id):  # noqa: E501
     :param record_id: The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
     :type record_id: int
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     if connexion.request.is_json:
         body = DnsUpdateRecord.from_dict(connexion.request.get_json())  # noqa: E501

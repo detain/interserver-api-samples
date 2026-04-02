@@ -71,19 +71,18 @@ void OpenAPIVPSApi::AddVpsResponse::SetHttpResponseCode(EHttpResponseCodes::Type
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIVPSApi::AddVpsResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 inline FString ToString(const OpenAPIVPSApi::DeleteVpsBackupRequest::AllEnum& Value)
@@ -2274,19 +2273,18 @@ void OpenAPIVPSApi::UpdateVpsInfoResponse::SetHttpResponseCode(EHttpResponseCode
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIVPSApi::UpdateVpsInfoResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIVPSApi::VPSCancelRequest::ComputePath() const

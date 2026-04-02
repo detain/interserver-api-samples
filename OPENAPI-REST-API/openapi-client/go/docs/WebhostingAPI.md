@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 ## AddWebsite
 
-> AddWebsite(ctx).Execute()
+> ServiceOrderPostResponse AddWebsite(ctx).Execute()
 
 Place Website Order
 
@@ -47,11 +47,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.WebhostingAPI.AddWebsite(context.Background()).Execute()
+	resp, r, err := apiClient.WebhostingAPI.AddWebsite(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhostingAPI.AddWebsite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AddWebsite`: ServiceOrderPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `WebhostingAPI.AddWebsite`: %v\n", resp)
 }
 ```
 
@@ -66,7 +68,7 @@ Other parameters are passed through a pointer to a apiAddWebsiteRequest struct v
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -971,7 +973,7 @@ Other parameters are passed through a pointer to a apiPutWebsitesRequest struct 
 
 ## UpdateWebsiteInfo
 
-> UpdateWebsiteInfo(ctx, id).Execute()
+> SuccessTextResponse UpdateWebsiteInfo(ctx, id).Execute()
 
 Update Website Order
 
@@ -994,11 +996,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.WebhostingAPI.UpdateWebsiteInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.WebhostingAPI.UpdateWebsiteInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhostingAPI.UpdateWebsiteInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateWebsiteInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `WebhostingAPI.UpdateWebsiteInfo`: %v\n", resp)
 }
 ```
 
@@ -1021,7 +1025,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

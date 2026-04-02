@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**updateLicenseInfo**](LicensesApi.md#updateLicenseInfo) | **POST** /licenses/{id} | Update License
 
 # **addLicense**
-> addLicense()
+> ServiceOrderPostResponse addLicense()
 
 Place License Order
 
@@ -47,7 +47,8 @@ import 'package:swagger/api.dart';
 var api_instance = new LicensesApi();
 
 try {
-    api_instance.addLicense();
+    var result = api_instance.addLicense();
+    print(result);
 } catch (e) {
     print("Exception when calling LicensesApi->addLicense: $e\n");
 }
@@ -58,7 +59,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -557,7 +558,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateLicenseInfo**
-> updateLicenseInfo(id)
+> SuccessTextResponse updateLicenseInfo(id)
 
 Update License
 
@@ -583,7 +584,8 @@ var api_instance = new LicensesApi();
 var id = id_example; // String | The license service ID. Use `license_id` from `GET /licenses`.
 
 try {
-    api_instance.updateLicenseInfo(id);
+    var result = api_instance.updateLicenseInfo(id);
+    print(result);
 } catch (e) {
     print("Exception when calling LicensesApi->updateLicenseInfo: $e\n");
 }
@@ -597,7 +599,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

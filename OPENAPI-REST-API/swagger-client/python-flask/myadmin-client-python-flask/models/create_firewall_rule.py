@@ -14,7 +14,7 @@ class CreateFirewallRule(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, destination_port: int=80, source_ip: str='0', source_port: int=0, protocol_id: int=None, xdp_action: int=None):  # noqa: E501
+    def __init__(self, destination_port: int=80, source_ip: str='0.0.0.0', source_port: int=0, protocol_id: int=None, xdp_action: int=None):  # noqa: E501
         """CreateFirewallRule - a model defined in Swagger
 
         :param destination_port: The destination_port of this CreateFirewallRule.  # noqa: E501
@@ -85,6 +85,7 @@ class CreateFirewallRule(Model):
     def source_ip(self) -> str:
         """Gets the source_ip of this CreateFirewallRule.
 
+        Source IP address to match. Use '0.0.0.0' to match any source.  # noqa: E501
 
         :return: The source_ip of this CreateFirewallRule.
         :rtype: str
@@ -95,6 +96,7 @@ class CreateFirewallRule(Model):
     def source_ip(self, source_ip: str):
         """Sets the source_ip of this CreateFirewallRule.
 
+        Source IP address to match. Use '0.0.0.0' to match any source.  # noqa: E501
 
         :param source_ip: The source_ip of this CreateFirewallRule.
         :type source_ip: str

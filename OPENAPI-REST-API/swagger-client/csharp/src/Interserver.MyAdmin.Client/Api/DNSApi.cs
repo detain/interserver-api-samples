@@ -32,8 +32,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns></returns>
-        void AddDnsDomain (string domain, string ip);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse AddDnsDomain (string domain, string ip);
 
         /// <summary>
         /// Create DNS Domain
@@ -44,8 +44,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddDnsDomainWithHttpInfo (string domain, string ip);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> AddDnsDomainWithHttpInfo (string domain, string ip);
         /// <summary>
         /// Create DNS Domain
         /// </summary>
@@ -54,8 +54,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        void AddDnsDomain (DnsNewDomain body);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse AddDnsDomain (DnsNewDomain body);
 
         /// <summary>
         /// Create DNS Domain
@@ -65,8 +65,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddDnsDomainWithHttpInfo (DnsNewDomain body);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> AddDnsDomainWithHttpInfo (DnsNewDomain body);
         /// <summary>
         /// Add DNS Record to Domain
         /// </summary>
@@ -129,8 +129,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns></returns>
-        void DeleteDnsDomain (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse DeleteDnsDomain (string id);
 
         /// <summary>
         /// Delete DNS Domain
@@ -140,8 +140,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteDnsDomainWithHttpInfo (string id);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> DeleteDnsDomainWithHttpInfo (string id);
         /// <summary>
         /// Delete DNS Record
         /// </summary>
@@ -151,8 +151,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        void DeleteDnsRecord (int? domainId, int? recordId);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse DeleteDnsRecord (int? domainId, int? recordId);
 
         /// <summary>
         /// Delete DNS Record
@@ -163,8 +163,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteDnsRecordWithHttpInfo (int? domainId, int? recordId);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> DeleteDnsRecordWithHttpInfo (int? domainId, int? recordId);
         /// <summary>
         /// List Domain DNS Records
         /// </summary>
@@ -222,8 +222,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        void UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
 
         /// <summary>
         /// Update DNS Record
@@ -242,8 +242,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateDnsRecordWithHttpInfo (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateDnsRecordWithHttpInfo (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
         /// <summary>
         /// Update DNS Record
         /// </summary>
@@ -254,8 +254,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        void UpdateDnsRecord (DnsUpdateRecord body, int? domainId, int? recordId);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateDnsRecord (DnsUpdateRecord body, int? domainId, int? recordId);
 
         /// <summary>
         /// Update DNS Record
@@ -267,8 +267,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateDnsRecordWithHttpInfo (DnsUpdateRecord body, int? domainId, int? recordId);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateDnsRecordWithHttpInfo (DnsUpdateRecord body, int? domainId, int? recordId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -280,8 +280,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddDnsDomainAsync (string domain, string ip);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> AddDnsDomainAsync (string domain, string ip);
 
         /// <summary>
         /// Create DNS Domain
@@ -292,8 +292,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddDnsDomainAsyncWithHttpInfo (string domain, string ip);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> AddDnsDomainAsyncWithHttpInfo (string domain, string ip);
         /// <summary>
         /// Create DNS Domain
         /// </summary>
@@ -302,8 +302,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddDnsDomainAsync (DnsNewDomain body);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> AddDnsDomainAsync (DnsNewDomain body);
 
         /// <summary>
         /// Create DNS Domain
@@ -313,8 +313,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddDnsDomainAsyncWithHttpInfo (DnsNewDomain body);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> AddDnsDomainAsyncWithHttpInfo (DnsNewDomain body);
         /// <summary>
         /// Add DNS Record to Domain
         /// </summary>
@@ -377,8 +377,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteDnsDomainAsync (string id);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> DeleteDnsDomainAsync (string id);
 
         /// <summary>
         /// Delete DNS Domain
@@ -388,8 +388,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteDnsDomainAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> DeleteDnsDomainAsyncWithHttpInfo (string id);
         /// <summary>
         /// Delete DNS Record
         /// </summary>
@@ -399,8 +399,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteDnsRecordAsync (int? domainId, int? recordId);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> DeleteDnsRecordAsync (int? domainId, int? recordId);
 
         /// <summary>
         /// Delete DNS Record
@@ -411,8 +411,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteDnsRecordAsyncWithHttpInfo (int? domainId, int? recordId);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> DeleteDnsRecordAsyncWithHttpInfo (int? domainId, int? recordId);
         /// <summary>
         /// List Domain DNS Records
         /// </summary>
@@ -470,8 +470,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateDnsRecordAsync (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateDnsRecordAsync (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
 
         /// <summary>
         /// Update DNS Record
@@ -490,8 +490,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateDnsRecordAsyncWithHttpInfo (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateDnsRecordAsyncWithHttpInfo (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
         /// <summary>
         /// Update DNS Record
         /// </summary>
@@ -502,8 +502,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateDnsRecordAsync (DnsUpdateRecord body, int? domainId, int? recordId);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateDnsRecordAsync (DnsUpdateRecord body, int? domainId, int? recordId);
 
         /// <summary>
         /// Update DNS Record
@@ -515,8 +515,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateDnsRecordAsyncWithHttpInfo (DnsUpdateRecord body, int? domainId, int? recordId);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateDnsRecordAsyncWithHttpInfo (DnsUpdateRecord body, int? domainId, int? recordId);
         #endregion Asynchronous Operations
     }
 
@@ -634,10 +634,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns></returns>
-        public void AddDnsDomain (string domain, string ip)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse AddDnsDomain (string domain, string ip)
         {
-             AddDnsDomainWithHttpInfo(domain, ip);
+             ApiResponse<SuccessTextResponse> localVarResponse = AddDnsDomainWithHttpInfo(domain, ip);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -646,8 +647,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddDnsDomainWithHttpInfo (string domain, string ip)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > AddDnsDomainWithHttpInfo (string domain, string ip)
         {
             // verify the required parameter 'domain' is set
             if (domain == null)
@@ -710,9 +711,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -721,10 +722,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddDnsDomainAsync (string domain, string ip)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> AddDnsDomainAsync (string domain, string ip)
         {
-             await AddDnsDomainAsyncWithHttpInfo(domain, ip);
+             ApiResponse<SuccessTextResponse> localVarResponse = await AddDnsDomainAsyncWithHttpInfo(domain, ip);
+             return localVarResponse.Data;
 
         }
 
@@ -734,8 +736,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddDnsDomainAsyncWithHttpInfo (string domain, string ip)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> AddDnsDomainAsyncWithHttpInfo (string domain, string ip)
         {
             // verify the required parameter 'domain' is set
             if (domain == null)
@@ -798,9 +800,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -808,10 +810,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        public void AddDnsDomain (DnsNewDomain body)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse AddDnsDomain (DnsNewDomain body)
         {
-             AddDnsDomainWithHttpInfo(body);
+             ApiResponse<SuccessTextResponse> localVarResponse = AddDnsDomainWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -819,8 +822,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddDnsDomainWithHttpInfo (DnsNewDomain body)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > AddDnsDomainWithHttpInfo (DnsNewDomain body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -886,9 +889,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -896,10 +899,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddDnsDomainAsync (DnsNewDomain body)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> AddDnsDomainAsync (DnsNewDomain body)
         {
-             await AddDnsDomainAsyncWithHttpInfo(body);
+             ApiResponse<SuccessTextResponse> localVarResponse = await AddDnsDomainAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -908,8 +912,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddDnsDomainAsyncWithHttpInfo (DnsNewDomain body)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> AddDnsDomainAsyncWithHttpInfo (DnsNewDomain body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -975,9 +979,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -1397,10 +1401,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns></returns>
-        public void DeleteDnsDomain (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse DeleteDnsDomain (string id)
         {
-             DeleteDnsDomainWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = DeleteDnsDomainWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1408,8 +1413,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteDnsDomainWithHttpInfo (string id)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > DeleteDnsDomainWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1466,9 +1471,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -1476,10 +1481,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteDnsDomainAsync (string id)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> DeleteDnsDomainAsync (string id)
         {
-             await DeleteDnsDomainAsyncWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = await DeleteDnsDomainAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -1488,8 +1494,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteDnsDomainAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> DeleteDnsDomainAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1546,9 +1552,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -1557,10 +1563,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        public void DeleteDnsRecord (int? domainId, int? recordId)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse DeleteDnsRecord (int? domainId, int? recordId)
         {
-             DeleteDnsRecordWithHttpInfo(domainId, recordId);
+             ApiResponse<SuccessTextResponse> localVarResponse = DeleteDnsRecordWithHttpInfo(domainId, recordId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1569,8 +1576,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteDnsRecordWithHttpInfo (int? domainId, int? recordId)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > DeleteDnsRecordWithHttpInfo (int? domainId, int? recordId)
         {
             // verify the required parameter 'domainId' is set
             if (domainId == null)
@@ -1631,9 +1638,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -1642,10 +1649,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteDnsRecordAsync (int? domainId, int? recordId)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> DeleteDnsRecordAsync (int? domainId, int? recordId)
         {
-             await DeleteDnsRecordAsyncWithHttpInfo(domainId, recordId);
+             ApiResponse<SuccessTextResponse> localVarResponse = await DeleteDnsRecordAsyncWithHttpInfo(domainId, recordId);
+             return localVarResponse.Data;
 
         }
 
@@ -1655,8 +1663,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteDnsRecordAsyncWithHttpInfo (int? domainId, int? recordId)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> DeleteDnsRecordAsyncWithHttpInfo (int? domainId, int? recordId)
         {
             // verify the required parameter 'domainId' is set
             if (domainId == null)
@@ -1717,9 +1725,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -2046,10 +2054,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        public void UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
         {
-             UpdateDnsRecordWithHttpInfo(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateDnsRecordWithHttpInfo(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2066,8 +2075,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateDnsRecordWithHttpInfo (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateDnsRecordWithHttpInfo (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -2162,9 +2171,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -2181,10 +2190,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateDnsRecordAsync (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateDnsRecordAsync (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
         {
-             await UpdateDnsRecordAsyncWithHttpInfo(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateDnsRecordAsyncWithHttpInfo(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+             return localVarResponse.Data;
 
         }
 
@@ -2202,8 +2212,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateDnsRecordAsyncWithHttpInfo (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateDnsRecordAsyncWithHttpInfo (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -2298,9 +2308,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -2310,10 +2320,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        public void UpdateDnsRecord (DnsUpdateRecord body, int? domainId, int? recordId)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateDnsRecord (DnsUpdateRecord body, int? domainId, int? recordId)
         {
-             UpdateDnsRecordWithHttpInfo(body, domainId, recordId);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateDnsRecordWithHttpInfo(body, domainId, recordId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2323,8 +2334,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateDnsRecordWithHttpInfo (DnsUpdateRecord body, int? domainId, int? recordId)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateDnsRecordWithHttpInfo (DnsUpdateRecord body, int? domainId, int? recordId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2398,9 +2409,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -2410,10 +2421,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateDnsRecordAsync (DnsUpdateRecord body, int? domainId, int? recordId)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateDnsRecordAsync (DnsUpdateRecord body, int? domainId, int? recordId)
         {
-             await UpdateDnsRecordAsyncWithHttpInfo(body, domainId, recordId);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateDnsRecordAsyncWithHttpInfo(body, domainId, recordId);
+             return localVarResponse.Data;
 
         }
 
@@ -2424,8 +2436,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateDnsRecordAsyncWithHttpInfo (DnsUpdateRecord body, int? domainId, int? recordId)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateDnsRecordAsyncWithHttpInfo (DnsUpdateRecord body, int? domainId, int? recordId)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2499,9 +2511,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
     }

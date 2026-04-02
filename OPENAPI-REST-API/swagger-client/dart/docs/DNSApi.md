@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**updateDnsRecord**](DNSApi.md#updateDnsRecord) | **POST** /dns/{domainId}/{recordId} | Update DNS Record
 
 # **addDnsDomain**
-> addDnsDomain(domain, ip, body)
+> SuccessTextResponse addDnsDomain(domain, ip, body)
 
 Create DNS Domain
 
@@ -46,7 +46,8 @@ var ip = ip_example; // String |
 var body = new DnsNewDomain(); // DnsNewDomain | 
 
 try {
-    api_instance.addDnsDomain(domain, ip, body);
+    var result = api_instance.addDnsDomain(domain, ip, body);
+    print(result);
 } catch (e) {
     print("Exception when calling DNSApi->addDnsDomain: $e\n");
 }
@@ -62,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -142,7 +143,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDnsDomain**
-> deleteDnsDomain(id)
+> SuccessTextResponse deleteDnsDomain(id)
 
 Delete DNS Domain
 
@@ -168,7 +169,8 @@ var api_instance = new DNSApi();
 var id = id_example; // String | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 
 try {
-    api_instance.deleteDnsDomain(id);
+    var result = api_instance.deleteDnsDomain(id);
+    print(result);
 } catch (e) {
     print("Exception when calling DNSApi->deleteDnsDomain: $e\n");
 }
@@ -182,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -196,7 +198,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDnsRecord**
-> deleteDnsRecord(domainId, recordId)
+> SuccessTextResponse deleteDnsRecord(domainId, recordId)
 
 Delete DNS Record
 
@@ -223,7 +225,8 @@ var domainId = 56; // int | The DNS domain ID. Use the `id` from `GET /dns` to i
 var recordId = 56; // int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 try {
-    api_instance.deleteDnsRecord(domainId, recordId);
+    var result = api_instance.deleteDnsRecord(domainId, recordId);
+    print(result);
 } catch (e) {
     print("Exception when calling DNSApi->deleteDnsRecord: $e\n");
 }
@@ -238,7 +241,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -358,7 +361,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateDnsRecord**
-> updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId)
+> SuccessTextResponse updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId)
 
 Update DNS Record
 
@@ -394,7 +397,8 @@ var domainId = 56; // int | The DNS domain ID. Use the `id` from `GET /dns` to i
 var recordId = 56; // int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 try {
-    api_instance.updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId);
+    var result = api_instance.updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId);
+    print(result);
 } catch (e) {
     print("Exception when calling DNSApi->updateDnsRecord: $e\n");
 }
@@ -418,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

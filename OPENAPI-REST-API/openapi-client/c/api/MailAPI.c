@@ -264,7 +264,7 @@ end:
 //
 // Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
 //
-void
+service_order_post_response_t*
 MailAPI_addMail(apiClient_t *apiClient)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -297,15 +297,25 @@ MailAPI_addMail(apiClient_t *apiClient)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    service_order_post_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *MailAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = service_order_post_response_parseFromJSON(MailAPIlocalVarJSON);
+        cJSON_Delete(MailAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -317,6 +327,10 @@ end:
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -2568,7 +2582,7 @@ end:
 //
 // Updates mail service metadata for the order, such as stored settings or account details.
 //
-void
+success_text_response_t*
 MailAPI_updateMailInfo(apiClient_t *apiClient, char *id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -2613,15 +2627,25 @@ MailAPI_updateMailInfo(apiClient_t *apiClient, char *id)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *MailAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(MailAPIlocalVarJSON);
+        cJSON_Delete(MailAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -2634,6 +2658,10 @@ end:
     
     free(localVarPath);
     free(localVarToReplace_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

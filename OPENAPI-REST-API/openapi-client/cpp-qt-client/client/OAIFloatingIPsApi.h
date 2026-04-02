@@ -21,6 +21,8 @@
 #include "OAIChargeInvoiceRows.h"
 #include "OAIFloating_ipsCancel_200_response.h"
 #include "OAIGetAccountInfo_401_response.h"
+#include "OAIObject.h"
+#include "OAIServiceOrderPostResponse.h"
 #include "OAISuccessTextResponse.h"
 #include <QString>
 
@@ -147,39 +149,39 @@ private:
 
 Q_SIGNALS:
 
-    void addFloatingIpSignal();
+    void addFloatingIpSignal(OAIServiceOrderPostResponse summary);
     void floatingIpsCancelSignal(OAIFloating_ipsCancel_200_response summary);
-    void getFloatingIpInfoSignal();
+    void getFloatingIpInfoSignal(OAIObject summary);
     void getFloatingIpInvoicesSignal(OAIChargeInvoiceRows summary);
     void getFloatingIpsListSignal();
     void getFloatingIpsWelcomeEmailSignal(OAISuccessTextResponse summary);
-    void getNewFloatingIpSignal();
+    void getNewFloatingIpSignal(OAIObject summary);
     void postFloatingIpsChangeIpSignal(OAISuccessTextResponse summary);
     void putFloatingIpsSignal();
-    void updateFloatingIpInfoSignal();
+    void updateFloatingIpInfoSignal(OAISuccessTextResponse summary);
 
 
-    void addFloatingIpSignalFull(OAIHttpRequestWorker *worker);
+    void addFloatingIpSignalFull(OAIHttpRequestWorker *worker, OAIServiceOrderPostResponse summary);
     void floatingIpsCancelSignalFull(OAIHttpRequestWorker *worker, OAIFloating_ipsCancel_200_response summary);
-    void getFloatingIpInfoSignalFull(OAIHttpRequestWorker *worker);
+    void getFloatingIpInfoSignalFull(OAIHttpRequestWorker *worker, OAIObject summary);
     void getFloatingIpInvoicesSignalFull(OAIHttpRequestWorker *worker, OAIChargeInvoiceRows summary);
     void getFloatingIpsListSignalFull(OAIHttpRequestWorker *worker);
     void getFloatingIpsWelcomeEmailSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
-    void getNewFloatingIpSignalFull(OAIHttpRequestWorker *worker);
+    void getNewFloatingIpSignalFull(OAIHttpRequestWorker *worker, OAIObject summary);
     void postFloatingIpsChangeIpSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void putFloatingIpsSignalFull(OAIHttpRequestWorker *worker);
-    void updateFloatingIpInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateFloatingIpInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    void addFloatingIpSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addFloatingIpSignalError(OAIServiceOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void floatingIpsCancelSignalError(OAIFloating_ipsCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getFloatingIpInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getFloatingIpInfoSignalError(OAIObject summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getFloatingIpInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getFloatingIpsListSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getFloatingIpsWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getNewFloatingIpSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getNewFloatingIpSignalError(OAIObject summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postFloatingIpsChangeIpSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void putFloatingIpsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateFloatingIpInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateFloatingIpInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addFloatingIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void floatingIpsCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

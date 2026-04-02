@@ -14,8 +14,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place License Order Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        void AddLicense ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddLicense ();
         /// <summary>
         /// Get License Returns detailed information about a specific license including its type, IP assignment, and status.
         /// </summary>
@@ -79,8 +79,8 @@ namespace IO.Swagger.Api
         /// Update License Updates settings on a license service such as its assigned IP.
         /// </summary>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns></returns>
-        void UpdateLicenseInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateLicenseInfo (string id);
     }
   
     /// <summary>
@@ -139,8 +139,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place License Order Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        public void AddLicense ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddLicense ()
         {
     
             var path = "/licenses/order";
@@ -164,7 +164,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddLicense: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (ServiceOrderPostResponse) ApiClient.Deserialize(response.Content, typeof(ServiceOrderPostResponse), response.Headers);
         }
     
         /// <summary>
@@ -517,8 +517,8 @@ namespace IO.Swagger.Api
         /// Update License Updates settings on a license service such as its assigned IP.
         /// </summary>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateLicenseInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateLicenseInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateLicenseInfo");
@@ -545,7 +545,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateLicenseInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
     }

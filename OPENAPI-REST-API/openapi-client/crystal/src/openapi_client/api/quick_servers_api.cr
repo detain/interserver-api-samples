@@ -19,15 +19,15 @@ module OpenAPIClient
     end
     # Place QuickServer Order
     # Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_qs()
-      add_qs_with_http_info()
-      nil
+      data, _status_code, _headers = add_qs_with_http_info()
+      data
     end
 
     # Place QuickServer Order
     # Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_qs_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: QuickServersApi.add_qs ..."}
@@ -71,7 +71,7 @@ module OpenAPIClient
         Log.debug {"API called: QuickServersApi#add_qs\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return ServiceOrderPostResponse.from_json(data), status_code, headers
     end
 
     # Delete QuickServer Backup
@@ -2760,16 +2760,16 @@ module OpenAPIClient
     # Update QuickServer Order
     # Updates QuickServer metadata or stored settings associated with the order.
     # @param id [String] QuickServer ID number.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_qs_info(id : String)
-      update_qs_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_qs_info_with_http_info(id)
+      data
     end
 
     # Update QuickServer Order
     # Updates QuickServer metadata or stored settings associated with the order.
     # @param id [String] QuickServer ID number.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_qs_info_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: QuickServersApi.update_qs_info ..."}
@@ -2817,7 +2817,7 @@ module OpenAPIClient
         Log.debug {"API called: QuickServersApi#update_qs_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
   end
 end

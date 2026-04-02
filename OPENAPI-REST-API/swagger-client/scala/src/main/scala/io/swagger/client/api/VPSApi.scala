@@ -20,6 +20,7 @@ import io.swagger.client.model.PasswordRequest
 import io.swagger.client.model.QueueResponse
 import io.swagger.client.model.RestoreRequest
 import io.swagger.client.model.ReverseDnsEntries
+import io.swagger.client.model.ServiceOrderPostResponse
 import io.swagger.client.model.SuccessTextResponse
 import io.swagger.client.model.TemplateRequest
 import io.swagger.client.model.TextResponse
@@ -35,7 +36,7 @@ import io.swagger.client.model.VpsRow
 import io.swagger.client.model.VpsTemplatesList
 import io.swagger.client.model.VpsTrafficResponse
 import io.swagger.client.model.inline_response_200_11
-import io.swagger.client.model.inline_response_200_21
+import io.swagger.client.model.inline_response_200_22
 import io.swagger.client.model.inline_response_401
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -117,9 +118,9 @@ class VPSApi(
    * @param coupon  (optional)
    * @param rootpass  (optional)
    * @param comment  (optional)
-   * @return void
+   * @return ServiceOrderPostResponse
    */
-  def addVps(body: Option[VpsOrderPostRequest] = None, osDistro: Option[String] = None, slices: Option[Integer] = None, vpsPlatform: Option[String] = None, controlpanel: Option[String] = None, period: Option[Integer] = None, location: Option[Integer] = None, osVersion: Option[String] = None, hostname: Option[String] = None, coupon: Option[String] = None, rootpass: Option[String] = None, comment: Option[String] = None) = {
+  def addVps(body: Option[VpsOrderPostRequest] = None, osDistro: Option[String] = None, slices: Option[Integer] = None, vpsPlatform: Option[String] = None, controlpanel: Option[String] = None, period: Option[Integer] = None, location: Option[Integer] = None, osVersion: Option[String] = None, hostname: Option[String] = None, coupon: Option[String] = None, rootpass: Option[String] = None, comment: Option[String] = None): Option[ServiceOrderPostResponse] = {
     val await = Try(Await.result(addVpsAsync(body, osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -143,9 +144,9 @@ class VPSApi(
    * @param coupon  (optional)
    * @param rootpass  (optional)
    * @param comment  (optional)
-   * @return Future(void)
+   * @return Future(ServiceOrderPostResponse)
    */
-  def addVpsAsync(body: Option[VpsOrderPostRequest] = None, osDistro: Option[String] = None, slices: Option[Integer] = None, vpsPlatform: Option[String] = None, controlpanel: Option[String] = None, period: Option[Integer] = None, location: Option[Integer] = None, osVersion: Option[String] = None, hostname: Option[String] = None, coupon: Option[String] = None, rootpass: Option[String] = None, comment: Option[String] = None) = {
+  def addVpsAsync(body: Option[VpsOrderPostRequest] = None, osDistro: Option[String] = None, slices: Option[Integer] = None, vpsPlatform: Option[String] = None, controlpanel: Option[String] = None, period: Option[Integer] = None, location: Option[Integer] = None, osVersion: Option[String] = None, hostname: Option[String] = None, coupon: Option[String] = None, rootpass: Option[String] = None, comment: Option[String] = None): Future[ServiceOrderPostResponse] = {
       helper.addVps(body, osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment)
   }
 
@@ -1288,9 +1289,9 @@ class VPSApi(
    * Updates settings on a VPS order.
    *
    * @param id VPS ID number. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateVpsInfo(id: String) = {
+  def updateVpsInfo(id: String): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateVpsInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -1303,9 +1304,9 @@ class VPSApi(
    * Updates settings on a VPS order.
    *
    * @param id VPS ID number. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateVpsInfoAsync(id: String) = {
+  def updateVpsInfoAsync(id: String): Future[SuccessTextResponse] = {
       helper.updateVpsInfo(id)
   }
 
@@ -1314,9 +1315,9 @@ class VPSApi(
    * Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
    *
    * @param id VPS ID number 
-   * @return inline_response_200_21
+   * @return inline_response_200_22
    */
-  def vPSCancel(id: Integer): Option[inline_response_200_21] = {
+  def vPSCancel(id: Integer): Option[inline_response_200_22] = {
     val await = Try(Await.result(vPSCancelAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -1329,9 +1330,9 @@ class VPSApi(
    * Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
    *
    * @param id VPS ID number 
-   * @return Future(inline_response_200_21)
+   * @return Future(inline_response_200_22)
    */
-  def vPSCancelAsync(id: Integer): Future[inline_response_200_21] = {
+  def vPSCancelAsync(id: Integer): Future[inline_response_200_22] = {
       helper.vPSCancel(id)
   }
 
@@ -1351,7 +1352,7 @@ class VPSApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
     coupon: Option[String] = None,
     rootpass: Option[String] = None,
     comment: Option[String] = None
-    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[VpsOrderPostRequest]]): Future[Unit] = {
+    )(implicit reader: ClientResponseReader[ServiceOrderPostResponse], writer: RequestWriter[Option[VpsOrderPostRequest]]): Future[ServiceOrderPostResponse] = {
     // create path and map variables
     val path = (addFmt("/vps/order"))
 
@@ -2106,7 +2107,7 @@ class VPSApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
     }
   }
 
-  def updateVpsInfo(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateVpsInfo(id: String)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/vps/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -2124,7 +2125,7 @@ class VPSApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
     }
   }
 
-  def vPSCancel(id: Integer)(implicit reader: ClientResponseReader[inline_response_200_21]): Future[inline_response_200_21] = {
+  def vPSCancel(id: Integer)(implicit reader: ClientResponseReader[inline_response_200_22]): Future[inline_response_200_22] = {
     // create path and map variables
     val path = (addFmt("/vps/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

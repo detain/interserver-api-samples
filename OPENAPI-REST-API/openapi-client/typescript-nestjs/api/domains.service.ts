@@ -29,6 +29,7 @@ import { DomainRow } from '../model/domainRow';
 import { DomainSearchResponse } from '../model/domainSearchResponse';
 import { DomainWhoisPrivacyRequest } from '../model/domainWhoisPrivacyRequest';
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 import { Configuration } from '../configuration';
@@ -65,7 +66,7 @@ export class DomainsService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [addDomainOpts.config] Override http request option.
      */
-    public addDomain(addDomainOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public addDomain(addDomainOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ServiceOrderPostResponse>>;
     public addDomain(addDomainOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -100,7 +101,7 @@ export class DomainsService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/domains/order`,
+                return this.httpClient.post<ServiceOrderPostResponse>(`${this.basePath}/domains/order`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -1591,7 +1592,7 @@ export class DomainsService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateDomainInfoOpts.config] Override http request option.
      */
-    public updateDomainInfo(id: string, updateDomainInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateDomainInfo(id: string, updateDomainInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateDomainInfo(id: string, updateDomainInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateDomainInfo.');
@@ -1630,7 +1631,7 @@ export class DomainsService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/domains/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/domains/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

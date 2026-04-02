@@ -343,10 +343,10 @@ sub add_billing_prepay {
     __PACKAGE__->method_documentation->{ 'delete_account_credit_card' } = {
         summary => 'Remove Credit Card',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub delete_account_credit_card {
     my ($self, %args) = @_;
@@ -383,10 +383,14 @@ sub delete_account_credit_card {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -917,10 +921,10 @@ sub get_affiliate_web_traffic {
     __PACKAGE__->method_documentation->{ 'get_billing_cart' } = {
         summary => 'Get Shopping Cart Contents',
         params => $params,
-        returns => undef,
+        returns => 'object',
         };
 }
-# @return void
+# @return object
 #
 sub get_billing_cart {
     my ($self, %args) = @_;
@@ -945,10 +949,14 @@ sub get_billing_cart {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
 }
 
 #
@@ -1145,10 +1153,10 @@ sub get_billing_invoices {
     __PACKAGE__->method_documentation->{ 'get_billing_pre_pays' } = {
         summary => 'List Prepay Balances',
         params => $params,
-        returns => undef,
+        returns => 'object',
         };
 }
-# @return void
+# @return object
 #
 sub get_billing_pre_pays {
     my ($self, %args) = @_;
@@ -1173,10 +1181,14 @@ sub get_billing_pre_pays {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
 }
 
 #
@@ -1446,10 +1458,10 @@ sub post_billing_credit_card_verify {
     __PACKAGE__->method_documentation->{ 'update_account_credit_card' } = {
         summary => 'Update Credit Card',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub update_account_credit_card {
     my ($self, %args) = @_;
@@ -1486,10 +1498,14 @@ sub update_account_credit_card {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #

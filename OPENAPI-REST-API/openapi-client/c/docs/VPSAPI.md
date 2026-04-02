@@ -56,7 +56,7 @@ Method | HTTP request | Description
 //
 // Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
 //
-void VPSAPI_addVps(apiClient_t *apiClient, vps_order_post_request_t *vps_order_post_request);
+service_order_post_response_t* VPSAPI_addVps(apiClient_t *apiClient, vps_order_post_request_t *vps_order_post_request);
 ```
 
 ### Parameters
@@ -67,7 +67,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[service_order_post_response_t](service_order_post_response.md) *
+
 
 ### Authorization
 
@@ -1364,7 +1365,7 @@ Name | Type | Description  | Notes
 //
 // Updates settings on a VPS order.
 //
-void VPSAPI_updateVpsInfo(apiClient_t *apiClient, char *id);
+success_text_response_t* VPSAPI_updateVpsInfo(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -1375,7 +1376,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

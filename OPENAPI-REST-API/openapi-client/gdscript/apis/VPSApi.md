@@ -88,9 +88,9 @@ api.add_vps(
 	# vpsOrderPostRequest: VpsOrderPostRequest
 	vpsOrderPostRequest,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_vps", response)
-		
+		assert(response.data is ServiceOrderPostResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -2186,9 +2186,9 @@ api.update_vps_info(
 	# VPS ID number.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_vps_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

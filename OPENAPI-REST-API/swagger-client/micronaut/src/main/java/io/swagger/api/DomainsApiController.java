@@ -30,6 +30,8 @@ import io.swagger.model.InlineResponse2002;
 
 import io.swagger.model.InlineResponse401;
 
+import io.swagger.model.ServiceOrderPostResponse;
+
 import io.swagger.model.SuccessTextResponse;
 
 import io.swagger.model.TextResponse;
@@ -48,7 +50,7 @@ import java.util.Map;
 public class DomainsApiController implements DomainsApi {
 
     @Override
-    public Single<HttpResponse<Void>> addDomain() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addDomain() {
         // TODO: Implement me
         return DomainsApi.super.addDomain();
     }
@@ -222,7 +224,7 @@ public class DomainsApiController implements DomainsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateDomainInfo(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateDomainInfo(String id) {
         // TODO: Implement me
         return DomainsApi.super.updateDomainInfo(id);
     }

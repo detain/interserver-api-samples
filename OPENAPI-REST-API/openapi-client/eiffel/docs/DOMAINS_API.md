@@ -36,7 +36,7 @@ Feature | HTTP request | Description
 
 
 # **add_domain**
-> add_domain 
+> add_domain : detachable SERVICE_ORDER_POST_RESPONSE
 
 
 Place Domain Order
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**SERVICE_ORDER_POST_RESPONSE**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -807,7 +807,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_domain_info**
-> update_domain_info (id: STRING_32 )
+> update_domain_info (id: STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Update Domain Order
@@ -823,7 +823,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 

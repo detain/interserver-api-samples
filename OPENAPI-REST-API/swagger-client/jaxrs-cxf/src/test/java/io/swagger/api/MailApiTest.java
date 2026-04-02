@@ -48,6 +48,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 import org.junit.Test;
@@ -104,8 +105,8 @@ public class MailApiTest {
      */
     @Test
     public void addMailTest() {
-        //api.addMail();
-        
+        //ServiceOrderPostResponse response = api.addMail();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -519,8 +520,8 @@ public class MailApiTest {
     @Test
     public void updateMailInfoTest() {
         String id = null;
-        //api.updateMailInfo(id);
-        
+        //SuccessTextResponse response = api.updateMailInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
         
         

@@ -18,11 +18,12 @@ feature -- Test routines
             --
             -- Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
         local
+            l_response: SERVICE_ORDER_POST_RESPONSE
             l_vps_order_post_request: VPS_ORDER_POST_REQUEST
         do
             -- TODO: Initialize required params.
 
-            -- api.add_vps(l_vps_order_post_request)
+            -- l_response := api.add_vps(l_vps_order_post_request)
             assert ("not_implemented", False)
         end
 
@@ -452,12 +453,13 @@ feature -- Test routines
             --
             -- Updates settings on a VPS order.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_vps_info(l_id)
+            -- l_response := api.update_vps_info(l_id)
             assert ("not_implemented", False)
         end
 

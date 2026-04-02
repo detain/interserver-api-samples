@@ -8,12 +8,13 @@ package io.swagger.api;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBuyIpBody;
 import io.swagger.model.IdMigrationBody;
-import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse20023;
 import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse20025;
+import io.swagger.model.InlineResponse20026;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.Website;
@@ -40,10 +41,10 @@ public interface WebsitesApi {
 
 
     @Operation(summary = "Place Website Order", operationId = "addWebsite", description = "Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first." , tags = {"Webhosting"})
+    @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/websites/order", produces = { "application/json" })
-    default Single<HttpResponse<Void>> addWebsite() {
+    default Single<HttpResponse<ServiceOrderPostResponse>> addWebsite() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -65,7 +66,7 @@ public interface WebsitesApi {
     @ApiResponse(responseCode = "200", description = "Current IP addresses and their reverse DNS hostnames for the website.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Get(value = "/websites/{id}/buy_ip", produces = { "application/json" })
-    default Single<HttpResponse<InlineResponse20023>> getWebsiteBuyIp(@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<InlineResponse20024>> getWebsiteBuyIp(@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -153,7 +154,7 @@ public interface WebsitesApi {
     @ApiResponse(responseCode = "200", description = "DNS update result.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Post(value = "/websites/{id}/buy_ip", produces = { "application/json" }, consumes = {"application/json", "multipart/form-data"})
-    default Single<HttpResponse<InlineResponse20024>> postWebsiteBuyIp(@NotNull @Valid @Parameter(description = "") @Body IdBuyIpBody body,@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<InlineResponse20025>> postWebsiteBuyIp(@NotNull @Valid @Parameter(description = "") @Body IdBuyIpBody body,@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -164,7 +165,7 @@ public interface WebsitesApi {
     @ApiResponse(responseCode = "200", description = "DNS update result.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Post(value = "/websites/{id}/buy_ip", produces = { "application/json" }, consumes = {"application/json", "multipart/form-data"})
-    default Single<HttpResponse<InlineResponse20024>> postWebsiteBuyIp(@NotNull @Parameter(description = "") @Body(value = "ips")  Map<String, String> ips,@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<InlineResponse20025>> postWebsiteBuyIp(@NotNull @Parameter(description = "") @Body(value = "ips")  Map<String, String> ips,@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -175,7 +176,7 @@ public interface WebsitesApi {
     @ApiResponse(responseCode = "200", description = "Migration request submitted.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Post(value = "/websites/{id}/migration", produces = { "application/json" }, consumes = {"application/json", "multipart/form-data"})
-    default Single<HttpResponse<InlineResponse20025>> postWebsiteMigration(@NotNull @Valid @Parameter(description = "") @Body IdMigrationBody body,@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<InlineResponse20026>> postWebsiteMigration(@NotNull @Valid @Parameter(description = "") @Body IdMigrationBody body,@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -186,7 +187,7 @@ public interface WebsitesApi {
     @ApiResponse(responseCode = "200", description = "Migration request submitted.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Post(value = "/websites/{id}/migration", produces = { "application/json" }, consumes = {"application/json", "multipart/form-data"})
-    default Single<HttpResponse<InlineResponse20025>> postWebsiteMigration(@NotNull @Parameter(description = "") @Body(value = "custPortal")  String custPortal,@NotNull @Parameter(description = "") @Body(value = "regEmail")  String regEmail,@NotNull @Parameter(description = "") @Body(value = "password")  String password,@NotNull @Parameter(description = "") @Body(value = "ctrlPanel")  String ctrlPanel,@NotNull @Parameter(description = "") @Body(value = "ftpUsername")  String ftpUsername,@NotNull @Parameter(description = "") @Body(value = "ftpPassword")  String ftpPassword,@NotNull @Parameter(description = "") @Body(value = "siteBusyMig")  String siteBusyMig,@NotNull @Parameter(description = "") @Body(value = "splReqMig")  String splReqMig,@NotNull @Parameter(description = "") @Body(value = "domainReg")  String domainReg,@NotNull @Parameter(description = "") @Body(value = "dataMig")  String dataMig,@NotNull @Parameter(description = "") @Body(value = "domainRegPortal")  String domainRegPortal,@NotNull @Parameter(description = "") @Body(value = "domainRegEmail")  String domainRegEmail,@NotNull @Parameter(description = "") @Body(value = "domainRegPassword")  String domainRegPassword,@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<InlineResponse20026>> postWebsiteMigration(@NotNull @Parameter(description = "") @Body(value = "custPortal")  String custPortal,@NotNull @Parameter(description = "") @Body(value = "regEmail")  String regEmail,@NotNull @Parameter(description = "") @Body(value = "password")  String password,@NotNull @Parameter(description = "") @Body(value = "ctrlPanel")  String ctrlPanel,@NotNull @Parameter(description = "") @Body(value = "ftpUsername")  String ftpUsername,@NotNull @Parameter(description = "") @Body(value = "ftpPassword")  String ftpPassword,@NotNull @Parameter(description = "") @Body(value = "siteBusyMig")  String siteBusyMig,@NotNull @Parameter(description = "") @Body(value = "splReqMig")  String splReqMig,@NotNull @Parameter(description = "") @Body(value = "domainReg")  String domainReg,@NotNull @Parameter(description = "") @Body(value = "dataMig")  String dataMig,@NotNull @Parameter(description = "") @Body(value = "domainRegPortal")  String domainRegPortal,@NotNull @Parameter(description = "") @Body(value = "domainRegEmail")  String domainRegEmail,@NotNull @Parameter(description = "") @Body(value = "domainRegPassword")  String domainRegPassword,@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -227,10 +228,10 @@ public interface WebsitesApi {
 
 
     @Operation(summary = "Update Website Order", operationId = "updateWebsiteInfo", description = "Updates settings on a webhosting order." , tags = {"Webhosting"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/websites/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateWebsiteInfo(@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") String id) {
+    default Single<HttpResponse<SuccessTextResponse>> updateWebsiteInfo(@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -241,7 +242,7 @@ public interface WebsitesApi {
     @ApiResponse(responseCode = "200", description = "Website cancel")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Delete(value = "/websites/{id}", produces = { "application/json" })
-    default Single<HttpResponse<InlineResponse20022>> webhostingCancel(@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") String id) {
+    default Single<HttpResponse<InlineResponse20023>> webhostingCancel(@Parameter(description = "The website service ID. Use `website_id` from `GET /websites`.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

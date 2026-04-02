@@ -13,7 +13,7 @@
 /*
  * OAIServerIpmiLiveInfo.h
  *
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 
 #ifndef OAIServerIpmiLiveInfo_H

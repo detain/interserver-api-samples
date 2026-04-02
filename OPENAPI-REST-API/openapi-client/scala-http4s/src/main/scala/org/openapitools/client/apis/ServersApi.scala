@@ -14,6 +14,7 @@ import cats.effect.Concurrent
 import io.circe.Encoder
 import org.http4s.Uri
 import org.http4s.client.Client as Http4sClient
+import org.openapitools.client.models.AddServer200Response
 import org.openapitools.client.models.BuyItNowList
 import org.openapitools.client.models.BuyItNowServerOrder200Response
 import org.openapitools.client.models.ChargeInvoiceRows
@@ -35,7 +36,7 @@ import org.openapitools.client.models.*
 
 trait ServersApiEndpoints[F[*]] {
 
-  def addServer()(using auth: _Authorization.ApiKey): F[Unit]
+  def addServer()(using auth: _Authorization.ApiKey): F[AddServer200Response]
   def buyItNowServerOrder()(using auth: _Authorization.ApiKey): F[BuyItNowServerOrder200Response]
   def getMPServers()(using auth: _Authorization.ApiKey): F[BuyItNowList]
   def getNewServer()(using auth: _Authorization.ApiKey): F[ServerOrder]
@@ -52,7 +53,7 @@ trait ServersApiEndpoints[F[*]] {
   def serverIpmiPowerGet(id: Int)(using auth: _Authorization.ApiKey): F[TextResponse]
   def serverIpmiPowerPost(id: Int, action: ServerIpmiPowerRequestAction, asset: Option[Int] = None)(using auth: _Authorization.ApiKey): F[TextResponse]
   def serversCancel(id: Int)(using auth: _Authorization.ApiKey): F[ServersCancel200Response]
-  def updateServerInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateServerInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
 }
 
@@ -66,12 +67,12 @@ class ServersApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addServer()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def addServer()(using auth: _Authorization.ApiKey): F[AddServer200Response] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, AddServer200Response](
       method = "POST",
       path = s"/servers/order",
       body = None,
@@ -80,8 +81,8 @@ class ServersApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, AddServer200Response]("AddServer200Response", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -399,12 +400,12 @@ class ServersApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateServerInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateServerInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/servers/${id}",
       body = None,
@@ -413,8 +414,8 @@ class ServersApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

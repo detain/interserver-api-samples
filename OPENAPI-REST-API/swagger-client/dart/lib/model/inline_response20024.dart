@@ -1,28 +1,24 @@
 part of swagger.api;
 
 class InlineResponse20024 {
-  
-  String message = null;
-
-  bool success = null;
+  /* A map of IP addresses to their current reverse DNS hostnames. */
+  Map<String, String> ips = {};
 
   InlineResponse20024();
 
   @override
   String toString() {
-    return 'InlineResponse20024[message=$message, success=$success, ]';
+    return 'InlineResponse20024[ips=$ips, ]';
   }
 
   InlineResponse20024.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    message = json['message'];
-    success = json['success'];
+    ips = json['ips'];
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'message': message,
-      'success': success
+      'ips': ips
      };
   }
 

@@ -656,7 +656,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateAccountInfo**
-> updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, body)
+> SuccessTextResponse updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, body)
 
 Update Account Information
 
@@ -699,7 +699,8 @@ var gstin = gstin_example; // String |
 var body = new AccountInfoPost(); // AccountInfoPost | 
 
 try {
-    api_instance.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, body);
+    var result = api_instance.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, body);
+    print(result);
 } catch (e) {
     print("Exception when calling AccountApi->updateAccountInfo: $e\n");
 }
@@ -730,7 +731,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -744,7 +745,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateAccountIpLimits**
-> updateAccountIpLimits(start, end, body)
+> SuccessTextResponse updateAccountIpLimits(start, end, body)
 
 Add IP Access Restriction
 
@@ -772,7 +773,8 @@ var end = end_example; // String |
 var body = new IpLimitRange(); // IpLimitRange | The lower and upper bounds of an ip range.
 
 try {
-    api_instance.updateAccountIpLimits(start, end, body);
+    var result = api_instance.updateAccountIpLimits(start, end, body);
+    print(result);
 } catch (e) {
     print("Exception when calling AccountApi->updateAccountIpLimits: $e\n");
 }
@@ -788,7 +790,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

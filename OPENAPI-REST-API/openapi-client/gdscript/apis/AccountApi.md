@@ -668,9 +668,9 @@ api.update_account_info(
 	# Your GST identification number (if applicable).
 	gstin,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_account_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -720,9 +720,9 @@ api.update_account_ip_limits(
 	# The ending (or last) IP address in the range.
 	end,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_account_ip_limits", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

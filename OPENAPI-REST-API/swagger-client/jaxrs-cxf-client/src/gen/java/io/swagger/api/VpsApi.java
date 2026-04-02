@@ -4,12 +4,13 @@ import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
 import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TemplateRequest;
 import io.swagger.model.TextResponse;
@@ -62,9 +63,9 @@ public interface VpsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Place VPS Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void addVps(VpsOrderPostRequest body);
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public ServiceOrderPostResponse addVps(VpsOrderPostRequest body);
 
     /**
      * Place VPS Order
@@ -78,9 +79,9 @@ public interface VpsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Place VPS Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void addVps(@Multipart(value = "osDistro", required = false)  String osDistro, @Multipart(value = "slices", required = false)  Integer slices, @Multipart(value = "vpsPlatform", required = false)  String vpsPlatform, @Multipart(value = "controlpanel", required = false)  String controlpanel, @Multipart(value = "period", required = false)  Integer period, @Multipart(value = "location", required = false)  Integer location, @Multipart(value = "osVersion", required = false)  String osVersion, @Multipart(value = "hostname", required = false)  String hostname, @Multipart(value = "coupon", required = false)  String coupon, @Multipart(value = "rootpass", required = false)  String rootpass, @Multipart(value = "comment", required = false)  String comment);
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public ServiceOrderPostResponse addVps(@Multipart(value = "osDistro", required = false)  String osDistro, @Multipart(value = "slices", required = false)  Integer slices, @Multipart(value = "vpsPlatform", required = false)  String vpsPlatform, @Multipart(value = "controlpanel", required = false)  String controlpanel, @Multipart(value = "period", required = false)  Integer period, @Multipart(value = "location", required = false)  Integer location, @Multipart(value = "osVersion", required = false)  String osVersion, @Multipart(value = "hostname", required = false)  String hostname, @Multipart(value = "coupon", required = false)  String coupon, @Multipart(value = "rootpass", required = false)  String rootpass, @Multipart(value = "comment", required = false)  String comment);
 
     /**
      * Delete VPS Backup
@@ -880,9 +881,9 @@ public interface VpsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update VPS Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateVpsInfo(@PathParam("id") String id);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse updateVpsInfo(@PathParam("id") String id);
 
     /**
      * Cancel VPS Service
@@ -895,7 +896,7 @@ public interface VpsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Cancel VPS Service", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "VPS Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20021.class))),
+        @ApiResponse(responseCode = "200", description = "VPS Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20022.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
-    public InlineResponse20021 vPSCancel(@PathParam("id") Integer id);
+    public InlineResponse20022 vPSCancel(@PathParam("id") Integer id);
 }

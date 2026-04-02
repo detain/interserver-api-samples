@@ -13,23 +13,30 @@ require 'date'
 
 module SwaggerClient
   class InlineResponse20019
-    attr_accessor :success
-
+    # Status message.
     attr_accessor :text
+
+    # Invoice ID for payment.
+    attr_accessor :invoice
+
+    # Server order ID.
+    attr_accessor :order
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'success' => :'success',
-        :'text' => :'text'
+        :'text' => :'text',
+        :'invoice' => :'invoice',
+        :'order' => :'order'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'success' => :'Object',
-        :'text' => :'Object'
+        :'text' => :'Object',
+        :'invoice' => :'Object',
+        :'order' => :'Object'
       }
     end
 
@@ -54,12 +61,16 @@ module SwaggerClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
-      end
-
       if attributes.key?(:'text')
         self.text = attributes[:'text']
+      end
+
+      if attributes.key?(:'invoice')
+        self.invoice = attributes[:'invoice']
+      end
+
+      if attributes.key?(:'order')
+        self.order = attributes[:'order']
       end
     end
 
@@ -67,22 +78,12 @@ module SwaggerClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @success.nil?
-        invalid_properties.push('invalid value for "success", success cannot be nil.')
-      end
-
-      if @text.nil?
-        invalid_properties.push('invalid value for "text", text cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @success.nil?
-      return false if @text.nil?
       true
     end
 
@@ -91,8 +92,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          success == o.success &&
-          text == o.text
+          text == o.text &&
+          invoice == o.invoice &&
+          order == o.order
     end
 
     # @see the `==` method
@@ -104,7 +106,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [success, text].hash
+      [text, invoice, order].hash
     end
 
     # Builds the object from hash

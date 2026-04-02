@@ -51,21 +51,48 @@ static gpointer __SSLCertificatesManagerthreadFunc(gpointer data)
 static bool addSslProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	= reinterpret_cast<void(*)(ServiceOrderPostResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	ServiceOrderPostResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("ServiceOrderPostResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ServiceOrderPostResponse", "ServiceOrderPostResponse");
+			json_node_free(pJson);
+
+			if ("ServiceOrderPostResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -76,15 +103,15 @@ static bool addSslProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, v
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool addSslHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -154,8 +181,8 @@ static bool addSslHelper(char * accessToken,
 
 bool SSLCertificatesManager::addSslAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData)
 {
 	return addSslHelper(accessToken,
 	
@@ -164,8 +191,8 @@ bool SSLCertificatesManager::addSslAsync(char * accessToken,
 
 bool SSLCertificatesManager::addSslSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData)
 {
 	return addSslHelper(accessToken,
 	
@@ -175,21 +202,43 @@ bool SSLCertificatesManager::addSslSync(char * accessToken,
 static bool getNewSslProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -200,15 +249,15 @@ static bool getNewSslProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool getNewSslHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -278,8 +327,8 @@ static bool getNewSslHelper(char * accessToken,
 
 bool SSLCertificatesManager::getNewSslAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getNewSslHelper(accessToken,
 	
@@ -288,8 +337,8 @@ bool SSLCertificatesManager::getNewSslAsync(char * accessToken,
 
 bool SSLCertificatesManager::getNewSslSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getNewSslHelper(accessToken,
 	
@@ -299,21 +348,43 @@ bool SSLCertificatesManager::getNewSslSync(char * accessToken,
 static bool getSslInfoProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -324,15 +395,15 @@ static bool getSslInfoProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool getSslInfoHelper(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -408,8 +479,8 @@ static bool getSslInfoHelper(char * accessToken,
 
 bool SSLCertificatesManager::getSslInfoAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getSslInfoHelper(accessToken,
 	id, 
@@ -418,8 +489,8 @@ bool SSLCertificatesManager::getSslInfoAsync(char * accessToken,
 
 bool SSLCertificatesManager::getSslInfoSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getSslInfoHelper(accessToken,
 	id, 
@@ -1148,21 +1219,48 @@ bool SSLCertificatesManager::sslCancelSync(char * accessToken,
 static bool updateSslInfoProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	SuccessTextResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -1173,15 +1271,15 @@ static bool updateSslInfoProcessor(MemoryStruct_s p_chunk, long code, char* erro
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool updateSslInfoHelper(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -1257,8 +1355,8 @@ static bool updateSslInfoHelper(char * accessToken,
 
 bool SSLCertificatesManager::updateSslInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateSslInfoHelper(accessToken,
 	id, 
@@ -1267,8 +1365,8 @@ bool SSLCertificatesManager::updateSslInfoAsync(char * accessToken,
 
 bool SSLCertificatesManager::updateSslInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateSslInfoHelper(accessToken,
 	id, 

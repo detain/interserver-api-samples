@@ -15,6 +15,7 @@ import org.openapitools.model.DomainRow;
 import org.openapitools.model.DomainSearchResponse;
 import org.openapitools.model.DomainWhoisPrivacyRequest;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -50,7 +51,7 @@ public class DomainsApiTest {
         // given
 
         // when
-        api.addDomain().block();
+        ServiceOrderPostResponse body = api.addDomain().block();
 
         // then
         // TODO implement the addDomainTest()
@@ -546,7 +547,7 @@ public class DomainsApiTest {
         String id = "example";
 
         // when
-        api.updateDomainInfo(id).block();
+        SuccessTextResponse body = api.updateDomainInfo(id).block();
 
         // then
         // TODO implement the updateDomainInfoTest()

@@ -30,13 +30,14 @@ import org.openapitools.client.models.DomainSearchResponse
 import org.openapitools.client.models.DomainWhoisPrivacyRequest
 import org.openapitools.client.models.GetAccountInfo401Response
 import scala.collection.immutable.Seq
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 import org.openapitools.client.models.*
 
 trait DomainsApiEndpoints[F[*]] {
 
-  def addDomain()(using auth: _Authorization.ApiKey): F[Unit]
+  def addDomain()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def addDomainDnssec(id: Int, domainDnssecRequest: DomainDnssecRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def addDomainNameserver(id: Int, domainNameserverPostRequest: DomainNameserverPostRequest)(using auth: _Authorization.ApiKey): F[TextResponse]
   def cancelDomain(id: Int)(using auth: _Authorization.ApiKey): F[CancelDomain200Response]
@@ -62,7 +63,7 @@ trait DomainsApiEndpoints[F[*]] {
   def postDomainTransfer(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def putDomains()(using auth: _Authorization.ApiKey): F[Unit]
   def updateDomainContact(id: Int, domainContactDetails: DomainContactDetails)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def updateDomainInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateDomainInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def updateDomainNameservers(id: Int, domainNameserverPutRequest: DomainNameserverPutRequest)(using auth: _Authorization.ApiKey): F[TextResponse]
   def updateDomainWhoisPrivacy(id: Int, domainWhoisPrivacyRequest: DomainWhoisPrivacyRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
@@ -78,12 +79,12 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addDomain()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def addDomain()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, ServiceOrderPostResponse](
       method = "POST",
       path = s"/domains/order",
       body = None,
@@ -92,8 +93,8 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, ServiceOrderPostResponse]("ServiceOrderPostResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -580,12 +581,12 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateDomainInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateDomainInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/domains/${id}",
       body = None,
@@ -594,8 +595,8 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

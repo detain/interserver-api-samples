@@ -33,6 +33,7 @@
 #include "OAIDomainSearchResponse.h"
 #include "OAIDomainWhoisPrivacyRequest.h"
 #include "OAIGetAccountInfo_401_response.h"
+#include "OAIServiceOrderPostResponse.h"
 #include "OAISuccessTextResponse.h"
 #include "OAITextResponse.h"
 #include <QString>
@@ -279,7 +280,7 @@ private:
 
 Q_SIGNALS:
 
-    void addDomainSignal();
+    void addDomainSignal(OAIServiceOrderPostResponse summary);
     void addDomainDnssecSignal(OAISuccessTextResponse summary);
     void addDomainNameserverSignal(OAITextResponse summary);
     void cancelDomainSignal(OAICancelDomain_200_response summary);
@@ -305,12 +306,12 @@ Q_SIGNALS:
     void postDomainTransferSignal(OAISuccessTextResponse summary);
     void putDomainsSignal();
     void updateDomainContactSignal(OAISuccessTextResponse summary);
-    void updateDomainInfoSignal();
+    void updateDomainInfoSignal(OAISuccessTextResponse summary);
     void updateDomainNameserversSignal(OAITextResponse summary);
     void updateDomainWhoisPrivacySignal(OAISuccessTextResponse summary);
 
 
-    void addDomainSignalFull(OAIHttpRequestWorker *worker);
+    void addDomainSignalFull(OAIHttpRequestWorker *worker, OAIServiceOrderPostResponse summary);
     void addDomainDnssecSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void addDomainNameserverSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void cancelDomainSignalFull(OAIHttpRequestWorker *worker, OAICancelDomain_200_response summary);
@@ -336,11 +337,11 @@ Q_SIGNALS:
     void postDomainTransferSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void putDomainsSignalFull(OAIHttpRequestWorker *worker);
     void updateDomainContactSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
-    void updateDomainInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateDomainInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateDomainNameserversSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void updateDomainWhoisPrivacySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    void addDomainSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addDomainSignalError(OAIServiceOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void addDomainDnssecSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void addDomainNameserverSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void cancelDomainSignalError(OAICancelDomain_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -366,7 +367,7 @@ Q_SIGNALS:
     void postDomainTransferSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void putDomainsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateDomainContactSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateDomainInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateDomainInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateDomainNameserversSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateDomainWhoisPrivacySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 

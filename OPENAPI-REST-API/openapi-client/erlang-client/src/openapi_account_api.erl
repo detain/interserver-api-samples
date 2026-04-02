@@ -274,11 +274,11 @@ update_account_features(Ctx, Optional) ->
 
 %% @doc Update Account Information
 %% Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
--spec update_account_info(ctx:ctx(), binary(), binary(), binary(), binary(), binary(), binary(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec update_account_info(ctx:ctx(), binary(), binary(), binary(), binary(), binary(), binary(), binary()) -> {ok, openapi_success_text_response:openapi_success_text_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 update_account_info(Ctx, Name, Address, City, State, Zip, Country, Phone) ->
     update_account_info(Ctx, Name, Address, City, State, Zip, Country, Phone, #{}).
 
--spec update_account_info(ctx:ctx(), binary(), binary(), binary(), binary(), binary(), binary(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec update_account_info(ctx:ctx(), binary(), binary(), binary(), binary(), binary(), binary(), binary(), maps:map()) -> {ok, openapi_success_text_response:openapi_success_text_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 update_account_info(Ctx, Name, Address, City, State, Zip, Country, Phone, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),
@@ -295,11 +295,11 @@ update_account_info(Ctx, Name, Address, City, State, Zip, Country, Phone, Option
 
 %% @doc Add IP Access Restriction
 %% Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
--spec update_account_ip_limits(ctx:ctx(), binary(), binary()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec update_account_ip_limits(ctx:ctx(), binary(), binary()) -> {ok, openapi_success_text_response:openapi_success_text_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 update_account_ip_limits(Ctx, Start, End) ->
     update_account_ip_limits(Ctx, Start, End, #{}).
 
--spec update_account_ip_limits(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, [], openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
+-spec update_account_ip_limits(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, openapi_success_text_response:openapi_success_text_response(), openapi_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), openapi_utils:response_info()}.
 update_account_ip_limits(Ctx, Start, End, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(openapi_api, config, #{})),

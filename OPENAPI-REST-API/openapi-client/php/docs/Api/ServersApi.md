@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\ServersApi
 
-Dedicated Servers related services
+Dedicated server ordering and management. Configure custom hardware, view IPMI information, and manage server lifecycle.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -29,7 +29,7 @@ All URIs are relative to https://my.interserver.net/apiv2, except if the operati
 ## `addServer()`
 
 ```php
-addServer()
+addServer(): \Interserver\MyAdmin\Model\AddServer200Response
 ```
 
 Place Server Order
@@ -67,7 +67,8 @@ $apiInstance = new Interserver\MyAdmin\Api\ServersApi(
 );
 
 try {
-    $apiInstance->addServer();
+    $result = $apiInstance->addServer();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ServersApi->addServer: ', $e->getMessage(), PHP_EOL;
 }
@@ -79,7 +80,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\AddServer200Response**](../Model/AddServer200Response.md)
 
 ### Authorization
 
@@ -1243,7 +1244,7 @@ try {
 ## `updateServerInfo()`
 
 ```php
-updateServerInfo($id)
+updateServerInfo($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update Server Order
@@ -1282,7 +1283,8 @@ $apiInstance = new Interserver\MyAdmin\Api\ServersApi(
 $id = 'id_example'; // string | Server ID number.
 
 try {
-    $apiInstance->updateServerInfo($id);
+    $result = $apiInstance->updateServerInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ServersApi->updateServerInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1296,7 +1298,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

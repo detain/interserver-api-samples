@@ -223,8 +223,8 @@ public class BackupsApiTest {
     @Test
     public void updateBackupInfoTest() {
         Integer id = null;
-        //api.updateBackupInfo(id);
-        
+        //SuccessTextResponse response = api.updateBackupInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 

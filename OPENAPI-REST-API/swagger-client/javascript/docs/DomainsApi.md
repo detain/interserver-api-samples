@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 <a name="addDomain"></a>
 # **addDomain**
-> addDomain()
+> ServiceOrderPostResponse addDomain()
 
 Place Domain Order
 
@@ -70,7 +70,7 @@ apiInstance.addDomain((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -80,7 +80,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1675,7 +1675,7 @@ Name | Type | Description  | Notes
 
 <a name="updateDomainInfo"></a>
 # **updateDomainInfo**
-> updateDomainInfo(id)
+> SuccessTextResponse updateDomainInfo(id)
 
 Update Domain Order
 
@@ -1711,7 +1711,7 @@ apiInstance.updateDomainInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -1724,7 +1724,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

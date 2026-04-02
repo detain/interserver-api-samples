@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**UpdateFloatingIpInfo**](FloatingIPsApi.md#UpdateFloatingIpInfo) | **Post** /floating_ips/{id} | Update Floating IP
 
 # **AddFloatingIp**
-> AddFloatingIp(ctx, )
+> ServiceOrderPostResponse AddFloatingIp(ctx, )
 Place Floating IP Order
 
 Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
@@ -26,7 +26,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetFloatingIpInfo**
-> GetFloatingIpInfo(ctx, id)
+> interface{} GetFloatingIpInfo(ctx, id)
 View Floating IP
 
 Returns detailed information about a specific Floating IP service including its current target IP assignment.
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetNewFloatingIp**
-> GetNewFloatingIp(ctx, )
+> interface{} GetNewFloatingIp(ctx, )
 Get Floating IP Ordering Information
 
 Retrieves available options and pricing for ordering a new Floating IP.
@@ -186,7 +186,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -254,7 +254,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateFloatingIpInfo**
-> UpdateFloatingIpInfo(ctx, id)
+> SuccessTextResponse UpdateFloatingIpInfo(ctx, id)
 Update Floating IP
 
 Updates settings on a Floating IP service, such as its label or configuration metadata.
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -26,7 +26,7 @@ Spectator.describe "VPSApi" do
   # Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
   # @option opts [VpsOrderPostRequest] :vps_order_post_request 
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe "add_vps test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -543,7 +543,7 @@ Spectator.describe "VPSApi" do
   # Updates settings on a VPS order.
   # @param id VPS ID number.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "update_vps_info test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

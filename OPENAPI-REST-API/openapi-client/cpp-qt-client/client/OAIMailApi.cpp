@@ -309,13 +309,14 @@ void OAIMailApi::addMailCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIServiceOrderPostResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addMailSignal();
-        Q_EMIT addMailSignalFull(worker);
+        Q_EMIT addMailSignal(output);
+        Q_EMIT addMailSignalFull(worker, output);
     } else {
-        Q_EMIT addMailSignalError(error_type, error_str);
+        Q_EMIT addMailSignalError(output, error_type, error_str);
         Q_EMIT addMailSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -1947,13 +1948,14 @@ void OAIMailApi::updateMailInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateMailInfoSignal();
-        Q_EMIT updateMailInfoSignalFull(worker);
+        Q_EMIT updateMailInfoSignal(output);
+        Q_EMIT updateMailInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateMailInfoSignalError(error_type, error_str);
+        Q_EMIT updateMailInfoSignalError(output, error_type, error_str);
         Q_EMIT updateMailInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

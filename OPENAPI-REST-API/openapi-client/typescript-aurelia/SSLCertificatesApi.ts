@@ -18,6 +18,7 @@ import {
   ChargeInvoiceRows,
   SslCancel200Response,
   SuccessTextResponse,
+  ServiceOrderPostResponse,
 } from './models';
 
 /**
@@ -99,7 +100,7 @@ export class SSLCertificatesApi extends Api {
    * Place SSL Cert Order
    * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
    */
-  async addSsl(): Promise<any> {
+  async addSsl(): Promise<ServiceOrderPostResponse> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -129,7 +130,7 @@ export class SSLCertificatesApi extends Api {
    * SSL Cert Ordering Information
    * Retrieves available SSL certificate types and pricing for ordering.
    */
-  async getNewSsl(): Promise<any> {
+  async getNewSsl(): Promise<object> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -160,7 +161,7 @@ export class SSLCertificatesApi extends Api {
    * Returns detailed information about a specific SSL certificate including its domain and expiration.
    * @param params.id SSL certificate ID number.
    */
-  async getSslInfo(params: IGetSslInfoParams): Promise<any> {
+  async getSslInfo(params: IGetSslInfoParams): Promise<object> {
     // Verify required parameters are set
     this.ensureParamIsSet('getSslInfo', params, 'id');
 
@@ -352,7 +353,7 @@ export class SSLCertificatesApi extends Api {
    * Updates settings on an SSL certificate order.
    * @param params.id SSL certificate ID number.
    */
-  async updateSslInfo(params: IUpdateSslInfoParams): Promise<any> {
+  async updateSslInfo(params: IUpdateSslInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateSslInfo', params, 'id');
 

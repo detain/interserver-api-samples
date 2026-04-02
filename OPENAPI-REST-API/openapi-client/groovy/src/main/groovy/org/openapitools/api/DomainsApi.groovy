@@ -16,6 +16,7 @@ import org.openapitools.model.DomainRow
 import org.openapitools.model.DomainSearchResponse
 import org.openapitools.model.DomainWhoisPrivacyRequest
 import org.openapitools.model.GetAccountInfo401Response
+import org.openapitools.model.ServiceOrderPostResponse
 import org.openapitools.model.SuccessTextResponse
 import org.openapitools.model.TextResponse
 
@@ -43,7 +44,7 @@ class DomainsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    ServiceOrderPostResponse.class )
 
     }
 
@@ -765,7 +766,7 @@ class DomainsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 

@@ -18,6 +18,7 @@ import io.swagger.client.models.DnsRecord
 import io.swagger.client.models.DnsRecordType
 import io.swagger.client.models.DnsUpdateRecord
 import io.swagger.client.models.InlineResponse401
+import io.swagger.client.models.SuccessTextResponse
 
 import myadmin-client-kotlin-client.infrastructure.*
 
@@ -28,9 +29,10 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param domain  
      * @param ip  
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun addDnsDomain(domain: kotlin.String, ip: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addDnsDomain(domain: kotlin.String, ip: kotlin.String): SuccessTextResponse {
         val localVariableBody: kotlin.Any? = mapOf("domain" to "$domain", "ip" to "$ip")
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -40,12 +42,12 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
                 RequestMethod.POST,
                 "/dns", query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -56,9 +58,10 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * Create DNS Domain
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param body  
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun addDnsDomain(body: DnsNewDomain): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addDnsDomain(body: DnsNewDomain): SuccessTextResponse {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -68,12 +71,12 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
                 RequestMethod.POST,
                 "/dns", query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -146,21 +149,22 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * Delete DNS Domain
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun deleteDnsDomain(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun deleteDnsDomain(id: kotlin.String): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.DELETE,
                 "/dns/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -172,21 +176,22 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun deleteDnsRecord(domainId: kotlin.Int, recordId: kotlin.Int): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun deleteDnsRecord(domainId: kotlin.Int, recordId: kotlin.Int): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.DELETE,
                 "/dns/{domainId}/{recordId}".replace("{" + "domainId" + "}", "$domainId").replace("{" + "recordId" + "}", "$recordId"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -257,9 +262,10 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * @param auth  
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateDnsRecord(name: kotlin.String, type: DnsRecordType, content: kotlin.String, ttl: kotlin.String, prio: kotlin.String, disabled: kotlin.String, ordername: kotlin.String, auth: kotlin.String, domainId: kotlin.Int, recordId: kotlin.Int): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateDnsRecord(name: kotlin.String, type: DnsRecordType, content: kotlin.String, ttl: kotlin.String, prio: kotlin.String, disabled: kotlin.String, ordername: kotlin.String, auth: kotlin.String, domainId: kotlin.Int, recordId: kotlin.Int): SuccessTextResponse {
         val localVariableBody: kotlin.Any? = mapOf("name" to "$name", "type" to "$type", "content" to "$content", "ttl" to "$ttl", "prio" to "$prio", "disabled" to "$disabled", "ordername" to "$ordername", "auth" to "$auth")
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -269,12 +275,12 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
                 RequestMethod.POST,
                 "/dns/{domainId}/{recordId}".replace("{" + "domainId" + "}", "$domainId").replace("{" + "recordId" + "}", "$recordId"), query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -287,9 +293,10 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
      * @param body The request data to update a dns record. 
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateDnsRecord(body: DnsUpdateRecord, domainId: kotlin.Int, recordId: kotlin.Int): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateDnsRecord(body: DnsUpdateRecord, domainId: kotlin.Int, recordId: kotlin.Int): SuccessTextResponse {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -299,12 +306,12 @@ class DNSApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") : Api
                 RequestMethod.POST,
                 "/dns/{domainId}/{recordId}".replace("{" + "domainId" + "}", "$domainId").replace("{" + "recordId" + "}", "$recordId"), query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

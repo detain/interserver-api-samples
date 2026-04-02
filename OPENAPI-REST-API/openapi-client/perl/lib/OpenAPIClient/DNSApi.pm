@@ -71,10 +71,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'add_dns_domain' } = {
         summary => 'Create DNS Domain',
         params => $params,
-        returns => undef,
+        returns => 'SuccessTextResponse',
         };
 }
-# @return void
+# @return SuccessTextResponse
 #
 sub add_dns_domain {
     my ($self, %args) = @_;
@@ -119,10 +119,14 @@ sub add_dns_domain {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SuccessTextResponse', $response);
+    return $_response_object;
 }
 
 #
@@ -275,10 +279,10 @@ sub add_dns_record {
     __PACKAGE__->method_documentation->{ 'delete_dns_domain' } = {
         summary => 'Delete DNS Domain',
         params => $params,
-        returns => undef,
+        returns => 'SuccessTextResponse',
         };
 }
-# @return void
+# @return SuccessTextResponse
 #
 sub delete_dns_domain {
     my ($self, %args) = @_;
@@ -315,10 +319,14 @@ sub delete_dns_domain {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SuccessTextResponse', $response);
+    return $_response_object;
 }
 
 #
@@ -344,10 +352,10 @@ sub delete_dns_domain {
     __PACKAGE__->method_documentation->{ 'delete_dns_record' } = {
         summary => 'Delete DNS Record',
         params => $params,
-        returns => undef,
+        returns => 'SuccessTextResponse',
         };
 }
-# @return void
+# @return SuccessTextResponse
 #
 sub delete_dns_record {
     my ($self, %args) = @_;
@@ -396,10 +404,14 @@ sub delete_dns_record {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SuccessTextResponse', $response);
+    return $_response_object;
 }
 
 #
@@ -589,10 +601,10 @@ sub get_dns_list {
     __PACKAGE__->method_documentation->{ 'update_dns_record' } = {
         summary => 'Update DNS Record',
         params => $params,
-        returns => undef,
+        returns => 'SuccessTextResponse',
         };
 }
-# @return void
+# @return SuccessTextResponse
 #
 sub update_dns_record {
     my ($self, %args) = @_;
@@ -681,10 +693,14 @@ sub update_dns_record {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SuccessTextResponse', $response);
+    return $_response_object;
 }
 
 1;

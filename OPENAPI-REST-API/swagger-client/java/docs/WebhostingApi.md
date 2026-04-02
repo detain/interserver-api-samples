@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 <a name="addWebsite"></a>
 # **addWebsite**
-> addWebsite()
+> ServiceOrderPostResponse addWebsite()
 
 Place Website Order
 
@@ -60,7 +60,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 WebhostingApi apiInstance = new WebhostingApi();
 try {
-    apiInstance.addWebsite();
+    ServiceOrderPostResponse result = apiInstance.addWebsite();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling WebhostingApi#addWebsite");
     e.printStackTrace();
@@ -72,7 +73,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -148,7 +149,7 @@ This endpoint does not need any parameter.
 
 <a name="getWebsiteBuyIp"></a>
 # **getWebsiteBuyIp**
-> InlineResponse20023 getWebsiteBuyIp(id)
+> InlineResponse20024 getWebsiteBuyIp(id)
 
 Get Website IP Information
 
@@ -186,7 +187,7 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 WebhostingApi apiInstance = new WebhostingApi();
 Integer id = 56; // Integer | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    InlineResponse20023 result = apiInstance.getWebsiteBuyIp(id);
+    InlineResponse20024 result = apiInstance.getWebsiteBuyIp(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling WebhostingApi#getWebsiteBuyIp");
@@ -202,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -680,7 +681,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteBuyIp"></a>
 # **postWebsiteBuyIp**
-> InlineResponse20024 postWebsiteBuyIp(body, id)
+> InlineResponse20025 postWebsiteBuyIp(body, id)
 
 Update Website IP DNS
 
@@ -719,7 +720,7 @@ WebhostingApi apiInstance = new WebhostingApi();
 IdBuyIpBody body = new IdBuyIpBody(); // IdBuyIpBody | 
 Integer id = 56; // Integer | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    InlineResponse20024 result = apiInstance.postWebsiteBuyIp(body, id);
+    InlineResponse20025 result = apiInstance.postWebsiteBuyIp(body, id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling WebhostingApi#postWebsiteBuyIp");
@@ -736,7 +737,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -749,7 +750,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteBuyIp"></a>
 # **postWebsiteBuyIp**
-> InlineResponse20024 postWebsiteBuyIp(ips, id)
+> InlineResponse20025 postWebsiteBuyIp(ips, id)
 
 Update Website IP DNS
 
@@ -788,7 +789,7 @@ WebhostingApi apiInstance = new WebhostingApi();
 Map<String, String> ips = new HashMap(); // Map<String, String> | 
 Integer id = 56; // Integer | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    InlineResponse20024 result = apiInstance.postWebsiteBuyIp(ips, id);
+    InlineResponse20025 result = apiInstance.postWebsiteBuyIp(ips, id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling WebhostingApi#postWebsiteBuyIp");
@@ -805,7 +806,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -818,7 +819,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteMigration"></a>
 # **postWebsiteMigration**
-> InlineResponse20025 postWebsiteMigration(body, id)
+> InlineResponse20026 postWebsiteMigration(body, id)
 
 Request Website Migration
 
@@ -857,7 +858,7 @@ WebhostingApi apiInstance = new WebhostingApi();
 IdMigrationBody body = new IdMigrationBody(); // IdMigrationBody | 
 Integer id = 56; // Integer | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    InlineResponse20025 result = apiInstance.postWebsiteMigration(body, id);
+    InlineResponse20026 result = apiInstance.postWebsiteMigration(body, id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling WebhostingApi#postWebsiteMigration");
@@ -874,7 +875,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -887,7 +888,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteMigration"></a>
 # **postWebsiteMigration**
-> InlineResponse20025 postWebsiteMigration(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
+> InlineResponse20026 postWebsiteMigration(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
 
 Request Website Migration
 
@@ -938,7 +939,7 @@ String domainRegEmail = "domainRegEmail_example"; // String |
 String domainRegPassword = "domainRegPassword_example"; // String | 
 Integer id = 56; // Integer | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    InlineResponse20025 result = apiInstance.postWebsiteMigration(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id);
+    InlineResponse20026 result = apiInstance.postWebsiteMigration(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling WebhostingApi#postWebsiteMigration");
@@ -967,7 +968,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -1180,7 +1181,7 @@ null (empty response body)
 
 <a name="updateWebsiteInfo"></a>
 # **updateWebsiteInfo**
-> updateWebsiteInfo(id)
+> SuccessTextResponse updateWebsiteInfo(id)
 
 Update Website Order
 
@@ -1218,7 +1219,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 WebhostingApi apiInstance = new WebhostingApi();
 String id = "id_example"; // String | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    apiInstance.updateWebsiteInfo(id);
+    SuccessTextResponse result = apiInstance.updateWebsiteInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling WebhostingApi#updateWebsiteInfo");
     e.printStackTrace();
@@ -1233,7 +1235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1246,7 +1248,7 @@ null (empty response body)
 
 <a name="webhostingCancel"></a>
 # **webhostingCancel**
-> InlineResponse20022 webhostingCancel(id)
+> InlineResponse20023 webhostingCancel(id)
 
 Cancel Website
 
@@ -1284,7 +1286,7 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 WebhostingApi apiInstance = new WebhostingApi();
 String id = "id_example"; // String | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    InlineResponse20022 result = apiInstance.webhostingCancel(id);
+    InlineResponse20023 result = apiInstance.webhostingCancel(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling WebhostingApi#webhostingCancel");
@@ -1300,7 +1302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 

@@ -25,7 +25,7 @@ create_firewall_rule_t* instantiate_create_firewall_rule(int include_optional) {
       interserver_management_api_create_firewall_rule_PROTOCOLID_1,
       interserver_management_api_create_firewall_rule_XDPACTION_1,
       22,
-      "0",
+      "0.0.0.0",
       1302
     );
   } else {
@@ -33,7 +33,7 @@ create_firewall_rule_t* instantiate_create_firewall_rule(int include_optional) {
       interserver_management_api_create_firewall_rule_PROTOCOLID_1,
       interserver_management_api_create_firewall_rule_XDPACTION_1,
       22,
-      "0",
+      "0.0.0.0",
       1302
     );
   }

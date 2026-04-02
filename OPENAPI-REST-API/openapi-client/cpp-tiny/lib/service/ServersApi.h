@@ -8,6 +8,7 @@
 #include "Helpers.h"
 #include <list>
 
+#include "AddServer_200_response.h"
 #include "BuyItNowList.h"
 #include "BuyItNowServerOrder_200_response.h"
 #include "ChargeInvoiceRows.h"
@@ -43,7 +44,7 @@ public:
     * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
     */
     Response<
-            String
+                AddServer_200_response
         >
     addServer(
     );
@@ -278,7 +279,7 @@ public:
     * \param id Server ID number. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateServerInfo(
             

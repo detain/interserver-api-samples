@@ -37,7 +37,7 @@
     describe('VPSApi', function() {
       describe('addVps', function() {
         it('should call addVps successfully', function(done) {
-          // TODO: uncomment, update parameter values for addVps call
+          // TODO: uncomment, update parameter values for addVps call and complete the assertions
           /*
           var opts = {};
 
@@ -46,6 +46,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.ServiceOrderPostResponse);
 
             done();
           });
@@ -875,7 +877,7 @@
       });
       describe('updateVpsInfo', function() {
         it('should call updateVpsInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateVpsInfo call
+          // TODO: uncomment, update parameter values for updateVpsInfo call and complete the assertions
           /*
 
           instance.updateVpsInfo(id, function(error, data, response) {
@@ -883,6 +885,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });
@@ -902,7 +906,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(InterServerManagementApi.InlineResponse20021);
+            expect(data).to.be.a(InterServerManagementApi.InlineResponse20022);
 
             done();
           });

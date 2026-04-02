@@ -31,25 +31,18 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20024" /> class.
         /// </summary>
-        /// <param name="message">message.</param>
-        /// <param name="success">success.</param>
-        public InlineResponse20024(string message = default(string), bool? success = default(bool?))
+        /// <param name="ips">A map of IP addresses to their current reverse DNS hostnames..</param>
+        public InlineResponse20024(Dictionary<string, string> ips = default(Dictionary<string, string>))
         {
-            this.message = message;
-            this.success = success;
+            this.ips = ips;
         }
         
         /// <summary>
-        /// Gets or Sets message
+        /// A map of IP addresses to their current reverse DNS hostnames.
         /// </summary>
-        [DataMember(Name="message", EmitDefaultValue=false)]
-        public string message { get; set; }
-
-        /// <summary>
-        /// Gets or Sets success
-        /// </summary>
-        [DataMember(Name="success", EmitDefaultValue=false)]
-        public bool? success { get; set; }
+        /// <value>A map of IP addresses to their current reverse DNS hostnames.</value>
+        [DataMember(Name="ips", EmitDefaultValue=false)]
+        public Dictionary<string, string> ips { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -59,8 +52,7 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20024 {\n");
-            sb.Append("  message: ").Append(message).Append("\n");
-            sb.Append("  success: ").Append(success).Append("\n");
+            sb.Append("  ips: ").Append(ips).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -96,14 +88,10 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.message == input.message ||
-                    (this.message != null &&
-                    this.message.Equals(input.message))
-                ) && 
-                (
-                    this.success == input.success ||
-                    (this.success != null &&
-                    this.success.Equals(input.success))
+                    this.ips == input.ips ||
+                    this.ips != null &&
+                    input.ips != null &&
+                    this.ips.SequenceEqual(input.ips)
                 );
         }
 
@@ -116,10 +104,8 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.message != null)
-                    hashCode = hashCode * 59 + this.message.GetHashCode();
-                if (this.success != null)
-                    hashCode = hashCode * 59 + this.success.GetHashCode();
+                if (this.ips != null)
+                    hashCode = hashCode * 59 + this.ips.GetHashCode();
                 return hashCode;
             }
         }

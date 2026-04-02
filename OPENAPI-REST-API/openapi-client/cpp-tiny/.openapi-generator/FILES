@@ -38,6 +38,8 @@ lib/Models/AccountInfoPost.cpp
 lib/Models/AccountInfoPost.h
 lib/Models/AccountSshKey.cpp
 lib/Models/AccountSshKey.h
+lib/Models/AddServer200Response.cpp
+lib/Models/AddServer200Response.h
 lib/Models/AffiliateBannerRow.cpp
 lib/Models/AffiliateBannerRow.h
 lib/Models/AffiliateDockSetup.cpp
@@ -708,6 +710,8 @@ lib/Models/ServiceCategories.cpp
 lib/Models/ServiceCategories.h
 lib/Models/ServiceCategory.cpp
 lib/Models/ServiceCategory.h
+lib/Models/ServiceOrderPostResponse.cpp
+lib/Models/ServiceOrderPostResponse.h
 lib/Models/ServiceType.cpp
 lib/Models/ServiceType.h
 lib/Models/ServiceTypes.cpp
@@ -927,6 +931,7 @@ lib/TestFiles/AccountInfoOauthprovidersTest.cpp
 lib/TestFiles/AccountInfoPostTest.cpp
 lib/TestFiles/AccountInfoTest.cpp
 lib/TestFiles/AccountSshKeyTest.cpp
+lib/TestFiles/AddServer200ResponseTest.cpp
 lib/TestFiles/AffiliateBannerRowTest.cpp
 lib/TestFiles/AffiliateDockSetupTest.cpp
 lib/TestFiles/AffiliatePaymentSetupTest.cpp
@@ -1258,6 +1263,7 @@ lib/TestFiles/ServersBuyNowResponseTest.cpp
 lib/TestFiles/ServersCancel200ResponseTest.cpp
 lib/TestFiles/ServiceCategoriesTest.cpp
 lib/TestFiles/ServiceCategoryTest.cpp
+lib/TestFiles/ServiceOrderPostResponseTest.cpp
 lib/TestFiles/ServiceTest.cpp
 lib/TestFiles/ServiceTypeTest.cpp
 lib/TestFiles/ServiceTypesTest.cpp

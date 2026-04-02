@@ -26,6 +26,7 @@ import org.openapitools.client.model.DomainRow
 import org.openapitools.client.model.DomainSearchResponse
 import org.openapitools.client.model.DomainWhoisPrivacyRequest
 import org.openapitools.client.model.GetAccountInfo401Response
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
 import org.openapitools.client.core.JsonSupport.{*, given}
@@ -69,15 +70,15 @@ case class DomainsApi[Auth <: org.openapitools.client.core.Authorization] privat
    * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addDomain(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def addDomain(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], ServiceOrderPostResponse]] =
     val requestURL =
       uri"$baseUrl/domains/order"
 
@@ -87,7 +88,7 @@ case class DomainsApi[Auth <: org.openapitools.client.core.Authorization] privat
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Adds DNSSEC DS records to the domain registration. Provide one or more DNSSEC record entries (algorithm, digest type, digest, key tag). Registrations must be active.
@@ -770,8 +771,8 @@ case class DomainsApi[Auth <: org.openapitools.client.core.Authorization] privat
    * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -780,7 +781,7 @@ case class DomainsApi[Auth <: org.openapitools.client.core.Authorization] privat
    * 
    * @param id The domain service ID. Use `domain_id` from `GET /domains`.
    */
-  def updateDomainInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateDomainInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/domains/${idPathParam}"
@@ -791,7 +792,7 @@ case class DomainsApi[Auth <: org.openapitools.client.core.Authorization] privat
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Replaces the full nameserver assignment for the domain with the provided list. This is the primary method for changing which authoritative nameservers the domain delegates to.

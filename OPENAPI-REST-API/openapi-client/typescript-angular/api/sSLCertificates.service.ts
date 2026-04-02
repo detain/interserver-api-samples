@@ -21,6 +21,8 @@ import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
 // @ts-ignore
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
 // @ts-ignore
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
+// @ts-ignore
 import { SslCancel200Response } from '../model/sslCancel200Response';
 // @ts-ignore
 import { SuccessTextResponse } from '../model/successTextResponse';
@@ -49,9 +51,9 @@ export class SSLCertificatesService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public addSsl(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public addSsl(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public addSsl(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public addSsl(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<ServiceOrderPostResponse>;
+    public addSsl(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addSsl(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addSsl(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -86,7 +88,7 @@ export class SSLCertificatesService extends BaseService {
 
         let localVarPath = `/ssl/order`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
@@ -105,9 +107,9 @@ export class SSLCertificatesService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public getNewSsl(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public getNewSsl(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public getNewSsl(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public getNewSsl(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<object>;
+    public getNewSsl(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<object>>;
+    public getNewSsl(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<object>>;
     public getNewSsl(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -142,7 +144,7 @@ export class SSLCertificatesService extends BaseService {
 
         let localVarPath = `/ssl/order`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<object>('get', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
@@ -162,9 +164,9 @@ export class SSLCertificatesService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public getSslInfo(id: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public getSslInfo(id: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public getSslInfo(id: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public getSslInfo(id: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<object>;
+    public getSslInfo(id: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<object>>;
+    public getSslInfo(id: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<object>>;
     public getSslInfo(id: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getSslInfo.');
@@ -202,7 +204,7 @@ export class SSLCertificatesService extends BaseService {
 
         let localVarPath = `/ssl/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('get', `${basePath}${localVarPath}`,
+        return this.httpClient.request<object>('get', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
@@ -514,9 +516,9 @@ export class SSLCertificatesService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public updateSslInfo(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public updateSslInfo(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public updateSslInfo(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public updateSslInfo(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<SuccessTextResponse>;
+    public updateSslInfo(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateSslInfo(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<SuccessTextResponse>>;
     public updateSslInfo(id: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateSslInfo.');
@@ -554,7 +556,7 @@ export class SSLCertificatesService extends BaseService {
 
         let localVarPath = `/ssl/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SuccessTextResponse>('post', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),

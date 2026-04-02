@@ -31,6 +31,7 @@ import org.openapitools.client.model.MailSchema
 import org.openapitools.client.model.MailStatsType
 import org.openapitools.client.model.SendMail
 import org.openapitools.client.model.SendMailAdv
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.ViewMailLogStartDateParameter
 import org.openapitools.client.core.JsonSupport.{*, given}
@@ -74,15 +75,15 @@ case class MailApi[Auth <: org.openapitools.client.core.Authorization] private (
    * Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addMail(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def addMail(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], ServiceOrderPostResponse]] =
     val requestURL =
       uri"$baseUrl/mail/order"
 
@@ -92,7 +93,7 @@ case class MailApi[Auth <: org.openapitools.client.core.Authorization] private (
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Adds a new deny rule to automatically block emails that match the specified criteria.
@@ -748,8 +749,8 @@ case class MailApi[Auth <: org.openapitools.client.core.Authorization] private (
    * Updates mail service metadata for the order, such as stored settings or account details.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -758,7 +759,7 @@ case class MailApi[Auth <: org.openapitools.client.core.Authorization] private (
    * 
    * @param id The mail service ID. Use `mail_id` from `GET /mail`.
    */
-  def updateMailInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateMailInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/mail/${idPathParam}"
@@ -769,7 +770,7 @@ case class MailApi[Auth <: org.openapitools.client.core.Authorization] private (
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
@@ -791,14 +792,14 @@ case class MailApi[Auth <: org.openapitools.client.core.Authorization] private (
    * @param to Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
    * @param subject Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
    * @param mailid Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
-   * @param messageId Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+   * @param messageId Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
    * @param replyto Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
    * @param headerfrom Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
    * @param delivered Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
    * @param skip Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
    * @param limit Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
    * @param startDate Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
-   * @param endDate Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+   * @param endDate Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
    * @param sort Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
    * @param dir Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
    * @param groupby Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.

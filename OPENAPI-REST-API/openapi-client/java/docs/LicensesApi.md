@@ -19,7 +19,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addLicense"></a>
 # **addLicense**
-> addLicense()
+> ServiceOrderPostResponse addLicense()
 
 Place License Order
 
@@ -60,7 +60,8 @@ public class Example {
 
     LicensesApi apiInstance = new LicensesApi(defaultClient);
     try {
-      apiInstance.addLicense();
+      ServiceOrderPostResponse result = apiInstance.addLicense();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LicensesApi#addLicense");
       System.err.println("Status code: " + e.getCode());
@@ -77,7 +78,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -91,8 +92,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="getLicenseInfo"></a>
 # **getLicenseInfo**
@@ -822,7 +823,7 @@ null (empty response body)
 
 <a id="updateLicenseInfo"></a>
 # **updateLicenseInfo**
-> updateLicenseInfo(id)
+> SuccessTextResponse updateLicenseInfo(id)
 
 Update License
 
@@ -864,7 +865,8 @@ public class Example {
     LicensesApi apiInstance = new LicensesApi(defaultClient);
     String id = "id_example"; // String | The license service ID. Use `license_id` from `GET /licenses`.
     try {
-      apiInstance.updateLicenseInfo(id);
+      SuccessTextResponse result = apiInstance.updateLicenseInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LicensesApi#updateLicenseInfo");
       System.err.println("Status code: " + e.getCode());
@@ -884,7 +886,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -898,6 +900,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 

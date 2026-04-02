@@ -29,6 +29,18 @@ func (d *AccountDataSource) Schema(_ context.Context, _ datasource.SchemaRequest
 	resp.Schema = schema.Schema{
 		Description: "Fetches a account data source.",
 		Attributes: map[string]schema.Attribute{
+			"success": schema.BoolAttribute{
+				Required:    true,
+				Description: "Indicates whether or not the command was successful or not.",
+			},
+			"text": schema.StringAttribute{
+				Computed:    true,
+				Description: "Text associated with the response.",
+			},
+			"action": schema.StringAttribute{
+				Computed:    true,
+				Description: "Optional Action relating to the response.",
+			},
 		},
 	}
 }

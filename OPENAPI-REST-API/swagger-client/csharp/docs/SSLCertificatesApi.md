@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="addssl"></a>
 # **AddSsl**
-> void AddSsl ()
+> ServiceOrderPostResponse AddSsl ()
 
 Place SSL Cert Order
 
@@ -54,7 +54,8 @@ namespace Example
             try
             {
                 // Place SSL Cert Order
-                apiInstance.AddSsl();
+                ServiceOrderPostResponse result = apiInstance.AddSsl();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -70,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -84,7 +85,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getnewssl"></a>
 # **GetNewSsl**
-> void GetNewSsl ()
+> Object GetNewSsl ()
 
 SSL Cert Ordering Information
 
@@ -122,7 +123,8 @@ namespace Example
             try
             {
                 // SSL Cert Ordering Information
-                apiInstance.GetNewSsl();
+                Object result = apiInstance.GetNewSsl();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -138,7 +140,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -152,7 +154,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getsslinfo"></a>
 # **GetSslInfo**
-> void GetSslInfo (int? id)
+> Object GetSslInfo (int? id)
 
 Get SSL Cert Info
 
@@ -191,7 +193,8 @@ namespace Example
             try
             {
                 // Get SSL Cert Info
-                apiInstance.GetSslInfo(id);
+                Object result = apiInstance.GetSslInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -210,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -506,7 +509,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="sslcancel"></a>
 # **SslCancel**
-> InlineResponse20020 SslCancel (int? id)
+> InlineResponse20021 SslCancel (int? id)
 
 Cancel SSL Certificate Service
 
@@ -545,7 +548,7 @@ namespace Example
             try
             {
                 // Cancel SSL Certificate Service
-                InlineResponse20020 result = apiInstance.SslCancel(id);
+                InlineResponse20021 result = apiInstance.SslCancel(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -565,7 +568,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -579,7 +582,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updatesslinfo"></a>
 # **UpdateSslInfo**
-> void UpdateSslInfo (string id)
+> SuccessTextResponse UpdateSslInfo (string id)
 
 Update SSL Cert Order
 
@@ -618,7 +621,8 @@ namespace Example
             try
             {
                 // Update SSL Cert Order
-                apiInstance.UpdateSslInfo(id);
+                SuccessTextResponse result = apiInstance.UpdateSslInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -637,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

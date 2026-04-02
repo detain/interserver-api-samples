@@ -279,13 +279,14 @@ void OAIDNSApi::addDnsDomainCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addDnsDomainSignal();
-        Q_EMIT addDnsDomainSignalFull(worker);
+        Q_EMIT addDnsDomainSignal(output);
+        Q_EMIT addDnsDomainSignalFull(worker, output);
     } else {
-        Q_EMIT addDnsDomainSignalError(error_type, error_str);
+        Q_EMIT addDnsDomainSignalError(output, error_type, error_str);
         Q_EMIT addDnsDomainSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -429,13 +430,14 @@ void OAIDNSApi::deleteDnsDomainCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT deleteDnsDomainSignal();
-        Q_EMIT deleteDnsDomainSignalFull(worker);
+        Q_EMIT deleteDnsDomainSignal(output);
+        Q_EMIT deleteDnsDomainSignalFull(worker, output);
     } else {
-        Q_EMIT deleteDnsDomainSignalError(error_type, error_str);
+        Q_EMIT deleteDnsDomainSignalError(output, error_type, error_str);
         Q_EMIT deleteDnsDomainSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -508,13 +510,14 @@ void OAIDNSApi::deleteDnsRecordCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT deleteDnsRecordSignal();
-        Q_EMIT deleteDnsRecordSignalFull(worker);
+        Q_EMIT deleteDnsRecordSignal(output);
+        Q_EMIT deleteDnsRecordSignalFull(worker, output);
     } else {
-        Q_EMIT deleteDnsRecordSignalError(error_type, error_str);
+        Q_EMIT deleteDnsRecordSignalError(output, error_type, error_str);
         Q_EMIT deleteDnsRecordSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -755,13 +758,14 @@ void OAIDNSApi::updateDnsRecordCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateDnsRecordSignal();
-        Q_EMIT updateDnsRecordSignalFull(worker);
+        Q_EMIT updateDnsRecordSignal(output);
+        Q_EMIT updateDnsRecordSignalFull(worker, output);
     } else {
-        Q_EMIT updateDnsRecordSignalError(error_type, error_str);
+        Q_EMIT updateDnsRecordSignalError(output, error_type, error_str);
         Q_EMIT updateDnsRecordSignalErrorFull(worker, error_type, error_str);
     }
 }

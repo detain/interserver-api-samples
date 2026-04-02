@@ -13,20 +13,18 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20025 {
     /// <summary>
-    /// Confirmation message.
+    /// Gets or Sets Message
     /// </summary>
-    /// <value>Confirmation message.</value>
-    [DataMember(Name="text", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "text")]
-    public string Text { get; set; }
+    [DataMember(Name="message", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "message")]
+    public string Message { get; set; }
 
     /// <summary>
-    /// The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+    /// Gets or Sets Success
     /// </summary>
-    /// <value>The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.</value>
-    [DataMember(Name="ticket", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "ticket")]
-    public int? Ticket { get; set; }
+    [DataMember(Name="success", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "success")]
+    public bool? Success { get; set; }
 
 
     /// <summary>
@@ -36,8 +34,8 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20025 {\n");
-      sb.Append("  Text: ").Append(Text).Append("\n");
-      sb.Append("  Ticket: ").Append(Ticket).Append("\n");
+      sb.Append("  Message: ").Append(Message).Append("\n");
+      sb.Append("  Success: ").Append(Success).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

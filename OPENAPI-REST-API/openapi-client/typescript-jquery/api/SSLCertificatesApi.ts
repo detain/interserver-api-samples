@@ -51,7 +51,7 @@ export class SSLCertificatesApi {
      * @summary Place SSL Cert Order
      */
     public addSsl(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.ServiceOrderPostResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/ssl/order';
@@ -101,11 +101,11 @@ export class SSLCertificatesApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.ServiceOrderPostResponse;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.ServiceOrderPostResponse, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -118,7 +118,7 @@ export class SSLCertificatesApi {
      * @summary SSL Cert Ordering Information
      */
     public getNewSsl(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: object;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/ssl/order';
@@ -168,11 +168,11 @@ export class SSLCertificatesApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: object;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: object, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -186,7 +186,7 @@ export class SSLCertificatesApi {
      * @param id SSL certificate ID number.
      */
     public getSslInfo(id: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: object;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/ssl/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
@@ -241,11 +241,11 @@ export class SSLCertificatesApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: object;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: object, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -612,7 +612,7 @@ export class SSLCertificatesApi {
      * @param id SSL certificate ID number.
      */
     public updateSslInfo(id: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.SuccessTextResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/ssl/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
@@ -667,11 +667,11 @@ export class SSLCertificatesApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.SuccessTextResponse;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.SuccessTextResponse, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

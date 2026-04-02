@@ -37,6 +37,7 @@ src/main/groovy/org/openapitools/model/AccountInfoOauthConfigProvidersValue.groo
 src/main/groovy/org/openapitools/model/AccountInfoOauthproviders.groovy
 src/main/groovy/org/openapitools/model/AccountInfoPost.groovy
 src/main/groovy/org/openapitools/model/AccountSshKey.groovy
+src/main/groovy/org/openapitools/model/AddServer200Response.groovy
 src/main/groovy/org/openapitools/model/AffiliateBannerRow.groovy
 src/main/groovy/org/openapitools/model/AffiliateDockSetup.groovy
 src/main/groovy/org/openapitools/model/AffiliatePaymentSetup.groovy
@@ -369,6 +370,7 @@ src/main/groovy/org/openapitools/model/ServersCancel200Response.groovy
 src/main/groovy/org/openapitools/model/Service.groovy
 src/main/groovy/org/openapitools/model/ServiceCategories.groovy
 src/main/groovy/org/openapitools/model/ServiceCategory.groovy
+src/main/groovy/org/openapitools/model/ServiceOrderPostResponse.groovy
 src/main/groovy/org/openapitools/model/ServiceType.groovy
 src/main/groovy/org/openapitools/model/ServiceTypes.groovy
 src/main/groovy/org/openapitools/model/Services.groovy

@@ -31,6 +31,7 @@
 #include "LicenseRow.hpp"
 #include "LicensesCancel_200_response.hpp"
 #include "LicensesOrder.hpp"
+#include "ServiceOrderPostResponse.hpp"
 #include "SuccessTextResponse.hpp"
 
 #include OATPP_CODEGEN_BEGIN(ApiClient) ///< Begin code-gen section

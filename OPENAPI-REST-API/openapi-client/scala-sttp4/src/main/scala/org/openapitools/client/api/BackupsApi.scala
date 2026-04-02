@@ -226,8 +226,8 @@ class BackupsApi(baseUrl: String) {
    * Updates backup storage service metadata, such as stored credentials or settings for the order.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -236,14 +236,14 @@ class BackupsApi(baseUrl: String) {
    * 
    * @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
    */
-  def updateBackupInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: Int): Request[Either[ResponseException[String, Exception], Unit]] =
+  def updateBackupInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: Int): Request[Either[ResponseException[String, Exception], SuccessTextResponse]] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/backups/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Validates a backup storage order without placing it, returning calculated pricing and any validation errors. Use this to display a confirmation screen with the final price before submitting the order via `POST /backups/order`.

@@ -858,8 +858,15 @@ export class BackupsApiResponseProcessor {
      * @params response Response returned by the server for a request to updateBackupInfo
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateBackupInfoWithHttpInfo(response: ResponseContext): Promise<HttpInfo< void>> {
+     public async updateBackupInfoWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SuccessTextResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SuccessTextResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SuccessTextResponse", ""
+            ) as SuccessTextResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: GetAccountInfo401Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -867,13 +874,14 @@ export class BackupsApiResponseProcessor {
             ) as GetAccountInfo401Response;
             throw new ApiException<GetAccountInfo401Response>(response.httpStatusCode, "Unauthorized", body, response.headers);
         }
-        if (isCodeInRange("0", response.httpStatusCode)) {
-            throw new ApiException<undefined>(response.httpStatusCode, "Default response", undefined, response.headers);
-        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: SuccessTextResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SuccessTextResponse", ""
+            ) as SuccessTextResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
         throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);

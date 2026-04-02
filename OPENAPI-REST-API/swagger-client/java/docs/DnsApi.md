@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="addDnsDomain"></a>
 # **addDnsDomain**
-> addDnsDomain(domain, ip)
+> SuccessTextResponse addDnsDomain(domain, ip)
 
 Create DNS Domain
 
@@ -53,7 +53,8 @@ DnsApi apiInstance = new DnsApi();
 String domain = "domain_example"; // String | 
 String ip = "ip_example"; // String | 
 try {
-    apiInstance.addDnsDomain(domain, ip);
+    SuccessTextResponse result = apiInstance.addDnsDomain(domain, ip);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DnsApi#addDnsDomain");
     e.printStackTrace();
@@ -69,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -82,7 +83,7 @@ null (empty response body)
 
 <a name="addDnsDomain"></a>
 # **addDnsDomain**
-> addDnsDomain(body)
+> SuccessTextResponse addDnsDomain(body)
 
 Create DNS Domain
 
@@ -120,7 +121,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 DnsApi apiInstance = new DnsApi();
 DnsNewDomain body = new DnsNewDomain(); // DnsNewDomain | 
 try {
-    apiInstance.addDnsDomain(body);
+    SuccessTextResponse result = apiInstance.addDnsDomain(body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DnsApi#addDnsDomain");
     e.printStackTrace();
@@ -135,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -292,7 +294,7 @@ null (empty response body)
 
 <a name="deleteDnsDomain"></a>
 # **deleteDnsDomain**
-> deleteDnsDomain(id)
+> SuccessTextResponse deleteDnsDomain(id)
 
 Delete DNS Domain
 
@@ -330,7 +332,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 DnsApi apiInstance = new DnsApi();
 String id = "id_example"; // String | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 try {
-    apiInstance.deleteDnsDomain(id);
+    SuccessTextResponse result = apiInstance.deleteDnsDomain(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DnsApi#deleteDnsDomain");
     e.printStackTrace();
@@ -345,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -358,7 +361,7 @@ null (empty response body)
 
 <a name="deleteDnsRecord"></a>
 # **deleteDnsRecord**
-> deleteDnsRecord(domainId, recordId)
+> SuccessTextResponse deleteDnsRecord(domainId, recordId)
 
 Delete DNS Record
 
@@ -397,7 +400,8 @@ DnsApi apiInstance = new DnsApi();
 Integer domainId = 56; // Integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 Integer recordId = 56; // Integer | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 try {
-    apiInstance.deleteDnsRecord(domainId, recordId);
+    SuccessTextResponse result = apiInstance.deleteDnsRecord(domainId, recordId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DnsApi#deleteDnsRecord");
     e.printStackTrace();
@@ -413,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -556,7 +560,7 @@ This endpoint does not need any parameter.
 
 <a name="updateDnsRecord"></a>
 # **updateDnsRecord**
-> updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId)
+> SuccessTextResponse updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId)
 
 Update DNS Record
 
@@ -603,7 +607,8 @@ String auth = "auth_example"; // String |
 Integer domainId = 56; // Integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 Integer recordId = 56; // Integer | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 try {
-    apiInstance.updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+    SuccessTextResponse result = apiInstance.updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DnsApi#updateDnsRecord");
     e.printStackTrace();
@@ -627,7 +632,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -640,7 +645,7 @@ null (empty response body)
 
 <a name="updateDnsRecord"></a>
 # **updateDnsRecord**
-> updateDnsRecord(body, domainId, recordId)
+> SuccessTextResponse updateDnsRecord(body, domainId, recordId)
 
 Update DNS Record
 
@@ -680,7 +685,8 @@ DnsUpdateRecord body = new DnsUpdateRecord(); // DnsUpdateRecord | The request d
 Integer domainId = 56; // Integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 Integer recordId = 56; // Integer | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 try {
-    apiInstance.updateDnsRecord(body, domainId, recordId);
+    SuccessTextResponse result = apiInstance.updateDnsRecord(body, domainId, recordId);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DnsApi#updateDnsRecord");
     e.printStackTrace();
@@ -697,7 +703,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

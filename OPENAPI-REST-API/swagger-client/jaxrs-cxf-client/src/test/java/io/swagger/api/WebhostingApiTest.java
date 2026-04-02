@@ -27,12 +27,13 @@ package io.swagger.api;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBuyIpBody;
 import io.swagger.model.IdMigrationBody;
-import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse20023;
 import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse20025;
+import io.swagger.model.InlineResponse20026;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.Website;
@@ -94,8 +95,8 @@ public class WebhostingApiTest {
      */
     @Test
     public void addWebsiteTest() {
-        //api.addWebsite();
-        
+        //ServiceOrderPostResponse response = api.addWebsite();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -127,7 +128,7 @@ public class WebhostingApiTest {
     @Test
     public void getWebsiteBuyIpTest() {
         Integer id = null;
-        //InlineResponse20023 response = api.getWebsiteBuyIp(id);
+        //InlineResponse20024 response = api.getWebsiteBuyIp(id);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -263,7 +264,7 @@ public class WebhostingApiTest {
     public void postWebsiteBuyIpTest() {
         IdBuyIpBody body = null;
         Integer id = null;
-        //InlineResponse20024 response = api.postWebsiteBuyIp(body, id);
+        //InlineResponse20025 response = api.postWebsiteBuyIp(body, id);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -281,7 +282,7 @@ public class WebhostingApiTest {
     public void postWebsiteMigrationTest() {
         IdMigrationBody body = null;
         Integer id = null;
-        //InlineResponse20025 response = api.postWebsiteMigration(body, id);
+        //InlineResponse20026 response = api.postWebsiteMigration(body, id);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -332,8 +333,8 @@ public class WebhostingApiTest {
     @Test
     public void updateWebsiteInfoTest() {
         String id = null;
-        //api.updateWebsiteInfo(id);
-        
+        //SuccessTextResponse response = api.updateWebsiteInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -349,7 +350,7 @@ public class WebhostingApiTest {
     @Test
     public void webhostingCancelTest() {
         String id = null;
-        //InlineResponse20022 response = api.webhostingCancel(id);
+        //InlineResponse20023 response = api.webhostingCancel(id);
         //assertNotNull(response);
         // TODO: test validations
         

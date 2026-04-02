@@ -66,44 +66,20 @@ namespace Interserver.MyAdmin.Client.Test
 
 
         /// <summary>
-        /// Test the property 'bandwidth'
+        /// Test the property 'text'
         /// </summary>
         [Test]
-        public void bandwidthTest()
+        public void textTest()
         {
-            // TODO unit test for the property 'bandwidth'
+            // TODO unit test for the property 'text'
         }
         /// <summary>
-        /// Test the property 'ips'
+        /// Test the property 'ticket'
         /// </summary>
         [Test]
-        public void ipsTest()
+        public void ticketTest()
         {
-            // TODO unit test for the property 'ips'
-        }
-        /// <summary>
-        /// Test the property 'os'
-        /// </summary>
-        [Test]
-        public void osTest()
-        {
-            // TODO unit test for the property 'os'
-        }
-        /// <summary>
-        /// Test the property 'cp'
-        /// </summary>
-        [Test]
-        public void cpTest()
-        {
-            // TODO unit test for the property 'cp'
-        }
-        /// <summary>
-        /// Test the property 'raid'
-        /// </summary>
-        [Test]
-        public void raidTest()
-        {
-            // TODO unit test for the property 'raid'
+            // TODO unit test for the property 'ticket'
         }
 
     }

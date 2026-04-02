@@ -68,6 +68,7 @@ func add_dns_domain(
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
+			bzz_response.data = SuccessTextResponse.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):
@@ -246,6 +247,7 @@ func delete_dns_domain(
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
+			bzz_response.data = SuccessTextResponse.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):
@@ -310,6 +312,7 @@ func delete_dns_record(
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
+			bzz_response.data = SuccessTextResponse.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):
@@ -533,6 +536,7 @@ func update_dns_record(
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
+			bzz_response.data = SuccessTextResponse.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):

@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteAccountCreditCard**
-> deleteAccountCreditCard(id)
+> String deleteAccountCreditCard(id)
 
 Remove Credit Card
 
@@ -246,7 +246,8 @@ final api_instance = BillingApi();
 final id = id_example; // String | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 try {
-    api_instance.deleteAccountCreditCard(id);
+    final result = api_instance.deleteAccountCreditCard(id);
+    print(result);
 } catch (e) {
     print('Exception when calling BillingApi->deleteAccountCreditCard: $e\n');
 }
@@ -260,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -753,7 +754,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillingCart**
-> getBillingCart()
+> Object getBillingCart()
 
 Get Shopping Cart Contents
 
@@ -778,7 +779,8 @@ import 'package:openapi/api.dart';
 final api_instance = BillingApi();
 
 try {
-    api_instance.getBillingCart();
+    final result = api_instance.getBillingCart();
+    print(result);
 } catch (e) {
     print('Exception when calling BillingApi->getBillingCart: $e\n');
 }
@@ -789,7 +791,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -964,7 +966,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillingPrePays**
-> getBillingPrePays()
+> Object getBillingPrePays()
 
 List Prepay Balances
 
@@ -989,7 +991,8 @@ import 'package:openapi/api.dart';
 final api_instance = BillingApi();
 
 try {
-    api_instance.getBillingPrePays();
+    final result = api_instance.getBillingPrePays();
+    print(result);
 } catch (e) {
     print('Exception when calling BillingApi->getBillingPrePays: $e\n');
 }
@@ -1000,7 +1003,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1187,7 +1190,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateAccountCreditCard**
-> updateAccountCreditCard(id)
+> String updateAccountCreditCard(id)
 
 Update Credit Card
 
@@ -1213,7 +1216,8 @@ final api_instance = BillingApi();
 final id = 56; // int | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 try {
-    api_instance.updateAccountCreditCard(id);
+    final result = api_instance.updateAccountCreditCard(id);
+    print(result);
 } catch (e) {
     print('Exception when calling BillingApi->updateAccountCreditCard: $e\n');
 }
@@ -1227,7 +1231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

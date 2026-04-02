@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ## deleteAccountCreditCard
 
-> deleteAccountCreditCard(id)
+> String deleteAccountCreditCard(id)
 
 Remove Credit Card
 
@@ -270,7 +270,7 @@ apiInstance.deleteAccountCreditCard(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -835,7 +835,7 @@ This endpoint does not need any parameter.
 
 ## getBillingCart
 
-> getBillingCart()
+> Object getBillingCart()
 
 Get Shopping Cart Contents
 
@@ -867,7 +867,7 @@ apiInstance.getBillingCart((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -878,7 +878,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1071,7 +1071,7 @@ This endpoint does not need any parameter.
 
 ## getBillingPrePays
 
-> getBillingPrePays()
+> Object getBillingPrePays()
 
 List Prepay Balances
 
@@ -1103,7 +1103,7 @@ apiInstance.getBillingPrePays((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -1114,7 +1114,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1321,7 +1321,7 @@ Name | Type | Description  | Notes
 
 ## updateAccountCreditCard
 
-> updateAccountCreditCard(id)
+> String updateAccountCreditCard(id)
 
 Update Credit Card
 
@@ -1354,7 +1354,7 @@ apiInstance.updateAccountCreditCard(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -1368,7 +1368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

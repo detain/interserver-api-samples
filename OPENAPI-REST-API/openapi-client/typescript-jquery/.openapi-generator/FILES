@@ -38,6 +38,7 @@ model/AccountInfoOauthConfigProvidersValue.ts
 model/AccountInfoOauthproviders.ts
 model/AccountInfoPost.ts
 model/AccountSshKey.ts
+model/AddServer200Response.ts
 model/AffiliateBannerRow.ts
 model/AffiliateDockSetup.ts
 model/AffiliatePaymentSetup.ts
@@ -370,6 +371,7 @@ model/ServersCancel200Response.ts
 model/Service.ts
 model/ServiceCategories.ts
 model/ServiceCategory.ts
+model/ServiceOrderPostResponse.ts
 model/ServiceType.ts
 model/ServiceTypes.ts
 model/Services.ts

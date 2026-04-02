@@ -7,6 +7,7 @@
 #include <glib.h>
 #include "ChargeInvoiceRows.h"
 #include "GetAccountInfo_401_response.h"
+#include "ServiceOrderPostResponse.h"
 #include "SslCancel_200_response.h"
 #include "SuccessTextResponse.h"
 #include "Error.h"
@@ -36,8 +37,8 @@ public:
  */
 bool addSslSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Place SSL Cert Order. *Asynchronous*
  *
@@ -48,8 +49,8 @@ bool addSslSync(char * accessToken,
  */
 bool addSslAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief SSL Cert Ordering Information. *Synchronous*
@@ -61,8 +62,8 @@ bool addSslAsync(char * accessToken,
  */
 bool getNewSslSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief SSL Cert Ordering Information. *Asynchronous*
  *
@@ -73,8 +74,8 @@ bool getNewSslSync(char * accessToken,
  */
 bool getNewSslAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get SSL Cert Info. *Synchronous*
@@ -87,8 +88,8 @@ bool getNewSslAsync(char * accessToken,
  */
 bool getSslInfoSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get SSL Cert Info. *Asynchronous*
  *
@@ -100,8 +101,8 @@ bool getSslInfoSync(char * accessToken,
  */
 bool getSslInfoAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get SSL Cert Invoices. *Synchronous*
@@ -245,8 +246,8 @@ bool sslCancelAsync(char * accessToken,
  */
 bool updateSslInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update SSL Cert Order. *Asynchronous*
  *
@@ -258,8 +259,8 @@ bool updateSslInfoSync(char * accessToken,
  */
 bool updateSslInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 

@@ -5,6 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "AddServer_200_response.h"
 #include "BuyItNowList.h"
 #include "BuyItNowServerOrder_200_response.h"
 #include "ChargeInvoiceRows.h"
@@ -48,8 +49,8 @@ public:
  */
 bool addServerSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(AddServer_200_response, Error, void* )
+	, void* userData);
 
 /*! \brief Place Server Order. *Asynchronous*
  *
@@ -60,8 +61,8 @@ bool addServerSync(char * accessToken,
  */
 bool addServerAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(AddServer_200_response, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get Buy Now Server Options. *Synchronous*
@@ -506,8 +507,8 @@ bool serversCancelAsync(char * accessToken,
  */
 bool updateServerInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update Server Order. *Asynchronous*
  *
@@ -519,8 +520,8 @@ bool updateServerInfoSync(char * accessToken,
  */
 bool updateServerInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 

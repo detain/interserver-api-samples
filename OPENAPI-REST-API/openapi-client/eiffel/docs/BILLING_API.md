@@ -300,7 +300,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billing_cart**
-> billing_cart 
+> billing_cart : detachable ANY
 
 
 Get Shopping Cart Contents
@@ -313,7 +313,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**ANY**](ANY.md)
 
 ### Authorization
 
@@ -414,7 +414,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **billing_pre_pays**
-> billing_pre_pays 
+> billing_pre_pays : detachable ANY
 
 
 List Prepay Balances
@@ -427,7 +427,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**ANY**](ANY.md)
 
 ### Authorization
 
@@ -441,7 +441,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_account_credit_card**
-> delete_account_credit_card (id: STRING_32 )
+> delete_account_credit_card (id: STRING_32 ): detachable STRING_32
 
 
 Remove Credit Card
@@ -457,7 +457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_credit_card**
-> update_account_credit_card (id: INTEGER_32 )
+> update_account_credit_card (id: INTEGER_32 ): detachable STRING_32
 
 
 Update Credit Card
@@ -671,7 +671,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 

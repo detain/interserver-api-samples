@@ -36,6 +36,7 @@ import org.openapitools.client.models.PostWebsiteMigration200Response
 import org.openapitools.client.models.PostWebsiteMigrationRequest
 import org.openapitools.client.models.PostWebsiteMigrationRequest1
 import org.openapitools.client.models.ReverseDnsEntries
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 import org.openapitools.client.models.WebhostingCancel200Response
@@ -53,7 +54,8 @@ class WebhostingApiTest : ShouldSpec() {
         // to test addWebsite
         should("test addWebsite") {
             // uncomment below to test addWebsite
-            //apiInstance.addWebsite()
+            //val result : ServiceOrderPostResponse = apiInstance.addWebsite()
+            //result shouldBe ("TODO")
         }
 
         // to test getNewWebsite
@@ -163,7 +165,8 @@ class WebhostingApiTest : ShouldSpec() {
         should("test updateWebsiteInfo") {
             // uncomment below to test updateWebsiteInfo
             //val id : kotlin.String = id_example // kotlin.String | The website service ID. Use `website_id` from `GET /websites`.
-            //apiInstance.updateWebsiteInfo(id)
+            //val result : SuccessTextResponse = apiInstance.updateWebsiteInfo(id)
+            //result shouldBe ("TODO")
         }
 
         // to test webhostingCancel

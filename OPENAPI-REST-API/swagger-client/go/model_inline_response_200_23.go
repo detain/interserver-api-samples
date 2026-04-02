@@ -10,6 +10,6 @@
 package myadmin
 
 type InlineResponse20023 struct {
-	// A map of IP addresses to their current reverse DNS hostnames.
-	Ips map[string]string `json:"ips,omitempty"`
+	Success bool `json:"success"`
+	Text string `json:"text"`
 }

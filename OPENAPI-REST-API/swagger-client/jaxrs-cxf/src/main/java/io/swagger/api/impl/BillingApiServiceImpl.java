@@ -117,10 +117,10 @@ public class BillingApiServiceImpl implements BillingApi {
      * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
      *
      */
-    public void deleteAccountCreditCard(String id) {
+    public String deleteAccountCreditCard(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -237,10 +237,10 @@ public class BillingApiServiceImpl implements BillingApi {
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
      *
      */
-    public void getBillingCart() {
+    public Object getBillingCart() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -285,10 +285,10 @@ public class BillingApiServiceImpl implements BillingApi {
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
      *
      */
-    public void getBillingPrePays() {
+    public Object getBillingPrePays() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -345,10 +345,10 @@ public class BillingApiServiceImpl implements BillingApi {
      * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
      *
      */
-    public void updateAccountCreditCard(Integer id) {
+    public String updateAccountCreditCard(Integer id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**

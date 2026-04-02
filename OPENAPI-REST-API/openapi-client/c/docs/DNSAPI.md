@@ -19,7 +19,7 @@ Method | HTTP request | Description
 //
 // Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
 //
-void DNSAPI_addDnsDomain(apiClient_t *apiClient, char *domain, char *ip);
+success_text_response_t* DNSAPI_addDnsDomain(apiClient_t *apiClient, char *domain, char *ip);
 ```
 
 ### Parameters
@@ -31,7 +31,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 
@@ -85,7 +86,7 @@ void
 //
 // Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
 //
-void DNSAPI_deleteDnsDomain(apiClient_t *apiClient, char *id);
+success_text_response_t* DNSAPI_deleteDnsDomain(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -96,7 +97,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 
@@ -115,7 +117,7 @@ void
 //
 // Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
 //
-void DNSAPI_deleteDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId);
+success_text_response_t* DNSAPI_deleteDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId);
 ```
 
 ### Parameters
@@ -127,7 +129,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 
@@ -207,7 +210,7 @@ Name | Type | Description  | Notes
 //
 // Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
 //
-void DNSAPI_updateDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId, char *name, dns_record_type_e type, char *content, char *ttl, char *prio, char *disabled, char *ordername, char *auth);
+success_text_response_t* DNSAPI_updateDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId, char *name, dns_record_type_e type, char *content, char *ttl, char *prio, char *disabled, char *ordername, char *auth);
 ```
 
 ### Parameters
@@ -227,7 +230,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

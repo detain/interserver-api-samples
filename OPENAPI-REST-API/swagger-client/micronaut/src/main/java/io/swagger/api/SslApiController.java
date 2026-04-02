@@ -2,9 +2,11 @@ package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
 
-import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20021;
 
 import io.swagger.model.InlineResponse401;
+
+import io.swagger.model.ServiceOrderPostResponse;
 
 import io.swagger.model.SuccessTextResponse;
 
@@ -22,19 +24,19 @@ import java.util.Map;
 public class SslApiController implements SslApi {
 
     @Override
-    public Single<HttpResponse<Void>> addSsl() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addSsl() {
         // TODO: Implement me
         return SslApi.super.addSsl();
     }
 
     @Override
-    public Single<HttpResponse<Void>> getNewSsl() {
+    public Single<HttpResponse<Object>> getNewSsl() {
         // TODO: Implement me
         return SslApi.super.getNewSsl();
     }
 
     @Override
-    public Single<HttpResponse<Void>> getSslInfo(Integer id) {
+    public Single<HttpResponse<Object>> getSslInfo(Integer id) {
         // TODO: Implement me
         return SslApi.super.getSslInfo(id);
     }
@@ -64,13 +66,13 @@ public class SslApiController implements SslApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20020>> sslCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse20021>> sslCancel(Integer id) {
         // TODO: Implement me
         return SslApi.super.sslCancel(id);
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateSslInfo(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateSslInfo(String id) {
         // TODO: Implement me
         return SslApi.super.updateSslInfo(id);
     }

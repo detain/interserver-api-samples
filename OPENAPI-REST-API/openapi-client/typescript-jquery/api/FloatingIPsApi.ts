@@ -51,7 +51,7 @@ export class FloatingIPsApi {
      * @summary Place Floating IP Order
      */
     public addFloatingIp(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.ServiceOrderPostResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/floating_ips/order';
@@ -101,11 +101,11 @@ export class FloatingIPsApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.ServiceOrderPostResponse;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.ServiceOrderPostResponse, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -192,7 +192,7 @@ export class FloatingIPsApi {
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
     public getFloatingIpInfo(id: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: object;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/floating_ips/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
@@ -247,11 +247,11 @@ export class FloatingIPsApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: object;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: object, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -477,7 +477,7 @@ export class FloatingIPsApi {
      * @summary Get Floating IP Ordering Information
      */
     public getNewFloatingIp(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: object;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/floating_ips/order';
@@ -527,11 +527,11 @@ export class FloatingIPsApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: object;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: object, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -707,7 +707,7 @@ export class FloatingIPsApi {
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
     public updateFloatingIpInfo(id: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.SuccessTextResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/floating_ips/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
@@ -762,11 +762,11 @@ export class FloatingIPsApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.SuccessTextResponse;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.SuccessTextResponse, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

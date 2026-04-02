@@ -26,6 +26,7 @@ import io.swagger.client.models.DomainSearchResponse
 import io.swagger.client.models.DomainWhoisPrivacyRequest
 import io.swagger.client.models.InlineResponse2002
 import io.swagger.client.models.InlineResponse401
+import io.swagger.client.models.ServiceOrderPostResponse
 import io.swagger.client.models.SuccessTextResponse
 import io.swagger.client.models.TextResponse
 
@@ -36,21 +37,22 @@ class DomainsApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
     /**
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
-     * @return void
+     * @return ServiceOrderPostResponse
      */
-    fun addDomain(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addDomain(): ServiceOrderPostResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/domains/order", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<ServiceOrderPostResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -827,21 +829,22 @@ class DomainsApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * Update Domain Order
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateDomainInfo(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateDomainInfo(id: kotlin.String): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/domains/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

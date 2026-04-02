@@ -598,13 +598,9 @@ open class BackupsAPI {
      - parameter _id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateBackupInfo(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateBackupInfo(_id: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateBackupInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -622,11 +618,15 @@ open class BackupsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter _id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateBackupInfoWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+    open class func updateBackupInfoWithRequestBuilder(_id: Int) -> RequestBuilder<SuccessTextResponse> {
         var path = "/backups/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -636,7 +636,7 @@ open class BackupsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

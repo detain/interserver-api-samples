@@ -13,7 +13,7 @@
 import * as models from './models';
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 export interface ServerIpmiLiveInfo {
     text?: string;

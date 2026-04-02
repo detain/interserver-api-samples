@@ -137,7 +137,7 @@ class BillingApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    null )
+                    String.class )
 
     }
 
@@ -385,7 +385,7 @@ class BillingApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    null )
+                    Object.class )
 
     }
 
@@ -485,7 +485,7 @@ class BillingApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    null )
+                    Object.class )
 
     }
 
@@ -608,7 +608,7 @@ class BillingApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    String.class )
 
     }
 

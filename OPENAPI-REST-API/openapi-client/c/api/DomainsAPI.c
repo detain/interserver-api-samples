@@ -13,7 +13,7 @@
 //
 // Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
 //
-void
+service_order_post_response_t*
 DomainsAPI_addDomain(apiClient_t *apiClient)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -46,15 +46,25 @@ DomainsAPI_addDomain(apiClient_t *apiClient)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    service_order_post_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *DomainsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = service_order_post_response_parseFromJSON(DomainsAPIlocalVarJSON);
+        cJSON_Delete(DomainsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -66,6 +76,10 @@ end:
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -2305,7 +2319,7 @@ end:
 //
 // Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
 //
-void
+success_text_response_t*
 DomainsAPI_updateDomainInfo(apiClient_t *apiClient, char *id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -2350,15 +2364,25 @@ DomainsAPI_updateDomainInfo(apiClient_t *apiClient, char *id)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *DomainsAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(DomainsAPIlocalVarJSON);
+        cJSON_Delete(DomainsAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -2371,6 +2395,10 @@ end:
     
     free(localVarPath);
     free(localVarToReplace_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

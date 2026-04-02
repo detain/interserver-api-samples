@@ -10,6 +10,7 @@ import org.openapitools.model.PostWebsiteMigration200Response
 import org.openapitools.model.PostWebsiteMigrationRequest
 import org.openapitools.model.PostWebsiteMigrationRequest1
 import org.openapitools.model.ReverseDnsEntries
+import org.openapitools.model.ServiceOrderPostResponse
 import org.openapitools.model.SuccessTextResponse
 import org.openapitools.model.TextResponse
 import org.openapitools.model.WebhostingCancel200Response
@@ -43,7 +44,7 @@ class WebhostingApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    ServiceOrderPostResponse.class )
 
     }
 
@@ -427,7 +428,7 @@ class WebhostingApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 

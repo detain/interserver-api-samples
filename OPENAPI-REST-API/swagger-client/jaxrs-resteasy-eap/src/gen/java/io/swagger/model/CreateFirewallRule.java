@@ -14,7 +14,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class CreateFirewallRule   {
   private Integer destinationPort = 80;
-  private String sourceIp = "0";
+  private String sourceIp = "0.0.0.0";
   private Integer sourcePort = 0;
   /**
    * 1 &#x3D; TCP, 2 &#x3D; UDP
@@ -69,9 +69,10 @@ public class CreateFirewallRule   {
   }
 
   /**
+   * Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source.
    **/
   
-  @Schema(example = "1.2.4.5", description = "")
+  @Schema(example = "1.2.4.5", description = "Source IP address to match. Use '0.0.0.0' to match any source.")
   @JsonProperty("source_ip")
   @NotNull
   public String getSourceIp() {

@@ -24,11 +24,12 @@ inherit
 feature -- API Access
 
 
-	add_domain 
+	add_domain : detachable SERVICE_ORDER_POST_RESPONSE
 			-- Place Domain Order
 			-- Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
 			-- 
 			-- 
+			-- Result SERVICE_ORDER_POST_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -46,9 +47,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SERVICE_ORDER_POST_RESPONSE } l_response.data ({ SERVICE_ORDER_POST_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -935,13 +940,14 @@ feature -- API Access
 			end
 		end
 
-	update_domain_info (id: STRING_32)
+	update_domain_info (id: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update Domain Order
 			-- Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
 			-- 
 			-- argument: id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -960,9 +966,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

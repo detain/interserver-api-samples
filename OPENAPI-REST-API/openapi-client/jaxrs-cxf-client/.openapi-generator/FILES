@@ -35,6 +35,7 @@ src/gen/java/org/openapitools/model/AccountInfoOauthConfigProvidersValue.java
 src/gen/java/org/openapitools/model/AccountInfoOauthproviders.java
 src/gen/java/org/openapitools/model/AccountInfoPost.java
 src/gen/java/org/openapitools/model/AccountSshKey.java
+src/gen/java/org/openapitools/model/AddServer200Response.java
 src/gen/java/org/openapitools/model/AffiliateBannerRow.java
 src/gen/java/org/openapitools/model/AffiliateDockSetup.java
 src/gen/java/org/openapitools/model/AffiliatePaymentSetup.java
@@ -367,6 +368,7 @@ src/gen/java/org/openapitools/model/ServersCancel200Response.java
 src/gen/java/org/openapitools/model/Service.java
 src/gen/java/org/openapitools/model/ServiceCategories.java
 src/gen/java/org/openapitools/model/ServiceCategory.java
+src/gen/java/org/openapitools/model/ServiceOrderPostResponse.java
 src/gen/java/org/openapitools/model/ServiceType.java
 src/gen/java/org/openapitools/model/ServiceTypes.java
 src/gen/java/org/openapitools/model/Services.java

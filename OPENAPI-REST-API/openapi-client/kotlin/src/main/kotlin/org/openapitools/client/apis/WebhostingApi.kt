@@ -36,6 +36,7 @@ import org.openapitools.client.models.PostWebsiteMigration200Response
 import org.openapitools.client.models.PostWebsiteMigrationRequest
 import org.openapitools.client.models.PostWebsiteMigrationRequest1
 import org.openapitools.client.models.ReverseDnsEntries
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 import org.openapitools.client.models.WebhostingCancel200Response
@@ -73,19 +74,20 @@ open class WebhostingApi(basePath: kotlin.String = defaultBasePath, client: Call
      * POST /websites/order
      * Place Website Order
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
-     * @return void
+     * @return ServiceOrderPostResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun addWebsite() : Unit {
+    fun addWebsite() : ServiceOrderPostResponse {
         val localVarResponse = addWebsiteWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -103,15 +105,16 @@ open class WebhostingApi(basePath: kotlin.String = defaultBasePath, client: Call
      * POST /websites/order
      * Place Website Order
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<ServiceOrderPostResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun addWebsiteWithHttpInfo() : ApiResponse<Unit?> {
+    fun addWebsiteWithHttpInfo() : ApiResponse<ServiceOrderPostResponse?> {
         val localVariableConfig = addWebsiteRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, ServiceOrderPostResponse>(
             localVariableConfig
         )
     }
@@ -1092,19 +1095,20 @@ open class WebhostingApi(basePath: kotlin.String = defaultBasePath, client: Call
      * Update Website Order
      * Updates settings on a webhosting order.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateWebsiteInfo(id: kotlin.String) : Unit {
+    fun updateWebsiteInfo(id: kotlin.String) : SuccessTextResponse {
         val localVarResponse = updateWebsiteInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1123,15 +1127,16 @@ open class WebhostingApi(basePath: kotlin.String = defaultBasePath, client: Call
      * Update Website Order
      * Updates settings on a webhosting order.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateWebsiteInfoWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun updateWebsiteInfoWithHttpInfo(id: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateWebsiteInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }

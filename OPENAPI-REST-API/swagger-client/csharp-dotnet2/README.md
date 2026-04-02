@@ -425,7 +425,8 @@ namespace Example
             try
             {
                 // Update Account Information
-                apiInstance.UpdateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+                SuccessTextResponse result = apiInstance.UpdateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -454,7 +455,8 @@ namespace Example
             try
             {
                 // Add IP Access Restriction
-                apiInstance.UpdateAccountIpLimits(start, end);
+                SuccessTextResponse result = apiInstance.UpdateAccountIpLimits(start, end);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1055,11 +1057,12 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20024](docs/InlineResponse20024.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20025](docs/InlineResponse20025.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20026](docs/InlineResponse20026.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20026Bandwidth](docs/InlineResponse20026Bandwidth.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20026Cp](docs/InlineResponse20026Cp.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20026Ips](docs/InlineResponse20026Ips.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20026Os](docs/InlineResponse20026Os.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20026Raid](docs/InlineResponse20026Raid.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027](docs/InlineResponse20027.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Bandwidth](docs/InlineResponse20027Bandwidth.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Cp](docs/InlineResponse20027Cp.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Ips](docs/InlineResponse20027Ips.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Os](docs/InlineResponse20027Os.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Raid](docs/InlineResponse20027Raid.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse2003](docs/InlineResponse2003.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse2004](docs/InlineResponse2004.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse2005](docs/InlineResponse2005.md)
@@ -1243,6 +1246,7 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.Service](docs/Service.md)
  - [myadmin-client-csharp-dotnet2.Model.ServiceCategories](docs/ServiceCategories.md)
  - [myadmin-client-csharp-dotnet2.Model.ServiceCategory](docs/ServiceCategory.md)
+ - [myadmin-client-csharp-dotnet2.Model.ServiceOrderPostResponse](docs/ServiceOrderPostResponse.md)
  - [myadmin-client-csharp-dotnet2.Model.ServiceType](docs/ServiceType.md)
  - [myadmin-client-csharp-dotnet2.Model.ServiceTypes](docs/ServiceTypes.md)
  - [myadmin-client-csharp-dotnet2.Model.Services](docs/Services.md)

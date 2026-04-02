@@ -30,8 +30,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AddWebsite ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddWebsite ();
 
         /// <summary>
         /// Place Website Order
@@ -40,8 +40,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddWebsiteWithHttpInfo ();
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        ApiResponse<ServiceOrderPostResponse> AddWebsiteWithHttpInfo ();
         /// <summary>
         /// Website Ordering Information
         /// </summary>
@@ -69,8 +69,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20023</returns>
-        InlineResponse20023 GetWebsiteBuyIp (int? id);
+        /// <returns>InlineResponse20024</returns>
+        InlineResponse20024 GetWebsiteBuyIp (int? id);
 
         /// <summary>
         /// Get Website IP Information
@@ -80,8 +80,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20023</returns>
-        ApiResponse<InlineResponse20023> GetWebsiteBuyIpWithHttpInfo (int? id);
+        /// <returns>ApiResponse of InlineResponse20024</returns>
+        ApiResponse<InlineResponse20024> GetWebsiteBuyIpWithHttpInfo (int? id);
         /// <summary>
         /// Get Website Order
         /// </summary>
@@ -236,66 +236,66 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20024</returns>
-        InlineResponse20024 PostWebsiteBuyIp (IdBuyIpBody body, int? id);
-
-        /// <summary>
-        /// Update Website IP DNS
-        /// </summary>
-        /// <remarks>
-        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </remarks>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20024</returns>
-        ApiResponse<InlineResponse20024> PostWebsiteBuyIpWithHttpInfo (IdBuyIpBody body, int? id);
-        /// <summary>
-        /// Update Website IP DNS
-        /// </summary>
-        /// <remarks>
-        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </remarks>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ips"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20024</returns>
-        InlineResponse20024 PostWebsiteBuyIp (Dictionary<string, string> ips, int? id);
-
-        /// <summary>
-        /// Update Website IP DNS
-        /// </summary>
-        /// <remarks>
-        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </remarks>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ips"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20024</returns>
-        ApiResponse<InlineResponse20024> PostWebsiteBuyIpWithHttpInfo (Dictionary<string, string> ips, int? id);
-        /// <summary>
-        /// Request Website Migration
-        /// </summary>
-        /// <remarks>
-        /// Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
-        /// </remarks>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
         /// <returns>InlineResponse20025</returns>
-        InlineResponse20025 PostWebsiteMigration (IdMigrationBody body, int? id);
+        InlineResponse20025 PostWebsiteBuyIp (IdBuyIpBody body, int? id);
 
         /// <summary>
-        /// Request Website Migration
+        /// Update Website IP DNS
         /// </summary>
         /// <remarks>
-        /// Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
         /// <returns>ApiResponse of InlineResponse20025</returns>
-        ApiResponse<InlineResponse20025> PostWebsiteMigrationWithHttpInfo (IdMigrationBody body, int? id);
+        ApiResponse<InlineResponse20025> PostWebsiteBuyIpWithHttpInfo (IdBuyIpBody body, int? id);
+        /// <summary>
+        /// Update Website IP DNS
+        /// </summary>
+        /// <remarks>
+        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
+        /// </remarks>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ips"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>InlineResponse20025</returns>
+        InlineResponse20025 PostWebsiteBuyIp (Dictionary<string, string> ips, int? id);
+
+        /// <summary>
+        /// Update Website IP DNS
+        /// </summary>
+        /// <remarks>
+        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
+        /// </remarks>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ips"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>ApiResponse of InlineResponse20025</returns>
+        ApiResponse<InlineResponse20025> PostWebsiteBuyIpWithHttpInfo (Dictionary<string, string> ips, int? id);
+        /// <summary>
+        /// Request Website Migration
+        /// </summary>
+        /// <remarks>
+        /// Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// </remarks>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>InlineResponse20026</returns>
+        InlineResponse20026 PostWebsiteMigration (IdMigrationBody body, int? id);
+
+        /// <summary>
+        /// Request Website Migration
+        /// </summary>
+        /// <remarks>
+        /// Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// </remarks>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>ApiResponse of InlineResponse20026</returns>
+        ApiResponse<InlineResponse20026> PostWebsiteMigrationWithHttpInfo (IdMigrationBody body, int? id);
         /// <summary>
         /// Request Website Migration
         /// </summary>
@@ -317,8 +317,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20025</returns>
-        InlineResponse20025 PostWebsiteMigration (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
+        /// <returns>InlineResponse20026</returns>
+        InlineResponse20026 PostWebsiteMigration (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
 
         /// <summary>
         /// Request Website Migration
@@ -341,8 +341,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20025</returns>
-        ApiResponse<InlineResponse20025> PostWebsiteMigrationWithHttpInfo (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
+        /// <returns>ApiResponse of InlineResponse20026</returns>
+        ApiResponse<InlineResponse20026> PostWebsiteMigrationWithHttpInfo (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
         /// <summary>
         /// Update Website Reverse DNS
         /// </summary>
@@ -416,8 +416,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns></returns>
-        void UpdateWebsiteInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateWebsiteInfo (string id);
 
         /// <summary>
         /// Update Website Order
@@ -427,8 +427,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateWebsiteInfoWithHttpInfo (string id);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateWebsiteInfoWithHttpInfo (string id);
         /// <summary>
         /// Cancel Website
         /// </summary>
@@ -437,8 +437,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20022</returns>
-        InlineResponse20022 WebhostingCancel (string id);
+        /// <returns>InlineResponse20023</returns>
+        InlineResponse20023 WebhostingCancel (string id);
 
         /// <summary>
         /// Cancel Website
@@ -448,8 +448,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20022</returns>
-        ApiResponse<InlineResponse20022> WebhostingCancelWithHttpInfo (string id);
+        /// <returns>ApiResponse of InlineResponse20023</returns>
+        ApiResponse<InlineResponse20023> WebhostingCancelWithHttpInfo (string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -459,8 +459,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddWebsiteAsync ();
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        System.Threading.Tasks.Task<ServiceOrderPostResponse> AddWebsiteAsync ();
 
         /// <summary>
         /// Place Website Order
@@ -469,8 +469,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddWebsiteAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddWebsiteAsyncWithHttpInfo ();
         /// <summary>
         /// Website Ordering Information
         /// </summary>
@@ -498,8 +498,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20023</returns>
-        System.Threading.Tasks.Task<InlineResponse20023> GetWebsiteBuyIpAsync (int? id);
+        /// <returns>Task of InlineResponse20024</returns>
+        System.Threading.Tasks.Task<InlineResponse20024> GetWebsiteBuyIpAsync (int? id);
 
         /// <summary>
         /// Get Website IP Information
@@ -509,8 +509,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20023)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20023>> GetWebsiteBuyIpAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (InlineResponse20024)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20024>> GetWebsiteBuyIpAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Get Website Order
         /// </summary>
@@ -665,66 +665,66 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20024</returns>
-        System.Threading.Tasks.Task<InlineResponse20024> PostWebsiteBuyIpAsync (IdBuyIpBody body, int? id);
-
-        /// <summary>
-        /// Update Website IP DNS
-        /// </summary>
-        /// <remarks>
-        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </remarks>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20024)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20024>> PostWebsiteBuyIpAsyncWithHttpInfo (IdBuyIpBody body, int? id);
-        /// <summary>
-        /// Update Website IP DNS
-        /// </summary>
-        /// <remarks>
-        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </remarks>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ips"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20024</returns>
-        System.Threading.Tasks.Task<InlineResponse20024> PostWebsiteBuyIpAsync (Dictionary<string, string> ips, int? id);
-
-        /// <summary>
-        /// Update Website IP DNS
-        /// </summary>
-        /// <remarks>
-        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </remarks>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ips"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20024)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20024>> PostWebsiteBuyIpAsyncWithHttpInfo (Dictionary<string, string> ips, int? id);
-        /// <summary>
-        /// Request Website Migration
-        /// </summary>
-        /// <remarks>
-        /// Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
-        /// </remarks>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
         /// <returns>Task of InlineResponse20025</returns>
-        System.Threading.Tasks.Task<InlineResponse20025> PostWebsiteMigrationAsync (IdMigrationBody body, int? id);
+        System.Threading.Tasks.Task<InlineResponse20025> PostWebsiteBuyIpAsync (IdBuyIpBody body, int? id);
 
         /// <summary>
-        /// Request Website Migration
+        /// Update Website IP DNS
         /// </summary>
         /// <remarks>
-        /// Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
         /// <returns>Task of ApiResponse (InlineResponse20025)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20025>> PostWebsiteMigrationAsyncWithHttpInfo (IdMigrationBody body, int? id);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20025>> PostWebsiteBuyIpAsyncWithHttpInfo (IdBuyIpBody body, int? id);
+        /// <summary>
+        /// Update Website IP DNS
+        /// </summary>
+        /// <remarks>
+        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
+        /// </remarks>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ips"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>Task of InlineResponse20025</returns>
+        System.Threading.Tasks.Task<InlineResponse20025> PostWebsiteBuyIpAsync (Dictionary<string, string> ips, int? id);
+
+        /// <summary>
+        /// Update Website IP DNS
+        /// </summary>
+        /// <remarks>
+        /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
+        /// </remarks>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ips"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>Task of ApiResponse (InlineResponse20025)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20025>> PostWebsiteBuyIpAsyncWithHttpInfo (Dictionary<string, string> ips, int? id);
+        /// <summary>
+        /// Request Website Migration
+        /// </summary>
+        /// <remarks>
+        /// Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// </remarks>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>Task of InlineResponse20026</returns>
+        System.Threading.Tasks.Task<InlineResponse20026> PostWebsiteMigrationAsync (IdMigrationBody body, int? id);
+
+        /// <summary>
+        /// Request Website Migration
+        /// </summary>
+        /// <remarks>
+        /// Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// </remarks>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>Task of ApiResponse (InlineResponse20026)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20026>> PostWebsiteMigrationAsyncWithHttpInfo (IdMigrationBody body, int? id);
         /// <summary>
         /// Request Website Migration
         /// </summary>
@@ -746,8 +746,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20025</returns>
-        System.Threading.Tasks.Task<InlineResponse20025> PostWebsiteMigrationAsync (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
+        /// <returns>Task of InlineResponse20026</returns>
+        System.Threading.Tasks.Task<InlineResponse20026> PostWebsiteMigrationAsync (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
 
         /// <summary>
         /// Request Website Migration
@@ -770,8 +770,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20025)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20025>> PostWebsiteMigrationAsyncWithHttpInfo (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
+        /// <returns>Task of ApiResponse (InlineResponse20026)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20026>> PostWebsiteMigrationAsyncWithHttpInfo (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
         /// <summary>
         /// Update Website Reverse DNS
         /// </summary>
@@ -845,8 +845,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateWebsiteInfoAsync (string id);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateWebsiteInfoAsync (string id);
 
         /// <summary>
         /// Update Website Order
@@ -856,8 +856,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateWebsiteInfoAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateWebsiteInfoAsyncWithHttpInfo (string id);
         /// <summary>
         /// Cancel Website
         /// </summary>
@@ -866,8 +866,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20022</returns>
-        System.Threading.Tasks.Task<InlineResponse20022> WebhostingCancelAsync (string id);
+        /// <returns>Task of InlineResponse20023</returns>
+        System.Threading.Tasks.Task<InlineResponse20023> WebhostingCancelAsync (string id);
 
         /// <summary>
         /// Cancel Website
@@ -877,8 +877,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20022)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20022>> WebhostingCancelAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (InlineResponse20023)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20023>> WebhostingCancelAsyncWithHttpInfo (string id);
         #endregion Asynchronous Operations
     }
 
@@ -994,18 +994,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place Website Order Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AddWebsite ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddWebsite ()
         {
-             AddWebsiteWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = AddWebsiteWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Place Website Order Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddWebsiteWithHttpInfo ()
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        public ApiResponse< ServiceOrderPostResponse > AddWebsiteWithHttpInfo ()
         {
 
             var localVarPath = "/websites/order";
@@ -1058,19 +1059,20 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
         /// Place Website Order Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddWebsiteAsync ()
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        public async System.Threading.Tasks.Task<ServiceOrderPostResponse> AddWebsiteAsync ()
         {
-             await AddWebsiteAsyncWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = await AddWebsiteAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -1078,8 +1080,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place Website Order Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddWebsiteAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddWebsiteAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/websites/order";
@@ -1132,9 +1134,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
@@ -1291,10 +1293,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20023</returns>
-        public InlineResponse20023 GetWebsiteBuyIp (int? id)
+        /// <returns>InlineResponse20024</returns>
+        public InlineResponse20024 GetWebsiteBuyIp (int? id)
         {
-             ApiResponse<InlineResponse20023> localVarResponse = GetWebsiteBuyIpWithHttpInfo(id);
+             ApiResponse<InlineResponse20024> localVarResponse = GetWebsiteBuyIpWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -1303,8 +1305,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20023</returns>
-        public ApiResponse< InlineResponse20023 > GetWebsiteBuyIpWithHttpInfo (int? id)
+        /// <returns>ApiResponse of InlineResponse20024</returns>
+        public ApiResponse< InlineResponse20024 > GetWebsiteBuyIpWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1361,9 +1363,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20023>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20024>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20023) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20023)));
+                (InlineResponse20024) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20024)));
         }
 
         /// <summary>
@@ -1371,10 +1373,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20023</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20023> GetWebsiteBuyIpAsync (int? id)
+        /// <returns>Task of InlineResponse20024</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20024> GetWebsiteBuyIpAsync (int? id)
         {
-             ApiResponse<InlineResponse20023> localVarResponse = await GetWebsiteBuyIpAsyncWithHttpInfo(id);
+             ApiResponse<InlineResponse20024> localVarResponse = await GetWebsiteBuyIpAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -1384,8 +1386,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20023)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20023>> GetWebsiteBuyIpAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (InlineResponse20024)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20024>> GetWebsiteBuyIpAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1442,9 +1444,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20023>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20024>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20023) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20023)));
+                (InlineResponse20024) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20024)));
         }
 
         /// <summary>
@@ -2570,398 +2572,30 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20024</returns>
-        public InlineResponse20024 PostWebsiteBuyIp (IdBuyIpBody body, int? id)
-        {
-             ApiResponse<InlineResponse20024> localVarResponse = PostWebsiteBuyIpWithHttpInfo(body, id);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </summary>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20024</returns>
-        public ApiResponse< InlineResponse20024 > PostWebsiteBuyIpWithHttpInfo (IdBuyIpBody body, int? id)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WebhostingApi->PostWebsiteBuyIp");
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteBuyIp");
-
-            var localVarPath = "/websites/{id}/buy_ip";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
-            {
-                localVarHeaderParams["X-API-KEY"] = this.Configuration.GetApiKeyWithPrefix("X-API-KEY");
-            }
-            // authentication (sessionIdCookieAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
-            {
-                localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionid", this.Configuration.GetApiKeyWithPrefix("sessionid")));
-            }
-            // authentication (sessionIdHeaderAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
-            {
-                localVarHeaderParams["sessionid"] = this.Configuration.GetApiKeyWithPrefix("sessionid");
-            }
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PostWebsiteBuyIp", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<InlineResponse20024>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20024) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20024)));
-        }
-
-        /// <summary>
-        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </summary>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20024</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20024> PostWebsiteBuyIpAsync (IdBuyIpBody body, int? id)
-        {
-             ApiResponse<InlineResponse20024> localVarResponse = await PostWebsiteBuyIpAsyncWithHttpInfo(body, id);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </summary>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20024)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20024>> PostWebsiteBuyIpAsyncWithHttpInfo (IdBuyIpBody body, int? id)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WebhostingApi->PostWebsiteBuyIp");
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteBuyIp");
-
-            var localVarPath = "/websites/{id}/buy_ip";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
-            {
-                localVarHeaderParams["X-API-KEY"] = this.Configuration.GetApiKeyWithPrefix("X-API-KEY");
-            }
-            // authentication (sessionIdCookieAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
-            {
-                localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionid", this.Configuration.GetApiKeyWithPrefix("sessionid")));
-            }
-            // authentication (sessionIdHeaderAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
-            {
-                localVarHeaderParams["sessionid"] = this.Configuration.GetApiKeyWithPrefix("sessionid");
-            }
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PostWebsiteBuyIp", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<InlineResponse20024>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20024) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20024)));
-        }
-
-        /// <summary>
-        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </summary>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ips"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20024</returns>
-        public InlineResponse20024 PostWebsiteBuyIp (Dictionary<string, string> ips, int? id)
-        {
-             ApiResponse<InlineResponse20024> localVarResponse = PostWebsiteBuyIpWithHttpInfo(ips, id);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </summary>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ips"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20024</returns>
-        public ApiResponse< InlineResponse20024 > PostWebsiteBuyIpWithHttpInfo (Dictionary<string, string> ips, int? id)
-        {
-            // verify the required parameter 'ips' is set
-            if (ips == null)
-                throw new ApiException(400, "Missing required parameter 'ips' when calling WebhostingApi->PostWebsiteBuyIp");
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteBuyIp");
-
-            var localVarPath = "/websites/{id}/buy_ip";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (ips != null) localVarFormParams.Add("ips", this.Configuration.ApiClient.ParameterToString(ips)); // form parameter
-            // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
-            {
-                localVarHeaderParams["X-API-KEY"] = this.Configuration.GetApiKeyWithPrefix("X-API-KEY");
-            }
-            // authentication (sessionIdCookieAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
-            {
-                localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionid", this.Configuration.GetApiKeyWithPrefix("sessionid")));
-            }
-            // authentication (sessionIdHeaderAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
-            {
-                localVarHeaderParams["sessionid"] = this.Configuration.GetApiKeyWithPrefix("sessionid");
-            }
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PostWebsiteBuyIp", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<InlineResponse20024>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20024) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20024)));
-        }
-
-        /// <summary>
-        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </summary>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ips"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20024</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20024> PostWebsiteBuyIpAsync (Dictionary<string, string> ips, int? id)
-        {
-             ApiResponse<InlineResponse20024> localVarResponse = await PostWebsiteBuyIpAsyncWithHttpInfo(ips, id);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-        /// </summary>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="ips"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20024)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20024>> PostWebsiteBuyIpAsyncWithHttpInfo (Dictionary<string, string> ips, int? id)
-        {
-            // verify the required parameter 'ips' is set
-            if (ips == null)
-                throw new ApiException(400, "Missing required parameter 'ips' when calling WebhostingApi->PostWebsiteBuyIp");
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteBuyIp");
-
-            var localVarPath = "/websites/{id}/buy_ip";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "multipart/form-data"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
-            if (ips != null) localVarFormParams.Add("ips", this.Configuration.ApiClient.ParameterToString(ips)); // form parameter
-            // authentication (apiKeyAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
-            {
-                localVarHeaderParams["X-API-KEY"] = this.Configuration.GetApiKeyWithPrefix("X-API-KEY");
-            }
-            // authentication (sessionIdCookieAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
-            {
-                localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionid", this.Configuration.GetApiKeyWithPrefix("sessionid")));
-            }
-            // authentication (sessionIdHeaderAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
-            {
-                localVarHeaderParams["sessionid"] = this.Configuration.GetApiKeyWithPrefix("sessionid");
-            }
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PostWebsiteBuyIp", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<InlineResponse20024>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20024) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20024)));
-        }
-
-        /// <summary>
-        /// Request Website Migration Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
-        /// </summary>
-        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
-        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
         /// <returns>InlineResponse20025</returns>
-        public InlineResponse20025 PostWebsiteMigration (IdMigrationBody body, int? id)
+        public InlineResponse20025 PostWebsiteBuyIp (IdBuyIpBody body, int? id)
         {
-             ApiResponse<InlineResponse20025> localVarResponse = PostWebsiteMigrationWithHttpInfo(body, id);
+             ApiResponse<InlineResponse20025> localVarResponse = PostWebsiteBuyIpWithHttpInfo(body, id);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Request Website Migration Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
         /// <returns>ApiResponse of InlineResponse20025</returns>
-        public ApiResponse< InlineResponse20025 > PostWebsiteMigrationWithHttpInfo (IdMigrationBody body, int? id)
+        public ApiResponse< InlineResponse20025 > PostWebsiteBuyIpWithHttpInfo (IdBuyIpBody body, int? id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling WebhostingApi->PostWebsiteMigration");
+                throw new ApiException(400, "Missing required parameter 'body' when calling WebhostingApi->PostWebsiteBuyIp");
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteMigration");
+                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteBuyIp");
 
-            var localVarPath = "/websites/{id}/migration";
+            var localVarPath = "/websites/{id}/buy_ip";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3018,7 +2652,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PostWebsiteMigration", localVarResponse);
+                Exception exception = ExceptionFactory("PostWebsiteBuyIp", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -3028,15 +2662,383 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Request Website Migration Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
         /// <returns>Task of InlineResponse20025</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20025> PostWebsiteMigrationAsync (IdMigrationBody body, int? id)
+        public async System.Threading.Tasks.Task<InlineResponse20025> PostWebsiteBuyIpAsync (IdBuyIpBody body, int? id)
         {
-             ApiResponse<InlineResponse20025> localVarResponse = await PostWebsiteMigrationAsyncWithHttpInfo(body, id);
+             ApiResponse<InlineResponse20025> localVarResponse = await PostWebsiteBuyIpAsyncWithHttpInfo(body, id);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
+        /// </summary>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>Task of ApiResponse (InlineResponse20025)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20025>> PostWebsiteBuyIpAsyncWithHttpInfo (IdBuyIpBody body, int? id)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling WebhostingApi->PostWebsiteBuyIp");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteBuyIp");
+
+            var localVarPath = "/websites/{id}/buy_ip";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (apiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
+            {
+                localVarHeaderParams["X-API-KEY"] = this.Configuration.GetApiKeyWithPrefix("X-API-KEY");
+            }
+            // authentication (sessionIdCookieAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
+            {
+                localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionid", this.Configuration.GetApiKeyWithPrefix("sessionid")));
+            }
+            // authentication (sessionIdHeaderAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
+            {
+                localVarHeaderParams["sessionid"] = this.Configuration.GetApiKeyWithPrefix("sessionid");
+            }
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PostWebsiteBuyIp", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse20025>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (InlineResponse20025) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20025)));
+        }
+
+        /// <summary>
+        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
+        /// </summary>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ips"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>InlineResponse20025</returns>
+        public InlineResponse20025 PostWebsiteBuyIp (Dictionary<string, string> ips, int? id)
+        {
+             ApiResponse<InlineResponse20025> localVarResponse = PostWebsiteBuyIpWithHttpInfo(ips, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
+        /// </summary>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ips"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>ApiResponse of InlineResponse20025</returns>
+        public ApiResponse< InlineResponse20025 > PostWebsiteBuyIpWithHttpInfo (Dictionary<string, string> ips, int? id)
+        {
+            // verify the required parameter 'ips' is set
+            if (ips == null)
+                throw new ApiException(400, "Missing required parameter 'ips' when calling WebhostingApi->PostWebsiteBuyIp");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteBuyIp");
+
+            var localVarPath = "/websites/{id}/buy_ip";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (ips != null) localVarFormParams.Add("ips", this.Configuration.ApiClient.ParameterToString(ips)); // form parameter
+            // authentication (apiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
+            {
+                localVarHeaderParams["X-API-KEY"] = this.Configuration.GetApiKeyWithPrefix("X-API-KEY");
+            }
+            // authentication (sessionIdCookieAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
+            {
+                localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionid", this.Configuration.GetApiKeyWithPrefix("sessionid")));
+            }
+            // authentication (sessionIdHeaderAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
+            {
+                localVarHeaderParams["sessionid"] = this.Configuration.GetApiKeyWithPrefix("sessionid");
+            }
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PostWebsiteBuyIp", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse20025>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (InlineResponse20025) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20025)));
+        }
+
+        /// <summary>
+        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
+        /// </summary>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ips"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>Task of InlineResponse20025</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20025> PostWebsiteBuyIpAsync (Dictionary<string, string> ips, int? id)
+        {
+             ApiResponse<InlineResponse20025> localVarResponse = await PostWebsiteBuyIpAsyncWithHttpInfo(ips, id);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
+        /// </summary>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ips"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>Task of ApiResponse (InlineResponse20025)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20025>> PostWebsiteBuyIpAsyncWithHttpInfo (Dictionary<string, string> ips, int? id)
+        {
+            // verify the required parameter 'ips' is set
+            if (ips == null)
+                throw new ApiException(400, "Missing required parameter 'ips' when calling WebhostingApi->PostWebsiteBuyIp");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteBuyIp");
+
+            var localVarPath = "/websites/{id}/buy_ip";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (ips != null) localVarFormParams.Add("ips", this.Configuration.ApiClient.ParameterToString(ips)); // form parameter
+            // authentication (apiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
+            {
+                localVarHeaderParams["X-API-KEY"] = this.Configuration.GetApiKeyWithPrefix("X-API-KEY");
+            }
+            // authentication (sessionIdCookieAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
+            {
+                localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionid", this.Configuration.GetApiKeyWithPrefix("sessionid")));
+            }
+            // authentication (sessionIdHeaderAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
+            {
+                localVarHeaderParams["sessionid"] = this.Configuration.GetApiKeyWithPrefix("sessionid");
+            }
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PostWebsiteBuyIp", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse20025>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (InlineResponse20025) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20025)));
+        }
+
+        /// <summary>
+        /// Request Website Migration Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// </summary>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>InlineResponse20026</returns>
+        public InlineResponse20026 PostWebsiteMigration (IdMigrationBody body, int? id)
+        {
+             ApiResponse<InlineResponse20026> localVarResponse = PostWebsiteMigrationWithHttpInfo(body, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Request Website Migration Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// </summary>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>ApiResponse of InlineResponse20026</returns>
+        public ApiResponse< InlineResponse20026 > PostWebsiteMigrationWithHttpInfo (IdMigrationBody body, int? id)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling WebhostingApi->PostWebsiteMigration");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingApi->PostWebsiteMigration");
+
+            var localVarPath = "/websites/{id}/migration";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json", 
+                "multipart/form-data"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (apiKeyAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
+            {
+                localVarHeaderParams["X-API-KEY"] = this.Configuration.GetApiKeyWithPrefix("X-API-KEY");
+            }
+            // authentication (sessionIdCookieAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
+            {
+                localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "sessionid", this.Configuration.GetApiKeyWithPrefix("sessionid")));
+            }
+            // authentication (sessionIdHeaderAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("sessionid")))
+            {
+                localVarHeaderParams["sessionid"] = this.Configuration.GetApiKeyWithPrefix("sessionid");
+            }
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PostWebsiteMigration", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse20026>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (InlineResponse20026) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20026)));
+        }
+
+        /// <summary>
+        /// Request Website Migration Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
+        /// </summary>
+        /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
+        /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
+        /// <returns>Task of InlineResponse20026</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20026> PostWebsiteMigrationAsync (IdMigrationBody body, int? id)
+        {
+             ApiResponse<InlineResponse20026> localVarResponse = await PostWebsiteMigrationAsyncWithHttpInfo(body, id);
              return localVarResponse.Data;
 
         }
@@ -3047,8 +3049,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20025)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20025>> PostWebsiteMigrationAsyncWithHttpInfo (IdMigrationBody body, int? id)
+        /// <returns>Task of ApiResponse (InlineResponse20026)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20026>> PostWebsiteMigrationAsyncWithHttpInfo (IdMigrationBody body, int? id)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -3118,9 +3120,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20025>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20026>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20025) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20025)));
+                (InlineResponse20026) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20026)));
         }
 
         /// <summary>
@@ -3141,10 +3143,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20025</returns>
-        public InlineResponse20025 PostWebsiteMigration (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
+        /// <returns>InlineResponse20026</returns>
+        public InlineResponse20026 PostWebsiteMigration (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
         {
-             ApiResponse<InlineResponse20025> localVarResponse = PostWebsiteMigrationWithHttpInfo(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id);
+             ApiResponse<InlineResponse20026> localVarResponse = PostWebsiteMigrationWithHttpInfo(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id);
              return localVarResponse.Data;
         }
 
@@ -3166,8 +3168,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20025</returns>
-        public ApiResponse< InlineResponse20025 > PostWebsiteMigrationWithHttpInfo (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
+        /// <returns>ApiResponse of InlineResponse20026</returns>
+        public ApiResponse< InlineResponse20026 > PostWebsiteMigrationWithHttpInfo (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
         {
             // verify the required parameter 'custPortal' is set
             if (custPortal == null)
@@ -3278,9 +3280,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20025>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20026>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20025) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20025)));
+                (InlineResponse20026) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20026)));
         }
 
         /// <summary>
@@ -3301,10 +3303,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20025</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20025> PostWebsiteMigrationAsync (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
+        /// <returns>Task of InlineResponse20026</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20026> PostWebsiteMigrationAsync (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
         {
-             ApiResponse<InlineResponse20025> localVarResponse = await PostWebsiteMigrationAsyncWithHttpInfo(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id);
+             ApiResponse<InlineResponse20026> localVarResponse = await PostWebsiteMigrationAsyncWithHttpInfo(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id);
              return localVarResponse.Data;
 
         }
@@ -3327,8 +3329,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20025)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20025>> PostWebsiteMigrationAsyncWithHttpInfo (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
+        /// <returns>Task of ApiResponse (InlineResponse20026)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20026>> PostWebsiteMigrationAsyncWithHttpInfo (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
         {
             // verify the required parameter 'custPortal' is set
             if (custPortal == null)
@@ -3439,9 +3441,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20025>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20026>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20025) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20025)));
+                (InlineResponse20026) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20026)));
         }
 
         /// <summary>
@@ -3964,10 +3966,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateWebsiteInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateWebsiteInfo (string id)
         {
-             UpdateWebsiteInfoWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateWebsiteInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3975,8 +3978,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateWebsiteInfoWithHttpInfo (string id)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateWebsiteInfoWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4033,9 +4036,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -4043,10 +4046,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateWebsiteInfoAsync (string id)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateWebsiteInfoAsync (string id)
         {
-             await UpdateWebsiteInfoAsyncWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateWebsiteInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -4055,8 +4059,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateWebsiteInfoAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateWebsiteInfoAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4113,9 +4117,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -4123,10 +4127,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20022</returns>
-        public InlineResponse20022 WebhostingCancel (string id)
+        /// <returns>InlineResponse20023</returns>
+        public InlineResponse20023 WebhostingCancel (string id)
         {
-             ApiResponse<InlineResponse20022> localVarResponse = WebhostingCancelWithHttpInfo(id);
+             ApiResponse<InlineResponse20023> localVarResponse = WebhostingCancelWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -4135,8 +4139,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>ApiResponse of InlineResponse20022</returns>
-        public ApiResponse< InlineResponse20022 > WebhostingCancelWithHttpInfo (string id)
+        /// <returns>ApiResponse of InlineResponse20023</returns>
+        public ApiResponse< InlineResponse20023 > WebhostingCancelWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4193,9 +4197,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20022>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20023>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20022) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20022)));
+                (InlineResponse20023) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20023)));
         }
 
         /// <summary>
@@ -4203,10 +4207,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of InlineResponse20022</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20022> WebhostingCancelAsync (string id)
+        /// <returns>Task of InlineResponse20023</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20023> WebhostingCancelAsync (string id)
         {
-             ApiResponse<InlineResponse20022> localVarResponse = await WebhostingCancelAsyncWithHttpInfo(id);
+             ApiResponse<InlineResponse20023> localVarResponse = await WebhostingCancelAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -4216,8 +4220,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>Task of ApiResponse (InlineResponse20022)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20022>> WebhostingCancelAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (InlineResponse20023)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20023>> WebhostingCancelAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4274,9 +4278,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20022>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20023>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20022) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20022)));
+                (InlineResponse20023) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20023)));
         }
 
     }

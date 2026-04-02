@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteAccountCreditCard**
-> deleteAccountCreditCard(id)
+> String deleteAccountCreditCard(id)
 
 Remove Credit Card
 
@@ -246,7 +246,8 @@ final api = Openapi().getBillingApi();
 final String id = id_example; // String | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 try {
-    api.deleteAccountCreditCard(id);
+    final response = api.deleteAccountCreditCard(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling BillingApi->deleteAccountCreditCard: $e\n');
 }
@@ -260,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -753,7 +754,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillingCart**
-> getBillingCart()
+> JsonObject getBillingCart()
 
 Get Shopping Cart Contents
 
@@ -778,7 +779,8 @@ import 'package:openapi/api.dart';
 final api = Openapi().getBillingApi();
 
 try {
-    api.getBillingCart();
+    final response = api.getBillingCart();
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling BillingApi->getBillingCart: $e\n');
 }
@@ -789,7 +791,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**JsonObject**](JsonObject.md)
 
 ### Authorization
 
@@ -964,7 +966,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillingPrePays**
-> getBillingPrePays()
+> JsonObject getBillingPrePays()
 
 List Prepay Balances
 
@@ -989,7 +991,8 @@ import 'package:openapi/api.dart';
 final api = Openapi().getBillingApi();
 
 try {
-    api.getBillingPrePays();
+    final response = api.getBillingPrePays();
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling BillingApi->getBillingPrePays: $e\n');
 }
@@ -1000,7 +1003,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**JsonObject**](JsonObject.md)
 
 ### Authorization
 
@@ -1187,7 +1190,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateAccountCreditCard**
-> updateAccountCreditCard(id)
+> String updateAccountCreditCard(id)
 
 Update Credit Card
 
@@ -1213,7 +1216,8 @@ final api = Openapi().getBillingApi();
 final int id = 56; // int | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 try {
-    api.updateAccountCreditCard(id);
+    final response = api.updateAccountCreditCard(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling BillingApi->updateAccountCreditCard: $e\n');
 }
@@ -1227,7 +1231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

@@ -33,7 +33,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface AccountApi {
     /**
@@ -190,11 +190,12 @@ public interface AccountApi {
      * @param disableServerNotifications Set to &#x60;true&#x60; to disable server notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param disableEmailNotifications Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param gstin Your GST identification number (if applicable). (optional)
+     * @return SuccessTextResponse
      */
     @Post(uri="/account")
     @Consumes({"application/json"})
     @Produces({"multipart/form-data", "application/json"})
-    Mono<Void> updateAccountInfo(
+    Mono<SuccessTextResponse> updateAccountInfo(
         @NotNull String name, 
         @NotNull String address, 
         @NotNull String city, 
@@ -220,11 +221,12 @@ public interface AccountApi {
      *
      * @param start The begining (or first) IP address in the range. (required)
      * @param end The ending (or last) IP address in the range. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/account/iplimits")
     @Consumes({"application/json"})
     @Produces({"multipart/form-data", "application/json"})
-    Mono<Void> updateAccountIpLimits(
+    Mono<SuccessTextResponse> updateAccountIpLimits(
         @NotNull String start, 
         @NotNull String end
     );

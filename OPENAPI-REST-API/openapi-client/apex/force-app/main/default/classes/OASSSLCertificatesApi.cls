@@ -28,13 +28,14 @@ public class OASSSLCertificatesApi {
     /**
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+     * @return OASServiceOrderPostResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void addSsl() {
+    public OASServiceOrderPostResponse addSsl() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASServiceOrderPostResponse) client.invoke(
             'POST', '/ssl/order', '',
             query, form,
             new Map<String, Object>(),
@@ -42,19 +43,20 @@ public class OASSSLCertificatesApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASServiceOrderPostResponse.class
         );
     }
     /**
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
+     * @return Object
      * @throws OAS.ApiException if fails to make API call
      */
-    public void getNewSsl() {
+    public Object getNewSsl() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (Object) client.invoke(
             'GET', '/ssl/order', '',
             query, form,
             new Map<String, Object>(),
@@ -62,21 +64,22 @@ public class OASSSLCertificatesApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            Object.class
         );
     }
     /**
      * Get SSL Cert Info
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param id SSL certificate ID number. (required)
+     * @return Object
      * @throws OAS.ApiException if fails to make API call
      */
-    public void getSslInfo(Map<String, Object> params) {
+    public Object getSslInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (Object) client.invoke(
             'GET', '/ssl/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -86,7 +89,7 @@ public class OASSSLCertificatesApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            Object.class
         );
     }
     /**
@@ -208,14 +211,15 @@ public class OASSSLCertificatesApi {
      * Update SSL Cert Order
      * Updates settings on an SSL certificate order.
      * @param id SSL certificate ID number. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateSslInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateSslInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/ssl/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -225,7 +229,7 @@ public class OASSSLCertificatesApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
 }

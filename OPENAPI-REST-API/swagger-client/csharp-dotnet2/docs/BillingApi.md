@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteaccountcreditcard"></a>
 # **DeleteAccountCreditCard**
-> void DeleteAccountCreditCard (string id)
+> string DeleteAccountCreditCard (string id)
 
 Remove Credit Card
 
@@ -315,7 +315,8 @@ namespace Example
             try
             {
                 // Remove Credit Card
-                apiInstance.DeleteAccountCreditCard(id);
+                string result = apiInstance.DeleteAccountCreditCard(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -334,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -1008,7 +1009,7 @@ This endpoint does not need any parameter.
 
 <a name="getbillingcart"></a>
 # **GetBillingCart**
-> void GetBillingCart ()
+> Object GetBillingCart ()
 
 Get Shopping Cart Contents
 
@@ -1047,7 +1048,8 @@ namespace Example
             try
             {
                 // Get Shopping Cart Contents
-                apiInstance.GetBillingCart();
+                Object result = apiInstance.GetBillingCart();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1063,7 +1065,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1299,7 +1301,7 @@ This endpoint does not need any parameter.
 
 <a name="getbillingprepays"></a>
 # **GetBillingPrePays**
-> void GetBillingPrePays ()
+> Object GetBillingPrePays ()
 
 List Prepay Balances
 
@@ -1338,7 +1340,8 @@ namespace Example
             try
             {
                 // List Prepay Balances
-                apiInstance.GetBillingPrePays();
+                Object result = apiInstance.GetBillingPrePays();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1354,7 +1357,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1602,7 +1605,7 @@ Name | Type | Description  | Notes
 
 <a name="updateaccountcreditcard"></a>
 # **UpdateAccountCreditCard**
-> void UpdateAccountCreditCard (int? id)
+> string UpdateAccountCreditCard (int? id)
 
 Update Credit Card
 
@@ -1642,7 +1645,8 @@ namespace Example
             try
             {
                 // Update Credit Card
-                apiInstance.UpdateAccountCreditCard(id);
+                string result = apiInstance.UpdateAccountCreditCard(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1661,7 +1665,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

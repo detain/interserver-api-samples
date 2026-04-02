@@ -4,12 +4,13 @@ import six
 from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoiceRows  # noqa: E501
 from myadmin-client-python-flask.models.id_buy_ip_body import IdBuyIpBody  # noqa: E501
 from myadmin-client-python-flask.models.id_migration_body import IdMigrationBody  # noqa: E501
-from myadmin-client-python-flask.models.inline_response20022 import InlineResponse20022  # noqa: E501
 from myadmin-client-python-flask.models.inline_response20023 import InlineResponse20023  # noqa: E501
 from myadmin-client-python-flask.models.inline_response20024 import InlineResponse20024  # noqa: E501
 from myadmin-client-python-flask.models.inline_response20025 import InlineResponse20025  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20026 import InlineResponse20026  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.reverse_dns_entries import ReverseDnsEntries  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.models.text_response import TextResponse  # noqa: E501
 from myadmin-client-python-flask.models.website import Website  # noqa: E501
@@ -26,7 +27,7 @@ def add_website():  # noqa: E501
     Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first. # noqa: E501
 
 
-    :rtype: None
+    :rtype: ServiceOrderPostResponse
     """
     return 'do some magic!'
 
@@ -50,7 +51,7 @@ def get_website_buy_ip(id):  # noqa: E501
     :param id: The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     :type id: int
 
-    :rtype: InlineResponse20023
+    :rtype: InlineResponse20024
     """
     return 'do some magic!'
 
@@ -154,7 +155,7 @@ def post_website_buy_ip(body, id):  # noqa: E501
     :param id: The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     :type id: int
 
-    :rtype: InlineResponse20024
+    :rtype: InlineResponse20025
     """
     if connexion.request.is_json:
         body = IdBuyIpBody.from_dict(connexion.request.get_json())  # noqa: E501
@@ -171,7 +172,7 @@ def post_website_buy_ip(ips, id):  # noqa: E501
     :param id: The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     :type id: int
 
-    :rtype: InlineResponse20024
+    :rtype: InlineResponse20025
     """
     return 'do some magic!'
 
@@ -186,7 +187,7 @@ def post_website_migration(body, id):  # noqa: E501
     :param id: The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     :type id: int
 
-    :rtype: InlineResponse20025
+    :rtype: InlineResponse20026
     """
     if connexion.request.is_json:
         body = IdMigrationBody.from_dict(connexion.request.get_json())  # noqa: E501
@@ -227,7 +228,7 @@ def post_website_migration(cust_portal, reg_email, password, ctrl_panel, ftp_use
     :param id: The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     :type id: int
 
-    :rtype: InlineResponse20025
+    :rtype: InlineResponse20026
     """
     return 'do some magic!'
 
@@ -283,7 +284,7 @@ def update_website_info(id):  # noqa: E501
     :param id: The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     :type id: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'
 
@@ -296,6 +297,6 @@ def webhosting_cancel(id):  # noqa: E501
     :param id: The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     :type id: str
 
-    :rtype: InlineResponse20022
+    :rtype: InlineResponse20023
     """
     return 'do some magic!'

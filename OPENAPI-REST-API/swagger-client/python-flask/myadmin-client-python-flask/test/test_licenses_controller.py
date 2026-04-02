@@ -12,6 +12,7 @@ from myadmin-client-python-flask.models.ip_object import IpObject  # noqa: E501
 from myadmin-client-python-flask.models.license import License  # noqa: E501
 from myadmin-client-python-flask.models.license_row import LicenseRow  # noqa: E501
 from myadmin-client-python-flask.models.licenses_order import LicensesOrder  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.test import BaseTestCase
 

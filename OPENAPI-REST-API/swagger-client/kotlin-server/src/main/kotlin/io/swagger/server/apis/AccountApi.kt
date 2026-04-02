@@ -680,16 +680,34 @@ fun Route.AccountApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     post<Paths.updateAccountIpLimits> {  _: Paths.updateAccountIpLimits ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     post<Paths.updateAccountPassword> {  _: Paths.updateAccountPassword ->
         val principal = call.authentication.principal<ApiPrincipal>()

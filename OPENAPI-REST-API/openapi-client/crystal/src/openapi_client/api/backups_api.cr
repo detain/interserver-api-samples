@@ -511,16 +511,16 @@ module OpenAPIClient
     # Update Backup Information
     # Updates backup storage service metadata, such as stored credentials or settings for the order.
     # @param id [Int32] The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_backup_info(id : Int32)
-      update_backup_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_backup_info_with_http_info(id)
+      data
     end
 
     # Update Backup Information
     # Updates backup storage service metadata, such as stored credentials or settings for the order.
     # @param id [Int32] The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_backup_info_with_http_info(id : Int32)
       if @api_client.config.debugging
         Log.debug {"Calling API: BackupsApi.update_backup_info ..."}
@@ -568,7 +568,7 @@ module OpenAPIClient
         Log.debug {"API called: BackupsApi#update_backup_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # Validate Backup Order

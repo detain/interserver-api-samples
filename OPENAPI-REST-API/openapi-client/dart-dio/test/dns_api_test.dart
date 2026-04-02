@@ -11,7 +11,7 @@ void main() {
     //
     // Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
     //
-    //Future addDnsDomain(String domain, String ip) async
+    //Future<SuccessTextResponse> addDnsDomain(String domain, String ip) async
     test('test addDnsDomain', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
     //
-    //Future deleteDnsDomain(String id) async
+    //Future<SuccessTextResponse> deleteDnsDomain(String id) async
     test('test deleteDnsDomain', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
     //
-    //Future deleteDnsRecord(int domainId, int recordId) async
+    //Future<SuccessTextResponse> deleteDnsRecord(int domainId, int recordId) async
     test('test deleteDnsRecord', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
     //
-    //Future updateDnsRecord(int domainId, int recordId, { String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth }) async
+    //Future<SuccessTextResponse> updateDnsRecord(int domainId, int recordId, { String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth }) async
     test('test updateDnsRecord', () async {
       // TODO
     });

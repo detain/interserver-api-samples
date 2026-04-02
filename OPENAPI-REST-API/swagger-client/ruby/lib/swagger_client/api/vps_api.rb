@@ -20,17 +20,17 @@ module SwaggerClient
     # Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
     # @param [Hash] opts the optional parameters
     # @option opts [VpsOrderPostRequest] :body 
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_vps(opts = {})
-      add_vps_with_http_info(opts)
-      nil
+      data, _status_code, _headers = add_vps_with_http_info(opts)
+      data
     end
 
     # Place VPS Order
     # Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
     # @param [Hash] opts the optional parameters
     # @option opts [VpsOrderPostRequest] :body 
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_vps_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VPSApi.add_vps ...'
@@ -65,7 +65,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(opts[:'body']) 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'ServiceOrderPostResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -95,10 +95,10 @@ module SwaggerClient
     # @option opts [String] :coupon 
     # @option opts [String] :rootpass 
     # @option opts [String] :comment 
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_vps(opts = {})
-      add_vps_with_http_info(opts)
-      nil
+      data, _status_code, _headers = add_vps_with_http_info(opts)
+      data
     end
 
     # Place VPS Order
@@ -115,7 +115,7 @@ module SwaggerClient
     # @option opts [String] :coupon 
     # @option opts [String] :rootpass 
     # @option opts [String] :comment 
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_vps_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VPSApi.add_vps ...'
@@ -156,7 +156,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(opts[:'body']) 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'ServiceOrderPostResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -3281,17 +3281,17 @@ module SwaggerClient
     # Updates settings on a VPS order.
     # @param id VPS ID number.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_vps_info(id, opts = {})
-      update_vps_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_vps_info_with_http_info(id, opts)
+      data
     end
 
     # Update VPS Order
     # Updates settings on a VPS order.
     # @param id VPS ID number.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_vps_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VPSApi.update_vps_info ...'
@@ -3317,7 +3317,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -3337,7 +3337,7 @@ module SwaggerClient
     # Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
     # @param id VPS ID number
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20021]
+    # @return [InlineResponse20022]
     def v_ps_cancel(id, opts = {})
       data, _status_code, _headers = v_ps_cancel_with_http_info(id, opts)
       data
@@ -3347,7 +3347,7 @@ module SwaggerClient
     # Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
     # @param id VPS ID number
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20021, Integer, Hash)>] InlineResponse20021 data, response status code and response headers
+    # @return [Array<(InlineResponse20022, Integer, Hash)>] InlineResponse20022 data, response status code and response headers
     def v_ps_cancel_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VPSApi.v_ps_cancel ...'
@@ -3373,7 +3373,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'InlineResponse20021' 
+      return_type = opts[:return_type] || 'InlineResponse20022' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,

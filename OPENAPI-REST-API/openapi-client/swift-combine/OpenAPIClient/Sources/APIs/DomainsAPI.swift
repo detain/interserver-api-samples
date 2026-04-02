@@ -51,8 +51,8 @@ open class DomainsAPI {
     /// - API Key:
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
-    /// - returns: AnyPublisher<Void, Error> 
-    open func addDomain() -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<ServiceOrderPostResponse, Error> 
+    open func addDomain() -> AnyPublisher<ServiceOrderPostResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -68,7 +68,7 @@ open class DomainsAPI {
                 request.httpMethod = "POST"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<ServiceOrderPostResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -82,7 +82,7 @@ open class DomainsAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(ServiceOrderPostResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -1723,8 +1723,8 @@ open class DomainsAPI {
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
     /// - parameter id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func updateDomainInfo(id: String) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func updateDomainInfo(id: String) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -1741,7 +1741,7 @@ open class DomainsAPI {
                 request.httpMethod = "POST"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -1755,7 +1755,7 @@ open class DomainsAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()

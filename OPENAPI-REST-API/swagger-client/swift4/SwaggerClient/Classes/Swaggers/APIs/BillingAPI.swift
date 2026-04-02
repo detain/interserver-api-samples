@@ -292,13 +292,9 @@ open class BillingAPI {
      - parameter _id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteAccountCreditCard(_id: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func deleteAccountCreditCard(_id: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         deleteAccountCreditCardWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -316,11 +312,12 @@ open class BillingAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example=""}]
      - parameter _id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    open class func deleteAccountCreditCardWithRequestBuilder(_id: String) -> RequestBuilder<Void> {
+    open class func deleteAccountCreditCardWithRequestBuilder(_id: String) -> RequestBuilder<String> {
         var path = "/account/creditcards/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -331,7 +328,7 @@ open class BillingAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -776,13 +773,9 @@ open class BillingAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getBillingCart(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func getBillingCart(completion: @escaping ((_ data: Any?,_ error: Error?) -> Void)) {
         getBillingCartWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -800,10 +793,11 @@ open class BillingAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={ }}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<Any> 
      */
-    open class func getBillingCartWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func getBillingCartWithRequestBuilder() -> RequestBuilder<Any> {
         let path = "/billing/cart"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -811,7 +805,7 @@ open class BillingAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<Any>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -963,13 +957,9 @@ open class BillingAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getBillingPrePays(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func getBillingPrePays(completion: @escaping ((_ data: Any?,_ error: Error?) -> Void)) {
         getBillingPrePaysWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -987,10 +977,11 @@ open class BillingAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={ }}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<Any> 
      */
-    open class func getBillingPrePaysWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func getBillingPrePaysWithRequestBuilder() -> RequestBuilder<Any> {
         let path = "/billing/prepays"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -998,7 +989,7 @@ open class BillingAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<Any>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -1227,13 +1218,9 @@ open class BillingAPI {
      - parameter _id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateAccountCreditCard(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateAccountCreditCard(_id: Int, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         updateAccountCreditCardWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -1251,11 +1238,12 @@ open class BillingAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example=""}]
      - parameter _id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    open class func updateAccountCreditCardWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+    open class func updateAccountCreditCardWithRequestBuilder(_id: Int) -> RequestBuilder<String> {
         var path = "/account/creditcards/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1266,7 +1254,7 @@ open class BillingAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

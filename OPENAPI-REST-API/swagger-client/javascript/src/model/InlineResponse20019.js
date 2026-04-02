@@ -25,12 +25,8 @@ export default class InlineResponse20019 {
    * Constructs a new <code>InlineResponse20019</code>.
    * @alias module:model/InlineResponse20019
    * @class
-   * @param success {Boolean} 
-   * @param text {String} 
    */
-  constructor(success, text) {
-    this.success = success;
-    this.text = text;
+  constructor() {
   }
 
   /**
@@ -43,22 +39,32 @@ export default class InlineResponse20019 {
   static constructFromObject(data, obj) {
     if (data) {
       obj = obj || new InlineResponse20019();
-      if (data.hasOwnProperty('success'))
-        obj.success = ApiClient.convertToType(data['success'], 'Boolean');
       if (data.hasOwnProperty('text'))
         obj.text = ApiClient.convertToType(data['text'], 'String');
+      if (data.hasOwnProperty('invoice'))
+        obj.invoice = ApiClient.convertToType(data['invoice'], 'Number');
+      if (data.hasOwnProperty('order'))
+        obj.order = ApiClient.convertToType(data['order'], 'Number');
     }
     return obj;
   }
 }
 
 /**
- * @member {Boolean} success
- */
-InlineResponse20019.prototype.success = undefined;
-
-/**
+ * Status message.
  * @member {String} text
  */
 InlineResponse20019.prototype.text = undefined;
+
+/**
+ * Invoice ID for payment.
+ * @member {Number} invoice
+ */
+InlineResponse20019.prototype.invoice = undefined;
+
+/**
+ * Server order ID.
+ * @member {Number} order
+ */
+InlineResponse20019.prototype.order = undefined;
 

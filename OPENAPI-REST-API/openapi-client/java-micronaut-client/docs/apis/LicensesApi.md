@@ -48,7 +48,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="addLicense"></a>
 # **addLicense**
 ```java
-Mono<Void> LicensesApi.addLicense()
+Mono<ServiceOrderPostResponse> LicensesApi.addLicense()
 ```
 
 Place License Order
@@ -57,7 +57,8 @@ Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; 
 
 
 
-
+### Return type
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -310,7 +311,7 @@ Validates a license order before placing it. Use this to check for errors before
 <a id="updateLicenseInfo"></a>
 # **updateLicenseInfo**
 ```java
-Mono<Void> LicensesApi.updateLicenseInfo(id)
+Mono<SuccessTextResponse> LicensesApi.updateLicenseInfo(id)
 ```
 
 Update License
@@ -323,7 +324,8 @@ Updates settings on a license service such as its assigned IP.
 | **id** | `String`| The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

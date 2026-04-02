@@ -21,6 +21,7 @@ HEADERS += \
     $${PWD}/OAIAccountInfoPost.h \
     $${PWD}/OAIAccountInfo_oauthproviders.h \
     $${PWD}/OAIAccountSshKey.h \
+    $${PWD}/OAIAddServer_200_response.h \
     $${PWD}/OAIAffiliateBannerRow.h \
     $${PWD}/OAIAffiliateDockSetup.h \
     $${PWD}/OAIAffiliatePaymentSetup.h \
@@ -355,6 +356,7 @@ HEADERS += \
     $${PWD}/OAIService.h \
     $${PWD}/OAIServiceCategories.h \
     $${PWD}/OAIServiceCategory.h \
+    $${PWD}/OAIServiceOrderPostResponse.h \
     $${PWD}/OAIServiceType.h \
     $${PWD}/OAIServiceTypes.h \
     $${PWD}/OAIServices.h \
@@ -503,6 +505,7 @@ SOURCES += \
     $${PWD}/OAIAccountInfoPost.cpp \
     $${PWD}/OAIAccountInfo_oauthproviders.cpp \
     $${PWD}/OAIAccountSshKey.cpp \
+    $${PWD}/OAIAddServer_200_response.cpp \
     $${PWD}/OAIAffiliateBannerRow.cpp \
     $${PWD}/OAIAffiliateDockSetup.cpp \
     $${PWD}/OAIAffiliatePaymentSetup.cpp \
@@ -837,6 +840,7 @@ SOURCES += \
     $${PWD}/OAIService.cpp \
     $${PWD}/OAIServiceCategories.cpp \
     $${PWD}/OAIServiceCategory.cpp \
+    $${PWD}/OAIServiceOrderPostResponse.cpp \
     $${PWD}/OAIServiceType.cpp \
     $${PWD}/OAIServiceTypes.cpp \
     $${PWD}/OAIServices.cpp \

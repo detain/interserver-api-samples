@@ -10,7 +10,7 @@ class MailApi {
   /// Place Mail Order
   ///
   /// Places a Mail Baby order. On success, invoices are created for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
-  Future addMail() async {
+  Future<ServiceOrderPostResponse> addMail() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,9 +50,9 @@ class MailApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'ServiceOrderPostResponse') as ServiceOrderPostResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Create Deny Rule
@@ -1415,7 +1415,7 @@ if (enabled != null)
   /// Update Mail Order
   ///
   /// Updates mail service metadata for the order, such as stored settings or account details.
-  Future updateMailInfo(String id) async {
+  Future<SuccessTextResponse> updateMailInfo(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -1458,9 +1458,9 @@ if (enabled != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// View Mail Log

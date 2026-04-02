@@ -21,6 +21,7 @@ import org.openapitools.client.model.License;
 import org.openapitools.client.model.LicenseRow;
 import org.openapitools.client.model.LicensesCancel200Response;
 import org.openapitools.client.model.LicensesOrder;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -47,7 +48,7 @@ public class LicensesApiTest {
      */
     @Test
     public void addLicenseTest() throws ApiException {
-        api.addLicense();
+        ServiceOrderPostResponse response = api.addLicense();
         // TODO: test validations
     }
 
@@ -185,7 +186,7 @@ public class LicensesApiTest {
     @Test
     public void updateLicenseInfoTest() throws ApiException {
         String id = null;
-        api.updateLicenseInfo(id);
+        SuccessTextResponse response = api.updateLicenseInfo(id);
         // TODO: test validations
     }
 

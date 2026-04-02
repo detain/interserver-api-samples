@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_account_credit_card**
-> delete_account_credit_card(id)
+> str delete_account_credit_card(id)
 
 Remove Credit Card
 
@@ -277,7 +277,8 @@ id = 'id_example' # str | The credit card ID. Use the card ID returned from `POS
 
 try:
     # Remove Credit Card
-    api_instance.delete_account_credit_card(id)
+    api_response = api_instance.delete_account_credit_card(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling BillingApi->delete_account_credit_card: %s\n" % e)
 ```
@@ -290,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -864,7 +865,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_billing_cart**
-> get_billing_cart()
+> object get_billing_cart()
 
 Get Shopping Cart Contents
 
@@ -899,7 +900,8 @@ api_instance = myadmin-client-python.BillingApi(myadmin-client-python.ApiClient(
 
 try:
     # Get Shopping Cart Contents
-    api_instance.get_billing_cart()
+    api_response = api_instance.get_billing_cart()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling BillingApi->get_billing_cart: %s\n" % e)
 ```
@@ -909,7 +911,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1111,7 +1113,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_billing_pre_pays**
-> get_billing_pre_pays()
+> object get_billing_pre_pays()
 
 List Prepay Balances
 
@@ -1146,7 +1148,8 @@ api_instance = myadmin-client-python.BillingApi(myadmin-client-python.ApiClient(
 
 try:
     # List Prepay Balances
-    api_instance.get_billing_pre_pays()
+    api_response = api_instance.get_billing_pre_pays()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling BillingApi->get_billing_pre_pays: %s\n" % e)
 ```
@@ -1156,7 +1159,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1370,7 +1373,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_credit_card**
-> update_account_credit_card(id)
+> str update_account_credit_card(id)
 
 Update Credit Card
 
@@ -1406,7 +1409,8 @@ id = 56 # int | The credit card ID. Use the card ID returned from `POST /account
 
 try:
     # Update Credit Card
-    api_instance.update_account_credit_card(id)
+    api_response = api_instance.update_account_credit_card(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling BillingApi->update_account_credit_card: %s\n" % e)
 ```
@@ -1419,7 +1423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

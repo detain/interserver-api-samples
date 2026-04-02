@@ -1,8 +1,5 @@
 package io.swagger.model;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -14,26 +11,46 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class InlineResponse20023   {
 
-  private @Valid Map<String, String> ips = new HashMap<String, String>();
+  private @Valid Boolean success = null;
+
+  private @Valid String text = null;
 
   /**
-   * A map of IP addresses to their current reverse DNS hostnames.
    **/
-  public InlineResponse20023 ips(Map<String, String> ips) {
-    this.ips = ips;
+  public InlineResponse20023 success(Boolean success) {
+    this.success = success;
     return this;
   }
 
   
-  @ApiModelProperty(value = "A map of IP addresses to their current reverse DNS hostnames.")
-  @JsonProperty("ips")
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("success")
   @NotNull
 
-  public Map<String, String> getIps() {
-    return ips;
+  public Boolean isSuccess() {
+    return success;
   }
-  public void setIps(Map<String, String> ips) {
-    this.ips = ips;
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
+  /**
+   **/
+  public InlineResponse20023 text(String text) {
+    this.text = text;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("text")
+  @NotNull
+
+  public String getText() {
+    return text;
+  }
+  public void setText(String text) {
+    this.text = text;
   }
 
 
@@ -46,12 +63,13 @@ public class InlineResponse20023   {
       return false;
     }
     InlineResponse20023 inlineResponse20023 = (InlineResponse20023) o;
-    return Objects.equals(ips, inlineResponse20023.ips);
+    return Objects.equals(success, inlineResponse20023.success) &&
+        Objects.equals(text, inlineResponse20023.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ips);
+    return Objects.hash(success, text);
   }
 
   @Override
@@ -59,7 +77,8 @@ public class InlineResponse20023   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20023 {\n");
     
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }

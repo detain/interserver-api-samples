@@ -288,8 +288,8 @@ case class BackupsApi[Auth <: org.openapitools.client.core.Authorization] privat
    * Updates backup storage service metadata, such as stored credentials or settings for the order.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -298,7 +298,7 @@ case class BackupsApi[Auth <: org.openapitools.client.core.Authorization] privat
    * 
    * @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
    */
-  def updateBackupInfo(id: Int)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateBackupInfo(id: Int)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/backups/${idPathParam}"
@@ -309,7 +309,7 @@ case class BackupsApi[Auth <: org.openapitools.client.core.Authorization] privat
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Validates a backup storage order without placing it, returning calculated pricing and any validation errors. Use this to display a confirmation screen with the final price before submitting the order via `POST /backups/order`.

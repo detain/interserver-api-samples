@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 <a name="addwebsite"></a>
 # **AddWebsite**
-> void AddWebsite ()
+> ServiceOrderPostResponse AddWebsite ()
 
 Place Website Order
 
@@ -61,7 +61,8 @@ namespace Example
             try
             {
                 // Place Website Order
-                apiInstance.AddWebsite();
+                ServiceOrderPostResponse result = apiInstance.AddWebsite();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -77,7 +78,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -160,7 +161,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="getwebsitebuyip"></a>
 # **GetWebsiteBuyIp**
-> InlineResponse20023 GetWebsiteBuyIp (int? id)
+> InlineResponse20024 GetWebsiteBuyIp (int? id)
 
 Get Website IP Information
 
@@ -199,7 +200,7 @@ namespace Example
             try
             {
                 // Get Website IP Information
-                InlineResponse20023 result = apiInstance.GetWebsiteBuyIp(id);
+                InlineResponse20024 result = apiInstance.GetWebsiteBuyIp(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -219,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -740,7 +741,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="postwebsitebuyip"></a>
 # **PostWebsiteBuyIp**
-> InlineResponse20024 PostWebsiteBuyIp (IdBuyIpBody body, int? id)
+> InlineResponse20025 PostWebsiteBuyIp (IdBuyIpBody body, int? id)
 
 Update Website IP DNS
 
@@ -780,7 +781,7 @@ namespace Example
             try
             {
                 // Update Website IP DNS
-                InlineResponse20024 result = apiInstance.PostWebsiteBuyIp(body, id);
+                InlineResponse20025 result = apiInstance.PostWebsiteBuyIp(body, id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -801,7 +802,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -815,7 +816,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="postwebsitemigration"></a>
 # **PostWebsiteMigration**
-> InlineResponse20025 PostWebsiteMigration (IdMigrationBody body, int? id)
+> InlineResponse20026 PostWebsiteMigration (IdMigrationBody body, int? id)
 
 Request Website Migration
 
@@ -855,7 +856,7 @@ namespace Example
             try
             {
                 // Request Website Migration
-                InlineResponse20025 result = apiInstance.PostWebsiteMigration(body, id);
+                InlineResponse20026 result = apiInstance.PostWebsiteMigration(body, id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -876,7 +877,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -1033,7 +1034,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updatewebsiteinfo"></a>
 # **UpdateWebsiteInfo**
-> void UpdateWebsiteInfo (string id)
+> SuccessTextResponse UpdateWebsiteInfo (string id)
 
 Update Website Order
 
@@ -1072,7 +1073,8 @@ namespace Example
             try
             {
                 // Update Website Order
-                apiInstance.UpdateWebsiteInfo(id);
+                SuccessTextResponse result = apiInstance.UpdateWebsiteInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1091,7 +1093,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1105,7 +1107,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="webhostingcancel"></a>
 # **WebhostingCancel**
-> InlineResponse20022 WebhostingCancel (string id)
+> InlineResponse20023 WebhostingCancel (string id)
 
 Cancel Website
 
@@ -1144,7 +1146,7 @@ namespace Example
             try
             {
                 // Cancel Website
-                InlineResponse20022 result = apiInstance.WebhostingCancel(id);
+                InlineResponse20023 result = apiInstance.WebhostingCancel(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1164,7 +1166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 

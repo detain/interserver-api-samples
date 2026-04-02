@@ -26,7 +26,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addServer"></a>
 # **addServer**
-> addServer()
+> AddServer200Response addServer()
 
 Place Server Order
 
@@ -67,7 +67,8 @@ public class Example {
 
     ServersApi apiInstance = new ServersApi(defaultClient);
     try {
-      apiInstance.addServer();
+      AddServer200Response result = apiInstance.addServer();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ServersApi#addServer");
       System.err.println("Status code: " + e.getCode());
@@ -84,7 +85,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**AddServer200Response**](AddServer200Response.md)
 
 ### Authorization
 
@@ -98,8 +99,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Server order placed successfully. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="buyItNowServerOrder"></a>
 # **buyItNowServerOrder**
@@ -1406,7 +1407,7 @@ public class Example {
 
 <a id="updateServerInfo"></a>
 # **updateServerInfo**
-> updateServerInfo(id)
+> SuccessTextResponse updateServerInfo(id)
 
 Update Server Order
 
@@ -1448,7 +1449,8 @@ public class Example {
     ServersApi apiInstance = new ServersApi(defaultClient);
     String id = "id_example"; // String | Server ID number.
     try {
-      apiInstance.updateServerInfo(id);
+      SuccessTextResponse result = apiInstance.updateServerInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ServersApi#updateServerInfo");
       System.err.println("Status code: " + e.getCode());
@@ -1468,7 +1470,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1482,6 +1484,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 

@@ -422,19 +422,18 @@ void OpenAPIBackupsApi::UpdateBackupInfoResponse::SetHttpResponseCode(EHttpRespo
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIBackupsApi::UpdateBackupInfoResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIBackupsApi::ValidateBackupOrderRequest::ComputePath() const

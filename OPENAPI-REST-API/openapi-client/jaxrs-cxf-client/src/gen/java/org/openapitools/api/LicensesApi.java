@@ -7,6 +7,7 @@ import org.openapitools.model.License;
 import org.openapitools.model.LicenseRow;
 import org.openapitools.model.LicensesCancel200Response;
 import org.openapitools.model.LicensesOrder;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 
 import java.util.List;
@@ -41,9 +42,9 @@ public interface LicensesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Place License Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void addLicense();
+        @ApiResponse(code = 200, message = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", response = ServiceOrderPostResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public ServiceOrderPostResponse addLicense();
 
     /**
      * Get License
@@ -192,7 +193,7 @@ public interface LicensesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update License", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateLicenseInfo(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateLicenseInfo(@PathParam("id") String id);
 }

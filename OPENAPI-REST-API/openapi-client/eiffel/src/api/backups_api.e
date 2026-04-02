@@ -318,13 +318,14 @@ feature -- API Access
 			end
 		end
 
-	update_backup_info (id: INTEGER_32)
+	update_backup_info (id: INTEGER_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update Backup Information
 			-- Updates backup storage service metadata, such as stored credentials or settings for the order.
 			-- 
 			-- argument: id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -343,9 +344,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

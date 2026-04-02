@@ -12,6 +12,7 @@ package myadmin
 // Create firewall rule for your ip
 type CreateFirewallRule struct {
 	DestinationPort int32 `json:"destination_port,omitempty"`
+	// Source IP address to match. Use '0.0.0.0' to match any source.
 	SourceIp string `json:"source_ip,omitempty"`
 	SourcePort int32 `json:"source_port,omitempty"`
 	// 1 = TCP, 2 = UDP

@@ -28,6 +28,7 @@ import org.openapitools.model.DomainRow;
 import org.openapitools.model.DomainSearchResponse;
 import org.openapitools.model.DomainWhoisPrivacyRequest;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import org.junit.Test;
@@ -85,8 +86,8 @@ public class DomainsApiTest {
      */
     @Test
     public void addDomainTest() {
-        //api.addDomain();
-        
+        //ServiceOrderPostResponse response = api.addDomain();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -555,8 +556,8 @@ public class DomainsApiTest {
     @Test
     public void updateDomainInfoTest() {
         String id = null;
-        //api.updateDomainInfo(id);
-        
+        //SuccessTextResponse response = api.updateDomainInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 

@@ -38,6 +38,7 @@ spec/models/account_info_oauthproviders_spec.cr
 spec/models/account_info_post_spec.cr
 spec/models/account_info_spec.cr
 spec/models/account_ssh_key_spec.cr
+spec/models/add_server200_response_spec.cr
 spec/models/affiliate_banner_row_spec.cr
 spec/models/affiliate_dock_setup_spec.cr
 spec/models/affiliate_payment_setup_spec.cr
@@ -369,6 +370,7 @@ spec/models/servers_buy_now_response_spec.cr
 spec/models/servers_cancel200_response_spec.cr
 spec/models/service_categories_spec.cr
 spec/models/service_category_spec.cr
+spec/models/service_order_post_response_spec.cr
 spec/models/service_spec.cr
 spec/models/service_type_spec.cr
 spec/models/service_types_spec.cr
@@ -509,6 +511,7 @@ src/openapi_client/models/account_info_oauth_config_providers_value.cr
 src/openapi_client/models/account_info_oauthproviders.cr
 src/openapi_client/models/account_info_post.cr
 src/openapi_client/models/account_ssh_key.cr
+src/openapi_client/models/add_server200_response.cr
 src/openapi_client/models/affiliate_banner_row.cr
 src/openapi_client/models/affiliate_dock_setup.cr
 src/openapi_client/models/affiliate_payment_setup.cr
@@ -841,6 +844,7 @@ src/openapi_client/models/servers_cancel200_response.cr
 src/openapi_client/models/service.cr
 src/openapi_client/models/service_categories.cr
 src/openapi_client/models/service_category.cr
+src/openapi_client/models/service_order_post_response.cr
 src/openapi_client/models/service_type.cr
 src/openapi_client/models/service_types.cr
 src/openapi_client/models/services.cr

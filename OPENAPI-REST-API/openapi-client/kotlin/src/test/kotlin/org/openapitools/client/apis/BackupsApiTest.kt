@@ -111,7 +111,8 @@ class BackupsApiTest : ShouldSpec() {
         should("test updateBackupInfo") {
             // uncomment below to test updateBackupInfo
             //val id : kotlin.Int = 56 // kotlin.Int | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
-            //apiInstance.updateBackupInfo(id)
+            //val result : SuccessTextResponse = apiInstance.updateBackupInfo(id)
+            //result shouldBe ("TODO")
         }
 
         // to test validateBackupOrder

@@ -737,22 +737,21 @@ void OpenAPIAccountApi::UpdateAccountInfoResponse::SetHttpResponseCode(EHttpResp
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
 		break;
 	case 422:
 		SetResponseString(TEXT("Validation error while updating account data."));
 		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
-		break;
 	}
 }
 
 bool OpenAPIAccountApi::UpdateAccountInfoResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIAccountApi::UpdateAccountIpLimitsRequest::ComputePath() const
@@ -812,22 +811,21 @@ void OpenAPIAccountApi::UpdateAccountIpLimitsResponse::SetHttpResponseCode(EHttp
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
 		break;
 	case 422:
 		SetResponseString(TEXT("IP limit payload contains an invalid address."));
 		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
-		break;
 	}
 }
 
 bool OpenAPIAccountApi::UpdateAccountIpLimitsResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIAccountApi::UpdateAccountPasswordRequest::ComputePath() const

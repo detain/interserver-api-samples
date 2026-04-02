@@ -53,7 +53,7 @@ Method | HTTP request | Description
 
 ## AddVps
 
-> AddVps(ctx).VpsOrderPostRequest(vpsOrderPostRequest).Execute()
+> ServiceOrderPostResponse AddVps(ctx).VpsOrderPostRequest(vpsOrderPostRequest).Execute()
 
 Place VPS Order
 
@@ -76,11 +76,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VPSAPI.AddVps(context.Background()).VpsOrderPostRequest(vpsOrderPostRequest).Execute()
+	resp, r, err := apiClient.VPSAPI.AddVps(context.Background()).VpsOrderPostRequest(vpsOrderPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.AddVps``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AddVps`: ServiceOrderPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `VPSAPI.AddVps`: %v\n", resp)
 }
 ```
 
@@ -99,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2977,7 +2979,7 @@ Name | Type | Description  | Notes
 
 ## UpdateVpsInfo
 
-> UpdateVpsInfo(ctx, id).Execute()
+> SuccessTextResponse UpdateVpsInfo(ctx, id).Execute()
 
 Update VPS Order
 
@@ -3000,11 +3002,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VPSAPI.UpdateVpsInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.VPSAPI.UpdateVpsInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.UpdateVpsInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateVpsInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `VPSAPI.UpdateVpsInfo`: %v\n", resp)
 }
 ```
 
@@ -3027,7 +3031,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

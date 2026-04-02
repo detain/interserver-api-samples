@@ -25,6 +25,7 @@ import org.openapitools.client.api.DnsListItem
 import org.openapitools.client.api.DnsRecord
 import org.openapitools.client.api.DnsRecordType
 import org.openapitools.client.api.GetAccountInfo401Response
+import org.openapitools.client.api.SuccessTextResponse
 
 object DNSApi {
 
@@ -32,7 +33,9 @@ object DNSApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addDnsDomain(host: String, domain: String, ip: String): Task[Unit] = {
+  def addDnsDomain(host: String, domain: String, ip: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/dns"
 
     val httpMethod = Method.POST
@@ -46,7 +49,7 @@ object DNSApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -70,7 +73,9 @@ object DNSApi {
     } yield resp
   }
 
-  def deleteDnsDomain(host: String, id: String): Task[Unit] = {
+  def deleteDnsDomain(host: String, id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/dns/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.DELETE
@@ -84,12 +89,14 @@ object DNSApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
 
-  def deleteDnsRecord(host: String, domainId: Integer, recordId: Integer): Task[Unit] = {
+  def deleteDnsRecord(host: String, domainId: Integer, recordId: Integer): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/dns/{domainId}/{recordId}".replaceAll("\\{" + "domainId" + "\\}",escape(domainId.toString)).replaceAll("\\{" + "recordId" + "\\}",escape(recordId.toString))
 
     val httpMethod = Method.DELETE
@@ -103,7 +110,7 @@ object DNSApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -150,7 +157,9 @@ object DNSApi {
     } yield resp
   }
 
-  def updateDnsRecord(host: String, domainId: Integer, recordId: Integer, name: String, `type`: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String): Task[Unit] = {
+  def updateDnsRecord(host: String, domainId: Integer, recordId: Integer, name: String, `type`: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/dns/{domainId}/{recordId}".replaceAll("\\{" + "domainId" + "\\}",escape(domainId.toString)).replaceAll("\\{" + "recordId" + "\\}",escape(recordId.toString))
 
     val httpMethod = Method.POST
@@ -164,7 +173,7 @@ object DNSApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -176,7 +185,9 @@ class HttpServiceDNSApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addDnsDomain(domain: String, ip: String): Task[Unit] = {
+  def addDnsDomain(domain: String, ip: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/dns"
 
     val httpMethod = Method.POST
@@ -190,7 +201,7 @@ class HttpServiceDNSApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -214,7 +225,9 @@ class HttpServiceDNSApi(service: HttpService) {
     } yield resp
   }
 
-  def deleteDnsDomain(id: String): Task[Unit] = {
+  def deleteDnsDomain(id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/dns/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.DELETE
@@ -228,12 +241,14 @@ class HttpServiceDNSApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
 
-  def deleteDnsRecord(domainId: Integer, recordId: Integer): Task[Unit] = {
+  def deleteDnsRecord(domainId: Integer, recordId: Integer): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/dns/{domainId}/{recordId}".replaceAll("\\{" + "domainId" + "\\}",escape(domainId.toString)).replaceAll("\\{" + "recordId" + "\\}",escape(recordId.toString))
 
     val httpMethod = Method.DELETE
@@ -247,7 +262,7 @@ class HttpServiceDNSApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -294,7 +309,9 @@ class HttpServiceDNSApi(service: HttpService) {
     } yield resp
   }
 
-  def updateDnsRecord(domainId: Integer, recordId: Integer, name: String, `type`: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String): Task[Unit] = {
+  def updateDnsRecord(domainId: Integer, recordId: Integer, name: String, `type`: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/dns/{domainId}/{recordId}".replaceAll("\\{" + "domainId" + "\\}",escape(domainId.toString)).replaceAll("\\{" + "recordId" + "\\}",escape(recordId.toString))
 
     val httpMethod = Method.POST
@@ -308,7 +325,7 @@ class HttpServiceDNSApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }

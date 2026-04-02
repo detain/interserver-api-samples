@@ -122,23 +122,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.</remarks>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
+        /// <response code="200">Simple string response</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpDelete]
         [Route("/apiv2/account/creditcards/{id}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("DeleteAccountCreditCard")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "Simple string response")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult DeleteAccountCreditCard([FromRoute][Required]string id)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "\"\"";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<string>(exampleJson)
+                        : default(string);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -411,23 +417,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// Get Shopping Cart Contents
         /// </summary>
         /// <remarks>Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.</remarks>
+        /// <response code="200">Current shopping cart contents and available payment methods.</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpGet]
         [Route("/apiv2/billing/cart")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("GetBillingCart")]
+        [SwaggerResponse(statusCode: 200, type: typeof(Object), description: "Current shopping cart contents and available payment methods.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult GetBillingCart()
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(Object));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{ }";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<Object>(exampleJson)
+                        : default(Object);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -523,23 +535,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// List Prepay Balances
         /// </summary>
         /// <remarks>Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.</remarks>
+        /// <response code="200">Prepay balances and metadata.</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpGet]
         [Route("/apiv2/billing/prepays")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("GetBillingPrePays")]
+        [SwaggerResponse(statusCode: 200, type: typeof(Object), description: "Prepay balances and metadata.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult GetBillingPrePays()
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(Object));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{ }";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<Object>(exampleJson)
+                        : default(Object);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -650,23 +668,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.</remarks>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
+        /// <response code="200">Simple string response</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/account/creditcards/{id}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UpdateAccountCreditCard")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "Simple string response")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult UpdateAccountCreditCard([FromRoute][Required]int? id)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "\"\"";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<string>(exampleJson)
+                        : default(string);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>

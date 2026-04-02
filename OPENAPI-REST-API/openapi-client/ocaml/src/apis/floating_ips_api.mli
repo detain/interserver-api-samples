@@ -5,13 +5,13 @@
  *
  *)
 
-val add_floating_ip : unit -> unit Lwt.t
+val add_floating_ip : unit -> Service_order_post_response.t Lwt.t
 val floating_ips_cancel : id:int32 -> Floating_ips_cancel_200_response.t Lwt.t
-val get_floating_ip_info : id:int32 -> unit Lwt.t
+val get_floating_ip_info : id:int32 -> Yojson.Safe.t Lwt.t
 val get_floating_ip_invoices : id:int32 -> Charge_invoice_rows.t Lwt.t
 val get_floating_ips_list : unit -> unit Lwt.t
 val get_floating_ips_welcome_email : id:int32 -> Success_text_response.t Lwt.t
-val get_new_floating_ip : unit -> unit Lwt.t
+val get_new_floating_ip : unit -> Yojson.Safe.t Lwt.t
 val post_floating_ips_change_ip : id:int32 -> ip:string -> Success_text_response.t Lwt.t
 val put_floating_ips : unit -> unit Lwt.t
-val update_floating_ip_info : id:string -> unit Lwt.t
+val update_floating_ip_info : id:string -> Success_text_response.t Lwt.t

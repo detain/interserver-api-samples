@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**update_dns_record**](DNSApi.md#update_dns_record) | **POST** /dns/{domainId}/{recordId} | Update DNS Record
 
 # **add_dns_domain**
-> add_dns_domain(domainip)
+> SuccessTextResponse add_dns_domain(domainip)
 
 Create DNS Domain
 
@@ -51,7 +51,8 @@ ip = 'ip_example' # String |
 
 begin
   #Create DNS Domain
-  api_instance.add_dns_domain(domainip)
+  result = api_instance.add_dns_domain(domainip)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->add_dns_domain: #{e}"
 end
@@ -66,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -80,7 +81,7 @@ nil (empty response body)
 
 
 # **add_dns_domain**
-> add_dns_domain(body)
+> SuccessTextResponse add_dns_domain(body)
 
 Create DNS Domain
 
@@ -114,7 +115,8 @@ body = SwaggerClient::DnsNewDomain.new # DnsNewDomain |
 
 begin
   #Create DNS Domain
-  api_instance.add_dns_domain(body)
+  result = api_instance.add_dns_domain(body)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->add_dns_domain: #{e}"
 end
@@ -128,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -278,7 +280,7 @@ nil (empty response body)
 
 
 # **delete_dns_domain**
-> delete_dns_domain(id)
+> SuccessTextResponse delete_dns_domain(id)
 
 Delete DNS Domain
 
@@ -312,7 +314,8 @@ id = 'id_example' # String | The DNS domain ID to delete. Use the `id` from `GET
 
 begin
   #Delete DNS Domain
-  api_instance.delete_dns_domain(id)
+  result = api_instance.delete_dns_domain(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->delete_dns_domain: #{e}"
 end
@@ -326,7 +329,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -340,7 +343,7 @@ nil (empty response body)
 
 
 # **delete_dns_record**
-> delete_dns_record(domain_id, record_id)
+> SuccessTextResponse delete_dns_record(domain_id, record_id)
 
 Delete DNS Record
 
@@ -375,7 +378,8 @@ record_id = 56 # Integer | The DNS record ID within the domain. Use the record `
 
 begin
   #Delete DNS Record
-  api_instance.delete_dns_record(domain_id, record_id)
+  result = api_instance.delete_dns_record(domain_id, record_id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->delete_dns_record: #{e}"
 end
@@ -390,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -525,7 +529,7 @@ This endpoint does not need any parameter.
 
 
 # **update_dns_record**
-> update_dns_record(nametypecontentttlpriodisabledordernameauthdomain_idrecord_id)
+> SuccessTextResponse update_dns_record(nametypecontentttlpriodisabledordernameauthdomain_idrecord_id)
 
 Update DNS Record
 
@@ -568,7 +572,8 @@ record_id = 56 # Integer | The DNS record ID within the domain. Use the record `
 
 begin
   #Update DNS Record
-  api_instance.update_dns_record(nametypecontentttlpriodisabledordernameauthdomain_idrecord_id)
+  result = api_instance.update_dns_record(nametypecontentttlpriodisabledordernameauthdomain_idrecord_id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->update_dns_record: #{e}"
 end
@@ -591,7 +596,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -605,7 +610,7 @@ nil (empty response body)
 
 
 # **update_dns_record**
-> update_dns_record(bodydomain_idrecord_id)
+> SuccessTextResponse update_dns_record(bodydomain_idrecord_id)
 
 Update DNS Record
 
@@ -641,7 +646,8 @@ record_id = 56 # Integer | The DNS record ID within the domain. Use the record `
 
 begin
   #Update DNS Record
-  api_instance.update_dns_record(bodydomain_idrecord_id)
+  result = api_instance.update_dns_record(bodydomain_idrecord_id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->update_dns_record: #{e}"
 end
@@ -657,7 +663,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

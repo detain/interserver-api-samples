@@ -54,7 +54,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-(empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -958,7 +958,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

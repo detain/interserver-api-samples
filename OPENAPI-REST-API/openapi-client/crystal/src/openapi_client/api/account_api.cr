@@ -728,10 +728,10 @@ module OpenAPIClient
     # @param zip [String] Your ZIP code.
     # @param country [String] Your country.
     # @param phone [String] Your phone number.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_account_info(name : String, address : String, city : String, state : String, zip : String, country : String, phone : String, company : String? = nil, address2 : String? = nil, locale : String? = nil, email_invoices : String? = nil, email_abuse : String? = nil, disable_reset : Bool? = nil, disable_reinstall : Bool? = nil, disable_server_notifications : Bool? = nil, disable_email_notifications : Bool? = nil, gstin : String? = nil)
-      update_account_info_with_http_info(name, address, city, state, zip, country, phone, company, address2, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
-      nil
+      data, _status_code, _headers = update_account_info_with_http_info(name, address, city, state, zip, country, phone, company, address2, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
+      data
     end
 
     # Update Account Information
@@ -743,7 +743,7 @@ module OpenAPIClient
     # @param zip [String] Your ZIP code.
     # @param country [String] Your country.
     # @param phone [String] Your phone number.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_account_info_with_http_info(name : String, address : String, city : String, state : String, zip : String, country : String, phone : String, company : String? = nil, address2 : String? = nil, locale : String? = nil, email_invoices : String? = nil, email_abuse : String? = nil, disable_reset : Bool? = nil, disable_reinstall : Bool? = nil, disable_server_notifications : Bool? = nil, disable_email_notifications : Bool? = nil, gstin : String? = nil)
       if @api_client.config.debugging
         Log.debug {"Calling API: AccountApi.update_account_info ..."}
@@ -834,24 +834,24 @@ module OpenAPIClient
         Log.debug {"API called: AccountApi#update_account_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # Add IP Access Restriction
     # Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
     # @param start [String] The begining (or first) IP address in the range.
     # @param _end [String] The ending (or last) IP address in the range.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_account_ip_limits(start : String, _end : String)
-      update_account_ip_limits_with_http_info(start, _end)
-      nil
+      data, _status_code, _headers = update_account_ip_limits_with_http_info(start, _end)
+      data
     end
 
     # Add IP Access Restriction
     # Adds an IP address range to the account&#39;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
     # @param start [String] The begining (or first) IP address in the range.
     # @param _end [String] The ending (or last) IP address in the range.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_account_ip_limits_with_http_info(start : String, _end : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: AccountApi.update_account_ip_limits ..."}
@@ -907,7 +907,7 @@ module OpenAPIClient
         Log.debug {"API called: AccountApi#update_account_ip_limits\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # Change Account Password

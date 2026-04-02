@@ -533,21 +533,43 @@ bool BillingManager::addBillingPrepaySync(char * accessToken,
 static bool deleteAccountCreditCardProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -558,15 +580,15 @@ static bool deleteAccountCreditCardProcessor(MemoryStruct_s p_chunk, long code, 
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool deleteAccountCreditCardHelper(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -642,8 +664,8 @@ static bool deleteAccountCreditCardHelper(char * accessToken,
 
 bool BillingManager::deleteAccountCreditCardAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return deleteAccountCreditCardHelper(accessToken,
 	id, 
@@ -652,8 +674,8 @@ bool BillingManager::deleteAccountCreditCardAsync(char * accessToken,
 
 bool BillingManager::deleteAccountCreditCardSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return deleteAccountCreditCardHelper(accessToken,
 	id, 
@@ -2028,21 +2050,43 @@ bool BillingManager::getAffiliateWebTrafficSync(char * accessToken,
 static bool getBillingCartProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -2053,15 +2097,15 @@ static bool getBillingCartProcessor(MemoryStruct_s p_chunk, long code, char* err
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool getBillingCartHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -2131,8 +2175,8 @@ static bool getBillingCartHelper(char * accessToken,
 
 bool BillingManager::getBillingCartAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getBillingCartHelper(accessToken,
 	
@@ -2141,8 +2185,8 @@ bool BillingManager::getBillingCartAsync(char * accessToken,
 
 bool BillingManager::getBillingCartSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getBillingCartHelper(accessToken,
 	
@@ -2617,21 +2661,43 @@ bool BillingManager::getBillingInvoicesSync(char * accessToken,
 static bool getBillingPrePaysProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -2642,15 +2708,15 @@ static bool getBillingPrePaysProcessor(MemoryStruct_s p_chunk, long code, char* 
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool getBillingPrePaysHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -2720,8 +2786,8 @@ static bool getBillingPrePaysHelper(char * accessToken,
 
 bool BillingManager::getBillingPrePaysAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getBillingPrePaysHelper(accessToken,
 	
@@ -2730,8 +2796,8 @@ bool BillingManager::getBillingPrePaysAsync(char * accessToken,
 
 bool BillingManager::getBillingPrePaysSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getBillingPrePaysHelper(accessToken,
 	
@@ -3234,21 +3300,43 @@ bool BillingManager::postBillingCreditCardVerifySync(char * accessToken,
 static bool updateAccountCreditCardProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -3259,15 +3347,15 @@ static bool updateAccountCreditCardProcessor(MemoryStruct_s p_chunk, long code, 
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool updateAccountCreditCardHelper(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -3343,8 +3431,8 @@ static bool updateAccountCreditCardHelper(char * accessToken,
 
 bool BillingManager::updateAccountCreditCardAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return updateAccountCreditCardHelper(accessToken,
 	id, 
@@ -3353,8 +3441,8 @@ bool BillingManager::updateAccountCreditCardAsync(char * accessToken,
 
 bool BillingManager::updateAccountCreditCardSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return updateAccountCreditCardHelper(accessToken,
 	id, 

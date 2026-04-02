@@ -974,7 +974,7 @@ end:
 //
 // Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
 //
-void
+success_text_response_t*
 AccountAPI_updateAccountInfo(apiClient_t *apiClient, char *name, char *address, char *city, char *state, char *zip, char *country, char *phone, char *company, char *address2, char *locale, char *email_invoices, char *email_abuse, int *disable_reset, int *disable_reinstall, int *disable_server_notifications, int *disable_email_notifications, char *gstin)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -1217,6 +1217,10 @@ AccountAPI_updateAccountInfo(apiClient_t *apiClient, char *name, char *address, 
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
@@ -1224,12 +1228,18 @@ AccountAPI_updateAccountInfo(apiClient_t *apiClient, char *name, char *address, 
     //if (apiClient->response_code == 422) {
     //    printf("%s\n","Validation error while updating account data.");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(AccountAPIlocalVarJSON);
+        cJSON_Delete(AccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -1249,7 +1259,7 @@ end:
         free(valueForm_name);
         valueForm_name = NULL;
     }
-    keyValuePair_free(keyPairForm_name);
+    free(keyPairForm_name);
     if (keyForm_company) {
         free(keyForm_company);
         keyForm_company = NULL;
@@ -1258,7 +1268,7 @@ end:
         free(valueForm_company);
         valueForm_company = NULL;
     }
-    keyValuePair_free(keyPairForm_company);
+    free(keyPairForm_company);
     if (keyForm_address) {
         free(keyForm_address);
         keyForm_address = NULL;
@@ -1267,7 +1277,7 @@ end:
         free(valueForm_address);
         valueForm_address = NULL;
     }
-    keyValuePair_free(keyPairForm_address);
+    free(keyPairForm_address);
     if (keyForm_address2) {
         free(keyForm_address2);
         keyForm_address2 = NULL;
@@ -1276,7 +1286,7 @@ end:
         free(valueForm_address2);
         valueForm_address2 = NULL;
     }
-    keyValuePair_free(keyPairForm_address2);
+    free(keyPairForm_address2);
     if (keyForm_city) {
         free(keyForm_city);
         keyForm_city = NULL;
@@ -1285,7 +1295,7 @@ end:
         free(valueForm_city);
         valueForm_city = NULL;
     }
-    keyValuePair_free(keyPairForm_city);
+    free(keyPairForm_city);
     if (keyForm_state) {
         free(keyForm_state);
         keyForm_state = NULL;
@@ -1294,7 +1304,7 @@ end:
         free(valueForm_state);
         valueForm_state = NULL;
     }
-    keyValuePair_free(keyPairForm_state);
+    free(keyPairForm_state);
     if (keyForm_zip) {
         free(keyForm_zip);
         keyForm_zip = NULL;
@@ -1303,7 +1313,7 @@ end:
         free(valueForm_zip);
         valueForm_zip = NULL;
     }
-    keyValuePair_free(keyPairForm_zip);
+    free(keyPairForm_zip);
     if (keyForm_country) {
         free(keyForm_country);
         keyForm_country = NULL;
@@ -1312,7 +1322,7 @@ end:
         free(valueForm_country);
         valueForm_country = NULL;
     }
-    keyValuePair_free(keyPairForm_country);
+    free(keyPairForm_country);
     if (keyForm_phone) {
         free(keyForm_phone);
         keyForm_phone = NULL;
@@ -1321,7 +1331,7 @@ end:
         free(valueForm_phone);
         valueForm_phone = NULL;
     }
-    keyValuePair_free(keyPairForm_phone);
+    free(keyPairForm_phone);
     if (keyForm_locale) {
         free(keyForm_locale);
         keyForm_locale = NULL;
@@ -1330,7 +1340,7 @@ end:
         free(valueForm_locale);
         valueForm_locale = NULL;
     }
-    keyValuePair_free(keyPairForm_locale);
+    free(keyPairForm_locale);
     if (keyForm_email_invoices) {
         free(keyForm_email_invoices);
         keyForm_email_invoices = NULL;
@@ -1339,7 +1349,7 @@ end:
         free(valueForm_email_invoices);
         valueForm_email_invoices = NULL;
     }
-    keyValuePair_free(keyPairForm_email_invoices);
+    free(keyPairForm_email_invoices);
     if (keyForm_email_abuse) {
         free(keyForm_email_abuse);
         keyForm_email_abuse = NULL;
@@ -1348,7 +1358,7 @@ end:
         free(valueForm_email_abuse);
         valueForm_email_abuse = NULL;
     }
-    keyValuePair_free(keyPairForm_email_abuse);
+    free(keyPairForm_email_abuse);
     if (keyForm_disable_reset) {
         free(keyForm_disable_reset);
         keyForm_disable_reset = NULL;
@@ -1377,7 +1387,11 @@ end:
         free(valueForm_gstin);
         valueForm_gstin = NULL;
     }
-    keyValuePair_free(keyPairForm_gstin);
+    free(keyPairForm_gstin);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -1385,7 +1399,7 @@ end:
 //
 // Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
 //
-void
+success_text_response_t*
 AccountAPI_updateAccountIpLimits(apiClient_t *apiClient, char *start, char *end)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -1444,6 +1458,10 @@ AccountAPI_updateAccountIpLimits(apiClient_t *apiClient, char *start, char *end)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
@@ -1451,12 +1469,18 @@ AccountAPI_updateAccountIpLimits(apiClient_t *apiClient, char *start, char *end)
     //if (apiClient->response_code == 422) {
     //    printf("%s\n","IP limit payload contains an invalid address.");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *AccountAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(AccountAPIlocalVarJSON);
+        cJSON_Delete(AccountAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -1476,7 +1500,7 @@ end:
         free(valueForm_start);
         valueForm_start = NULL;
     }
-    keyValuePair_free(keyPairForm_start);
+    free(keyPairForm_start);
     if (keyForm_end) {
         free(keyForm_end);
         keyForm_end = NULL;
@@ -1485,7 +1509,11 @@ end:
         free(valueForm_end);
         valueForm_end = NULL;
     }
-    keyValuePair_free(keyPairForm_end);
+    free(keyPairForm_end);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

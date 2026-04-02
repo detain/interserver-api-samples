@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="addServer"></a>
 # **addServer**
-> addServer()
+> InlineResponse20019 addServer()
 
 Place Server Order
 
@@ -39,7 +39,8 @@ Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; t
 
 val apiInstance = ServersApi()
 try {
-    apiInstance.addServer()
+    val result : InlineResponse20019 = apiInstance.addServer()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ServersApi#addServer")
     e.printStackTrace()
@@ -54,7 +55,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -67,7 +68,7 @@ null (empty response body)
 
 <a name="buyItNowServerOrder"></a>
 # **buyItNowServerOrder**
-> InlineResponse20026 buyItNowServerOrder()
+> InlineResponse20027 buyItNowServerOrder()
 
 Get Buy Now Server Options
 
@@ -81,7 +82,7 @@ Returns the configuration options and pricing for buy-it-now dedicated servers, 
 
 val apiInstance = ServersApi()
 try {
-    val result : InlineResponse20026 = apiInstance.buyItNowServerOrder()
+    val result : InlineResponse20027 = apiInstance.buyItNowServerOrder()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ServersApi#buyItNowServerOrder")
@@ -97,7 +98,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -908,7 +909,7 @@ Name | Type | Description  | Notes
 
 <a name="serversCancel"></a>
 # **serversCancel**
-> InlineResponse20019 serversCancel(id)
+> InlineResponse20020 serversCancel(id)
 
 Cancel Server Service
 
@@ -923,7 +924,7 @@ Cancels the dedicated server service. The server will be deprovisioned and billi
 val apiInstance = ServersApi()
 val id : kotlin.Int = 56 // kotlin.Int | Server ID number
 try {
-    val result : InlineResponse20019 = apiInstance.serversCancel(id)
+    val result : InlineResponse20020 = apiInstance.serversCancel(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ServersApi#serversCancel")
@@ -942,7 +943,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -955,7 +956,7 @@ Name | Type | Description  | Notes
 
 <a name="updateServerInfo"></a>
 # **updateServerInfo**
-> updateServerInfo(id)
+> SuccessTextResponse updateServerInfo(id)
 
 Update Server Order
 
@@ -970,7 +971,8 @@ Updates settings on a dedicated server order.
 val apiInstance = ServersApi()
 val id : kotlin.String = id_example // kotlin.String | Server ID number.
 try {
-    apiInstance.updateServerInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateServerInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ServersApi#updateServerInfo")
     e.printStackTrace()
@@ -988,7 +990,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -18,10 +18,11 @@ feature -- Test routines
             --
             -- Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         local
+            l_response: SERVICE_ORDER_POST_RESPONSE
         do
             -- TODO: Initialize required params.
 
-            -- api.add_license
+            -- l_response := api.add_license
             assert ("not_implemented", False)
         end
 
@@ -159,12 +160,13 @@ feature -- Test routines
             --
             -- Updates settings on a license service such as its assigned IP.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_license_info(l_id)
+            -- l_response := api.update_license_info(l_id)
             assert ("not_implemented", False)
         end
 

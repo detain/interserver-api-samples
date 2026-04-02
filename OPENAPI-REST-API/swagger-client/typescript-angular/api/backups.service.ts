@@ -634,9 +634,9 @@ export class BackupsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateBackupInfo(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateBackupInfo(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateBackupInfo(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateBackupInfo(id: number, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateBackupInfo(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateBackupInfo(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateBackupInfo(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -675,7 +675,7 @@ export class BackupsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/backups/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/backups/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

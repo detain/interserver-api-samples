@@ -37,6 +37,8 @@
 
 #include "AccountSshKeyTest.cpp"
 
+#include "AddServer_200_responseTest.cpp"
+
 #include "AffiliateBannerRowTest.cpp"
 
 #include "AffiliateDockSetupTest.cpp"
@@ -704,6 +706,8 @@
 #include "ServiceCategoriesTest.cpp"
 
 #include "ServiceCategoryTest.cpp"
+
+#include "ServiceOrderPostResponseTest.cpp"
 
 #include "ServiceTypeTest.cpp"
 
@@ -1430,6 +1434,16 @@ void runTests(){
     
     
     RUN_TEST(test_AccountSshKey_ssh_key_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_AddServer_200_response_text_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AddServer_200_response_invoice_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_AddServer_200_response_order_is_assigned_from_json);
     
     
     
@@ -6238,6 +6252,25 @@ void runTests(){
     
     
     
+    RUN_TEST(test_ServiceOrderPostResponse_r_continue_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_ServiceOrderPostResponse_total_cost_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServiceOrderPostResponse_iid_is_assigned_from_json);
+    
+    
+    
+    
+    RUN_TEST(test_ServiceOrderPostResponse_serviceId_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServiceOrderPostResponse_invoice_description_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_ServiceType_st_id_is_assigned_from_json);
     
     
@@ -8222,6 +8255,16 @@ void runTests(){
     
     
     RUN_TEST(test_AccountSshKey_ssh_key_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_AddServer_200_response_text_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AddServer_200_response_invoice_is_converted_to_json);
+    
+    
+    RUN_TEST(test_AddServer_200_response_order_is_converted_to_json);
     
     
     
@@ -13027,6 +13070,25 @@ void runTests(){
     
     
     RUN_TEST(test_ServiceCategory_category_module_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_ServiceOrderPostResponse_r_continue_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_ServiceOrderPostResponse_total_cost_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServiceOrderPostResponse_iid_is_converted_to_json);
+    
+    
+    
+    
+    RUN_TEST(test_ServiceOrderPostResponse_serviceId_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServiceOrderPostResponse_invoice_description_is_converted_to_json);
     
     
     

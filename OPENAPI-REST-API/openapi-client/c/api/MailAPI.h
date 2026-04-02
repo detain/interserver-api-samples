@@ -25,6 +25,7 @@
 #include "../model/mail_stats_type.h"
 #include "../model/send_mail.h"
 #include "../model/send_mail_adv.h"
+#include "../model/service_order_post_response.h"
 #include "../model/success_text_response.h"
 #include "../model/view_mail_log_start_date_parameter.h"
 
@@ -48,7 +49,7 @@ typedef enum  { interserver_management_api_viewMailLog_GROUPBY_NULL = 0, interse
 //
 // Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
 //
-void
+service_order_post_response_t*
 MailAPI_addMail(apiClient_t *apiClient);
 
 
@@ -240,7 +241,7 @@ MailAPI_updateMailAlert(apiClient_t *apiClient, int *id, mail_alert_update_reque
 //
 // Updates mail service metadata for the order, such as stored settings or account details.
 //
-void
+success_text_response_t*
 MailAPI_updateMailInfo(apiClient_t *apiClient, char *id);
 
 

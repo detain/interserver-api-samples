@@ -8,6 +8,7 @@ import org.openapitools.model.GetAccountInfo401Response
 import org.openapitools.model.QueueResponse
 import org.openapitools.model.RestoreRequest
 import org.openapitools.model.ReverseDnsEntries
+import org.openapitools.model.ServiceOrderPostResponse
 import org.openapitools.model.SuccessTextResponse
 import org.openapitools.model.TextResponse
 import org.openapitools.model.VPSCancel200Response
@@ -47,7 +48,7 @@ class VpsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    ServiceOrderPostResponse.class )
 
     }
 
@@ -1240,7 +1241,7 @@ class VpsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 

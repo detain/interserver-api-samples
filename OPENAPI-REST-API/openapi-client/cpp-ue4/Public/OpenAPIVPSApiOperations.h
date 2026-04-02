@@ -22,6 +22,7 @@
 #include "OpenAPIQueueResponse.h"
 #include "OpenAPIRestoreRequest.h"
 #include "OpenAPIReverseDnsEntries.h"
+#include "OpenAPIServiceOrderPostResponse.h"
 #include "OpenAPISuccessTextResponse.h"
 #include "OpenAPITextResponse.h"
 #include "OpenAPIVPSCancel200Response.h"
@@ -59,7 +60,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPIServiceOrderPostResponse Content;
 };
 
 /* Delete VPS Backup
@@ -1152,7 +1153,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 /* Cancel VPS Service

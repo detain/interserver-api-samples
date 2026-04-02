@@ -6,9 +6,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  **/
-@Schema(description = "Information about the IPMI connectioj.")
+@Schema(description = "Information about the IPMI connection.")
 
 
 public class ServerIpmiLiveInfo   {

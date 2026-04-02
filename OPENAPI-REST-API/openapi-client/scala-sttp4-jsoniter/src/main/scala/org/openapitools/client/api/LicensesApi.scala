@@ -18,6 +18,7 @@ import org.openapitools.client.model.License
 import org.openapitools.client.model.LicenseRow
 import org.openapitools.client.model.LicensesCancel200Response
 import org.openapitools.client.model.LicensesOrder
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.core.JsonSupport.{*, given}
 import org.openapitools.client.core.FormSerializable
@@ -60,15 +61,15 @@ case class LicensesApi[Auth <: org.openapitools.client.core.Authorization] priva
    * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addLicense(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def addLicense(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], ServiceOrderPostResponse]] =
     val requestURL =
       uri"$baseUrl/licenses/order"
 
@@ -78,7 +79,7 @@ case class LicensesApi[Auth <: org.openapitools.client.core.Authorization] priva
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Returns detailed information about a specific license including its type, IP assignment, and status.
@@ -320,8 +321,8 @@ case class LicensesApi[Auth <: org.openapitools.client.core.Authorization] priva
    * Updates settings on a license service such as its assigned IP.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -330,7 +331,7 @@ case class LicensesApi[Auth <: org.openapitools.client.core.Authorization] priva
    * 
    * @param id The license service ID. Use `license_id` from `GET /licenses`.
    */
-  def updateLicenseInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateLicenseInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/licenses/${idPathParam}"
@@ -341,6 +342,6 @@ case class LicensesApi[Auth <: org.openapitools.client.core.Authorization] priva
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
 end LicensesApi

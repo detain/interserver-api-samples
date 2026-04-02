@@ -37,7 +37,7 @@
     describe('ServersApi', function() {
       describe('addServer', function() {
         it('should call addServer successfully', function(done) {
-          // TODO: uncomment addServer call
+          // TODO: uncomment addServer call and complete the assertions
           /*
 
           instance.addServer(function(error, data, response) {
@@ -45,6 +45,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.InlineResponse20019);
 
             done();
           });
@@ -64,7 +66,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(InterServerManagementApi.InlineResponse20026);
+            expect(data).to.be.a(InterServerManagementApi.InlineResponse20027);
 
             done();
           });
@@ -369,7 +371,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(InterServerManagementApi.InlineResponse20019);
+            expect(data).to.be.a(InterServerManagementApi.InlineResponse20020);
 
             done();
           });
@@ -380,7 +382,7 @@
       });
       describe('updateServerInfo', function() {
         it('should call updateServerInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateServerInfo call
+          // TODO: uncomment, update parameter values for updateServerInfo call and complete the assertions
           /*
 
           instance.updateServerInfo(id, function(error, data, response) {
@@ -388,6 +390,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

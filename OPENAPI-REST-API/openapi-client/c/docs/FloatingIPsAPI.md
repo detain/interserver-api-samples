@@ -22,7 +22,7 @@ Method | HTTP request | Description
 //
 // Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
 //
-void FloatingIPsAPI_addFloatingIp(apiClient_t *apiClient);
+service_order_post_response_t* FloatingIPsAPI_addFloatingIp(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -32,7 +32,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[service_order_post_response_t](service_order_post_response.md) *
+
 
 ### Authorization
 
@@ -82,7 +83,7 @@ Name | Type | Description  | Notes
 //
 // Returns detailed information about a specific Floating IP service including its current target IP assignment.
 //
-void FloatingIPsAPI_getFloatingIpInfo(apiClient_t *apiClient, int *id);
+object_t* FloatingIPsAPI_getFloatingIpInfo(apiClient_t *apiClient, int *id);
 ```
 
 ### Parameters
@@ -93,7 +94,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[object_t](object.md) *
+
 
 ### Authorization
 
@@ -203,7 +205,7 @@ Name | Type | Description  | Notes
 //
 // Retrieves available options and pricing for ordering a new Floating IP.
 //
-void FloatingIPsAPI_getNewFloatingIp(apiClient_t *apiClient);
+object_t* FloatingIPsAPI_getNewFloatingIp(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -213,7 +215,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[object_t](object.md) *
+
 
 ### Authorization
 
@@ -293,7 +296,7 @@ void
 //
 // Updates settings on a Floating IP service, such as its label or configuration metadata.
 //
-void FloatingIPsAPI_updateFloatingIpInfo(apiClient_t *apiClient, char *id);
+success_text_response_t* FloatingIPsAPI_updateFloatingIpInfo(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -304,7 +307,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

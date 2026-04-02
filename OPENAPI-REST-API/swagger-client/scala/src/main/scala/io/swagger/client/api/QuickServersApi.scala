@@ -21,6 +21,7 @@ import io.swagger.client.model.QuickserverOrder
 import io.swagger.client.model.QuickserverRow
 import io.swagger.client.model.RestoreRequest
 import io.swagger.client.model.ReverseDnsEntries
+import io.swagger.client.model.ServiceOrderPostResponse
 import io.swagger.client.model.SuccessTextResponse
 import io.swagger.client.model.TextResponse
 import io.swagger.client.model.TimezoneUpdate
@@ -97,9 +98,9 @@ class QuickServersApi(
    * Place QuickServer Order
    * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
    *
-   * @return void
+   * @return ServiceOrderPostResponse
    */
-  def addQs() = {
+  def addQs(): Option[ServiceOrderPostResponse] = {
     val await = Try(Await.result(addQsAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -111,9 +112,9 @@ class QuickServersApi(
    * Place QuickServer Order asynchronously
    * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
    *
-   * @return Future(void)
+   * @return Future(ServiceOrderPostResponse)
    */
-  def addQsAsync() = {
+  def addQsAsync(): Future[ServiceOrderPostResponse] = {
       helper.addQs()
   }
 
@@ -1234,9 +1235,9 @@ class QuickServersApi(
    * Updates QuickServer metadata or stored settings associated with the order.
    *
    * @param id QuickServer ID number. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateQsInfo(id: String) = {
+  def updateQsInfo(id: String): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateQsInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -1249,9 +1250,9 @@ class QuickServersApi(
    * Updates QuickServer metadata or stored settings associated with the order.
    *
    * @param id QuickServer ID number. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateQsInfoAsync(id: String) = {
+  def updateQsInfoAsync(id: String): Future[SuccessTextResponse] = {
       helper.updateQsInfo(id)
   }
 
@@ -1259,7 +1260,7 @@ class QuickServersApi(
 
 class QuickServersApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def addQs()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def addQs()(implicit reader: ClientResponseReader[ServiceOrderPostResponse]): Future[ServiceOrderPostResponse] = {
     // create path and map variables
     val path = (addFmt("/qs/order"))
 
@@ -1989,7 +1990,7 @@ class QuickServersApiAsyncHelper(client: TransportClient, config: SwaggerConfig)
     }
   }
 
-  def updateQsInfo(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateQsInfo(id: String)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/qs/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

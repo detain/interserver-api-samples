@@ -9,6 +9,7 @@ import org.openapitools.model.PostWebsiteMigration200Response;
 import org.openapitools.model.PostWebsiteMigrationRequest;
 import org.openapitools.model.PostWebsiteMigrationRequest1;
 import org.openapitools.model.ReverseDnsEntries;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import org.openapitools.model.WebhostingCancel200Response;
@@ -50,7 +51,7 @@ public class WebhostingApiTest {
         // given
 
         // when
-        api.addWebsite().block();
+        ServiceOrderPostResponse body = api.addWebsite().block();
 
         // then
         // TODO implement the addWebsiteTest()
@@ -316,7 +317,7 @@ public class WebhostingApiTest {
         String id = "example";
 
         // when
-        api.updateWebsiteInfo(id).block();
+        SuccessTextResponse body = api.updateWebsiteInfo(id).block();
 
         // then
         // TODO implement the updateWebsiteInfoTest()

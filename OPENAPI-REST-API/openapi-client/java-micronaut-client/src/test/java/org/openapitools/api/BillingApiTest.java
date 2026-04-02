@@ -114,7 +114,7 @@ public class BillingApiTest {
         String id = "example";
 
         // when
-        api.deleteAccountCreditCard(id).block();
+        String body = api.deleteAccountCreditCard(id).block();
 
         // then
         // TODO implement the deleteAccountCreditCardTest()
@@ -299,7 +299,7 @@ public class BillingApiTest {
         // given
 
         // when
-        api.getBillingCart().block();
+        Object body = api.getBillingCart().block();
 
         // then
         // TODO implement the getBillingCartTest()
@@ -373,7 +373,7 @@ public class BillingApiTest {
         // given
 
         // when
-        api.getBillingPrePays().block();
+        Object body = api.getBillingPrePays().block();
 
         // then
         // TODO implement the getBillingPrePaysTest()
@@ -453,7 +453,7 @@ public class BillingApiTest {
         Integer id = 56;
 
         // when
-        api.updateAccountCreditCard(id).block();
+        String body = api.updateAccountCreditCard(id).block();
 
         // then
         // TODO implement the updateAccountCreditCardTest()

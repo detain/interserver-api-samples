@@ -304,7 +304,7 @@ export class BillingService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [deleteAccountCreditCardOpts.config] Override http request option.
      */
-    public deleteAccountCreditCard(id: string, deleteAccountCreditCardOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public deleteAccountCreditCard(id: string, deleteAccountCreditCardOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<string>>;
     public deleteAccountCreditCard(id: string, deleteAccountCreditCardOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteAccountCreditCard.');
@@ -343,7 +343,7 @@ export class BillingService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.delete<any>(`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`,
+                return this.httpClient.delete<string>(`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...deleteAccountCreditCardOpts?.config,
@@ -857,7 +857,7 @@ export class BillingService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getBillingCartOpts.config] Override http request option.
      */
-    public getBillingCart(getBillingCartOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public getBillingCart(getBillingCartOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<object>>;
     public getBillingCart(getBillingCartOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -892,7 +892,7 @@ export class BillingService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.get<any>(`${this.basePath}/billing/cart`,
+                return this.httpClient.get<object>(`${this.basePath}/billing/cart`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...getBillingCartOpts?.config,
@@ -1075,7 +1075,7 @@ export class BillingService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getBillingPrePaysOpts.config] Override http request option.
      */
-    public getBillingPrePays(getBillingPrePaysOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public getBillingPrePays(getBillingPrePaysOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<object>>;
     public getBillingPrePays(getBillingPrePaysOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -1110,7 +1110,7 @@ export class BillingService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.get<any>(`${this.basePath}/billing/prepays`,
+                return this.httpClient.get<object>(`${this.basePath}/billing/prepays`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...getBillingPrePaysOpts?.config,
@@ -1326,7 +1326,7 @@ export class BillingService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateAccountCreditCardOpts.config] Override http request option.
      */
-    public updateAccountCreditCard(id: number, updateAccountCreditCardOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateAccountCreditCard(id: number, updateAccountCreditCardOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<string>>;
     public updateAccountCreditCard(id: number, updateAccountCreditCardOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateAccountCreditCard.');
@@ -1365,7 +1365,7 @@ export class BillingService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<string>(`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

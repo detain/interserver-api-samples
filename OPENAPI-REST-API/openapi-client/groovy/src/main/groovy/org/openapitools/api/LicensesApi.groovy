@@ -8,6 +8,7 @@ import org.openapitools.model.License
 import org.openapitools.model.LicenseRow
 import org.openapitools.model.LicensesCancel200Response
 import org.openapitools.model.LicensesOrder
+import org.openapitools.model.ServiceOrderPostResponse
 import org.openapitools.model.SuccessTextResponse
 
 class LicensesApi {
@@ -34,7 +35,7 @@ class LicensesApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    ServiceOrderPostResponse.class )
 
     }
 
@@ -298,7 +299,7 @@ class LicensesApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 

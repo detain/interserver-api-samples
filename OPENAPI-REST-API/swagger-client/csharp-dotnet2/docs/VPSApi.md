@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 <a name="addvps"></a>
 # **AddVps**
-> void AddVps (VpsOrderPostRequest body)
+> ServiceOrderPostResponse AddVps (VpsOrderPostRequest body)
 
 Place VPS Order
 
@@ -91,7 +91,8 @@ namespace Example
             try
             {
                 // Place VPS Order
-                apiInstance.AddVps(body);
+                ServiceOrderPostResponse result = apiInstance.AddVps(body);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -110,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3213,7 +3214,7 @@ Name | Type | Description  | Notes
 
 <a name="updatevpsinfo"></a>
 # **UpdateVpsInfo**
-> void UpdateVpsInfo (string id)
+> SuccessTextResponse UpdateVpsInfo (string id)
 
 Update VPS Order
 
@@ -3253,7 +3254,8 @@ namespace Example
             try
             {
                 // Update VPS Order
-                apiInstance.UpdateVpsInfo(id);
+                SuccessTextResponse result = apiInstance.UpdateVpsInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -3272,7 +3274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -3287,7 +3289,7 @@ void (empty response body)
 
 <a name="vpscancel"></a>
 # **VPSCancel**
-> InlineResponse20021 VPSCancel (int? id)
+> InlineResponse20022 VPSCancel (int? id)
 
 Cancel VPS Service
 
@@ -3327,7 +3329,7 @@ namespace Example
             try
             {
                 // Cancel VPS Service
-                InlineResponse20021 result = apiInstance.VPSCancel(id);
+                InlineResponse20022 result = apiInstance.VPSCancel(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3347,7 +3349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 

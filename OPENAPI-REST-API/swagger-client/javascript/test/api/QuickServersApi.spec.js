@@ -37,7 +37,7 @@
     describe('QuickServersApi', function() {
       describe('addQs', function() {
         it('should call addQs successfully', function(done) {
-          // TODO: uncomment addQs call
+          // TODO: uncomment addQs call and complete the assertions
           /*
 
           instance.addQs(function(error, data, response) {
@@ -45,6 +45,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.ServiceOrderPostResponse);
 
             done();
           });
@@ -889,7 +891,7 @@
       });
       describe('updateQsInfo', function() {
         it('should call updateQsInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateQsInfo call
+          // TODO: uncomment, update parameter values for updateQsInfo call and complete the assertions
           /*
 
           instance.updateQsInfo(id, function(error, data, response) {
@@ -897,6 +899,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

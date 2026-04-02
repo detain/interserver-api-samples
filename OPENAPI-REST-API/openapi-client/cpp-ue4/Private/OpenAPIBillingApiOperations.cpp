@@ -336,19 +336,18 @@ void OpenAPIBillingApi::DeleteAccountCreditCardResponse::SetHttpResponseCode(EHt
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("Simple string response"));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIBillingApi::DeleteAccountCreditCardResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIBillingApi::DeleteBillingCreditCardRequest::ComputePath() const
@@ -705,19 +704,18 @@ void OpenAPIBillingApi::GetBillingCartResponse::SetHttpResponseCode(EHttpRespons
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("Current shopping cart contents and available payment methods."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIBillingApi::GetBillingCartResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIBillingApi::GetBillingCreditCardVerifyRequest::ComputePath() const
@@ -850,19 +848,18 @@ void OpenAPIBillingApi::GetBillingPrePaysResponse::SetHttpResponseCode(EHttpResp
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("Prepay balances and metadata."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIBillingApi::GetBillingPrePaysResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIBillingApi::GetInvoicesRequest::ComputePath() const
@@ -1135,19 +1132,18 @@ void OpenAPIBillingApi::UpdateAccountCreditCardResponse::SetHttpResponseCode(EHt
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("Simple string response"));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIBillingApi::UpdateAccountCreditCardResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIBillingApi::UpdateAffiliateDockSetupRequest::ComputePath() const

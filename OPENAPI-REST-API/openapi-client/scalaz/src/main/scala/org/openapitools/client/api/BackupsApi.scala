@@ -206,7 +206,9 @@ object BackupsApi {
     } yield resp
   }
 
-  def updateBackupInfo(host: String, id: Integer): Task[Unit] = {
+  def updateBackupInfo(host: String, id: Integer): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/backups/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -220,7 +222,7 @@ object BackupsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -421,7 +423,9 @@ class HttpServiceBackupsApi(service: HttpService) {
     } yield resp
   }
 
-  def updateBackupInfo(id: Integer): Task[Unit] = {
+  def updateBackupInfo(id: Integer): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/backups/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -435,7 +439,7 @@ class HttpServiceBackupsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }

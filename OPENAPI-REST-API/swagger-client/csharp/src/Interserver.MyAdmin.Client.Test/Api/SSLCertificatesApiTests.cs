@@ -69,8 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddSslTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AddSsl();
-            
+            //var response = instance.AddSsl();
+            //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
         /// Test GetNewSsl
@@ -79,8 +79,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void GetNewSslTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.GetNewSsl();
-            
+            //var response = instance.GetNewSsl();
+            //Assert.IsInstanceOf<Object> (response, "response is Object");
         }
         /// <summary>
         /// Test GetSslInfo
@@ -90,8 +90,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
-            //instance.GetSslInfo(id);
-            
+            //var response = instance.GetSslInfo(id);
+            //Assert.IsInstanceOf<Object> (response, "response is Object");
         }
         /// <summary>
         /// Test GetSslInvoices
@@ -144,7 +144,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.SslCancel(id);
-            //Assert.IsInstanceOf<InlineResponse20020> (response, "response is InlineResponse20020");
+            //Assert.IsInstanceOf<InlineResponse20021> (response, "response is InlineResponse20021");
         }
         /// <summary>
         /// Test UpdateSslInfo
@@ -154,8 +154,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.UpdateSslInfo(id);
-            
+            //var response = instance.UpdateSslInfo(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
     }
 

@@ -10,7 +10,7 @@ class DNSApi {
   /// Create DNS Domain
   ///
   /// Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
-  Future addDnsDomain(String domain, String ip) async {
+  Future<SuccessTextResponse> addDnsDomain(String domain, String ip) async {
     Object postBody = body;
 
     // verify required params are set
@@ -68,9 +68,9 @@ if (ip != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Add DNS Record to Domain
@@ -172,7 +172,7 @@ if (prio != null)
   /// Delete DNS Domain
   ///
   /// Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
-  Future deleteDnsDomain(String id) async {
+  Future<SuccessTextResponse> deleteDnsDomain(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -215,15 +215,15 @@ if (prio != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Delete DNS Record
   ///
   /// Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
-  Future deleteDnsRecord(int domainId, int recordId) async {
+  Future<SuccessTextResponse> deleteDnsRecord(int domainId, int recordId) async {
     Object postBody = null;
 
     // verify required params are set
@@ -269,9 +269,9 @@ if (prio != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// List Domain DNS Records
@@ -376,7 +376,7 @@ if (prio != null)
   /// Update DNS Record
   ///
   /// Updates an existing DNS record with new values. Use &#x60;GET /dns/{id}&#x60; to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
-  Future updateDnsRecord(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, int domainId, int recordId) async {
+  Future<SuccessTextResponse> updateDnsRecord(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, int domainId, int recordId) async {
     Object postBody = body;
 
     // verify required params are set
@@ -494,9 +494,9 @@ if (auth != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
 }

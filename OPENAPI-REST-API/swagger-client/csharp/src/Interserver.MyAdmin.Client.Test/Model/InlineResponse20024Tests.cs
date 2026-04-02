@@ -66,20 +66,12 @@ namespace Interserver.MyAdmin.Client.Test
 
 
         /// <summary>
-        /// Test the property 'message'
+        /// Test the property 'ips'
         /// </summary>
         [Test]
-        public void messageTest()
+        public void ipsTest()
         {
-            // TODO unit test for the property 'message'
-        }
-        /// <summary>
-        /// Test the property 'success'
-        /// </summary>
-        [Test]
-        public void successTest()
-        {
-            // TODO unit test for the property 'success'
+            // TODO unit test for the property 'ips'
         }
 
     }

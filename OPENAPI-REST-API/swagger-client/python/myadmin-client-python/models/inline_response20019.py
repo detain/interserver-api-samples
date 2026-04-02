@@ -28,50 +28,35 @@ class InlineResponse20019(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'success': 'bool',
-        'text': 'str'
+        'text': 'str',
+        'invoice': 'int',
+        'order': 'int'
     }
 
     attribute_map = {
-        'success': 'success',
-        'text': 'text'
+        'text': 'text',
+        'invoice': 'invoice',
+        'order': 'order'
     }
 
-    def __init__(self, success=None, text=None):  # noqa: E501
+    def __init__(self, text=None, invoice=None, order=None):  # noqa: E501
         """InlineResponse20019 - a model defined in Swagger"""  # noqa: E501
-        self._success = None
         self._text = None
+        self._invoice = None
+        self._order = None
         self.discriminator = None
-        self.success = success
-        self.text = text
-
-    @property
-    def success(self):
-        """Gets the success of this InlineResponse20019.  # noqa: E501
-
-
-        :return: The success of this InlineResponse20019.  # noqa: E501
-        :rtype: bool
-        """
-        return self._success
-
-    @success.setter
-    def success(self, success):
-        """Sets the success of this InlineResponse20019.
-
-
-        :param success: The success of this InlineResponse20019.  # noqa: E501
-        :type: bool
-        """
-        if success is None:
-            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
-
-        self._success = success
+        if text is not None:
+            self.text = text
+        if invoice is not None:
+            self.invoice = invoice
+        if order is not None:
+            self.order = order
 
     @property
     def text(self):
         """Gets the text of this InlineResponse20019.  # noqa: E501
 
+        Status message.  # noqa: E501
 
         :return: The text of this InlineResponse20019.  # noqa: E501
         :rtype: str
@@ -82,14 +67,59 @@ class InlineResponse20019(object):
     def text(self, text):
         """Sets the text of this InlineResponse20019.
 
+        Status message.  # noqa: E501
 
         :param text: The text of this InlineResponse20019.  # noqa: E501
         :type: str
         """
-        if text is None:
-            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
 
         self._text = text
+
+    @property
+    def invoice(self):
+        """Gets the invoice of this InlineResponse20019.  # noqa: E501
+
+        Invoice ID for payment.  # noqa: E501
+
+        :return: The invoice of this InlineResponse20019.  # noqa: E501
+        :rtype: int
+        """
+        return self._invoice
+
+    @invoice.setter
+    def invoice(self, invoice):
+        """Sets the invoice of this InlineResponse20019.
+
+        Invoice ID for payment.  # noqa: E501
+
+        :param invoice: The invoice of this InlineResponse20019.  # noqa: E501
+        :type: int
+        """
+
+        self._invoice = invoice
+
+    @property
+    def order(self):
+        """Gets the order of this InlineResponse20019.  # noqa: E501
+
+        Server order ID.  # noqa: E501
+
+        :return: The order of this InlineResponse20019.  # noqa: E501
+        :rtype: int
+        """
+        return self._order
+
+    @order.setter
+    def order(self, order):
+        """Sets the order of this InlineResponse20019.
+
+        Server order ID.  # noqa: E501
+
+        :param order: The order of this InlineResponse20019.  # noqa: E501
+        :type: int
+        """
+
+        self._order = order
 
     def to_dict(self):
         """Returns the model properties as a dict"""

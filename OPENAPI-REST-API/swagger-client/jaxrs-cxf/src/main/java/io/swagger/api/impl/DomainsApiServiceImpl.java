@@ -16,6 +16,7 @@ import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
 import io.swagger.model.InlineResponse2002;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 
@@ -44,10 +45,10 @@ public class DomainsApiServiceImpl implements DomainsApi {
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
      *
      */
-    public void addDomain() {
+    public ServiceOrderPostResponse addDomain() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -392,10 +393,10 @@ public class DomainsApiServiceImpl implements DomainsApi {
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      *
      */
-    public void updateDomainInfo(String id) {
+    public SuccessTextResponse updateDomainInfo(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**

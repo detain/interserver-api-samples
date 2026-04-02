@@ -8,6 +8,7 @@ case class CreateFirewallRule (
     /* 1 = Block,  0 = Whitelist */
     _xdp_action: Integer,
     _destination_port: Option[Integer],
+    /* Source IP address to match. Use '0.0.0.0' to match any source. */
     _source_ip: Option[String],
     _source_port: Option[Integer]
 )

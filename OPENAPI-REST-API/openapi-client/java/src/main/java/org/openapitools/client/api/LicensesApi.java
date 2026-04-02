@@ -34,6 +34,7 @@ import org.openapitools.client.model.License;
 import org.openapitools.client.model.LicenseRow;
 import org.openapitools.client.model.LicensesCancel200Response;
 import org.openapitools.client.model.LicensesOrder;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 
 import java.lang.reflect.Type;
@@ -88,8 +89,8 @@ public class LicensesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call addLicenseCall(final ApiCallback _callback) throws ApiException {
@@ -145,35 +146,38 @@ public class LicensesApi {
     /**
      * Place License Order
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void addLicense() throws ApiException {
-        addLicenseWithHttpInfo();
+    public ServiceOrderPostResponse addLicense() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> localVarResp = addLicenseWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
      * Place License Order
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> addLicenseWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addLicenseWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = addLicenseValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -186,14 +190,15 @@ public class LicensesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addLicenseAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call addLicenseAsync(final ApiCallback<ServiceOrderPostResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addLicenseValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1358,8 +1363,8 @@ public class LicensesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateLicenseInfoCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1422,36 +1427,39 @@ public class LicensesApi {
      * Update License
      * Updates settings on a license service such as its assigned IP.
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void updateLicenseInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        updateLicenseInfoWithHttpInfo(id);
+    public SuccessTextResponse updateLicenseInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = updateLicenseInfoWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
      * Update License
      * Updates settings on a license service such as its assigned IP.
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateLicenseInfoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateLicenseInfoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = updateLicenseInfoValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1465,14 +1473,15 @@ public class LicensesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateLicenseInfoAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateLicenseInfoAsync(@javax.annotation.Nonnull String id, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateLicenseInfoValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

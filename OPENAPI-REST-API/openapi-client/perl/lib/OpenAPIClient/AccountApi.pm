@@ -807,10 +807,10 @@ sub update_account_features {
     __PACKAGE__->method_documentation->{ 'update_account_info' } = {
         summary => 'Update Account Information',
         params => $params,
-        returns => undef,
+        returns => 'SuccessTextResponse',
         };
 }
-# @return void
+# @return SuccessTextResponse
 #
 sub update_account_info {
     my ($self, %args) = @_;
@@ -955,10 +955,14 @@ sub update_account_info {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SuccessTextResponse', $response);
+    return $_response_object;
 }
 
 #
@@ -984,10 +988,10 @@ sub update_account_info {
     __PACKAGE__->method_documentation->{ 'update_account_ip_limits' } = {
         summary => 'Add IP Access Restriction',
         params => $params,
-        returns => undef,
+        returns => 'SuccessTextResponse',
         };
 }
-# @return void
+# @return SuccessTextResponse
 #
 sub update_account_ip_limits {
     my ($self, %args) = @_;
@@ -1032,10 +1036,14 @@ sub update_account_ip_limits {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SuccessTextResponse', $response);
+    return $_response_object;
 }
 
 #

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **addLicense**
-> addLicense()
+> ServiceOrderPostResponse addLicense()
 
 Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
 
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**ServiceOrderPostResponse**
 
 ### Authorization
 
@@ -59,8 +59,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -535,7 +535,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateLicenseInfo**
-> updateLicenseInfo()
+> SuccessTextResponse updateLicenseInfo()
 
 Updates settings on a license service such as its assigned IP.
 
@@ -568,7 +568,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -583,8 +583,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | A response indicating the operation completed successfully with a text message. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -25,6 +25,7 @@ import QuickserverOrder from '../model/QuickserverOrder';
 import QuickserverRow from '../model/QuickserverRow';
 import RestoreRequest from '../model/RestoreRequest';
 import ReverseDnsEntries from '../model/ReverseDnsEntries';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 import TextResponse from '../model/TextResponse';
 import TimezoneUpdate from '../model/TimezoneUpdate';
@@ -54,7 +55,7 @@ export default class QuickServersApi {
      * Callback function to receive the result of the addQs operation.
      * @callback moduleapi/QuickServersApi~addQsCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -62,6 +63,7 @@ export default class QuickServersApi {
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
      * @param {module:api/QuickServersApi~addQsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addQs(callback) {
       
@@ -83,7 +85,7 @@ export default class QuickServersApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
 
       return this.apiClient.callApi(
         '/qs/order', 'POST',
@@ -2099,7 +2101,7 @@ export default class QuickServersApi {
      * Callback function to receive the result of the updateQsInfo operation.
      * @callback moduleapi/QuickServersApi~updateQsInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2108,6 +2110,7 @@ export default class QuickServersApi {
      * Updates QuickServer metadata or stored settings associated with the order.
      * @param {String} id QuickServer ID number.
      * @param {module:api/QuickServersApi~updateQsInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateQsInfo(id, callback) {
       
@@ -2133,7 +2136,7 @@ export default class QuickServersApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
 
       return this.apiClient.callApi(
         '/qs/{id}', 'POST',

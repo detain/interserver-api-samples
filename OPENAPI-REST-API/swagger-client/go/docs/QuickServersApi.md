@@ -50,7 +50,7 @@ Method | HTTP request | Description
 [**UpdateQsInfo**](QuickServersApi.md#UpdateQsInfo) | **Post** /qs/{id} | Update QuickServer Order
 
 # **AddQs**
-> AddQs(ctx, )
+> ServiceOrderPostResponse AddQs(ctx, )
 Place QuickServer Order
 
 Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1275,7 +1275,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateQsInfo**
-> UpdateQsInfo(ctx, id)
+> SuccessTextResponse UpdateQsInfo(ctx, id)
 Update QuickServer Order
 
 Updates QuickServer metadata or stored settings associated with the order.
@@ -1289,7 +1289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

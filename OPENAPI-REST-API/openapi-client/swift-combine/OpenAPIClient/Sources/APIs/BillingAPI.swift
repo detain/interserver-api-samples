@@ -336,8 +336,8 @@ open class BillingAPI {
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
     /// - parameter id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func deleteAccountCreditCard(id: String) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<String, Error> 
+    open func deleteAccountCreditCard(id: String) -> AnyPublisher<String, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -354,7 +354,7 @@ open class BillingAPI {
                 request.httpMethod = "DELETE"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<String, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -368,7 +368,7 @@ open class BillingAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(String.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -961,8 +961,8 @@ open class BillingAPI {
     /// - API Key:
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
-    /// - returns: AnyPublisher<Void, Error> 
-    open func getBillingCart() -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<[String: Any], Error> 
+    open func getBillingCart() -> AnyPublisher<[String: Any], Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -978,7 +978,7 @@ open class BillingAPI {
                 request.httpMethod = "GET"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<[String: Any], Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -992,7 +992,11 @@ open class BillingAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    if let object = try JSONSerialization.jsonObject(with: response.data, options: []) as? [String: Any] {
+                        return object
+                    } else {
+                        throw OpenAPITransportError.invalidResponseMappingError(data: response.data)
+                    }
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -1209,8 +1213,8 @@ open class BillingAPI {
     /// - API Key:
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
-    /// - returns: AnyPublisher<Void, Error> 
-    open func getBillingPrePays() -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<[String: Any], Error> 
+    open func getBillingPrePays() -> AnyPublisher<[String: Any], Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -1226,7 +1230,7 @@ open class BillingAPI {
                 request.httpMethod = "GET"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<[String: Any], Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -1240,7 +1244,11 @@ open class BillingAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    if let object = try JSONSerialization.jsonObject(with: response.data, options: []) as? [String: Any] {
+                        return object
+                    } else {
+                        throw OpenAPITransportError.invalidResponseMappingError(data: response.data)
+                    }
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -1504,8 +1512,8 @@ open class BillingAPI {
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
     /// - parameter id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func updateAccountCreditCard(id: Int) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<String, Error> 
+    open func updateAccountCreditCard(id: Int) -> AnyPublisher<String, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -1522,7 +1530,7 @@ open class BillingAPI {
                 request.httpMethod = "POST"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<String, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -1536,7 +1544,7 @@ open class BillingAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(String.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()

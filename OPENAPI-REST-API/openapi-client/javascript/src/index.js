@@ -32,6 +32,7 @@ import AccountInfoOauthConfigProvidersValue from './model/AccountInfoOauthConfig
 import AccountInfoOauthproviders from './model/AccountInfoOauthproviders';
 import AccountInfoPost from './model/AccountInfoPost';
 import AccountSshKey from './model/AccountSshKey';
+import AddServer200Response from './model/AddServer200Response';
 import AffiliateBannerRow from './model/AffiliateBannerRow';
 import AffiliateDockSetup from './model/AffiliateDockSetup';
 import AffiliatePaymentSetup from './model/AffiliatePaymentSetup';
@@ -364,6 +365,7 @@ import ServersCancel200Response from './model/ServersCancel200Response';
 import Service from './model/Service';
 import ServiceCategories from './model/ServiceCategories';
 import ServiceCategory from './model/ServiceCategory';
+import ServiceOrderPostResponse from './model/ServiceOrderPostResponse';
 import ServiceType from './model/ServiceType';
 import ServiceTypes from './model/ServiceTypes';
 import Services from './model/Services';
@@ -632,6 +634,12 @@ export {
      * @property {module:model/AccountSshKey}
      */
     AccountSshKey,
+
+    /**
+     * The AddServer200Response model constructor.
+     * @property {module:model/AddServer200Response}
+     */
+    AddServer200Response,
 
     /**
      * The AffiliateBannerRow model constructor.
@@ -2624,6 +2632,12 @@ export {
      * @property {module:model/ServiceCategory}
      */
     ServiceCategory,
+
+    /**
+     * The ServiceOrderPostResponse model constructor.
+     * @property {module:model/ServiceOrderPostResponse}
+     */
+    ServiceOrderPostResponse,
 
     /**
      * The ServiceType model constructor.

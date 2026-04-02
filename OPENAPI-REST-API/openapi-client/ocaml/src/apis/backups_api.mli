@@ -13,5 +13,5 @@ val get_backup_login : id:int32 -> Backup_login_response.t Lwt.t
 val get_backups_list : unit -> Backup_row.t list Lwt.t
 val get_backups_welcome_email : id:int32 -> Success_text_response.t Lwt.t
 val get_new_backup : unit -> Backups_order.t Lwt.t
-val update_backup_info : id:int32 -> unit Lwt.t
+val update_backup_info : id:int32 -> Success_text_response.t Lwt.t
 val validate_backup_order : ?validate_only:bool -> ?service_type:int32 -> ?coupon:string -> unit -> Backup_order_put_response.t Lwt.t

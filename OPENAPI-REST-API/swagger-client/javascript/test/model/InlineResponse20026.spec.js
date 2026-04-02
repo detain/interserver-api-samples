@@ -40,34 +40,16 @@
         expect(instance).to.be.a(InterServerManagementApi.InlineResponse20026);
       });
 
-      it('should have the property bandwidth (base name: "bandwidth")', function() {
-        // TODO: update the code to test the property bandwidth
-        expect(instance).to.have.property('bandwidth');
-        // expect(instance.bandwidth).to.be(expectedValueLiteral);
+      it('should have the property text (base name: "text")', function() {
+        // TODO: update the code to test the property text
+        expect(instance).to.have.property('text');
+        // expect(instance.text).to.be(expectedValueLiteral);
       });
 
-      it('should have the property ips (base name: "ips")', function() {
-        // TODO: update the code to test the property ips
-        expect(instance).to.have.property('ips');
-        // expect(instance.ips).to.be(expectedValueLiteral);
-      });
-
-      it('should have the property os (base name: "os")', function() {
-        // TODO: update the code to test the property os
-        expect(instance).to.have.property('os');
-        // expect(instance.os).to.be(expectedValueLiteral);
-      });
-
-      it('should have the property cp (base name: "cp")', function() {
-        // TODO: update the code to test the property cp
-        expect(instance).to.have.property('cp');
-        // expect(instance.cp).to.be(expectedValueLiteral);
-      });
-
-      it('should have the property raid (base name: "raid")', function() {
-        // TODO: update the code to test the property raid
-        expect(instance).to.have.property('raid');
-        // expect(instance.raid).to.be(expectedValueLiteral);
+      it('should have the property ticket (base name: "ticket")', function() {
+        // TODO: update the code to test the property ticket
+        expect(instance).to.have.property('ticket');
+        // expect(instance.ticket).to.be(expectedValueLiteral);
       });
 
     });

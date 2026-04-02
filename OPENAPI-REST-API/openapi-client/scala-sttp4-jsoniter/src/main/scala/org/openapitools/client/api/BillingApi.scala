@@ -26,6 +26,7 @@ import org.openapitools.client.model.MonthlyCounts
 import org.openapitools.client.model.StatusMonthlyBreakdown
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
+import com.github.plokhotnyuk.jsoniter_scala.circe.JsoniterScalaCodec.*
 import org.openapitools.client.core.JsonSupport.{*, given}
 import org.openapitools.client.core.FormSerializable
 import org.openapitools.client.core.FormStyleFormat
@@ -193,8 +194,8 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
    * Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
    * 
    * Expected answers:
+   *   code 200 : String (Simple string response)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -203,7 +204,7 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
    * 
    * @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
    */
-  def deleteAccountCreditCard(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def deleteAccountCreditCard(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], String]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/account/creditcards/${idPathParam}"
@@ -214,7 +215,7 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[String])
 
   /**
    * Removes the selected credit card from the account. Use `/billing/payment_method` to select a new default payment method after deleting a card.
@@ -451,15 +452,15 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
    * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
    * 
    * Expected answers:
+   *   code 200 : io.circe.Json (Current shopping cart contents and available payment methods.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def getBillingCart(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def getBillingCart(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], io.circe.Json]] =
     val requestURL =
       uri"$baseUrl/billing/cart"
 
@@ -469,7 +470,7 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[io.circe.Json])
 
   /**
    * Retrieves the verification requirements for a newly added credit card. The response indicates whether the card requires micro-charge amount confirmation or CVV validation. Use this before presenting a verification form to the user.
@@ -553,15 +554,15 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
    * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
    * 
    * Expected answers:
+   *   code 200 : io.circe.Json (Prepay balances and metadata.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def getBillingPrePays(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def getBillingPrePays(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], io.circe.Json]] =
     val requestURL =
       uri"$baseUrl/billing/prepays"
 
@@ -571,7 +572,7 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[io.circe.Json])
 
   /**
    * Returns a paginated list of invoices for the authenticated account. Each invoice includes the invoice number, date, total amount, and payment status. Use the optional `searchString` parameter to filter results and `skip`/`limit` for pagination.
@@ -668,8 +669,8 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
    * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
    * 
    * Expected answers:
+   *   code 200 : String (Simple string response)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -678,7 +679,7 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
    * 
    * @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
    */
-  def updateAccountCreditCard(id: Int)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateAccountCreditCard(id: Int)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], String]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/account/creditcards/${idPathParam}"
@@ -689,7 +690,7 @@ case class BillingApi[Auth <: org.openapitools.client.core.Authorization] privat
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[String])
 
   /**
    * Updates the affiliate dock settings including the referral coupon and marketing copy. The dock is the branded landing page shown to visitors arriving via your affiliate link. Use this to customize the coupon code and promotional text.

@@ -37,7 +37,7 @@
     describe('WebhostingApi', function() {
       describe('addWebsite', function() {
         it('should call addWebsite successfully', function(done) {
-          // TODO: uncomment addWebsite call
+          // TODO: uncomment addWebsite call and complete the assertions
           /*
 
           instance.addWebsite(function(error, data, response) {
@@ -45,6 +45,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.ServiceOrderPostResponse);
 
             done();
           });
@@ -84,7 +86,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(InterServerManagementApi.InlineResponse20023);
+            expect(data).to.be.a(InterServerManagementApi.InlineResponse20024);
 
             done();
           });
@@ -250,7 +252,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(InterServerManagementApi.InlineResponse20024);
+            expect(data).to.be.a(InterServerManagementApi.InlineResponse20025);
 
             done();
           });
@@ -270,7 +272,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(InterServerManagementApi.InlineResponse20025);
+            expect(data).to.be.a(InterServerManagementApi.InlineResponse20026);
 
             done();
           });
@@ -319,7 +321,7 @@
       });
       describe('updateWebsiteInfo', function() {
         it('should call updateWebsiteInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateWebsiteInfo call
+          // TODO: uncomment, update parameter values for updateWebsiteInfo call and complete the assertions
           /*
 
           instance.updateWebsiteInfo(id, function(error, data, response) {
@@ -327,6 +329,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });
@@ -346,7 +350,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(InterServerManagementApi.InlineResponse20022);
+            expect(data).to.be.a(InterServerManagementApi.InlineResponse20023);
 
             done();
           });

@@ -9,7 +9,7 @@ import 'package:swagger/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **destinationPort** | **int** |  | [optional] [default to 80]
-**sourceIp** | **String** |  | [optional] [default to &quot;0&quot;]
+**sourceIp** | **String** | Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source. | [optional] [default to &quot;0.0.0.0&quot;]
 **sourcePort** | **int** |  | [optional] [default to 0]
 **protocolId** | **int** | 1 &#x3D; TCP, 2 &#x3D; UDP | [default to null]
 **xdpAction** | **int** | 1 &#x3D; Block,  0 &#x3D; Whitelist | [default to null]

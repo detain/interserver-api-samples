@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\AccountApi
 
-Account related items
+Manage your account profile, contact information, security settings, API keys, SSH keys, two-factor authentication, and IP access restrictions.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -867,7 +867,7 @@ try {
 ## `updateAccountInfo()`
 
 ```php
-updateAccountInfo($name, $address, $city, $state, $zip, $country, $phone, $company, $address2, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin)
+updateAccountInfo($name, $address, $city, $state, $zip, $country, $phone, $company, $address2, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update Account Information
@@ -922,7 +922,8 @@ $disableEmailNotifications = True; // bool | Set to `true` to disable email noti
 $gstin = 'gstin_example'; // string | Your GST identification number (if applicable).
 
 try {
-    $apiInstance->updateAccountInfo($name, $address, $city, $state, $zip, $country, $phone, $company, $address2, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin);
+    $result = $apiInstance->updateAccountInfo($name, $address, $city, $state, $zip, $country, $phone, $company, $address2, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->updateAccountInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -952,7 +953,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -970,7 +971,7 @@ void (empty response body)
 ## `updateAccountIpLimits()`
 
 ```php
-updateAccountIpLimits($start, $end)
+updateAccountIpLimits($start, $end): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Add IP Access Restriction
@@ -1010,7 +1011,8 @@ $start = 'start_example'; // string | The begining (or first) IP address in the 
 $end = 'end_example'; // string | The ending (or last) IP address in the range.
 
 try {
-    $apiInstance->updateAccountIpLimits($start, $end);
+    $result = $apiInstance->updateAccountIpLimits($start, $end);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->updateAccountIpLimits: ', $e->getMessage(), PHP_EOL;
 }
@@ -1025,7 +1027,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

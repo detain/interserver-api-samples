@@ -31,6 +31,7 @@ import org.openapitools.client.model.DnsListItem;
 import org.openapitools.client.model.DnsRecord;
 import org.openapitools.client.model.DnsRecordType;
 import org.openapitools.client.model.GetAccountInfo401Response;
+import org.openapitools.client.model.SuccessTextResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,8 +87,8 @@ public class DnsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call addDnsDomainCall(@javax.annotation.Nonnull String domain, @javax.annotation.Nonnull String ip, final ApiCallback _callback) throws ApiException {
@@ -165,17 +166,19 @@ public class DnsApi {
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#39;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param domain The domain name. (required)
      * @param ip IP Address to point the domain to. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void addDnsDomain(@javax.annotation.Nonnull String domain, @javax.annotation.Nonnull String ip) throws ApiException {
-        addDnsDomainWithHttpInfo(domain, ip);
+    public SuccessTextResponse addDnsDomain(@javax.annotation.Nonnull String domain, @javax.annotation.Nonnull String ip) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = addDnsDomainWithHttpInfo(domain, ip);
+        return localVarResp.getData();
     }
 
     /**
@@ -183,19 +186,20 @@ public class DnsApi {
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#39;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param domain The domain name. (required)
      * @param ip IP Address to point the domain to. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> addDnsDomainWithHttpInfo(@javax.annotation.Nonnull String domain, @javax.annotation.Nonnull String ip) throws ApiException {
+    public ApiResponse<SuccessTextResponse> addDnsDomainWithHttpInfo(@javax.annotation.Nonnull String domain, @javax.annotation.Nonnull String ip) throws ApiException {
         okhttp3.Call localVarCall = addDnsDomainValidateBeforeCall(domain, ip, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -210,14 +214,15 @@ public class DnsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addDnsDomainAsync(@javax.annotation.Nonnull String domain, @javax.annotation.Nonnull String ip, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call addDnsDomainAsync(@javax.annotation.Nonnull String domain, @javax.annotation.Nonnull String ip, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addDnsDomainValidateBeforeCall(domain, ip, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -414,8 +419,8 @@ public class DnsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteDnsDomainCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -478,36 +483,39 @@ public class DnsApi {
      * Delete DNS Domain
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteDnsDomain(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteDnsDomainWithHttpInfo(id);
+    public SuccessTextResponse deleteDnsDomain(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = deleteDnsDomainWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
      * Delete DNS Domain
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteDnsDomainWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> deleteDnsDomainWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteDnsDomainValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -521,14 +529,15 @@ public class DnsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteDnsDomainAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteDnsDomainAsync(@javax.annotation.Nonnull String id, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteDnsDomainValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -542,8 +551,8 @@ public class DnsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteDnsRecordCall(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, final ApiCallback _callback) throws ApiException {
@@ -613,17 +622,19 @@ public class DnsApi {
      * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteDnsRecord(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId) throws ApiException {
-        deleteDnsRecordWithHttpInfo(domainId, recordId);
+    public SuccessTextResponse deleteDnsRecord(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = deleteDnsRecordWithHttpInfo(domainId, recordId);
+        return localVarResp.getData();
     }
 
     /**
@@ -631,19 +642,20 @@ public class DnsApi {
      * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteDnsRecordWithHttpInfo(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId) throws ApiException {
+    public ApiResponse<SuccessTextResponse> deleteDnsRecordWithHttpInfo(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId) throws ApiException {
         okhttp3.Call localVarCall = deleteDnsRecordValidateBeforeCall(domainId, recordId, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -658,14 +670,15 @@ public class DnsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteDnsRecordAsync(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteDnsRecordAsync(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteDnsRecordValidateBeforeCall(domainId, recordId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -939,8 +952,8 @@ public class DnsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateDnsRecordCall(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, @javax.annotation.Nullable String name, @javax.annotation.Nullable DnsRecordType type, @javax.annotation.Nullable String content, @javax.annotation.Nullable String ttl, @javax.annotation.Nullable String prio, @javax.annotation.Nullable String disabled, @javax.annotation.Nullable String ordername, @javax.annotation.Nullable String auth, final ApiCallback _callback) throws ApiException {
@@ -1052,17 +1065,19 @@ public class DnsApi {
      * @param disabled  (optional)
      * @param ordername  (optional)
      * @param auth  (optional)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void updateDnsRecord(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, @javax.annotation.Nullable String name, @javax.annotation.Nullable DnsRecordType type, @javax.annotation.Nullable String content, @javax.annotation.Nullable String ttl, @javax.annotation.Nullable String prio, @javax.annotation.Nullable String disabled, @javax.annotation.Nullable String ordername, @javax.annotation.Nullable String auth) throws ApiException {
-        updateDnsRecordWithHttpInfo(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
+    public SuccessTextResponse updateDnsRecord(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, @javax.annotation.Nullable String name, @javax.annotation.Nullable DnsRecordType type, @javax.annotation.Nullable String content, @javax.annotation.Nullable String ttl, @javax.annotation.Nullable String prio, @javax.annotation.Nullable String disabled, @javax.annotation.Nullable String ordername, @javax.annotation.Nullable String auth) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = updateDnsRecordWithHttpInfo(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
+        return localVarResp.getData();
     }
 
     /**
@@ -1078,19 +1093,20 @@ public class DnsApi {
      * @param disabled  (optional)
      * @param ordername  (optional)
      * @param auth  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateDnsRecordWithHttpInfo(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, @javax.annotation.Nullable String name, @javax.annotation.Nullable DnsRecordType type, @javax.annotation.Nullable String content, @javax.annotation.Nullable String ttl, @javax.annotation.Nullable String prio, @javax.annotation.Nullable String disabled, @javax.annotation.Nullable String ordername, @javax.annotation.Nullable String auth) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateDnsRecordWithHttpInfo(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, @javax.annotation.Nullable String name, @javax.annotation.Nullable DnsRecordType type, @javax.annotation.Nullable String content, @javax.annotation.Nullable String ttl, @javax.annotation.Nullable String prio, @javax.annotation.Nullable String disabled, @javax.annotation.Nullable String ordername, @javax.annotation.Nullable String auth) throws ApiException {
         okhttp3.Call localVarCall = updateDnsRecordValidateBeforeCall(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1113,14 +1129,15 @@ public class DnsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDnsRecordAsync(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, @javax.annotation.Nullable String name, @javax.annotation.Nullable DnsRecordType type, @javax.annotation.Nullable String content, @javax.annotation.Nullable String ttl, @javax.annotation.Nullable String prio, @javax.annotation.Nullable String disabled, @javax.annotation.Nullable String ordername, @javax.annotation.Nullable String auth, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateDnsRecordAsync(@javax.annotation.Nonnull Integer domainId, @javax.annotation.Nonnull Integer recordId, @javax.annotation.Nullable String name, @javax.annotation.Nullable DnsRecordType type, @javax.annotation.Nullable String content, @javax.annotation.Nullable String ttl, @javax.annotation.Nullable String prio, @javax.annotation.Nullable String disabled, @javax.annotation.Nullable String ordername, @javax.annotation.Nullable String auth, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateDnsRecordValidateBeforeCall(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

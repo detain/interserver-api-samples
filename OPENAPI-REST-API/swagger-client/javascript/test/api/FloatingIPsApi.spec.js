@@ -37,7 +37,7 @@
     describe('FloatingIPsApi', function() {
       describe('addFloatingIp', function() {
         it('should call addFloatingIp successfully', function(done) {
-          // TODO: uncomment addFloatingIp call
+          // TODO: uncomment addFloatingIp call and complete the assertions
           /*
 
           instance.addFloatingIp(function(error, data, response) {
@@ -45,6 +45,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.ServiceOrderPostResponse);
 
             done();
           });
@@ -75,7 +77,7 @@
       });
       describe('getFloatingIpInfo', function() {
         it('should call getFloatingIpInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for getFloatingIpInfo call
+          // TODO: uncomment, update parameter values for getFloatingIpInfo call and complete the assertions
           /*
 
           instance.getFloatingIpInfo(id, function(error, data, response) {
@@ -83,6 +85,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(Object);
+            // expect(data).to.be(null);
 
             done();
           });
@@ -151,7 +156,7 @@
       });
       describe('getNewFloatingIp', function() {
         it('should call getNewFloatingIp successfully', function(done) {
-          // TODO: uncomment getNewFloatingIp call
+          // TODO: uncomment getNewFloatingIp call and complete the assertions
           /*
 
           instance.getNewFloatingIp(function(error, data, response) {
@@ -159,6 +164,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(Object);
+            // expect(data).to.be(null);
 
             done();
           });
@@ -207,7 +215,7 @@
       });
       describe('updateFloatingIpInfo', function() {
         it('should call updateFloatingIpInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateFloatingIpInfo call
+          // TODO: uncomment, update parameter values for updateFloatingIpInfo call and complete the assertions
           /*
 
           instance.updateFloatingIpInfo(id, function(error, data, response) {
@@ -215,6 +223,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

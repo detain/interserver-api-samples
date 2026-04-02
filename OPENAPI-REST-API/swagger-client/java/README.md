@@ -619,7 +619,8 @@ public class AccountApiExample {
         String gstin = "gstin_example"; // String | 
         AccountInfoPost body = new AccountInfoPost(); // AccountInfoPost | 
         try {
-            apiInstance.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, body);
+            SuccessTextResponse result = apiInstance.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, body);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountApi#updateAccountInfo");
             e.printStackTrace();
@@ -662,7 +663,8 @@ public class AccountApiExample {
         String end = "end_example"; // String | 
         IpLimitRange body = new IpLimitRange(); // IpLimitRange | The lower and upper bounds of an ip range.
         try {
-            apiInstance.updateAccountIpLimits(start, end, body);
+            SuccessTextResponse result = apiInstance.updateAccountIpLimits(start, end, body);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AccountApi#updateAccountIpLimits");
             e.printStackTrace();
@@ -1301,11 +1303,12 @@ Class | Method | HTTP request | Description
  - [InlineResponse20024](docs/InlineResponse20024.md)
  - [InlineResponse20025](docs/InlineResponse20025.md)
  - [InlineResponse20026](docs/InlineResponse20026.md)
- - [InlineResponse20026Bandwidth](docs/InlineResponse20026Bandwidth.md)
- - [InlineResponse20026Cp](docs/InlineResponse20026Cp.md)
- - [InlineResponse20026Ips](docs/InlineResponse20026Ips.md)
- - [InlineResponse20026Os](docs/InlineResponse20026Os.md)
- - [InlineResponse20026Raid](docs/InlineResponse20026Raid.md)
+ - [InlineResponse20027](docs/InlineResponse20027.md)
+ - [InlineResponse20027Bandwidth](docs/InlineResponse20027Bandwidth.md)
+ - [InlineResponse20027Cp](docs/InlineResponse20027Cp.md)
+ - [InlineResponse20027Ips](docs/InlineResponse20027Ips.md)
+ - [InlineResponse20027Os](docs/InlineResponse20027Os.md)
+ - [InlineResponse20027Raid](docs/InlineResponse20027Raid.md)
  - [InlineResponse2003](docs/InlineResponse2003.md)
  - [InlineResponse2004](docs/InlineResponse2004.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
@@ -1489,6 +1492,7 @@ Class | Method | HTTP request | Description
  - [Service](docs/Service.md)
  - [ServiceCategories](docs/ServiceCategories.md)
  - [ServiceCategory](docs/ServiceCategory.md)
+ - [ServiceOrderPostResponse](docs/ServiceOrderPostResponse.md)
  - [ServiceType](docs/ServiceType.md)
  - [ServiceTypes](docs/ServiceTypes.md)
  - [Services](docs/Services.md)

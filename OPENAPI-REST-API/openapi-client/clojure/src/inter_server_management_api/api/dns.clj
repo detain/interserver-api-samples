@@ -188,6 +188,7 @@
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
             [inter-server-management-api.specs.license :refer :all]
+            [inter-server-management-api.specs.add-server-200-response :refer :all]
             [inter-server-management-api.specs.post-oauth-callback-request :refer :all]
             [inter-server-management-api.specs.mail-alert-update-request :refer :all]
             [inter-server-management-api.specs.billing-prepay-request :refer :all]
@@ -304,6 +305,7 @@
             [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
+            [inter-server-management-api.specs.service-order-post-response :refer :all]
             [inter-server-management-api.specs.vps-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-network-info-switchports :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types :refer :all]
@@ -472,13 +474,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec add-dns-domain any?
+(defn-spec add-dns-domain success-text-response-spec
   "Create DNS Domain
   Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation."
   [domain string?, ip string?]
   (let [res (:data (add-dns-domain-with-http-info domain ip))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode success-text-response-spec res st/string-transformer)
        res)))
 
 
@@ -522,13 +524,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec delete-dns-domain any?
+(defn-spec delete-dns-domain success-text-response-spec
   "Delete DNS Domain
   Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately."
   [id string?]
   (let [res (:data (delete-dns-domain-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode success-text-response-spec res st/string-transformer)
        res)))
 
 
@@ -546,13 +548,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec delete-dns-record any?
+(defn-spec delete-dns-record success-text-response-spec
   "Delete DNS Record
   Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed."
   [domainId int?, recordId int?]
   (let [res (:data (delete-dns-record-with-http-info domainId recordId))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode success-text-response-spec res st/string-transformer)
        res)))
 
 
@@ -618,14 +620,14 @@
               :accepts       ["application/json"]
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
-(defn-spec update-dns-record any?
+(defn-spec update-dns-record success-text-response-spec
   "Update DNS Record
   Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately."
   ([domainId int?, recordId int?, ] (update-dns-record domainId recordId nil))
   ([domainId int?, recordId int?, optional-params any?]
    (let [res (:data (update-dns-record-with-http-info domainId recordId optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode any? res st/string-transformer)
+        (st/decode success-text-response-spec res st/string-transformer)
         res))))
 
 

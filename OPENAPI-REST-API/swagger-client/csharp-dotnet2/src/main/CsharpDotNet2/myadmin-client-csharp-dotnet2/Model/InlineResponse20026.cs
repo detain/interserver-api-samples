@@ -13,39 +13,20 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20026 {
     /// <summary>
-    /// Gets or Sets Bandwidth
+    /// Confirmation message.
     /// </summary>
-    [DataMember(Name="bandwidth", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "bandwidth")]
-    public List<InlineResponse20026Bandwidth> Bandwidth { get; set; }
+    /// <value>Confirmation message.</value>
+    [DataMember(Name="text", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "text")]
+    public string Text { get; set; }
 
     /// <summary>
-    /// Gets or Sets Ips
+    /// The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
     /// </summary>
-    [DataMember(Name="ips", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "ips")]
-    public List<InlineResponse20026Ips> Ips { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Os
-    /// </summary>
-    [DataMember(Name="os", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "os")]
-    public List<InlineResponse20026Os> Os { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Cp
-    /// </summary>
-    [DataMember(Name="cp", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "cp")]
-    public List<InlineResponse20026Cp> Cp { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Raid
-    /// </summary>
-    [DataMember(Name="raid", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "raid")]
-    public List<InlineResponse20026Raid> Raid { get; set; }
+    /// <value>The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.</value>
+    [DataMember(Name="ticket", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "ticket")]
+    public int? Ticket { get; set; }
 
 
     /// <summary>
@@ -55,11 +36,8 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20026 {\n");
-      sb.Append("  Bandwidth: ").Append(Bandwidth).Append("\n");
-      sb.Append("  Ips: ").Append(Ips).Append("\n");
-      sb.Append("  Os: ").Append(Os).Append("\n");
-      sb.Append("  Cp: ").Append(Cp).Append("\n");
-      sb.Append("  Raid: ").Append(Raid).Append("\n");
+      sb.Append("  Text: ").Append(Text).Append("\n");
+      sb.Append("  Ticket: ").Append(Ticket).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

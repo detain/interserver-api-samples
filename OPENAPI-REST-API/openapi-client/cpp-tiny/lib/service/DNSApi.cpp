@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            String
+            SuccessTextResponse
         >
         DNSApi::
         addDnsDomain(
@@ -44,7 +44,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 
@@ -116,7 +121,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            SuccessTextResponse
         >
         DNSApi::
         deleteDnsDomain(
@@ -157,12 +162,17 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 
         Response<
-            String
+            SuccessTextResponse
         >
         DNSApi::
         deleteDnsRecord(
@@ -214,7 +224,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 
@@ -350,7 +365,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            SuccessTextResponse
         >
         DNSApi::
         updateDnsRecord(
@@ -435,7 +450,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 

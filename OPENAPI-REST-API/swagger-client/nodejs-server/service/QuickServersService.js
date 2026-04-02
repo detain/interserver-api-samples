@@ -5,11 +5,26 @@
  * Place QuickServer Order
  * Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
  *
- * no response value expected for this operation
+ * returns ServiceOrderPostResponse
  **/
 exports.addQs = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -1214,11 +1229,20 @@ exports.quickserversCancel = function(id) {
  * Updates QuickServer metadata or stored settings associated with the order.
  *
  * id String QuickServer ID number.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateQsInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

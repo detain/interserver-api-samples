@@ -1277,21 +1277,48 @@ bool BackupsManager::getNewBackupSync(char * accessToken,
 static bool updateBackupInfoProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	SuccessTextResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -1302,15 +1329,15 @@ static bool updateBackupInfoProcessor(MemoryStruct_s p_chunk, long code, char* e
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool updateBackupInfoHelper(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -1386,8 +1413,8 @@ static bool updateBackupInfoHelper(char * accessToken,
 
 bool BackupsManager::updateBackupInfoAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateBackupInfoHelper(accessToken,
 	id, 
@@ -1396,8 +1423,8 @@ bool BackupsManager::updateBackupInfoAsync(char * accessToken,
 
 bool BackupsManager::updateBackupInfoSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateBackupInfoHelper(accessToken,
 	id, 

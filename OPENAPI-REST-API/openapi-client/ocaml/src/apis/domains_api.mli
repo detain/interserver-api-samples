@@ -5,7 +5,7 @@
  *
  *)
 
-val add_domain : unit -> unit Lwt.t
+val add_domain : unit -> Service_order_post_response.t Lwt.t
 val add_domain_dnssec : id:int32 -> domain_dnssec_request_t:Domain_dnssec_request.t -> Success_text_response.t Lwt.t
 val add_domain_nameserver : id:int32 -> domain_nameserver_post_request_t:Domain_nameserver_post_request.t -> Text_response.t Lwt.t
 val cancel_domain : id:int32 -> Cancel_domain_200_response.t Lwt.t
@@ -31,6 +31,6 @@ val post_domain_renewal : id:int32 -> Success_text_response.t Lwt.t
 val post_domain_transfer : id:int32 -> Success_text_response.t Lwt.t
 val put_domains : unit -> unit Lwt.t
 val update_domain_contact : id:int32 -> domain_contact_details_t:Domain_contact_details.t -> Success_text_response.t Lwt.t
-val update_domain_info : id:string -> unit Lwt.t
+val update_domain_info : id:string -> Success_text_response.t Lwt.t
 val update_domain_nameservers : id:int32 -> domain_nameserver_put_request_t:Domain_nameserver_put_request.t -> Text_response.t Lwt.t
 val update_domain_whois_privacy : id:int32 -> domain_whois_privacy_request_t:Domain_whois_privacy_request.t -> Success_text_response.t Lwt.t

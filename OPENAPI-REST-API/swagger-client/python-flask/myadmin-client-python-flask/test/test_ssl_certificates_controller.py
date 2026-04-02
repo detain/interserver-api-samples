@@ -6,8 +6,9 @@ from flask import json
 from six import BytesIO
 
 from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoiceRows  # noqa: E501
-from myadmin-client-python-flask.models.inline_response20020 import InlineResponse20020  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20021 import InlineResponse20021  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.test import BaseTestCase
 

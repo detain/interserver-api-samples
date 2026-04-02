@@ -288,7 +288,9 @@ object AccountApi {
     } yield resp
   }
 
-  def updateAccountInfo(host: String, name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String, address2: String, locale: String, email_invoices: String, email_abuse: String, disable_reset: Boolean, disable_reinstall: Boolean, disable_server_notifications: Boolean, disable_email_notifications: Boolean, gstin: String): Task[Unit] = {
+  def updateAccountInfo(host: String, name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String, address2: String, locale: String, email_invoices: String, email_abuse: String, disable_reset: Boolean, disable_reinstall: Boolean, disable_server_notifications: Boolean, disable_email_notifications: Boolean, gstin: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/account"
 
     val httpMethod = Method.POST
@@ -302,12 +304,14 @@ object AccountApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
 
-  def updateAccountIpLimits(host: String, start: String, end: String): Task[Unit] = {
+  def updateAccountIpLimits(host: String, start: String, end: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/account/iplimits"
 
     val httpMethod = Method.POST
@@ -321,7 +325,7 @@ object AccountApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -648,7 +652,9 @@ class HttpServiceAccountApi(service: HttpService) {
     } yield resp
   }
 
-  def updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String, address2: String, locale: String, email_invoices: String, email_abuse: String, disable_reset: Boolean, disable_reinstall: Boolean, disable_server_notifications: Boolean, disable_email_notifications: Boolean, gstin: String): Task[Unit] = {
+  def updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String, address2: String, locale: String, email_invoices: String, email_abuse: String, disable_reset: Boolean, disable_reinstall: Boolean, disable_server_notifications: Boolean, disable_email_notifications: Boolean, gstin: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/account"
 
     val httpMethod = Method.POST
@@ -662,12 +668,14 @@ class HttpServiceAccountApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
 
-  def updateAccountIpLimits(start: String, end: String): Task[Unit] = {
+  def updateAccountIpLimits(start: String, end: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/account/iplimits"
 
     val httpMethod = Method.POST
@@ -681,7 +689,7 @@ class HttpServiceAccountApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }

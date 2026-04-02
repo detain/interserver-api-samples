@@ -56,7 +56,7 @@ Method | HTTP request | Description
 
 
 # **addQs**
-> addQs()
+> ServiceOrderPostResponse addQs()
 
 Place QuickServer Order
 
@@ -81,7 +81,8 @@ import 'package:openapi/api.dart';
 final api_instance = QuickServersApi();
 
 try {
-    api_instance.addQs();
+    final result = api_instance.addQs();
+    print(result);
 } catch (e) {
     print('Exception when calling QuickServersApi->addQs: $e\n');
 }
@@ -92,7 +93,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2409,7 +2410,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateQsInfo**
-> updateQsInfo(id)
+> SuccessTextResponse updateQsInfo(id)
 
 Update QuickServer Order
 
@@ -2435,7 +2436,8 @@ final api_instance = QuickServersApi();
 final id = id_example; // String | QuickServer ID number.
 
 try {
-    api_instance.updateQsInfo(id);
+    final result = api_instance.updateQsInfo(id);
+    print(result);
 } catch (e) {
     print('Exception when calling QuickServersApi->updateQsInfo: $e\n');
 }
@@ -2449,7 +2451,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -28,12 +28,13 @@ import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
 import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TemplateRequest;
 import io.swagger.model.TextResponse;
@@ -103,8 +104,8 @@ public class VpsApiTest {
     @Test
     public void addVpsTest() {
         VpsOrderPostRequest body = null;
-        //api.addVps(body);
-        
+        //ServiceOrderPostResponse response = api.addVps(body);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -830,8 +831,8 @@ public class VpsApiTest {
     @Test
     public void updateVpsInfoTest() {
         String id = null;
-        //api.updateVpsInfo(id);
-        
+        //SuccessTextResponse response = api.updateVpsInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -847,7 +848,7 @@ public class VpsApiTest {
     @Test
     public void vPSCancelTest() {
         Integer id = null;
-        //InlineResponse20021 response = api.vPSCancel(id);
+        //InlineResponse20022 response = api.vPSCancel(id);
         //assertNotNull(response);
         // TODO: test validations
         

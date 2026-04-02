@@ -18,6 +18,7 @@ feature -- Test routines
             --
             -- Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#39;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_domain: STRING_32
             l_ip: STRING_32
         do
@@ -25,7 +26,7 @@ feature -- Test routines
             -- l_domain
             -- l_ip
 
-            -- api.add_dns_domain(l_domain, l_ip)
+            -- l_response := api.add_dns_domain(l_domain, l_ip)
             assert ("not_implemented", False)
         end
 
@@ -56,12 +57,13 @@ feature -- Test routines
             --
             -- Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.delete_dns_domain(l_id)
+            -- l_response := api.delete_dns_domain(l_id)
             assert ("not_implemented", False)
         end
 
@@ -70,6 +72,7 @@ feature -- Test routines
             --
             -- Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_domain_id: INTEGER_32
             l_record_id: INTEGER_32
         do
@@ -77,7 +80,7 @@ feature -- Test routines
             -- l_domain_id
             -- l_record_id
 
-            -- api.delete_dns_record(l_domain_id, l_record_id)
+            -- l_response := api.delete_dns_record(l_domain_id, l_record_id)
             assert ("not_implemented", False)
         end
 
@@ -114,6 +117,7 @@ feature -- Test routines
             --
             -- Updates an existing DNS record with new values. Use &#x60;GET /dns/{id}&#x60; to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_domain_id: INTEGER_32
             l_record_id: INTEGER_32
             l_name: STRING_32
@@ -129,7 +133,7 @@ feature -- Test routines
             -- l_domain_id
             -- l_record_id
 
-            -- api.update_dns_record(l_domain_id, l_record_id, l_name, l_type, l_content, l_ttl, l_prio, l_disabled, l_ordername, l_auth)
+            -- l_response := api.update_dns_record(l_domain_id, l_record_id, l_name, l_type, l_content, l_ttl, l_prio, l_disabled, l_ordername, l_auth)
             assert ("not_implemented", False)
         end
 

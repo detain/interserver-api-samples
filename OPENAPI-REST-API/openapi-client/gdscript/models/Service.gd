@@ -30,7 +30,7 @@ var __servicesUnderscoreid__was__set := false
 var __servicesUnderscorename__was__set := false
 
 # Required: True
-# Example: 6.0
+# Example: 6
 # isArray: false
 @export var servicesUnderscorecost: float:
 	set(value):

@@ -21,12 +21,13 @@ import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
 import { HostnameObject } from '../model/hostnameObject';
 import { IdBackupsBody2 } from '../model/idBackupsBody2';
 import { InlineResponse20011 } from '../model/inlineResponse20011';
-import { InlineResponse20021 } from '../model/inlineResponse20021';
+import { InlineResponse20022 } from '../model/inlineResponse20022';
 import { InlineResponse401 } from '../model/inlineResponse401';
 import { PasswordRequest } from '../model/passwordRequest';
 import { QueueResponse } from '../model/queueResponse';
 import { RestoreRequest } from '../model/restoreRequest';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TemplateRequest } from '../model/templateRequest';
 import { TextResponse } from '../model/textResponse';
@@ -85,9 +86,9 @@ export class VPSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addVps(body?: VpsOrderPostRequest, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addVps(body?: VpsOrderPostRequest, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addVps(body?: VpsOrderPostRequest, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addVps(body?: VpsOrderPostRequest, observe?: 'body', reportProgress?: boolean): Observable<ServiceOrderPostResponse>;
+    public addVps(body?: VpsOrderPostRequest, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addVps(body?: VpsOrderPostRequest, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addVps(body?: VpsOrderPostRequest, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
@@ -129,7 +130,7 @@ export class VPSService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/vps/order`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post',`${this.basePath}/vps/order`,
             {
                 body: body,
                 params: queryParameters,
@@ -158,9 +159,9 @@ export class VPSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addVpsForm(osDistro?: string, slices?: number, vpsPlatform?: string, controlpanel?: string, period?: number, location?: number, osVersion?: string, hostname?: string, coupon?: string, rootpass?: string, comment?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addVpsForm(osDistro?: string, slices?: number, vpsPlatform?: string, controlpanel?: string, period?: number, location?: number, osVersion?: string, hostname?: string, coupon?: string, rootpass?: string, comment?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addVpsForm(osDistro?: string, slices?: number, vpsPlatform?: string, controlpanel?: string, period?: number, location?: number, osVersion?: string, hostname?: string, coupon?: string, rootpass?: string, comment?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addVpsForm(osDistro?: string, slices?: number, vpsPlatform?: string, controlpanel?: string, period?: number, location?: number, osVersion?: string, hostname?: string, coupon?: string, rootpass?: string, comment?: string, observe?: 'body', reportProgress?: boolean): Observable<ServiceOrderPostResponse>;
+    public addVpsForm(osDistro?: string, slices?: number, vpsPlatform?: string, controlpanel?: string, period?: number, location?: number, osVersion?: string, hostname?: string, coupon?: string, rootpass?: string, comment?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addVpsForm(osDistro?: string, slices?: number, vpsPlatform?: string, controlpanel?: string, period?: number, location?: number, osVersion?: string, hostname?: string, coupon?: string, rootpass?: string, comment?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addVpsForm(osDistro?: string, slices?: number, vpsPlatform?: string, controlpanel?: string, period?: number, location?: number, osVersion?: string, hostname?: string, coupon?: string, rootpass?: string, comment?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
@@ -253,7 +254,7 @@ export class VPSService {
             formParams = formParams.append('comment', <any>comment) as any || formParams;
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/vps/order`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post',`${this.basePath}/vps/order`,
             {
                 body: convertFormParamsToString ? formParams.toString() : formParams,
                 params: queryParameters,
@@ -3707,9 +3708,9 @@ export class VPSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateVpsInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateVpsInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateVpsInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateVpsInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateVpsInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateVpsInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateVpsInfo(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -3748,7 +3749,7 @@ export class VPSService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/vps/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/vps/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -3766,9 +3767,9 @@ export class VPSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public vPSCancel(id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20021>;
-    public vPSCancel(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20021>>;
-    public vPSCancel(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20021>>;
+    public vPSCancel(id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20022>;
+    public vPSCancel(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20022>>;
+    public vPSCancel(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20022>>;
     public vPSCancel(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -3807,7 +3808,7 @@ export class VPSService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<InlineResponse20021>('delete',`${this.basePath}/vps/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<InlineResponse20022>('delete',`${this.basePath}/vps/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

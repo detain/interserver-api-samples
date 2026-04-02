@@ -37,6 +37,7 @@ import org.openapitools.client.models.MailStatsType
 import org.openapitools.client.models.SendMail
 import org.openapitools.client.models.SendMailAdv
 import scala.collection.immutable.Seq
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.ViewMailLogDirParameter
 import org.openapitools.client.models.ViewMailLogGroupbyParameter
@@ -46,7 +47,7 @@ import org.openapitools.client.models.*
 
 trait MailApiEndpoints[F[*]] {
 
-  def addMail()(using auth: _Authorization.ApiKey): F[Unit]
+  def addMail()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def addRule(id: Int, denyRuleNew: DenyRuleNew)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def createMailAlert(id: Int, mailAlertRequest: MailAlertRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteMailAlert(id: Int, alertId: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
@@ -70,7 +71,7 @@ trait MailApiEndpoints[F[*]] {
   def sendAdvMail(id: Int, sendMailAdv: SendMailAdv)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def sendMail(id: Int, sendMail: SendMail)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def updateMailAlert(id: Int, mailAlertUpdateRequest: MailAlertUpdateRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def updateMailInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateMailInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def viewMailLog(id: Int, id2: Option[Long] = None, origin: Option[String] = None, mx: Option[String] = None, from: Option[String] = None, to: Option[String] = None, subject: Option[String] = None, mailid: Option[String] = None, messageId: Option[String] = None, replyto: Option[String] = None, headerfrom: Option[String] = None, delivered: Option[DeliveredStatus] = None, skip: Option[Int] = None, limit: Option[Int] = None, startDate: Option[ViewMailLogStartDateParameter] = None, endDate: Option[ViewMailLogStartDateParameter] = None, sort: Option[ViewMailLogSortParameter] = None, dir: Option[ViewMailLogDirParameter] = None, groupby: Option[ViewMailLogGroupbyParameter] = None)(using auth: _Authorization.ApiKey): F[MailLog]
 
 }
@@ -85,12 +86,12 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addMail()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def addMail()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, ServiceOrderPostResponse](
       method = "POST",
       path = s"/mail/order",
       body = None,
@@ -99,8 +100,8 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, ServiceOrderPostResponse]("ServiceOrderPostResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -563,12 +564,12 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateMailInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateMailInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/mail/${id}",
       body = None,
@@ -577,8 +578,8 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

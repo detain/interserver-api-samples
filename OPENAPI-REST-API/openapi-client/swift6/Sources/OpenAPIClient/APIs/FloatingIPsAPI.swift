@@ -13,9 +13,9 @@ open class FloatingIPsAPI {
      Place Floating IP Order
      
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: ServiceOrderPostResponse
      */
-    open class func addFloatingIp(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func addFloatingIp(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> ServiceOrderPostResponse {
         return try await addFloatingIpWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -33,9 +33,9 @@ open class FloatingIPsAPI {
        - type: apiKey sessionid (HEADER)
        - name: sessionIdHeaderAuth
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addFloatingIpWithRequestBuilder(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func addFloatingIpWithRequestBuilder(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<ServiceOrderPostResponse> {
         let localVariablePath = "/floating_ips/order"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -48,7 +48,7 @@ open class FloatingIPsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -107,9 +107,9 @@ open class FloatingIPsAPI {
      
      - parameter id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: JSONValue
      */
-    open class func getFloatingIpInfo(id: Int, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func getFloatingIpInfo(id: Int, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> JSONValue {
         return try await getFloatingIpInfoWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -128,9 +128,9 @@ open class FloatingIPsAPI {
        - name: sessionIdHeaderAuth
      - parameter id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<JSONValue> 
      */
-    open class func getFloatingIpInfoWithRequestBuilder(id: Int, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func getFloatingIpInfoWithRequestBuilder(id: Int, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<JSONValue> {
         var localVariablePath = "/floating_ips/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -146,7 +146,7 @@ open class FloatingIPsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<JSONValue>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -297,9 +297,9 @@ open class FloatingIPsAPI {
      Get Floating IP Ordering Information
      
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: JSONValue
      */
-    open class func getNewFloatingIp(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func getNewFloatingIp(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> JSONValue {
         return try await getNewFloatingIpWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -317,9 +317,9 @@ open class FloatingIPsAPI {
        - type: apiKey sessionid (HEADER)
        - name: sessionIdHeaderAuth
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<JSONValue> 
      */
-    open class func getNewFloatingIpWithRequestBuilder(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func getNewFloatingIpWithRequestBuilder(apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<JSONValue> {
         let localVariablePath = "/floating_ips/order"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: any Sendable]? = nil
@@ -332,7 +332,7 @@ open class FloatingIPsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<JSONValue>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -442,9 +442,9 @@ open class FloatingIPsAPI {
      
      - parameter id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: SuccessTextResponse
      */
-    open class func updateFloatingIpInfo(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func updateFloatingIpInfo(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SuccessTextResponse {
         return try await updateFloatingIpInfoWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -463,9 +463,9 @@ open class FloatingIPsAPI {
        - name: sessionIdHeaderAuth
      - parameter id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateFloatingIpInfoWithRequestBuilder(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func updateFloatingIpInfoWithRequestBuilder(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<SuccessTextResponse> {
         var localVariablePath = "/floating_ips/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -481,7 +481,7 @@ open class FloatingIPsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SuccessTextResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }

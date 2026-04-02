@@ -9,7 +9,7 @@
  */
 package myadmin
 
-// Information about the IPMI connectioj.
+// Information about the IPMI connection.
 type ServerIpmiLiveInfo struct {
 	Text string `json:"text,omitempty"`
 	PublicIp string `json:"public_ip,omitempty"`

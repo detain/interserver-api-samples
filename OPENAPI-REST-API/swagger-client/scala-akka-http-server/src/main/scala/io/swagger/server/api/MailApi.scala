@@ -26,6 +26,7 @@ import io.swagger.server.model.MailSchema
 import io.swagger.server.model.MailStatsType
 import io.swagger.server.model.SendMail
 import io.swagger.server.model.SendMailAdv
+import io.swagger.server.model.ServiceOrderPostResponse
 import io.swagger.server.model.SuccessTextResponse
 import io.swagger.server.model.endDate
 import io.swagger.server.model.inline_response_200_8
@@ -433,16 +434,16 @@ class MailApi(
 
 trait MailApiService {
 
+  def addMail200(responseServiceOrderPostResponse: ServiceOrderPostResponse)(implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse]): Route =
+    complete((200, responseServiceOrderPostResponse))
   def addMail401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def addMail0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def addMail()
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def addRule200(responseGenericResponse: GenericResponse)(implicit toEntityMarshallerGenericResponse: ToEntityMarshaller[GenericResponse]): Route =
     complete((200, responseGenericResponse))
@@ -736,16 +737,16 @@ trait MailApiService {
   def updateMailAlert(body: MailAlertUpdateRequest, alertId: Int, &#x60;type&#x60;: String, value: String, to: String, enabled: String, id: Int)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def updateMailInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def updateMailInfo401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def updateMailInfo0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def updateMailInfo(id: String)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def viewMailLog200(responseMailLog: MailLog)(implicit toEntityMarshallerMailLog: ToEntityMarshaller[MailLog]): Route =
     complete((200, responseMailLog))
@@ -775,6 +776,8 @@ trait MailApiMarshaller {
 
   implicit def fromRequestUnmarshallerSendMail: FromRequestUnmarshaller[SendMail]
 
+
+  implicit def toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -893,6 +896,8 @@ trait MailApiMarshaller {
   implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

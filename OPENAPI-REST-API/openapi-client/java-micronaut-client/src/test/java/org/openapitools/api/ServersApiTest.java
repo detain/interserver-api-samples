@@ -1,5 +1,6 @@
 package org.openapitools.api;
 
+import org.openapitools.model.AddServer200Response;
 import org.openapitools.model.BuyItNowList;
 import org.openapitools.model.BuyItNowServerOrder200Response;
 import org.openapitools.model.ChargeInvoiceRows;
@@ -48,7 +49,7 @@ public class ServersApiTest {
         // given
 
         // when
-        api.addServer().block();
+        AddServer200Response body = api.addServer().block();
 
         // then
         // TODO implement the addServerTest()
@@ -371,7 +372,7 @@ public class ServersApiTest {
         String id = "example";
 
         // when
-        api.updateServerInfo(id).block();
+        SuccessTextResponse body = api.updateServerInfo(id).block();
 
         // then
         // TODO implement the updateServerInfoTest()

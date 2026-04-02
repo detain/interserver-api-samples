@@ -20,7 +20,8 @@ import io.swagger.server.model.ServersBuyNowResponse
 import io.swagger.server.model.SuccessTextResponse
 import io.swagger.server.model.TextResponse
 import io.swagger.server.model.inline_response_200_19
-import io.swagger.server.model.inline_response_200_26
+import io.swagger.server.model.inline_response_200_20
+import io.swagger.server.model.inline_response_200_27
 import io.swagger.server.model.inline_response_401
 
 class ServersApi(
@@ -304,27 +305,27 @@ class ServersApi(
 
 trait ServersApiService {
 
+  def addServer200(responseinline_response_200_19: inline_response_200_19)(implicit toEntityMarshallerinline_response_200_19: ToEntityMarshaller[inline_response_200_19]): Route =
+    complete((200, responseinline_response_200_19))
   def addServer401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def addServer0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Server order placed successfully., DataType: inline_response_200_19
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def addServer()
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_19: ToEntityMarshaller[inline_response_200_19], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def buyItNowServerOrder200(responseinline_response_200_26: inline_response_200_26)(implicit toEntityMarshallerinline_response_200_26: ToEntityMarshaller[inline_response_200_26]): Route =
-    complete((200, responseinline_response_200_26))
+  def buyItNowServerOrder200(responseinline_response_200_27: inline_response_200_27)(implicit toEntityMarshallerinline_response_200_27: ToEntityMarshaller[inline_response_200_27]): Route =
+    complete((200, responseinline_response_200_27))
   def buyItNowServerOrder401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Available server configurations with pricing and hardware options., DataType: inline_response_200_26
+   * Code: 200, Message: Available server configurations with pricing and hardware options., DataType: inline_response_200_27
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def buyItNowServerOrder()
-      (implicit toEntityMarshallerinline_response_200_26: ToEntityMarshaller[inline_response_200_26], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_27: ToEntityMarshaller[inline_response_200_27], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getMPServers200(responseBuyItNowList: BuyItNowList)(implicit toEntityMarshallerBuyItNowList: ToEntityMarshaller[BuyItNowList]): Route =
     complete((200, responseBuyItNowList))
@@ -486,27 +487,27 @@ trait ServersApiService {
   def serverIpmiPowerPost(asset: Int, action: String, body: ServerIpmiPowerRequest, id: Int)
       (implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def serversCancel200(responseinline_response_200_19: inline_response_200_19)(implicit toEntityMarshallerinline_response_200_19: ToEntityMarshaller[inline_response_200_19]): Route =
-    complete((200, responseinline_response_200_19))
+  def serversCancel200(responseinline_response_200_20: inline_response_200_20)(implicit toEntityMarshallerinline_response_200_20: ToEntityMarshaller[inline_response_200_20]): Route =
+    complete((200, responseinline_response_200_20))
   def serversCancel401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Servers Cancel, DataType: inline_response_200_19
+   * Code: 200, Message: Servers Cancel, DataType: inline_response_200_20
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def serversCancel(id: Int)
-      (implicit toEntityMarshallerinline_response_200_19: ToEntityMarshaller[inline_response_200_19], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_20: ToEntityMarshaller[inline_response_200_20], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def updateServerInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def updateServerInfo401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def updateServerInfo0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def updateServerInfo(id: String)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
 }
 
@@ -520,9 +521,11 @@ trait ServersApiMarshaller {
   implicit def fromRequestUnmarshallerReverseDnsEntries: FromRequestUnmarshaller[ReverseDnsEntries]
 
 
+  implicit def toEntityMarshallerinline_response_200_19: ToEntityMarshaller[inline_response_200_19]
+
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_26: ToEntityMarshaller[inline_response_200_26]
+  implicit def toEntityMarshallerinline_response_200_27: ToEntityMarshaller[inline_response_200_27]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -582,9 +585,11 @@ trait ServersApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_19: ToEntityMarshaller[inline_response_200_19]
+  implicit def toEntityMarshallerinline_response_200_20: ToEntityMarshaller[inline_response_200_20]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

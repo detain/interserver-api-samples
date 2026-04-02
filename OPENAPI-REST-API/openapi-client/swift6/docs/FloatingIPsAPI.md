@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 # **addFloatingIp**
 ```swift
-    open class func addFloatingIp(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func addFloatingIp(completion: @escaping (_ data: ServiceOrderPostResponse?, _ error: Error?) -> Void)
 ```
 
 Place Floating IP Order
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 # **getFloatingIpInfo**
 ```swift
-    open class func getFloatingIpInfo(id: Int, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getFloatingIpInfo(id: Int, completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
 ```
 
 View Floating IP
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+**JSONValue**
 
 ### Authorization
 
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 # **getNewFloatingIp**
 ```swift
-    open class func getNewFloatingIp(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getNewFloatingIp(completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
 ```
 
 Get Floating IP Ordering Information
@@ -341,7 +341,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+**JSONValue**
 
 ### Authorization
 
@@ -454,7 +454,7 @@ Void (empty response body)
 
 # **updateFloatingIpInfo**
 ```swift
-    open class func updateFloatingIpInfo(id: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateFloatingIpInfo(id: String, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Update Floating IP
@@ -489,7 +489,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

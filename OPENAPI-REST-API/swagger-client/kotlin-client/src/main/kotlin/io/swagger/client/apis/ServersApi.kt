@@ -14,7 +14,8 @@ package io.swagger.client.apis
 import io.swagger.client.models.BuyItNowList
 import io.swagger.client.models.ChargeInvoiceRows
 import io.swagger.client.models.InlineResponse20019
-import io.swagger.client.models.InlineResponse20026
+import io.swagger.client.models.InlineResponse20020
+import io.swagger.client.models.InlineResponse20027
 import io.swagger.client.models.InlineResponse401
 import io.swagger.client.models.OrderBuyNowServerBody
 import io.swagger.client.models.ReverseDnsEntries
@@ -36,21 +37,22 @@ class ServersApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
     /**
      * Place Server Order
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
-     * @return void
+     * @return InlineResponse20019
      */
-    fun addServer(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addServer(): InlineResponse20019 {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/servers/order", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<InlineResponse20019>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20019
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -60,22 +62,22 @@ class ServersApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
     /**
      * Get Buy Now Server Options
      * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
-     * @return InlineResponse20026
+     * @return InlineResponse20027
      */
     @Suppress("UNCHECKED_CAST")
-    fun buyItNowServerOrder(): InlineResponse20026 {
+    fun buyItNowServerOrder(): InlineResponse20027 {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/servers/order/buy_now_server", query = localVariableQuery
         )
-        val response = request<InlineResponse20026>(
+        val response = request<InlineResponse20027>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20026
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20027
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -550,22 +552,22 @@ class ServersApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * Cancel Server Service
      * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
      * @param id Server ID number 
-     * @return InlineResponse20019
+     * @return InlineResponse20020
      */
     @Suppress("UNCHECKED_CAST")
-    fun serversCancel(id: kotlin.Int): InlineResponse20019 {
+    fun serversCancel(id: kotlin.Int): InlineResponse20020 {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.DELETE,
                 "/servers/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<InlineResponse20019>(
+        val response = request<InlineResponse20020>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20019
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20020
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -576,21 +578,22 @@ class ServersApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * Update Server Order
      * Updates settings on a dedicated server order.
      * @param id Server ID number. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateServerInfo(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateServerInfo(id: kotlin.String): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/servers/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

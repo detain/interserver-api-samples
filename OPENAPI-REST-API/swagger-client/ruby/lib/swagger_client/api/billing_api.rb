@@ -518,17 +518,17 @@ module SwaggerClient
     # Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
     # @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def delete_account_credit_card(id, opts = {})
-      delete_account_credit_card_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = delete_account_credit_card_with_http_info(id, opts)
+      data
     end
 
     # Remove Credit Card
     # Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
     # @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def delete_account_credit_card_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BillingApi.delete_account_credit_card ...'
@@ -554,7 +554,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'String' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
@@ -1047,16 +1047,16 @@ module SwaggerClient
     # Get Shopping Cart Contents
     # Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Object]
     def get_billing_cart(opts = {})
-      get_billing_cart_with_http_info(opts)
-      nil
+      data, _status_code, _headers = get_billing_cart_with_http_info(opts)
+      data
     end
 
     # Get Shopping Cart Contents
     # Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def get_billing_cart_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BillingApi.get_billing_cart ...'
@@ -1078,7 +1078,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'Object' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -1259,16 +1259,16 @@ module SwaggerClient
     # List Prepay Balances
     # Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Object]
     def get_billing_pre_pays(opts = {})
-      get_billing_pre_pays_with_http_info(opts)
-      nil
+      data, _status_code, _headers = get_billing_pre_pays_with_http_info(opts)
+      data
     end
 
     # List Prepay Balances
     # Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def get_billing_pre_pays_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BillingApi.get_billing_pre_pays ...'
@@ -1290,7 +1290,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'Object' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -1597,17 +1597,17 @@ module SwaggerClient
     # Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
     # @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def update_account_credit_card(id, opts = {})
-      update_account_credit_card_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_account_credit_card_with_http_info(id, opts)
+      data
     end
 
     # Update Credit Card
     # Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
     # @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def update_account_credit_card_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BillingApi.update_account_credit_card ...'
@@ -1633,7 +1633,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'String' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

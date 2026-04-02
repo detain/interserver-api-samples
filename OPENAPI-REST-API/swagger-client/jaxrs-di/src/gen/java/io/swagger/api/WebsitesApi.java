@@ -16,12 +16,13 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBuyIpBody;
 import io.swagger.model.IdMigrationBody;
-import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse20023;
 import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse20025;
+import io.swagger.model.InlineResponse20026;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.Website;
@@ -69,9 +70,9 @@ public class WebsitesApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Webhosting" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response addWebsite(@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.addWebsite(securityContext);
@@ -101,7 +102,7 @@ public class WebsitesApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Webhosting" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Current IP addresses and their reverse DNS hostnames for the website.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20023.class))),
+        @ApiResponse(responseCode = "200", description = "Current IP addresses and their reverse DNS hostnames for the website.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20024.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response getWebsiteBuyIp(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.",required=true) @PathParam("id") Integer id,@Context SecurityContext securityContext)
@@ -229,7 +230,7 @@ public class WebsitesApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Webhosting" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "DNS update result.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20024.class))),
+        @ApiResponse(responseCode = "200", description = "DNS update result.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20025.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response postWebsiteBuyIp(@Parameter(in = ParameterIn.DEFAULT, description = "" ,required=true) IdBuyIpBody body
@@ -246,7 +247,7 @@ public class WebsitesApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Webhosting" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "DNS update result.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20024.class))),
+        @ApiResponse(responseCode = "200", description = "DNS update result.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20025.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response postWebsiteBuyIp(@Parameter(description = "", required=true)  @FormParam("ips")  Map<String, String> ips,@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.",required=true) @PathParam("id") Integer id,@Context SecurityContext securityContext)
@@ -262,7 +263,7 @@ public class WebsitesApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Webhosting" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Migration request submitted.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20025.class))),
+        @ApiResponse(responseCode = "200", description = "Migration request submitted.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20026.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response postWebsiteMigration(@Parameter(in = ParameterIn.DEFAULT, description = "" ,required=true) IdMigrationBody body
@@ -279,7 +280,7 @@ public class WebsitesApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Webhosting" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Migration request submitted.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20025.class))),
+        @ApiResponse(responseCode = "200", description = "Migration request submitted.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20026.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response postWebsiteMigration(@Parameter(description = "", required=true)  @FormParam("custPortal")  String custPortal,@Parameter(description = "", required=true)  @FormParam("regEmail")  String regEmail,@Parameter(description = "", required=true)  @FormParam("password")  String password,@Parameter(description = "", required=true)  @FormParam("ctrlPanel")  String ctrlPanel,@Parameter(description = "", required=true)  @FormParam("ftpUsername")  String ftpUsername,@Parameter(description = "", required=true)  @FormParam("ftpPassword")  String ftpPassword,@Parameter(description = "", required=true)  @FormParam("siteBusyMig")  String siteBusyMig,@Parameter(description = "", required=true)  @FormParam("splReqMig")  String splReqMig,@Parameter(description = "", required=true)  @FormParam("domainReg")  String domainReg,@Parameter(description = "", required=true)  @FormParam("dataMig")  String dataMig,@Parameter(description = "", required=true)  @FormParam("domainRegPortal")  String domainRegPortal,@Parameter(description = "", required=true)  @FormParam("domainRegEmail")  String domainRegEmail,@Parameter(description = "", required=true)  @FormParam("domainRegPassword")  String domainRegPassword,@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.",required=true) @PathParam("id") Integer id,@Context SecurityContext securityContext)
@@ -344,9 +345,9 @@ public class WebsitesApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Webhosting" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response updateWebsiteInfo(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.",required=true) @PathParam("id") String id,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.updateWebsiteInfo(id,securityContext);
@@ -360,7 +361,7 @@ public class WebsitesApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Webhosting" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Website cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20022.class))),
+        @ApiResponse(responseCode = "200", description = "Website cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20023.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response webhostingCancel(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.",required=true) @PathParam("id") String id,@Context SecurityContext securityContext)

@@ -15,13 +15,9 @@ open class DomainsAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addDomain(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addDomain(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
         addDomainWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -39,17 +35,27 @@ open class DomainsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addDomainWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func addDomainWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/domains/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -1749,13 +1755,9 @@ open class DomainsAPI {
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateDomainInfo(_id: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateDomainInfo(_id: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateDomainInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -1773,11 +1775,15 @@ open class DomainsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateDomainInfoWithRequestBuilder(_id: String) -> RequestBuilder<Void> {
+    open class func updateDomainInfoWithRequestBuilder(_id: String) -> RequestBuilder<SuccessTextResponse> {
         var path = "/domains/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1787,7 +1793,7 @@ open class DomainsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

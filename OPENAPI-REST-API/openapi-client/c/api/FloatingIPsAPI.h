@@ -8,6 +8,8 @@
 #include "../model/charge_invoice_rows.h"
 #include "../model/floating_ips_cancel_200_response.h"
 #include "../model/get_account_info_401_response.h"
+#include "../model/object.h"
+#include "../model/service_order_post_response.h"
 #include "../model/success_text_response.h"
 
 
@@ -15,7 +17,7 @@
 //
 // Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
 //
-void
+service_order_post_response_t*
 FloatingIPsAPI_addFloatingIp(apiClient_t *apiClient);
 
 
@@ -31,7 +33,7 @@ FloatingIPsAPI_floatingIpsCancel(apiClient_t *apiClient, int *id);
 //
 // Returns detailed information about a specific Floating IP service including its current target IP assignment.
 //
-void
+object_t*
 FloatingIPsAPI_getFloatingIpInfo(apiClient_t *apiClient, int *id);
 
 
@@ -63,7 +65,7 @@ FloatingIPsAPI_getFloatingIpsWelcomeEmail(apiClient_t *apiClient, int *id);
 //
 // Retrieves available options and pricing for ordering a new Floating IP.
 //
-void
+object_t*
 FloatingIPsAPI_getNewFloatingIp(apiClient_t *apiClient);
 
 
@@ -87,7 +89,7 @@ FloatingIPsAPI_putFloatingIps(apiClient_t *apiClient);
 //
 // Updates settings on a Floating IP service, such as its label or configuration metadata.
 //
-void
+success_text_response_t*
 FloatingIPsAPI_updateFloatingIpInfo(apiClient_t *apiClient, char *id);
 
 

@@ -20,6 +20,7 @@ import License from '../model/License';
 import LicenseRow from '../model/LicenseRow';
 import LicensesCancel200Response from '../model/LicensesCancel200Response';
 import LicensesOrder from '../model/LicensesOrder';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 
 /**
@@ -45,7 +46,7 @@ export default class LicensesApi {
      * Callback function to receive the result of the addLicense operation.
      * @callback module:api/LicensesApi~addLicenseCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -53,6 +54,7 @@ export default class LicensesApi {
      * Place License Order
      * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
      * @param {module:api/LicensesApi~addLicenseCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceOrderPostResponse}
      */
     addLicense(callback) {
       let postBody = null;
@@ -69,7 +71,7 @@ export default class LicensesApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
       return this.apiClient.callApi(
         '/licenses/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -453,7 +455,7 @@ export default class LicensesApi {
      * Callback function to receive the result of the updateLicenseInfo operation.
      * @callback module:api/LicensesApi~updateLicenseInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -462,6 +464,7 @@ export default class LicensesApi {
      * Updates settings on a license service such as its assigned IP.
      * @param {String} id The license service ID. Use `license_id` from `GET /licenses`.
      * @param {module:api/LicensesApi~updateLicenseInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateLicenseInfo(id, callback) {
       let postBody = null;
@@ -483,7 +486,7 @@ export default class LicensesApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/licenses/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

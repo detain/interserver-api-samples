@@ -386,9 +386,10 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * @param disableServerNotifications  
      * @param disableEmailNotifications  
      * @param gstin  
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateAccountInfo(name: kotlin.String, company: kotlin.String, address: kotlin.String, address2: kotlin.String, city: kotlin.String, state: kotlin.String, zip: kotlin.String, country: kotlin.String, phone: kotlin.String, locale: kotlin.String, emailInvoices: kotlin.String, emailAbuse: kotlin.String, disableReset: kotlin.Boolean, disableReinstall: kotlin.Boolean, disableServerNotifications: kotlin.Boolean, disableEmailNotifications: kotlin.Boolean, gstin: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateAccountInfo(name: kotlin.String, company: kotlin.String, address: kotlin.String, address2: kotlin.String, city: kotlin.String, state: kotlin.String, zip: kotlin.String, country: kotlin.String, phone: kotlin.String, locale: kotlin.String, emailInvoices: kotlin.String, emailAbuse: kotlin.String, disableReset: kotlin.Boolean, disableReinstall: kotlin.Boolean, disableServerNotifications: kotlin.Boolean, disableEmailNotifications: kotlin.Boolean, gstin: kotlin.String): SuccessTextResponse {
         val localVariableBody: kotlin.Any? = mapOf("name" to "$name", "company" to "$company", "address" to "$address", "address2" to "$address2", "city" to "$city", "state" to "$state", "zip" to "$zip", "country" to "$country", "phone" to "$phone", "locale" to "$locale", "email_invoices" to "$emailInvoices", "email_abuse" to "$emailAbuse", "disable_reset" to "$disableReset", "disable_reinstall" to "$disableReinstall", "disable_server_notifications" to "$disableServerNotifications", "disable_email_notifications" to "$disableEmailNotifications", "gstin" to "$gstin")
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -398,12 +399,12 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
                 RequestMethod.POST,
                 "/account", query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -414,9 +415,10 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * Update Account Information
      * Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
      * @param body  
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateAccountInfo(body: AccountInfoPost): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateAccountInfo(body: AccountInfoPost): SuccessTextResponse {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -426,12 +428,12 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
                 RequestMethod.POST,
                 "/account", query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -443,9 +445,10 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param start  
      * @param end  
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateAccountIpLimits(start: kotlin.String, end: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateAccountIpLimits(start: kotlin.String, end: kotlin.String): SuccessTextResponse {
         val localVariableBody: kotlin.Any? = mapOf("start" to "$start", "end" to "$end")
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -455,12 +458,12 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
                 RequestMethod.POST,
                 "/account/iplimits", query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -471,9 +474,10 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * Add IP Access Restriction
      * Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param body The lower and upper bounds of an ip range. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateAccountIpLimits(body: IpLimitRange): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateAccountIpLimits(body: IpLimitRange): SuccessTextResponse {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -483,12 +487,12 @@ class AccountApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
                 RequestMethod.POST,
                 "/account/iplimits", query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

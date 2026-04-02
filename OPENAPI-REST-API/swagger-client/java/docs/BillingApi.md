@@ -472,7 +472,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteAccountCreditCard"></a>
 # **deleteAccountCreditCard**
-> deleteAccountCreditCard(id)
+> String deleteAccountCreditCard(id)
 
 Remove Credit Card
 
@@ -510,7 +510,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 BillingApi apiInstance = new BillingApi();
 String id = "id_example"; // String | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 try {
-    apiInstance.deleteAccountCreditCard(id);
+    String result = apiInstance.deleteAccountCreditCard(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#deleteAccountCreditCard");
     e.printStackTrace();
@@ -525,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -1125,7 +1126,7 @@ This endpoint does not need any parameter.
 
 <a name="getBillingCart"></a>
 # **getBillingCart**
-> getBillingCart()
+> Object getBillingCart()
 
 Get Shopping Cart Contents
 
@@ -1162,7 +1163,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 BillingApi apiInstance = new BillingApi();
 try {
-    apiInstance.getBillingCart();
+    Object result = apiInstance.getBillingCart();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#getBillingCart");
     e.printStackTrace();
@@ -1174,7 +1176,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1384,7 +1386,7 @@ This endpoint does not need any parameter.
 
 <a name="getBillingPrePays"></a>
 # **getBillingPrePays**
-> getBillingPrePays()
+> Object getBillingPrePays()
 
 List Prepay Balances
 
@@ -1421,7 +1423,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 BillingApi apiInstance = new BillingApi();
 try {
-    apiInstance.getBillingPrePays();
+    Object result = apiInstance.getBillingPrePays();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#getBillingPrePays");
     e.printStackTrace();
@@ -1433,7 +1436,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1732,7 +1735,7 @@ Name | Type | Description  | Notes
 
 <a name="updateAccountCreditCard"></a>
 # **updateAccountCreditCard**
-> updateAccountCreditCard(id)
+> String updateAccountCreditCard(id)
 
 Update Credit Card
 
@@ -1770,7 +1773,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 BillingApi apiInstance = new BillingApi();
 Integer id = 56; // Integer | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 try {
-    apiInstance.updateAccountCreditCard(id);
+    String result = apiInstance.updateAccountCreditCard(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BillingApi#updateAccountCreditCard");
     e.printStackTrace();
@@ -1785,7 +1789,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

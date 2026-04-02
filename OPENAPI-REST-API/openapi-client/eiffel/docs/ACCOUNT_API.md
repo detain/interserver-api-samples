@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_info**
-> update_account_info (name: STRING_32 ; address: STRING_32 ; city: STRING_32 ; state: STRING_32 ; zip: STRING_32 ; country: STRING_32 ; phone: STRING_32 ; company:  detachable STRING_32 ; address2:  detachable STRING_32 ; locale:  detachable STRING_32 ; email_invoices:  detachable STRING_32 ; email_abuse:  detachable STRING_32 ; disable_reset:  detachable BOOLEAN ; disable_reinstall:  detachable BOOLEAN ; disable_server_notifications:  detachable BOOLEAN ; disable_email_notifications:  detachable BOOLEAN ; gstin:  detachable STRING_32 )
+> update_account_info (name: STRING_32 ; address: STRING_32 ; city: STRING_32 ; state: STRING_32 ; zip: STRING_32 ; country: STRING_32 ; phone: STRING_32 ; company:  detachable STRING_32 ; address2:  detachable STRING_32 ; locale:  detachable STRING_32 ; email_invoices:  detachable STRING_32 ; email_abuse:  detachable STRING_32 ; disable_reset:  detachable BOOLEAN ; disable_reinstall:  detachable BOOLEAN ; disable_server_notifications:  detachable BOOLEAN ; disable_email_notifications:  detachable BOOLEAN ; gstin:  detachable STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Update Account Information
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_ip_limits**
-> update_account_ip_limits (start: STRING_32 ; var_end: STRING_32 )
+> update_account_ip_limits (start: STRING_32 ; var_end: STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Add IP Access Restriction
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 

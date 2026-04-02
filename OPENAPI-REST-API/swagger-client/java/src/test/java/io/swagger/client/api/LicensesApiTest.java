@@ -19,6 +19,7 @@ import io.swagger.client.model.IpObject;
 import io.swagger.client.model.License;
 import io.swagger.client.model.LicenseRow;
 import io.swagger.client.model.LicensesOrder;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -48,7 +49,7 @@ public class LicensesApiTest {
      */
     @Test
     public void addLicenseTest() throws Exception {
-        api.addLicense();
+        ServiceOrderPostResponse response = api.addLicense();
 
         // TODO: test validations
     }
@@ -196,7 +197,7 @@ public class LicensesApiTest {
     @Test
     public void updateLicenseInfoTest() throws Exception {
         String id = null;
-        api.updateLicenseInfo(id);
+        SuccessTextResponse response = api.updateLicenseInfo(id);
 
         // TODO: test validations
     }

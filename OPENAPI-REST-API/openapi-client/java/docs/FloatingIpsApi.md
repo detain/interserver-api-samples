@@ -18,7 +18,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addFloatingIp"></a>
 # **addFloatingIp**
-> addFloatingIp()
+> ServiceOrderPostResponse addFloatingIp()
 
 Place Floating IP Order
 
@@ -59,7 +59,8 @@ public class Example {
 
     FloatingIpsApi apiInstance = new FloatingIpsApi(defaultClient);
     try {
-      apiInstance.addFloatingIp();
+      ServiceOrderPostResponse result = apiInstance.addFloatingIp();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FloatingIpsApi#addFloatingIp");
       System.err.println("Status code: " + e.getCode());
@@ -76,7 +77,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -90,8 +91,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="floatingIpsCancel"></a>
 # **floatingIpsCancel**
@@ -177,7 +178,7 @@ public class Example {
 
 <a id="getFloatingIpInfo"></a>
 # **getFloatingIpInfo**
-> getFloatingIpInfo(id)
+> Object getFloatingIpInfo(id)
 
 View Floating IP
 
@@ -219,7 +220,8 @@ public class Example {
     FloatingIpsApi apiInstance = new FloatingIpsApi(defaultClient);
     Integer id = 56; // Integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
     try {
-      apiInstance.getFloatingIpInfo(id);
+      Object result = apiInstance.getFloatingIpInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FloatingIpsApi#getFloatingIpInfo");
       System.err.println("Status code: " + e.getCode());
@@ -239,7 +241,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -253,8 +255,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Detailed Floating IP service information. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="getFloatingIpInvoices"></a>
 # **getFloatingIpInvoices**
@@ -500,7 +502,7 @@ public class Example {
 
 <a id="getNewFloatingIp"></a>
 # **getNewFloatingIp**
-> getNewFloatingIp()
+> Object getNewFloatingIp()
 
 Get Floating IP Ordering Information
 
@@ -541,7 +543,8 @@ public class Example {
 
     FloatingIpsApi apiInstance = new FloatingIpsApi(defaultClient);
     try {
-      apiInstance.getNewFloatingIp();
+      Object result = apiInstance.getNewFloatingIp();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FloatingIpsApi#getNewFloatingIp");
       System.err.println("Status code: " + e.getCode());
@@ -558,7 +561,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -572,8 +575,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Available options and pricing for ordering a Floating IP. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="postFloatingIpsChangeIp"></a>
 # **postFloatingIpsChangeIp**
@@ -738,7 +741,7 @@ null (empty response body)
 
 <a id="updateFloatingIpInfo"></a>
 # **updateFloatingIpInfo**
-> updateFloatingIpInfo(id)
+> SuccessTextResponse updateFloatingIpInfo(id)
 
 Update Floating IP
 
@@ -780,7 +783,8 @@ public class Example {
     FloatingIpsApi apiInstance = new FloatingIpsApi(defaultClient);
     String id = "id_example"; // String | The Floating IP service ID. Use the ID from `GET /floating_ips`.
     try {
-      apiInstance.updateFloatingIpInfo(id);
+      SuccessTextResponse result = apiInstance.updateFloatingIpInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FloatingIpsApi#updateFloatingIpInfo");
       System.err.println("Status code: " + e.getCode());
@@ -800,7 +804,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -814,6 +818,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 

@@ -221,7 +221,7 @@ let delete_account_credit_card ~id =
         
  id in
     Cohttp_lwt_unix.Client.call `DELETE uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.to_string) resp body
 
 let delete_billing_credit_card ~id =
     let open Lwt.Infix in
@@ -386,7 +386,7 @@ let get_billing_cart () =
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body  resp body
 
 let get_billing_credit_card_verify ~id =
     let open Lwt.Infix in
@@ -452,7 +452,7 @@ let get_billing_pre_pays () =
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body  resp body
 
 let get_invoices ?search_string ?skip ?limit () =
     let open Lwt.Infix in
@@ -596,7 +596,7 @@ let update_account_credit_card ~id =
         
  id in
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.to_string) resp body
 
 let update_affiliate_dock_setup ?affiliate_dock_title ?affiliate_dock_description ?referrer_coupon () =
     let open Lwt.Infix in

@@ -78,11 +78,11 @@ namespace Interserver.MyAdmin.Client.Model
         /// Initializes a new instance of the <see cref="CreateFirewallRule" /> class.
         /// </summary>
         /// <param name="destinationPort">destinationPort (default to 80).</param>
-        /// <param name="sourceIp">sourceIp (default to &quot;0&quot;).</param>
+        /// <param name="sourceIp">Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source. (default to &quot;0.0.0.0&quot;).</param>
         /// <param name="sourcePort">sourcePort (default to 0).</param>
         /// <param name="protocolId">1 &#x3D; TCP, 2 &#x3D; UDP (required).</param>
         /// <param name="xdpAction">1 &#x3D; Block,  0 &#x3D; Whitelist (required).</param>
-        public CreateFirewallRule(int? destinationPort = 80, string sourceIp = "0", int? sourcePort = 0, ProtocolIdEnum protocolId = default(ProtocolIdEnum), XdpActionEnum xdpAction = default(XdpActionEnum))
+        public CreateFirewallRule(int? destinationPort = 80, string sourceIp = "0.0.0.0", int? sourcePort = 0, ProtocolIdEnum protocolId = default(ProtocolIdEnum), XdpActionEnum xdpAction = default(XdpActionEnum))
         {
             // to ensure "protocolId" is required (not null)
             if (protocolId == null)
@@ -114,7 +114,7 @@ namespace Interserver.MyAdmin.Client.Model
             // use default value if no "sourceIp" provided
             if (sourceIp == null)
             {
-                this.source_ip = "0";
+                this.source_ip = "0.0.0.0";
             }
             else
             {
@@ -138,8 +138,9 @@ namespace Interserver.MyAdmin.Client.Model
         public int? destination_port { get; set; }
 
         /// <summary>
-        /// Gets or Sets source_ip
+        /// Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source.
         /// </summary>
+        /// <value>Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source.</value>
         [DataMember(Name="source_ip", EmitDefaultValue=false)]
         public string source_ip { get; set; }
 

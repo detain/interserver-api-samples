@@ -10,7 +10,7 @@ class ServersApi {
   /// Place Server Order
   ///
   /// Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
-  Future addServer() async {
+  Future<InlineResponse20019> addServer() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,15 +50,15 @@ class ServersApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'InlineResponse20019') as InlineResponse20019 ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get Buy Now Server Options
   ///
   /// Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
-  Future<InlineResponse20026> buyItNowServerOrder() async {
+  Future<InlineResponse20027> buyItNowServerOrder() async {
     Object postBody = null;
 
     // verify required params are set
@@ -98,7 +98,7 @@ class ServersApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'InlineResponse20026') as InlineResponse20026 ;
+          apiClient.deserialize(response.body, 'InlineResponse20027') as InlineResponse20027 ;
     } else {
       return null;
     }
@@ -850,7 +850,7 @@ if (action != null)
   /// Cancel Server Service
   ///
   /// Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
-  Future<InlineResponse20019> serversCancel(int id) async {
+  Future<InlineResponse20020> serversCancel(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -893,7 +893,7 @@ if (action != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'InlineResponse20019') as InlineResponse20019 ;
+          apiClient.deserialize(response.body, 'InlineResponse20020') as InlineResponse20020 ;
     } else {
       return null;
     }
@@ -901,7 +901,7 @@ if (action != null)
   /// Update Server Order
   ///
   /// Updates settings on a dedicated server order.
-  Future updateServerInfo(String id) async {
+  Future<SuccessTextResponse> updateServerInfo(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -944,9 +944,9 @@ if (action != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
 }

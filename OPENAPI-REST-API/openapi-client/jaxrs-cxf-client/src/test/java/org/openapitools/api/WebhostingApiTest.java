@@ -22,6 +22,7 @@ import org.openapitools.model.PostWebsiteMigration200Response;
 import org.openapitools.model.PostWebsiteMigrationRequest;
 import org.openapitools.model.PostWebsiteMigrationRequest1;
 import org.openapitools.model.ReverseDnsEntries;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import org.openapitools.model.WebhostingCancel200Response;
@@ -85,8 +86,8 @@ public class WebhostingApiTest {
      */
     @Test
     public void addWebsiteTest() {
-        //api.addWebsite();
-        
+        //ServiceOrderPostResponse response = api.addWebsite();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -337,8 +338,8 @@ public class WebhostingApiTest {
     @Test
     public void updateWebsiteInfoTest() {
         String id = null;
-        //api.updateWebsiteInfo(id);
-        
+        //SuccessTextResponse response = api.updateWebsiteInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 

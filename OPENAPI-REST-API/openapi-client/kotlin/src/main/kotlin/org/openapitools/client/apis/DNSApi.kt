@@ -31,6 +31,7 @@ import org.openapitools.client.models.DnsListItem
 import org.openapitools.client.models.DnsRecord
 import org.openapitools.client.models.DnsRecordType
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.SuccessTextResponse
 
 import com.squareup.moshi.Json
 
@@ -62,19 +63,20 @@ open class DNSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#39;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param domain The domain name.
      * @param ip IP Address to point the domain to.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun addDnsDomain(domain: kotlin.String, ip: kotlin.String) : Unit {
+    fun addDnsDomain(domain: kotlin.String, ip: kotlin.String) : SuccessTextResponse {
         val localVarResponse = addDnsDomainWithHttpInfo(domain = domain, ip = ip)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -94,15 +96,16 @@ open class DNSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#39;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param domain The domain name.
      * @param ip IP Address to point the domain to.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun addDnsDomainWithHttpInfo(domain: kotlin.String, ip: kotlin.String) : ApiResponse<Unit?> {
+    fun addDnsDomainWithHttpInfo(domain: kotlin.String, ip: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = addDnsDomainRequestConfig(domain = domain, ip = ip)
 
-        return request<Map<String, PartConfig<*>>, Unit>(
+        return request<Map<String, PartConfig<*>>, SuccessTextResponse>(
             localVariableConfig
         )
     }
@@ -228,19 +231,20 @@ open class DNSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Delete DNS Domain
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun deleteDnsDomain(id: kotlin.String) : Unit {
+    fun deleteDnsDomain(id: kotlin.String) : SuccessTextResponse {
         val localVarResponse = deleteDnsDomainWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -259,15 +263,16 @@ open class DNSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Delete DNS Domain
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun deleteDnsDomainWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun deleteDnsDomainWithHttpInfo(id: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = deleteDnsDomainRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }
@@ -300,19 +305,20 @@ open class DNSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun deleteDnsRecord(domainId: kotlin.Int, recordId: kotlin.Int) : Unit {
+    fun deleteDnsRecord(domainId: kotlin.Int, recordId: kotlin.Int) : SuccessTextResponse {
         val localVarResponse = deleteDnsRecordWithHttpInfo(domainId = domainId, recordId = recordId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -332,15 +338,16 @@ open class DNSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun deleteDnsRecordWithHttpInfo(domainId: kotlin.Int, recordId: kotlin.Int) : ApiResponse<Unit?> {
+    fun deleteDnsRecordWithHttpInfo(domainId: kotlin.Int, recordId: kotlin.Int) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = deleteDnsRecordRequestConfig(domainId = domainId, recordId = recordId)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }
@@ -525,19 +532,20 @@ open class DNSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * @param disabled  (optional)
      * @param ordername  (optional)
      * @param auth  (optional)
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateDnsRecord(domainId: kotlin.Int, recordId: kotlin.Int, name: kotlin.String? = null, type: DnsRecordType? = null, content: kotlin.String? = null, ttl: kotlin.String? = null, prio: kotlin.String? = null, disabled: kotlin.String? = null, ordername: kotlin.String? = null, auth: kotlin.String? = null) : Unit {
+    fun updateDnsRecord(domainId: kotlin.Int, recordId: kotlin.Int, name: kotlin.String? = null, type: DnsRecordType? = null, content: kotlin.String? = null, ttl: kotlin.String? = null, prio: kotlin.String? = null, disabled: kotlin.String? = null, ordername: kotlin.String? = null, auth: kotlin.String? = null) : SuccessTextResponse {
         val localVarResponse = updateDnsRecordWithHttpInfo(domainId = domainId, recordId = recordId, name = name, type = type, content = content, ttl = ttl, prio = prio, disabled = disabled, ordername = ordername, auth = auth)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -565,15 +573,16 @@ open class DNSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * @param disabled  (optional)
      * @param ordername  (optional)
      * @param auth  (optional)
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateDnsRecordWithHttpInfo(domainId: kotlin.Int, recordId: kotlin.Int, name: kotlin.String?, type: DnsRecordType?, content: kotlin.String?, ttl: kotlin.String?, prio: kotlin.String?, disabled: kotlin.String?, ordername: kotlin.String?, auth: kotlin.String?) : ApiResponse<Unit?> {
+    fun updateDnsRecordWithHttpInfo(domainId: kotlin.Int, recordId: kotlin.Int, name: kotlin.String?, type: DnsRecordType?, content: kotlin.String?, ttl: kotlin.String?, prio: kotlin.String?, disabled: kotlin.String?, ordername: kotlin.String?, auth: kotlin.String?) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateDnsRecordRequestConfig(domainId = domainId, recordId = recordId, name = name, type = type, content = content, ttl = ttl, prio = prio, disabled = disabled, ordername = ordername, auth = auth)
 
-        return request<Map<String, PartConfig<*>>, Unit>(
+        return request<Map<String, PartConfig<*>>, SuccessTextResponse>(
             localVariableConfig
         )
     }

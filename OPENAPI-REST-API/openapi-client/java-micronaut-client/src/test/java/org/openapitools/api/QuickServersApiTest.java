@@ -11,6 +11,7 @@ import org.openapitools.model.QuickserverRow;
 import org.openapitools.model.QuickserversCancel200Response;
 import org.openapitools.model.RestoreRequest;
 import org.openapitools.model.ReverseDnsEntries;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import org.openapitools.model.VpsBackupRows;
@@ -48,7 +49,7 @@ public class QuickServersApiTest {
         // given
 
         // when
-        api.addQs().block();
+        ServiceOrderPostResponse body = api.addQs().block();
 
         // then
         // TODO implement the addQsTest()
@@ -870,7 +871,7 @@ public class QuickServersApiTest {
         String id = "example";
 
         // when
-        api.updateQsInfo(id).block();
+        SuccessTextResponse body = api.updateQsInfo(id).block();
 
         // then
         // TODO implement the updateQsInfoTest()

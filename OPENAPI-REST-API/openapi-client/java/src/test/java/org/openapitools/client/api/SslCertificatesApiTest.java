@@ -16,6 +16,7 @@ package org.openapitools.client.api;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.model.ChargeInvoiceRows;
 import org.openapitools.client.model.GetAccountInfo401Response;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SslCancel200Response;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.junit.jupiter.api.Disabled;
@@ -43,7 +44,7 @@ public class SslCertificatesApiTest {
      */
     @Test
     public void addSslTest() throws ApiException {
-        api.addSsl();
+        ServiceOrderPostResponse response = api.addSsl();
         // TODO: test validations
     }
 
@@ -56,7 +57,7 @@ public class SslCertificatesApiTest {
      */
     @Test
     public void getNewSslTest() throws ApiException {
-        api.getNewSsl();
+        Object response = api.getNewSsl();
         // TODO: test validations
     }
 
@@ -70,7 +71,7 @@ public class SslCertificatesApiTest {
     @Test
     public void getSslInfoTest() throws ApiException {
         Integer id = null;
-        api.getSslInfo(id);
+        Object response = api.getSslInfo(id);
         // TODO: test validations
     }
 
@@ -152,7 +153,7 @@ public class SslCertificatesApiTest {
     @Test
     public void updateSslInfoTest() throws ApiException {
         String id = null;
-        api.updateSslInfo(id);
+        SuccessTextResponse response = api.updateSslInfo(id);
         // TODO: test validations
     }
 

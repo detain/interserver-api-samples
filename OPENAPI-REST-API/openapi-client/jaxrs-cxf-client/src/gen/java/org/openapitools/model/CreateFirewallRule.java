@@ -91,9 +91,12 @@ NUMBER_0(Integer.valueOf(0)), NUMBER_1(Integer.valueOf(1));
 
   private Integer destinationPort = 80;
 
-  @ApiModelProperty(example = "1.2.4.5", value = "")
+ /**
+  * Source IP address to match. Use '0.0.0.0' to match any source.
+  */
+  @ApiModelProperty(example = "1.2.4.5", value = "Source IP address to match. Use '0.0.0.0' to match any source.")
 
-  private String sourceIp = "0";
+  private String sourceIp = "0.0.0.0";
 
   @ApiModelProperty(example = "1302", value = "")
 
@@ -159,7 +162,7 @@ NUMBER_0(Integer.valueOf(0)), NUMBER_1(Integer.valueOf(1));
   }
 
  /**
-   * Get sourceIp
+   * Source IP address to match. Use &#39;0.0.0.0&#39; to match any source.
    * @return sourceIp
   **/
   @JsonProperty("source_ip")

@@ -1,28 +1,28 @@
 part of swagger.api;
 
 class InlineResponse20025 {
-  /* Confirmation message. */
-  String text = null;
-/* The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress. */
-  int ticket = null;
+  
+  String message = null;
+
+  bool success = null;
 
   InlineResponse20025();
 
   @override
   String toString() {
-    return 'InlineResponse20025[text=$text, ticket=$ticket, ]';
+    return 'InlineResponse20025[message=$message, success=$success, ]';
   }
 
   InlineResponse20025.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    text = json['text'];
-    ticket = json['ticket'];
+    message = json['message'];
+    success = json['success'];
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'text': text,
-      'ticket': ticket
+      'message': message,
+      'success': success
      };
   }
 

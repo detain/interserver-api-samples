@@ -10,7 +10,7 @@ class WebhostingApi {
   /// Place Website Order
   ///
   /// Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
-  Future addWebsite() async {
+  Future<ServiceOrderPostResponse> addWebsite() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,9 +50,9 @@ class WebhostingApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'ServiceOrderPostResponse') as ServiceOrderPostResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Website Ordering Information
@@ -106,7 +106,7 @@ class WebhostingApi {
   /// Get Website IP Information
   ///
   /// Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
-  Future<InlineResponse20023> getWebsiteBuyIp(int id) async {
+  Future<InlineResponse20024> getWebsiteBuyIp(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -149,7 +149,7 @@ class WebhostingApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'InlineResponse20023') as InlineResponse20023 ;
+          apiClient.deserialize(response.body, 'InlineResponse20024') as InlineResponse20024 ;
     } else {
       return null;
     }
@@ -511,7 +511,7 @@ class WebhostingApi {
   /// Update Website IP DNS
   ///
   /// Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
-  Future<InlineResponse20024> postWebsiteBuyIp(IdBuyIpBody body, int id) async {
+  Future<InlineResponse20025> postWebsiteBuyIp(IdBuyIpBody body, int id) async {
     Object postBody = body;
 
     // verify required params are set
@@ -563,7 +563,7 @@ class WebhostingApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'InlineResponse20024') as InlineResponse20024 ;
+          apiClient.deserialize(response.body, 'InlineResponse20025') as InlineResponse20025 ;
     } else {
       return null;
     }
@@ -571,7 +571,7 @@ class WebhostingApi {
   /// Request Website Migration
   ///
   /// Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
-  Future<InlineResponse20025> postWebsiteMigration(IdMigrationBody body, int id) async {
+  Future<InlineResponse20026> postWebsiteMigration(IdMigrationBody body, int id) async {
     Object postBody = body;
 
     // verify required params are set
@@ -695,7 +695,7 @@ if (domainRegPassword != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'InlineResponse20025') as InlineResponse20025 ;
+          apiClient.deserialize(response.body, 'InlineResponse20026') as InlineResponse20026 ;
     } else {
       return null;
     }
@@ -811,7 +811,7 @@ if (domainRegPassword != null)
   /// Update Website Order
   ///
   /// Updates settings on a webhosting order.
-  Future updateWebsiteInfo(String id) async {
+  Future<SuccessTextResponse> updateWebsiteInfo(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -854,15 +854,15 @@ if (domainRegPassword != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Cancel Website
   ///
   /// Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
-  Future<InlineResponse20022> webhostingCancel(String id) async {
+  Future<InlineResponse20023> webhostingCancel(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -905,7 +905,7 @@ if (domainRegPassword != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'InlineResponse20022') as InlineResponse20022 ;
+          apiClient.deserialize(response.body, 'InlineResponse20023') as InlineResponse20023 ;
     } else {
       return null;
     }

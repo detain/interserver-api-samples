@@ -535,11 +535,19 @@ class BackupsApi {
   ///
   /// * [int] id (required):
   ///   The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
-  Future<void> updateBackupInfo(int id,) async {
+  Future<SuccessTextResponse?> updateBackupInfo(int id,) async {
     final response = await updateBackupInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// Validate Backup Order

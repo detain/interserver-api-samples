@@ -10,7 +10,7 @@ class DomainsApi {
   /// Place Domain Order
   ///
   /// Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
-  Future addDomain() async {
+  Future<ServiceOrderPostResponse> addDomain() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,9 +50,9 @@ class DomainsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'ServiceOrderPostResponse') as ServiceOrderPostResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Add Domain DNSSEC Records
@@ -1461,7 +1461,7 @@ if (lastName != null)
   /// Update Domain Order
   ///
   /// Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
-  Future updateDomainInfo(String id) async {
+  Future<SuccessTextResponse> updateDomainInfo(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -1504,9 +1504,9 @@ if (lastName != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Replace Nameserver Set

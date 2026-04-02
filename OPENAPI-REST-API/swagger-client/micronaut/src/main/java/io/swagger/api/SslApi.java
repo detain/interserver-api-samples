@@ -6,8 +6,9 @@
 package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20021;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.*;
@@ -28,10 +29,10 @@ public interface SslApi {
 
 
     @Operation(summary = "Place SSL Cert Order", operationId = "addSsl", description = "Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first." , tags = {"SSL-Certificates"})
+    @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/ssl/order", produces = { "application/json" })
-    default Single<HttpResponse<Void>> addSsl() {
+    default Single<HttpResponse<ServiceOrderPostResponse>> addSsl() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -39,10 +40,10 @@ public interface SslApi {
 
 
     @Operation(summary = "SSL Cert Ordering Information", operationId = "getNewSsl", description = "Retrieves available SSL certificate types and pricing for ordering." , tags = {"SSL-Certificates"})
+    @ApiResponse(responseCode = "200", description = "Available SSL certificate types and pricing for ordering.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Get(value = "/ssl/order", produces = { "application/json" })
-    default Single<HttpResponse<Void>> getNewSsl() {
+    default Single<HttpResponse<Object>> getNewSsl() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -50,10 +51,10 @@ public interface SslApi {
 
 
     @Operation(summary = "Get SSL Cert Info", operationId = "getSslInfo", description = "Returns detailed information about a specific SSL certificate including its domain and expiration." , tags = {"SSL-Certificates"})
+    @ApiResponse(responseCode = "200", description = "Detailed SSL certificate information.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Get(value = "/ssl/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> getSslInfo(@Parameter(description = "SSL certificate ID number.") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<Object>> getSslInfo(@Parameter(description = "SSL certificate ID number.") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -109,7 +110,7 @@ public interface SslApi {
     @ApiResponse(responseCode = "200", description = "SSL Cancel")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Delete(value = "/ssl/{id}", produces = { "application/json" })
-    default Single<HttpResponse<InlineResponse20020>> sslCancel(@Parameter(description = "SSL Cert ID number") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<InlineResponse20021>> sslCancel(@Parameter(description = "SSL Cert ID number") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -117,10 +118,10 @@ public interface SslApi {
 
 
     @Operation(summary = "Update SSL Cert Order", operationId = "updateSslInfo", description = "Updates settings on an SSL certificate order." , tags = {"SSL-Certificates"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/ssl/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateSslInfo(@Parameter(description = "SSL certificate ID number.") @PathVariable("id") String id) {
+    default Single<HttpResponse<SuccessTextResponse>> updateSslInfo(@Parameter(description = "SSL certificate ID number.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

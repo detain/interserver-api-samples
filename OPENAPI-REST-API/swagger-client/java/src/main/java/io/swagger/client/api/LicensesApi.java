@@ -33,6 +33,7 @@ import io.swagger.client.model.IpObject;
 import io.swagger.client.model.License;
 import io.swagger.client.model.LicenseRow;
 import io.swagger.client.model.LicensesOrder;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 
 import java.lang.reflect.Type;
@@ -131,21 +132,24 @@ public class LicensesApi {
     /**
      * Place License Order
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addLicense() throws ApiException {
-        addLicenseWithHttpInfo();
+    public ServiceOrderPostResponse addLicense() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> resp = addLicenseWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Place License Order
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addLicenseWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addLicenseWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = addLicenseValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -155,7 +159,7 @@ public class LicensesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addLicenseAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addLicenseAsync(final ApiCallback<ServiceOrderPostResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -177,7 +181,8 @@ public class LicensesApi {
         }
 
         com.squareup.okhttp.Call call = addLicenseValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1516,22 +1521,25 @@ public class LicensesApi {
      * Update License
      * Updates settings on a license service such as its assigned IP.
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateLicenseInfo(String id) throws ApiException {
-        updateLicenseInfoWithHttpInfo(id);
+    public SuccessTextResponse updateLicenseInfo(String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateLicenseInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update License
      * Updates settings on a license service such as its assigned IP.
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateLicenseInfoWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateLicenseInfoWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = updateLicenseInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1542,7 +1550,7 @@ public class LicensesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateLicenseInfoAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateLicenseInfoAsync(String id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1564,7 +1572,8 @@ public class LicensesApi {
         }
 
         com.squareup.okhttp.Call call = updateLicenseInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

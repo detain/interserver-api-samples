@@ -1,7 +1,7 @@
 
 # ServerIpmiLiveInfo
 
-Information about the IPMI connectioj.
+Information about the IPMI connection.
 
 ## Properties
 

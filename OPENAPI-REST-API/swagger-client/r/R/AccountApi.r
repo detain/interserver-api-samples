@@ -430,7 +430,9 @@ AccountApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        # void response, no need to return anything
+        returnObject <- SuccessTextResponse$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         Response$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
@@ -463,7 +465,9 @@ AccountApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        # void response, no need to return anything
+        returnObject <- SuccessTextResponse$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         Response$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {

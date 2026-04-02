@@ -21,10 +21,10 @@ defmodule InterServerManagementAPI.Api.VPS do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, InterServerManagementAPI.Model.ServiceOrderPostResponse.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec add_vps(Tesla.Env.client, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec add_vps(Tesla.Env.client, keyword()) :: {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:ok, InterServerManagementAPI.Model.ServiceOrderPostResponse.t} | {:error, Tesla.Env.t}
   def add_vps(connection, opts \\ []) do
     optional_params = %{
       :body => :body
@@ -41,8 +41,8 @@ defmodule InterServerManagementAPI.Api.VPS do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, InterServerManagementAPI.Model.ServiceOrderPostResponse},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 
@@ -1396,10 +1396,10 @@ defmodule InterServerManagementAPI.Api.VPS do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, InterServerManagementAPI.Model.SuccessTextResponse.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec update_vps_info(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec update_vps_info(Tesla.Env.client, String.t, keyword()) :: {:ok, InterServerManagementAPI.Model.SuccessTextResponse.t} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
   def update_vps_info(connection, id, _opts \\ []) do
     request =
       %{}
@@ -1411,8 +1411,8 @@ defmodule InterServerManagementAPI.Api.VPS do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, InterServerManagementAPI.Model.SuccessTextResponse},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 

@@ -228,8 +228,8 @@ class BackupsApi(baseUrl: String) {
    * Updates backup storage service metadata, such as stored credentials or settings for the order.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -238,14 +238,14 @@ class BackupsApi(baseUrl: String) {
    * 
    * @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
    */
-  def updateBackupInfo(id: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, baseUrl, "/backups/{id}", "application/json")
+  def updateBackupInfo(id: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[SuccessTextResponse] =
+    ApiRequest[SuccessTextResponse](ApiMethods.POST, baseUrl, "/backups/{id}", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
       .withPathParam("id", id)
+      .withSuccessResponse[SuccessTextResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**

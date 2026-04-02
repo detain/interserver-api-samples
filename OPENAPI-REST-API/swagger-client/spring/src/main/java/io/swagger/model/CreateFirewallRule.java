@@ -34,7 +34,7 @@ public class CreateFirewallRule   {
 
   @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
   @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private String sourceIp = "0";
+  private String sourceIp = "0.0.0.0";
 
   @JsonProperty("source_port")
 
@@ -141,11 +141,11 @@ public class CreateFirewallRule   {
   }
 
   /**
-   * Get sourceIp
+   * Source IP address to match. Use '0.0.0.0' to match any source.
    * @return sourceIp
    **/
   
-  @Schema(example = "1.2.4.5", description = "")
+  @Schema(example = "1.2.4.5", description = "Source IP address to match. Use '0.0.0.0' to match any source.")
   
   public String getSourceIp() {  
     return sourceIp;

@@ -21,6 +21,7 @@ import io.swagger.model.DnsRecord;
 import io.swagger.model.DnsRecordType;
 import io.swagger.model.DnsUpdateRecord;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.SuccessTextResponse;
 
 import java.util.Map;
 import java.util.List;
@@ -76,9 +77,9 @@ public class DnsApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "DNS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response addDnsDomain(@Parameter(description = "", required=true)  @FormParam("domain")  String domain,@Parameter(description = "", required=true)  @FormParam("ip")  String ip,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.addDnsDomain(domain,ip,securityContext);
@@ -108,9 +109,9 @@ public class DnsApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "DNS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response deleteDnsDomain(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.",required=true) @PathParam("id") String id,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.deleteDnsDomain(id,securityContext);
@@ -124,9 +125,9 @@ public class DnsApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "DNS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response deleteDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.",required=true) @PathParam("domainId") Integer domainId,@Parameter(in = ParameterIn.PATH, description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.",required=true) @PathParam("recordId") Integer recordId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.deleteDnsRecord(domainId,recordId,securityContext);
@@ -172,9 +173,9 @@ public class DnsApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "DNS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response updateDnsRecord(@Parameter(description = "", required=true)  @FormParam("name")  String name,@Parameter(description = "", required=true)  @FormParam("type")  DnsRecordType type,@Parameter(description = "", required=true)  @FormParam("content")  String content,@Parameter(description = "", required=true)  @FormParam("ttl")  String ttl,@Parameter(description = "", required=true)  @FormParam("prio")  String prio,@Parameter(description = "", required=true)  @FormParam("disabled")  String disabled,@Parameter(description = "", required=true)  @FormParam("ordername")  String ordername,@Parameter(description = "", required=true)  @FormParam("auth")  String auth,@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.",required=true) @PathParam("domainId") Integer domainId,@Parameter(in = ParameterIn.PATH, description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.",required=true) @PathParam("recordId") Integer recordId,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.updateDnsRecord(name,type,content,ttl,prio,disabled,ordername,auth,domainId,recordId,securityContext);

@@ -200,11 +200,12 @@ import InlineResponse20023 from './model/InlineResponse20023';
 import InlineResponse20024 from './model/InlineResponse20024';
 import InlineResponse20025 from './model/InlineResponse20025';
 import InlineResponse20026 from './model/InlineResponse20026';
-import InlineResponse20026Bandwidth from './model/InlineResponse20026Bandwidth';
-import InlineResponse20026Cp from './model/InlineResponse20026Cp';
-import InlineResponse20026Ips from './model/InlineResponse20026Ips';
-import InlineResponse20026Os from './model/InlineResponse20026Os';
-import InlineResponse20026Raid from './model/InlineResponse20026Raid';
+import InlineResponse20027 from './model/InlineResponse20027';
+import InlineResponse20027Bandwidth from './model/InlineResponse20027Bandwidth';
+import InlineResponse20027Cp from './model/InlineResponse20027Cp';
+import InlineResponse20027Ips from './model/InlineResponse20027Ips';
+import InlineResponse20027Os from './model/InlineResponse20027Os';
+import InlineResponse20027Raid from './model/InlineResponse20027Raid';
 import InlineResponse2003 from './model/InlineResponse2003';
 import InlineResponse2004 from './model/InlineResponse2004';
 import InlineResponse2005 from './model/InlineResponse2005';
@@ -388,6 +389,7 @@ import ServersBuyNowResponseOrderDetails from './model/ServersBuyNowResponseOrde
 import Service from './model/Service';
 import ServiceCategories from './model/ServiceCategories';
 import ServiceCategory from './model/ServiceCategory';
+import ServiceOrderPostResponse from './model/ServiceOrderPostResponse';
 import ServiceType from './model/ServiceType';
 import ServiceTypes from './model/ServiceTypes';
 import Services from './model/Services';
@@ -1655,34 +1657,40 @@ export {
     InlineResponse20026,
 
     /**
-     * The InlineResponse20026Bandwidth model constructor.
-     * @property {module:model/InlineResponse20026Bandwidth}
+     * The InlineResponse20027 model constructor.
+     * @property {module:model/InlineResponse20027}
      */
-    InlineResponse20026Bandwidth,
+    InlineResponse20027,
 
     /**
-     * The InlineResponse20026Cp model constructor.
-     * @property {module:model/InlineResponse20026Cp}
+     * The InlineResponse20027Bandwidth model constructor.
+     * @property {module:model/InlineResponse20027Bandwidth}
      */
-    InlineResponse20026Cp,
+    InlineResponse20027Bandwidth,
 
     /**
-     * The InlineResponse20026Ips model constructor.
-     * @property {module:model/InlineResponse20026Ips}
+     * The InlineResponse20027Cp model constructor.
+     * @property {module:model/InlineResponse20027Cp}
      */
-    InlineResponse20026Ips,
+    InlineResponse20027Cp,
 
     /**
-     * The InlineResponse20026Os model constructor.
-     * @property {module:model/InlineResponse20026Os}
+     * The InlineResponse20027Ips model constructor.
+     * @property {module:model/InlineResponse20027Ips}
      */
-    InlineResponse20026Os,
+    InlineResponse20027Ips,
 
     /**
-     * The InlineResponse20026Raid model constructor.
-     * @property {module:model/InlineResponse20026Raid}
+     * The InlineResponse20027Os model constructor.
+     * @property {module:model/InlineResponse20027Os}
      */
-    InlineResponse20026Raid,
+    InlineResponse20027Os,
+
+    /**
+     * The InlineResponse20027Raid model constructor.
+     * @property {module:model/InlineResponse20027Raid}
+     */
+    InlineResponse20027Raid,
 
     /**
      * The InlineResponse2003 model constructor.
@@ -2781,6 +2789,12 @@ export {
      * @property {module:model/ServiceCategory}
      */
     ServiceCategory,
+
+    /**
+     * The ServiceOrderPostResponse model constructor.
+     * @property {module:model/ServiceOrderPostResponse}
+     */
+    ServiceOrderPostResponse,
 
     /**
      * The ServiceType model constructor.

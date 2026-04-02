@@ -12,7 +12,7 @@ let add_mail () =
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Service_order_post_response.of_yojson) resp body
 
 let add_rule ~id ~deny_rule_new_t =
     let open Lwt.Infix in
@@ -683,7 +683,7 @@ let update_mail_info ~id =
         
  id in
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let view_mail_log ~id ?id2 ?origin ?mx ?from ?_to ?subject ?mailid ?message_id ?replyto ?headerfrom ?delivered ?(skip = 00l) ?(limit = 100100l) ?start_date ?end_date ?(sort = `Time) ?(dir = `Desc) ?(groupby = `Recipient) () =
     let open Lwt.Infix in

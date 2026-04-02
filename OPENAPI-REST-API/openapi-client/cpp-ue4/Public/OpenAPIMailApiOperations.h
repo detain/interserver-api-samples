@@ -35,6 +35,7 @@
 #include "OpenAPIMailStatsType.h"
 #include "OpenAPISendMail.h"
 #include "OpenAPISendMailAdv.h"
+#include "OpenAPIServiceOrderPostResponse.h"
 #include "OpenAPISuccessTextResponse.h"
 #include "OpenAPIViewMailLogStartDateParameter.h"
 
@@ -61,7 +62,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPIServiceOrderPostResponse Content;
 };
 
 /* Create Deny Rule
@@ -683,7 +684,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 /* View Mail Log
@@ -713,7 +714,7 @@ public:
 	TOptional<FString> Subject;
 	/* Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`. */
 	TOptional<FString> Mailid;
-	/* Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`. */
+	/* Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`. */
 	TOptional<FString> MessageId;
 	/* Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set. */
 	TOptional<FString> Replyto;
@@ -735,7 +736,7 @@ public:
 	TOptional<int32> Limit;
 	/* Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included. */
 	TOptional<OpenAPIViewMailLogStartDateParameter> StartDate;
-	/* Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included. */
+	/* Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included. */
 	TOptional<OpenAPIViewMailLogStartDateParameter> EndDate;
 	enum class SortEnum
 	{

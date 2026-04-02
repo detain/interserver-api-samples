@@ -51,21 +51,48 @@ static gpointer __DNSManagerthreadFunc(gpointer data)
 static bool addDnsDomainProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	SuccessTextResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -76,15 +103,15 @@ static bool addDnsDomainProcessor(MemoryStruct_s p_chunk, long code, char* error
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool addDnsDomainHelper(char * accessToken,
 	std::string domain, std::string ip, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -155,8 +182,8 @@ static bool addDnsDomainHelper(char * accessToken,
 
 bool DNSManager::addDnsDomainAsync(char * accessToken,
 	std::string domain, std::string ip, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return addDnsDomainHelper(accessToken,
 	domain, ip, 
@@ -165,8 +192,8 @@ bool DNSManager::addDnsDomainAsync(char * accessToken,
 
 bool DNSManager::addDnsDomainSync(char * accessToken,
 	std::string domain, std::string ip, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return addDnsDomainHelper(accessToken,
 	domain, ip, 
@@ -307,21 +334,48 @@ bool DNSManager::addDnsRecordSync(char * accessToken,
 static bool deleteDnsDomainProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	SuccessTextResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -332,15 +386,15 @@ static bool deleteDnsDomainProcessor(MemoryStruct_s p_chunk, long code, char* er
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool deleteDnsDomainHelper(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -416,8 +470,8 @@ static bool deleteDnsDomainHelper(char * accessToken,
 
 bool DNSManager::deleteDnsDomainAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return deleteDnsDomainHelper(accessToken,
 	id, 
@@ -426,8 +480,8 @@ bool DNSManager::deleteDnsDomainAsync(char * accessToken,
 
 bool DNSManager::deleteDnsDomainSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return deleteDnsDomainHelper(accessToken,
 	id, 
@@ -437,21 +491,48 @@ bool DNSManager::deleteDnsDomainSync(char * accessToken,
 static bool deleteDnsRecordProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	SuccessTextResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -462,15 +543,15 @@ static bool deleteDnsRecordProcessor(MemoryStruct_s p_chunk, long code, char* er
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool deleteDnsRecordHelper(char * accessToken,
 	int domainId, int recordId, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -552,8 +633,8 @@ static bool deleteDnsRecordHelper(char * accessToken,
 
 bool DNSManager::deleteDnsRecordAsync(char * accessToken,
 	int domainId, int recordId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return deleteDnsRecordHelper(accessToken,
 	domainId, recordId, 
@@ -562,8 +643,8 @@ bool DNSManager::deleteDnsRecordAsync(char * accessToken,
 
 bool DNSManager::deleteDnsRecordSync(char * accessToken,
 	int domainId, int recordId, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return deleteDnsRecordHelper(accessToken,
 	domainId, recordId, 
@@ -855,21 +936,48 @@ bool DNSManager::getDnsListSync(char * accessToken,
 static bool updateDnsRecordProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	SuccessTextResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -880,15 +988,15 @@ static bool updateDnsRecordProcessor(MemoryStruct_s p_chunk, long code, char* er
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool updateDnsRecordHelper(char * accessToken,
 	int domainId, int recordId, std::string name, DnsRecordType type, std::string content, std::string ttl, std::string prio, std::string disabled, std::string ordername, std::string auth, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -971,8 +1079,8 @@ static bool updateDnsRecordHelper(char * accessToken,
 
 bool DNSManager::updateDnsRecordAsync(char * accessToken,
 	int domainId, int recordId, std::string name, DnsRecordType type, std::string content, std::string ttl, std::string prio, std::string disabled, std::string ordername, std::string auth, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateDnsRecordHelper(accessToken,
 	domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, 
@@ -981,8 +1089,8 @@ bool DNSManager::updateDnsRecordAsync(char * accessToken,
 
 bool DNSManager::updateDnsRecordSync(char * accessToken,
 	int domainId, int recordId, std::string name, DnsRecordType type, std::string content, std::string ttl, std::string prio, std::string disabled, std::string ordername, std::string auth, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateDnsRecordHelper(accessToken,
 	domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, 

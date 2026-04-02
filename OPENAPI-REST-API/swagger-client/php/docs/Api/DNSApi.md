@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**updateDnsRecord**](DNSApi.md#updatednsrecord) | **POST** /dns/{domainId}/{recordId} | Update DNS Record
 
 # **addDnsDomain**
-> addDnsDomain($domain, $ip)
+> \Interserver\MyAdmin\Model\SuccessTextResponse addDnsDomain($domain, $ip)
 
 Create DNS Domain
 
@@ -44,7 +44,8 @@ $domain = "domain_example"; // string |
 $ip = "ip_example"; // string | 
 
 try {
-    $apiInstance->addDnsDomain($domain, $ip);
+    $result = $apiInstance->addDnsDomain($domain, $ip);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->addDnsDomain: ', $e->getMessage(), PHP_EOL;
 }
@@ -60,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -74,7 +75,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **addDnsDomain**
-> addDnsDomain($body)
+> \Interserver\MyAdmin\Model\SuccessTextResponse addDnsDomain($body)
 
 Create DNS Domain
 
@@ -104,7 +105,8 @@ $apiInstance = new Interserver\MyAdmin\Api\DNSApi(
 $body = new \Interserver\MyAdmin\Model\DnsNewDomain(); // \Interserver\MyAdmin\Model\DnsNewDomain | 
 
 try {
-    $apiInstance->addDnsDomain($body);
+    $result = $apiInstance->addDnsDomain($body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->addDnsDomain: ', $e->getMessage(), PHP_EOL;
 }
@@ -119,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -263,7 +265,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteDnsDomain**
-> deleteDnsDomain($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse deleteDnsDomain($id)
 
 Delete DNS Domain
 
@@ -293,7 +295,8 @@ $apiInstance = new Interserver\MyAdmin\Api\DNSApi(
 $id = "id_example"; // string | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 
 try {
-    $apiInstance->deleteDnsDomain($id);
+    $result = $apiInstance->deleteDnsDomain($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->deleteDnsDomain: ', $e->getMessage(), PHP_EOL;
 }
@@ -308,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -322,7 +325,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteDnsRecord**
-> deleteDnsRecord($domainId, $recordId)
+> \Interserver\MyAdmin\Model\SuccessTextResponse deleteDnsRecord($domainId, $recordId)
 
 Delete DNS Record
 
@@ -353,7 +356,8 @@ $domainId = 56; // int | The DNS domain ID. Use the `id` from `GET /dns` to iden
 $recordId = 56; // int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 try {
-    $apiInstance->deleteDnsRecord($domainId, $recordId);
+    $result = $apiInstance->deleteDnsRecord($domainId, $recordId);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->deleteDnsRecord: ', $e->getMessage(), PHP_EOL;
 }
@@ -369,7 +373,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -499,7 +503,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateDnsRecord**
-> updateDnsRecord($name, $type, $content, $ttl, $prio, $disabled, $ordername, $auth, $domainId, $recordId)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateDnsRecord($name, $type, $content, $ttl, $prio, $disabled, $ordername, $auth, $domainId, $recordId)
 
 Update DNS Record
 
@@ -538,7 +542,8 @@ $domainId = 56; // int | The DNS domain ID. Use the `id` from `GET /dns` to iden
 $recordId = 56; // int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 try {
-    $apiInstance->updateDnsRecord($name, $type, $content, $ttl, $prio, $disabled, $ordername, $auth, $domainId, $recordId);
+    $result = $apiInstance->updateDnsRecord($name, $type, $content, $ttl, $prio, $disabled, $ordername, $auth, $domainId, $recordId);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->updateDnsRecord: ', $e->getMessage(), PHP_EOL;
 }
@@ -562,7 +567,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -576,7 +581,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateDnsRecord**
-> updateDnsRecord($body, $domainId, $recordId)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateDnsRecord($body, $domainId, $recordId)
 
 Update DNS Record
 
@@ -608,7 +613,8 @@ $domainId = 56; // int | The DNS domain ID. Use the `id` from `GET /dns` to iden
 $recordId = 56; // int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 try {
-    $apiInstance->updateDnsRecord($body, $domainId, $recordId);
+    $result = $apiInstance->updateDnsRecord($body, $domainId, $recordId);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->updateDnsRecord: ', $e->getMessage(), PHP_EOL;
 }
@@ -625,7 +631,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

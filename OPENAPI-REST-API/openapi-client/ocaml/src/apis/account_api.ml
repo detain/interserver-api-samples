@@ -439,7 +439,7 @@ let update_account_info ~name ~address ~city ~state ~zip ~country ~phone ?compan
  gstin in
     let body = Request.finalize_form_encoded_body body in
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let update_account_ip_limits ~start ~_end =
     let open Lwt.Infix in
@@ -480,7 +480,7 @@ let update_account_ip_limits ~start ~_end =
  _end in
     let body = Request.finalize_form_encoded_body body in
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let update_account_password ~password =
     let open Lwt.Infix in

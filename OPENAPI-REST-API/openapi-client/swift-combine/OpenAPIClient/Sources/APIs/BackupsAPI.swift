@@ -585,8 +585,8 @@ open class BackupsAPI {
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
     /// - parameter id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func updateBackupInfo(id: Int) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func updateBackupInfo(id: Int) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -603,7 +603,7 @@ open class BackupsAPI {
                 request.httpMethod = "POST"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -617,7 +617,7 @@ open class BackupsAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()

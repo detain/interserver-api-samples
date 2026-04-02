@@ -11,7 +11,7 @@ void main() {
     //
     // Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
     //
-    //Future addVps({ VpsOrderPostRequest body, String osDistro, int slices, String vpsPlatform, String controlpanel, int period, int location, String osVersion, String hostname, String coupon, String rootpass, String comment }) async
+    //Future<ServiceOrderPostResponse> addVps({ VpsOrderPostRequest body, String osDistro, int slices, String vpsPlatform, String controlpanel, int period, int location, String osVersion, String hostname, String coupon, String rootpass, String comment }) async
     test('test addVps', () async {
       // TODO
     });
@@ -389,7 +389,7 @@ void main() {
     //
     // Updates settings on a VPS order.
     //
-    //Future updateVpsInfo(String id) async
+    //Future<SuccessTextResponse> updateVpsInfo(String id) async
     test('test updateVpsInfo', () async {
       // TODO
     });
@@ -398,7 +398,7 @@ void main() {
     //
     // Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
     //
-    //Future<InlineResponse20021> vPSCancel(int id) async
+    //Future<InlineResponse20022> vPSCancel(int id) async
     test('test vPSCancel', () async {
       // TODO
     });

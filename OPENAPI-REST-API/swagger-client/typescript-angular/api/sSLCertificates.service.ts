@@ -18,8 +18,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
-import { InlineResponse20020 } from '../model/inlineResponse20020';
+import { InlineResponse20021 } from '../model/inlineResponse20021';
 import { InlineResponse401 } from '../model/inlineResponse401';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -64,9 +65,9 @@ export class SSLCertificatesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addSsl(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addSsl(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addSsl(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addSsl(observe?: 'body', reportProgress?: boolean): Observable<ServiceOrderPostResponse>;
+    public addSsl(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addSsl(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addSsl(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -101,7 +102,7 @@ export class SSLCertificatesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/ssl/order`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post',`${this.basePath}/ssl/order`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -458,9 +459,9 @@ export class SSLCertificatesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public sslCancel(id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20020>;
-    public sslCancel(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20020>>;
-    public sslCancel(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20020>>;
+    public sslCancel(id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20021>;
+    public sslCancel(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20021>>;
+    public sslCancel(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20021>>;
     public sslCancel(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -499,7 +500,7 @@ export class SSLCertificatesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<InlineResponse20020>('delete',`${this.basePath}/ssl/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<InlineResponse20021>('delete',`${this.basePath}/ssl/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -517,9 +518,9 @@ export class SSLCertificatesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateSslInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateSslInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateSslInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateSslInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateSslInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateSslInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateSslInfo(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -558,7 +559,7 @@ export class SSLCertificatesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/ssl/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/ssl/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**UpdateSslInfo**](SSLCertificatesApi.md#UpdateSslInfo) | **Post** /ssl/{id} | Update SSL Cert Order
 
 # **AddSsl**
-> AddSsl(ctx, )
+> ServiceOrderPostResponse AddSsl(ctx, )
 Place SSL Cert Order
 
 Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
@@ -25,7 +25,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetNewSsl**
-> GetNewSsl(ctx, )
+> interface{} GetNewSsl(ctx, )
 SSL Cert Ordering Information
 
 Retrieves available SSL certificate types and pricing for ordering.
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetSslInfo**
-> GetSslInfo(ctx, id)
+> interface{} GetSslInfo(ctx, id)
 Get SSL Cert Info
 
 Returns detailed information about a specific SSL certificate including its domain and expiration.
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SslCancel**
-> InlineResponse20020 SslCancel(ctx, id)
+> InlineResponse20021 SslCancel(ctx, id)
 Cancel SSL Certificate Service
 
 Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](inline_response_200_20.md)
+[**InlineResponse20021**](inline_response_200_21.md)
 
 ### Authorization
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateSslInfo**
-> UpdateSslInfo(ctx, id)
+> SuccessTextResponse UpdateSslInfo(ctx, id)
 Update SSL Cert Order
 
 Updates settings on an SSL certificate order.
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

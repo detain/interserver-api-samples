@@ -174,9 +174,10 @@ func Test_myadmin_AccountAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AccountAPI.UpdateAccountInfo(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccountAPI.UpdateAccountInfo(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -185,9 +186,10 @@ func Test_myadmin_AccountAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AccountAPI.UpdateAccountIpLimits(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AccountAPI.UpdateAccountIpLimits(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

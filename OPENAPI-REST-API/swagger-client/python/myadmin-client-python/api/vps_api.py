@@ -43,7 +43,7 @@ class VPSApi(object):
 
         :param async_req bool
         :param VpsOrderPostRequest body:
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -65,7 +65,7 @@ class VPSApi(object):
 
         :param async_req bool
         :param VpsOrderPostRequest body:
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -141,7 +141,7 @@ class VPSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='ServiceOrderPostResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -170,7 +170,7 @@ class VPSApi(object):
         :param str coupon:
         :param str rootpass:
         :param str comment:
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -202,7 +202,7 @@ class VPSApi(object):
         :param str coupon:
         :param str rootpass:
         :param str comment:
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -278,7 +278,7 @@ class VPSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='ServiceOrderPostResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -5496,7 +5496,7 @@ class VPSApi(object):
 
         :param async_req bool
         :param str id: VPS ID number. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5518,7 +5518,7 @@ class VPSApi(object):
 
         :param async_req bool
         :param str id: VPS ID number. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5572,7 +5572,7 @@ class VPSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -5591,7 +5591,7 @@ class VPSApi(object):
 
         :param async_req bool
         :param int id: VPS ID number (required)
-        :return: InlineResponse20021
+        :return: InlineResponse20022
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5613,7 +5613,7 @@ class VPSApi(object):
 
         :param async_req bool
         :param int id: VPS ID number (required)
-        :return: InlineResponse20021
+        :return: InlineResponse20022
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5667,7 +5667,7 @@ class VPSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20021',  # noqa: E501
+            response_type='InlineResponse20022',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

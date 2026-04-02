@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 
 # **addLicense**
-> addLicense()
+> ServiceOrderPostResponse addLicense()
 
 Place License Order
 
@@ -48,7 +48,8 @@ import 'package:openapi/api.dart';
 final api = Openapi().getLicensesApi();
 
 try {
-    api.addLicense();
+    final response = api.addLicense();
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling LicensesApi->addLicense: $e\n');
 }
@@ -59,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -556,7 +557,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateLicenseInfo**
-> updateLicenseInfo(id)
+> SuccessTextResponse updateLicenseInfo(id)
 
 Update License
 
@@ -582,7 +583,8 @@ final api = Openapi().getLicensesApi();
 final String id = id_example; // String | The license service ID. Use `license_id` from `GET /licenses`.
 
 try {
-    api.updateLicenseInfo(id);
+    final response = api.updateLicenseInfo(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling LicensesApi->updateLicenseInfo: $e\n');
 }
@@ -596,7 +598,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

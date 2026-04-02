@@ -53,7 +53,7 @@ Method | HTTP request | Description
 
 ## AddQs
 
-> AddQs(ctx).Execute()
+> ServiceOrderPostResponse AddQs(ctx).Execute()
 
 Place QuickServer Order
 
@@ -75,11 +75,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.QuickServersAPI.AddQs(context.Background()).Execute()
+	resp, r, err := apiClient.QuickServersAPI.AddQs(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QuickServersAPI.AddQs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AddQs`: ServiceOrderPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `QuickServersAPI.AddQs`: %v\n", resp)
 }
 ```
 
@@ -94,7 +96,7 @@ Other parameters are passed through a pointer to a apiAddQsRequest struct via th
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3019,7 +3021,7 @@ Name | Type | Description  | Notes
 
 ## UpdateQsInfo
 
-> UpdateQsInfo(ctx, id).Execute()
+> SuccessTextResponse UpdateQsInfo(ctx, id).Execute()
 
 Update QuickServer Order
 
@@ -3042,11 +3044,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.QuickServersAPI.UpdateQsInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.QuickServersAPI.UpdateQsInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QuickServersAPI.UpdateQsInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateQsInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `QuickServersAPI.UpdateQsInfo`: %v\n", resp)
 }
 ```
 
@@ -3069,7 +3073,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

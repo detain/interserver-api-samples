@@ -18,10 +18,11 @@ feature -- Test routines
             --
             -- Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         local
+            l_response: SERVICE_ORDER_POST_RESPONSE
         do
             -- TODO: Initialize required params.
 
-            -- api.add_floating_ip
+            -- l_response := api.add_floating_ip
             assert ("not_implemented", False)
         end
 
@@ -30,12 +31,13 @@ feature -- Test routines
             --
             -- Returns detailed information about a specific Floating IP service including its current target IP assignment.
         local
+            l_response: ANY
             l_id: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.floating_ip_info(l_id)
+            -- l_response := api.floating_ip_info(l_id)
             assert ("not_implemented", False)
         end
 
@@ -101,10 +103,11 @@ feature -- Test routines
             --
             -- Retrieves available options and pricing for ordering a new Floating IP.
         local
+            l_response: ANY
         do
             -- TODO: Initialize required params.
 
-            -- api.new_floating_ip
+            -- l_response := api.new_floating_ip
             assert ("not_implemented", False)
         end
 
@@ -142,12 +145,13 @@ feature -- Test routines
             --
             -- Updates settings on a Floating IP service, such as its label or configuration metadata.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_floating_ip_info(l_id)
+            -- l_response := api.update_floating_ip_info(l_id)
             assert ("not_implemented", False)
         end
 

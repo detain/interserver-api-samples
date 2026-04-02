@@ -1,5 +1,8 @@
 package io.swagger.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -16,46 +19,32 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse20024   {
   
-  @Schema(description = "")
-  private String message = null;
-  
-  @Schema(description = "")
-  private Boolean success = null;
+  @Schema(description = "A map of IP addresses to their current reverse DNS hostnames.")
  /**
-   * Get message
-   * @return message
+   * A map of IP addresses to their current reverse DNS hostnames.  
   **/
-  @JsonProperty("message")
+  private Map<String, String> ips = null;
+ /**
+   * A map of IP addresses to their current reverse DNS hostnames.
+   * @return ips
+  **/
+  @JsonProperty("ips")
   @NotNull
-  public String getMessage() {
-    return message;
+  public Map<String, String> getIps() {
+    return ips;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setIps(Map<String, String> ips) {
+    this.ips = ips;
   }
 
-  public InlineResponse20024 message(String message) {
-    this.message = message;
+  public InlineResponse20024 ips(Map<String, String> ips) {
+    this.ips = ips;
     return this;
   }
 
- /**
-   * Get success
-   * @return success
-  **/
-  @JsonProperty("success")
-  @NotNull
-  public Boolean isSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  public InlineResponse20024 success(Boolean success) {
-    this.success = success;
+  public InlineResponse20024 putIpsItem(String key, String ipsItem) {
+    this.ips.put(key, ipsItem);
     return this;
   }
 
@@ -65,8 +54,7 @@ public class InlineResponse20024   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20024 {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("}");
     return sb.toString();
   }

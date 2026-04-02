@@ -90,7 +90,7 @@ public class BackupsApiController implements BackupsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateBackupInfo(Integer id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateBackupInfo(Integer id) {
         // TODO: Implement me
         return BackupsApi.super.updateBackupInfo(id);
     }

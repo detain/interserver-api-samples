@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 <a name="addQs"></a>
 # **addQs**
-> addQs()
+> ServiceOrderPostResponse addQs()
 
 Place QuickServer Order
 
@@ -65,7 +65,8 @@ Places a QuickServer order. On success, invoices are generated for payment; use 
 
 val apiInstance = QuickServersApi()
 try {
-    apiInstance.addQs()
+    val result : ServiceOrderPostResponse = apiInstance.addQs()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling QuickServersApi#addQs")
     e.printStackTrace()
@@ -80,7 +81,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2260,7 +2261,7 @@ Name | Type | Description  | Notes
 
 <a name="updateQsInfo"></a>
 # **updateQsInfo**
-> updateQsInfo(id)
+> SuccessTextResponse updateQsInfo(id)
 
 Update QuickServer Order
 
@@ -2275,7 +2276,8 @@ Updates QuickServer metadata or stored settings associated with the order.
 val apiInstance = QuickServersApi()
 val id : kotlin.String = id_example // kotlin.String | QuickServer ID number.
 try {
-    apiInstance.updateQsInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateQsInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling QuickServersApi#updateQsInfo")
     e.printStackTrace()
@@ -2293,7 +2295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

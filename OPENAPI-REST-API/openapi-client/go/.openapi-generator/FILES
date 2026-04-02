@@ -41,6 +41,7 @@ docs/AccountInfoOauthConfigProvidersValue.md
 docs/AccountInfoOauthproviders.md
 docs/AccountInfoPost.md
 docs/AccountSshKey.md
+docs/AddServer200Response.md
 docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
@@ -385,6 +386,7 @@ docs/ServersCancel200Response.md
 docs/Service.md
 docs/ServiceCategories.md
 docs/ServiceCategory.md
+docs/ServiceOrderPostResponse.md
 docs/ServiceType.md
 docs/ServiceTypes.md
 docs/Services.md
@@ -509,6 +511,7 @@ model_account_info_oauth_config_providers_value.go
 model_account_info_oauthproviders.go
 model_account_info_post.go
 model_account_ssh_key.go
+model_add_server_200_response.go
 model_affiliate_banner_row.go
 model_affiliate_dock_setup.go
 model_affiliate_payment_setup.go
@@ -841,6 +844,7 @@ model_servers_cancel_200_response.go
 model_service.go
 model_service_categories.go
 model_service_category.go
+model_service_order_post_response.go
 model_service_type.go
 model_service_types.go
 model_services.go

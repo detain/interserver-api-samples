@@ -18,10 +18,11 @@ feature -- Test routines
             --
             -- Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         local
+            l_response: SERVICE_ORDER_POST_RESPONSE
         do
             -- TODO: Initialize required params.
 
-            -- api.add_website
+            -- l_response := api.add_website
             assert ("not_implemented", False)
         end
 
@@ -121,12 +122,13 @@ feature -- Test routines
             --
             -- Updates settings on a webhosting order.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_website_info(l_id)
+            -- l_response := api.update_website_info(l_id)
             assert ("not_implemented", False)
         end
 

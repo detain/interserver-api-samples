@@ -165,9 +165,9 @@ public interface BackupsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update Backup Information", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateBackupInfo(@PathParam("id") Integer id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateBackupInfo(@PathParam("id") Integer id);
 
     /**
      * Validate Backup Order

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## AddDnsDomain
 
-> AddDnsDomain(ctx).Domain(domain).Ip(ip).Execute()
+> SuccessTextResponse AddDnsDomain(ctx).Domain(domain).Ip(ip).Execute()
 
 Create DNS Domain
 
@@ -40,11 +40,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DNSAPI.AddDnsDomain(context.Background()).Domain(domain).Ip(ip).Execute()
+	resp, r, err := apiClient.DNSAPI.AddDnsDomain(context.Background()).Domain(domain).Ip(ip).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSAPI.AddDnsDomain``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AddDnsDomain`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `DNSAPI.AddDnsDomain`: %v\n", resp)
 }
 ```
 
@@ -64,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -160,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDnsDomain
 
-> DeleteDnsDomain(ctx, id).Execute()
+> SuccessTextResponse DeleteDnsDomain(ctx, id).Execute()
 
 Delete DNS Domain
 
@@ -183,11 +185,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DNSAPI.DeleteDnsDomain(context.Background(), id).Execute()
+	resp, r, err := apiClient.DNSAPI.DeleteDnsDomain(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSAPI.DeleteDnsDomain``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `DeleteDnsDomain`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `DNSAPI.DeleteDnsDomain`: %v\n", resp)
 }
 ```
 
@@ -210,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -228,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDnsRecord
 
-> DeleteDnsRecord(ctx, domainId, recordId).Execute()
+> SuccessTextResponse DeleteDnsRecord(ctx, domainId, recordId).Execute()
 
 Delete DNS Record
 
@@ -252,11 +256,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DNSAPI.DeleteDnsRecord(context.Background(), domainId, recordId).Execute()
+	resp, r, err := apiClient.DNSAPI.DeleteDnsRecord(context.Background(), domainId, recordId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSAPI.DeleteDnsRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `DeleteDnsRecord`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `DNSAPI.DeleteDnsRecord`: %v\n", resp)
 }
 ```
 
@@ -281,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -430,7 +436,7 @@ Other parameters are passed through a pointer to a apiGetDnsListRequest struct v
 
 ## UpdateDnsRecord
 
-> UpdateDnsRecord(ctx, domainId, recordId).Name(name).Type_(type_).Content(content).Ttl(ttl).Prio(prio).Disabled(disabled).Ordername(ordername).Auth(auth).Execute()
+> SuccessTextResponse UpdateDnsRecord(ctx, domainId, recordId).Name(name).Type_(type_).Content(content).Ttl(ttl).Prio(prio).Disabled(disabled).Ordername(ordername).Auth(auth).Execute()
 
 Update DNS Record
 
@@ -462,11 +468,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DNSAPI.UpdateDnsRecord(context.Background(), domainId, recordId).Name(name).Type_(type_).Content(content).Ttl(ttl).Prio(prio).Disabled(disabled).Ordername(ordername).Auth(auth).Execute()
+	resp, r, err := apiClient.DNSAPI.UpdateDnsRecord(context.Background(), domainId, recordId).Name(name).Type_(type_).Content(content).Ttl(ttl).Prio(prio).Disabled(disabled).Ordername(ordername).Auth(auth).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DNSAPI.UpdateDnsRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateDnsRecord`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `DNSAPI.UpdateDnsRecord`: %v\n", resp)
 }
 ```
 
@@ -499,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

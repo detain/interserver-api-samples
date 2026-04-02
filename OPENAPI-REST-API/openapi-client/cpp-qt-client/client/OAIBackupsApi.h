@@ -168,7 +168,7 @@ Q_SIGNALS:
     void getBackupsListSignal(QList<OAIBackupRow> summary);
     void getBackupsWelcomeEmailSignal(OAISuccessTextResponse summary);
     void getNewBackupSignal(OAIBackupsOrder summary);
-    void updateBackupInfoSignal();
+    void updateBackupInfoSignal(OAISuccessTextResponse summary);
     void validateBackupOrderSignal(OAIBackupOrderPutResponse summary);
 
 
@@ -180,7 +180,7 @@ Q_SIGNALS:
     void getBackupsListSignalFull(OAIHttpRequestWorker *worker, QList<OAIBackupRow> summary);
     void getBackupsWelcomeEmailSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void getNewBackupSignalFull(OAIHttpRequestWorker *worker, OAIBackupsOrder summary);
-    void updateBackupInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateBackupInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void validateBackupOrderSignalFull(OAIHttpRequestWorker *worker, OAIBackupOrderPutResponse summary);
 
     void addBackupSignalError(OAIBackupOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -191,7 +191,7 @@ Q_SIGNALS:
     void getBackupsListSignalError(QList<OAIBackupRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getBackupsWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewBackupSignalError(OAIBackupsOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateBackupInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateBackupInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void validateBackupOrderSignalError(OAIBackupOrderPutResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

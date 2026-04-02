@@ -16,14 +16,14 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns></returns>
-        void AddDnsDomain (string domain, string ip);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse AddDnsDomain (string domain, string ip);
         /// <summary>
         /// Create DNS Domain Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
         /// </summary>
         /// <param name="body"></param>
-        /// <returns></returns>
-        void AddDnsDomain (DnsNewDomain body);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse AddDnsDomain (DnsNewDomain body);
         /// <summary>
         /// Add DNS Record to Domain Adds a new DNS record to the specified domain. Provide the record type (A, AAAA, CNAME, MX, TXT, etc.), name, content, TTL, and priority. The record takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; afterward to confirm the record was created.
         /// </summary>
@@ -46,15 +46,15 @@ namespace IO.Swagger.Api
         /// Delete DNS Domain Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
         /// </summary>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns></returns>
-        void DeleteDnsDomain (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse DeleteDnsDomain (string id);
         /// <summary>
         /// Delete DNS Record Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
         /// </summary>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        void DeleteDnsRecord (int? domainId, int? recordId);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse DeleteDnsRecord (int? domainId, int? recordId);
         /// <summary>
         /// List Domain DNS Records Returns the full set of DNS records for the specified domain, including NS, A, AAAA, CNAME, MX, TXT, and other record types. Use the record &#x60;id&#x60; values with &#x60;/dns/{domainId}/{recordId}&#x60; to update or delete individual records.
         /// </summary>
@@ -79,16 +79,16 @@ namespace IO.Swagger.Api
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        void UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId);
         /// <summary>
         /// Update DNS Record Updates an existing DNS record with new values. Use &#x60;GET /dns/{id}&#x60; to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
         /// </summary>
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        void UpdateDnsRecord (DnsUpdateRecord body, int? domainId, int? recordId);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateDnsRecord (DnsUpdateRecord body, int? domainId, int? recordId);
     }
   
     /// <summary>
@@ -149,8 +149,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="domain"></param>
         /// <param name="ip"></param>
-        /// <returns></returns>
-        public void AddDnsDomain (string domain, string ip)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse AddDnsDomain (string domain, string ip)
         {
             // verify the required parameter 'domain' is set
             if (domain == null) throw new ApiException(400, "Missing required parameter 'domain' when calling AddDnsDomain");
@@ -180,15 +180,15 @@ if (ip != null) formParams.Add("ip", ApiClient.ParameterToString(ip)); // form p
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddDnsDomain: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
         /// Create DNS Domain Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
         /// </summary>
         /// <param name="body"></param>
-        /// <returns></returns>
-        public void AddDnsDomain (DnsNewDomain body)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse AddDnsDomain (DnsNewDomain body)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling AddDnsDomain");
@@ -215,7 +215,7 @@ if (ip != null) formParams.Add("ip", ApiClient.ParameterToString(ip)); // form p
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddDnsDomain: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
@@ -316,8 +316,8 @@ if (prio != null) formParams.Add("prio", ApiClient.ParameterToString(prio)); // 
         /// Delete DNS Domain Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
         /// </summary>
         /// <param name="id">The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
-        /// <returns></returns>
-        public void DeleteDnsDomain (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse DeleteDnsDomain (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling DeleteDnsDomain");
@@ -344,7 +344,7 @@ if (prio != null) formParams.Add("prio", ApiClient.ParameterToString(prio)); // 
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DeleteDnsDomain: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
@@ -352,8 +352,8 @@ if (prio != null) formParams.Add("prio", ApiClient.ParameterToString(prio)); // 
         /// </summary>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        public void DeleteDnsRecord (int? domainId, int? recordId)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse DeleteDnsRecord (int? domainId, int? recordId)
         {
             // verify the required parameter 'domainId' is set
             if (domainId == null) throw new ApiException(400, "Missing required parameter 'domainId' when calling DeleteDnsRecord");
@@ -383,7 +383,7 @@ path = path.Replace("{" + "recordId" + "}", ApiClient.ParameterToString(recordId
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DeleteDnsRecord: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
@@ -465,8 +465,8 @@ path = path.Replace("{" + "recordId" + "}", ApiClient.ParameterToString(recordId
         /// <param name="auth"></param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        public void UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
         {
             // verify the required parameter 'name' is set
             if (name == null) throw new ApiException(400, "Missing required parameter 'name' when calling UpdateDnsRecord");
@@ -520,7 +520,7 @@ if (auth != null) formParams.Add("auth", ApiClient.ParameterToString(auth)); // 
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateDnsRecord: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
@@ -529,8 +529,8 @@ if (auth != null) formParams.Add("auth", ApiClient.ParameterToString(auth)); // 
         /// <param name="body">The request data to update a dns record.</param>
         /// <param name="domainId">The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.</param>
         /// <param name="recordId">The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.</param>
-        /// <returns></returns>
-        public void UpdateDnsRecord (DnsUpdateRecord body, int? domainId, int? recordId)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateDnsRecord (DnsUpdateRecord body, int? domainId, int? recordId)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling UpdateDnsRecord");
@@ -563,7 +563,7 @@ path = path.Replace("{" + "recordId" + "}", ApiClient.ParameterToString(recordId
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateDnsRecord: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
     }

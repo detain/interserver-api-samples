@@ -144,7 +144,7 @@ describe 'BackupsApi' do
   # Updates backup storage service metadata, such as stored credentials or settings for the order.
   # @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_backup_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

@@ -93,7 +93,7 @@ void main() {
     //
     // Updates backup storage service metadata, such as stored credentials or settings for the order.
     //
-    //Future updateBackupInfo(int id) async
+    //Future<SuccessTextResponse> updateBackupInfo(int id) async
     test('test updateBackupInfo', () async {
       // TODO
     });

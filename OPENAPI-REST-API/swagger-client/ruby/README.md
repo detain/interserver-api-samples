@@ -427,7 +427,8 @@ body = SwaggerClient::AccountInfoPost.new # AccountInfoPost |
 
 begin
   #Update Account Information
-  api_instance.update_account_info(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, body)
+  result = api_instance.update_account_info(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, body)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_info: #{e}"
 end
@@ -457,7 +458,8 @@ body = SwaggerClient::IpLimitRange.new # IpLimitRange | The lower and upper boun
 
 begin
   #Add IP Access Restriction
-  api_instance.update_account_ip_limits(start, _end, body)
+  result = api_instance.update_account_ip_limits(start, _end, body)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_ip_limits: #{e}"
 end
@@ -806,7 +808,8 @@ id = 56 # Integer | The backup service ID. Use the `backup_id` from `GET /backup
 
 begin
   #Update Backup Information
-  api_instance.update_backup_info(id)
+  result = api_instance.update_backup_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BackupsApi->update_backup_info: #{e}"
 end
@@ -974,7 +977,8 @@ id = 'id_example' # String | The credit card ID. Use the card ID returned from `
 
 begin
   #Remove Credit Card
-  api_instance.delete_account_credit_card(id)
+  result = api_instance.delete_account_credit_card(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BillingApi->delete_account_credit_card: #{e}"
 end
@@ -1255,7 +1259,8 @@ api_instance = SwaggerClient::BillingApi.new
 
 begin
   #Get Shopping Cart Contents
-  api_instance.get_billing_cart
+  result = api_instance.get_billing_cart
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BillingApi->get_billing_cart: #{e}"
 end
@@ -1366,7 +1371,8 @@ api_instance = SwaggerClient::BillingApi.new
 
 begin
   #List Prepay Balances
-  api_instance.get_billing_pre_pays
+  result = api_instance.get_billing_pre_pays
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BillingApi->get_billing_pre_pays: #{e}"
 end
@@ -1491,7 +1497,8 @@ id = 56 # Integer | The credit card ID. Use the card ID returned from `POST /acc
 
 begin
   #Update Credit Card
-  api_instance.update_account_credit_card(id)
+  result = api_instance.update_account_credit_card(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BillingApi->update_account_credit_card: #{e}"
 end
@@ -1676,7 +1683,8 @@ body = SwaggerClient::DnsNewDomain.new # DnsNewDomain |
 
 begin
   #Create DNS Domain
-  api_instance.add_dns_domain(domain, ip, body)
+  result = api_instance.add_dns_domain(domain, ip, body)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->add_dns_domain: #{e}"
 end
@@ -1738,7 +1746,8 @@ id = 'id_example' # String | The DNS domain ID to delete. Use the `id` from `GET
 
 begin
   #Delete DNS Domain
-  api_instance.delete_dns_domain(id)
+  result = api_instance.delete_dns_domain(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->delete_dns_domain: #{e}"
 end
@@ -1767,7 +1776,8 @@ record_id = 56 # Integer | The DNS record ID within the domain. Use the record `
 
 begin
   #Delete DNS Record
-  api_instance.delete_dns_record(domain_id, record_id)
+  result = api_instance.delete_dns_record(domain_id, record_id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->delete_dns_record: #{e}"
 end
@@ -1861,7 +1871,8 @@ record_id = 56 # Integer | The DNS record ID within the domain. Use the record `
 
 begin
   #Update DNS Record
-  api_instance.update_dns_record(name, type, content, ttl, prio, disabled, ordername, auth, body, domain_id, record_id)
+  result = api_instance.update_dns_record(name, type, content, ttl, prio, disabled, ordername, auth, body, domain_id, record_id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DNSApi->update_dns_record: #{e}"
 end
@@ -1887,7 +1898,8 @@ api_instance = SwaggerClient::DomainsApi.new
 
 begin
   #Place Domain Order
-  api_instance.add_domain
+  result = api_instance.add_domain
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DomainsApi->add_domain: #{e}"
 end
@@ -2654,7 +2666,8 @@ id = 'id_example' # String | The domain service ID. Use `domain_id` from `GET /d
 
 begin
   #Update Domain Order
-  api_instance.update_domain_info(id)
+  result = api_instance.update_domain_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DomainsApi->update_domain_info: #{e}"
 end
@@ -2757,7 +2770,8 @@ api_instance = SwaggerClient::FloatingIPsApi.new
 
 begin
   #Place Floating IP Order
-  api_instance.add_floating_ip
+  result = api_instance.add_floating_ip
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->add_floating_ip: #{e}"
 end
@@ -2814,7 +2828,8 @@ id = 56 # Integer | The Floating IP service ID. Use the ID from `GET /floating_i
 
 begin
   #View Floating IP
-  api_instance.get_floating_ip_info(id)
+  result = api_instance.get_floating_ip_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_floating_ip_info: #{e}"
 end
@@ -2924,7 +2939,8 @@ api_instance = SwaggerClient::FloatingIPsApi.new
 
 begin
   #Get Floating IP Ordering Information
-  api_instance.get_new_floating_ip
+  result = api_instance.get_new_floating_ip
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_new_floating_ip: #{e}"
 end
@@ -3009,7 +3025,8 @@ id = 'id_example' # String | The Floating IP service ID. Use the ID from `GET /f
 
 begin
   #Update Floating IP
-  api_instance.update_floating_ip_info(id)
+  result = api_instance.update_floating_ip_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->update_floating_ip_info: #{e}"
 end
@@ -3035,7 +3052,8 @@ api_instance = SwaggerClient::LicensesApi.new
 
 begin
   #Place License Order
-  api_instance.add_license
+  result = api_instance.add_license
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling LicensesApi->add_license: #{e}"
 end
@@ -3318,7 +3336,8 @@ id = 'id_example' # String | The license service ID. Use `license_id` from `GET 
 
 begin
   #Update License
-  api_instance.update_license_info(id)
+  result = api_instance.update_license_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling LicensesApi->update_license_info: #{e}"
 end
@@ -3344,7 +3363,8 @@ api_instance = SwaggerClient::MailApi.new
 
 begin
   #Place Mail Order
-  api_instance.add_mail
+  result = api_instance.add_mail
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling MailApi->add_mail: #{e}"
 end
@@ -4070,7 +4090,8 @@ id = 'id_example' # String | The mail service ID. Use `mail_id` from `GET /mail`
 
 begin
   #Update Mail Order
-  api_instance.update_mail_info(id)
+  result = api_instance.update_mail_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling MailApi->update_mail_info: #{e}"
 end
@@ -4102,14 +4123,14 @@ opts = {
   to: 'to_example', # String | Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
   subject: 'subject_example', # String | Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
   mailid: 'mailid_example', # String | Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
-  message_id: 'message_id_example', # String | Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+  message_id: 'message_id_example', # String | Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
   replyto: 'replyto_example', # String | Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
   headerfrom: 'headerfrom_example', # String | Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
   delivered: 56, # Integer | Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
   skip: 0, # Integer | Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
   limit: 100, # Integer | Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
   start_date: SwaggerClient::StartDate.new, # StartDate | Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
-  end_date: SwaggerClient::EndDate.new, # EndDate | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+  end_date: SwaggerClient::EndDate.new, # EndDate | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
   sort: 'time', # String | Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
   dir: 'desc', # String | Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
   groupby: 'recipient' # String | Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.
@@ -4491,7 +4512,8 @@ api_instance = SwaggerClient::QuickServersApi.new
 
 begin
   #Place QuickServer Order
-  api_instance.add_qs
+  result = api_instance.add_qs
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling QuickServersApi->add_qs: #{e}"
 end
@@ -5736,7 +5758,8 @@ id = 'id_example' # String | QuickServer ID number.
 
 begin
   #Update QuickServer Order
-  api_instance.update_qs_info(id)
+  result = api_instance.update_qs_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling QuickServersApi->update_qs_info: #{e}"
 end
@@ -5762,7 +5785,8 @@ api_instance = SwaggerClient::SSLCertificatesApi.new
 
 begin
   #Place SSL Cert Order
-  api_instance.add_ssl
+  result = api_instance.add_ssl
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->add_ssl: #{e}"
 end
@@ -5788,7 +5812,8 @@ api_instance = SwaggerClient::SSLCertificatesApi.new
 
 begin
   #SSL Cert Ordering Information
-  api_instance.get_new_ssl
+  result = api_instance.get_new_ssl
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->get_new_ssl: #{e}"
 end
@@ -5816,7 +5841,8 @@ id = 56 # Integer | SSL certificate ID number.
 
 begin
   #Get SSL Cert Info
-  api_instance.get_ssl_info(id)
+  result = api_instance.get_ssl_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->get_ssl_info: #{e}"
 end
@@ -5983,7 +6009,8 @@ id = 'id_example' # String | SSL certificate ID number.
 
 begin
   #Update SSL Cert Order
-  api_instance.update_ssl_info(id)
+  result = api_instance.update_ssl_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->update_ssl_info: #{e}"
 end
@@ -6473,7 +6500,8 @@ api_instance = SwaggerClient::ServersApi.new
 
 begin
   #Place Server Order
-  api_instance.add_server
+  result = api_instance.add_server
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ServersApi->add_server: #{e}"
 end
@@ -6963,7 +6991,8 @@ id = 'id_example' # String | Server ID number.
 
 begin
   #Update Server Order
-  api_instance.update_server_info(id)
+  result = api_instance.update_server_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ServersApi->update_server_info: #{e}"
 end
@@ -7336,7 +7365,8 @@ opts = {
 
 begin
   #Place VPS Order
-  api_instance.add_vps(opts)
+  result = api_instance.add_vps(opts)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling VPSApi->add_vps: #{e}"
 end
@@ -8580,7 +8610,8 @@ id = 'id_example' # String | VPS ID number.
 
 begin
   #Update VPS Order
-  api_instance.update_vps_info(id)
+  result = api_instance.update_vps_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling VPSApi->update_vps_info: #{e}"
 end
@@ -8635,7 +8666,8 @@ api_instance = SwaggerClient::WebhostingApi.new
 
 begin
   #Place Website Order
-  api_instance.add_website
+  result = api_instance.add_website
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling WebhostingApi->add_website: #{e}"
 end
@@ -9051,7 +9083,8 @@ id = 'id_example' # String | The website service ID. Use `website_id` from `GET 
 
 begin
   #Update Website Order
-  api_instance.update_website_info(id)
+  result = api_instance.update_website_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling WebhostingApi->update_website_info: #{e}"
 end
@@ -9588,11 +9621,12 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::InlineResponse20024](docs/InlineResponse20024.md)
  - [SwaggerClient::InlineResponse20025](docs/InlineResponse20025.md)
  - [SwaggerClient::InlineResponse20026](docs/InlineResponse20026.md)
- - [SwaggerClient::InlineResponse20026Bandwidth](docs/InlineResponse20026Bandwidth.md)
- - [SwaggerClient::InlineResponse20026Cp](docs/InlineResponse20026Cp.md)
- - [SwaggerClient::InlineResponse20026Ips](docs/InlineResponse20026Ips.md)
- - [SwaggerClient::InlineResponse20026Os](docs/InlineResponse20026Os.md)
- - [SwaggerClient::InlineResponse20026Raid](docs/InlineResponse20026Raid.md)
+ - [SwaggerClient::InlineResponse20027](docs/InlineResponse20027.md)
+ - [SwaggerClient::InlineResponse20027Bandwidth](docs/InlineResponse20027Bandwidth.md)
+ - [SwaggerClient::InlineResponse20027Cp](docs/InlineResponse20027Cp.md)
+ - [SwaggerClient::InlineResponse20027Ips](docs/InlineResponse20027Ips.md)
+ - [SwaggerClient::InlineResponse20027Os](docs/InlineResponse20027Os.md)
+ - [SwaggerClient::InlineResponse20027Raid](docs/InlineResponse20027Raid.md)
  - [SwaggerClient::InlineResponse2003](docs/InlineResponse2003.md)
  - [SwaggerClient::InlineResponse2004](docs/InlineResponse2004.md)
  - [SwaggerClient::InlineResponse2005](docs/InlineResponse2005.md)
@@ -9776,6 +9810,7 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::Service](docs/Service.md)
  - [SwaggerClient::ServiceCategories](docs/ServiceCategories.md)
  - [SwaggerClient::ServiceCategory](docs/ServiceCategory.md)
+ - [SwaggerClient::ServiceOrderPostResponse](docs/ServiceOrderPostResponse.md)
  - [SwaggerClient::ServiceType](docs/ServiceType.md)
  - [SwaggerClient::ServiceTypes](docs/ServiceTypes.md)
  - [SwaggerClient::Services](docs/Services.md)

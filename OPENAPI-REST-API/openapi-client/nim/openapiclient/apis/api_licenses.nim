@@ -23,6 +23,7 @@ import ../models/model_ip_object
 import ../models/model_license
 import ../models/model_license_row
 import ../models/model_licenses_order
+import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_get_account_info401response
 import ../models/model_licenses_cancel200response
@@ -42,10 +43,11 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addLicense*(httpClient: HttpClient): Response =
+proc addLicense*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
   ## Place License Order
-  httpClient.post(basepath & "/licenses/order")
 
+  let response = httpClient.post(basepath & "/licenses/order")
+  constructResult[ServiceOrderPostResponse](response)
 
 
 proc getLicenseInfo*(httpClient: HttpClient, id: int): (Option[License], Response) =
@@ -110,8 +112,9 @@ proc putLicenses*(httpClient: HttpClient): Response =
 
 
 
-proc updateLicenseInfo*(httpClient: HttpClient, id: string): Response =
+proc updateLicenseInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Update License
-  httpClient.post(basepath & fmt"/licenses/{id}")
 
+  let response = httpClient.post(basepath & fmt"/licenses/{id}")
+  constructResult[SuccessTextResponse](response)
 

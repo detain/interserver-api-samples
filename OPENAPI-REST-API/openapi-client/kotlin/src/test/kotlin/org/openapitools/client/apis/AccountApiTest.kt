@@ -149,7 +149,8 @@ class AccountApiTest : ShouldSpec() {
             //val disableServerNotifications : kotlin.Boolean = true // kotlin.Boolean | Set to `true` to disable server notifications, or `false` to enable them.
             //val disableEmailNotifications : kotlin.Boolean = true // kotlin.Boolean | Set to `true` to disable email notifications, or `false` to enable them.
             //val gstin : kotlin.String = gstin_example // kotlin.String | Your GST identification number (if applicable).
-            //apiInstance.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+            //val result : SuccessTextResponse = apiInstance.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+            //result shouldBe ("TODO")
         }
 
         // to test updateAccountIpLimits
@@ -157,7 +158,8 @@ class AccountApiTest : ShouldSpec() {
             // uncomment below to test updateAccountIpLimits
             //val start : kotlin.String = start_example // kotlin.String | The begining (or first) IP address in the range.
             //val end : kotlin.String = end_example // kotlin.String | The ending (or last) IP address in the range.
-            //apiInstance.updateAccountIpLimits(start, end)
+            //val result : SuccessTextResponse = apiInstance.updateAccountIpLimits(start, end)
+            //result shouldBe ("TODO")
         }
 
         // to test updateAccountPassword

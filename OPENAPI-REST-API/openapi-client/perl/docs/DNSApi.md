@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **add_dns_domain**
-> add_dns_domain(domain => $domain, ip => $ip)
+> SuccessTextResponse add_dns_domain(domain => $domain, ip => $ip)
 
 Create DNS Domain
 
@@ -49,7 +49,8 @@ my $domain = "domain_example"; # string | The domain name.
 my $ip = "ip_example"; # string | IP Address to point the domain to.
 
 eval {
-    $api_instance->add_dns_domain(domain => $domain, ip => $ip);
+    my $result = $api_instance->add_dns_domain(domain => $domain, ip => $ip);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DNSApi->add_dns_domain: $@\n";
@@ -65,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -147,7 +148,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dns_domain**
-> delete_dns_domain(id => $id)
+> SuccessTextResponse delete_dns_domain(id => $id)
 
 Delete DNS Domain
 
@@ -176,7 +177,8 @@ my $api_instance = OpenAPIClient::DNSApi->new(
 my $id = "id_example"; # string | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 
 eval {
-    $api_instance->delete_dns_domain(id => $id);
+    my $result = $api_instance->delete_dns_domain(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DNSApi->delete_dns_domain: $@\n";
@@ -191,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -205,7 +207,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dns_record**
-> delete_dns_record(domain_id => $domain_id, record_id => $record_id)
+> SuccessTextResponse delete_dns_record(domain_id => $domain_id, record_id => $record_id)
 
 Delete DNS Record
 
@@ -235,7 +237,8 @@ my $domain_id = 56; # int | The DNS domain ID. Use the `id` from `GET /dns` to i
 my $record_id = 56; # int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 eval {
-    $api_instance->delete_dns_record(domain_id => $domain_id, record_id => $record_id);
+    my $result = $api_instance->delete_dns_record(domain_id => $domain_id, record_id => $record_id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DNSApi->delete_dns_record: $@\n";
@@ -251,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -379,7 +382,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_dns_record**
-> update_dns_record(domain_id => $domain_id, record_id => $record_id, name => $name, type => $type, content => $content, ttl => $ttl, prio => $prio, disabled => $disabled, ordername => $ordername, auth => $auth)
+> SuccessTextResponse update_dns_record(domain_id => $domain_id, record_id => $record_id, name => $name, type => $type, content => $content, ttl => $ttl, prio => $prio, disabled => $disabled, ordername => $ordername, auth => $auth)
 
 Update DNS Record
 
@@ -417,7 +420,8 @@ my $ordername = "ordername_example"; # string |
 my $auth = "auth_example"; # string | 
 
 eval {
-    $api_instance->update_dns_record(domain_id => $domain_id, record_id => $record_id, name => $name, type => $type, content => $content, ttl => $ttl, prio => $prio, disabled => $disabled, ordername => $ordername, auth => $auth);
+    my $result = $api_instance->update_dns_record(domain_id => $domain_id, record_id => $record_id, name => $name, type => $type, content => $content, ttl => $ttl, prio => $prio, disabled => $disabled, ordername => $ordername, auth => $auth);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DNSApi->update_dns_record: $@\n";
@@ -441,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

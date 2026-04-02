@@ -194,8 +194,8 @@ export class BillingService {
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      
      */
-    public deleteAccountCreditCard(id: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public deleteAccountCreditCard(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public deleteAccountCreditCard(id: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public deleteAccountCreditCard(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public deleteAccountCreditCard(id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling deleteAccountCreditCard.');
@@ -212,10 +212,10 @@ export class BillingService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.delete(`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.delete(`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <string>(httpResponse.response))
                );
         }
         return response;
@@ -515,8 +515,8 @@ export class BillingService {
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
      
      */
-    public getBillingCart(observe?: 'body', headers?: Headers): Observable<any>;
-    public getBillingCart(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public getBillingCart(observe?: 'body', headers?: Headers): Observable<object>;
+    public getBillingCart(observe?: 'response', headers?: Headers): Observable<HttpResponse<object>>;
     public getBillingCart(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -529,10 +529,10 @@ export class BillingService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.basePath}/billing/cart`, headers);
+        const response: Observable<HttpResponse<object>> = this.httpClient.get(`${this.basePath}/billing/cart`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <object>(httpResponse.response))
                );
         }
         return response;
@@ -641,8 +641,8 @@ export class BillingService {
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
      
      */
-    public getBillingPrePays(observe?: 'body', headers?: Headers): Observable<any>;
-    public getBillingPrePays(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public getBillingPrePays(observe?: 'body', headers?: Headers): Observable<object>;
+    public getBillingPrePays(observe?: 'response', headers?: Headers): Observable<HttpResponse<object>>;
     public getBillingPrePays(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -655,10 +655,10 @@ export class BillingService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.basePath}/billing/prepays`, headers);
+        const response: Observable<HttpResponse<object>> = this.httpClient.get(`${this.basePath}/billing/prepays`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <object>(httpResponse.response))
                );
         }
         return response;
@@ -793,8 +793,8 @@ export class BillingService {
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      
      */
-    public updateAccountCreditCard(id: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateAccountCreditCard(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateAccountCreditCard(id: number, observe?: 'body', headers?: Headers): Observable<string>;
+    public updateAccountCreditCard(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public updateAccountCreditCard(id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateAccountCreditCard.');
@@ -811,10 +811,10 @@ export class BillingService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <string>(httpResponse.response))
                );
         }
         return response;

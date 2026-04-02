@@ -42,7 +42,7 @@ class SSLCertificatesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class SSLCertificatesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -111,7 +111,7 @@ class SSLCertificatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='ServiceOrderPostResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -129,7 +129,7 @@ class SSLCertificatesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -150,7 +150,7 @@ class SSLCertificatesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -198,7 +198,7 @@ class SSLCertificatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -217,7 +217,7 @@ class SSLCertificatesApi(object):
 
         :param async_req bool
         :param int id: SSL certificate ID number. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -239,7 +239,7 @@ class SSLCertificatesApi(object):
 
         :param async_req bool
         :param int id: SSL certificate ID number. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -293,7 +293,7 @@ class SSLCertificatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -676,7 +676,7 @@ class SSLCertificatesApi(object):
 
         :param async_req bool
         :param int id: SSL Cert ID number (required)
-        :return: InlineResponse20020
+        :return: InlineResponse20021
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -698,7 +698,7 @@ class SSLCertificatesApi(object):
 
         :param async_req bool
         :param int id: SSL Cert ID number (required)
-        :return: InlineResponse20020
+        :return: InlineResponse20021
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -752,7 +752,7 @@ class SSLCertificatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20020',  # noqa: E501
+            response_type='InlineResponse20021',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -771,7 +771,7 @@ class SSLCertificatesApi(object):
 
         :param async_req bool
         :param str id: SSL certificate ID number. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -793,7 +793,7 @@ class SSLCertificatesApi(object):
 
         :param async_req bool
         :param str id: SSL certificate ID number. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -847,7 +847,7 @@ class SSLCertificatesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

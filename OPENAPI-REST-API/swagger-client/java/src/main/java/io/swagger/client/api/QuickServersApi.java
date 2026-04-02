@@ -37,6 +37,7 @@ import io.swagger.client.model.QuickserverOrder;
 import io.swagger.client.model.QuickserverRow;
 import io.swagger.client.model.RestoreRequest;
 import io.swagger.client.model.ReverseDnsEntries;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 import io.swagger.client.model.TextResponse;
 import io.swagger.client.model.TimezoneUpdate;
@@ -139,21 +140,24 @@ public class QuickServersApi {
     /**
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addQs() throws ApiException {
-        addQsWithHttpInfo();
+    public ServiceOrderPostResponse addQs() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> resp = addQsWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addQsWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addQsWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = addQsValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -163,7 +167,7 @@ public class QuickServersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addQsAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addQsAsync(final ApiCallback<ServiceOrderPostResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -185,7 +189,8 @@ public class QuickServersApi {
         }
 
         com.squareup.okhttp.Call call = addQsValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -6194,22 +6199,25 @@ public class QuickServersApi {
      * Update QuickServer Order
      * Updates QuickServer metadata or stored settings associated with the order.
      * @param id QuickServer ID number. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateQsInfo(String id) throws ApiException {
-        updateQsInfoWithHttpInfo(id);
+    public SuccessTextResponse updateQsInfo(String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateQsInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update QuickServer Order
      * Updates QuickServer metadata or stored settings associated with the order.
      * @param id QuickServer ID number. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateQsInfoWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateQsInfoWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = updateQsInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -6220,7 +6228,7 @@ public class QuickServersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateQsInfoAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateQsInfoAsync(String id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6242,7 +6250,8 @@ public class QuickServersApi {
         }
 
         com.squareup.okhttp.Call call = updateQsInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

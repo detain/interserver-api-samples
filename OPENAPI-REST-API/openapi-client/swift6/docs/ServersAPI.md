@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 # **addServer**
 ```swift
-    open class func addServer(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func addServer(completion: @escaping (_ data: AddServer200Response?, _ error: Error?) -> Void)
 ```
 
 Place Server Order
@@ -57,7 +57,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+[**AddServer200Response**](AddServer200Response.md)
 
 ### Authorization
 
@@ -862,7 +862,7 @@ Name | Type | Description  | Notes
 
 # **updateServerInfo**
 ```swift
-    open class func updateServerInfo(id: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateServerInfo(id: String, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Update Server Order
@@ -897,7 +897,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

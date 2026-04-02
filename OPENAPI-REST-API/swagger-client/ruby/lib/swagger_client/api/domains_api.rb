@@ -19,16 +19,16 @@ module SwaggerClient
     # Place Domain Order
     # Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_domain(opts = {})
-      add_domain_with_http_info(opts)
-      nil
+      data, _status_code, _headers = add_domain_with_http_info(opts)
+      data
     end
 
     # Place Domain Order
     # Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_domain_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DomainsApi.add_domain ...'
@@ -50,7 +50,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'ServiceOrderPostResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -1824,17 +1824,17 @@ module SwaggerClient
     # Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
     # @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_domain_info(id, opts = {})
-      update_domain_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_domain_info_with_http_info(id, opts)
+      data
     end
 
     # Update Domain Order
     # Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
     # @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_domain_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DomainsApi.update_domain_info ...'
@@ -1860,7 +1860,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

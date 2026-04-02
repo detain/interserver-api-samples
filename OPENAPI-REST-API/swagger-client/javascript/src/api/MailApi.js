@@ -38,6 +38,7 @@ import MailSchema from '../model/MailSchema';
 import MailStatsType from '../model/MailStatsType';
 import SendMail from '../model/SendMail';
 import SendMailAdv from '../model/SendMailAdv';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import StartDate from '../model/StartDate';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 
@@ -64,7 +65,7 @@ export default class MailApi {
      * Callback function to receive the result of the addMail operation.
      * @callback moduleapi/MailApi~addMailCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -72,6 +73,7 @@ export default class MailApi {
      * Place Mail Order
      * Places a Mail Baby order. On success, invoices are created for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
      * @param {module:api/MailApi~addMailCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addMail(callback) {
       
@@ -93,7 +95,7 @@ export default class MailApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
 
       return this.apiClient.callApi(
         '/mail/order', 'POST',
@@ -1352,7 +1354,7 @@ export default class MailApi {
      * Callback function to receive the result of the updateMailInfo operation.
      * @callback moduleapi/MailApi~updateMailInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -1361,6 +1363,7 @@ export default class MailApi {
      * Updates mail service metadata for the order, such as stored settings or account details.
      * @param {String} id The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.
      * @param {module:api/MailApi~updateMailInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateMailInfo(id, callback) {
       
@@ -1386,7 +1389,7 @@ export default class MailApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
 
       return this.apiClient.callApi(
         '/mail/{id}', 'POST',
@@ -1414,14 +1417,14 @@ export default class MailApi {
      * @param {String} opts.to Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
      * @param {String} opts.subject Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
      * @param {String} opts.mailid Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-     * @param {String} opts.messageId Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+     * @param {String} opts.messageId Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
      * @param {String} opts.replyto Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
      * @param {String} opts.headerfrom Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
      * @param {module:model/Number} opts.delivered Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
      * @param {Number} opts.skip Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip). (default to <.>)
      * @param {Number} opts.limit Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages. (default to <.>)
      * @param {module:model/StartDate} opts.startDate Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-     * @param {module:model/EndDate} opts.endDate Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+     * @param {module:model/EndDate} opts.endDate Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
      * @param {module:model/String} opts.sort Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order). (default to <.>)
      * @param {module:model/String} opts.dir Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first. (default to <.>)
      * @param {module:model/String} opts.groupby Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode. (default to <.>)

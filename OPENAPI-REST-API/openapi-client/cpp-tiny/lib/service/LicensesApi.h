@@ -15,6 +15,7 @@
 #include "LicenseRow.h"
 #include "LicensesCancel_200_response.h"
 #include "LicensesOrder.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 
 namespace Tiny {
@@ -36,7 +37,7 @@ public:
     * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
     */
     Response<
-            String
+                ServiceOrderPostResponse
         >
     addLicense(
     );
@@ -165,7 +166,7 @@ public:
     * \param id The license service ID. Use `license_id` from `GET /licenses`. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateLicenseInfo(
             

@@ -27,7 +27,7 @@ Method | HTTP request | Description
 [**webhostingCancel**](WebhostingApi.md#webhostingCancel) | **DELETE** /websites/{id} | Cancel Website
 
 # **addWebsite**
-> addWebsite()
+> ServiceOrderPostResponse addWebsite()
 
 Place Website Order
 
@@ -52,7 +52,8 @@ import 'package:swagger/api.dart';
 var api_instance = new WebhostingApi();
 
 try {
-    api_instance.addWebsite();
+    var result = api_instance.addWebsite();
+    print(result);
 } catch (e) {
     print("Exception when calling WebhostingApi->addWebsite: $e\n");
 }
@@ -63,7 +64,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -128,7 +129,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getWebsiteBuyIp**
-> InlineResponse20023 getWebsiteBuyIp(id)
+> InlineResponse20024 getWebsiteBuyIp(id)
 
 Get Website IP Information
 
@@ -169,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -564,7 +565,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postWebsiteBuyIp**
-> InlineResponse20024 postWebsiteBuyIp(body, ips, id)
+> InlineResponse20025 postWebsiteBuyIp(body, ips, id)
 
 Update Website IP DNS
 
@@ -609,7 +610,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -623,7 +624,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postWebsiteMigration**
-> InlineResponse20025 postWebsiteMigration(body, custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
+> InlineResponse20026 postWebsiteMigration(body, custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
 
 Request Website Migration
 
@@ -692,7 +693,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -815,7 +816,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateWebsiteInfo**
-> updateWebsiteInfo(id)
+> SuccessTextResponse updateWebsiteInfo(id)
 
 Update Website Order
 
@@ -841,7 +842,8 @@ var api_instance = new WebhostingApi();
 var id = id_example; // String | The website service ID. Use `website_id` from `GET /websites`.
 
 try {
-    api_instance.updateWebsiteInfo(id);
+    var result = api_instance.updateWebsiteInfo(id);
+    print(result);
 } catch (e) {
     print("Exception when calling WebhostingApi->updateWebsiteInfo: $e\n");
 }
@@ -855,7 +857,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -869,7 +871,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **webhostingCancel**
-> InlineResponse20022 webhostingCancel(id)
+> InlineResponse20023 webhostingCancel(id)
 
 Cancel Website
 
@@ -910,7 +912,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 

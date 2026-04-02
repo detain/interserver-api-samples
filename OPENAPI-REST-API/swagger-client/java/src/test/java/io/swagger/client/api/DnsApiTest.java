@@ -19,6 +19,7 @@ import io.swagger.client.model.DnsRecord;
 import io.swagger.client.model.DnsRecordType;
 import io.swagger.client.model.DnsUpdateRecord;
 import io.swagger.client.model.InlineResponse401;
+import io.swagger.client.model.SuccessTextResponse;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -49,7 +50,7 @@ public class DnsApiTest {
     public void addDnsDomainTest() throws Exception {
         String domain = null;
         String ip = null;
-        api.addDnsDomain(domain, ip);
+        SuccessTextResponse response = api.addDnsDomain(domain, ip);
 
         // TODO: test validations
     }
@@ -84,7 +85,7 @@ public class DnsApiTest {
     @Test
     public void deleteDnsDomainTest() throws Exception {
         String id = null;
-        api.deleteDnsDomain(id);
+        SuccessTextResponse response = api.deleteDnsDomain(id);
 
         // TODO: test validations
     }
@@ -100,7 +101,7 @@ public class DnsApiTest {
     public void deleteDnsRecordTest() throws Exception {
         Integer domainId = null;
         Integer recordId = null;
-        api.deleteDnsRecord(domainId, recordId);
+        SuccessTextResponse response = api.deleteDnsRecord(domainId, recordId);
 
         // TODO: test validations
     }
@@ -153,7 +154,7 @@ public class DnsApiTest {
         String auth = null;
         Integer domainId = null;
         Integer recordId = null;
-        api.updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+        SuccessTextResponse response = api.updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
 
         // TODO: test validations
     }

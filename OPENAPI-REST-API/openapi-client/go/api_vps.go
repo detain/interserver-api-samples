@@ -35,7 +35,7 @@ func (r ApiAddVpsRequest) VpsOrderPostRequest(vpsOrderPostRequest VpsOrderPostRe
 	return r
 }
 
-func (r ApiAddVpsRequest) Execute() (*http.Response, error) {
+func (r ApiAddVpsRequest) Execute() (*ServiceOrderPostResponse, *http.Response, error) {
 	return r.ApiService.AddVpsExecute(r)
 }
 
@@ -55,16 +55,18 @@ func (a *VPSAPIService) AddVps(ctx context.Context) ApiAddVpsRequest {
 }
 
 // Execute executes the request
-func (a *VPSAPIService) AddVpsExecute(r ApiAddVpsRequest) (*http.Response, error) {
+//  @return ServiceOrderPostResponse
+func (a *VPSAPIService) AddVpsExecute(r ApiAddVpsRequest) (*ServiceOrderPostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ServiceOrderPostResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VPSAPIService.AddVps")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/vps/order"
@@ -122,19 +124,19 @@ func (a *VPSAPIService) AddVpsExecute(r ApiAddVpsRequest) (*http.Response, error
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -147,16 +149,24 @@ func (a *VPSAPIService) AddVpsExecute(r ApiAddVpsRequest) (*http.Response, error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiDeleteVpsBackupRequest struct {
@@ -6010,7 +6020,7 @@ type ApiUpdateVpsInfoRequest struct {
 	id string
 }
 
-func (r ApiUpdateVpsInfoRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateVpsInfoRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.UpdateVpsInfoExecute(r)
 }
 
@@ -6032,16 +6042,18 @@ func (a *VPSAPIService) UpdateVpsInfo(ctx context.Context, id string) ApiUpdateV
 }
 
 // Execute executes the request
-func (a *VPSAPIService) UpdateVpsInfoExecute(r ApiUpdateVpsInfoRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *VPSAPIService) UpdateVpsInfoExecute(r ApiUpdateVpsInfoRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VPSAPIService.UpdateVpsInfo")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/vps/{id}"
@@ -6098,19 +6110,19 @@ func (a *VPSAPIService) UpdateVpsInfoExecute(r ApiUpdateVpsInfoRequest) (*http.R
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -6123,16 +6135,24 @@ func (a *VPSAPIService) UpdateVpsInfoExecute(r ApiUpdateVpsInfoRequest) (*http.R
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiVPSCancelRequest struct {

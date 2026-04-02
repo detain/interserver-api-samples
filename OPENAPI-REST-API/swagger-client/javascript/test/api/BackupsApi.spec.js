@@ -203,7 +203,7 @@
       });
       describe('updateBackupInfo', function() {
         it('should call updateBackupInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateBackupInfo call
+          // TODO: uncomment, update parameter values for updateBackupInfo call and complete the assertions
           /*
 
           instance.updateBackupInfo(id, function(error, data, response) {
@@ -211,6 +211,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

@@ -14,7 +14,9 @@ package org.openapitools.client.api
 import org.openapitools.client.model.ChargeInvoiceRows
 import org.openapitools.client.model.FloatingIpsCancel200Response
 import org.openapitools.client.model.GetAccountInfo401Response
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
+import com.github.plokhotnyuk.jsoniter_scala.circe.JsoniterScalaCodec.*
 import org.openapitools.client.core.JsonSupport.{*, given}
 import org.openapitools.client.core.FormSerializable
 import org.openapitools.client.core.FormStyleFormat
@@ -56,15 +58,15 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
    * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addFloatingIp(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def addFloatingIp(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], ServiceOrderPostResponse]] =
     val requestURL =
       uri"$baseUrl/floating_ips/order"
 
@@ -74,7 +76,7 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred.
@@ -107,8 +109,8 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
    * Returns detailed information about a specific Floating IP service including its current target IP assignment.
    * 
    * Expected answers:
+   *   code 200 : io.circe.Json (Detailed Floating IP service information.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -117,7 +119,7 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
    * 
    * @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
    */
-  def getFloatingIpInfo(id: Int)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def getFloatingIpInfo(id: Int)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], io.circe.Json]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/floating_ips/${idPathParam}"
@@ -128,7 +130,7 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[io.circe.Json])
 
   /**
    * Returns the billing invoices associated with this Floating IP service.
@@ -213,15 +215,15 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
    * Retrieves available options and pricing for ordering a new Floating IP.
    * 
    * Expected answers:
+   *   code 200 : io.circe.Json (Available options and pricing for ordering a Floating IP.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def getNewFloatingIp(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def getNewFloatingIp(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], io.circe.Json]] =
     val requestURL =
       uri"$baseUrl/floating_ips/order"
 
@@ -231,7 +233,7 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[io.circe.Json])
 
   /**
    * Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes.
@@ -295,8 +297,8 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
    * Updates settings on a Floating IP service, such as its label or configuration metadata.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -305,7 +307,7 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
    * 
    * @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
    */
-  def updateFloatingIpInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateFloatingIpInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/floating_ips/${idPathParam}"
@@ -316,6 +318,6 @@ case class FloatingIPsApi[Auth <: org.openapitools.client.core.Authorization] pr
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
 end FloatingIPsApi

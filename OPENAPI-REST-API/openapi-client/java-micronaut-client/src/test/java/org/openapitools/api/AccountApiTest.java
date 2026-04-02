@@ -278,7 +278,7 @@ public class AccountApiTest {
         String gstin = "example";
 
         // when
-        api.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin).block();
+        SuccessTextResponse body = api.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin).block();
 
         // then
         // TODO implement the updateAccountInfoTest()
@@ -298,7 +298,7 @@ public class AccountApiTest {
         String end = "example";
 
         // when
-        api.updateAccountIpLimits(start, end).block();
+        SuccessTextResponse body = api.updateAccountIpLimits(start, end).block();
 
         // then
         // TODO implement the updateAccountIpLimitsTest()

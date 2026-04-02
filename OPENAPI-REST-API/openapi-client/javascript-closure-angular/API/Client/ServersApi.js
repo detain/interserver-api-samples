@@ -27,6 +27,7 @@ goog.require('API.Client.ServersBuyNowError');
 goog.require('API.Client.ServersBuyNowResponse');
 goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.TextResponse');
+goog.require('API.Client.addServer_200_response');
 goog.require('API.Client.buyItNowServerOrder_200_response');
 goog.require('API.Client.getAccountInfo_401_response');
 goog.require('API.Client.placeBuyNowServer_request');
@@ -63,7 +64,7 @@ API.Client.ServersApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * Place Server Order
  * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.addServer_200_response>}
  */
 API.Client.ServersApi.prototype.addServer = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -691,7 +692,7 @@ API.Client.ServersApi.prototype.serversCancel = function(id, opt_extraHttpReques
  * Updates settings on a dedicated server order.
  * @param {!string} id Server ID number.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.ServersApi.prototype.updateServerInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

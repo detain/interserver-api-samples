@@ -27,6 +27,7 @@ import { License } from '../model/license';
 import { LicenseRow } from '../model/licenseRow';
 import { LicensesCancel200Response } from '../model/licensesCancel200Response';
 import { LicensesOrder } from '../model/licensesOrder';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 
 import { COLLECTION_FORMATS }  from '../variables';
@@ -48,8 +49,8 @@ export class LicensesService {
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
      
      */
-    public addLicense(observe?: 'body', headers?: Headers): Observable<any>;
-    public addLicense(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public addLicense(observe?: 'body', headers?: Headers): Observable<ServiceOrderPostResponse>;
+    public addLicense(observe?: 'response', headers?: Headers): Observable<HttpResponse<ServiceOrderPostResponse>>;
     public addLicense(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -62,10 +63,10 @@ export class LicensesService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/licenses/order`, headers);
+        const response: Observable<HttpResponse<ServiceOrderPostResponse>> = this.httpClient.post(`${this.basePath}/licenses/order`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <ServiceOrderPostResponse>(httpResponse.response))
                );
         }
         return response;
@@ -375,8 +376,8 @@ export class LicensesService {
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
      
      */
-    public updateLicenseInfo(id: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateLicenseInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateLicenseInfo(id: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateLicenseInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateLicenseInfo(id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateLicenseInfo.');
@@ -393,10 +394,10 @@ export class LicensesService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/licenses/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/licenses/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

@@ -49,11 +49,19 @@ class LicensesApi {
   /// Place License Order
   ///
   /// Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
-  Future<void> addLicense() async {
+  Future<ServiceOrderPostResponse?> addLicense() async {
     final response = await addLicenseWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ServiceOrderPostResponse',) as ServiceOrderPostResponse;
+    
+    }
+    return null;
   }
 
   /// Get License
@@ -589,10 +597,18 @@ class LicensesApi {
   ///
   /// * [String] id (required):
   ///   The license service ID. Use `license_id` from `GET /licenses`.
-  Future<void> updateLicenseInfo(String id,) async {
+  Future<SuccessTextResponse?> updateLicenseInfo(String id,) async {
     final response = await updateLicenseInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 }

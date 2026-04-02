@@ -7,7 +7,8 @@ package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.InlineResponse20019;
-import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20027;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OrderBuyNowServerBody;
 import io.swagger.model.ReverseDnsEntries;
@@ -40,10 +41,10 @@ public interface ServersApi {
 
 
     @Operation(summary = "Place Server Order", operationId = "addServer", description = "Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first." , tags = {"Servers"})
+    @ApiResponse(responseCode = "200", description = "Server order placed successfully.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/servers/order", produces = { "application/json" })
-    default Single<HttpResponse<Void>> addServer() {
+    default Single<HttpResponse<InlineResponse20019>> addServer() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -54,7 +55,7 @@ public interface ServersApi {
     @ApiResponse(responseCode = "200", description = "Available server configurations with pricing and hardware options.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Get(value = "/servers/order/buy_now_server", produces = { "application/json" })
-    default Single<HttpResponse<InlineResponse20026>> buyItNowServerOrder() {
+    default Single<HttpResponse<InlineResponse20027>> buyItNowServerOrder() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -127,7 +128,7 @@ public interface ServersApi {
     }
 
 
-    @Operation(summary = "Place Buy Now Server Order", operationId = "placeBuyNowServer", description = "Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server` to retrieve available server configurations and their IDs before ordering." , tags = {"servers"})
+    @Operation(summary = "Place Buy Now Server Order", operationId = "placeBuyNowServer", description = "Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server` to retrieve available server configurations and their IDs before ordering." , tags = {"Servers"})
     @ApiResponse(responseCode = "200", description = "Order placed successfully.")
     @ApiResponse(responseCode = "400", description = "Order validation failed.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
@@ -243,7 +244,7 @@ public interface ServersApi {
     @ApiResponse(responseCode = "200", description = "Servers Cancel")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Delete(value = "/servers/{id}", produces = { "application/json" })
-    default Single<HttpResponse<InlineResponse20019>> serversCancel(@Parameter(description = "Server ID number") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<InlineResponse20020>> serversCancel(@Parameter(description = "Server ID number") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -251,10 +252,10 @@ public interface ServersApi {
 
 
     @Operation(summary = "Update Server Order", operationId = "updateServerInfo", description = "Updates settings on a dedicated server order." , tags = {"Servers"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/servers/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateServerInfo(@Parameter(description = "Server ID number.") @PathVariable("id") String id) {
+    default Single<HttpResponse<SuccessTextResponse>> updateServerInfo(@Parameter(description = "Server ID number.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

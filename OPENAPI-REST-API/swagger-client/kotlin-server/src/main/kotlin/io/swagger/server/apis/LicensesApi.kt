@@ -41,6 +41,7 @@ import io.swagger.server.models.IpObject
 import io.swagger.server.models.License
 import io.swagger.server.models.LicenseRow
 import io.swagger.server.models.LicensesOrder
+import io.swagger.server.models.ServiceOrderPostResponse
 import io.swagger.server.models.SuccessTextResponse
 
 @KtorExperimentalLocationsAPI
@@ -52,8 +53,23 @@ fun Route.LicensesApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     get<Paths.getLicenseInfo> {  _: Paths.getLicenseInfo ->
         val principal = call.authentication.principal<ApiPrincipal>()
@@ -336,7 +352,16 @@ fun Route.LicensesApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
 }

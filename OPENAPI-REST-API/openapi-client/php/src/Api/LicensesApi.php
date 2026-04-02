@@ -166,11 +166,12 @@ class LicensesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\ServiceOrderPostResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function addLicense(string $contentType = self::contentTypes['addLicense'][0])
     {
-        $this->addLicenseWithHttpInfo($contentType);
+        list($response) = $this->addLicenseWithHttpInfo($contentType);
+        return $response;
     }
 
     /**
@@ -182,7 +183,7 @@ class LicensesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\ServiceOrderPostResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function addLicenseWithHttpInfo(string $contentType = self::contentTypes['addLicense'][0])
     {
@@ -211,9 +212,51 @@ class LicensesApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -261,14 +304,27 @@ class LicensesApi
      */
     public function addLicenseAsyncWithHttpInfo(string $contentType = self::contentTypes['addLicense'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addLicenseRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2858,11 +2914,12 @@ class LicensesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function updateLicenseInfo($id, string $contentType = self::contentTypes['updateLicenseInfo'][0])
     {
-        $this->updateLicenseInfoWithHttpInfo($id, $contentType);
+        list($response) = $this->updateLicenseInfoWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -2875,7 +2932,7 @@ class LicensesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateLicenseInfoWithHttpInfo($id, string $contentType = self::contentTypes['updateLicenseInfo'][0])
     {
@@ -2904,9 +2961,51 @@ class LicensesApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2956,14 +3055,27 @@ class LicensesApi
      */
     public function updateLicenseInfoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['updateLicenseInfo'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateLicenseInfoRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

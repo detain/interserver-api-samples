@@ -40,7 +40,7 @@ Method | HTTP request | Description
 [**updateDomainWhoisPrivacy**](DomainsApi.md#updateDomainWhoisPrivacy) | **POST** /domains/{id}/whois | Update Whois Privacy
 
 # **addDomain**
-> addDomain()
+> ServiceOrderPostResponse addDomain()
 
 Place Domain Order
 
@@ -65,7 +65,8 @@ import 'package:swagger/api.dart';
 var api_instance = new DomainsApi();
 
 try {
-    api_instance.addDomain();
+    var result = api_instance.addDomain();
+    print(result);
 } catch (e) {
     print("Exception when calling DomainsApi->addDomain: $e\n");
 }
@@ -76,7 +77,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1497,7 +1498,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateDomainInfo**
-> updateDomainInfo(id)
+> SuccessTextResponse updateDomainInfo(id)
 
 Update Domain Order
 
@@ -1523,7 +1524,8 @@ var api_instance = new DomainsApi();
 var id = id_example; // String | The domain service ID. Use `domain_id` from `GET /domains`.
 
 try {
-    api_instance.updateDomainInfo(id);
+    var result = api_instance.updateDomainInfo(id);
+    print(result);
 } catch (e) {
     print("Exception when calling DomainsApi->updateDomainInfo: $e\n");
 }
@@ -1537,7 +1539,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

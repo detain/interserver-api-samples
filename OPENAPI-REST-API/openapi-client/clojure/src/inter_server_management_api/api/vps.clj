@@ -188,6 +188,7 @@
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
             [inter-server-management-api.specs.license :refer :all]
+            [inter-server-management-api.specs.add-server-200-response :refer :all]
             [inter-server-management-api.specs.post-oauth-callback-request :refer :all]
             [inter-server-management-api.specs.mail-alert-update-request :refer :all]
             [inter-server-management-api.specs.billing-prepay-request :refer :all]
@@ -304,6 +305,7 @@
             [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
+            [inter-server-management-api.specs.service-order-post-response :refer :all]
             [inter-server-management-api.specs.vps-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-network-info-switchports :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types :refer :all]
@@ -473,14 +475,14 @@
               :accepts       ["application/json"]
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
-(defn-spec add-vps any?
+(defn-spec add-vps service-order-post-response-spec
   "Place VPS Order
   Places an order for a new VPS. Use `PUT /vps/order` to validate the order first."
   ([] (add-vps nil))
   ([optional-params any?]
    (let [res (:data (add-vps-with-http-info optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode any? res st/string-transformer)
+        (st/decode service-order-post-response-spec res st/string-transformer)
         res))))
 
 
@@ -1497,13 +1499,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec update-vps-info any?
+(defn-spec update-vps-info success-text-response-spec
   "Update VPS Order
   Updates settings on a VPS order."
   [id string?]
   (let [res (:data (update-vps-info-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode success-text-response-spec res st/string-transformer)
        res)))
 
 

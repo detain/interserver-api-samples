@@ -25,6 +25,7 @@ from myadmin-client-python-flask.models.mail_schema import MailSchema  # noqa: E
 from myadmin-client-python-flask.models.mail_stats_type import MailStatsType  # noqa: E501
 from myadmin-client-python-flask.models.send_mail import SendMail  # noqa: E501
 from myadmin-client-python-flask.models.send_mail_adv import SendMailAdv  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.start_date import StartDate  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask import util
@@ -36,7 +37,7 @@ def add_mail():  # noqa: E501
     Places a Mail Baby order. On success, invoices are created for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment. # noqa: E501
 
 
-    :rtype: None
+    :rtype: ServiceOrderPostResponse
     """
     return 'do some magic!'
 
@@ -533,7 +534,7 @@ def update_mail_info(id):  # noqa: E501
     :param id: The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.
     :type id: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'
 
@@ -559,7 +560,7 @@ def view_mail_log(id, id=None, origin=None, mx=None, _from=None, to=None, subjec
     :type subject: str
     :param mailid: Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
     :type mailid: str
-    :param message_id: Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+    :param message_id: Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
     :type message_id: str
     :param replyto: Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
     :type replyto: str
@@ -573,7 +574,7 @@ def view_mail_log(id, id=None, origin=None, mx=None, _from=None, to=None, subjec
     :type limit: int
     :param start_date: Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
     :type start_date: dict | bytes
-    :param end_date: Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+    :param end_date: Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
     :type end_date: dict | bytes
     :param sort: Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
     :type sort: str

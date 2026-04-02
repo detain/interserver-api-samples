@@ -651,9 +651,9 @@ export class BillingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteAccountCreditCard(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteAccountCreditCard(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteAccountCreditCard(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteAccountCreditCard(id: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public deleteAccountCreditCard(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public deleteAccountCreditCard(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public deleteAccountCreditCard(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -692,7 +692,7 @@ export class BillingService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<string>('delete',`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1819,9 +1819,9 @@ export class BillingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateAccountCreditCard(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateAccountCreditCard(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateAccountCreditCard(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateAccountCreditCard(id: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public updateAccountCreditCard(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public updateAccountCreditCard(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public updateAccountCreditCard(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -1860,7 +1860,7 @@ export class BillingService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<string>('post',`${this.basePath}/account/creditcards/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

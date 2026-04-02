@@ -37,6 +37,7 @@ model/AccountInfoOauthConfigProviders_value.hpp
 model/AccountInfoPost.hpp
 model/AccountInfo_oauthproviders.hpp
 model/AccountSshKey.hpp
+model/AddServer_200_response.hpp
 model/AffiliateBannerRow.hpp
 model/AffiliateDockSetup.hpp
 model/AffiliatePaymentSetup.hpp
@@ -371,6 +372,7 @@ model/ServersCancel_200_response.hpp
 model/Service.hpp
 model/ServiceCategories.hpp
 model/ServiceCategory.hpp
+model/ServiceOrderPostResponse.hpp
 model/ServiceType.hpp
 model/ServiceTypes.hpp
 model/Services.hpp

@@ -15,7 +15,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addDnsDomain"></a>
 # **addDnsDomain**
-> addDnsDomain(domain, ip)
+> SuccessTextResponse addDnsDomain(domain, ip)
 
 Create DNS Domain
 
@@ -58,7 +58,8 @@ public class Example {
     String domain = "domain_example"; // String | The domain name.
     String ip = "ip_example"; // String | IP Address to point the domain to.
     try {
-      apiInstance.addDnsDomain(domain, ip);
+      SuccessTextResponse result = apiInstance.addDnsDomain(domain, ip);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DnsApi#addDnsDomain");
       System.err.println("Status code: " + e.getCode());
@@ -79,7 +80,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -93,8 +94,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="addDnsRecord"></a>
 # **addDnsRecord**
@@ -189,7 +190,7 @@ null (empty response body)
 
 <a id="deleteDnsDomain"></a>
 # **deleteDnsDomain**
-> deleteDnsDomain(id)
+> SuccessTextResponse deleteDnsDomain(id)
 
 Delete DNS Domain
 
@@ -231,7 +232,8 @@ public class Example {
     DnsApi apiInstance = new DnsApi(defaultClient);
     String id = "id_example"; // String | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
     try {
-      apiInstance.deleteDnsDomain(id);
+      SuccessTextResponse result = apiInstance.deleteDnsDomain(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DnsApi#deleteDnsDomain");
       System.err.println("Status code: " + e.getCode());
@@ -251,7 +253,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -265,12 +267,12 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="deleteDnsRecord"></a>
 # **deleteDnsRecord**
-> deleteDnsRecord(domainId, recordId)
+> SuccessTextResponse deleteDnsRecord(domainId, recordId)
 
 Delete DNS Record
 
@@ -313,7 +315,8 @@ public class Example {
     Integer domainId = 56; // Integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
     Integer recordId = 56; // Integer | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
     try {
-      apiInstance.deleteDnsRecord(domainId, recordId);
+      SuccessTextResponse result = apiInstance.deleteDnsRecord(domainId, recordId);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DnsApi#deleteDnsRecord");
       System.err.println("Status code: " + e.getCode());
@@ -334,7 +337,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -348,8 +351,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="getDnsDomain"></a>
 # **getDnsDomain**
@@ -513,7 +516,7 @@ This endpoint does not need any parameter.
 
 <a id="updateDnsRecord"></a>
 # **updateDnsRecord**
-> updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
+> SuccessTextResponse updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
 
 Update DNS Record
 
@@ -564,7 +567,8 @@ public class Example {
     String ordername = "ordername_example"; // String | 
     String auth = "auth_example"; // String | 
     try {
-      apiInstance.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
+      SuccessTextResponse result = apiInstance.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DnsApi#updateDnsRecord");
       System.err.println("Status code: " + e.getCode());
@@ -593,7 +597,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -607,6 +611,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 

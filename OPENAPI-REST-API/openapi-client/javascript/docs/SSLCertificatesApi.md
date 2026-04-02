@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## addSsl
 
-> addSsl()
+> ServiceOrderPostResponse addSsl()
 
 Place SSL Cert Order
 
@@ -50,7 +50,7 @@ apiInstance.addSsl((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -61,7 +61,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ null (empty response body)
 
 ## getNewSsl
 
-> getNewSsl()
+> Object getNewSsl()
 
 SSL Cert Ordering Information
 
@@ -107,7 +107,7 @@ apiInstance.getNewSsl((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -118,7 +118,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -132,7 +132,7 @@ null (empty response body)
 
 ## getSslInfo
 
-> getSslInfo(id)
+> Object getSslInfo(id)
 
 Get SSL Cert Info
 
@@ -165,7 +165,7 @@ apiInstance.getSslInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 
 ## updateSslInfo
 
-> updateSslInfo(id)
+> SuccessTextResponse updateSslInfo(id)
 
 Update SSL Cert Order
 
@@ -523,7 +523,7 @@ apiInstance.updateSslInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

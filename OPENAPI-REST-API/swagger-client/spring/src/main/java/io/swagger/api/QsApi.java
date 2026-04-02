@@ -16,6 +16,7 @@ import io.swagger.model.QuickserverOrder;
 import io.swagger.model.QuickserverRow;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.TimezoneUpdate;
@@ -56,13 +57,13 @@ public interface QsApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "QuickServers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/qs/order",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> addQs();
+    ResponseEntity<ServiceOrderPostResponse> addQs();
 
 
     @Operation(summary = "Delete QuickServer Backup", description = "Permanently removes the specified backup file from storage. Use `GET /qs/{id}/backups` to list available backup filenames before deleting.", security = {
@@ -714,13 +715,13 @@ public interface QsApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "QuickServers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/qs/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> updateQsInfo(@Parameter(in = ParameterIn.PATH, description = "QuickServer ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
+    ResponseEntity<SuccessTextResponse> updateQsInfo(@Parameter(in = ParameterIn.PATH, description = "QuickServer ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
 );
 
 }

@@ -49,6 +49,7 @@ import io.swagger.server.models.DomainSearchResponse
 import io.swagger.server.models.DomainWhoisPrivacyRequest
 import io.swagger.server.models.InlineResponse2002
 import io.swagger.server.models.InlineResponse401
+import io.swagger.server.models.ServiceOrderPostResponse
 import io.swagger.server.models.SuccessTextResponse
 import io.swagger.server.models.TextResponse
 
@@ -61,8 +62,23 @@ fun Route.DomainsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     post<Paths.addDomainDnssec> {  _: Paths.addDomainDnssec ->
         val principal = call.authentication.principal<ApiPrincipal>()
@@ -764,8 +780,17 @@ fun Route.DomainsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     put<Paths.updateDomainNameservers> {  _: Paths.updateDomainNameservers ->
         val principal = call.authentication.principal<ApiPrincipal>()

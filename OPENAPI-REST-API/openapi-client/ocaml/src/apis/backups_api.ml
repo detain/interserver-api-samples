@@ -221,7 +221,7 @@ let update_backup_info ~id =
         
  id in
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let validate_backup_order ?validate_only ?service_type ?coupon () =
     let open Lwt.Infix in

@@ -14,6 +14,7 @@
 #include "PostWebsiteMigration_request.h"
 #include "PostWebsiteMigration_request_1.h"
 #include "ReverseDnsEntries.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
 #include "WebhostingCancel_200_response.h"
@@ -50,8 +51,8 @@ public:
  */
 bool addWebsiteSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Place Website Order. *Asynchronous*
  *
@@ -62,8 +63,8 @@ bool addWebsiteSync(char * accessToken,
  */
 bool addWebsiteAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Website Ordering Information. *Synchronous*
@@ -427,8 +428,8 @@ bool putWebsitesAsync(char * accessToken,
  */
 bool updateWebsiteInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update Website Order. *Asynchronous*
  *
@@ -440,8 +441,8 @@ bool updateWebsiteInfoSync(char * accessToken,
  */
 bool updateWebsiteInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Cancel Website. *Synchronous*

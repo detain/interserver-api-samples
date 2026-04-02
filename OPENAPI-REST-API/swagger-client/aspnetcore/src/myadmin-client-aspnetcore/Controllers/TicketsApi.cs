@@ -32,7 +32,7 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Creates a new support ticket. Optionally link it to a specific service by providing the service ID and module.</remarks>
         /// <param name="body"></param>
-        /// <response code="200">A successful response after creating a ticket</response>
+        /// <response code="200">A successful response after creating a ticket.</response>
         /// <response code="400">A successful response after creating a ticket</response>
         /// <response code="401">Unauthorized</response>
         [HttpPost]
@@ -40,7 +40,7 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AddNewTicket")]
-        [SwaggerResponse(statusCode: 200, type: typeof(TicketNewResponse), description: "A successful response after creating a ticket")]
+        [SwaggerResponse(statusCode: 200, type: typeof(TicketNewResponse), description: "A successful response after creating a ticket.")]
         [SwaggerResponse(statusCode: 400, type: typeof(TicketNewResponse), description: "A successful response after creating a ticket")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult AddNewTicket([FromBody]TicketNew body)

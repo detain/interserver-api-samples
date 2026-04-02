@@ -49,11 +49,19 @@ class WebhostingApi {
   /// Place Website Order
   ///
   /// Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
-  Future<void> addWebsite() async {
+  Future<ServiceOrderPostResponse?> addWebsite() async {
     final response = await addWebsiteWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ServiceOrderPostResponse',) as ServiceOrderPostResponse;
+    
+    }
+    return null;
   }
 
   /// Website Ordering Information
@@ -841,11 +849,19 @@ class WebhostingApi {
   ///
   /// * [String] id (required):
   ///   The website service ID. Use `website_id` from `GET /websites`.
-  Future<void> updateWebsiteInfo(String id,) async {
+  Future<SuccessTextResponse?> updateWebsiteInfo(String id,) async {
     final response = await updateWebsiteInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// Cancel Website

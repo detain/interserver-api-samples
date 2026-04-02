@@ -274,23 +274,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Updates backup storage service metadata, such as stored credentials or settings for the order.</remarks>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
+        /// <response code="200">A response indicating the operation completed successfully with a text message.</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/backups/{id}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UpdateBackupInfo")]
+        [SwaggerResponse(statusCode: 200, type: typeof(SuccessTextResponse), description: "A response indicating the operation completed successfully with a text message.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult UpdateBackupInfo([FromRoute][Required]int? id)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(SuccessTextResponse));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<SuccessTextResponse>(exampleJson)
+                        : default(SuccessTextResponse);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>

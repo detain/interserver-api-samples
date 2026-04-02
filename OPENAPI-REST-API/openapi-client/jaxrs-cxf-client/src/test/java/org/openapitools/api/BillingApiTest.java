@@ -146,8 +146,8 @@ public class BillingApiTest {
     @Test
     public void deleteAccountCreditCardTest() {
         String id = null;
-        //api.deleteAccountCreditCard(id);
-        
+        //String response = api.deleteAccountCreditCard(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -321,8 +321,8 @@ public class BillingApiTest {
      */
     @Test
     public void getBillingCartTest() {
-        //api.getBillingCart();
-        
+        //Object response = api.getBillingCart();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -391,8 +391,8 @@ public class BillingApiTest {
      */
     @Test
     public void getBillingPrePaysTest() {
-        //api.getBillingPrePays();
-        
+        //Object response = api.getBillingPrePays();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -467,8 +467,8 @@ public class BillingApiTest {
     @Test
     public void updateAccountCreditCardTest() {
         Integer id = null;
-        //api.updateAccountCreditCard(id);
-        
+        //String response = api.updateAccountCreditCard(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 

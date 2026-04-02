@@ -19,16 +19,16 @@ module SwaggerClient
     # Place License Order
     # Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_license(opts = {})
-      add_license_with_http_info(opts)
-      nil
+      data, _status_code, _headers = add_license_with_http_info(opts)
+      data
     end
 
     # Place License Order
     # Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_license_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LicensesApi.add_license ...'
@@ -50,7 +50,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'ServiceOrderPostResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -630,17 +630,17 @@ module SwaggerClient
     # Updates settings on a license service such as its assigned IP.
     # @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_license_info(id, opts = {})
-      update_license_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_license_info_with_http_info(id, opts)
+      data
     end
 
     # Update License
     # Updates settings on a license service such as its assigned IP.
     # @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_license_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LicensesApi.update_license_info ...'
@@ -666,7 +666,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

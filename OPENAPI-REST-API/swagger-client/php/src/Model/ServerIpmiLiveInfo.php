@@ -35,7 +35,7 @@ use \Interserver\MyAdmin\ObjectSerializer;
  * ServerIpmiLiveInfo Class Doc Comment
  *
  * @category Class
- * @description Information about the IPMI connectioj.
+ * @description Information about the IPMI connection.
  * @package  Interserver\MyAdmin
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen

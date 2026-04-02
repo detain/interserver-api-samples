@@ -27,8 +27,9 @@ import java.io.IOException;
 
 
 import io.swagger.client.model.ChargeInvoiceRows;
-import io.swagger.client.model.InlineResponse20020;
+import io.swagger.client.model.InlineResponse20021;
 import io.swagger.client.model.InlineResponse401;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 
 import java.lang.reflect.Type;
@@ -127,21 +128,24 @@ public class SslCertificatesApi {
     /**
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addSsl() throws ApiException {
-        addSslWithHttpInfo();
+    public ServiceOrderPostResponse addSsl() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> resp = addSslWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addSslWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addSslWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = addSslValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -151,7 +155,7 @@ public class SslCertificatesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addSslAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addSslAsync(final ApiCallback<ServiceOrderPostResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -173,7 +177,8 @@ public class SslCertificatesApi {
         }
 
         com.squareup.okhttp.Call call = addSslValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -242,21 +247,24 @@ public class SslCertificatesApi {
     /**
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getNewSsl() throws ApiException {
-        getNewSslWithHttpInfo();
+    public Object getNewSsl() throws ApiException {
+        ApiResponse<Object> resp = getNewSslWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getNewSslWithHttpInfo() throws ApiException {
+    public ApiResponse<Object> getNewSslWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getNewSslValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -266,7 +274,7 @@ public class SslCertificatesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getNewSslAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call getNewSslAsync(final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -288,7 +296,8 @@ public class SslCertificatesApi {
         }
 
         com.squareup.okhttp.Call call = getNewSslValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -364,22 +373,25 @@ public class SslCertificatesApi {
      * Get SSL Cert Info
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param id SSL certificate ID number. (required)
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getSslInfo(Integer id) throws ApiException {
-        getSslInfoWithHttpInfo(id);
+    public Object getSslInfo(Integer id) throws ApiException {
+        ApiResponse<Object> resp = getSslInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Get SSL Cert Info
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param id SSL certificate ID number. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getSslInfoWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<Object> getSslInfoWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = getSslInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -390,7 +402,7 @@ public class SslCertificatesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSslInfoAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSslInfoAsync(Integer id, final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -412,7 +424,8 @@ public class SslCertificatesApi {
         }
 
         com.squareup.okhttp.Call call = getSslInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -974,11 +987,11 @@ public class SslCertificatesApi {
      * Cancel SSL Certificate Service
      * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
      * @param id SSL Cert ID number (required)
-     * @return InlineResponse20020
+     * @return InlineResponse20021
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20020 sslCancel(Integer id) throws ApiException {
-        ApiResponse<InlineResponse20020> resp = sslCancelWithHttpInfo(id);
+    public InlineResponse20021 sslCancel(Integer id) throws ApiException {
+        ApiResponse<InlineResponse20021> resp = sslCancelWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -986,12 +999,12 @@ public class SslCertificatesApi {
      * Cancel SSL Certificate Service
      * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
      * @param id SSL Cert ID number (required)
-     * @return ApiResponse&lt;InlineResponse20020&gt;
+     * @return ApiResponse&lt;InlineResponse20021&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20020> sslCancelWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<InlineResponse20021> sslCancelWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = sslCancelValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1003,7 +1016,7 @@ public class SslCertificatesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call sslCancelAsync(Integer id, final ApiCallback<InlineResponse20020> callback) throws ApiException {
+    public com.squareup.okhttp.Call sslCancelAsync(Integer id, final ApiCallback<InlineResponse20021> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1025,7 +1038,7 @@ public class SslCertificatesApi {
         }
 
         com.squareup.okhttp.Call call = sslCancelValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1102,22 +1115,25 @@ public class SslCertificatesApi {
      * Update SSL Cert Order
      * Updates settings on an SSL certificate order.
      * @param id SSL certificate ID number. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateSslInfo(String id) throws ApiException {
-        updateSslInfoWithHttpInfo(id);
+    public SuccessTextResponse updateSslInfo(String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateSslInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update SSL Cert Order
      * Updates settings on an SSL certificate order.
      * @param id SSL certificate ID number. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateSslInfoWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateSslInfoWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = updateSslInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1128,7 +1144,7 @@ public class SslCertificatesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateSslInfoAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateSslInfoAsync(String id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1150,7 +1166,8 @@ public class SslCertificatesApi {
         }
 
         com.squareup.okhttp.Call call = updateSslInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

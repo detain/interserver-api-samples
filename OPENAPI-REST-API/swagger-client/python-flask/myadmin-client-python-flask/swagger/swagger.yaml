@@ -65,35 +65,56 @@ security:
 - sessionIdCookieAuth: []
 tags:
 - name: Public
-  description: Commands usable without an active session or api credentials.
+  description: "Endpoints that do not require authentication. Use these to check API\
+    \ availability, look up reference data (countries, currencies, timezones), and\
+    \ authenticate."
 - name: Account
-  description: Account related items
+  description: "Manage your account profile, contact information, security settings,\
+    \ API keys, SSH keys, two-factor authentication, and IP access restrictions."
 - name: Billing
-  description: Billing related items
+  description: "Invoices, shopping cart, prepay balances, credit cards, and payment\
+    \ processing. Use `/pay/{method}/{invoices}` to complete payment for outstanding\
+    \ invoices."
 - name: Backups
-  description: Backup related services
+  description: "Cloud backup storage services. Order, view, and manage backup storage\
+    \ quotas and credentials."
 - name: DNS
-  description: DNS related items
+  description: "Manage DNS domains and records hosted on InterServer's nameservers.\
+    \ Create domains, add/update/delete A, AAAA, CNAME, MX, TXT, and other record\
+    \ types."
 - name: Domains
-  description: Domain Registration related services
+  description: "Domain registration, transfers, renewals, WHOIS, nameserver management,\
+    \ and DNSSEC configuration."
 - name: Floating_IPs
-  description: Floating IP related items
+  description: Floating IP services that provide portable IP addresses which can be
+    reassigned between servers for high availability and failover.
 - name: Licenses
-  description: Licensing related services
+  description: "Software license provisioning for control panels (cPanel, Plesk, DirectAdmin)\
+    \ and other licensed software. Order, manage, and change IP assignments."
 - name: Mail
-  description: Mail related items
+  description: "Mail Baby email delivery services. Order, manage, view logs, configure\
+    \ alerts and deny rules, and monitor deliverability."
 - name: QuickServers
-  description: Rapid Deploy Servers related services
+  description: "Rapid Deploy Servers (QuickServers) — pre-configured dedicated servers\
+    \ available for fast provisioning with OS reinstall, backup, and VNC capabilities."
 - name: Servers
-  description: Dedicated Servers related services
+  description: "Dedicated server ordering and management. Configure custom hardware,\
+    \ view IPMI information, and manage server lifecycle."
 - name: SSL-Certificates
-  description: SSL Certificates related services
+  description: "SSL/TLS certificate provisioning and management. Order, renew, and\
+    \ manage certificates for securing your domains."
 - name: VPS
-  description: VPS related services
+  description: "Virtual Private Server management. Order, configure, backup, restore,\
+    \ reinstall, and control VPS instances with full root access."
 - name: Webhosting
-  description: Webhosting related services
+  description: "Shared and reseller web hosting packages. Order, manage, and access\
+    \ hosting control panels, backups, and reverse DNS."
 - name: Tickets
-  description: Support Request System
+  description: "Support ticket system. Create new tickets, reply to existing ones,\
+    \ view ticket history, and close resolved issues."
+- name: Scrub Ips
+  description: "DDoS protection and IP scrubbing services. Manage protected IPs, configure\
+    \ firewall rules, geographic filters, and view traffic logs."
 paths:
   /account:
     summary: User Account Information and Management
@@ -147,6 +168,13 @@ paths:
               $ref: "#/components/schemas/AccountInfoPost"
         required: true
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
@@ -166,8 +194,6 @@ paths:
                 MissingRequiredFields:
                   value:
                     message: "fname, lname cannot be empty!"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.account_controller
   /account/2fa:
     get:
@@ -332,14 +358,22 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: Simple string response
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+              examples:
+                StringResponseExample:
+                  value: '"You were successfull."'
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.billing_controller
     delete:
       tags:
@@ -359,14 +393,22 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: Simple string response
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+              examples:
+                StringResponseExample:
+                  value: '"You were successfull."'
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.billing_controller
   /account/features:
     post:
@@ -442,6 +484,13 @@ paths:
                   end: 1.2.3.255
         required: true
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
@@ -458,8 +507,6 @@ paths:
                 InvalidIp:
                   value:
                     message: Invalid IP Address
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.account_controller
     patch:
       tags:
@@ -1149,14 +1196,19 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.backups_controller
     delete:
       tags:
@@ -1300,14 +1352,20 @@ paths:
         \ before directing the user to `/pay/{method}/{invoices}`."
       operationId: get_billing_cart
       responses:
+        "200":
+          description: Current shopping cart contents and available payment methods.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Cart contents and checkout metadata.
+                x-content-type: application/json
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.billing_controller
   /billing/prepays:
     get:
@@ -1319,14 +1377,20 @@ paths:
         as a payment method.
       operationId: get_billing_pre_pays
       responses:
+        "200":
+          description: Prepay balances and metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Prepay balance data.
+                x-content-type: application/json
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.billing_controller
     post:
       tags:
@@ -1854,19 +1918,19 @@ paths:
                   ip: 1.2.3.4
         required: true
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
-          links:
-            GetNewDnsDomain:
-              operationId: getDnsDomain
-              description: "After creating the domain, use the returned domain ID\
-                \ with GET /dns/{id} to view its records."
       x-openapi-router-controller: myadmin-client-python-flask.controllers.dns_controller
   /dns/{id}:
     summary: DNS Domain Management
@@ -2012,14 +2076,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.dns_controller
   /dns/{domainId}/{recordId}:
     summary: DNS Record Management
@@ -2062,14 +2131,19 @@ paths:
               $ref: "#/components/schemas/DnsUpdateRecord"
         required: true
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.dns_controller
     delete:
       tags:
@@ -2099,14 +2173,19 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.dns_controller
   /domains:
     get:
@@ -2300,14 +2379,26 @@ paths:
         \ populate the required domain fields before submitting the order."
       operationId: add_domain
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.domains_controller
     patch:
       tags:
@@ -2464,14 +2555,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.domains_controller
     delete:
       tags:
@@ -2993,14 +3089,20 @@ paths:
         IP.
       operationId: get_new_floating_ip
       responses:
+        "200":
+          description: Available options and pricing for ordering a Floating IP.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Floating IP ordering options and pricing.
+                x-content-type: application/json
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.floating_ips_controller
     put:
       tags:
@@ -3027,14 +3129,26 @@ paths:
         to validate the order first.
       operationId: add_floating_ip
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.floating_ips_controller
   /floating_ips/{id}:
     get:
@@ -3054,14 +3168,20 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: Detailed Floating IP service information.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Floating IP service details.
+                x-content-type: application/json
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.floating_ips_controller
     post:
       tags:
@@ -3080,14 +3200,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.floating_ips_controller
     delete:
       tags:
@@ -3438,14 +3563,26 @@ paths:
         to validate the order first.
       operationId: add_license
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.licenses_controller
   /licenses/order/{catTag}:
     get:
@@ -3534,14 +3671,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.licenses_controller
     delete:
       tags:
@@ -4041,14 +4183,26 @@ paths:
         \ payment."
       operationId: add_mail
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.mail_controller
   /mail/{id}:
     get:
@@ -4114,14 +4268,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.mail_controller
     delete:
       tags:
@@ -4732,14 +4891,26 @@ paths:
         \ to complete payment."
       operationId: add_qs
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.quick_servers_controller
   /qs/{id}:
     get:
@@ -4830,14 +5001,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.quick_servers_controller
     delete:
       tags:
@@ -6711,14 +6887,30 @@ paths:
         to validate the order first.
       operationId: add_server
       responses:
+        "200":
+          description: Server order placed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/inline_response_200_19"
+          links:
+            GetServerInvoice:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/invoice
+              description: Use the invoice ID to view invoice details or proceed to
+                payment.
+            ViewNewServer:
+              operationId: getServerInfo
+              parameters:
+                id: $response.body#/order
+              description: Use the order ID to view the newly created server.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.servers_controller
   /servers/{id}:
     get:
@@ -6778,14 +6970,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.servers_controller
     delete:
       tags:
@@ -6809,7 +7006,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_19"
+                $ref: "#/components/schemas/inline_response_200_20"
         "401":
           description: Unauthorized
           content:
@@ -7055,14 +7252,20 @@ paths:
       description: Retrieves available SSL certificate types and pricing for ordering.
       operationId: get_new_ssl
       responses:
+        "200":
+          description: Available SSL certificate types and pricing for ordering.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: SSL certificate types and pricing.
+                x-content-type: application/json
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.ssl_certificates_controller
     put:
       tags:
@@ -7088,14 +7291,26 @@ paths:
         to validate the order first.
       operationId: add_ssl
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.ssl_certificates_controller
   /ssl/{id}:
     get:
@@ -7115,14 +7330,20 @@ paths:
         schema:
           type: integer
       responses:
+        "200":
+          description: Detailed SSL certificate information.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: SSL certificate service details.
+                x-content-type: application/json
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.ssl_certificates_controller
     post:
       tags:
@@ -7140,14 +7361,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.ssl_certificates_controller
     delete:
       tags:
@@ -7171,7 +7397,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_20"
+                $ref: "#/components/schemas/inline_response_200_21"
         "401":
           description: Unauthorized
           content:
@@ -7385,11 +7611,18 @@ paths:
         required: true
       responses:
         "200":
-          description: A successful response after creating a ticket
+          description: A successful response after creating a ticket.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/TicketNewResponse"
+          links:
+            ViewCreatedTicket:
+              operationId: getTicketInfo
+              parameters:
+                id: $response.body#/ticket_id
+              description: Use the ticket ID from the response to view the newly created
+                ticket details.
         "400":
           description: A successful response after creating a ticket
           content:
@@ -7742,14 +7975,26 @@ paths:
             schema:
               $ref: "#/components/schemas/VpsOrderPostRequest"
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.vps_controller
   /vps/{id}:
     get:
@@ -7839,14 +8084,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.vps_controller
     delete:
       tags:
@@ -7870,7 +8120,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_21"
+                $ref: "#/components/schemas/inline_response_200_22"
         "401":
           description: Unauthorized
           content:
@@ -9119,14 +9369,26 @@ paths:
         to validate the order first.
       operationId: add_website
       responses:
+        "200":
+          description: "Order placed successfully. Use the invoice ID to proceed to\
+            \ payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceOrderPostResponse"
+          links:
+            InitiatePayment:
+              operationId: getBillingInvoice
+              parameters:
+                id: $response.body#/iid
+              description: Use the invoice ID from the order response to retrieve
+                invoice details or proceed to payment.
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.webhosting_controller
   /websites/{id}:
     get:
@@ -9196,14 +9458,19 @@ paths:
         schema:
           type: string
       responses:
+        "200":
+          description: A response indicating the operation completed successfully
+            with a text message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessTextResponse"
         "401":
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/inline_response_401"
-        default:
-          description: Default response
       x-openapi-router-controller: myadmin-client-python-flask.controllers.webhosting_controller
     delete:
       tags:
@@ -9231,7 +9498,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_22"
+                $ref: "#/components/schemas/inline_response_200_23"
         "401":
           description: Unauthorized
           content:
@@ -9264,7 +9531,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_23"
+                $ref: "#/components/schemas/inline_response_200_24"
         "401":
           description: Unauthorized
           content:
@@ -9303,7 +9570,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_24"
+                $ref: "#/components/schemas/inline_response_200_25"
         "401":
           description: Unauthorized
           content:
@@ -9438,7 +9705,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_25"
+                $ref: "#/components/schemas/inline_response_200_26"
         "401":
           description: Unauthorized
           content:
@@ -10489,7 +10756,7 @@ paths:
       - name: messageId
         in: query
         description: Filter by the `Message-ID` email header using a substring (case-insensitive)
-          match.  The `Message-ID` is assigned by the sending mail client and is visible
+          match. The `Message-ID` is assigned by the sending mail client and is visible
           in the `messageId` field of `MailLogEntry`.
         required: false
         style: form
@@ -10580,7 +10847,7 @@ paths:
         in: query
         description: Latest date to include.  Accepts either a Unix timestamp (integer
           seconds since epoch) or a date string parseable by `strtotime()` such as
-          `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or
+          `2024-01-31` or `yesterday`. Messages with a `time` value **less than or
           equal to** this value will be included.
         required: false
         style: form
@@ -10668,7 +10935,7 @@ paths:
                       recipient: client@isp.com
                       domain: interserver.net
                       locked: 1
-                      lockTime: 1634215818533
+                      lockTime: "1634215818533"
                       assigned: relay1
                       queued: 2021-10-14T12:50:15.487Z
                       mxHostname: mx.j.is.cc
@@ -10700,11 +10967,18 @@ paths:
                       recipient: client@isp.com
                       domain: interserver.net
                       locked: 1
-                      lockTime: 1634215818533
+                      lockTime: "1634215818533"
                       assigned: relay1
                       queued: 2021-10-14T12:50:15.487Z
                       mxHostname: mx.j.is.cc
                       response: 250 2.0.0 Ok queued as C91D83E128C
+          links:
+            delistSenderBlock:
+              operationId: delistBlock
+              parameters:
+                email: $response.body#/emails/0/from
+              description: A `from` address returned in the log can be passed as `email`
+                to `POST /mail/blocks/delete` to remove a block on that sender.
         "400":
           description: bad input parameter
       x-openapi-router-controller: myadmin-client-python-flask.controllers.mail_controller
@@ -10972,7 +11246,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/inline_response_200_26"
+                $ref: "#/components/schemas/inline_response_200_27"
         "401":
           description: Unauthorized
           content:
@@ -10982,7 +11256,7 @@ paths:
       x-openapi-router-controller: myadmin-client-python-flask.controllers.servers_controller
     post:
       tags:
-      - servers
+      - Servers
       summary: Place Buy Now Server Order
       description: Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server`
         to retrieve available server configurations and their IDs before ordering.
@@ -19600,7 +19874,7 @@ components:
           example: OpenVZ VPS Slice
         services_cost:
           type: number
-          example: 6.0
+          example: 6
         services_currency:
           type: string
           example: USD
@@ -23454,6 +23728,54 @@ components:
           AMT1: "3.00"
           QTY1: 1
           CURRENCY: USD
+    ServiceOrderPostResponse:
+      title: ServiceOrderPostResponse
+      type: object
+      properties:
+        continue:
+          type: boolean
+          description: Whether the order was accepted and can proceed to payment.
+        errors:
+          type: array
+          description: List of validation errors (empty on success).
+          items:
+            type: string
+        total_cost:
+          type: string
+          description: Total cost of the order.
+        iid:
+          type: string
+          description: Primary invoice ID for payment.
+        iids:
+          type: array
+          description: All invoice identifiers associated with the order.
+          items:
+            type: string
+        real_iids:
+          type: array
+          description: Numeric invoice IDs for use with billing endpoints.
+          items:
+            type: string
+        serviceId:
+          type: integer
+          description: The new service ID created by the order.
+          format: int32
+        invoice_description:
+          type: string
+          description: Human-readable description of the invoice.
+      description: Generic response returned after placing a service order. Contains
+        invoice IDs for payment and the new service ID.
+      example:
+        continue: true
+        errors: []
+        total_cost: "5.00"
+        iid: "25296600"
+        iids:
+        - SERVICE12345
+        real_iids:
+        - "25296600"
+        serviceId: 12345
+        invoice_description: New Service Order
     ServerIpmiLiveInfo:
       title: Root Type for ServerIpmiLiveInfo
       type: object
@@ -23468,7 +23790,7 @@ components:
           type: string
         client_password:
           type: string
-      description: Information about the IPMI connectioj.
+      description: Information about the IPMI connection.
       example:
         text: Setup Complete
         public_ip: 1.2.3.4
@@ -24088,8 +24410,9 @@ components:
           default: 80
         source_ip:
           type: string
+          description: Source IP address to match. Use '0.0.0.0' to match any source.
           example: 1.2.4.5
-          default: "0"
+          default: 0.0.0.0
         source_port:
           type: integer
           example: 1302
@@ -25019,18 +25342,22 @@ components:
           invoice_id: 2746273
           invoice_description: Scrub + Current Ip
     inline_response_200_19:
-      required:
-      - success
-      - text
       type: object
       properties:
-        success:
-          type: boolean
         text:
           type: string
+          description: Status message.
+          example: Order Completed
+        invoice:
+          type: integer
+          description: Invoice ID for payment.
+        order:
+          type: integer
+          description: Server order ID.
       example:
-        success: true
-        text: Servers is canceled.
+        text: Order Completed
+        invoice: 0
+        order: 6
     inline_response_200_20:
       required:
       - success
@@ -25043,8 +25370,21 @@ components:
           type: string
       example:
         success: true
-        text: SSL is canceled.
+        text: Servers is canceled.
     inline_response_200_21:
+      required:
+      - success
+      - text
+      type: object
+      properties:
+        success:
+          type: boolean
+        text:
+          type: string
+      example:
+        success: true
+        text: SSL is canceled.
+    inline_response_200_22:
       required:
       - success
       - text
@@ -25073,7 +25413,7 @@ components:
         file:
           type: string
           description: The backup filename to download.
-    inline_response_200_22:
+    inline_response_200_23:
       required:
       - success
       - text
@@ -25086,7 +25426,7 @@ components:
       example:
         success: true
         text: Website is canceled.
-    inline_response_200_23:
+    inline_response_200_24:
       type: object
       properties:
         ips:
@@ -25113,7 +25453,7 @@ components:
           additionalProperties:
             type: string
           description: A map of IP addresses to their desired reverse DNS hostnames.
-    inline_response_200_24:
+    inline_response_200_25:
       type: object
       properties:
         message:
@@ -25194,7 +25534,7 @@ components:
           type: string
         domainRegPassword:
           type: string
-    inline_response_200_25:
+    inline_response_200_26:
       type: object
       properties:
         text:
@@ -25221,28 +25561,28 @@ components:
         type: integer
         format: int64
       - type: string
-    inline_response_200_26:
+    inline_response_200_27:
       properties:
         bandwidth:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_bandwidth"
+            $ref: "#/components/schemas/inline_response_200_27_bandwidth"
         ips:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_ips"
+            $ref: "#/components/schemas/inline_response_200_27_ips"
         os:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_os"
+            $ref: "#/components/schemas/inline_response_200_27_os"
         cp:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_cp"
+            $ref: "#/components/schemas/inline_response_200_27_cp"
         raid:
           type: array
           items:
-            $ref: "#/components/schemas/inline_response_200_26_raid"
+            $ref: "#/components/schemas/inline_response_200_27_raid"
       example:
         os:
         - monthly_price: "0"
@@ -27045,7 +27385,7 @@ components:
         service_id: 12346
         invoice_id: 2746273
         invoice_description: Scrub + Current Ip
-    inline_response_200_26_bandwidth:
+    inline_response_200_27_bandwidth:
       type: object
       properties:
         id:
@@ -27065,7 +27405,7 @@ components:
         id: "10"
         short_desc: 1GBPS Unmetered
         long_desc: ""
-    inline_response_200_26_ips:
+    inline_response_200_27_ips:
       type: object
       properties:
         id:
@@ -27085,7 +27425,7 @@ components:
         id: "9"
         short_desc: 1 Vlan Ip (/30)
         long_desc: 1 IP In personal Vlan
-    inline_response_200_26_os:
+    inline_response_200_27_os:
       type: object
       properties:
         id:
@@ -27105,7 +27445,7 @@ components:
         id: "5"
         short_desc: FreeBSD
         long_desc: "Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>"
-    inline_response_200_26_cp:
+    inline_response_200_27_cp:
       type: object
       properties:
         id:
@@ -27129,7 +27469,7 @@ components:
         id: "1"
         short_desc: None
         long_desc: ""
-    inline_response_200_26_raid:
+    inline_response_200_27_raid:
       type: object
       properties:
         id:
@@ -27223,9 +27563,24 @@ components:
         application/json:
           schema:
             type: string
+            x-content-type: application/json
           examples:
             StringResponseExample:
               value: '"You were successfull."'
+    ServiceOrderPostResponse:
+      description: "Order placed successfully. Use the invoice ID to proceed to payment\
+        \ via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`."
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ServiceOrderPostResponse"
+      links:
+        InitiatePayment:
+          operationId: getBillingInvoice
+          parameters:
+            id: $response.body#/iid
+          description: Use the invoice ID from the order response to retrieve invoice
+            details or proceed to payment.
     QueueResponse:
       description: Response message from sending a service queue.
       content:
@@ -27320,13 +27675,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/inline_response_200_22"
+            $ref: "#/components/schemas/inline_response_200_23"
     VPSCancelResponse:
       description: VPS Cancel
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/inline_response_200_21"
+            $ref: "#/components/schemas/inline_response_200_22"
     DomainsCancelResponse:
       description: Domains Cancel
       content:
@@ -27356,7 +27711,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/inline_response_200_20"
+            $ref: "#/components/schemas/inline_response_200_21"
     FloatingIpsCancelResponse:
       description: Floating Ip Cancel
       content:
@@ -27374,7 +27729,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/inline_response_200_19"
+            $ref: "#/components/schemas/inline_response_200_20"
     LoginSuccessResponse:
       description: Successful login response containing the session token.
       content:

@@ -14,7 +14,7 @@ import options
 
 
 type ServerIpmiLiveInfo* = object
-  ## Information about the IPMI connectioj.
+  ## Information about the IPMI connection.
   text*: Option[string]
   publicIp*: Option[string]
   allowedIp*: Option[string]

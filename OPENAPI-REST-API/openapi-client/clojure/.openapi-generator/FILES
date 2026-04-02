@@ -14,7 +14,6 @@ src/inter_server_management_api/api/public.clj
 src/inter_server_management_api/api/quick_servers.clj
 src/inter_server_management_api/api/scrub_ips.clj
 src/inter_server_management_api/api/servers.clj
-src/inter_server_management_api/api/servers_0.clj
 src/inter_server_management_api/api/ssl_certificates.clj
 src/inter_server_management_api/api/tickets.clj
 src/inter_server_management_api/api/vps.clj
@@ -39,6 +38,7 @@ src/inter_server_management_api/specs/account_info_oauth_config_providers_value.
 src/inter_server_management_api/specs/account_info_oauthproviders.clj
 src/inter_server_management_api/specs/account_info_post.clj
 src/inter_server_management_api/specs/account_ssh_key.clj
+src/inter_server_management_api/specs/add_server_200_response.clj
 src/inter_server_management_api/specs/affiliate_banner_row.clj
 src/inter_server_management_api/specs/affiliate_dock_setup.clj
 src/inter_server_management_api/specs/affiliate_payment_setup.clj
@@ -371,6 +371,7 @@ src/inter_server_management_api/specs/servers_cancel_200_response.clj
 src/inter_server_management_api/specs/service.clj
 src/inter_server_management_api/specs/service_categories.clj
 src/inter_server_management_api/specs/service_category.clj
+src/inter_server_management_api/specs/service_order_post_response.clj
 src/inter_server_management_api/specs/service_type.clj
 src/inter_server_management_api/specs/service_types.clj
 src/inter_server_management_api/specs/services.clj

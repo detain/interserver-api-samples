@@ -15,6 +15,7 @@ import io.swagger.client.models.ChargeInvoiceRows
 import io.swagger.client.models.InlineResponse2003
 import io.swagger.client.models.InlineResponse401
 import io.swagger.client.models.IpObject
+import io.swagger.client.models.ServiceOrderPostResponse
 import io.swagger.client.models.SuccessTextResponse
 
 import myadmin-client-kotlin-client.infrastructure.*
@@ -24,21 +25,22 @@ class FloatingIPsApi(basePath: kotlin.String = "https://my.interserver.net/apiv2
     /**
      * Place Floating IP Order
      * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
-     * @return void
+     * @return ServiceOrderPostResponse
      */
-    fun addFloatingIp(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addFloatingIp(): ServiceOrderPostResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/floating_ips/order", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<ServiceOrderPostResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -75,21 +77,22 @@ class FloatingIPsApi(basePath: kotlin.String = "https://my.interserver.net/apiv2
      * View Floating IP
      * Returns detailed information about a specific Floating IP service including its current target IP assignment.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
-     * @return void
+     * @return kotlin.Any
      */
-    fun getFloatingIpInfo(id: kotlin.Int): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun getFloatingIpInfo(id: kotlin.Int): kotlin.Any {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/floating_ips/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<kotlin.Any>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Any
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -175,21 +178,22 @@ class FloatingIPsApi(basePath: kotlin.String = "https://my.interserver.net/apiv2
     /**
      * Get Floating IP Ordering Information
      * Retrieves available options and pricing for ordering a new Floating IP.
-     * @return void
+     * @return kotlin.Any
      */
-    fun getNewFloatingIp(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun getNewFloatingIp(): kotlin.Any {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/floating_ips/order", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<kotlin.Any>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Any
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -284,21 +288,22 @@ class FloatingIPsApi(basePath: kotlin.String = "https://my.interserver.net/apiv2
      * Update Floating IP
      * Updates settings on a Floating IP service, such as its label or configuration metadata.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateFloatingIpInfo(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateFloatingIpInfo(id: kotlin.String): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/floating_ips/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

@@ -20,7 +20,7 @@ All URIs are relative to https://my.interserver.net/apiv2, except if the operati
 ## `addSsl()`
 
 ```php
-addSsl()
+addSsl(): \Interserver\MyAdmin\Model\ServiceOrderPostResponse
 ```
 
 Place SSL Cert Order
@@ -58,7 +58,8 @@ $apiInstance = new Interserver\MyAdmin\Api\SSLCertificatesApi(
 );
 
 try {
-    $apiInstance->addSsl();
+    $result = $apiInstance->addSsl();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SSLCertificatesApi->addSsl: ', $e->getMessage(), PHP_EOL;
 }
@@ -70,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -88,7 +89,7 @@ void (empty response body)
 ## `getNewSsl()`
 
 ```php
-getNewSsl()
+getNewSsl(): object
 ```
 
 SSL Cert Ordering Information
@@ -126,7 +127,8 @@ $apiInstance = new Interserver\MyAdmin\Api\SSLCertificatesApi(
 );
 
 try {
-    $apiInstance->getNewSsl();
+    $result = $apiInstance->getNewSsl();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SSLCertificatesApi->getNewSsl: ', $e->getMessage(), PHP_EOL;
 }
@@ -138,7 +140,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -156,7 +158,7 @@ void (empty response body)
 ## `getSslInfo()`
 
 ```php
-getSslInfo($id)
+getSslInfo($id): object
 ```
 
 Get SSL Cert Info
@@ -195,7 +197,8 @@ $apiInstance = new Interserver\MyAdmin\Api\SSLCertificatesApi(
 $id = 56; // int | SSL certificate ID number.
 
 try {
-    $apiInstance->getSslInfo($id);
+    $result = $apiInstance->getSslInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SSLCertificatesApi->getSslInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -209,7 +212,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -579,7 +582,7 @@ try {
 ## `updateSslInfo()`
 
 ```php
-updateSslInfo($id)
+updateSslInfo($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update SSL Cert Order
@@ -618,7 +621,8 @@ $apiInstance = new Interserver\MyAdmin\Api\SSLCertificatesApi(
 $id = 'id_example'; // string | SSL certificate ID number.
 
 try {
-    $apiInstance->updateSslInfo($id);
+    $result = $apiInstance->updateSslInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SSLCertificatesApi->updateSslInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -632,7 +636,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

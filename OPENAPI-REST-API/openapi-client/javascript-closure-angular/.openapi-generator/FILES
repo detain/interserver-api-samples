@@ -19,6 +19,7 @@ API/Client/AccountInfoOauthConfigProvidersValue.js
 API/Client/AccountInfoOauthproviders.js
 API/Client/AccountInfoPost.js
 API/Client/AccountSshKey.js
+API/Client/AddServer200Response.js
 API/Client/AffiliateBannerRow.js
 API/Client/AffiliateDockSetup.js
 API/Client/AffiliatePaymentSetup.js
@@ -363,6 +364,7 @@ API/Client/ServersCancel200Response.js
 API/Client/Service.js
 API/Client/ServiceCategories.js
 API/Client/ServiceCategory.js
+API/Client/ServiceOrderPostResponse.js
 API/Client/ServiceType.js
 API/Client/ServiceTypes.js
 API/Client/Services.js

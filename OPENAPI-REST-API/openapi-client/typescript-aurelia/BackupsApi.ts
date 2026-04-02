@@ -384,7 +384,7 @@ export class BackupsApi extends Api {
    * Updates backup storage service metadata, such as stored credentials or settings for the order.
    * @param params.id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
    */
-  async updateBackupInfo(params: IUpdateBackupInfoParams): Promise<any> {
+  async updateBackupInfo(params: IUpdateBackupInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateBackupInfo', params, 'id');
 

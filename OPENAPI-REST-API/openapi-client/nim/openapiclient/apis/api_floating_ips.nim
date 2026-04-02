@@ -19,9 +19,11 @@ import typetraits
 import uri
 
 import ../models/model_charge_invoice_rows
+import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_floating_ips_cancel200response
 import ../models/model_get_account_info401response
+import ../models/model_object
 
 const basepath = "https://my.interserver.net/apiv2"
 
@@ -38,10 +40,11 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addFloatingIp*(httpClient: HttpClient): Response =
+proc addFloatingIp*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
   ## Place Floating IP Order
-  httpClient.post(basepath & "/floating_ips/order")
 
+  let response = httpClient.post(basepath & "/floating_ips/order")
+  constructResult[ServiceOrderPostResponse](response)
 
 
 proc floatingIpsCancel*(httpClient: HttpClient, id: int): (Option[floating_ipsCancel_200_response], Response) =
@@ -51,10 +54,11 @@ proc floatingIpsCancel*(httpClient: HttpClient, id: int): (Option[floating_ipsCa
   constructResult[floating_ipsCancel_200_response](response)
 
 
-proc getFloatingIpInfo*(httpClient: HttpClient, id: int): Response =
+proc getFloatingIpInfo*(httpClient: HttpClient, id: int): (Option[JsonNode], Response) =
   ## View Floating IP
-  httpClient.get(basepath & fmt"/floating_ips/{id}")
 
+  let response = httpClient.get(basepath & fmt"/floating_ips/{id}")
+  constructResult[JsonNode](response)
 
 
 proc getFloatingIpInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
@@ -77,10 +81,11 @@ proc getFloatingIpsWelcomeEmail*(httpClient: HttpClient, id: int): (Option[Succe
   constructResult[SuccessTextResponse](response)
 
 
-proc getNewFloatingIp*(httpClient: HttpClient): Response =
+proc getNewFloatingIp*(httpClient: HttpClient): (Option[JsonNode], Response) =
   ## Get Floating IP Ordering Information
-  httpClient.get(basepath & "/floating_ips/order")
 
+  let response = httpClient.get(basepath & "/floating_ips/order")
+  constructResult[JsonNode](response)
 
 
 proc postFloatingIpsChangeIp*(httpClient: HttpClient, id: int, ip: string): (Option[SuccessTextResponse], Response) =
@@ -100,8 +105,9 @@ proc putFloatingIps*(httpClient: HttpClient): Response =
 
 
 
-proc updateFloatingIpInfo*(httpClient: HttpClient, id: string): Response =
+proc updateFloatingIpInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Update Floating IP
-  httpClient.post(basepath & fmt"/floating_ips/{id}")
 
+  let response = httpClient.post(basepath & fmt"/floating_ips/{id}")
+  constructResult[SuccessTextResponse](response)
 

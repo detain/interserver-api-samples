@@ -14,6 +14,8 @@ import io.swagger.model.LicenseRow;
 
 import io.swagger.model.LicensesOrder;
 
+import io.swagger.model.ServiceOrderPostResponse;
+
 import io.swagger.model.SuccessTextResponse;
 
 import io.micronaut.http.annotation.Controller;
@@ -30,7 +32,7 @@ import java.util.Map;
 public class LicensesApiController implements LicensesApi {
 
     @Override
-    public Single<HttpResponse<Void>> addLicense() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addLicense() {
         // TODO: Implement me
         return LicensesApi.super.addLicense();
     }
@@ -96,7 +98,7 @@ public class LicensesApiController implements LicensesApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateLicenseInfo(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateLicenseInfo(String id) {
         // TODO: Implement me
         return LicensesApi.super.updateLicenseInfo(id);
     }

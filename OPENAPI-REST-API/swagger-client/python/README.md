@@ -406,7 +406,8 @@ gstin = 'gstin_example' # str |
 
 try:
     # Update Account Information
-    api_instance.update_account_info(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
+    api_response = api_instance.update_account_info(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AccountApi->update_account_info: %s\n" % e)
 
@@ -433,7 +434,8 @@ end = 'end_example' # str |
 
 try:
     # Add IP Access Restriction
-    api_instance.update_account_ip_limits(start, end)
+    api_response = api_instance.update_account_ip_limits(start, end)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AccountApi->update_account_ip_limits: %s\n" % e)
 
@@ -752,6 +754,7 @@ Class | Method | HTTP request | Description
 *ServersApi* | [**get_server_list**](docs/ServersApi.md#get_server_list) | **GET** /servers | List Servers
 *ServersApi* | [**get_server_reverse_dns**](docs/ServersApi.md#get_server_reverse_dns) | **GET** /servers/{id}/reverse_dns | Reverse DNS Info
 *ServersApi* | [**get_servers_welcome_email**](docs/ServersApi.md#get_servers_welcome_email) | **GET** /servers/{id}/welcome_email | Resend Server Welcome Email
+*ServersApi* | [**place_buy_now_server**](docs/ServersApi.md#place_buy_now_server) | **POST** /servers/order/buy_now_server | Place Buy Now Server Order
 *ServersApi* | [**post_server_reverse_dns**](docs/ServersApi.md#post_server_reverse_dns) | **POST** /servers/{id}/reverse_dns | Update Reverse DNS
 *ServersApi* | [**put_servers**](docs/ServersApi.md#put_servers) | **PUT** /servers/order | Validate Server Order
 *ServersApi* | [**server_ipmi_live_get**](docs/ServersApi.md#server_ipmi_live_get) | **GET** /servers/{id}/ipmi_live | Server IPMI Live Information
@@ -831,7 +834,6 @@ Class | Method | HTTP request | Description
 *WebhostingApi* | [**put_websites**](docs/WebhostingApi.md#put_websites) | **PUT** /websites/order | Validate Webhosting Order
 *WebhostingApi* | [**update_website_info**](docs/WebhostingApi.md#update_website_info) | **POST** /websites/{id} | Update Website Order
 *WebhostingApi* | [**webhosting_cancel**](docs/WebhostingApi.md#webhosting_cancel) | **DELETE** /websites/{id} | Cancel Website
-*ServersApi* | [**place_buy_now_server**](docs/ServersApi.md#place_buy_now_server) | **POST** /servers/order/buy_now_server | Place Buy Now Server Order
 
 ## Documentation For Models
 
@@ -1021,11 +1023,12 @@ Class | Method | HTTP request | Description
  - [InlineResponse20024](docs/InlineResponse20024.md)
  - [InlineResponse20025](docs/InlineResponse20025.md)
  - [InlineResponse20026](docs/InlineResponse20026.md)
- - [InlineResponse20026Bandwidth](docs/InlineResponse20026Bandwidth.md)
- - [InlineResponse20026Cp](docs/InlineResponse20026Cp.md)
- - [InlineResponse20026Ips](docs/InlineResponse20026Ips.md)
- - [InlineResponse20026Os](docs/InlineResponse20026Os.md)
- - [InlineResponse20026Raid](docs/InlineResponse20026Raid.md)
+ - [InlineResponse20027](docs/InlineResponse20027.md)
+ - [InlineResponse20027Bandwidth](docs/InlineResponse20027Bandwidth.md)
+ - [InlineResponse20027Cp](docs/InlineResponse20027Cp.md)
+ - [InlineResponse20027Ips](docs/InlineResponse20027Ips.md)
+ - [InlineResponse20027Os](docs/InlineResponse20027Os.md)
+ - [InlineResponse20027Raid](docs/InlineResponse20027Raid.md)
  - [InlineResponse2003](docs/InlineResponse2003.md)
  - [InlineResponse2004](docs/InlineResponse2004.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
@@ -1209,6 +1212,7 @@ Class | Method | HTTP request | Description
  - [Service](docs/Service.md)
  - [ServiceCategories](docs/ServiceCategories.md)
  - [ServiceCategory](docs/ServiceCategory.md)
+ - [ServiceOrderPostResponse](docs/ServiceOrderPostResponse.md)
  - [ServiceType](docs/ServiceType.md)
  - [ServiceTypes](docs/ServiceTypes.md)
  - [Services](docs/Services.md)

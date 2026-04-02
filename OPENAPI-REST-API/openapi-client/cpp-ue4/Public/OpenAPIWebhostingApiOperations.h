@@ -24,6 +24,7 @@
 #include "OpenAPIPostWebsiteMigrationRequest.h"
 #include "OpenAPIPostWebsiteMigrationRequest1.h"
 #include "OpenAPIReverseDnsEntries.h"
+#include "OpenAPIServiceOrderPostResponse.h"
 #include "OpenAPISuccessTextResponse.h"
 #include "OpenAPITextResponse.h"
 #include "OpenAPIWebhostingCancel200Response.h"
@@ -56,7 +57,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPIServiceOrderPostResponse Content;
 };
 
 /* Website Ordering Information
@@ -403,7 +404,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 /* Cancel Website

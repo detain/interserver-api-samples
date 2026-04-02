@@ -350,13 +350,14 @@ void OAIVPSApi::addVpsCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIServiceOrderPostResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addVpsSignal();
-        Q_EMIT addVpsSignalFull(worker);
+        Q_EMIT addVpsSignal(output);
+        Q_EMIT addVpsSignalFull(worker, output);
     } else {
-        Q_EMIT addVpsSignalError(error_type, error_str);
+        Q_EMIT addVpsSignalError(output, error_type, error_str);
         Q_EMIT addVpsSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -3203,13 +3204,14 @@ void OAIVPSApi::updateVpsInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateVpsInfoSignal();
-        Q_EMIT updateVpsInfoSignalFull(worker);
+        Q_EMIT updateVpsInfoSignal(output);
+        Q_EMIT updateVpsInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateVpsInfoSignalError(error_type, error_str);
+        Q_EMIT updateVpsInfoSignalError(output, error_type, error_str);
         Q_EMIT updateVpsInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

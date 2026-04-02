@@ -129,8 +129,8 @@ class BillingApi(baseUrl: String) {
    * Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
    * 
    * Expected answers:
+   *   code 200 : String (Simple string response)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -139,14 +139,14 @@ class BillingApi(baseUrl: String) {
    * 
    * @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
    */
-  def deleteAccountCreditCard(id: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.DELETE, baseUrl, "/account/creditcards/{id}", "application/json")
+  def deleteAccountCreditCard(id: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.DELETE, baseUrl, "/account/creditcards/{id}", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
       .withPathParam("id", id)
+      .withSuccessResponse[String](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**
@@ -357,21 +357,21 @@ class BillingApi(baseUrl: String) {
    * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
    * 
    * Expected answers:
+   *   code 200 : Any (Current shopping cart contents and available payment methods.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def getBillingCart()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, baseUrl, "/billing/cart", "application/json")
+  def getBillingCart()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Any] =
+    ApiRequest[Any](ApiMethods.GET, baseUrl, "/billing/cart", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
+      .withSuccessResponse[Any](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**
@@ -447,21 +447,21 @@ class BillingApi(baseUrl: String) {
    * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
    * 
    * Expected answers:
+   *   code 200 : Any (Prepay balances and metadata.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def getBillingPrePays()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, baseUrl, "/billing/prepays", "application/json")
+  def getBillingPrePays()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Any] =
+    ApiRequest[Any](ApiMethods.GET, baseUrl, "/billing/prepays", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
+      .withSuccessResponse[Any](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**
@@ -552,8 +552,8 @@ class BillingApi(baseUrl: String) {
    * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
    * 
    * Expected answers:
+   *   code 200 : String (Simple string response)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -562,14 +562,14 @@ class BillingApi(baseUrl: String) {
    * 
    * @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
    */
-  def updateAccountCreditCard(id: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, baseUrl, "/account/creditcards/{id}", "application/json")
+  def updateAccountCreditCard(id: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, baseUrl, "/account/creditcards/{id}", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
       .withPathParam("id", id)
+      .withSuccessResponse[String](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**

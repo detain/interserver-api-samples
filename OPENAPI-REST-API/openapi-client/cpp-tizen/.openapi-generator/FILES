@@ -42,6 +42,8 @@ src/AccountManager.cpp
 src/AccountManager.h
 src/AccountSshKey.cpp
 src/AccountSshKey.h
+src/AddServer200Response.cpp
+src/AddServer200Response.h
 src/AffiliateBannerRow.cpp
 src/AffiliateBannerRow.h
 src/AffiliateDockSetup.cpp
@@ -742,6 +744,8 @@ src/ServiceCategories.cpp
 src/ServiceCategories.h
 src/ServiceCategory.cpp
 src/ServiceCategory.h
+src/ServiceOrderPostResponse.cpp
+src/ServiceOrderPostResponse.h
 src/ServiceType.cpp
 src/ServiceType.h
 src/ServiceTypes.cpp

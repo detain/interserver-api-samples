@@ -3,8 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | **string** |  | [optional] [default to null]
-**Success** | **bool** |  | [optional] [default to null]
+**Ips** | **map[string]string** | A map of IP addresses to their current reverse DNS hostnames. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 //
 // Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
 //
-void LicensesAPI_addLicense(apiClient_t *apiClient);
+service_order_post_response_t* LicensesAPI_addLicense(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -33,7 +33,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[service_order_post_response_t](service_order_post_response.md) *
+
 
 ### Authorization
 
@@ -327,7 +328,7 @@ void
 //
 // Updates settings on a license service such as its assigned IP.
 //
-void LicensesAPI_updateLicenseInfo(apiClient_t *apiClient, char *id);
+success_text_response_t* LicensesAPI_updateLicenseInfo(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -338,7 +339,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

@@ -34,7 +34,7 @@ import javax.annotation.Generated;
   LoginSubmissionExampleGRecaptchaResponse.JSON_PROPERTY_VALUE
 })
 @JsonTypeName("LoginSubmissionExample_g_recaptcha_response")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class LoginSubmissionExampleGRecaptchaResponse {
     public static final String JSON_PROPERTY_V_IS_SHALLOW = "__v_isShallow";

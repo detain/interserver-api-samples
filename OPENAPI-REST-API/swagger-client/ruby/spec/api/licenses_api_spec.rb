@@ -35,7 +35,7 @@ describe 'LicensesApi' do
   # Place License Order
   # Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe 'add_license test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -166,7 +166,7 @@ describe 'LicensesApi' do
   # Updates settings on a license service such as its assigned IP.
   # @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_license_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

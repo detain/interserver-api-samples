@@ -32,23 +32,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.</remarks>
         /// <param name="body"></param>
+        /// <response code="200">Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;.</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/vps/order")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AddVps")]
+        [SwaggerResponse(statusCode: 200, type: typeof(ServiceOrderPostResponse), description: "Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult AddVps([FromBody]VpsOrderPostRequest body)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(ServiceOrderPostResponse));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"continue\" : true,\n  \"errors\" : [ ],\n  \"total_cost\" : \"5.00\",\n  \"iid\" : \"25296600\",\n  \"iids\" : [ \"SERVICE12345\" ],\n  \"real_iids\" : [ \"25296600\" ],\n  \"serviceId\" : 12345,\n  \"invoice_description\" : \"New Service Order\"\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<ServiceOrderPostResponse>(exampleJson)
+                        : default(ServiceOrderPostResponse);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -1248,23 +1254,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Updates settings on a VPS order.</remarks>
         /// <param name="id">VPS ID number.</param>
+        /// <response code="200">A response indicating the operation completed successfully with a text message.</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/vps/{id}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UpdateVpsInfo")]
+        [SwaggerResponse(statusCode: 200, type: typeof(SuccessTextResponse), description: "A response indicating the operation completed successfully with a text message.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult UpdateVpsInfo([FromRoute][Required]string id)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(SuccessTextResponse));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<SuccessTextResponse>(exampleJson)
+                        : default(SuccessTextResponse);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -1279,12 +1291,12 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("VPSCancel")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20021), description: "VPS Cancel")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20022), description: "VPS Cancel")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult VPSCancel([FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20021));
+            // return StatusCode(200, default(InlineResponse20022));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -1292,8 +1304,8 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"VPS is canceled.\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20021>(exampleJson)
-                        : default(InlineResponse20021);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20022>(exampleJson)
+                        : default(InlineResponse20022);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
     }

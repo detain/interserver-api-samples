@@ -29,6 +29,7 @@ from myadmin-client-python-flask.models.mail_schema import MailSchema  # noqa: E
 from myadmin-client-python-flask.models.mail_stats_type import MailStatsType  # noqa: E501
 from myadmin-client-python-flask.models.send_mail import SendMail  # noqa: E501
 from myadmin-client-python-flask.models.send_mail_adv import SendMailAdv  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.start_date import StartDate  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.test import BaseTestCase

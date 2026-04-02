@@ -24,11 +24,12 @@ inherit
 feature -- API Access
 
 
-	add_mail 
+	add_mail : detachable SERVICE_ORDER_POST_RESPONSE
 			-- Place Mail Order
 			-- Places a Mail Baby order. On success, invoices are created for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
 			-- 
 			-- 
+			-- Result SERVICE_ORDER_POST_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -46,9 +47,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SERVICE_ORDER_POST_RESPONSE } l_response.data ({ SERVICE_ORDER_POST_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -892,13 +897,14 @@ feature -- API Access
 			end
 		end
 
-	update_mail_info (id: STRING_32)
+	update_mail_info (id: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update Mail Order
 			-- Updates mail service metadata for the order, such as stored settings or account details.
 			-- 
 			-- argument: id The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -917,9 +923,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -943,7 +953,7 @@ feature -- API Access
 			-- 
 			-- argument: mailid Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;. (optional, default to null)
 			-- 
-			-- argument: message_id Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;. (optional, default to null)
+			-- argument: message_id Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;. (optional, default to null)
 			-- 
 			-- argument: replyto Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set. (optional, default to null)
 			-- 
@@ -957,7 +967,7 @@ feature -- API Access
 			-- 
 			-- argument: start_date Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included. (optional, default to null)
 			-- 
-			-- argument: end_date Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included. (optional, default to null)
+			-- argument: end_date Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included. (optional, default to null)
 			-- 
 			-- argument: sort Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order). (optional, default to time)
 			-- 

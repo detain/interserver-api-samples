@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **add_ssl**
-> add_ssl()
+> ServiceOrderPostResponse add_ssl()
 
 Place SSL Cert Order
 
@@ -49,7 +49,8 @@ my $api_instance = OpenAPIClient::SSLCertificatesApi->new(
 
 
 eval {
-    $api_instance->add_ssl();
+    my $result = $api_instance->add_ssl();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling SSLCertificatesApi->add_ssl: $@\n";
@@ -61,7 +62,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -75,7 +76,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_new_ssl**
-> get_new_ssl()
+> object get_new_ssl()
 
 SSL Cert Ordering Information
 
@@ -103,7 +104,8 @@ my $api_instance = OpenAPIClient::SSLCertificatesApi->new(
 
 
 eval {
-    $api_instance->get_new_ssl();
+    my $result = $api_instance->get_new_ssl();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling SSLCertificatesApi->get_new_ssl: $@\n";
@@ -115,7 +117,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -129,7 +131,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ssl_info**
-> get_ssl_info(id => $id)
+> object get_ssl_info(id => $id)
 
 Get SSL Cert Info
 
@@ -158,7 +160,8 @@ my $api_instance = OpenAPIClient::SSLCertificatesApi->new(
 my $id = 56; # int | SSL certificate ID number.
 
 eval {
-    $api_instance->get_ssl_info(id => $id);
+    my $result = $api_instance->get_ssl_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling SSLCertificatesApi->get_ssl_info: $@\n";
@@ -173,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -472,7 +475,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_ssl_info**
-> update_ssl_info(id => $id)
+> SuccessTextResponse update_ssl_info(id => $id)
 
 Update SSL Cert Order
 
@@ -501,7 +504,8 @@ my $api_instance = OpenAPIClient::SSLCertificatesApi->new(
 my $id = "id_example"; # string | SSL certificate ID number.
 
 eval {
-    $api_instance->update_ssl_info(id => $id);
+    my $result = $api_instance->update_ssl_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling SSLCertificatesApi->update_ssl_info: $@\n";
@@ -516,7 +520,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

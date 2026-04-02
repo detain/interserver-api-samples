@@ -229,21 +229,22 @@ class BillingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * Remove Credit Card
      * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-     * @return void
+     * @return kotlin.String
      */
-    fun deleteAccountCreditCard(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun deleteAccountCreditCard(id: kotlin.String): kotlin.String {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.DELETE,
                 "/account/creditcards/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<kotlin.String>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -489,21 +490,22 @@ class BillingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
     /**
      * Get Shopping Cart Contents
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
-     * @return void
+     * @return kotlin.Any
      */
-    fun getBillingCart(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun getBillingCart(): kotlin.Any {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/billing/cart", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<kotlin.Any>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Any
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -590,21 +592,22 @@ class BillingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
     /**
      * List Prepay Balances
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
-     * @return void
+     * @return kotlin.Any
      */
-    fun getBillingPrePays(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun getBillingPrePays(): kotlin.Any {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/billing/prepays", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<kotlin.Any>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Any
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -743,21 +746,22 @@ class BillingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * Update Credit Card
      * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-     * @return void
+     * @return kotlin.String
      */
-    fun updateAccountCreditCard(id: kotlin.Int): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateAccountCreditCard(id: kotlin.Int): kotlin.String {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/account/creditcards/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<kotlin.String>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

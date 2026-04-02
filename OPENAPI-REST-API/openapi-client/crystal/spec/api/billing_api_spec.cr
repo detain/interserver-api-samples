@@ -70,7 +70,7 @@ Spectator.describe "BillingApi" do
   # Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
   # @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe "delete_account_credit_card test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -185,7 +185,7 @@ Spectator.describe "BillingApi" do
   # Get Shopping Cart Contents
   # Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [JSON::Any]
   describe "get_billing_cart test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -231,7 +231,7 @@ Spectator.describe "BillingApi" do
   # List Prepay Balances
   # Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [JSON::Any]
   describe "get_billing_pre_pays test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -283,7 +283,7 @@ Spectator.describe "BillingApi" do
   # Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
   # @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe "update_account_credit_card test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

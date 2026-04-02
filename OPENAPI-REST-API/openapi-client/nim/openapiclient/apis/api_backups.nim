@@ -106,10 +106,11 @@ proc getNewBackup*(httpClient: HttpClient): (Option[BackupsOrder], Response) =
   constructResult[BackupsOrder](response)
 
 
-proc updateBackupInfo*(httpClient: HttpClient, id: int): Response =
+proc updateBackupInfo*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
   ## Update Backup Information
-  httpClient.post(basepath & fmt"/backups/{id}")
 
+  let response = httpClient.post(basepath & fmt"/backups/{id}")
+  constructResult[SuccessTextResponse](response)
 
 
 proc validateBackupOrder*(httpClient: HttpClient, validateOnly: bool, serviceType: int, coupon: string): (Option[BackupOrderPutResponse], Response) =

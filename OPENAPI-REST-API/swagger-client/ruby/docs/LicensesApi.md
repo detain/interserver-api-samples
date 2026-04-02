@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**update_license_info**](LicensesApi.md#update_license_info) | **POST** /licenses/{id} | Update License
 
 # **add_license**
-> add_license
+> ServiceOrderPostResponse add_license
 
 Place License Order
 
@@ -50,7 +50,8 @@ api_instance = SwaggerClient::LicensesApi.new
 
 begin
   #Place License Order
-  api_instance.add_license
+  result = api_instance.add_license
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling LicensesApi->add_license: #{e}"
 end
@@ -61,7 +62,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -692,7 +693,7 @@ nil (empty response body)
 
 
 # **update_license_info**
-> update_license_info(id)
+> SuccessTextResponse update_license_info(id)
 
 Update License
 
@@ -726,7 +727,8 @@ id = 'id_example' # String | The license service ID. Use `license_id` from `GET 
 
 begin
   #Update License
-  api_instance.update_license_info(id)
+  result = api_instance.update_license_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling LicensesApi->update_license_info: #{e}"
 end
@@ -740,7 +742,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

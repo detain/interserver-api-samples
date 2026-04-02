@@ -22,12 +22,13 @@ import org.openapitools.client.models.LicenseRow
 import org.openapitools.client.models.LicensesCancel200Response
 import org.openapitools.client.models.LicensesOrder
 import scala.collection.immutable.Seq
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.*
 
 trait LicensesApiEndpoints[F[*]] {
 
-  def addLicense()(using auth: _Authorization.ApiKey): F[Unit]
+  def addLicense()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def getLicenseInfo(id: Int)(using auth: _Authorization.ApiKey): F[License]
   def getLicenseInvoices(id: Int)(using auth: _Authorization.ApiKey): F[ChargeInvoiceRows]
   def getLicenseList()(using auth: _Authorization.ApiKey): F[Seq[LicenseRow]]
@@ -37,7 +38,7 @@ trait LicensesApiEndpoints[F[*]] {
   def licensesCancel(id: Int)(using auth: _Authorization.ApiKey): F[LicensesCancel200Response]
   def postLicenseChangeIp(id: Int, ipObject: IpObject)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def putLicenses()(using auth: _Authorization.ApiKey): F[Unit]
-  def updateLicenseInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateLicenseInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
 }
 
@@ -51,12 +52,12 @@ class LicensesApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addLicense()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def addLicense()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, ServiceOrderPostResponse](
       method = "POST",
       path = s"/licenses/order",
       body = None,
@@ -65,8 +66,8 @@ class LicensesApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, ServiceOrderPostResponse]("ServiceOrderPostResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -241,12 +242,12 @@ class LicensesApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateLicenseInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateLicenseInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/licenses/${id}",
       body = None,
@@ -255,8 +256,8 @@ class LicensesApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

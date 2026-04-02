@@ -373,7 +373,7 @@ export class BillingApi extends Api {
    * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
    * @param params.id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
    */
-  async deleteAccountCreditCard(params: IDeleteAccountCreditCardParams): Promise<any> {
+  async deleteAccountCreditCard(params: IDeleteAccountCreditCardParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('deleteAccountCreditCard', params, 'id');
 
@@ -694,7 +694,7 @@ export class BillingApi extends Api {
    * Get Shopping Cart Contents
    * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
    */
-  async getBillingCart(): Promise<any> {
+  async getBillingCart(): Promise<object> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -820,7 +820,7 @@ export class BillingApi extends Api {
    * List Prepay Balances
    * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
    */
-  async getBillingPrePays(): Promise<any> {
+  async getBillingPrePays(): Promise<object> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -964,7 +964,7 @@ export class BillingApi extends Api {
    * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
    * @param params.id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
    */
-  async updateAccountCreditCard(params: IUpdateAccountCreditCardParams): Promise<any> {
+  async updateAccountCreditCard(params: IUpdateAccountCreditCardParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateAccountCreditCard', params, 'id');
 

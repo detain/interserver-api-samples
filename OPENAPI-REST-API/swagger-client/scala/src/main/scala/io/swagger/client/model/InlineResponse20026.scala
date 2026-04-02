@@ -13,17 +13,11 @@ package io.swagger.client.model
 
 
 /**
- * @param bandwidth 
- * @param ips 
- * @param os 
- * @param cp 
- * @param raid 
+ * @param text Confirmation message.
+ * @param ticket The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
  */
 case class InlineResponse20026 (
-  bandwidth: Option[List[inline_response_200_26_bandwidth]] = None,
-  ips: Option[List[inline_response_200_26_ips]] = None,
-  os: Option[List[inline_response_200_26_os]] = None,
-  cp: Option[List[inline_response_200_26_cp]] = None,
-  raid: Option[List[inline_response_200_26_raid]] = None
+  text: Option[String] = None,
+  ticket: Option[Integer] = None
 )
 

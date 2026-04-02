@@ -69,8 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddQsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AddQs();
-            
+            //var response = instance.AddQs();
+            //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
         /// Test DeleteQsBackup
@@ -547,8 +547,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.UpdateQsInfo(id);
-            
+            //var response = instance.UpdateQsInfo(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
     }
 

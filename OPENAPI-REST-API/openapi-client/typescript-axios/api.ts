@@ -336,6 +336,20 @@ export interface AccountInfoPost {
 export interface AccountSshKey {
     'ssh_key'?: string;
 }
+export interface AddServer200Response {
+    /**
+     * Status message.
+     */
+    'text'?: string;
+    /**
+     * Invoice ID for payment.
+     */
+    'invoice'?: number;
+    /**
+     * Server order ID.
+     */
+    'order'?: number;
+}
 /**
  * An affiliate banner image details.
  */
@@ -1119,6 +1133,9 @@ export interface CreateFirewallRule {
      */
     'xdp_action': CreateFirewallRuleXdpActionEnum;
     'destination_port'?: number;
+    /**
+     * Source IP address to match. Use \'0.0.0.0\' to match any source.
+     */
     'source_ip'?: string;
     'source_port'?: number;
 }
@@ -5022,7 +5039,7 @@ export interface ServerExtraInfoTables {
     'assets': ServerAssets;
 }
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 export interface ServerIpmiLiveInfo {
     'text'?: string;
@@ -5976,6 +5993,43 @@ export interface ServiceCategory {
     'category_name': string;
     'category_tag': string;
     'category_module': string;
+}
+/**
+ * Generic response returned after placing a service order. Contains invoice IDs for payment and the new service ID.
+ */
+export interface ServiceOrderPostResponse {
+    /**
+     * Whether the order was accepted and can proceed to payment.
+     */
+    'continue'?: boolean;
+    /**
+     * List of validation errors (empty on success).
+     */
+    'errors'?: Array<string>;
+    /**
+     * Total cost of the order.
+     */
+    'total_cost'?: string;
+    /**
+     * Primary invoice ID for payment.
+     */
+    'iid'?: string;
+    /**
+     * All invoice identifiers associated with the order.
+     */
+    'iids'?: Array<string>;
+    /**
+     * Numeric invoice IDs for use with billing endpoints.
+     */
+    'real_iids'?: Array<string>;
+    /**
+     * The new service ID created by the order.
+     */
+    'serviceId'?: number;
+    /**
+     * Human-readable description of the invoice.
+     */
+    'invoice_description'?: string;
 }
 /**
  * A general grouping of services within a category.
@@ -8764,7 +8818,7 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AccountApi.updateAccountInfo']?.[localVarOperationServerIndex]?.url;
@@ -8778,7 +8832,7 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateAccountIpLimits(start: string, end: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateAccountIpLimits(start: string, end: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateAccountIpLimits(start, end, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['AccountApi.updateAccountIpLimits']?.[localVarOperationServerIndex]?.url;
@@ -8967,7 +9021,7 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8978,7 +9032,7 @@ export const AccountApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAccountIpLimits(start: string, end: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateAccountIpLimits(start: string, end: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateAccountIpLimits(start, end, options).then((request) => request(axios, basePath));
         },
         /**
@@ -9782,7 +9836,7 @@ export const BackupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateBackupInfo(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateBackupInfo(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateBackupInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BackupsApi.updateBackupInfo']?.[localVarOperationServerIndex]?.url;
@@ -9899,7 +9953,7 @@ export const BackupsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateBackupInfo(id: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateBackupInfo(id: number, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateBackupInfo(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -11316,7 +11370,7 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteAccountCreditCard(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteAccountCreditCard(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteAccountCreditCard(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BillingApi.deleteAccountCreditCard']?.[localVarOperationServerIndex]?.url;
@@ -11441,7 +11495,7 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBillingCart(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async getBillingCart(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getBillingCart(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BillingApi.getBillingCart']?.[localVarOperationServerIndex]?.url;
@@ -11491,7 +11545,7 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getBillingPrePays(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async getBillingPrePays(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getBillingPrePays(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BillingApi.getBillingPrePays']?.[localVarOperationServerIndex]?.url;
@@ -11547,7 +11601,7 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateAccountCreditCard(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateAccountCreditCard(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateAccountCreditCard(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['BillingApi.updateAccountCreditCard']?.[localVarOperationServerIndex]?.url;
@@ -11677,7 +11731,7 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAccountCreditCard(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        deleteAccountCreditCard(id: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.deleteAccountCreditCard(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -11772,7 +11826,7 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBillingCart(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        getBillingCart(options?: RawAxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.getBillingCart(options).then((request) => request(axios, basePath));
         },
         /**
@@ -11810,7 +11864,7 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBillingPrePays(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        getBillingPrePays(options?: RawAxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.getBillingPrePays(options).then((request) => request(axios, basePath));
         },
         /**
@@ -11854,7 +11908,7 @@ export const BillingApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAccountCreditCard(id: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateAccountCreditCard(id: number, options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.updateAccountCreditCard(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -12651,7 +12705,7 @@ export const DNSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addDnsDomain(domain: string, ip: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addDnsDomain(domain: string, ip: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addDnsDomain(domain, ip, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DNSApi.addDnsDomain']?.[localVarOperationServerIndex]?.url;
@@ -12682,7 +12736,7 @@ export const DNSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteDnsDomain(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteDnsDomain(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteDnsDomain(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DNSApi.deleteDnsDomain']?.[localVarOperationServerIndex]?.url;
@@ -12696,7 +12750,7 @@ export const DNSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteDnsRecord(domainId: number, recordId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteDnsRecord(domainId: number, recordId: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteDnsRecord(domainId, recordId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DNSApi.deleteDnsRecord']?.[localVarOperationServerIndex]?.url;
@@ -12743,7 +12797,7 @@ export const DNSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DNSApi.updateDnsRecord']?.[localVarOperationServerIndex]?.url;
@@ -12766,7 +12820,7 @@ export const DNSApiFactory = function (configuration?: Configuration, basePath?:
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addDnsDomain(domain: string, ip: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addDnsDomain(domain: string, ip: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.addDnsDomain(domain, ip, options).then((request) => request(axios, basePath));
         },
         /**
@@ -12791,7 +12845,7 @@ export const DNSApiFactory = function (configuration?: Configuration, basePath?:
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteDnsDomain(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        deleteDnsDomain(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.deleteDnsDomain(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -12802,7 +12856,7 @@ export const DNSApiFactory = function (configuration?: Configuration, basePath?:
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteDnsRecord(domainId: number, recordId: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        deleteDnsRecord(domainId: number, recordId: number, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.deleteDnsRecord(domainId, recordId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -12840,7 +12894,7 @@ export const DNSApiFactory = function (configuration?: Configuration, basePath?:
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, options).then((request) => request(axios, basePath));
         },
     };
@@ -14206,7 +14260,7 @@ export const DomainsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addDomain(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addDomain(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceOrderPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addDomain(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DomainsApi.addDomain']?.[localVarOperationServerIndex]?.url;
@@ -14546,7 +14600,7 @@ export const DomainsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateDomainInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateDomainInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateDomainInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DomainsApi.updateDomainInfo']?.[localVarOperationServerIndex]?.url;
@@ -14595,7 +14649,7 @@ export const DomainsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addDomain(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addDomain(options?: RawAxiosRequestConfig): AxiosPromise<ServiceOrderPostResponse> {
             return localVarFp.addDomain(options).then((request) => request(axios, basePath));
         },
         /**
@@ -14857,7 +14911,7 @@ export const DomainsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDomainInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateDomainInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateDomainInfo(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -15648,7 +15702,7 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addFloatingIp(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addFloatingIp(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceOrderPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addFloatingIp(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['FloatingIPsApi.addFloatingIp']?.[localVarOperationServerIndex]?.url;
@@ -15674,7 +15728,7 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getFloatingIpInfo(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async getFloatingIpInfo(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getFloatingIpInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['FloatingIPsApi.getFloatingIpInfo']?.[localVarOperationServerIndex]?.url;
@@ -15724,7 +15778,7 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getNewFloatingIp(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async getNewFloatingIp(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getNewFloatingIp(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['FloatingIPsApi.getNewFloatingIp']?.[localVarOperationServerIndex]?.url;
@@ -15763,7 +15817,7 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateFloatingIpInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateFloatingIpInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateFloatingIpInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['FloatingIPsApi.updateFloatingIpInfo']?.[localVarOperationServerIndex]?.url;
@@ -15784,7 +15838,7 @@ export const FloatingIPsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addFloatingIp(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addFloatingIp(options?: RawAxiosRequestConfig): AxiosPromise<ServiceOrderPostResponse> {
             return localVarFp.addFloatingIp(options).then((request) => request(axios, basePath));
         },
         /**
@@ -15804,7 +15858,7 @@ export const FloatingIPsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFloatingIpInfo(id: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        getFloatingIpInfo(id: number, options?: RawAxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.getFloatingIpInfo(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -15842,7 +15896,7 @@ export const FloatingIPsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNewFloatingIp(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        getNewFloatingIp(options?: RawAxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.getNewFloatingIp(options).then((request) => request(axios, basePath));
         },
         /**
@@ -15872,7 +15926,7 @@ export const FloatingIPsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateFloatingIpInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateFloatingIpInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateFloatingIpInfo(id, options).then((request) => request(axios, basePath));
         },
     };
@@ -16463,7 +16517,7 @@ export const LicensesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addLicense(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addLicense(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceOrderPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addLicense(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['LicensesApi.addLicense']?.[localVarOperationServerIndex]?.url;
@@ -16591,7 +16645,7 @@ export const LicensesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateLicenseInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateLicenseInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateLicenseInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['LicensesApi.updateLicenseInfo']?.[localVarOperationServerIndex]?.url;
@@ -16612,7 +16666,7 @@ export const LicensesApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addLicense(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addLicense(options?: RawAxiosRequestConfig): AxiosPromise<ServiceOrderPostResponse> {
             return localVarFp.addLicense(options).then((request) => request(axios, basePath));
         },
         /**
@@ -16710,7 +16764,7 @@ export const LicensesApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateLicenseInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateLicenseInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateLicenseInfo(id, options).then((request) => request(axios, basePath));
         },
     };
@@ -17945,14 +17999,14 @@ export const MailApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {string} [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
          * @param {string} [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
          * @param {string} [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
          * @param {string} [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
          * @param {string} [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
          * @param {ViewMailLogDeliveredEnum} [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
          * @param {number} [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
          * @param {number} [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
          * @param {ViewMailLogStartDateParameter} [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-         * @param {ViewMailLogStartDateParameter} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+         * @param {ViewMailLogStartDateParameter} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
          * @param {ViewMailLogSortEnum} [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
          * @param {ViewMailLogDirEnum} [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
          * @param {ViewMailLogGroupbyEnum} [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -18085,7 +18139,7 @@ export const MailApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addMail(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addMail(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceOrderPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addMail(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['MailApi.addMail']?.[localVarOperationServerIndex]?.url;
@@ -18404,7 +18458,7 @@ export const MailApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateMailInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateMailInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateMailInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['MailApi.updateMailInfo']?.[localVarOperationServerIndex]?.url;
@@ -18421,14 +18475,14 @@ export const MailApiFp = function(configuration?: Configuration) {
          * @param {string} [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
          * @param {string} [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
          * @param {string} [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
          * @param {string} [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
          * @param {string} [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
          * @param {ViewMailLogDeliveredEnum} [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
          * @param {number} [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
          * @param {number} [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
          * @param {ViewMailLogStartDateParameter} [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-         * @param {ViewMailLogStartDateParameter} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+         * @param {ViewMailLogStartDateParameter} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
          * @param {ViewMailLogSortEnum} [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
          * @param {ViewMailLogDirEnum} [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
          * @param {ViewMailLogGroupbyEnum} [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -18456,7 +18510,7 @@ export const MailApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addMail(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addMail(options?: RawAxiosRequestConfig): AxiosPromise<ServiceOrderPostResponse> {
             return localVarFp.addMail(options).then((request) => request(axios, basePath));
         },
         /**
@@ -18703,7 +18757,7 @@ export const MailApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMailInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateMailInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateMailInfo(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -18717,14 +18771,14 @@ export const MailApiFactory = function (configuration?: Configuration, basePath?
          * @param {string} [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
          * @param {string} [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
          * @param {string} [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
          * @param {string} [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
          * @param {string} [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
          * @param {ViewMailLogDeliveredEnum} [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
          * @param {number} [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
          * @param {number} [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
          * @param {ViewMailLogStartDateParameter} [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-         * @param {ViewMailLogStartDateParameter} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+         * @param {ViewMailLogStartDateParameter} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
          * @param {ViewMailLogSortEnum} [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
          * @param {ViewMailLogDirEnum} [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
          * @param {ViewMailLogGroupbyEnum} [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -19033,14 +19087,14 @@ export class MailApi extends BaseAPI {
      * @param {string} [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
      * @param {string} [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
      * @param {string} [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-     * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+     * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
      * @param {string} [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
      * @param {string} [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
      * @param {ViewMailLogDeliveredEnum} [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
      * @param {number} [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
      * @param {number} [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
      * @param {ViewMailLogStartDateParameter} [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-     * @param {ViewMailLogStartDateParameter} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+     * @param {ViewMailLogStartDateParameter} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
      * @param {ViewMailLogSortEnum} [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
      * @param {ViewMailLogDirEnum} [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
      * @param {ViewMailLogGroupbyEnum} [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -21944,7 +21998,7 @@ export const QuickServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addQs(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addQs(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceOrderPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addQs(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['QuickServersApi.addQs']?.[localVarOperationServerIndex]?.url;
@@ -22508,7 +22562,7 @@ export const QuickServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateQsInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateQsInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateQsInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['QuickServersApi.updateQsInfo']?.[localVarOperationServerIndex]?.url;
@@ -22529,7 +22583,7 @@ export const QuickServersApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addQs(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addQs(options?: RawAxiosRequestConfig): AxiosPromise<ServiceOrderPostResponse> {
             return localVarFp.addQs(options).then((request) => request(axios, basePath));
         },
         /**
@@ -22964,7 +23018,7 @@ export const QuickServersApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateQsInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateQsInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateQsInfo(id, options).then((request) => request(axios, basePath));
         },
     };
@@ -23862,7 +23916,7 @@ export const SSLCertificatesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addSsl(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addSsl(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceOrderPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addSsl(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SSLCertificatesApi.addSsl']?.[localVarOperationServerIndex]?.url;
@@ -23874,7 +23928,7 @@ export const SSLCertificatesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getNewSsl(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async getNewSsl(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getNewSsl(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SSLCertificatesApi.getNewSsl']?.[localVarOperationServerIndex]?.url;
@@ -23887,7 +23941,7 @@ export const SSLCertificatesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSslInfo(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async getSslInfo(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSslInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SSLCertificatesApi.getSslInfo']?.[localVarOperationServerIndex]?.url;
@@ -23963,7 +24017,7 @@ export const SSLCertificatesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateSslInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateSslInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateSslInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SSLCertificatesApi.updateSslInfo']?.[localVarOperationServerIndex]?.url;
@@ -23984,7 +24038,7 @@ export const SSLCertificatesApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addSsl(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addSsl(options?: RawAxiosRequestConfig): AxiosPromise<ServiceOrderPostResponse> {
             return localVarFp.addSsl(options).then((request) => request(axios, basePath));
         },
         /**
@@ -23993,7 +24047,7 @@ export const SSLCertificatesApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNewSsl(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        getNewSsl(options?: RawAxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.getNewSsl(options).then((request) => request(axios, basePath));
         },
         /**
@@ -24003,7 +24057,7 @@ export const SSLCertificatesApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSslInfo(id: number, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        getSslInfo(id: number, options?: RawAxiosRequestConfig): AxiosPromise<object> {
             return localVarFp.getSslInfo(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -24061,7 +24115,7 @@ export const SSLCertificatesApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateSslInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateSslInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateSslInfo(id, options).then((request) => request(axios, basePath));
         },
     };
@@ -26232,7 +26286,7 @@ export const ServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addServer(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addServer(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddServer200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addServer(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ServersApi.addServer']?.[localVarOperationServerIndex]?.url;
@@ -26453,7 +26507,7 @@ export const ServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateServerInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateServerInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateServerInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ServersApi.updateServerInfo']?.[localVarOperationServerIndex]?.url;
@@ -26474,7 +26528,7 @@ export const ServersApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addServer(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addServer(options?: RawAxiosRequestConfig): AxiosPromise<AddServer200Response> {
             return localVarFp.addServer(options).then((request) => request(axios, basePath));
         },
         /**
@@ -26644,7 +26698,7 @@ export const ServersApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateServerInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateServerInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateServerInfo(id, options).then((request) => request(axios, basePath));
         },
     };
@@ -29726,7 +29780,7 @@ export const VPSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addVps(vpsOrderPostRequest?: VpsOrderPostRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addVps(vpsOrderPostRequest?: VpsOrderPostRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceOrderPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addVps(vpsOrderPostRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['VPSApi.addVps']?.[localVarOperationServerIndex]?.url;
@@ -30285,7 +30339,7 @@ export const VPSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateVpsInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateVpsInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateVpsInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['VPSApi.updateVpsInfo']?.[localVarOperationServerIndex]?.url;
@@ -30320,7 +30374,7 @@ export const VPSApiFactory = function (configuration?: Configuration, basePath?:
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addVps(vpsOrderPostRequest?: VpsOrderPostRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addVps(vpsOrderPostRequest?: VpsOrderPostRequest, options?: RawAxiosRequestConfig): AxiosPromise<ServiceOrderPostResponse> {
             return localVarFp.addVps(vpsOrderPostRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -30753,7 +30807,7 @@ export const VPSApiFactory = function (configuration?: Configuration, basePath?:
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVpsInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateVpsInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateVpsInfo(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -31979,7 +32033,7 @@ export const WebhostingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addWebsite(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async addWebsite(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceOrderPostResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addWebsite(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebhostingApi.addWebsite']?.[localVarOperationServerIndex]?.url;
@@ -32161,7 +32215,7 @@ export const WebhostingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateWebsiteInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateWebsiteInfo(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SuccessTextResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateWebsiteInfo(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['WebhostingApi.updateWebsiteInfo']?.[localVarOperationServerIndex]?.url;
@@ -32195,7 +32249,7 @@ export const WebhostingApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addWebsite(options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        addWebsite(options?: RawAxiosRequestConfig): AxiosPromise<ServiceOrderPostResponse> {
             return localVarFp.addWebsite(options).then((request) => request(axios, basePath));
         },
         /**
@@ -32335,7 +32389,7 @@ export const WebhostingApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateWebsiteInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+        updateWebsiteInfo(id: string, options?: RawAxiosRequestConfig): AxiosPromise<SuccessTextResponse> {
             return localVarFp.updateWebsiteInfo(id, options).then((request) => request(axios, basePath));
         },
         /**

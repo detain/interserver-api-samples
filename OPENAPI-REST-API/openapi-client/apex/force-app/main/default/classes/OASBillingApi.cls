@@ -118,14 +118,15 @@ public class OASBillingApi {
      * Remove Credit Card
      * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
+     * @return String
      * @throws OAS.ApiException if fails to make API call
      */
-    public void deleteAccountCreditCard(Map<String, Object> params) {
+    public String deleteAccountCreditCard(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'DELETE', '/account/creditcards/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -135,7 +136,7 @@ public class OASBillingApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -352,13 +353,14 @@ public class OASBillingApi {
     /**
      * Get Shopping Cart Contents
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
+     * @return Object
      * @throws OAS.ApiException if fails to make API call
      */
-    public void getBillingCart() {
+    public Object getBillingCart() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (Object) client.invoke(
             'GET', '/billing/cart', '',
             query, form,
             new Map<String, Object>(),
@@ -366,7 +368,7 @@ public class OASBillingApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            Object.class
         );
     }
     /**
@@ -443,13 +445,14 @@ public class OASBillingApi {
     /**
      * List Prepay Balances
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
+     * @return Object
      * @throws OAS.ApiException if fails to make API call
      */
-    public void getBillingPrePays() {
+    public Object getBillingPrePays() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (Object) client.invoke(
             'GET', '/billing/prepays', '',
             query, form,
             new Map<String, Object>(),
@@ -457,7 +460,7 @@ public class OASBillingApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            Object.class
         );
     }
     /**
@@ -550,14 +553,15 @@ public class OASBillingApi {
      * Update Credit Card
      * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
+     * @return String
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateAccountCreditCard(Map<String, Object> params) {
+    public String updateAccountCreditCard(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/account/creditcards/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -567,7 +571,7 @@ public class OASBillingApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            String.class
         );
     }
     /**

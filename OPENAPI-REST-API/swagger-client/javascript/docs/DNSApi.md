@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="addDnsDomain"></a>
 # **addDnsDomain**
-> addDnsDomain(domain, ip, body)
+> SuccessTextResponse addDnsDomain(domain, ip, body)
 
 Create DNS Domain
 
@@ -52,7 +52,7 @@ apiInstance.addDnsDomain(domain, ip, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ null (empty response body)
 
 <a name="deleteDnsDomain"></a>
 # **deleteDnsDomain**
-> deleteDnsDomain(id)
+> SuccessTextResponse deleteDnsDomain(id)
 
 Delete DNS Domain
 
@@ -190,7 +190,7 @@ apiInstance.deleteDnsDomain(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -216,7 +216,7 @@ null (empty response body)
 
 <a name="deleteDnsRecord"></a>
 # **deleteDnsRecord**
-> deleteDnsRecord(domainId, recordId)
+> SuccessTextResponse deleteDnsRecord(domainId, recordId)
 
 Delete DNS Record
 
@@ -253,7 +253,7 @@ apiInstance.deleteDnsRecord(domainId, recordId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -399,7 +399,7 @@ This endpoint does not need any parameter.
 
 <a name="updateDnsRecord"></a>
 # **updateDnsRecord**
-> updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId)
+> SuccessTextResponse updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId)
 
 Update DNS Record
 
@@ -445,7 +445,7 @@ apiInstance.updateDnsRecord(name, type, content, ttl, prio, disabled, ordername,
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -468,7 +468,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

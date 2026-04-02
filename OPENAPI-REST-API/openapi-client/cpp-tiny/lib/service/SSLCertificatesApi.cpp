@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            String
+            ServiceOrderPostResponse
         >
         SSLCertificatesApi::
         addSsl(
@@ -35,12 +35,17 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            ServiceOrderPostResponse obj(output_string);
+
+
+            Response<ServiceOrderPostResponse> response(obj, httpCode);
             return response;
         }
 
         Response<
-            String
+            Object
         >
         SSLCertificatesApi::
         getNewSsl(
@@ -70,12 +75,17 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            Object obj(output_string);
+
+
+            Response<Object> response(obj, httpCode);
             return response;
         }
 
         Response<
-            String
+            Object
         >
         SSLCertificatesApi::
         getSslInfo(
@@ -116,7 +126,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            Object obj(output_string);
+
+
+            Response<Object> response(obj, httpCode);
             return response;
         }
 
@@ -344,7 +359,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            SuccessTextResponse
         >
         SSLCertificatesApi::
         updateSslInfo(
@@ -385,7 +400,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 

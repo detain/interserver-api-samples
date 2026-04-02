@@ -12,6 +12,7 @@ from myadmin-client-python-flask.models.dns_record import DnsRecord  # noqa: E50
 from myadmin-client-python-flask.models.dns_record_type import DnsRecordType  # noqa: E501
 from myadmin-client-python-flask.models.dns_update_record import DnsUpdateRecord  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
+from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.test import BaseTestCase
 
 

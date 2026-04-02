@@ -41,7 +41,7 @@ Method | HTTP request | Description
 //
 // Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
 //
-void DomainsAPI_addDomain(apiClient_t *apiClient);
+service_order_post_response_t* DomainsAPI_addDomain(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -51,7 +51,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[service_order_post_response_t](service_order_post_response.md) *
+
 
 ### Authorization
 
@@ -843,7 +844,7 @@ Name | Type | Description  | Notes
 //
 // Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
 //
-void DomainsAPI_updateDomainInfo(apiClient_t *apiClient, char *id);
+success_text_response_t* DomainsAPI_updateDomainInfo(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -854,7 +855,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

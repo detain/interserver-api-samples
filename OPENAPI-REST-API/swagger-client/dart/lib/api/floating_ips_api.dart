@@ -10,7 +10,7 @@ class FloatingIPsApi {
   /// Place Floating IP Order
   ///
   /// Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
-  Future addFloatingIp() async {
+  Future<ServiceOrderPostResponse> addFloatingIp() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,9 +50,9 @@ class FloatingIPsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'ServiceOrderPostResponse') as ServiceOrderPostResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Cancel Floating IP
@@ -109,7 +109,7 @@ class FloatingIPsApi {
   /// View Floating IP
   ///
   /// Returns detailed information about a specific Floating IP service including its current target IP assignment.
-  Future getFloatingIpInfo(int id) async {
+  Future<Object> getFloatingIpInfo(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -152,9 +152,9 @@ class FloatingIPsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'Object') as Object ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get Floating IP Invoices
@@ -310,7 +310,7 @@ class FloatingIPsApi {
   /// Get Floating IP Ordering Information
   ///
   /// Retrieves available options and pricing for ordering a new Floating IP.
-  Future getNewFloatingIp() async {
+  Future<Object> getNewFloatingIp() async {
     Object postBody = null;
 
     // verify required params are set
@@ -350,9 +350,9 @@ class FloatingIPsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'Object') as Object ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Change Floating IP Target
@@ -466,7 +466,7 @@ class FloatingIPsApi {
   /// Update Floating IP
   ///
   /// Updates settings on a Floating IP service, such as its label or configuration metadata.
-  Future updateFloatingIpInfo(String id) async {
+  Future<SuccessTextResponse> updateFloatingIpInfo(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -509,9 +509,9 @@ class FloatingIPsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
 }

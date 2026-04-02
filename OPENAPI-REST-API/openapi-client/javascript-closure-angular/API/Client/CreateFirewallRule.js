@@ -27,6 +27,7 @@ API.Client.CreateFirewallRule.prototype.xdpAction;
 API.Client.CreateFirewallRule.prototype.destinationPort;
 
 /**
+ * Source IP address to match. Use '0.0.0.0' to match any source.
  * @type {!string}
  * @export
  */

@@ -158,8 +158,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
-            //instance.UpdateBackupInfo(id);
-            
+            //var response = instance.UpdateBackupInfo(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test ValidateBackupOrder

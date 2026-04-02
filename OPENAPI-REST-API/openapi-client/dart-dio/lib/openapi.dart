@@ -46,6 +46,7 @@ export 'package:openapi/src/model/account_info_oauth_config_providers_value.dart
 export 'package:openapi/src/model/account_info_oauthproviders.dart';
 export 'package:openapi/src/model/account_info_post.dart';
 export 'package:openapi/src/model/account_ssh_key.dart';
+export 'package:openapi/src/model/add_server200_response.dart';
 export 'package:openapi/src/model/affiliate_banner_row.dart';
 export 'package:openapi/src/model/affiliate_dock_setup.dart';
 export 'package:openapi/src/model/affiliate_payment_setup.dart';
@@ -378,6 +379,7 @@ export 'package:openapi/src/model/servers_cancel200_response.dart';
 export 'package:openapi/src/model/service.dart';
 export 'package:openapi/src/model/service_categories.dart';
 export 'package:openapi/src/model/service_category.dart';
+export 'package:openapi/src/model/service_order_post_response.dart';
 export 'package:openapi/src/model/service_type.dart';
 export 'package:openapi/src/model/service_types.dart';
 export 'package:openapi/src/model/services.dart';

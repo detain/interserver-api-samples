@@ -59,10 +59,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'add_server' } = {
         summary => 'Place Server Order',
         params => $params,
-        returns => undef,
+        returns => 'AddServer200Response',
         };
 }
-# @return void
+# @return AddServer200Response
 #
 sub add_server {
     my ($self, %args) = @_;
@@ -87,10 +87,14 @@ sub add_server {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('AddServer200Response', $response);
+    return $_response_object;
 }
 
 #
@@ -1151,10 +1155,10 @@ sub servers_cancel {
     __PACKAGE__->method_documentation->{ 'update_server_info' } = {
         summary => 'Update Server Order',
         params => $params,
-        returns => undef,
+        returns => 'SuccessTextResponse',
         };
 }
-# @return void
+# @return SuccessTextResponse
 #
 sub update_server_info {
     my ($self, %args) = @_;
@@ -1191,10 +1195,14 @@ sub update_server_info {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SuccessTextResponse', $response);
+    return $_response_object;
 }
 
 1;

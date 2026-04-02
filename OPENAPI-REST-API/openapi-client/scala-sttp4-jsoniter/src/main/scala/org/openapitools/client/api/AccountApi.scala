@@ -369,9 +369,9 @@ case class AccountApi[Auth <: org.openapitools.client.core.Authorization] privat
    * Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
    *   code 422 : TextResponse (Validation error while updating account data.)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -396,7 +396,7 @@ case class AccountApi[Auth <: org.openapitools.client.core.Authorization] privat
    * @param disableEmailNotifications Set to `true` to disable email notifications, or `false` to enable them.
    * @param gstin Your GST identification number (if applicable).
    */
-  def updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: Option[String] = scala.None, address2: Option[String] = scala.None, locale: Option[String] = scala.None, emailInvoices: Option[String] = scala.None, emailAbuse: Option[String] = scala.None, disableReset: Option[Boolean] = scala.None, disableReinstall: Option[Boolean] = scala.None, disableServerNotifications: Option[Boolean] = scala.None, disableEmailNotifications: Option[Boolean] = scala.None, gstin: Option[String] = scala.None)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: Option[String] = scala.None, address2: Option[String] = scala.None, locale: Option[String] = scala.None, emailInvoices: Option[String] = scala.None, emailAbuse: Option[String] = scala.None, disableReset: Option[Boolean] = scala.None, disableReinstall: Option[Boolean] = scala.None, disableServerNotifications: Option[Boolean] = scala.None, disableEmailNotifications: Option[Boolean] = scala.None, gstin: Option[String] = scala.None)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val requestURL =
       uri"$baseUrl/account"
 
@@ -476,15 +476,15 @@ case class AccountApi[Auth <: org.openapitools.client.core.Authorization] privat
 
 
       ).flatten)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
    *   code 422 : TextResponse (IP limit payload contains an invalid address.)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -494,7 +494,7 @@ case class AccountApi[Auth <: org.openapitools.client.core.Authorization] privat
    * @param start The begining (or first) IP address in the range.
    * @param end The ending (or last) IP address in the range.
    */
-  def updateAccountIpLimits(start: String, end: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateAccountIpLimits(start: String, end: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val requestURL =
       uri"$baseUrl/account/iplimits"
 
@@ -514,7 +514,7 @@ case class AccountApi[Auth <: org.openapitools.client.core.Authorization] privat
 
 
       ).flatten)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Changes the account login password. The current password must be provided for verification. After a successful change, existing API keys remain valid but active sessions may require re-authentication.

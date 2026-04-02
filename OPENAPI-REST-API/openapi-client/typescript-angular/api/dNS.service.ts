@@ -24,6 +24,8 @@ import { DnsRecord } from '../model/dnsRecord';
 import { DnsRecordType } from '../model/dnsRecordType';
 // @ts-ignore
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
+// @ts-ignore
+import { SuccessTextResponse } from '../model/successTextResponse';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -51,9 +53,9 @@ export class DNSService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public addDnsDomain(domain: string, ip: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public addDnsDomain(domain: string, ip: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public addDnsDomain(domain: string, ip: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public addDnsDomain(domain: string, ip: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<SuccessTextResponse>;
+    public addDnsDomain(domain: string, ip: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<SuccessTextResponse>>;
+    public addDnsDomain(domain: string, ip: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<SuccessTextResponse>>;
     public addDnsDomain(domain: string, ip: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
         if (domain === null || domain === undefined) {
             throw new Error('Required parameter domain was null or undefined when calling addDnsDomain.');
@@ -117,7 +119,7 @@ export class DNSService extends BaseService {
 
         let localVarPath = `/dns`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SuccessTextResponse>('post', `${basePath}${localVarPath}`,
             {
                 body: localVarConvertFormParamsToString ? localVarFormParams.toString() : localVarFormParams,
                 responseType: <any>responseType_,
@@ -245,9 +247,9 @@ export class DNSService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public deleteDnsDomain(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public deleteDnsDomain(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public deleteDnsDomain(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public deleteDnsDomain(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<SuccessTextResponse>;
+    public deleteDnsDomain(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<SuccessTextResponse>>;
+    public deleteDnsDomain(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<SuccessTextResponse>>;
     public deleteDnsDomain(id: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteDnsDomain.');
@@ -285,7 +287,7 @@ export class DNSService extends BaseService {
 
         let localVarPath = `/dns/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SuccessTextResponse>('delete', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
@@ -306,9 +308,9 @@ export class DNSService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<SuccessTextResponse>;
+    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<SuccessTextResponse>>;
+    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<SuccessTextResponse>>;
     public deleteDnsRecord(domainId: number, recordId: number, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
         if (domainId === null || domainId === undefined) {
             throw new Error('Required parameter domainId was null or undefined when calling deleteDnsRecord.');
@@ -349,7 +351,7 @@ export class DNSService extends BaseService {
 
         let localVarPath = `/dns/${this.configuration.encodeParam({name: "domainId", value: domainId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: undefined})}/${this.configuration.encodeParam({name: "recordId", value: recordId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('delete', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SuccessTextResponse>('delete', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
@@ -494,9 +496,9 @@ export class DNSService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<SuccessTextResponse>;
+    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<SuccessTextResponse>>;
     public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
         if (domainId === null || domainId === undefined) {
             throw new Error('Required parameter domainId was null or undefined when calling updateDnsRecord.');
@@ -578,7 +580,7 @@ export class DNSService extends BaseService {
 
         let localVarPath = `/dns/${this.configuration.encodeParam({name: "domainId", value: domainId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: undefined})}/${this.configuration.encodeParam({name: "recordId", value: recordId, in: "path", style: "simple", explode: false, dataType: "number", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SuccessTextResponse>('post', `${basePath}${localVarPath}`,
             {
                 body: localVarConvertFormParamsToString ? localVarFormParams.toString() : localVarFormParams,
                 responseType: <any>responseType_,

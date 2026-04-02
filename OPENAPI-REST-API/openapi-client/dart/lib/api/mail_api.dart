@@ -49,11 +49,19 @@ class MailApi {
   /// Place Mail Order
   ///
   /// Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
-  Future<void> addMail() async {
+  Future<ServiceOrderPostResponse?> addMail() async {
     final response = await addMailWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ServiceOrderPostResponse',) as ServiceOrderPostResponse;
+    
+    }
+    return null;
   }
 
   /// Create Deny Rule
@@ -1488,11 +1496,19 @@ class MailApi {
   ///
   /// * [String] id (required):
   ///   The mail service ID. Use `mail_id` from `GET /mail`.
-  Future<void> updateMailInfo(String id,) async {
+  Future<SuccessTextResponse?> updateMailInfo(String id,) async {
     final response = await updateMailInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// View Mail Log
@@ -1528,7 +1544,7 @@ class MailApi {
   ///   Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
   ///
   /// * [String] messageId:
-  ///   Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+  ///   Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
   ///
   /// * [String] replyto:
   ///   Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
@@ -1549,7 +1565,7 @@ class MailApi {
   ///   Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
   ///
   /// * [ViewMailLogStartDateParameter] endDate:
-  ///   Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+  ///   Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
   ///
   /// * [String] sort:
   ///   Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
@@ -1671,7 +1687,7 @@ class MailApi {
   ///   Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
   ///
   /// * [String] messageId:
-  ///   Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+  ///   Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
   ///
   /// * [String] replyto:
   ///   Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
@@ -1692,7 +1708,7 @@ class MailApi {
   ///   Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
   ///
   /// * [ViewMailLogStartDateParameter] endDate:
-  ///   Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+  ///   Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
   ///
   /// * [String] sort:
   ///   Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).

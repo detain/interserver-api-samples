@@ -27,7 +27,8 @@ package io.swagger.api;
 import io.swagger.model.BuyItNowList;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.InlineResponse20019;
-import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20027;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OrderBuyNowServerBody;
 import io.swagger.model.ReverseDnsEntries;
@@ -95,8 +96,8 @@ public class ServersApiTest {
      */
     @Test
     public void addServerTest() {
-        //api.addServer();
-        
+        //InlineResponse20019 response = api.addServer();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -111,7 +112,7 @@ public class ServersApiTest {
      */
     @Test
     public void buyItNowServerOrderTest() {
-        //InlineResponse20026 response = api.buyItNowServerOrder();
+        //InlineResponse20027 response = api.buyItNowServerOrder();
         //assertNotNull(response);
         // TODO: test validations
         
@@ -367,7 +368,7 @@ public class ServersApiTest {
     @Test
     public void serversCancelTest() {
         Integer id = null;
-        //InlineResponse20019 response = api.serversCancel(id);
+        //InlineResponse20020 response = api.serversCancel(id);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -384,8 +385,8 @@ public class ServersApiTest {
     @Test
     public void updateServerInfoTest() {
         String id = null;
-        //api.updateServerInfo(id);
-        
+        //SuccessTextResponse response = api.updateServerInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
         
         

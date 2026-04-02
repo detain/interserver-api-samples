@@ -12,6 +12,7 @@
 #include "../model/queue_response.h"
 #include "../model/restore_request.h"
 #include "../model/reverse_dns_entries.h"
+#include "../model/service_order_post_response.h"
 #include "../model/success_text_response.h"
 #include "../model/text_response.h"
 #include "../model/vps.h"
@@ -39,7 +40,7 @@ typedef enum  { interserver_management_api_getVpsBackups_ALL_NULL = 0, interserv
 //
 // Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
 //
-void
+service_order_post_response_t*
 VPSAPI_addVps(apiClient_t *apiClient, vps_order_post_request_t *vps_order_post_request);
 
 
@@ -375,7 +376,7 @@ VPSAPI_putVps(apiClient_t *apiClient, vps_order_put_request_t *vps_order_put_req
 //
 // Updates settings on a VPS order.
 //
-void
+success_text_response_t*
 VPSAPI_updateVpsInfo(apiClient_t *apiClient, char *id);
 
 

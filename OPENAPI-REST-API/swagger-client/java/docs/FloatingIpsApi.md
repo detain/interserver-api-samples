@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="addFloatingIp"></a>
 # **addFloatingIp**
-> addFloatingIp()
+> ServiceOrderPostResponse addFloatingIp()
 
 Place Floating IP Order
 
@@ -54,7 +54,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 FloatingIpsApi apiInstance = new FloatingIpsApi();
 try {
-    apiInstance.addFloatingIp();
+    ServiceOrderPostResponse result = apiInstance.addFloatingIp();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FloatingIpsApi#addFloatingIp");
     e.printStackTrace();
@@ -66,7 +67,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -146,7 +147,7 @@ Name | Type | Description  | Notes
 
 <a name="getFloatingIpInfo"></a>
 # **getFloatingIpInfo**
-> getFloatingIpInfo(id)
+> Object getFloatingIpInfo(id)
 
 View Floating IP
 
@@ -184,7 +185,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 FloatingIpsApi apiInstance = new FloatingIpsApi();
 Integer id = 56; // Integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 try {
-    apiInstance.getFloatingIpInfo(id);
+    Object result = apiInstance.getFloatingIpInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FloatingIpsApi#getFloatingIpInfo");
     e.printStackTrace();
@@ -199,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -408,7 +410,7 @@ Name | Type | Description  | Notes
 
 <a name="getNewFloatingIp"></a>
 # **getNewFloatingIp**
-> getNewFloatingIp()
+> Object getNewFloatingIp()
 
 Get Floating IP Ordering Information
 
@@ -445,7 +447,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 FloatingIpsApi apiInstance = new FloatingIpsApi();
 try {
-    apiInstance.getNewFloatingIp();
+    Object result = apiInstance.getNewFloatingIp();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FloatingIpsApi#getNewFloatingIp");
     e.printStackTrace();
@@ -457,7 +460,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -670,7 +673,7 @@ null (empty response body)
 
 <a name="updateFloatingIpInfo"></a>
 # **updateFloatingIpInfo**
-> updateFloatingIpInfo(id)
+> SuccessTextResponse updateFloatingIpInfo(id)
 
 Update Floating IP
 
@@ -708,7 +711,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 FloatingIpsApi apiInstance = new FloatingIpsApi();
 String id = "id_example"; // String | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 try {
-    apiInstance.updateFloatingIpInfo(id);
+    SuccessTextResponse result = apiInstance.updateFloatingIpInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FloatingIpsApi#updateFloatingIpInfo");
     e.printStackTrace();
@@ -723,7 +727,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -13,20 +13,23 @@ require 'date'
 
 module SwaggerClient
   class InlineResponse20023
-    # A map of IP addresses to their current reverse DNS hostnames.
-    attr_accessor :ips
+    attr_accessor :success
+
+    attr_accessor :text
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ips' => :'ips'
+        :'success' => :'success',
+        :'text' => :'text'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ips' => :'Object'
+        :'success' => :'Object',
+        :'text' => :'Object'
       }
     end
 
@@ -51,10 +54,12 @@ module SwaggerClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ips')
-        if (value = attributes[:'ips']).is_a?(Hash)
-          self.ips = value
-        end
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
+      end
+
+      if attributes.key?(:'text')
+        self.text = attributes[:'text']
       end
     end
 
@@ -62,12 +67,22 @@ module SwaggerClient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @success.nil?
+        invalid_properties.push('invalid value for "success", success cannot be nil.')
+      end
+
+      if @text.nil?
+        invalid_properties.push('invalid value for "text", text cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @success.nil?
+      return false if @text.nil?
       true
     end
 
@@ -76,7 +91,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ips == o.ips
+          success == o.success &&
+          text == o.text
     end
 
     # @see the `==` method
@@ -88,7 +104,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ips].hash
+      [success, text].hash
     end
 
     # Builds the object from hash

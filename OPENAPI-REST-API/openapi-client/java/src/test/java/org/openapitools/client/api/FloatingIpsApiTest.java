@@ -17,6 +17,7 @@ import org.openapitools.client.ApiException;
 import org.openapitools.client.model.ChargeInvoiceRows;
 import org.openapitools.client.model.FloatingIpsCancel200Response;
 import org.openapitools.client.model.GetAccountInfo401Response;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -43,7 +44,7 @@ public class FloatingIpsApiTest {
      */
     @Test
     public void addFloatingIpTest() throws ApiException {
-        api.addFloatingIp();
+        ServiceOrderPostResponse response = api.addFloatingIp();
         // TODO: test validations
     }
 
@@ -71,7 +72,7 @@ public class FloatingIpsApiTest {
     @Test
     public void getFloatingIpInfoTest() throws ApiException {
         Integer id = null;
-        api.getFloatingIpInfo(id);
+        Object response = api.getFloatingIpInfo(id);
         // TODO: test validations
     }
 
@@ -125,7 +126,7 @@ public class FloatingIpsApiTest {
      */
     @Test
     public void getNewFloatingIpTest() throws ApiException {
-        api.getNewFloatingIp();
+        Object response = api.getNewFloatingIp();
         // TODO: test validations
     }
 
@@ -167,7 +168,7 @@ public class FloatingIpsApiTest {
     @Test
     public void updateFloatingIpInfoTest() throws ApiException {
         String id = null;
-        api.updateFloatingIpInfo(id);
+        SuccessTextResponse response = api.updateFloatingIpInfo(id);
         // TODO: test validations
     }
 

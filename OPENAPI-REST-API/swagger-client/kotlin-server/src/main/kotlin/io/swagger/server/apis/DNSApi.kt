@@ -41,6 +41,7 @@ import io.swagger.server.models.DnsRecord
 import io.swagger.server.models.DnsRecordType
 import io.swagger.server.models.DnsUpdateRecord
 import io.swagger.server.models.InlineResponse401
+import io.swagger.server.models.SuccessTextResponse
 
 @KtorExperimentalLocationsAPI
 fun Route.DNSApi() {
@@ -51,8 +52,17 @@ fun Route.DNSApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     post<Paths.addDnsRecord> {  _: Paths.addDnsRecord ->
         val principal = call.authentication.principal<ApiPrincipal>()
@@ -67,16 +77,34 @@ fun Route.DNSApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     delete<Paths.deleteDnsRecord> {  _: Paths.deleteDnsRecord ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     get<Paths.getDnsDomain> {  _: Paths.getDnsDomain ->
         val principal = call.authentication.principal<ApiPrincipal>()
@@ -141,7 +169,16 @@ fun Route.DNSApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
 }

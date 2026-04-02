@@ -31,6 +31,8 @@ import { LicensesCancel200Response } from '../model/licensesCancel200Response';
 // @ts-ignore
 import { LicensesOrder } from '../model/licensesOrder';
 // @ts-ignore
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
+// @ts-ignore
 import { SuccessTextResponse } from '../model/successTextResponse';
 
 // @ts-ignore
@@ -57,9 +59,9 @@ export class LicensesService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public addLicense(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public addLicense(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public addLicense(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public addLicense(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<ServiceOrderPostResponse>;
+    public addLicense(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addLicense(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addLicense(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -94,7 +96,7 @@ export class LicensesService extends BaseService {
 
         let localVarPath = `/licenses/order`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
@@ -657,9 +659,9 @@ export class LicensesService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public updateLicenseInfo(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public updateLicenseInfo(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public updateLicenseInfo(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public updateLicenseInfo(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<SuccessTextResponse>;
+    public updateLicenseInfo(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateLicenseInfo(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<SuccessTextResponse>>;
     public updateLicenseInfo(id: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateLicenseInfo.');
@@ -697,7 +699,7 @@ export class LicensesService extends BaseService {
 
         let localVarPath = `/licenses/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SuccessTextResponse>('post', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),

@@ -32,6 +32,7 @@ import ../models/model_domain_order
 import ../models/model_domain_row
 import ../models/model_domain_search_response
 import ../models/model_domain_whois_privacy_request
+import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_text_response
 import ../models/model_get_account_info401response
@@ -51,10 +52,11 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addDomain*(httpClient: HttpClient): Response =
+proc addDomain*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
   ## Place Domain Order
-  httpClient.post(basepath & "/domains/order")
 
+  let response = httpClient.post(basepath & "/domains/order")
+  constructResult[ServiceOrderPostResponse](response)
 
 
 proc addDomainDnssec*(httpClient: HttpClient, id: int, domainDnssecRequest: DomainDnssecRequest): (Option[SuccessTextResponse], Response) =
@@ -237,10 +239,11 @@ proc updateDomainContact*(httpClient: HttpClient, id: int, domainContactDetails:
   constructResult[SuccessTextResponse](response)
 
 
-proc updateDomainInfo*(httpClient: HttpClient, id: string): Response =
+proc updateDomainInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Update Domain Order
-  httpClient.post(basepath & fmt"/domains/{id}")
 
+  let response = httpClient.post(basepath & fmt"/domains/{id}")
+  constructResult[SuccessTextResponse](response)
 
 
 proc updateDomainNameservers*(httpClient: HttpClient, id: int, domainNameserverPutRequest: DomainNameserverPutRequest): (Option[TextResponse], Response) =

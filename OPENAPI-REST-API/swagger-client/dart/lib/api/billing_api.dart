@@ -313,7 +313,7 @@ if (automaticUse != null)
   /// Remove Credit Card
   ///
   /// Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
-  Future deleteAccountCreditCard(String id) async {
+  Future<String> deleteAccountCreditCard(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -356,9 +356,9 @@ if (automaticUse != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Delete Credit Card
@@ -811,7 +811,7 @@ if (automaticUse != null)
   /// Get Shopping Cart Contents
   ///
   /// Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
-  Future getBillingCart() async {
+  Future<Object> getBillingCart() async {
     Object postBody = null;
 
     // verify required params are set
@@ -851,9 +851,9 @@ if (automaticUse != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'Object') as Object ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get Credit Card Verification Requirements
@@ -1009,7 +1009,7 @@ if (automaticUse != null)
   /// List Prepay Balances
   ///
   /// Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
-  Future getBillingPrePays() async {
+  Future<Object> getBillingPrePays() async {
     Object postBody = null;
 
     // verify required params are set
@@ -1049,9 +1049,9 @@ if (automaticUse != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'Object') as Object ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get Invoices
@@ -1252,7 +1252,7 @@ if (terms != null)
   /// Update Credit Card
   ///
   /// Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
-  Future updateAccountCreditCard(int id) async {
+  Future<String> updateAccountCreditCard(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -1295,9 +1295,9 @@ if (terms != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Configure Affiliate Dock Settings

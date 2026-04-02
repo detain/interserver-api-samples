@@ -37,12 +37,13 @@ import myadmin-client-kotlin-server.infrastructure.ApiPrincipal
 import io.swagger.server.models.ChargeInvoiceRows
 import io.swagger.server.models.IdBuyIpBody
 import io.swagger.server.models.IdMigrationBody
-import io.swagger.server.models.InlineResponse20022
 import io.swagger.server.models.InlineResponse20023
 import io.swagger.server.models.InlineResponse20024
 import io.swagger.server.models.InlineResponse20025
+import io.swagger.server.models.InlineResponse20026
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.ReverseDnsEntries
+import io.swagger.server.models.ServiceOrderPostResponse
 import io.swagger.server.models.SuccessTextResponse
 import io.swagger.server.models.TextResponse
 import io.swagger.server.models.Website
@@ -60,8 +61,23 @@ fun Route.WebhostingApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     get<Paths.getNewWebsite> {  _: Paths.getNewWebsite ->
         val principal = call.authentication.principal<ApiPrincipal>()
@@ -505,8 +521,17 @@ fun Route.WebhostingApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     delete<Paths.webhostingCancel> {  _: Paths.webhostingCancel ->
         val principal = call.authentication.principal<ApiPrincipal>()

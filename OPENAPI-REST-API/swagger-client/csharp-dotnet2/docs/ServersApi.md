@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="addserver"></a>
 # **AddServer**
-> void AddServer ()
+> InlineResponse20019 AddServer ()
 
 Place Server Order
 
@@ -64,7 +64,8 @@ namespace Example
             try
             {
                 // Place Server Order
-                apiInstance.AddServer();
+                InlineResponse20019 result = apiInstance.AddServer();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -80,7 +81,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -95,7 +96,7 @@ void (empty response body)
 
 <a name="buyitnowserverorder"></a>
 # **BuyItNowServerOrder**
-> InlineResponse20026 BuyItNowServerOrder ()
+> InlineResponse20027 BuyItNowServerOrder ()
 
 Get Buy Now Server Options
 
@@ -134,7 +135,7 @@ namespace Example
             try
             {
                 // Get Buy Now Server Options
-                InlineResponse20026 result = apiInstance.BuyItNowServerOrder();
+                InlineResponse20027 result = apiInstance.BuyItNowServerOrder();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -151,7 +152,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -1209,7 +1210,7 @@ Name | Type | Description  | Notes
 
 <a name="serverscancel"></a>
 # **ServersCancel**
-> InlineResponse20019 ServersCancel (int? id)
+> InlineResponse20020 ServersCancel (int? id)
 
 Cancel Server Service
 
@@ -1249,7 +1250,7 @@ namespace Example
             try
             {
                 // Cancel Server Service
-                InlineResponse20019 result = apiInstance.ServersCancel(id);
+                InlineResponse20020 result = apiInstance.ServersCancel(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1269,7 +1270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -1284,7 +1285,7 @@ Name | Type | Description  | Notes
 
 <a name="updateserverinfo"></a>
 # **UpdateServerInfo**
-> void UpdateServerInfo (string id)
+> SuccessTextResponse UpdateServerInfo (string id)
 
 Update Server Order
 
@@ -1324,7 +1325,8 @@ namespace Example
             try
             {
                 // Update Server Order
-                apiInstance.UpdateServerInfo(id);
+                SuccessTextResponse result = apiInstance.UpdateServerInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1343,7 +1345,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

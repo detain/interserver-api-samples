@@ -28,6 +28,7 @@ import {
   PostWebsiteBuyIpRequest,
   PostWebsiteMigrationRequest,
   WebsitesOrder,
+  ServiceOrderPostResponse,
   WebsiteBackups,
   PostWebsiteBuyIp200Response,
 } from './models';
@@ -163,7 +164,7 @@ export class WebhostingApi extends Api {
    * Place Website Order
    * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
    */
-  async addWebsite(): Promise<any> {
+  async addWebsite(): Promise<ServiceOrderPostResponse> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -629,7 +630,7 @@ export class WebhostingApi extends Api {
    * Updates settings on a webhosting order.
    * @param params.id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
    */
-  async updateWebsiteInfo(params: IUpdateWebsiteInfoParams): Promise<any> {
+  async updateWebsiteInfo(params: IUpdateWebsiteInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateWebsiteInfo', params, 'id');
 

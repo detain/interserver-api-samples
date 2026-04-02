@@ -23,6 +23,7 @@ var _ MappedNullable = &CreateFirewallRule{}
 // CreateFirewallRule Create firewall rule for your ip
 type CreateFirewallRule struct {
 	DestinationPort *int32 `json:"destination_port,omitempty"`
+	// Source IP address to match. Use '0.0.0.0' to match any source.
 	SourceIp *string `json:"source_ip,omitempty"`
 	SourcePort *int32 `json:"source_port,omitempty"`
 	// 1 = TCP, 2 = UDP
@@ -41,7 +42,7 @@ func NewCreateFirewallRule(protocolId int32, xdpAction int32) *CreateFirewallRul
 	this := CreateFirewallRule{}
 	var destinationPort int32 = 80
 	this.DestinationPort = &destinationPort
-	var sourceIp string = "0"
+	var sourceIp string = "0.0.0.0"
 	this.SourceIp = &sourceIp
 	var sourcePort int32 = 0
 	this.SourcePort = &sourcePort
@@ -57,7 +58,7 @@ func NewCreateFirewallRuleWithDefaults() *CreateFirewallRule {
 	this := CreateFirewallRule{}
 	var destinationPort int32 = 80
 	this.DestinationPort = &destinationPort
-	var sourceIp string = "0"
+	var sourceIp string = "0.0.0.0"
 	this.SourceIp = &sourceIp
 	var sourcePort int32 = 0
 	this.SourcePort = &sourcePort

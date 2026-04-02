@@ -52,6 +52,7 @@ Sources/OpenAPIClient/Models/AccountInfoOauthConfigProvidersValue.swift
 Sources/OpenAPIClient/Models/AccountInfoOauthproviders.swift
 Sources/OpenAPIClient/Models/AccountInfoPost.swift
 Sources/OpenAPIClient/Models/AccountSshKey.swift
+Sources/OpenAPIClient/Models/AddServer200Response.swift
 Sources/OpenAPIClient/Models/AffiliateBannerRow.swift
 Sources/OpenAPIClient/Models/AffiliateDockSetup.swift
 Sources/OpenAPIClient/Models/AffiliatePaymentSetup.swift
@@ -384,6 +385,7 @@ Sources/OpenAPIClient/Models/ServersCancel200Response.swift
 Sources/OpenAPIClient/Models/Service.swift
 Sources/OpenAPIClient/Models/ServiceCategories.swift
 Sources/OpenAPIClient/Models/ServiceCategory.swift
+Sources/OpenAPIClient/Models/ServiceOrderPostResponse.swift
 Sources/OpenAPIClient/Models/ServiceType.swift
 Sources/OpenAPIClient/Models/ServiceTypes.swift
 Sources/OpenAPIClient/Models/Services.swift
@@ -503,6 +505,7 @@ docs/AccountInfoOauthConfigProvidersValue.md
 docs/AccountInfoOauthproviders.md
 docs/AccountInfoPost.md
 docs/AccountSshKey.md
+docs/AddServer200Response.md
 docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
@@ -847,6 +850,7 @@ docs/ServersCancel200Response.md
 docs/Service.md
 docs/ServiceCategories.md
 docs/ServiceCategory.md
+docs/ServiceOrderPostResponse.md
 docs/ServiceType.md
 docs/ServiceTypes.md
 docs/Services.md

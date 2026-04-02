@@ -279,13 +279,14 @@ void OAILicensesApi::addLicenseCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIServiceOrderPostResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addLicenseSignal();
-        Q_EMIT addLicenseSignalFull(worker);
+        Q_EMIT addLicenseSignal(output);
+        Q_EMIT addLicenseSignalFull(worker, output);
     } else {
-        Q_EMIT addLicenseSignalError(error_type, error_str);
+        Q_EMIT addLicenseSignalError(output, error_type, error_str);
         Q_EMIT addLicenseSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -908,13 +909,14 @@ void OAILicensesApi::updateLicenseInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateLicenseInfoSignal();
-        Q_EMIT updateLicenseInfoSignalFull(worker);
+        Q_EMIT updateLicenseInfoSignal(output);
+        Q_EMIT updateLicenseInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateLicenseInfoSignalError(error_type, error_str);
+        Q_EMIT updateLicenseInfoSignalError(output, error_type, error_str);
         Q_EMIT updateLicenseInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

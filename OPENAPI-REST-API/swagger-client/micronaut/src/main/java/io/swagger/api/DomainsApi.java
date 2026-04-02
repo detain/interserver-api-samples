@@ -20,6 +20,7 @@ import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
 import io.swagger.model.InlineResponse2002;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,10 +42,10 @@ public interface DomainsApi {
 
 
     @Operation(summary = "Place Domain Order", operationId = "addDomain", description = "Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order." , tags = {"Domains"})
+    @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/domains/order", produces = { "application/json" })
-    default Single<HttpResponse<Void>> addDomain() {
+    default Single<HttpResponse<ServiceOrderPostResponse>> addDomain() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -362,10 +363,10 @@ public interface DomainsApi {
 
 
     @Operation(summary = "Update Domain Order", operationId = "updateDomainInfo", description = "Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes." , tags = {"Domains"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/domains/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateDomainInfo(@Parameter(description = "The domain service ID. Use `domain_id` from `GET /domains`.") @PathVariable("id") String id) {
+    default Single<HttpResponse<SuccessTextResponse>> updateDomainInfo(@Parameter(description = "The domain service ID. Use `domain_id` from `GET /domains`.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

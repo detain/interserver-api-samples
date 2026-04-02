@@ -579,9 +579,9 @@ open class BackupsAPI: APIBase {
      - parameter id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateBackupInfo(id: Int32, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func updateBackupInfo(id: Int32, completion: @escaping ((_ data: SuccessTextResponse?, _ error: ErrorResponse?) -> Void)) {
         updateBackupInfoWithRequestBuilder(id: id).execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -597,10 +597,14 @@ open class BackupsAPI: APIBase {
        - name: sessionIdCookieAuth     - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateBackupInfoWithRequestBuilder(id: Int32) -> RequestBuilder<Void> {
+    open class func updateBackupInfoWithRequestBuilder(id: Int32) -> RequestBuilder<SuccessTextResponse> {
         var path = "/backups/{id}"
         let idPreEscape = "\(id)"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -611,7 +615,7 @@ open class BackupsAPI: APIBase {
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

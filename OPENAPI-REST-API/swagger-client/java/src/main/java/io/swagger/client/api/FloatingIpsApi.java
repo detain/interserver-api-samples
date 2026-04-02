@@ -30,6 +30,7 @@ import io.swagger.client.model.ChargeInvoiceRows;
 import io.swagger.client.model.InlineResponse2003;
 import io.swagger.client.model.InlineResponse401;
 import io.swagger.client.model.IpObject;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 
 import java.lang.reflect.Type;
@@ -128,21 +129,24 @@ public class FloatingIpsApi {
     /**
      * Place Floating IP Order
      * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addFloatingIp() throws ApiException {
-        addFloatingIpWithHttpInfo();
+    public ServiceOrderPostResponse addFloatingIp() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> resp = addFloatingIpWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Place Floating IP Order
      * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addFloatingIpWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addFloatingIpWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = addFloatingIpValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -152,7 +156,7 @@ public class FloatingIpsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addFloatingIpAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addFloatingIpAsync(final ApiCallback<ServiceOrderPostResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -174,7 +178,8 @@ public class FloatingIpsApi {
         }
 
         com.squareup.okhttp.Call call = addFloatingIpValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -378,22 +383,25 @@ public class FloatingIpsApi {
      * View Floating IP
      * Returns detailed information about a specific Floating IP service including its current target IP assignment.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getFloatingIpInfo(Integer id) throws ApiException {
-        getFloatingIpInfoWithHttpInfo(id);
+    public Object getFloatingIpInfo(Integer id) throws ApiException {
+        ApiResponse<Object> resp = getFloatingIpInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * View Floating IP
      * Returns detailed information about a specific Floating IP service including its current target IP assignment.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getFloatingIpInfoWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<Object> getFloatingIpInfoWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = getFloatingIpInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -404,7 +412,7 @@ public class FloatingIpsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getFloatingIpInfoAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call getFloatingIpInfoAsync(Integer id, final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -426,7 +434,8 @@ public class FloatingIpsApi {
         }
 
         com.squareup.okhttp.Call call = getFloatingIpInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -866,21 +875,24 @@ public class FloatingIpsApi {
     /**
      * Get Floating IP Ordering Information
      * Retrieves available options and pricing for ordering a new Floating IP.
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getNewFloatingIp() throws ApiException {
-        getNewFloatingIpWithHttpInfo();
+    public Object getNewFloatingIp() throws ApiException {
+        ApiResponse<Object> resp = getNewFloatingIpWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Get Floating IP Ordering Information
      * Retrieves available options and pricing for ordering a new Floating IP.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getNewFloatingIpWithHttpInfo() throws ApiException {
+    public ApiResponse<Object> getNewFloatingIpWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getNewFloatingIpValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -890,7 +902,7 @@ public class FloatingIpsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getNewFloatingIpAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call getNewFloatingIpAsync(final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -912,7 +924,8 @@ public class FloatingIpsApi {
         }
 
         com.squareup.okhttp.Call call = getNewFloatingIpValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1377,22 +1390,25 @@ public class FloatingIpsApi {
      * Update Floating IP
      * Updates settings on a Floating IP service, such as its label or configuration metadata.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateFloatingIpInfo(String id) throws ApiException {
-        updateFloatingIpInfoWithHttpInfo(id);
+    public SuccessTextResponse updateFloatingIpInfo(String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateFloatingIpInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update Floating IP
      * Updates settings on a Floating IP service, such as its label or configuration metadata.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateFloatingIpInfoWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateFloatingIpInfoWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = updateFloatingIpInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1403,7 +1419,7 @@ public class FloatingIpsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateFloatingIpInfoAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateFloatingIpInfoAsync(String id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1425,7 +1441,8 @@ public class FloatingIpsApi {
         }
 
         com.squareup.okhttp.Call call = updateFloatingIpInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

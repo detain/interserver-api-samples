@@ -21,6 +21,7 @@ import 'package:openapi/src/model/quickserver_row.dart';
 import 'package:openapi/src/model/quickservers_cancel200_response.dart';
 import 'package:openapi/src/model/restore_request.dart';
 import 'package:openapi/src/model/reverse_dns_entries.dart';
+import 'package:openapi/src/model/service_order_post_response.dart';
 import 'package:openapi/src/model/success_text_response.dart';
 import 'package:openapi/src/model/text_response.dart';
 import 'package:openapi/src/model/vps_backup_rows.dart';
@@ -45,9 +46,9 @@ class QuickServersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [ServiceOrderPostResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> addQs({ 
+  Future<Response<ServiceOrderPostResponse>> addQs({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -93,7 +94,35 @@ class QuickServersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    ServiceOrderPostResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ServiceOrderPostResponse),
+      ) as ServiceOrderPostResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ServiceOrderPostResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Delete QuickServer Backup
@@ -3772,9 +3801,9 @@ class QuickServersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [SuccessTextResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> updateQsInfo({ 
+  Future<Response<SuccessTextResponse>> updateQsInfo({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3821,7 +3850,35 @@ class QuickServersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    SuccessTextResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SuccessTextResponse),
+      ) as SuccessTextResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<SuccessTextResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
 }

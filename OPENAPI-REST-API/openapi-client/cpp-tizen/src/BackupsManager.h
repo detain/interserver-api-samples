@@ -260,8 +260,8 @@ bool getNewBackupAsync(char * accessToken,
  */
 bool updateBackupInfoSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update Backup Information. *Asynchronous*
  *
@@ -273,8 +273,8 @@ bool updateBackupInfoSync(char * accessToken,
  */
 bool updateBackupInfoAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Validate Backup Order. *Synchronous*

@@ -13,7 +13,7 @@
 //
 // Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
 //
-void
+service_order_post_response_t*
 LicensesAPI_addLicense(apiClient_t *apiClient)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -46,15 +46,25 @@ LicensesAPI_addLicense(apiClient_t *apiClient)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    service_order_post_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LicensesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = service_order_post_response_parseFromJSON(LicensesAPIlocalVarJSON);
+        cJSON_Delete(LicensesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -66,6 +76,10 @@ end:
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -826,7 +840,7 @@ end:
 //
 // Updates settings on a license service such as its assigned IP.
 //
-void
+success_text_response_t*
 LicensesAPI_updateLicenseInfo(apiClient_t *apiClient, char *id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -871,15 +885,25 @@ LicensesAPI_updateLicenseInfo(apiClient_t *apiClient, char *id)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *LicensesAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(LicensesAPIlocalVarJSON);
+        cJSON_Delete(LicensesAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -892,6 +916,10 @@ end:
     
     free(localVarPath);
     free(localVarToReplace_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

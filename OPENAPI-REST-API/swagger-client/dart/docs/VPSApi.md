@@ -55,7 +55,7 @@ Method | HTTP request | Description
 [**vPSCancel**](VPSApi.md#vPSCancel) | **DELETE** /vps/{id} | Cancel VPS Service
 
 # **addVps**
-> addVps(body, osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment)
+> ServiceOrderPostResponse addVps(body, osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment)
 
 Place VPS Order
 
@@ -92,7 +92,8 @@ var rootpass = rootpass_example; // String |
 var comment = comment_example; // String | 
 
 try {
-    api_instance.addVps(body, osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+    var result = api_instance.addVps(body, osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+    print(result);
 } catch (e) {
     print("Exception when calling VPSApi->addVps: $e\n");
 }
@@ -117,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2441,7 +2442,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateVpsInfo**
-> updateVpsInfo(id)
+> SuccessTextResponse updateVpsInfo(id)
 
 Update VPS Order
 
@@ -2467,7 +2468,8 @@ var api_instance = new VPSApi();
 var id = id_example; // String | VPS ID number.
 
 try {
-    api_instance.updateVpsInfo(id);
+    var result = api_instance.updateVpsInfo(id);
+    print(result);
 } catch (e) {
     print("Exception when calling VPSApi->updateVpsInfo: $e\n");
 }
@@ -2481,7 +2483,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -2495,7 +2497,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **vPSCancel**
-> InlineResponse20021 vPSCancel(id)
+> InlineResponse20022 vPSCancel(id)
 
 Cancel VPS Service
 
@@ -2536,7 +2538,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 

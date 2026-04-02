@@ -6,11 +6,6 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from myadmin-client-python-flask.models.base_model_ import Model
-from myadmin-client-python-flask.models.inline_response20026_bandwidth import InlineResponse20026Bandwidth  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20026_cp import InlineResponse20026Cp  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20026_ips import InlineResponse20026Ips  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20026_os import InlineResponse20026Os  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20026_raid import InlineResponse20026Raid  # noqa: F401,E501
 from myadmin-client-python-flask import util
 
 
@@ -19,40 +14,25 @@ class InlineResponse20026(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, bandwidth: List[InlineResponse20026Bandwidth]=None, ips: List[InlineResponse20026Ips]=None, os: List[InlineResponse20026Os]=None, cp: List[InlineResponse20026Cp]=None, raid: List[InlineResponse20026Raid]=None):  # noqa: E501
+    def __init__(self, text: str=None, ticket: int=None):  # noqa: E501
         """InlineResponse20026 - a model defined in Swagger
 
-        :param bandwidth: The bandwidth of this InlineResponse20026.  # noqa: E501
-        :type bandwidth: List[InlineResponse20026Bandwidth]
-        :param ips: The ips of this InlineResponse20026.  # noqa: E501
-        :type ips: List[InlineResponse20026Ips]
-        :param os: The os of this InlineResponse20026.  # noqa: E501
-        :type os: List[InlineResponse20026Os]
-        :param cp: The cp of this InlineResponse20026.  # noqa: E501
-        :type cp: List[InlineResponse20026Cp]
-        :param raid: The raid of this InlineResponse20026.  # noqa: E501
-        :type raid: List[InlineResponse20026Raid]
+        :param text: The text of this InlineResponse20026.  # noqa: E501
+        :type text: str
+        :param ticket: The ticket of this InlineResponse20026.  # noqa: E501
+        :type ticket: int
         """
         self.swagger_types = {
-            'bandwidth': List[InlineResponse20026Bandwidth],
-            'ips': List[InlineResponse20026Ips],
-            'os': List[InlineResponse20026Os],
-            'cp': List[InlineResponse20026Cp],
-            'raid': List[InlineResponse20026Raid]
+            'text': str,
+            'ticket': int
         }
 
         self.attribute_map = {
-            'bandwidth': 'bandwidth',
-            'ips': 'ips',
-            'os': 'os',
-            'cp': 'cp',
-            'raid': 'raid'
+            'text': 'text',
+            'ticket': 'ticket'
         }
-        self._bandwidth = bandwidth
-        self._ips = ips
-        self._os = os
-        self._cp = cp
-        self._raid = raid
+        self._text = text
+        self._ticket = ticket
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20026':
@@ -66,106 +46,47 @@ class InlineResponse20026(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def bandwidth(self) -> List[InlineResponse20026Bandwidth]:
-        """Gets the bandwidth of this InlineResponse20026.
+    def text(self) -> str:
+        """Gets the text of this InlineResponse20026.
 
+        Confirmation message.  # noqa: E501
 
-        :return: The bandwidth of this InlineResponse20026.
-        :rtype: List[InlineResponse20026Bandwidth]
+        :return: The text of this InlineResponse20026.
+        :rtype: str
         """
-        return self._bandwidth
+        return self._text
 
-    @bandwidth.setter
-    def bandwidth(self, bandwidth: List[InlineResponse20026Bandwidth]):
-        """Sets the bandwidth of this InlineResponse20026.
+    @text.setter
+    def text(self, text: str):
+        """Sets the text of this InlineResponse20026.
 
+        Confirmation message.  # noqa: E501
 
-        :param bandwidth: The bandwidth of this InlineResponse20026.
-        :type bandwidth: List[InlineResponse20026Bandwidth]
+        :param text: The text of this InlineResponse20026.
+        :type text: str
         """
 
-        self._bandwidth = bandwidth
+        self._text = text
 
     @property
-    def ips(self) -> List[InlineResponse20026Ips]:
-        """Gets the ips of this InlineResponse20026.
+    def ticket(self) -> int:
+        """Gets the ticket of this InlineResponse20026.
 
+        The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  # noqa: E501
 
-        :return: The ips of this InlineResponse20026.
-        :rtype: List[InlineResponse20026Ips]
+        :return: The ticket of this InlineResponse20026.
+        :rtype: int
         """
-        return self._ips
+        return self._ticket
 
-    @ips.setter
-    def ips(self, ips: List[InlineResponse20026Ips]):
-        """Sets the ips of this InlineResponse20026.
+    @ticket.setter
+    def ticket(self, ticket: int):
+        """Sets the ticket of this InlineResponse20026.
 
+        The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  # noqa: E501
 
-        :param ips: The ips of this InlineResponse20026.
-        :type ips: List[InlineResponse20026Ips]
-        """
-
-        self._ips = ips
-
-    @property
-    def os(self) -> List[InlineResponse20026Os]:
-        """Gets the os of this InlineResponse20026.
-
-
-        :return: The os of this InlineResponse20026.
-        :rtype: List[InlineResponse20026Os]
-        """
-        return self._os
-
-    @os.setter
-    def os(self, os: List[InlineResponse20026Os]):
-        """Sets the os of this InlineResponse20026.
-
-
-        :param os: The os of this InlineResponse20026.
-        :type os: List[InlineResponse20026Os]
+        :param ticket: The ticket of this InlineResponse20026.
+        :type ticket: int
         """
 
-        self._os = os
-
-    @property
-    def cp(self) -> List[InlineResponse20026Cp]:
-        """Gets the cp of this InlineResponse20026.
-
-
-        :return: The cp of this InlineResponse20026.
-        :rtype: List[InlineResponse20026Cp]
-        """
-        return self._cp
-
-    @cp.setter
-    def cp(self, cp: List[InlineResponse20026Cp]):
-        """Sets the cp of this InlineResponse20026.
-
-
-        :param cp: The cp of this InlineResponse20026.
-        :type cp: List[InlineResponse20026Cp]
-        """
-
-        self._cp = cp
-
-    @property
-    def raid(self) -> List[InlineResponse20026Raid]:
-        """Gets the raid of this InlineResponse20026.
-
-
-        :return: The raid of this InlineResponse20026.
-        :rtype: List[InlineResponse20026Raid]
-        """
-        return self._raid
-
-    @raid.setter
-    def raid(self, raid: List[InlineResponse20026Raid]):
-        """Sets the raid of this InlineResponse20026.
-
-
-        :param raid: The raid of this InlineResponse20026.
-        :type raid: List[InlineResponse20026Raid]
-        """
-
-        self._raid = raid
+        self._ticket = ticket

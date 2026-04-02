@@ -85,7 +85,7 @@ BackupsAPI_getNewBackup(apiClient_t *apiClient);
 //
 // Updates backup storage service metadata, such as stored credentials or settings for the order.
 //
-void
+success_text_response_t*
 BackupsAPI_updateBackupInfo(apiClient_t *apiClient, int *id);
 
 

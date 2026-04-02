@@ -49,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * LicenseServiceInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-25T16:38:48.461562589-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class LicenseServiceInfo {
   public static final String SERIALIZED_NAME_LICENSE_ID = "license_id";
   @SerializedName(SERIALIZED_NAME_LICENSE_ID)

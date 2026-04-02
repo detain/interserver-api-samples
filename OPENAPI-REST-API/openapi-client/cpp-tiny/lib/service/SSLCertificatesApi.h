@@ -10,6 +10,8 @@
 
 #include "ChargeInvoiceRows.h"
 #include "GetAccountInfo_401_response.h"
+#include "Object.h"
+#include "ServiceOrderPostResponse.h"
 #include "SslCancel_200_response.h"
 #include "SuccessTextResponse.h"
 
@@ -32,7 +34,7 @@ public:
     * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
     */
     Response<
-            String
+                ServiceOrderPostResponse
         >
     addSsl(
     );
@@ -42,7 +44,7 @@ public:
     * Retrieves available SSL certificate types and pricing for ordering.
     */
     Response<
-            String
+                Object
         >
     getNewSsl(
     );
@@ -53,7 +55,7 @@ public:
     * \param id SSL certificate ID number. *Required*
     */
     Response<
-            String
+                Object
         >
     getSslInfo(
             
@@ -129,7 +131,7 @@ public:
     * \param id SSL certificate ID number. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateSslInfo(
             

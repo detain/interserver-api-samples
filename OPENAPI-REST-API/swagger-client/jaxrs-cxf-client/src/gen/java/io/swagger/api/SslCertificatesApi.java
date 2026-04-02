@@ -1,8 +1,9 @@
 package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20021;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 
 import java.io.InputStream;
@@ -41,9 +42,9 @@ public interface SslCertificatesApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Place SSL Cert Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void addSsl();
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public ServiceOrderPostResponse addSsl();
 
     /**
      * SSL Cert Ordering Information
@@ -56,9 +57,9 @@ public interface SslCertificatesApi  {
     @Produces({ "application/json" })
     @Operation(summary = "SSL Cert Ordering Information", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void getNewSsl();
+        @ApiResponse(responseCode = "200", description = "Available SSL certificate types and pricing for ordering.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public Object getNewSsl();
 
     /**
      * Get SSL Cert Info
@@ -71,9 +72,9 @@ public interface SslCertificatesApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Get SSL Cert Info", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void getSslInfo(@PathParam("id") Integer id);
+        @ApiResponse(responseCode = "200", description = "Detailed SSL certificate information.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public Object getSslInfo(@PathParam("id") Integer id);
 
     /**
      * Get SSL Cert Invoices
@@ -147,9 +148,9 @@ public interface SslCertificatesApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Cancel SSL Certificate Service", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "SSL Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20020.class))),
+        @ApiResponse(responseCode = "200", description = "SSL Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20021.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
-    public InlineResponse20020 sslCancel(@PathParam("id") Integer id);
+    public InlineResponse20021 sslCancel(@PathParam("id") Integer id);
 
     /**
      * Update SSL Cert Order
@@ -162,7 +163,7 @@ public interface SslCertificatesApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update SSL Cert Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateSslInfo(@PathParam("id") String id);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse updateSslInfo(@PathParam("id") String id);
 }

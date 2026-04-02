@@ -53,8 +53,8 @@ open class DNSAPI {
     /// - name: sessionIdHeaderAuth
     /// - parameter domain: (form) The domain name. 
     /// - parameter ip: (form) IP Address to point the domain to. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func addDnsDomain(domain: String, ip: String) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func addDnsDomain(domain: String, ip: String) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -89,7 +89,7 @@ open class DNSAPI {
                 request.setValue("multipart/form-data; boundary=\(multipartBoundary)", forHTTPHeaderField: "Content-Type")
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -103,7 +103,7 @@ open class DNSAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -246,8 +246,8 @@ open class DNSAPI {
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
     /// - parameter id: (path) The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func deleteDnsDomain(id: String) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func deleteDnsDomain(id: String) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -264,7 +264,7 @@ open class DNSAPI {
                 request.httpMethod = "DELETE"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -278,7 +278,7 @@ open class DNSAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -310,8 +310,8 @@ open class DNSAPI {
     /// - name: sessionIdHeaderAuth
     /// - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
     /// - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func deleteDnsRecord(domainId: Int, recordId: Int) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func deleteDnsRecord(domainId: Int, recordId: Int) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -329,7 +329,7 @@ open class DNSAPI {
                 request.httpMethod = "DELETE"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -343,7 +343,7 @@ open class DNSAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -507,8 +507,8 @@ open class DNSAPI {
     /// - parameter disabled: (form)  (optional)
     /// - parameter ordername: (form)  (optional)
     /// - parameter auth: (form)  (optional)
-    /// - returns: AnyPublisher<Void, Error> 
-    open func updateDnsRecord(domainId: Int, recordId: Int, name: String? = nil, type: DnsRecordType? = nil, content: String? = nil, ttl: String? = nil, prio: String? = nil, disabled: String? = nil, ordername: String? = nil, auth: String? = nil) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func updateDnsRecord(domainId: Int, recordId: Int, name: String? = nil, type: DnsRecordType? = nil, content: String? = nil, ttl: String? = nil, prio: String? = nil, disabled: String? = nil, ordername: String? = nil, auth: String? = nil) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -603,7 +603,7 @@ open class DNSAPI {
                 request.setValue("multipart/form-data; boundary=\(multipartBoundary)", forHTTPHeaderField: "Content-Type")
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -617,7 +617,7 @@ open class DNSAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()

@@ -2923,7 +2923,7 @@ export interface CreateFirewallRule {
      */
     destination_port?: number;
     /**
-     * 
+     * Source IP address to match. Use '0.0.0.0' to match any source.
      * @type {string}
      * @memberof CreateFirewallRule
      */
@@ -6990,17 +6990,23 @@ export interface InlineResponse20018ServiceTypes {
  */
 export interface InlineResponse20019 {
     /**
-     * 
-     * @type {boolean}
-     * @memberof InlineResponse20019
-     */
-    success: boolean;
-    /**
-     * 
+     * Status message.
      * @type {string}
      * @memberof InlineResponse20019
      */
-    text: string;
+    text?: string;
+    /**
+     * Invoice ID for payment.
+     * @type {number}
+     * @memberof InlineResponse20019
+     */
+    invoice?: number;
+    /**
+     * Server order ID.
+     * @type {number}
+     * @memberof InlineResponse20019
+     */
+    order?: number;
 }
 /**
  * 
@@ -7085,11 +7091,17 @@ export interface InlineResponse20022 {
  */
 export interface InlineResponse20023 {
     /**
-     * A map of IP addresses to their current reverse DNS hostnames.
-     * @type {{ [key: string]: string; }}
+     * 
+     * @type {boolean}
      * @memberof InlineResponse20023
      */
-    ips?: { [key: string]: string; };
+    success: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse20023
+     */
+    text: string;
 }
 /**
  * 
@@ -7098,17 +7110,11 @@ export interface InlineResponse20023 {
  */
 export interface InlineResponse20024 {
     /**
-     * 
-     * @type {string}
+     * A map of IP addresses to their current reverse DNS hostnames.
+     * @type {{ [key: string]: string; }}
      * @memberof InlineResponse20024
      */
-    message?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof InlineResponse20024
-     */
-    success?: boolean;
+    ips?: { [key: string]: string; };
 }
 /**
  * 
@@ -7117,17 +7123,17 @@ export interface InlineResponse20024 {
  */
 export interface InlineResponse20025 {
     /**
-     * Confirmation message.
+     * 
      * @type {string}
      * @memberof InlineResponse20025
      */
-    text?: string;
+    message?: string;
     /**
-     * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
-     * @type {number}
+     * 
+     * @type {boolean}
      * @memberof InlineResponse20025
      */
-    ticket?: number;
+    success?: boolean;
 }
 /**
  * 
@@ -7136,194 +7142,213 @@ export interface InlineResponse20025 {
  */
 export interface InlineResponse20026 {
     /**
-     * 
-     * @type {Array<InlineResponse20026Bandwidth>}
+     * Confirmation message.
+     * @type {string}
      * @memberof InlineResponse20026
      */
-    bandwidth?: Array<InlineResponse20026Bandwidth>;
+    text?: string;
     /**
-     * 
-     * @type {Array<InlineResponse20026Ips>}
+     * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+     * @type {number}
      * @memberof InlineResponse20026
      */
-    ips?: Array<InlineResponse20026Ips>;
-    /**
-     * 
-     * @type {Array<InlineResponse20026Os>}
-     * @memberof InlineResponse20026
-     */
-    os?: Array<InlineResponse20026Os>;
-    /**
-     * 
-     * @type {Array<InlineResponse20026Cp>}
-     * @memberof InlineResponse20026
-     */
-    cp?: Array<InlineResponse20026Cp>;
-    /**
-     * 
-     * @type {Array<InlineResponse20026Raid>}
-     * @memberof InlineResponse20026
-     */
-    raid?: Array<InlineResponse20026Raid>;
+    ticket?: number;
 }
 /**
  * 
  * @export
- * @interface InlineResponse20026Bandwidth
+ * @interface InlineResponse20027
  */
-export interface InlineResponse20026Bandwidth {
+export interface InlineResponse20027 {
+    /**
+     * 
+     * @type {Array<InlineResponse20027Bandwidth>}
+     * @memberof InlineResponse20027
+     */
+    bandwidth?: Array<InlineResponse20027Bandwidth>;
+    /**
+     * 
+     * @type {Array<InlineResponse20027Ips>}
+     * @memberof InlineResponse20027
+     */
+    ips?: Array<InlineResponse20027Ips>;
+    /**
+     * 
+     * @type {Array<InlineResponse20027Os>}
+     * @memberof InlineResponse20027
+     */
+    os?: Array<InlineResponse20027Os>;
+    /**
+     * 
+     * @type {Array<InlineResponse20027Cp>}
+     * @memberof InlineResponse20027
+     */
+    cp?: Array<InlineResponse20027Cp>;
+    /**
+     * 
+     * @type {Array<InlineResponse20027Raid>}
+     * @memberof InlineResponse20027
+     */
+    raid?: Array<InlineResponse20027Raid>;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse20027Bandwidth
+ */
+export interface InlineResponse20027Bandwidth {
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Bandwidth
+     * @memberof InlineResponse20027Bandwidth
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Bandwidth
+     * @memberof InlineResponse20027Bandwidth
      */
     short_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Bandwidth
+     * @memberof InlineResponse20027Bandwidth
      */
     long_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Bandwidth
+     * @memberof InlineResponse20027Bandwidth
      */
     monthly_price?: string;
 }
 /**
  * 
  * @export
- * @interface InlineResponse20026Cp
+ * @interface InlineResponse20027Cp
  */
-export interface InlineResponse20026Cp {
+export interface InlineResponse20027Cp {
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Cp
+     * @memberof InlineResponse20027Cp
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Cp
+     * @memberof InlineResponse20027Cp
      */
     short_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Cp
+     * @memberof InlineResponse20027Cp
      */
     long_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Cp
+     * @memberof InlineResponse20027Cp
      */
     os_type?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Cp
+     * @memberof InlineResponse20027Cp
      */
     monthly_price?: string;
 }
 /**
  * 
  * @export
- * @interface InlineResponse20026Ips
+ * @interface InlineResponse20027Ips
  */
-export interface InlineResponse20026Ips {
+export interface InlineResponse20027Ips {
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Ips
+     * @memberof InlineResponse20027Ips
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Ips
+     * @memberof InlineResponse20027Ips
      */
     short_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Ips
+     * @memberof InlineResponse20027Ips
      */
     long_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Ips
+     * @memberof InlineResponse20027Ips
      */
     monthly_price?: string;
 }
 /**
  * 
  * @export
- * @interface InlineResponse20026Os
+ * @interface InlineResponse20027Os
  */
-export interface InlineResponse20026Os {
+export interface InlineResponse20027Os {
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Os
+     * @memberof InlineResponse20027Os
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Os
+     * @memberof InlineResponse20027Os
      */
     short_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Os
+     * @memberof InlineResponse20027Os
      */
     long_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Os
+     * @memberof InlineResponse20027Os
      */
     monthly_price?: string;
 }
 /**
  * 
  * @export
- * @interface InlineResponse20026Raid
+ * @interface InlineResponse20027Raid
  */
-export interface InlineResponse20026Raid {
+export interface InlineResponse20027Raid {
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Raid
+     * @memberof InlineResponse20027Raid
      */
     id?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Raid
+     * @memberof InlineResponse20027Raid
      */
     short_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Raid
+     * @memberof InlineResponse20027Raid
      */
     long_desc?: string;
     /**
      * 
      * @type {string}
-     * @memberof InlineResponse20026Raid
+     * @memberof InlineResponse20027Raid
      */
     monthly_price?: string;
 }
@@ -12058,7 +12083,7 @@ export interface ServerExtraInfoTables {
     assets: ServerAssets;
 }
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  * @export
  * @interface ServerIpmiLiveInfo
  */
@@ -13794,6 +13819,61 @@ export interface ServiceCategory {
      * @memberof ServiceCategory
      */
     category_module: string;
+}
+/**
+ * Generic response returned after placing a service order. Contains invoice IDs for payment and the new service ID.
+ * @export
+ * @interface ServiceOrderPostResponse
+ */
+export interface ServiceOrderPostResponse {
+    /**
+     * Whether the order was accepted and can proceed to payment.
+     * @type {boolean}
+     * @memberof ServiceOrderPostResponse
+     */
+    _continue?: boolean;
+    /**
+     * List of validation errors (empty on success).
+     * @type {Array<string>}
+     * @memberof ServiceOrderPostResponse
+     */
+    errors?: Array<string>;
+    /**
+     * Total cost of the order.
+     * @type {string}
+     * @memberof ServiceOrderPostResponse
+     */
+    total_cost?: string;
+    /**
+     * Primary invoice ID for payment.
+     * @type {string}
+     * @memberof ServiceOrderPostResponse
+     */
+    iid?: string;
+    /**
+     * All invoice identifiers associated with the order.
+     * @type {Array<string>}
+     * @memberof ServiceOrderPostResponse
+     */
+    iids?: Array<string>;
+    /**
+     * Numeric invoice IDs for use with billing endpoints.
+     * @type {Array<string>}
+     * @memberof ServiceOrderPostResponse
+     */
+    real_iids?: Array<string>;
+    /**
+     * The new service ID created by the order.
+     * @type {number}
+     * @memberof ServiceOrderPostResponse
+     */
+    serviceId?: number;
+    /**
+     * Human-readable description of the invoice.
+     * @type {string}
+     * @memberof ServiceOrderPostResponse
+     */
+    invoice_description?: string;
 }
 /**
  * A general grouping of services within a category.
@@ -18924,12 +19004,12 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAccountInfo(name: string, company: string, address: string, address2: string, city: string, state: string, zip: string, country: string, phone: string, locale: string, email_invoices: string, email_abuse: string, disable_reset: boolean, disable_reinstall: boolean, disable_server_notifications: boolean, disable_email_notifications: boolean, gstin: string, body: AccountInfoPost, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateAccountInfo(name: string, company: string, address: string, address2: string, city: string, state: string, zip: string, country: string, phone: string, locale: string, email_invoices: string, email_abuse: string, disable_reset: boolean, disable_reinstall: boolean, disable_server_notifications: boolean, disable_email_notifications: boolean, gstin: string, body: AccountInfoPost, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = AccountApiFetchParamCreator(configuration).updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -18945,12 +19025,12 @@ export const AccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAccountIpLimits(start: string, end: string, body: IpLimitRange, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateAccountIpLimits(start: string, end: string, body: IpLimitRange, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = AccountApiFetchParamCreator(configuration).updateAccountIpLimits(start, end, body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -20202,12 +20282,12 @@ export const BackupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateBackupInfo(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateBackupInfo(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = BackupsApiFetchParamCreator(configuration).updateBackupInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -22372,12 +22452,12 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAccountCreditCard(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        deleteAccountCreditCard(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = BillingApiFetchParamCreator(configuration).deleteAccountCreditCard(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -22557,12 +22637,12 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBillingCart(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        getBillingCart(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
             const localVarFetchArgs = BillingApiFetchParamCreator(configuration).getBillingCart(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -22631,12 +22711,12 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getBillingPrePays(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        getBillingPrePays(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
             const localVarFetchArgs = BillingApiFetchParamCreator(configuration).getBillingPrePays(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -22716,12 +22796,12 @@ export const BillingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateAccountCreditCard(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateAccountCreditCard(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = BillingApiFetchParamCreator(configuration).updateAccountCreditCard(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -24082,12 +24162,12 @@ export const DNSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addDnsDomain(domain: string, ip: string, body: DnsNewDomain, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addDnsDomain(domain: string, ip: string, body: DnsNewDomain, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = DNSApiFetchParamCreator(configuration).addDnsDomain(domain, ip, body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -24126,12 +24206,12 @@ export const DNSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteDnsDomain(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        deleteDnsDomain(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = DNSApiFetchParamCreator(configuration).deleteDnsDomain(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -24146,12 +24226,12 @@ export const DNSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteDnsRecord(domainId: number, recordId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        deleteDnsRecord(domainId: number, recordId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = DNSApiFetchParamCreator(configuration).deleteDnsRecord(domainId, recordId, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -24212,12 +24292,12 @@ export const DNSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDnsRecord(name: string, type: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string, body: DnsUpdateRecord, domainId: number, recordId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateDnsRecord(name: string, type: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string, body: DnsUpdateRecord, domainId: number, recordId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = DNSApiFetchParamCreator(configuration).updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -26394,12 +26474,12 @@ export const DomainsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addDomain(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addDomain(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = DomainsApiFetchParamCreator(configuration).addDomain(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -26910,12 +26990,12 @@ export const DomainsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDomainInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateDomainInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = DomainsApiFetchParamCreator(configuration).updateDomainInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -28266,12 +28346,12 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addFloatingIp(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addFloatingIp(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).addFloatingIp(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -28304,12 +28384,12 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getFloatingIpInfo(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        getFloatingIpInfo(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).getFloatingIpInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -28378,12 +28458,12 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNewFloatingIp(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        getNewFloatingIp(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).getNewFloatingIp(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -28436,12 +28516,12 @@ export const FloatingIPsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateFloatingIpInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateFloatingIpInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).updateFloatingIpInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -29286,12 +29366,12 @@ export const LicensesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addLicense(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addLicense(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = LicensesApiFetchParamCreator(configuration).addLicense(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -29475,12 +29555,12 @@ export const LicensesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateLicenseInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateLicenseInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = LicensesApiFetchParamCreator(configuration).updateLicenseInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -31427,14 +31507,14 @@ export const MailApiFetchParamCreator = function (configuration?: Configuration)
          * @param {string} [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
          * @param {string} [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
          * @param {string} [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
          * @param {string} [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
          * @param {string} [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
          * @param {number} [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
          * @param {number} [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
          * @param {number} [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
          * @param {StartDate} [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-         * @param {EndDate} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+         * @param {EndDate} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
          * @param {string} [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
          * @param {string} [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
          * @param {string} [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -31574,12 +31654,12 @@ export const MailApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addMail(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addMail(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = MailApiFetchParamCreator(configuration).addMail(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -32064,12 +32144,12 @@ export const MailApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMailInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateMailInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = MailApiFetchParamCreator(configuration).updateMailInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -32087,14 +32167,14 @@ export const MailApiFp = function(configuration?: Configuration) {
          * @param {string} [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
          * @param {string} [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
          * @param {string} [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
          * @param {string} [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
          * @param {string} [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
          * @param {number} [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
          * @param {number} [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
          * @param {number} [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
          * @param {StartDate} [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-         * @param {EndDate} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+         * @param {EndDate} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
          * @param {string} [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
          * @param {string} [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
          * @param {string} [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -32416,14 +32496,14 @@ export const MailApiFactory = function (configuration?: Configuration, fetch?: F
          * @param {string} [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
          * @param {string} [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
          * @param {string} [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+         * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
          * @param {string} [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
          * @param {string} [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
          * @param {number} [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
          * @param {number} [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
          * @param {number} [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
          * @param {StartDate} [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-         * @param {EndDate} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+         * @param {EndDate} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
          * @param {string} [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
          * @param {string} [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
          * @param {string} [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -32787,14 +32867,14 @@ export class MailApi extends BaseAPI {
      * @param {string} [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
      * @param {string} [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
      * @param {string} [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-     * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+     * @param {string} [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
      * @param {string} [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
      * @param {string} [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
      * @param {number} [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
      * @param {number} [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
      * @param {number} [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
      * @param {StartDate} [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-     * @param {EndDate} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+     * @param {EndDate} [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
      * @param {string} [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
      * @param {string} [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
      * @param {string} [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -36488,12 +36568,12 @@ export const QuickServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addQs(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addQs(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = QuickServersApiFetchParamCreator(configuration).addQs(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -37315,12 +37395,12 @@ export const QuickServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateQsInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateQsInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = QuickServersApiFetchParamCreator(configuration).updateQsInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -38807,12 +38887,12 @@ export const SSLCertificatesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addSsl(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addSsl(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = SSLCertificatesApiFetchParamCreator(configuration).addSsl(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -38825,12 +38905,12 @@ export const SSLCertificatesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNewSsl(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        getNewSsl(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
             const localVarFetchArgs = SSLCertificatesApiFetchParamCreator(configuration).getNewSsl(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -38844,12 +38924,12 @@ export const SSLCertificatesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSslInfo(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        getSslInfo(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<any> {
             const localVarFetchArgs = SSLCertificatesApiFetchParamCreator(configuration).getSslInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -38937,7 +39017,7 @@ export const SSLCertificatesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sslCancel(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20020> {
+        sslCancel(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20021> {
             const localVarFetchArgs = SSLCertificatesApiFetchParamCreator(configuration).sslCancel(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -38956,12 +39036,12 @@ export const SSLCertificatesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateSslInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateSslInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = SSLCertificatesApiFetchParamCreator(configuration).updateSslInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -41787,12 +41867,12 @@ export const ServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addServer(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addServer(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20019> {
             const localVarFetchArgs = ServersApiFetchParamCreator(configuration).addServer(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -41805,7 +41885,7 @@ export const ServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        buyItNowServerOrder(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20026> {
+        buyItNowServerOrder(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20027> {
             const localVarFetchArgs = ServersApiFetchParamCreator(configuration).buyItNowServerOrder(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -42094,7 +42174,7 @@ export const ServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        serversCancel(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20019> {
+        serversCancel(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20020> {
             const localVarFetchArgs = ServersApiFetchParamCreator(configuration).serversCancel(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -42113,12 +42193,12 @@ export const ServersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateServerInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateServerInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = ServersApiFetchParamCreator(configuration).updateServerInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -46472,12 +46552,12 @@ export const VPSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addVps(body?: VpsOrderPostRequest, osDistro?: string, slices?: number, vpsPlatform?: string, controlpanel?: string, period?: number, location?: number, osVersion?: string, hostname?: string, coupon?: string, rootpass?: string, comment?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addVps(body?: VpsOrderPostRequest, osDistro?: string, slices?: number, vpsPlatform?: string, controlpanel?: string, period?: number, location?: number, osVersion?: string, hostname?: string, coupon?: string, rootpass?: string, comment?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = VPSApiFetchParamCreator(configuration).addVps(body, osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -47304,12 +47384,12 @@ export const VPSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateVpsInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateVpsInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = VPSApiFetchParamCreator(configuration).updateVpsInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -47323,7 +47403,7 @@ export const VPSApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        vPSCancel(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20021> {
+        vPSCancel(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20022> {
             const localVarFetchArgs = VPSApiFetchParamCreator(configuration).vPSCancel(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -49432,12 +49512,12 @@ export const WebhostingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addWebsite(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        addWebsite(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = WebhostingApiFetchParamCreator(configuration).addWebsite(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -49469,7 +49549,7 @@ export const WebhostingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getWebsiteBuyIp(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20023> {
+        getWebsiteBuyIp(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20024> {
             const localVarFetchArgs = WebhostingApiFetchParamCreator(configuration).getWebsiteBuyIp(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -49622,7 +49702,7 @@ export const WebhostingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postWebsiteBuyIp(body: IdBuyIpBody, ips: { [key: string]: string; }, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20024> {
+        postWebsiteBuyIp(body: IdBuyIpBody, ips: { [key: string]: string; }, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20025> {
             const localVarFetchArgs = WebhostingApiFetchParamCreator(configuration).postWebsiteBuyIp(body, ips, id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -49655,7 +49735,7 @@ export const WebhostingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postWebsiteMigration(body: IdMigrationBody, custPortal: string, regEmail: string, password: string, ctrlPanel: string, ftpUsername: string, ftpPassword: string, siteBusyMig: string, splReqMig: string, domainReg: string, dataMig: string, domainRegPortal: string, domainRegEmail: string, domainRegPassword: string, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20025> {
+        postWebsiteMigration(body: IdMigrationBody, custPortal: string, regEmail: string, password: string, ctrlPanel: string, ftpUsername: string, ftpPassword: string, siteBusyMig: string, splReqMig: string, domainReg: string, dataMig: string, domainRegPortal: string, domainRegEmail: string, domainRegPassword: string, id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20026> {
             const localVarFetchArgs = WebhostingApiFetchParamCreator(configuration).postWebsiteMigration(body, custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -49713,12 +49793,12 @@ export const WebhostingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateWebsiteInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        updateWebsiteInfo(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<SuccessTextResponse> {
             const localVarFetchArgs = WebhostingApiFetchParamCreator(configuration).updateWebsiteInfo(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -49732,7 +49812,7 @@ export const WebhostingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        webhostingCancel(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20022> {
+        webhostingCancel(id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<InlineResponse20023> {
             const localVarFetchArgs = WebhostingApiFetchParamCreator(configuration).webhostingCancel(id, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {

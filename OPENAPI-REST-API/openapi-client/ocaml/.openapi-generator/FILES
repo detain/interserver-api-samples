@@ -55,6 +55,7 @@ src/models/account_info_oauth_config_providers_value.ml
 src/models/account_info_oauthproviders.ml
 src/models/account_info_post.ml
 src/models/account_ssh_key.ml
+src/models/add_server_200_response.ml
 src/models/affiliate_banner_row.ml
 src/models/affiliate_dock_setup.ml
 src/models/affiliate_payment_setup.ml
@@ -386,6 +387,7 @@ src/models/servers_cancel_200_response.ml
 src/models/service.ml
 src/models/service_categories.ml
 src/models/service_category.ml
+src/models/service_order_post_response.ml
 src/models/service_type.ml
 src/models/service_types.ml
 src/models/services.ml

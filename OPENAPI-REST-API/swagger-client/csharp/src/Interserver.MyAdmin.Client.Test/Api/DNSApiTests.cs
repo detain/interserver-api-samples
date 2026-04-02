@@ -71,8 +71,8 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string domain = null;
             //string ip = null;
-            //instance.AddDnsDomain(domain, ip);
-            
+            //var response = instance.AddDnsDomain(domain, ip);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test AddDnsRecord
@@ -98,8 +98,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.DeleteDnsDomain(id);
-            
+            //var response = instance.DeleteDnsDomain(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test DeleteDnsRecord
@@ -110,8 +110,8 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? domainId = null;
             //int? recordId = null;
-            //instance.DeleteDnsRecord(domainId, recordId);
-            
+            //var response = instance.DeleteDnsRecord(domainId, recordId);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test GetDnsDomain
@@ -151,8 +151,8 @@ namespace Interserver.MyAdmin.Client.Test
             //string auth = null;
             //int? domainId = null;
             //int? recordId = null;
-            //instance.UpdateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
-            
+            //var response = instance.UpdateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
     }
 

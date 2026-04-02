@@ -39,22 +39,16 @@ export default class InlineResponse20024 {
   static constructFromObject(data, obj) {
     if (data) {
       obj = obj || new InlineResponse20024();
-      if (data.hasOwnProperty('message'))
-        obj.message = ApiClient.convertToType(data['message'], 'String');
-      if (data.hasOwnProperty('success'))
-        obj.success = ApiClient.convertToType(data['success'], 'Boolean');
+      if (data.hasOwnProperty('ips'))
+        obj.ips = ApiClient.convertToType(data['ips'], {'String': 'String'});
     }
     return obj;
   }
 }
 
 /**
- * @member {String} message
+ * A map of IP addresses to their current reverse DNS hostnames.
+ * @member {Object.<String, String>} ips
  */
-InlineResponse20024.prototype.message = undefined;
-
-/**
- * @member {Boolean} success
- */
-InlineResponse20024.prototype.success = undefined;
+InlineResponse20024.prototype.ips = undefined;
 

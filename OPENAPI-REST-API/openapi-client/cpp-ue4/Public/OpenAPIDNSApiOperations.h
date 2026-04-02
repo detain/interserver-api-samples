@@ -19,6 +19,7 @@
 #include "OpenAPIDnsRecord.h"
 #include "OpenAPIDnsRecordType.h"
 #include "OpenAPIGetAccountInfo401Response.h"
+#include "OpenAPISuccessTextResponse.h"
 
 namespace OpenAPI
 {
@@ -47,7 +48,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 /* Add DNS Record to Domain
@@ -106,7 +107,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 /* Delete DNS Record
@@ -133,7 +134,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 /* List Domain DNS Records
@@ -216,7 +217,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 }

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 <a name="addWebsite"></a>
 # **addWebsite**
-> addWebsite()
+> ServiceOrderPostResponse addWebsite()
 
 Place Website Order
 
@@ -37,7 +37,8 @@ Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60
 
 val apiInstance = WebhostingApi()
 try {
-    apiInstance.addWebsite()
+    val result : ServiceOrderPostResponse = apiInstance.addWebsite()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#addWebsite")
     e.printStackTrace()
@@ -52,7 +53,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -108,7 +109,7 @@ This endpoint does not need any parameter.
 
 <a name="getWebsiteBuyIp"></a>
 # **getWebsiteBuyIp**
-> InlineResponse20023 getWebsiteBuyIp(id)
+> InlineResponse20024 getWebsiteBuyIp(id)
 
 Get Website IP Information
 
@@ -123,7 +124,7 @@ Returns the IP addresses assigned to the website along with their current revers
 val apiInstance = WebhostingApi()
 val id : kotlin.Int = 56 // kotlin.Int | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    val result : InlineResponse20023 = apiInstance.getWebsiteBuyIp(id)
+    val result : InlineResponse20024 = apiInstance.getWebsiteBuyIp(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#getWebsiteBuyIp")
@@ -142,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -480,7 +481,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteBuyIp"></a>
 # **postWebsiteBuyIp**
-> InlineResponse20024 postWebsiteBuyIp(body, id)
+> InlineResponse20025 postWebsiteBuyIp(body, id)
 
 Update Website IP DNS
 
@@ -496,7 +497,7 @@ val apiInstance = WebhostingApi()
 val body : IdBuyIpBody =  // IdBuyIpBody | 
 val id : kotlin.Int = 56 // kotlin.Int | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    val result : InlineResponse20024 = apiInstance.postWebsiteBuyIp(body, id)
+    val result : InlineResponse20025 = apiInstance.postWebsiteBuyIp(body, id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#postWebsiteBuyIp")
@@ -516,7 +517,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -529,7 +530,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteBuyIp"></a>
 # **postWebsiteBuyIp**
-> InlineResponse20024 postWebsiteBuyIp(ips, id)
+> InlineResponse20025 postWebsiteBuyIp(ips, id)
 
 Update Website IP DNS
 
@@ -545,7 +546,7 @@ val apiInstance = WebhostingApi()
 val ips : kotlin.collections.Map<kotlin.String, kotlin.String> =  // kotlin.collections.Map<kotlin.String, kotlin.String> | 
 val id : kotlin.Int = 56 // kotlin.Int | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    val result : InlineResponse20024 = apiInstance.postWebsiteBuyIp(ips, id)
+    val result : InlineResponse20025 = apiInstance.postWebsiteBuyIp(ips, id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#postWebsiteBuyIp")
@@ -565,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -578,7 +579,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteMigration"></a>
 # **postWebsiteMigration**
-> InlineResponse20025 postWebsiteMigration(body, id)
+> InlineResponse20026 postWebsiteMigration(body, id)
 
 Request Website Migration
 
@@ -594,7 +595,7 @@ val apiInstance = WebhostingApi()
 val body : IdMigrationBody =  // IdMigrationBody | 
 val id : kotlin.Int = 56 // kotlin.Int | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    val result : InlineResponse20025 = apiInstance.postWebsiteMigration(body, id)
+    val result : InlineResponse20026 = apiInstance.postWebsiteMigration(body, id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#postWebsiteMigration")
@@ -614,7 +615,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -627,7 +628,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteMigration"></a>
 # **postWebsiteMigration**
-> InlineResponse20025 postWebsiteMigration(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
+> InlineResponse20026 postWebsiteMigration(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
 
 Request Website Migration
 
@@ -655,7 +656,7 @@ val domainRegEmail : kotlin.String = domainRegEmail_example // kotlin.String |
 val domainRegPassword : kotlin.String = domainRegPassword_example // kotlin.String | 
 val id : kotlin.Int = 56 // kotlin.Int | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    val result : InlineResponse20025 = apiInstance.postWebsiteMigration(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
+    val result : InlineResponse20026 = apiInstance.postWebsiteMigration(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#postWebsiteMigration")
@@ -687,7 +688,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -840,7 +841,7 @@ null (empty response body)
 
 <a name="updateWebsiteInfo"></a>
 # **updateWebsiteInfo**
-> updateWebsiteInfo(id)
+> SuccessTextResponse updateWebsiteInfo(id)
 
 Update Website Order
 
@@ -855,7 +856,8 @@ Updates settings on a webhosting order.
 val apiInstance = WebhostingApi()
 val id : kotlin.String = id_example // kotlin.String | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    apiInstance.updateWebsiteInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateWebsiteInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#updateWebsiteInfo")
     e.printStackTrace()
@@ -873,7 +875,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -886,7 +888,7 @@ null (empty response body)
 
 <a name="webhostingCancel"></a>
 # **webhostingCancel**
-> InlineResponse20022 webhostingCancel(id)
+> InlineResponse20023 webhostingCancel(id)
 
 Cancel Website
 
@@ -901,7 +903,7 @@ Cancels a webhosting service. The service will be scheduled for termination and 
 val apiInstance = WebhostingApi()
 val id : kotlin.String = id_example // kotlin.String | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    val result : InlineResponse20022 = apiInstance.webhostingCancel(id)
+    val result : InlineResponse20023 = apiInstance.webhostingCancel(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#webhostingCancel")
@@ -920,7 +922,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 

@@ -9,6 +9,7 @@
 #include "DnsRecord.h"
 #include "DnsRecordType.h"
 #include "GetAccountInfo_401_response.h"
+#include "SuccessTextResponse.h"
 #include <list>
 #include "Error.h"
 
@@ -39,8 +40,8 @@ public:
  */
 bool addDnsDomainSync(char * accessToken,
 	std::string domain, std::string ip, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Create DNS Domain. *Asynchronous*
  *
@@ -53,8 +54,8 @@ bool addDnsDomainSync(char * accessToken,
  */
 bool addDnsDomainAsync(char * accessToken,
 	std::string domain, std::string ip, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Add DNS Record to Domain. *Synchronous*
@@ -104,8 +105,8 @@ bool addDnsRecordAsync(char * accessToken,
  */
 bool deleteDnsDomainSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Delete DNS Domain. *Asynchronous*
  *
@@ -117,8 +118,8 @@ bool deleteDnsDomainSync(char * accessToken,
  */
 bool deleteDnsDomainAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Delete DNS Record. *Synchronous*
@@ -132,8 +133,8 @@ bool deleteDnsDomainAsync(char * accessToken,
  */
 bool deleteDnsRecordSync(char * accessToken,
 	int domainId, int recordId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Delete DNS Record. *Asynchronous*
  *
@@ -146,8 +147,8 @@ bool deleteDnsRecordSync(char * accessToken,
  */
 bool deleteDnsRecordAsync(char * accessToken,
 	int domainId, int recordId, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief List Domain DNS Records. *Synchronous*
@@ -221,8 +222,8 @@ bool getDnsListAsync(char * accessToken,
  */
 bool updateDnsRecordSync(char * accessToken,
 	int domainId, int recordId, std::string name, DnsRecordType type, std::string content, std::string ttl, std::string prio, std::string disabled, std::string ordername, std::string auth, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update DNS Record. *Asynchronous*
  *
@@ -243,8 +244,8 @@ bool updateDnsRecordSync(char * accessToken,
  */
 bool updateDnsRecordAsync(char * accessToken,
 	int domainId, int recordId, std::string name, DnsRecordType type, std::string content, std::string ttl, std::string prio, std::string disabled, std::string ordername, std::string auth, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 

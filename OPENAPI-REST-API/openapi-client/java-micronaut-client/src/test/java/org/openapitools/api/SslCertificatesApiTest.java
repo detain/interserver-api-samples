@@ -2,6 +2,7 @@ package org.openapitools.api;
 
 import org.openapitools.model.ChargeInvoiceRows;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SslCancel200Response;
 import org.openapitools.model.SuccessTextResponse;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -37,7 +38,7 @@ public class SslCertificatesApiTest {
         // given
 
         // when
-        api.addSsl().block();
+        ServiceOrderPostResponse body = api.addSsl().block();
 
         // then
         // TODO implement the addSslTest()
@@ -55,7 +56,7 @@ public class SslCertificatesApiTest {
         // given
 
         // when
-        api.getNewSsl().block();
+        Object body = api.getNewSsl().block();
 
         // then
         // TODO implement the getNewSslTest()
@@ -74,7 +75,7 @@ public class SslCertificatesApiTest {
         Integer id = 56;
 
         // when
-        api.getSslInfo(id).block();
+        Object body = api.getSslInfo(id).block();
 
         // then
         // TODO implement the getSslInfoTest()
@@ -186,7 +187,7 @@ public class SslCertificatesApiTest {
         String id = "example";
 
         // when
-        api.updateSslInfo(id).block();
+        SuccessTextResponse body = api.updateSslInfo(id).block();
 
         // then
         // TODO implement the updateSslInfoTest()

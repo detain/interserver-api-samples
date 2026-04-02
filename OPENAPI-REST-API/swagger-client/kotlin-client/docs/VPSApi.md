@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 <a name="addVps"></a>
 # **addVps**
-> addVps(body)
+> ServiceOrderPostResponse addVps(body)
 
 Place VPS Order
 
@@ -66,7 +66,8 @@ Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the or
 val apiInstance = VPSApi()
 val body : VpsOrderPostRequest =  // VpsOrderPostRequest | 
 try {
-    apiInstance.addVps(body)
+    val result : ServiceOrderPostResponse = apiInstance.addVps(body)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling VPSApi#addVps")
     e.printStackTrace()
@@ -84,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -97,7 +98,7 @@ null (empty response body)
 
 <a name="addVps"></a>
 # **addVps**
-> addVps(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment)
+> ServiceOrderPostResponse addVps(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment)
 
 Place VPS Order
 
@@ -122,7 +123,8 @@ val coupon : kotlin.String = coupon_example // kotlin.String |
 val rootpass : kotlin.String = rootpass_example // kotlin.String | 
 val comment : kotlin.String = comment_example // kotlin.String | 
 try {
-    apiInstance.addVps(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment)
+    val result : ServiceOrderPostResponse = apiInstance.addVps(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling VPSApi#addVps")
     e.printStackTrace()
@@ -150,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2615,7 +2617,7 @@ Name | Type | Description  | Notes
 
 <a name="updateVpsInfo"></a>
 # **updateVpsInfo**
-> updateVpsInfo(id)
+> SuccessTextResponse updateVpsInfo(id)
 
 Update VPS Order
 
@@ -2630,7 +2632,8 @@ Updates settings on a VPS order.
 val apiInstance = VPSApi()
 val id : kotlin.String = id_example // kotlin.String | VPS ID number.
 try {
-    apiInstance.updateVpsInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateVpsInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling VPSApi#updateVpsInfo")
     e.printStackTrace()
@@ -2648,7 +2651,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -2661,7 +2664,7 @@ null (empty response body)
 
 <a name="vPSCancel"></a>
 # **vPSCancel**
-> InlineResponse20021 vPSCancel(id)
+> InlineResponse20022 vPSCancel(id)
 
 Cancel VPS Service
 
@@ -2676,7 +2679,7 @@ Cancels the VPS service. The server will be deprovisioned and billing will stop 
 val apiInstance = VPSApi()
 val id : kotlin.Int = 56 // kotlin.Int | VPS ID number
 try {
-    val result : InlineResponse20021 = apiInstance.vPSCancel(id)
+    val result : InlineResponse20022 = apiInstance.vPSCancel(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling VPSApi#vPSCancel")
@@ -2695,7 +2698,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 

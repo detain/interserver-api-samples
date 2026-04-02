@@ -19,4 +19,3 @@ from myadmin-client-python.api.servers_api import ServersApi
 from myadmin-client-python.api.tickets_api import TicketsApi
 from myadmin-client-python.api.vps_api import VPSApi
 from myadmin-client-python.api.webhosting_api import WebhostingApi
-from myadmin-client-python.api.servers_api import ServersApi

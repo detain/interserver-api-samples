@@ -5,11 +5,21 @@
  * Place Server Order
  * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
  *
- * no response value expected for this operation
+ * returns inline_response_200_19
  **/
 exports.addServer = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "text" : "Order Completed",
+  "invoice" : 0,
+  "order" : 6
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -18,7 +28,7 @@ exports.addServer = function() {
  * Get Buy Now Server Options
  * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.
  *
- * returns inline_response_200_26
+ * returns inline_response_200_27
  **/
 exports.buyItNowServerOrder = function() {
   return new Promise(function(resolve, reject) {
@@ -859,7 +869,7 @@ exports.serverIpmiPowerPost = function(body,id) {
  * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
  *
  * id Integer Server ID number
- * returns inline_response_200_19
+ * returns inline_response_200_20
  **/
 exports.serversCancel = function(id) {
   return new Promise(function(resolve, reject) {
@@ -882,11 +892,20 @@ exports.serversCancel = function(id) {
  * Updates settings on a dedicated server order.
  *
  * id String Server ID number.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateServerInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

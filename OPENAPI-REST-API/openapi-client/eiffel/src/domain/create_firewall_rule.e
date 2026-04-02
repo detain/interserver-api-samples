@@ -22,7 +22,7 @@ feature --Access
     destination_port: INTEGER_32
       
     source_ip: detachable STRING_32
-      
+      -- Source IP address to match. Use '0.0.0.0' to match any source.
     source_port: INTEGER_32
       
     protocol_id: INTEGER_32

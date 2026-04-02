@@ -28,7 +28,8 @@ import io.swagger.client.model.ServersBuyNowResponse
 import io.swagger.client.model.SuccessTextResponse
 import io.swagger.client.model.TextResponse
 import io.swagger.client.model.inline_response_200_19
-import io.swagger.client.model.inline_response_200_26
+import io.swagger.client.model.inline_response_200_20
+import io.swagger.client.model.inline_response_200_27
 import io.swagger.client.model.inline_response_401
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -98,9 +99,9 @@ class ServersApi(
    * Place Server Order
    * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
    *
-   * @return void
+   * @return inline_response_200_19
    */
-  def addServer() = {
+  def addServer(): Option[inline_response_200_19] = {
     val await = Try(Await.result(addServerAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -112,9 +113,9 @@ class ServersApi(
    * Place Server Order asynchronously
    * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
    *
-   * @return Future(void)
+   * @return Future(inline_response_200_19)
    */
-  def addServerAsync() = {
+  def addServerAsync(): Future[inline_response_200_19] = {
       helper.addServer()
   }
 
@@ -122,9 +123,9 @@ class ServersApi(
    * Get Buy Now Server Options
    * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
    *
-   * @return inline_response_200_26
+   * @return inline_response_200_27
    */
-  def buyItNowServerOrder(): Option[inline_response_200_26] = {
+  def buyItNowServerOrder(): Option[inline_response_200_27] = {
     val await = Try(Await.result(buyItNowServerOrderAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -136,9 +137,9 @@ class ServersApi(
    * Get Buy Now Server Options asynchronously
    * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
    *
-   * @return Future(inline_response_200_26)
+   * @return Future(inline_response_200_27)
    */
-  def buyItNowServerOrderAsync(): Future[inline_response_200_26] = {
+  def buyItNowServerOrderAsync(): Future[inline_response_200_27] = {
       helper.buyItNowServerOrder()
   }
 
@@ -519,9 +520,9 @@ class ServersApi(
    * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
    *
    * @param id Server ID number 
-   * @return inline_response_200_19
+   * @return inline_response_200_20
    */
-  def serversCancel(id: Integer): Option[inline_response_200_19] = {
+  def serversCancel(id: Integer): Option[inline_response_200_20] = {
     val await = Try(Await.result(serversCancelAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -534,9 +535,9 @@ class ServersApi(
    * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
    *
    * @param id Server ID number 
-   * @return Future(inline_response_200_19)
+   * @return Future(inline_response_200_20)
    */
-  def serversCancelAsync(id: Integer): Future[inline_response_200_19] = {
+  def serversCancelAsync(id: Integer): Future[inline_response_200_20] = {
       helper.serversCancel(id)
   }
 
@@ -545,9 +546,9 @@ class ServersApi(
    * Updates settings on a dedicated server order.
    *
    * @param id Server ID number. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateServerInfo(id: String) = {
+  def updateServerInfo(id: String): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateServerInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -560,9 +561,9 @@ class ServersApi(
    * Updates settings on a dedicated server order.
    *
    * @param id Server ID number. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateServerInfoAsync(id: String) = {
+  def updateServerInfoAsync(id: String): Future[SuccessTextResponse] = {
       helper.updateServerInfo(id)
   }
 
@@ -570,7 +571,7 @@ class ServersApi(
 
 class ServersApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def addServer()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def addServer()(implicit reader: ClientResponseReader[inline_response_200_19]): Future[inline_response_200_19] = {
     // create path and map variables
     val path = (addFmt("/servers/order"))
 
@@ -585,7 +586,7 @@ class ServersApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def buyItNowServerOrder()(implicit reader: ClientResponseReader[inline_response_200_26]): Future[inline_response_200_26] = {
+  def buyItNowServerOrder()(implicit reader: ClientResponseReader[inline_response_200_27]): Future[inline_response_200_27] = {
     // create path and map variables
     val path = (addFmt("/servers/order/buy_now_server"))
 
@@ -836,7 +837,7 @@ class ServersApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def serversCancel(id: Integer)(implicit reader: ClientResponseReader[inline_response_200_19]): Future[inline_response_200_19] = {
+  def serversCancel(id: Integer)(implicit reader: ClientResponseReader[inline_response_200_20]): Future[inline_response_200_20] = {
     // create path and map variables
     val path = (addFmt("/servers/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -852,7 +853,7 @@ class ServersApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def updateServerInfo(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateServerInfo(id: String)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/servers/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

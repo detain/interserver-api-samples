@@ -220,8 +220,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns></returns>
-        void UpdateBackupInfo (int? id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateBackupInfo (int? id);
 
         /// <summary>
         /// Update Backup Information
@@ -231,8 +231,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateBackupInfoWithHttpInfo (int? id);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateBackupInfoWithHttpInfo (int? id);
         /// <summary>
         /// Validate Backup Order
         /// </summary>
@@ -478,8 +478,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateBackupInfoAsync (int? id);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateBackupInfoAsync (int? id);
 
         /// <summary>
         /// Update Backup Information
@@ -489,8 +489,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateBackupInfoAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateBackupInfoAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Validate Backup Order
         /// </summary>
@@ -2124,10 +2124,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns></returns>
-        public void UpdateBackupInfo (int? id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateBackupInfo (int? id)
         {
-             UpdateBackupInfoWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateBackupInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2135,8 +2136,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateBackupInfoWithHttpInfo (int? id)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateBackupInfoWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2193,9 +2194,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -2203,10 +2204,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateBackupInfoAsync (int? id)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateBackupInfoAsync (int? id)
         {
-             await UpdateBackupInfoAsyncWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateBackupInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -2215,8 +2217,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateBackupInfoAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateBackupInfoAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2273,9 +2275,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>

@@ -16,6 +16,7 @@ import org.openapitools.client.model.DnsRecord
 import org.openapitools.client.model.DnsRecordType.*
 import org.openapitools.client.model.DnsRecordType
 import org.openapitools.client.model.GetAccountInfo401Response
+import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.core.JsonSupport.{*, given}
 import org.openapitools.client.core.FormSerializable
 import org.openapitools.client.core.FormStyleFormat
@@ -57,8 +58,8 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -68,7 +69,7 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * @param domain The domain name.
    * @param ip IP Address to point the domain to.
    */
-  def addDnsDomain(domain: String, ip: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def addDnsDomain(domain: String, ip: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val requestURL =
       uri"$baseUrl/dns"
 
@@ -88,7 +89,7 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
 
 
       ).flatten)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Adds a new DNS record to the specified domain. Provide the record type (A, AAAA, CNAME, MX, TXT, etc.), name, content, TTL, and priority. The record takes effect on the DNS servers immediately. Use `GET /dns/{id}` afterward to confirm the record was created.
@@ -148,8 +149,8 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -158,7 +159,7 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * 
    * @param id The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
    */
-  def deleteDnsDomain(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def deleteDnsDomain(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/dns/${idPathParam}"
@@ -169,14 +170,14 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -186,7 +187,7 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * @param domainId The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
    * @param recordId The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
    */
-  def deleteDnsRecord(domainId: Int, recordId: Int)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def deleteDnsRecord(domainId: Int, recordId: Int)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val domainIdPathParam = PathSerializable.serialize("domainId", domainId, PathStyleFormat.SIMPLE, false)
     val recordIdPathParam = PathSerializable.serialize("recordId", recordId, PathStyleFormat.SIMPLE, false)
     val requestURL =
@@ -198,7 +199,7 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Returns the full set of DNS records for the specified domain, including NS, A, AAAA, CNAME, MX, TXT, and other record types. Use the record `id` values with `/dns/{domainId}/{recordId}` to update or delete individual records.
@@ -255,8 +256,8 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -274,7 +275,7 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * @param ordername 
    * @param auth 
    */
-  def updateDnsRecord(domainId: Int, recordId: Int, name: Option[String] = scala.None, `type`: Option[DnsRecordType] = scala.None, content: Option[String] = scala.None, ttl: Option[String] = scala.None, prio: Option[String] = scala.None, disabled: Option[String] = scala.None, ordername: Option[String] = scala.None, auth: Option[String] = scala.None)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateDnsRecord(domainId: Int, recordId: Int, name: Option[String] = scala.None, `type`: Option[DnsRecordType] = scala.None, content: Option[String] = scala.None, ttl: Option[String] = scala.None, prio: Option[String] = scala.None, disabled: Option[String] = scala.None, ordername: Option[String] = scala.None, auth: Option[String] = scala.None)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val domainIdPathParam = PathSerializable.serialize("domainId", domainId, PathStyleFormat.SIMPLE, false)
     val recordIdPathParam = PathSerializable.serialize("recordId", recordId, PathStyleFormat.SIMPLE, false)
     val requestURL =
@@ -320,6 +321,6 @@ case class DNSApi[Auth <: org.openapitools.client.core.Authorization] private (b
 
 
       ).flatten)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
 end DNSApi

@@ -376,11 +376,12 @@ feature -- API Access
 			end
 		end
 
-	billing_cart 
+	billing_cart : detachable ANY
 			-- Get Shopping Cart Contents
 			-- Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
 			-- 
 			-- 
+			-- Result ANY
 		require
 		local
   			l_path: STRING
@@ -398,9 +399,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { ANY } l_response.data ({ ANY }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -509,11 +514,12 @@ feature -- API Access
 			end
 		end
 
-	billing_pre_pays 
+	billing_pre_pays : detachable ANY
 			-- List Prepay Balances
 			-- Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
 			-- 
 			-- 
+			-- Result ANY
 		require
 		local
   			l_path: STRING
@@ -531,19 +537,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { ANY } l_response.data ({ ANY }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
-	delete_account_credit_card (id: STRING_32)
+	delete_account_credit_card (id: STRING_32): detachable STRING_32
 			-- Remove Credit Card
 			-- Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
 			-- 
 			-- argument: id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -562,9 +573,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Delete", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Delete", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -798,13 +813,14 @@ feature -- API Access
 			end
 		end
 
-	update_account_credit_card (id: INTEGER_32)
+	update_account_credit_card (id: INTEGER_32): detachable STRING_32
 			-- Update Credit Card
 			-- Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
 			-- 
 			-- argument: id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -823,9 +839,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

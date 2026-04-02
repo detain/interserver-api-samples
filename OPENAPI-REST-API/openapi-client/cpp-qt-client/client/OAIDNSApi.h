@@ -22,6 +22,7 @@
 #include "OAIDnsRecord.h"
 #include "OAIDnsRecordType.h"
 #include "OAIGetAccountInfo_401_response.h"
+#include "OAISuccessTextResponse.h"
 #include <QString>
 
 #include <QObject>
@@ -150,30 +151,30 @@ private:
 
 Q_SIGNALS:
 
-    void addDnsDomainSignal();
+    void addDnsDomainSignal(OAISuccessTextResponse summary);
     void addDnsRecordSignal();
-    void deleteDnsDomainSignal();
-    void deleteDnsRecordSignal();
+    void deleteDnsDomainSignal(OAISuccessTextResponse summary);
+    void deleteDnsRecordSignal(OAISuccessTextResponse summary);
     void getDnsDomainSignal(QList<OAIDnsRecord> summary);
     void getDnsListSignal(QList<OAIDnsListItem> summary);
-    void updateDnsRecordSignal();
+    void updateDnsRecordSignal(OAISuccessTextResponse summary);
 
 
-    void addDnsDomainSignalFull(OAIHttpRequestWorker *worker);
+    void addDnsDomainSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void addDnsRecordSignalFull(OAIHttpRequestWorker *worker);
-    void deleteDnsDomainSignalFull(OAIHttpRequestWorker *worker);
-    void deleteDnsRecordSignalFull(OAIHttpRequestWorker *worker);
+    void deleteDnsDomainSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
+    void deleteDnsRecordSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void getDnsDomainSignalFull(OAIHttpRequestWorker *worker, QList<OAIDnsRecord> summary);
     void getDnsListSignalFull(OAIHttpRequestWorker *worker, QList<OAIDnsListItem> summary);
-    void updateDnsRecordSignalFull(OAIHttpRequestWorker *worker);
+    void updateDnsRecordSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    void addDnsDomainSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addDnsDomainSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void addDnsRecordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    void deleteDnsDomainSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    void deleteDnsRecordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void deleteDnsDomainSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void deleteDnsRecordSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDnsDomainSignalError(QList<OAIDnsRecord> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDnsListSignalError(QList<OAIDnsListItem> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateDnsRecordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateDnsRecordSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addDnsDomainSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void addDnsRecordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

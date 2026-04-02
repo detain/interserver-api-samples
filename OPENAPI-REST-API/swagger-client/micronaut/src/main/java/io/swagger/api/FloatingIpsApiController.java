@@ -8,6 +8,8 @@ import io.swagger.model.InlineResponse401;
 
 import io.swagger.model.IpObject;
 
+import io.swagger.model.ServiceOrderPostResponse;
+
 import io.swagger.model.SuccessTextResponse;
 
 import io.micronaut.http.annotation.Controller;
@@ -24,7 +26,7 @@ import java.util.Map;
 public class FloatingIpsApiController implements FloatingIpsApi {
 
     @Override
-    public Single<HttpResponse<Void>> addFloatingIp() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addFloatingIp() {
         // TODO: Implement me
         return FloatingIpsApi.super.addFloatingIp();
     }
@@ -36,7 +38,7 @@ public class FloatingIpsApiController implements FloatingIpsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> getFloatingIpInfo(Integer id) {
+    public Single<HttpResponse<Object>> getFloatingIpInfo(Integer id) {
         // TODO: Implement me
         return FloatingIpsApi.super.getFloatingIpInfo(id);
     }
@@ -60,7 +62,7 @@ public class FloatingIpsApiController implements FloatingIpsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> getNewFloatingIp() {
+    public Single<HttpResponse<Object>> getNewFloatingIp() {
         // TODO: Implement me
         return FloatingIpsApi.super.getNewFloatingIp();
     }
@@ -84,7 +86,7 @@ public class FloatingIpsApiController implements FloatingIpsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateFloatingIpInfo(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateFloatingIpInfo(String id) {
         // TODO: Implement me
         return FloatingIpsApi.super.updateFloatingIpInfo(id);
     }

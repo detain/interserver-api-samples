@@ -26,6 +26,7 @@
 
 #include "ChargeInvoiceRows.hpp"
 #include "GetAccountInfo_401_response.hpp"
+#include "ServiceOrderPostResponse.hpp"
 #include "SslCancel_200_response.hpp"
 #include "SuccessTextResponse.hpp"
 

@@ -15,7 +15,7 @@ import com.github.plokhotnyuk.jsoniter_scala.macros.named
 
   /**
    * Root Type for ServerIpmiLiveInfo
-   * Information about the IPMI connectioj.
+   * Information about the IPMI connection.
    */
 case class ServerIpmiLiveInfo(
   @named("text") text: Option[String] = scala.None,

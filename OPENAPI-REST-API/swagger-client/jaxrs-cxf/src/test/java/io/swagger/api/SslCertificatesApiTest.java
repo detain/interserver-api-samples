@@ -25,8 +25,9 @@
 package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20021;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import org.junit.Test;
 import org.junit.Before;
@@ -82,8 +83,8 @@ public class SslCertificatesApiTest {
      */
     @Test
     public void addSslTest() {
-        //api.addSsl();
-        
+        //ServiceOrderPostResponse response = api.addSsl();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -98,8 +99,8 @@ public class SslCertificatesApiTest {
      */
     @Test
     public void getNewSslTest() {
-        //api.getNewSsl();
-        
+        //Object response = api.getNewSsl();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -115,8 +116,8 @@ public class SslCertificatesApiTest {
     @Test
     public void getSslInfoTest() {
         Integer id = null;
-        //api.getSslInfo(id);
-        
+        //Object response = api.getSslInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -198,7 +199,7 @@ public class SslCertificatesApiTest {
     @Test
     public void sslCancelTest() {
         Integer id = null;
-        //InlineResponse20020 response = api.sslCancel(id);
+        //InlineResponse20021 response = api.sslCancel(id);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -215,8 +216,8 @@ public class SslCertificatesApiTest {
     @Test
     public void updateSslInfoTest() {
         String id = null;
-        //api.updateSslInfo(id);
-        
+        //SuccessTextResponse response = api.updateSslInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
         
         

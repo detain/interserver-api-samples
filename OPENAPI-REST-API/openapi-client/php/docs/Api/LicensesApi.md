@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\LicensesApi
 
-Licensing related services
+Software license provisioning for control panels (cPanel, Plesk, DirectAdmin) and other licensed software. Order, manage, and change IP assignments.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -22,7 +22,7 @@ All URIs are relative to https://my.interserver.net/apiv2, except if the operati
 ## `addLicense()`
 
 ```php
-addLicense()
+addLicense(): \Interserver\MyAdmin\Model\ServiceOrderPostResponse
 ```
 
 Place License Order
@@ -60,7 +60,8 @@ $apiInstance = new Interserver\MyAdmin\Api\LicensesApi(
 );
 
 try {
-    $apiInstance->addLicense();
+    $result = $apiInstance->addLicense();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LicensesApi->addLicense: ', $e->getMessage(), PHP_EOL;
 }
@@ -72,7 +73,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -729,7 +730,7 @@ void (empty response body)
 ## `updateLicenseInfo()`
 
 ```php
-updateLicenseInfo($id)
+updateLicenseInfo($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update License
@@ -768,7 +769,8 @@ $apiInstance = new Interserver\MyAdmin\Api\LicensesApi(
 $id = 'id_example'; // string | The license service ID. Use `license_id` from `GET /licenses`.
 
 try {
-    $apiInstance->updateLicenseInfo($id);
+    $result = $apiInstance->updateLicenseInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LicensesApi->updateLicenseInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -782,7 +784,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

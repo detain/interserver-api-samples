@@ -15,6 +15,7 @@
 #include "OpenAPIBaseModel.h"
 #include "OpenAPIServersApi.h"
 
+#include "OpenAPIAddServer200Response.h"
 #include "OpenAPIBuyItNowList.h"
 #include "OpenAPIBuyItNowServerOrder200Response.h"
 #include "OpenAPIChargeInvoiceRows.h"
@@ -54,7 +55,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPIAddServer200Response Content;
 };
 
 /* Get Buy Now Server Options
@@ -488,7 +489,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 }

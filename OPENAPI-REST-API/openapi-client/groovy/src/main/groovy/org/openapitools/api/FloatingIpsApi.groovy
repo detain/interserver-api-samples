@@ -4,6 +4,7 @@ import org.openapitools.api.ApiUtils
 import org.openapitools.model.ChargeInvoiceRows
 import org.openapitools.model.FloatingIpsCancel200Response
 import org.openapitools.model.GetAccountInfo401Response
+import org.openapitools.model.ServiceOrderPostResponse
 import org.openapitools.model.SuccessTextResponse
 
 class FloatingIpsApi {
@@ -30,7 +31,7 @@ class FloatingIpsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    ServiceOrderPostResponse.class )
 
     }
 
@@ -84,7 +85,7 @@ class FloatingIpsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    null )
+                    Object.class )
 
     }
 
@@ -184,7 +185,7 @@ class FloatingIpsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "GET", "",
-                    null )
+                    Object.class )
 
     }
 
@@ -267,7 +268,7 @@ class FloatingIpsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 

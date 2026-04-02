@@ -25,6 +25,7 @@ import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
 import io.swagger.model.InlineResponse2002;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 

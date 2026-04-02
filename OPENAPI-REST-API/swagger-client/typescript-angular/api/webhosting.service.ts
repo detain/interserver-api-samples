@@ -20,12 +20,13 @@ import { Observable }                                        from 'rxjs';
 import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
 import { IdBuyIpBody } from '../model/idBuyIpBody';
 import { IdMigrationBody } from '../model/idMigrationBody';
-import { InlineResponse20022 } from '../model/inlineResponse20022';
 import { InlineResponse20023 } from '../model/inlineResponse20023';
 import { InlineResponse20024 } from '../model/inlineResponse20024';
 import { InlineResponse20025 } from '../model/inlineResponse20025';
+import { InlineResponse20026 } from '../model/inlineResponse20026';
 import { InlineResponse401 } from '../model/inlineResponse401';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 import { Website } from '../model/website';
@@ -76,9 +77,9 @@ export class WebhostingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addWebsite(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addWebsite(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addWebsite(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addWebsite(observe?: 'body', reportProgress?: boolean): Observable<ServiceOrderPostResponse>;
+    public addWebsite(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addWebsite(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addWebsite(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -113,7 +114,7 @@ export class WebhostingService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/websites/order`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post',`${this.basePath}/websites/order`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -185,9 +186,9 @@ export class WebhostingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getWebsiteBuyIp(id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20023>;
-    public getWebsiteBuyIp(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20023>>;
-    public getWebsiteBuyIp(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20023>>;
+    public getWebsiteBuyIp(id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20024>;
+    public getWebsiteBuyIp(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20024>>;
+    public getWebsiteBuyIp(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20024>>;
     public getWebsiteBuyIp(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -226,7 +227,7 @@ export class WebhostingService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<InlineResponse20023>('get',`${this.basePath}/websites/${encodeURIComponent(String(id))}/buy_ip`,
+        return this.httpClient.request<InlineResponse20024>('get',`${this.basePath}/websites/${encodeURIComponent(String(id))}/buy_ip`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -654,9 +655,9 @@ export class WebhostingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postWebsiteBuyIp(body: IdBuyIpBody, id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20024>;
-    public postWebsiteBuyIp(body: IdBuyIpBody, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20024>>;
-    public postWebsiteBuyIp(body: IdBuyIpBody, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20024>>;
+    public postWebsiteBuyIp(body: IdBuyIpBody, id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20025>;
+    public postWebsiteBuyIp(body: IdBuyIpBody, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20025>>;
+    public postWebsiteBuyIp(body: IdBuyIpBody, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20025>>;
     public postWebsiteBuyIp(body: IdBuyIpBody, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -705,7 +706,7 @@ export class WebhostingService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<InlineResponse20024>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}/buy_ip`,
+        return this.httpClient.request<InlineResponse20025>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}/buy_ip`,
             {
                 body: body,
                 params: queryParameters,
@@ -725,9 +726,9 @@ export class WebhostingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postWebsiteBuyIpForm(ips: { [key: string]: string; }, id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20024>;
-    public postWebsiteBuyIpForm(ips: { [key: string]: string; }, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20024>>;
-    public postWebsiteBuyIpForm(ips: { [key: string]: string; }, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20024>>;
+    public postWebsiteBuyIpForm(ips: { [key: string]: string; }, id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20025>;
+    public postWebsiteBuyIpForm(ips: { [key: string]: string; }, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20025>>;
+    public postWebsiteBuyIpForm(ips: { [key: string]: string; }, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20025>>;
     public postWebsiteBuyIpForm(ips: { [key: string]: string; }, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (ips === null || ips === undefined) {
@@ -787,7 +788,7 @@ export class WebhostingService {
             formParams = formParams.append('ips', <any>ips) as any || formParams;
         }
 
-        return this.httpClient.request<InlineResponse20024>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}/buy_ip`,
+        return this.httpClient.request<InlineResponse20025>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}/buy_ip`,
             {
                 body: convertFormParamsToString ? formParams.toString() : formParams,
                 params: queryParameters,
@@ -807,9 +808,9 @@ export class WebhostingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postWebsiteMigration(body: IdMigrationBody, id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20025>;
-    public postWebsiteMigration(body: IdMigrationBody, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20025>>;
-    public postWebsiteMigration(body: IdMigrationBody, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20025>>;
+    public postWebsiteMigration(body: IdMigrationBody, id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20026>;
+    public postWebsiteMigration(body: IdMigrationBody, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20026>>;
+    public postWebsiteMigration(body: IdMigrationBody, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20026>>;
     public postWebsiteMigration(body: IdMigrationBody, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -858,7 +859,7 @@ export class WebhostingService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<InlineResponse20025>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}/migration`,
+        return this.httpClient.request<InlineResponse20026>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}/migration`,
             {
                 body: body,
                 params: queryParameters,
@@ -890,9 +891,9 @@ export class WebhostingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public postWebsiteMigrationForm(custPortal: string, regEmail: string, password: string, ctrlPanel: string, ftpUsername: string, ftpPassword: string, siteBusyMig: string, splReqMig: string, domainReg: string, dataMig: string, domainRegPortal: string, domainRegEmail: string, domainRegPassword: string, id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20025>;
-    public postWebsiteMigrationForm(custPortal: string, regEmail: string, password: string, ctrlPanel: string, ftpUsername: string, ftpPassword: string, siteBusyMig: string, splReqMig: string, domainReg: string, dataMig: string, domainRegPortal: string, domainRegEmail: string, domainRegPassword: string, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20025>>;
-    public postWebsiteMigrationForm(custPortal: string, regEmail: string, password: string, ctrlPanel: string, ftpUsername: string, ftpPassword: string, siteBusyMig: string, splReqMig: string, domainReg: string, dataMig: string, domainRegPortal: string, domainRegEmail: string, domainRegPassword: string, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20025>>;
+    public postWebsiteMigrationForm(custPortal: string, regEmail: string, password: string, ctrlPanel: string, ftpUsername: string, ftpPassword: string, siteBusyMig: string, splReqMig: string, domainReg: string, dataMig: string, domainRegPortal: string, domainRegEmail: string, domainRegPassword: string, id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20026>;
+    public postWebsiteMigrationForm(custPortal: string, regEmail: string, password: string, ctrlPanel: string, ftpUsername: string, ftpPassword: string, siteBusyMig: string, splReqMig: string, domainReg: string, dataMig: string, domainRegPortal: string, domainRegEmail: string, domainRegPassword: string, id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20026>>;
+    public postWebsiteMigrationForm(custPortal: string, regEmail: string, password: string, ctrlPanel: string, ftpUsername: string, ftpPassword: string, siteBusyMig: string, splReqMig: string, domainReg: string, dataMig: string, domainRegPortal: string, domainRegEmail: string, domainRegPassword: string, id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20026>>;
     public postWebsiteMigrationForm(custPortal: string, regEmail: string, password: string, ctrlPanel: string, ftpUsername: string, ftpPassword: string, siteBusyMig: string, splReqMig: string, domainReg: string, dataMig: string, domainRegPortal: string, domainRegEmail: string, domainRegPassword: string, id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (custPortal === null || custPortal === undefined) {
@@ -1036,7 +1037,7 @@ export class WebhostingService {
             formParams = formParams.append('domainRegPassword', <any>domainRegPassword) as any || formParams;
         }
 
-        return this.httpClient.request<InlineResponse20025>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}/migration`,
+        return this.httpClient.request<InlineResponse20026>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}/migration`,
             {
                 body: convertFormParamsToString ? formParams.toString() : formParams,
                 params: queryParameters,
@@ -1262,9 +1263,9 @@ export class WebhostingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateWebsiteInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateWebsiteInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateWebsiteInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateWebsiteInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateWebsiteInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateWebsiteInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateWebsiteInfo(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -1303,7 +1304,7 @@ export class WebhostingService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/websites/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1321,9 +1322,9 @@ export class WebhostingService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public webhostingCancel(id: string, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20022>;
-    public webhostingCancel(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20022>>;
-    public webhostingCancel(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20022>>;
+    public webhostingCancel(id: string, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20023>;
+    public webhostingCancel(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20023>>;
+    public webhostingCancel(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20023>>;
     public webhostingCancel(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -1362,7 +1363,7 @@ export class WebhostingService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<InlineResponse20022>('delete',`${this.basePath}/websites/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<InlineResponse20023>('delete',`${this.basePath}/websites/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

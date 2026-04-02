@@ -304,8 +304,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns></returns>
-        void UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
 
         /// <summary>
         /// Update Account Information
@@ -331,8 +331,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateAccountInfoWithHttpInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateAccountInfoWithHttpInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
         /// <summary>
         /// Update Account Information
         /// </summary>
@@ -341,8 +341,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        void UpdateAccountInfo (AccountInfoPost body);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateAccountInfo (AccountInfoPost body);
 
         /// <summary>
         /// Update Account Information
@@ -352,8 +352,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateAccountInfoWithHttpInfo (AccountInfoPost body);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateAccountInfoWithHttpInfo (AccountInfoPost body);
         /// <summary>
         /// Add IP Access Restriction
         /// </summary>
@@ -363,8 +363,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns></returns>
-        void UpdateAccountIpLimits (string start, string end);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateAccountIpLimits (string start, string end);
 
         /// <summary>
         /// Add IP Access Restriction
@@ -375,8 +375,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateAccountIpLimitsWithHttpInfo (string start, string end);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateAccountIpLimitsWithHttpInfo (string start, string end);
         /// <summary>
         /// Add IP Access Restriction
         /// </summary>
@@ -385,8 +385,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns></returns>
-        void UpdateAccountIpLimits (IpLimitRange body);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateAccountIpLimits (IpLimitRange body);
 
         /// <summary>
         /// Add IP Access Restriction
@@ -396,8 +396,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateAccountIpLimitsWithHttpInfo (IpLimitRange body);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateAccountIpLimitsWithHttpInfo (IpLimitRange body);
         /// <summary>
         /// Change Account Password
         /// </summary>
@@ -807,8 +807,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateAccountInfoAsync (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateAccountInfoAsync (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
 
         /// <summary>
         /// Update Account Information
@@ -834,8 +834,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountInfoAsyncWithHttpInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateAccountInfoAsyncWithHttpInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin);
         /// <summary>
         /// Update Account Information
         /// </summary>
@@ -844,8 +844,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateAccountInfoAsync (AccountInfoPost body);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateAccountInfoAsync (AccountInfoPost body);
 
         /// <summary>
         /// Update Account Information
@@ -855,8 +855,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountInfoAsyncWithHttpInfo (AccountInfoPost body);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateAccountInfoAsyncWithHttpInfo (AccountInfoPost body);
         /// <summary>
         /// Add IP Access Restriction
         /// </summary>
@@ -866,8 +866,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateAccountIpLimitsAsync (string start, string end);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateAccountIpLimitsAsync (string start, string end);
 
         /// <summary>
         /// Add IP Access Restriction
@@ -878,8 +878,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountIpLimitsAsyncWithHttpInfo (string start, string end);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateAccountIpLimitsAsyncWithHttpInfo (string start, string end);
         /// <summary>
         /// Add IP Access Restriction
         /// </summary>
@@ -888,8 +888,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateAccountIpLimitsAsync (IpLimitRange body);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateAccountIpLimitsAsync (IpLimitRange body);
 
         /// <summary>
         /// Add IP Access Restriction
@@ -899,8 +899,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountIpLimitsAsyncWithHttpInfo (IpLimitRange body);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateAccountIpLimitsAsyncWithHttpInfo (IpLimitRange body);
         /// <summary>
         /// Change Account Password
         /// </summary>
@@ -3180,10 +3180,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns></returns>
-        public void UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
         {
-             UpdateAccountInfoWithHttpInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateAccountInfoWithHttpInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3207,8 +3208,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateAccountInfoWithHttpInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateAccountInfoWithHttpInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -3331,9 +3332,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -3357,10 +3358,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateAccountInfoAsync (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateAccountInfoAsync (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
         {
-             await UpdateAccountInfoAsyncWithHttpInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateAccountInfoAsyncWithHttpInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+             return localVarResponse.Data;
 
         }
 
@@ -3385,8 +3387,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="disableServerNotifications"></param>
         /// <param name="disableEmailNotifications"></param>
         /// <param name="gstin"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountInfoAsyncWithHttpInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateAccountInfoAsyncWithHttpInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -3509,9 +3511,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -3519,10 +3521,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns></returns>
-        public void UpdateAccountInfo (AccountInfoPost body)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateAccountInfo (AccountInfoPost body)
         {
-             UpdateAccountInfoWithHttpInfo(body);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateAccountInfoWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3530,8 +3533,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateAccountInfoWithHttpInfo (AccountInfoPost body)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateAccountInfoWithHttpInfo (AccountInfoPost body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -3597,9 +3600,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -3607,10 +3610,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateAccountInfoAsync (AccountInfoPost body)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateAccountInfoAsync (AccountInfoPost body)
         {
-             await UpdateAccountInfoAsyncWithHttpInfo(body);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateAccountInfoAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -3619,8 +3623,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountInfoAsyncWithHttpInfo (AccountInfoPost body)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateAccountInfoAsyncWithHttpInfo (AccountInfoPost body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -3686,9 +3690,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -3697,10 +3701,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns></returns>
-        public void UpdateAccountIpLimits (string start, string end)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateAccountIpLimits (string start, string end)
         {
-             UpdateAccountIpLimitsWithHttpInfo(start, end);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateAccountIpLimitsWithHttpInfo(start, end);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3709,8 +3714,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateAccountIpLimitsWithHttpInfo (string start, string end)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateAccountIpLimitsWithHttpInfo (string start, string end)
         {
             // verify the required parameter 'start' is set
             if (start == null)
@@ -3773,9 +3778,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -3784,10 +3789,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateAccountIpLimitsAsync (string start, string end)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateAccountIpLimitsAsync (string start, string end)
         {
-             await UpdateAccountIpLimitsAsyncWithHttpInfo(start, end);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateAccountIpLimitsAsyncWithHttpInfo(start, end);
+             return localVarResponse.Data;
 
         }
 
@@ -3797,8 +3803,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountIpLimitsAsyncWithHttpInfo (string start, string end)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateAccountIpLimitsAsyncWithHttpInfo (string start, string end)
         {
             // verify the required parameter 'start' is set
             if (start == null)
@@ -3861,9 +3867,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -3871,10 +3877,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns></returns>
-        public void UpdateAccountIpLimits (IpLimitRange body)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateAccountIpLimits (IpLimitRange body)
         {
-             UpdateAccountIpLimitsWithHttpInfo(body);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateAccountIpLimitsWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3882,8 +3889,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateAccountIpLimitsWithHttpInfo (IpLimitRange body)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateAccountIpLimitsWithHttpInfo (IpLimitRange body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -3949,9 +3956,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -3959,10 +3966,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateAccountIpLimitsAsync (IpLimitRange body)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateAccountIpLimitsAsync (IpLimitRange body)
         {
-             await UpdateAccountIpLimitsAsyncWithHttpInfo(body);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateAccountIpLimitsAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -3971,8 +3979,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountIpLimitsAsyncWithHttpInfo (IpLimitRange body)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateAccountIpLimitsAsyncWithHttpInfo (IpLimitRange body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -4038,9 +4046,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>

@@ -17,6 +17,7 @@ import { AuthStorage } from './AuthStorage';
 import {
   ChargeInvoiceRows,
   SuccessTextResponse,
+  ServiceOrderPostResponse,
   FloatingIpsCancel200Response,
 } from './models';
 
@@ -107,7 +108,7 @@ export class FloatingIPsApi extends Api {
    * Place Floating IP Order
    * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
    */
-  async addFloatingIp(): Promise<any> {
+  async addFloatingIp(): Promise<ServiceOrderPostResponse> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -171,7 +172,7 @@ export class FloatingIPsApi extends Api {
    * Returns detailed information about a specific Floating IP service including its current target IP assignment.
    * @param params.id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
    */
-  async getFloatingIpInfo(params: IGetFloatingIpInfoParams): Promise<any> {
+  async getFloatingIpInfo(params: IGetFloatingIpInfoParams): Promise<object> {
     // Verify required parameters are set
     this.ensureParamIsSet('getFloatingIpInfo', params, 'id');
 
@@ -299,7 +300,7 @@ export class FloatingIPsApi extends Api {
    * Get Floating IP Ordering Information
    * Retrieves available options and pricing for ordering a new Floating IP.
    */
-  async getNewFloatingIp(): Promise<any> {
+  async getNewFloatingIp(): Promise<object> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -400,7 +401,7 @@ export class FloatingIPsApi extends Api {
    * Updates settings on a Floating IP service, such as its label or configuration metadata.
    * @param params.id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
    */
-  async updateFloatingIpInfo(params: IUpdateFloatingIpInfoParams): Promise<any> {
+  async updateFloatingIpInfo(params: IUpdateFloatingIpInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateFloatingIpInfo', params, 'id');
 

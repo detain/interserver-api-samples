@@ -14,13 +14,13 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        void AddServer ();
+        /// <returns>InlineResponse20019</returns>
+        InlineResponse20019 AddServer ();
         /// <summary>
         /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </summary>
-        /// <returns>InlineResponse20026</returns>
-        InlineResponse20026 BuyItNowServerOrder ();
+        /// <returns>InlineResponse20027</returns>
+        InlineResponse20027 BuyItNowServerOrder ();
         /// <summary>
         /// List Marketplace Servers Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
         /// </summary>
@@ -131,14 +131,14 @@ namespace IO.Swagger.Api
         /// Cancel Server Service Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
         /// </summary>
         /// <param name="id">Server ID number</param>
-        /// <returns>InlineResponse20019</returns>
-        InlineResponse20019 ServersCancel (int? id);
+        /// <returns>InlineResponse20020</returns>
+        InlineResponse20020 ServersCancel (int? id);
         /// <summary>
         /// Update Server Order Updates settings on a dedicated server order.
         /// </summary>
         /// <param name="id">Server ID number.</param>
-        /// <returns></returns>
-        void UpdateServerInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateServerInfo (string id);
     }
   
     /// <summary>
@@ -197,8 +197,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        public void AddServer ()
+        /// <returns>InlineResponse20019</returns>
+        public InlineResponse20019 AddServer ()
         {
     
             var path = "/servers/order";
@@ -222,14 +222,14 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddServer: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (InlineResponse20019) ApiClient.Deserialize(response.Content, typeof(InlineResponse20019), response.Headers);
         }
     
         /// <summary>
         /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </summary>
-        /// <returns>InlineResponse20026</returns>
-        public InlineResponse20026 BuyItNowServerOrder ()
+        /// <returns>InlineResponse20027</returns>
+        public InlineResponse20027 BuyItNowServerOrder ()
         {
     
             var path = "/servers/order/buy_now_server";
@@ -253,7 +253,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling BuyItNowServerOrder: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20026) ApiClient.Deserialize(response.Content, typeof(InlineResponse20026), response.Headers);
+            return (InlineResponse20027) ApiClient.Deserialize(response.Content, typeof(InlineResponse20027), response.Headers);
         }
     
         /// <summary>
@@ -869,8 +869,8 @@ if (action != null) formParams.Add("action", ApiClient.ParameterToString(action)
         /// Cancel Server Service Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
         /// </summary>
         /// <param name="id">Server ID number</param>
-        /// <returns>InlineResponse20019</returns>
-        public InlineResponse20019 ServersCancel (int? id)
+        /// <returns>InlineResponse20020</returns>
+        public InlineResponse20020 ServersCancel (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling ServersCancel");
@@ -897,15 +897,15 @@ if (action != null) formParams.Add("action", ApiClient.ParameterToString(action)
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ServersCancel: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20019) ApiClient.Deserialize(response.Content, typeof(InlineResponse20019), response.Headers);
+            return (InlineResponse20020) ApiClient.Deserialize(response.Content, typeof(InlineResponse20020), response.Headers);
         }
     
         /// <summary>
         /// Update Server Order Updates settings on a dedicated server order.
         /// </summary>
         /// <param name="id">Server ID number.</param>
-        /// <returns></returns>
-        public void UpdateServerInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateServerInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateServerInfo");
@@ -932,7 +932,7 @@ if (action != null) formParams.Add("action", ApiClient.ParameterToString(action)
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateServerInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
     }

@@ -301,8 +301,8 @@ public class AccountApiTest {
         Boolean disableServerNotifications = null;
         Boolean disableEmailNotifications = null;
         String gstin = null;
-        //api.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
-        
+        //SuccessTextResponse response = api.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -320,8 +320,8 @@ public class AccountApiTest {
     public void updateAccountIpLimitsTest() {
         String start = null;
         String end = null;
-        //api.updateAccountIpLimits(start, end);
-        
+        //SuccessTextResponse response = api.updateAccountIpLimits(start, end);
+        //assertNotNull(response);
         // TODO: test validations
 
 

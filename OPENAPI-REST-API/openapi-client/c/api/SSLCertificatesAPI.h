@@ -7,6 +7,8 @@
 #include "../include/binary.h"
 #include "../model/charge_invoice_rows.h"
 #include "../model/get_account_info_401_response.h"
+#include "../model/object.h"
+#include "../model/service_order_post_response.h"
 #include "../model/ssl_cancel_200_response.h"
 #include "../model/success_text_response.h"
 
@@ -15,7 +17,7 @@
 //
 // Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
 //
-void
+service_order_post_response_t*
 SSLCertificatesAPI_addSsl(apiClient_t *apiClient);
 
 
@@ -23,7 +25,7 @@ SSLCertificatesAPI_addSsl(apiClient_t *apiClient);
 //
 // Retrieves available SSL certificate types and pricing for ordering.
 //
-void
+object_t*
 SSLCertificatesAPI_getNewSsl(apiClient_t *apiClient);
 
 
@@ -31,7 +33,7 @@ SSLCertificatesAPI_getNewSsl(apiClient_t *apiClient);
 //
 // Returns detailed information about a specific SSL certificate including its domain and expiration.
 //
-void
+object_t*
 SSLCertificatesAPI_getSslInfo(apiClient_t *apiClient, int *id);
 
 
@@ -79,7 +81,7 @@ SSLCertificatesAPI_sslCancel(apiClient_t *apiClient, int *id);
 //
 // Updates settings on an SSL certificate order.
 //
-void
+success_text_response_t*
 SSLCertificatesAPI_updateSslInfo(apiClient_t *apiClient, char *id);
 
 

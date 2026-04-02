@@ -28,6 +28,7 @@ import {
   DownloadQsBackup200Response,
   VpsTemplatesList,
   VpsTrafficResponse,
+  ServiceOrderPostResponse,
   Vps,
   VpsOrderPutResponse,
   RestoreRequest,
@@ -377,7 +378,7 @@ export class VPSApi extends Api {
    * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
    * @param params.vpsOrderPostRequest 
    */
-  async addVps(params: IAddVpsParams): Promise<any> {
+  async addVps(params: IAddVpsParams): Promise<ServiceOrderPostResponse> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -1837,7 +1838,7 @@ export class VPSApi extends Api {
    * Updates settings on a VPS order.
    * @param params.id VPS ID number.
    */
-  async updateVpsInfo(params: IUpdateVpsInfoParams): Promise<any> {
+  async updateVpsInfo(params: IUpdateVpsInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateVpsInfo', params, 'id');
 

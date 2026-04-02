@@ -19,16 +19,16 @@ module SwaggerClient
     # Place QuickServer Order
     # Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_qs(opts = {})
-      add_qs_with_http_info(opts)
-      nil
+      data, _status_code, _headers = add_qs_with_http_info(opts)
+      data
     end
 
     # Place QuickServer Order
     # Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_qs_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: QuickServersApi.add_qs ...'
@@ -50,7 +50,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'ServiceOrderPostResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -2739,17 +2739,17 @@ module SwaggerClient
     # Updates QuickServer metadata or stored settings associated with the order.
     # @param id QuickServer ID number.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_qs_info(id, opts = {})
-      update_qs_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_qs_info_with_http_info(id, opts)
+      data
     end
 
     # Update QuickServer Order
     # Updates QuickServer metadata or stored settings associated with the order.
     # @param id QuickServer ID number.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_qs_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: QuickServersApi.update_qs_info ...'
@@ -2775,7 +2775,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

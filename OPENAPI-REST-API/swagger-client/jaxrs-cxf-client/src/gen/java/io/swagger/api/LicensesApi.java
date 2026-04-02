@@ -7,6 +7,7 @@ import io.swagger.model.IpObject;
 import io.swagger.model.License;
 import io.swagger.model.LicenseRow;
 import io.swagger.model.LicensesOrder;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 
 import java.io.InputStream;
@@ -45,9 +46,9 @@ public interface LicensesApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Place License Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void addLicense();
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public ServiceOrderPostResponse addLicense();
 
     /**
      * Get License
@@ -212,7 +213,7 @@ public interface LicensesApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update License", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateLicenseInfo(@PathParam("id") String id);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse updateLicenseInfo(@PathParam("id") String id);
 }

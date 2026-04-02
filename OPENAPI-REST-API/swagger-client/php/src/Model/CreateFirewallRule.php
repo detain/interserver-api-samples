@@ -224,7 +224,7 @@ class CreateFirewallRule implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['destinationPort'] = isset($data['destinationPort']) ? $data['destinationPort'] : 80;
-        $this->container['sourceIp'] = isset($data['sourceIp']) ? $data['sourceIp'] : '0';
+        $this->container['sourceIp'] = isset($data['sourceIp']) ? $data['sourceIp'] : '0.0.0.0';
         $this->container['sourcePort'] = isset($data['sourcePort']) ? $data['sourcePort'] : 0;
         $this->container['protocolId'] = isset($data['protocolId']) ? $data['protocolId'] : null;
         $this->container['xdpAction'] = isset($data['xdpAction']) ? $data['xdpAction'] : null;
@@ -313,7 +313,7 @@ class CreateFirewallRule implements ModelInterface, ArrayAccess
     /**
      * Sets sourceIp
      *
-     * @param string $sourceIp sourceIp
+     * @param string $sourceIp Source IP address to match. Use '0.0.0.0' to match any source.
      *
      * @return $this
      */

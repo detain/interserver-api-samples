@@ -66,11 +66,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setDestinationPort(int destination_port);
-	/*! \brief Get 
+	/*! \brief Get Source IP address to match. Use '0.0.0.0' to match any source.
 	 */
 	std::string getSourceIp();
 
-	/*! \brief Set 
+	/*! \brief Set Source IP address to match. Use '0.0.0.0' to match any source.
 	 */
 	void setSourceIp(std::string source_ip);
 	/*! \brief Get 

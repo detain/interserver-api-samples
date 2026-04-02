@@ -29,7 +29,7 @@ type ApiAddMailRequest struct {
 	ApiService *MailAPIService
 }
 
-func (r ApiAddMailRequest) Execute() (*http.Response, error) {
+func (r ApiAddMailRequest) Execute() (*ServiceOrderPostResponse, *http.Response, error) {
 	return r.ApiService.AddMailExecute(r)
 }
 
@@ -49,16 +49,18 @@ func (a *MailAPIService) AddMail(ctx context.Context) ApiAddMailRequest {
 }
 
 // Execute executes the request
-func (a *MailAPIService) AddMailExecute(r ApiAddMailRequest) (*http.Response, error) {
+//  @return ServiceOrderPostResponse
+func (a *MailAPIService) AddMailExecute(r ApiAddMailRequest) (*ServiceOrderPostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ServiceOrderPostResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MailAPIService.AddMail")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/mail/order"
@@ -114,19 +116,19 @@ func (a *MailAPIService) AddMailExecute(r ApiAddMailRequest) (*http.Response, er
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -139,16 +141,24 @@ func (a *MailAPIService) AddMailExecute(r ApiAddMailRequest) (*http.Response, er
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiAddRuleRequest struct {
@@ -3622,7 +3632,7 @@ type ApiUpdateMailInfoRequest struct {
 	id string
 }
 
-func (r ApiUpdateMailInfoRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateMailInfoRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.UpdateMailInfoExecute(r)
 }
 
@@ -3644,16 +3654,18 @@ func (a *MailAPIService) UpdateMailInfo(ctx context.Context, id string) ApiUpdat
 }
 
 // Execute executes the request
-func (a *MailAPIService) UpdateMailInfoExecute(r ApiUpdateMailInfoRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *MailAPIService) UpdateMailInfoExecute(r ApiUpdateMailInfoRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MailAPIService.UpdateMailInfo")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/mail/{id}"
@@ -3710,19 +3722,19 @@ func (a *MailAPIService) UpdateMailInfoExecute(r ApiUpdateMailInfoRequest) (*htt
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -3735,16 +3747,24 @@ func (a *MailAPIService) UpdateMailInfoExecute(r ApiUpdateMailInfoRequest) (*htt
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiViewMailLogRequest struct {
@@ -3813,7 +3833,7 @@ func (r ApiViewMailLogRequest) Mailid(mailid string) ApiViewMailLogRequest {
 	return r
 }
 
-// Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+// Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
 func (r ApiViewMailLogRequest) MessageId(messageId string) ApiViewMailLogRequest {
 	r.messageId = &messageId
 	return r
@@ -3855,7 +3875,7 @@ func (r ApiViewMailLogRequest) StartDate(startDate ViewMailLogStartDateParameter
 	return r
 }
 
-// Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+// Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
 func (r ApiViewMailLogRequest) EndDate(endDate ViewMailLogStartDateParameter) ApiViewMailLogRequest {
 	r.endDate = &endDate
 	return r

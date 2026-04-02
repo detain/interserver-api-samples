@@ -12,8 +12,9 @@
 package io.swagger.client.apis
 
 import io.swagger.client.models.ChargeInvoiceRows
-import io.swagger.client.models.InlineResponse20020
+import io.swagger.client.models.InlineResponse20021
 import io.swagger.client.models.InlineResponse401
+import io.swagger.client.models.ServiceOrderPostResponse
 import io.swagger.client.models.SuccessTextResponse
 
 import myadmin-client-kotlin-client.infrastructure.*
@@ -23,21 +24,22 @@ class SSLCertificatesApi(basePath: kotlin.String = "https://my.interserver.net/a
     /**
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
-     * @return void
+     * @return ServiceOrderPostResponse
      */
-    fun addSsl(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addSsl(): ServiceOrderPostResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/ssl/order", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<ServiceOrderPostResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -47,21 +49,22 @@ class SSLCertificatesApi(basePath: kotlin.String = "https://my.interserver.net/a
     /**
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
-     * @return void
+     * @return kotlin.Any
      */
-    fun getNewSsl(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun getNewSsl(): kotlin.Any {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/ssl/order", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<kotlin.Any>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Any
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -72,21 +75,22 @@ class SSLCertificatesApi(basePath: kotlin.String = "https://my.interserver.net/a
      * Get SSL Cert Info
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param id SSL certificate ID number. 
-     * @return void
+     * @return kotlin.Any
      */
-    fun getSslInfo(id: kotlin.Int): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun getSslInfo(id: kotlin.Int): kotlin.Any {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/ssl/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<kotlin.Any>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Any
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -197,22 +201,22 @@ class SSLCertificatesApi(basePath: kotlin.String = "https://my.interserver.net/a
      * Cancel SSL Certificate Service
      * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
      * @param id SSL Cert ID number 
-     * @return InlineResponse20020
+     * @return InlineResponse20021
      */
     @Suppress("UNCHECKED_CAST")
-    fun sslCancel(id: kotlin.Int): InlineResponse20020 {
+    fun sslCancel(id: kotlin.Int): InlineResponse20021 {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.DELETE,
                 "/ssl/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<InlineResponse20020>(
+        val response = request<InlineResponse20021>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20020
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20021
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -223,21 +227,22 @@ class SSLCertificatesApi(basePath: kotlin.String = "https://my.interserver.net/a
      * Update SSL Cert Order
      * Updates settings on an SSL certificate order.
      * @param id SSL certificate ID number. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateSslInfo(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateSslInfo(id: kotlin.String): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/ssl/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

@@ -42,6 +42,7 @@ import org.openapitools.client.model.DomainRow;
 import org.openapitools.client.model.DomainSearchResponse;
 import org.openapitools.client.model.DomainWhoisPrivacyRequest;
 import org.openapitools.client.model.GetAccountInfo401Response;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.openapitools.client.model.TextResponse;
 
@@ -97,8 +98,8 @@ public class DomainsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call addDomainCall(final ApiCallback _callback) throws ApiException {
@@ -154,35 +155,38 @@ public class DomainsApi {
     /**
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void addDomain() throws ApiException {
-        addDomainWithHttpInfo();
+    public ServiceOrderPostResponse addDomain() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> localVarResp = addDomainWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> addDomainWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addDomainWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = addDomainValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -195,14 +199,15 @@ public class DomainsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addDomainAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call addDomainAsync(final ApiCallback<ServiceOrderPostResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addDomainValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3511,8 +3516,8 @@ public class DomainsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateDomainInfoCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -3575,36 +3580,39 @@ public class DomainsApi {
      * Update Domain Order
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void updateDomainInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        updateDomainInfoWithHttpInfo(id);
+    public SuccessTextResponse updateDomainInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = updateDomainInfoWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
      * Update Domain Order
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateDomainInfoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateDomainInfoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = updateDomainInfoValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -3618,14 +3626,15 @@ public class DomainsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateDomainInfoAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateDomainInfoAsync(@javax.annotation.Nonnull String id, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateDomainInfoValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

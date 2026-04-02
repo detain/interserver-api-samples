@@ -17,6 +17,8 @@ import { Observable }                                        from 'rxjs';
 import { OpenApiHttpParams, QueryParamStyle } from '../query.params';
 
 // @ts-ignore
+import { AddServer200Response } from '../model/addServer200Response';
+// @ts-ignore
 import { BuyItNowList } from '../model/buyItNowList';
 // @ts-ignore
 import { BuyItNowServerOrder200Response } from '../model/buyItNowServerOrder200Response';
@@ -71,9 +73,9 @@ export class ServersService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public addServer(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public addServer(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public addServer(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public addServer(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<AddServer200Response>;
+    public addServer(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<AddServer200Response>>;
+    public addServer(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<AddServer200Response>>;
     public addServer(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
@@ -108,7 +110,7 @@ export class ServersService extends BaseService {
 
         let localVarPath = `/servers/order`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<AddServer200Response>('post', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),
@@ -1148,9 +1150,9 @@ export class ServersService extends BaseService {
      * @param reportProgress flag to report request and response progress.
      * @param options additional options
      */
-    public updateServerInfo(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<any>;
-    public updateServerInfo(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<any>>;
-    public updateServerInfo(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<any>>;
+    public updateServerInfo(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<SuccessTextResponse>;
+    public updateServerInfo(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateServerInfo(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json',}): Observable<HttpEvent<SuccessTextResponse>>;
     public updateServerInfo(id: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json',}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateServerInfo.');
@@ -1188,7 +1190,7 @@ export class ServersService extends BaseService {
 
         let localVarPath = `/servers/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         const { basePath, withCredentials } = this.configuration;
-        return this.httpClient.request<any>('post', `${basePath}${localVarPath}`,
+        return this.httpClient.request<SuccessTextResponse>('post', `${basePath}${localVarPath}`,
             {
                 responseType: <any>responseType_,
                 ...(withCredentials ? { withCredentials } : {}),

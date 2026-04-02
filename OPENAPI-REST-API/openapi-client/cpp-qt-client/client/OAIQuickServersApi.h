@@ -29,6 +29,7 @@
 #include "OAIQuickserversCancel_200_response.h"
 #include "OAIRestoreRequest.h"
 #include "OAIReverseDnsEntries.h"
+#include "OAIServiceOrderPostResponse.h"
 #include "OAISuccessTextResponse.h"
 #include "OAITextResponse.h"
 #include "OAIVpsBackupRows.h"
@@ -369,7 +370,7 @@ private:
 
 Q_SIGNALS:
 
-    void addQsSignal();
+    void addQsSignal(OAIServiceOrderPostResponse summary);
     void deleteQsBackupSignal(OAISuccessTextResponse summary);
     void doQsBlockSmtpSignal(OAIQueueResponse summary);
     void doQsDisableCdSignal(OAIQueueResponse summary);
@@ -412,10 +413,10 @@ Q_SIGNALS:
     void postQuickServerRestoreSignal(OAIQueueResponse summary);
     void putQsSignal();
     void quickserversCancelSignal(OAIQuickserversCancel_200_response summary);
-    void updateQsInfoSignal();
+    void updateQsInfoSignal(OAISuccessTextResponse summary);
 
 
-    void addQsSignalFull(OAIHttpRequestWorker *worker);
+    void addQsSignalFull(OAIHttpRequestWorker *worker, OAIServiceOrderPostResponse summary);
     void deleteQsBackupSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void doQsBlockSmtpSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void doQsDisableCdSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
@@ -458,9 +459,9 @@ Q_SIGNALS:
     void postQuickServerRestoreSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void putQsSignalFull(OAIHttpRequestWorker *worker);
     void quickserversCancelSignalFull(OAIHttpRequestWorker *worker, OAIQuickserversCancel_200_response summary);
-    void updateQsInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateQsInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    void addQsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addQsSignalError(OAIServiceOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteQsBackupSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void doQsBlockSmtpSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void doQsDisableCdSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -503,7 +504,7 @@ Q_SIGNALS:
     void postQuickServerRestoreSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void putQsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void quickserversCancelSignalError(OAIQuickserversCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateQsInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateQsInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addQsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteQsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

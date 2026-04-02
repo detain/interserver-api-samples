@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **destinationPort** | **int** |  | [optional] [default to 80]
-**sourceIp** | **string** |  | [optional] [default to '0']
+**sourceIp** | **string** | Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source. | [optional] [default to '0.0.0.0']
 **sourcePort** | **int** |  | [optional] [default to 0]
 **protocolId** | **int** | 1 &#x3D; TCP, 2 &#x3D; UDP | 
 **xdpAction** | **int** | 1 &#x3D; Block,  0 &#x3D; Whitelist | 

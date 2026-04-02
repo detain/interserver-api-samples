@@ -40,6 +40,7 @@ src/main/scala/org/openapitools/client/models/AccountInfoOauthConfigProvidersVal
 src/main/scala/org/openapitools/client/models/AccountInfoOauthproviders.scala
 src/main/scala/org/openapitools/client/models/AccountInfoPost.scala
 src/main/scala/org/openapitools/client/models/AccountSshKey.scala
+src/main/scala/org/openapitools/client/models/AddServer200Response.scala
 src/main/scala/org/openapitools/client/models/AffiliateBannerRow.scala
 src/main/scala/org/openapitools/client/models/AffiliateDockSetup.scala
 src/main/scala/org/openapitools/client/models/AffiliatePaymentSetup.scala
@@ -388,6 +389,7 @@ src/main/scala/org/openapitools/client/models/ServersCancel200Response.scala
 src/main/scala/org/openapitools/client/models/Service.scala
 src/main/scala/org/openapitools/client/models/ServiceCategories.scala
 src/main/scala/org/openapitools/client/models/ServiceCategory.scala
+src/main/scala/org/openapitools/client/models/ServiceOrderPostResponse.scala
 src/main/scala/org/openapitools/client/models/ServiceType.scala
 src/main/scala/org/openapitools/client/models/ServiceTypes.scala
 src/main/scala/org/openapitools/client/models/Services.scala

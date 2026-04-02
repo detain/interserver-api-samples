@@ -84,9 +84,9 @@ var api = QuickServersApi.new(config)
 # Invoke an endpoint
 api.add_qs(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_qs", response)
-		
+		assert(response.data is ServiceOrderPostResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -2210,9 +2210,9 @@ api.update_qs_info(
 	# QuickServer ID number.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_qs_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

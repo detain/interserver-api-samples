@@ -29,12 +29,13 @@ import java.io.IOException;
 import io.swagger.client.model.ChargeInvoiceRows;
 import io.swagger.client.model.IdBuyIpBody;
 import io.swagger.client.model.IdMigrationBody;
-import io.swagger.client.model.InlineResponse20022;
 import io.swagger.client.model.InlineResponse20023;
 import io.swagger.client.model.InlineResponse20024;
 import io.swagger.client.model.InlineResponse20025;
+import io.swagger.client.model.InlineResponse20026;
 import io.swagger.client.model.InlineResponse401;
 import io.swagger.client.model.ReverseDnsEntries;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 import io.swagger.client.model.TextResponse;
 import io.swagger.client.model.Website;
@@ -139,21 +140,24 @@ public class WebhostingApi {
     /**
      * Place Website Order
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addWebsite() throws ApiException {
-        addWebsiteWithHttpInfo();
+    public ServiceOrderPostResponse addWebsite() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> resp = addWebsiteWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Place Website Order
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addWebsiteWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addWebsiteWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = addWebsiteValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -163,7 +167,7 @@ public class WebhostingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addWebsiteAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addWebsiteAsync(final ApiCallback<ServiceOrderPostResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -185,7 +189,8 @@ public class WebhostingApi {
         }
 
         com.squareup.okhttp.Call call = addWebsiteValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -380,11 +385,11 @@ public class WebhostingApi {
      * Get Website IP Information
      * Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return InlineResponse20023
+     * @return InlineResponse20024
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20023 getWebsiteBuyIp(Integer id) throws ApiException {
-        ApiResponse<InlineResponse20023> resp = getWebsiteBuyIpWithHttpInfo(id);
+    public InlineResponse20024 getWebsiteBuyIp(Integer id) throws ApiException {
+        ApiResponse<InlineResponse20024> resp = getWebsiteBuyIpWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -392,12 +397,12 @@ public class WebhostingApi {
      * Get Website IP Information
      * Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return ApiResponse&lt;InlineResponse20023&gt;
+     * @return ApiResponse&lt;InlineResponse20024&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20023> getWebsiteBuyIpWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<InlineResponse20024> getWebsiteBuyIpWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = getWebsiteBuyIpValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -409,7 +414,7 @@ public class WebhostingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getWebsiteBuyIpAsync(Integer id, final ApiCallback<InlineResponse20023> callback) throws ApiException {
+    public com.squareup.okhttp.Call getWebsiteBuyIpAsync(Integer id, final ApiCallback<InlineResponse20024> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -431,7 +436,7 @@ public class WebhostingApi {
         }
 
         com.squareup.okhttp.Call call = getWebsiteBuyIpValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1401,11 +1406,11 @@ public class WebhostingApi {
      * Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
      * @param body  (required)
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return InlineResponse20024
+     * @return InlineResponse20025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20024 postWebsiteBuyIp(IdBuyIpBody body, Integer id) throws ApiException {
-        ApiResponse<InlineResponse20024> resp = postWebsiteBuyIpWithHttpInfo(body, id);
+    public InlineResponse20025 postWebsiteBuyIp(IdBuyIpBody body, Integer id) throws ApiException {
+        ApiResponse<InlineResponse20025> resp = postWebsiteBuyIpWithHttpInfo(body, id);
         return resp.getData();
     }
 
@@ -1414,12 +1419,12 @@ public class WebhostingApi {
      * Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
      * @param body  (required)
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return ApiResponse&lt;InlineResponse20024&gt;
+     * @return ApiResponse&lt;InlineResponse20025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20024> postWebsiteBuyIpWithHttpInfo(IdBuyIpBody body, Integer id) throws ApiException {
+    public ApiResponse<InlineResponse20025> postWebsiteBuyIpWithHttpInfo(IdBuyIpBody body, Integer id) throws ApiException {
         com.squareup.okhttp.Call call = postWebsiteBuyIpValidateBeforeCall(body, id, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1432,7 +1437,7 @@ public class WebhostingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postWebsiteBuyIpAsync(IdBuyIpBody body, Integer id, final ApiCallback<InlineResponse20024> callback) throws ApiException {
+    public com.squareup.okhttp.Call postWebsiteBuyIpAsync(IdBuyIpBody body, Integer id, final ApiCallback<InlineResponse20025> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1454,7 +1459,7 @@ public class WebhostingApi {
         }
 
         com.squareup.okhttp.Call call = postWebsiteBuyIpValidateBeforeCall(body, id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1539,11 +1544,11 @@ public class WebhostingApi {
      * Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
      * @param ips  (required)
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return InlineResponse20024
+     * @return InlineResponse20025
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20024 postWebsiteBuyIp(Map<String, String> ips, Integer id) throws ApiException {
-        ApiResponse<InlineResponse20024> resp = postWebsiteBuyIpWithHttpInfo(ips, id);
+    public InlineResponse20025 postWebsiteBuyIp(Map<String, String> ips, Integer id) throws ApiException {
+        ApiResponse<InlineResponse20025> resp = postWebsiteBuyIpWithHttpInfo(ips, id);
         return resp.getData();
     }
 
@@ -1552,12 +1557,12 @@ public class WebhostingApi {
      * Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
      * @param ips  (required)
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return ApiResponse&lt;InlineResponse20024&gt;
+     * @return ApiResponse&lt;InlineResponse20025&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20024> postWebsiteBuyIpWithHttpInfo(Map<String, String> ips, Integer id) throws ApiException {
+    public ApiResponse<InlineResponse20025> postWebsiteBuyIpWithHttpInfo(Map<String, String> ips, Integer id) throws ApiException {
         com.squareup.okhttp.Call call = postWebsiteBuyIpValidateBeforeCall(ips, id, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1570,7 +1575,7 @@ public class WebhostingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postWebsiteBuyIpAsync(Map<String, String> ips, Integer id, final ApiCallback<InlineResponse20024> callback) throws ApiException {
+    public com.squareup.okhttp.Call postWebsiteBuyIpAsync(Map<String, String> ips, Integer id, final ApiCallback<InlineResponse20025> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1592,7 +1597,7 @@ public class WebhostingApi {
         }
 
         com.squareup.okhttp.Call call = postWebsiteBuyIpValidateBeforeCall(ips, id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20024>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1675,11 +1680,11 @@ public class WebhostingApi {
      * Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
      * @param body  (required)
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return InlineResponse20025
+     * @return InlineResponse20026
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20025 postWebsiteMigration(IdMigrationBody body, Integer id) throws ApiException {
-        ApiResponse<InlineResponse20025> resp = postWebsiteMigrationWithHttpInfo(body, id);
+    public InlineResponse20026 postWebsiteMigration(IdMigrationBody body, Integer id) throws ApiException {
+        ApiResponse<InlineResponse20026> resp = postWebsiteMigrationWithHttpInfo(body, id);
         return resp.getData();
     }
 
@@ -1688,12 +1693,12 @@ public class WebhostingApi {
      * Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
      * @param body  (required)
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return ApiResponse&lt;InlineResponse20025&gt;
+     * @return ApiResponse&lt;InlineResponse20026&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20025> postWebsiteMigrationWithHttpInfo(IdMigrationBody body, Integer id) throws ApiException {
+    public ApiResponse<InlineResponse20026> postWebsiteMigrationWithHttpInfo(IdMigrationBody body, Integer id) throws ApiException {
         com.squareup.okhttp.Call call = postWebsiteMigrationValidateBeforeCall(body, id, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1706,7 +1711,7 @@ public class WebhostingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postWebsiteMigrationAsync(IdMigrationBody body, Integer id, final ApiCallback<InlineResponse20025> callback) throws ApiException {
+    public com.squareup.okhttp.Call postWebsiteMigrationAsync(IdMigrationBody body, Integer id, final ApiCallback<InlineResponse20026> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1728,7 +1733,7 @@ public class WebhostingApi {
         }
 
         com.squareup.okhttp.Call call = postWebsiteMigrationValidateBeforeCall(body, id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1909,11 +1914,11 @@ public class WebhostingApi {
      * @param domainRegEmail  (required)
      * @param domainRegPassword  (required)
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return InlineResponse20025
+     * @return InlineResponse20026
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20025 postWebsiteMigration(String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, Integer id) throws ApiException {
-        ApiResponse<InlineResponse20025> resp = postWebsiteMigrationWithHttpInfo(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id);
+    public InlineResponse20026 postWebsiteMigration(String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, Integer id) throws ApiException {
+        ApiResponse<InlineResponse20026> resp = postWebsiteMigrationWithHttpInfo(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id);
         return resp.getData();
     }
 
@@ -1934,12 +1939,12 @@ public class WebhostingApi {
      * @param domainRegEmail  (required)
      * @param domainRegPassword  (required)
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return ApiResponse&lt;InlineResponse20025&gt;
+     * @return ApiResponse&lt;InlineResponse20026&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20025> postWebsiteMigrationWithHttpInfo(String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, Integer id) throws ApiException {
+    public ApiResponse<InlineResponse20026> postWebsiteMigrationWithHttpInfo(String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, Integer id) throws ApiException {
         com.squareup.okhttp.Call call = postWebsiteMigrationValidateBeforeCall(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1964,7 +1969,7 @@ public class WebhostingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postWebsiteMigrationAsync(String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, Integer id, final ApiCallback<InlineResponse20025> callback) throws ApiException {
+    public com.squareup.okhttp.Call postWebsiteMigrationAsync(String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, Integer id, final ApiCallback<InlineResponse20026> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1986,7 +1991,7 @@ public class WebhostingApi {
         }
 
         com.squareup.okhttp.Call call = postWebsiteMigrationValidateBeforeCall(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20025>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2452,22 +2457,25 @@ public class WebhostingApi {
      * Update Website Order
      * Updates settings on a webhosting order.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateWebsiteInfo(String id) throws ApiException {
-        updateWebsiteInfoWithHttpInfo(id);
+    public SuccessTextResponse updateWebsiteInfo(String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateWebsiteInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update Website Order
      * Updates settings on a webhosting order.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateWebsiteInfoWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateWebsiteInfoWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = updateWebsiteInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2478,7 +2486,7 @@ public class WebhostingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateWebsiteInfoAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateWebsiteInfoAsync(String id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2500,7 +2508,8 @@ public class WebhostingApi {
         }
 
         com.squareup.okhttp.Call call = updateWebsiteInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -2576,11 +2585,11 @@ public class WebhostingApi {
      * Cancel Website
      * Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return InlineResponse20022
+     * @return InlineResponse20023
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20022 webhostingCancel(String id) throws ApiException {
-        ApiResponse<InlineResponse20022> resp = webhostingCancelWithHttpInfo(id);
+    public InlineResponse20023 webhostingCancel(String id) throws ApiException {
+        ApiResponse<InlineResponse20023> resp = webhostingCancelWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -2588,12 +2597,12 @@ public class WebhostingApi {
      * Cancel Website
      * Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
-     * @return ApiResponse&lt;InlineResponse20022&gt;
+     * @return ApiResponse&lt;InlineResponse20023&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20022> webhostingCancelWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<InlineResponse20023> webhostingCancelWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = webhostingCancelValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2605,7 +2614,7 @@ public class WebhostingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call webhostingCancelAsync(String id, final ApiCallback<InlineResponse20022> callback) throws ApiException {
+    public com.squareup.okhttp.Call webhostingCancelAsync(String id, final ApiCallback<InlineResponse20023> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2627,7 +2636,7 @@ public class WebhostingApi {
         }
 
         com.squareup.okhttp.Call call = webhostingCancelValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20023>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -156,7 +156,7 @@ Creates a new prepay balance deposit and returns the invoice ID that must be pai
 <a id="deleteAccountCreditCard"></a>
 # **deleteAccountCreditCard**
 ```java
-Mono<Void> BillingApi.deleteAccountCreditCard(id)
+Mono<String> BillingApi.deleteAccountCreditCard(id)
 ```
 
 Remove Credit Card
@@ -169,7 +169,8 @@ Removes a credit card from the account. If this is the default payment method, s
 | **id** | `String`| The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. | |
 
 
-
+### Return type
+`String`
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -419,7 +420,7 @@ Returns individual web traffic log entries for affiliate referrals, including vi
 <a id="getBillingCart"></a>
 # **getBillingCart**
 ```java
-Mono<Void> BillingApi.getBillingCart()
+Mono<Object> BillingApi.getBillingCart()
 ```
 
 Get Shopping Cart Contents
@@ -428,7 +429,8 @@ Returns the current cart contents, available payment methods, and checkout metad
 
 
 
-
+### Return type
+`Object`
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -522,7 +524,7 @@ Returns the invoice list for the account with summary totals. Use the invoice ID
 <a id="getBillingPrePays"></a>
 # **getBillingPrePays**
 ```java
-Mono<Void> BillingApi.getBillingPrePays()
+Mono<Object> BillingApi.getBillingPrePays()
 ```
 
 List Prepay Balances
@@ -531,7 +533,8 @@ Lists prepay balances and their associated metadata. Use this to determine wheth
 
 
 
-
+### Return type
+`Object`
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -633,7 +636,7 @@ Completes the credit card verification flow by submitting the micro-charge amoun
 <a id="updateAccountCreditCard"></a>
 # **updateAccountCreditCard**
 ```java
-Mono<Void> BillingApi.updateAccountCreditCard(id)
+Mono<String> BillingApi.updateAccountCreditCard(id)
 ```
 
 Update Credit Card
@@ -646,7 +649,8 @@ Updates an existing credit card on the account. Use this to refresh stored card 
 | **id** | `Integer`| The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. | |
 
 
-
+### Return type
+`String`
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

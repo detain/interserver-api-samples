@@ -4,7 +4,7 @@ package io.swagger.server.model
 /**
  * = Root Type for ServerIpmiLiveInfo =
  *
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  *
  * @param text 
  * @param public_ip 

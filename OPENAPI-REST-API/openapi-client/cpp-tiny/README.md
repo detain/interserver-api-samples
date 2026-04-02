@@ -421,6 +421,7 @@ All URIs are relative to https://my.interserver.nethttps://my.interserver.net/ap
 |*AccountInfoPost* | Request to update account information.|
 |*AccountInfo_oauthproviders* | |
 |*AccountSshKey* | SSH Keys|
+|*AddServer_200_response* | |
 |*AffiliateBannerRow* | An affiliate banner image details.|
 |*AffiliateDockSetup* | Affiliate Landing Page information.|
 |*AffiliatePaymentSetup* | Affiliate Payment Setup.  Here you can set if you want the payments to go to `prepay` or `paypal` and the PayPal email address.|
@@ -716,7 +717,7 @@ All URIs are relative to https://my.interserver.nethttps://my.interserver.net/ap
 |*ServerBillingDetails* | Billing information for a dedicated server service including payment status, billing cycle, and cost.|
 |*ServerClientLink* | |
 |*ServerExtraInfoTables* | |
-|*ServerIpmiLiveInfo* | Information about the IPMI connectioj.|
+|*ServerIpmiLiveInfo* | Information about the IPMI connection.|
 |*ServerIpmiLiveRequest* | Request body to setup an IPMI Live connection.|
 |*ServerIpmiPowerRequest* | IPMI Power command for servers|
 |*ServerLease* | |
@@ -755,6 +756,7 @@ All URIs are relative to https://my.interserver.nethttps://my.interserver.net/ap
 |*Service* | An individual package tied to one of our services.|
 |*ServiceCategories* | The listing of the categories for the services.|
 |*ServiceCategory* | A Category of Services.  This is the broadest grouping within a module.|
+|*ServiceOrderPostResponse* | Generic response returned after placing a service order. Contains invoice IDs for payment and the new service ID.|
 |*ServiceType* | A general grouping of services within a category.|
 |*ServiceTypes* | The listing of service types|
 |*Services* | The list of service packages.|

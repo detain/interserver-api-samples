@@ -17,7 +17,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addSsl"></a>
 # **addSsl**
-> addSsl()
+> ServiceOrderPostResponse addSsl()
 
 Place SSL Cert Order
 
@@ -31,7 +31,8 @@ Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to val
 
 val apiInstance = SSLCertificatesApi()
 try {
-    apiInstance.addSsl()
+    val result : ServiceOrderPostResponse = apiInstance.addSsl()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling SSLCertificatesApi#addSsl")
     e.printStackTrace()
@@ -46,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -68,7 +69,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="getNewSsl"></a>
 # **getNewSsl**
-> getNewSsl()
+> kotlin.Any getNewSsl()
 
 SSL Cert Ordering Information
 
@@ -82,7 +83,8 @@ Retrieves available SSL certificate types and pricing for ordering.
 
 val apiInstance = SSLCertificatesApi()
 try {
-    apiInstance.getNewSsl()
+    val result : kotlin.Any = apiInstance.getNewSsl()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling SSLCertificatesApi#getNewSsl")
     e.printStackTrace()
@@ -97,7 +99,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**kotlin.Any**](kotlin.Any.md)
 
 ### Authorization
 
@@ -119,7 +121,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="getSslInfo"></a>
 # **getSslInfo**
-> getSslInfo(id)
+> kotlin.Any getSslInfo(id)
 
 Get SSL Cert Info
 
@@ -134,7 +136,8 @@ Returns detailed information about a specific SSL certificate including its doma
 val apiInstance = SSLCertificatesApi()
 val id : kotlin.Int = 56 // kotlin.Int | SSL certificate ID number.
 try {
-    apiInstance.getSslInfo(id)
+    val result : kotlin.Any = apiInstance.getSslInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling SSLCertificatesApi#getSslInfo")
     e.printStackTrace()
@@ -151,7 +154,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**kotlin.Any**](kotlin.Any.md)
 
 ### Authorization
 
@@ -440,7 +443,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateSslInfo"></a>
 # **updateSslInfo**
-> updateSslInfo(id)
+> SuccessTextResponse updateSslInfo(id)
 
 Update SSL Cert Order
 
@@ -455,7 +458,8 @@ Updates settings on an SSL certificate order.
 val apiInstance = SSLCertificatesApi()
 val id : kotlin.String = id_example // kotlin.String | SSL certificate ID number.
 try {
-    apiInstance.updateSslInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateSslInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling SSLCertificatesApi#updateSslInfo")
     e.printStackTrace()
@@ -472,7 +476,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

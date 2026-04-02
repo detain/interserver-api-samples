@@ -53,7 +53,7 @@ public class Service   {
   /**
    **/
   
-  @Schema(example = "6.0", required = true, description = "")
+  @Schema(example = "6", required = true, description = "")
   @JsonProperty("services_cost")
   @NotNull
   public BigDecimal getServicesCost() {

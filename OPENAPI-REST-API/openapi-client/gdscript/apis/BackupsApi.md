@@ -442,9 +442,9 @@ api.update_backup_info(
 	# The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_backup_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

@@ -28,6 +28,7 @@
 #include "DnsRecord.hpp"
 #include "DnsRecordType.hpp"
 #include "GetAccountInfo_401_response.hpp"
+#include "SuccessTextResponse.hpp"
 
 #include OATPP_CODEGEN_BEGIN(ApiClient) ///< Begin code-gen section
 

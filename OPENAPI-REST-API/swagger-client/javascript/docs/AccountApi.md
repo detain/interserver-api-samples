@@ -727,7 +727,7 @@ Name | Type | Description  | Notes
 
 <a name="updateAccountInfo"></a>
 # **updateAccountInfo**
-> updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, body)
+> SuccessTextResponse updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, body)
 
 Update Account Information
 
@@ -780,7 +780,7 @@ apiInstance.updateAccountInfo(name, company, address, address2, city, state, zip
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -810,7 +810,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -823,7 +823,7 @@ null (empty response body)
 
 <a name="updateAccountIpLimits"></a>
 # **updateAccountIpLimits**
-> updateAccountIpLimits(start, end, body)
+> SuccessTextResponse updateAccountIpLimits(start, end, body)
 
 Add IP Access Restriction
 
@@ -861,7 +861,7 @@ apiInstance.updateAccountIpLimits(start, end, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -876,7 +876,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

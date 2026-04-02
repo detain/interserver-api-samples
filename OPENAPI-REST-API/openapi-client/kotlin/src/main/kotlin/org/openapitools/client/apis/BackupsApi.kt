@@ -654,19 +654,20 @@ open class BackupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Update Backup Information
      * Updates backup storage service metadata, such as stored credentials or settings for the order.
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateBackupInfo(id: kotlin.Int) : Unit {
+    fun updateBackupInfo(id: kotlin.Int) : SuccessTextResponse {
         val localVarResponse = updateBackupInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -685,15 +686,16 @@ open class BackupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Update Backup Information
      * Updates backup storage service metadata, such as stored credentials or settings for the order.
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateBackupInfoWithHttpInfo(id: kotlin.Int) : ApiResponse<Unit?> {
+    fun updateBackupInfoWithHttpInfo(id: kotlin.Int) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateBackupInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }

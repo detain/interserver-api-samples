@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 
 # **addServer**
-> addServer()
+> AddServer200Response addServer()
 
 Place Server Order
 
@@ -55,7 +55,8 @@ import 'package:openapi/api.dart';
 final api = Openapi().getServersApi();
 
 try {
-    api.addServer();
+    final response = api.addServer();
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling ServersApi->addServer: $e\n');
 }
@@ -66,7 +67,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**AddServer200Response**](AddServer200Response.md)
 
 ### Authorization
 
@@ -949,7 +950,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateServerInfo**
-> updateServerInfo(id)
+> SuccessTextResponse updateServerInfo(id)
 
 Update Server Order
 
@@ -975,7 +976,8 @@ final api = Openapi().getServersApi();
 final String id = id_example; // String | Server ID number.
 
 try {
-    api.updateServerInfo(id);
+    final response = api.updateServerInfo(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling ServersApi->updateServerInfo: $e\n');
 }
@@ -989,7 +991,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

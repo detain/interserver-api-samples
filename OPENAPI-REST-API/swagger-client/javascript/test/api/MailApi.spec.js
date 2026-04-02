@@ -37,7 +37,7 @@
     describe('MailApi', function() {
       describe('addMail', function() {
         it('should call addMail successfully', function(done) {
-          // TODO: uncomment addMail call
+          // TODO: uncomment addMail call and complete the assertions
           /*
 
           instance.addMail(function(error, data, response) {
@@ -45,6 +45,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.ServiceOrderPostResponse);
 
             done();
           });
@@ -526,7 +528,7 @@
       });
       describe('updateMailInfo', function() {
         it('should call updateMailInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateMailInfo call
+          // TODO: uncomment, update parameter values for updateMailInfo call and complete the assertions
           /*
 
           instance.updateMailInfo(id, function(error, data, response) {
@@ -534,6 +536,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

@@ -12,6 +12,7 @@ from myadmin-client-python-flask.models.quickserver_order import QuickserverOrde
 from myadmin-client-python-flask.models.quickserver_row import QuickserverRow  # noqa: E501
 from myadmin-client-python-flask.models.restore_request import RestoreRequest  # noqa: E501
 from myadmin-client-python-flask.models.reverse_dns_entries import ReverseDnsEntries  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.models.text_response import TextResponse  # noqa: E501
 from myadmin-client-python-flask.models.timezone_update import TimezoneUpdate  # noqa: E501
@@ -26,7 +27,7 @@ def add_qs():  # noqa: E501
     Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment. # noqa: E501
 
 
-    :rtype: None
+    :rtype: ServiceOrderPostResponse
     """
     return 'do some magic!'
 
@@ -667,6 +668,6 @@ def update_qs_info(id):  # noqa: E501
     :param id: QuickServer ID number.
     :type id: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'

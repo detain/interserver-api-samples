@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 <a name="addWebsite"></a>
 # **addWebsite**
-> addWebsite()
+> ServiceOrderPostResponse addWebsite()
 
 Place Website Order
 
@@ -57,7 +57,7 @@ apiInstance.addWebsite((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -67,7 +67,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -137,7 +137,7 @@ This endpoint does not need any parameter.
 
 <a name="getWebsiteBuyIp"></a>
 # **getWebsiteBuyIp**
-> InlineResponse20023 getWebsiteBuyIp(id)
+> InlineResponse20024 getWebsiteBuyIp(id)
 
 Get Website IP Information
 
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -628,7 +628,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteBuyIp"></a>
 # **postWebsiteBuyIp**
-> InlineResponse20024 postWebsiteBuyIp(body, ips, id)
+> InlineResponse20025 postWebsiteBuyIp(body, ips, id)
 
 Update Website IP DNS
 
@@ -681,7 +681,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -694,7 +694,7 @@ Name | Type | Description  | Notes
 
 <a name="postWebsiteMigration"></a>
 # **postWebsiteMigration**
-> InlineResponse20025 postWebsiteMigration(body, custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
+> InlineResponse20026 postWebsiteMigration(body, custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
 
 Request Website Migration
 
@@ -771,7 +771,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -907,7 +907,7 @@ null (empty response body)
 
 <a name="updateWebsiteInfo"></a>
 # **updateWebsiteInfo**
-> updateWebsiteInfo(id)
+> SuccessTextResponse updateWebsiteInfo(id)
 
 Update Website Order
 
@@ -943,7 +943,7 @@ apiInstance.updateWebsiteInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -956,7 +956,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -969,7 +969,7 @@ null (empty response body)
 
 <a name="webhostingCancel"></a>
 # **webhostingCancel**
-> InlineResponse20022 webhostingCancel(id)
+> InlineResponse20023 webhostingCancel(id)
 
 Cancel Website
 
@@ -1018,7 +1018,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 

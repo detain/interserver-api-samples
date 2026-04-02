@@ -13,6 +13,7 @@
 
 package org.openapitools.api;
 
+import org.openapitools.model.AddServer200Response;
 import org.openapitools.model.BuyItNowList;
 import org.openapitools.model.BuyItNowServerOrder200Response;
 import org.openapitools.model.ChargeInvoiceRows;
@@ -83,8 +84,8 @@ public class ServersApiTest {
      */
     @Test
     public void addServerTest() {
-        //api.addServer();
-        
+        //AddServer200Response response = api.addServer();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -389,8 +390,8 @@ public class ServersApiTest {
     @Test
     public void updateServerInfoTest() {
         String id = null;
-        //api.updateServerInfo(id);
-        
+        //SuccessTextResponse response = api.updateServerInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 

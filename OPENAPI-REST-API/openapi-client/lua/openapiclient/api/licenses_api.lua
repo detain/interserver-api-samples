@@ -20,6 +20,7 @@ local openapiclient_charge_invoice_rows = require "openapiclient.model.charge_in
 local openapiclient_license = require "openapiclient.model.license"
 local openapiclient_license_row = require "openapiclient.model.license_row"
 local openapiclient_licenses_order = require "openapiclient.model.licenses_order"
+local openapiclient_service_order_post_response = require "openapiclient.model.service_order_post_response"
 local openapiclient_success_text_response = require "openapiclient.model.success_text_response"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
 local openapiclient_ip_object = require "openapiclient.model.ip_object"
@@ -82,7 +83,18 @@ function licenses_api:add_license()
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_service_order_post_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -598,7 +610,18 @@ function licenses_api:update_license_info(id)
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_success_text_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then

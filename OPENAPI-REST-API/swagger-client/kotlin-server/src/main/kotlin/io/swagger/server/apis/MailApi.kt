@@ -58,6 +58,7 @@ import io.swagger.server.models.MailSchema
 import io.swagger.server.models.MailStatsType
 import io.swagger.server.models.SendMail
 import io.swagger.server.models.SendMailAdv
+import io.swagger.server.models.ServiceOrderPostResponse
 import io.swagger.server.models.StartDate
 import io.swagger.server.models.SuccessTextResponse
 
@@ -70,8 +71,23 @@ fun Route.MailApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     post<Paths.addRule> {  _: Paths.addRule ->
         val principal = call.authentication.principal<ApiPrincipal>()
@@ -645,8 +661,17 @@ fun Route.MailApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     get<Paths.viewMailLog> {  _: Paths.viewMailLog ->
         val principal = call.authentication.principal<ApiPrincipal>()

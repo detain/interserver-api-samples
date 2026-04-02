@@ -21,7 +21,7 @@ Method | HTTP request | Description
 [**updateFloatingIpInfo**](FloatingIPsApi.md#updateFloatingIpInfo) | **POST** /floating_ips/{id} | Update Floating IP
 
 # **addFloatingIp**
-> addFloatingIp()
+> ServiceOrderPostResponse addFloatingIp()
 
 Place Floating IP Order
 
@@ -46,7 +46,8 @@ import 'package:swagger/api.dart';
 var api_instance = new FloatingIPsApi();
 
 try {
-    api_instance.addFloatingIp();
+    var result = api_instance.addFloatingIp();
+    print(result);
 } catch (e) {
     print("Exception when calling FloatingIPsApi->addFloatingIp: $e\n");
 }
@@ -57,7 +58,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -126,7 +127,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFloatingIpInfo**
-> getFloatingIpInfo(id)
+> Object getFloatingIpInfo(id)
 
 View Floating IP
 
@@ -152,7 +153,8 @@ var api_instance = new FloatingIPsApi();
 var id = 56; // int | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 try {
-    api_instance.getFloatingIpInfo(id);
+    var result = api_instance.getFloatingIpInfo(id);
+    print(result);
 } catch (e) {
     print("Exception when calling FloatingIPsApi->getFloatingIpInfo: $e\n");
 }
@@ -166,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Object**](Object.md)
 
 ### Authorization
 
@@ -340,7 +342,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getNewFloatingIp**
-> getNewFloatingIp()
+> Object getNewFloatingIp()
 
 Get Floating IP Ordering Information
 
@@ -365,7 +367,8 @@ import 'package:swagger/api.dart';
 var api_instance = new FloatingIPsApi();
 
 try {
-    api_instance.getNewFloatingIp();
+    var result = api_instance.getNewFloatingIp();
+    print(result);
 } catch (e) {
     print("Exception when calling FloatingIPsApi->getNewFloatingIp: $e\n");
 }
@@ -376,7 +379,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**Object**](Object.md)
 
 ### Authorization
 
@@ -499,7 +502,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateFloatingIpInfo**
-> updateFloatingIpInfo(id)
+> SuccessTextResponse updateFloatingIpInfo(id)
 
 Update Floating IP
 
@@ -525,7 +528,8 @@ var api_instance = new FloatingIPsApi();
 var id = id_example; // String | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 try {
-    api_instance.updateFloatingIpInfo(id);
+    var result = api_instance.updateFloatingIpInfo(id);
+    print(result);
 } catch (e) {
     print("Exception when calling FloatingIPsApi->updateFloatingIpInfo: $e\n");
 }
@@ -539,7 +543,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

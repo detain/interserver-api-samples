@@ -14,7 +14,7 @@ Feature | HTTP request | Description
 
 
 # **add_dns_domain**
-> add_dns_domain (domain: STRING_32 ; ip: STRING_32 )
+> add_dns_domain (domain: STRING_32 ; ip: STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Create DNS Domain
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dns_domain**
-> delete_dns_domain (id: STRING_32 )
+> delete_dns_domain (id: STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Delete DNS Domain
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dns_record**
-> delete_dns_record (domain_id: INTEGER_32 ; record_id: INTEGER_32 )
+> delete_dns_record (domain_id: INTEGER_32 ; record_id: INTEGER_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Delete DNS Record
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -198,7 +198,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_dns_record**
-> update_dns_record (domain_id: INTEGER_32 ; record_id: INTEGER_32 ; name:  detachable STRING_32 ; type:  detachable DNS_RECORD_TYPE ; content:  detachable STRING_32 ; ttl:  detachable STRING_32 ; prio:  detachable STRING_32 ; disabled:  detachable STRING_32 ; ordername:  detachable STRING_32 ; auth:  detachable STRING_32 )
+> update_dns_record (domain_id: INTEGER_32 ; record_id: INTEGER_32 ; name:  detachable STRING_32 ; type:  detachable DNS_RECORD_TYPE ; content:  detachable STRING_32 ; ttl:  detachable STRING_32 ; prio:  detachable STRING_32 ; disabled:  detachable STRING_32 ; ordername:  detachable STRING_32 ; auth:  detachable STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Update DNS Record
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -216,7 +216,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="deleteAccountCreditCard"></a>
 # **deleteAccountCreditCard**
-> deleteAccountCreditCard(id)
+> kotlin.String deleteAccountCreditCard(id)
 
 Remove Credit Card
 
@@ -231,7 +231,8 @@ Removes a credit card from the account. If this is the default payment method, s
 val apiInstance = BillingApi()
 val id : kotlin.String = id_example // kotlin.String | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 try {
-    apiInstance.deleteAccountCreditCard(id)
+    val result : kotlin.String = apiInstance.deleteAccountCreditCard(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#deleteAccountCreditCard")
     e.printStackTrace()
@@ -248,7 +249,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -753,7 +754,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="getBillingCart"></a>
 # **getBillingCart**
-> getBillingCart()
+> kotlin.Any getBillingCart()
 
 Get Shopping Cart Contents
 
@@ -767,7 +768,8 @@ Returns the current cart contents, available payment methods, and checkout metad
 
 val apiInstance = BillingApi()
 try {
-    apiInstance.getBillingCart()
+    val result : kotlin.Any = apiInstance.getBillingCart()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#getBillingCart")
     e.printStackTrace()
@@ -782,7 +784,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**kotlin.Any**](kotlin.Any.md)
 
 ### Authorization
 
@@ -966,7 +968,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="getBillingPrePays"></a>
 # **getBillingPrePays**
-> getBillingPrePays()
+> kotlin.Any getBillingPrePays()
 
 List Prepay Balances
 
@@ -980,7 +982,8 @@ Lists prepay balances and their associated metadata. Use this to determine wheth
 
 val apiInstance = BillingApi()
 try {
-    apiInstance.getBillingPrePays()
+    val result : kotlin.Any = apiInstance.getBillingPrePays()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#getBillingPrePays")
     e.printStackTrace()
@@ -995,7 +998,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**kotlin.Any**](kotlin.Any.md)
 
 ### Authorization
 
@@ -1190,7 +1193,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateAccountCreditCard"></a>
 # **updateAccountCreditCard**
-> updateAccountCreditCard(id)
+> kotlin.String updateAccountCreditCard(id)
 
 Update Credit Card
 
@@ -1205,7 +1208,8 @@ Updates an existing credit card on the account. Use this to refresh stored card 
 val apiInstance = BillingApi()
 val id : kotlin.Int = 56 // kotlin.Int | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 try {
-    apiInstance.updateAccountCreditCard(id)
+    val result : kotlin.String = apiInstance.updateAccountCreditCard(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling BillingApi#updateAccountCreditCard")
     e.printStackTrace()
@@ -1222,7 +1226,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

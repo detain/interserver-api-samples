@@ -80,19 +80,18 @@ void OpenAPIDNSApi::AddDnsDomainResponse::SetHttpResponseCode(EHttpResponseCodes
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIDNSApi::AddDnsDomainResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIDNSApi::AddDnsRecordRequest::ComputePath() const
@@ -222,19 +221,18 @@ void OpenAPIDNSApi::DeleteDnsDomainResponse::SetHttpResponseCode(EHttpResponseCo
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIDNSApi::DeleteDnsDomainResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIDNSApi::DeleteDnsRecordRequest::ComputePath() const
@@ -262,19 +260,18 @@ void OpenAPIDNSApi::DeleteDnsRecordResponse::SetHttpResponseCode(EHttpResponseCo
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIDNSApi::DeleteDnsRecordResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIDNSApi::GetDnsDomainRequest::ComputePath() const
@@ -499,19 +496,18 @@ void OpenAPIDNSApi::UpdateDnsRecordResponse::SetHttpResponseCode(EHttpResponseCo
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIDNSApi::UpdateDnsRecordResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 }

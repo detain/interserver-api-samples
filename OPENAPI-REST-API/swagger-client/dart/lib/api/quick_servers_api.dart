@@ -10,7 +10,7 @@ class QuickServersApi {
   /// Place QuickServer Order
   ///
   /// Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
-  Future addQs() async {
+  Future<ServiceOrderPostResponse> addQs() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,9 +50,9 @@ class QuickServersApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'ServiceOrderPostResponse') as ServiceOrderPostResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Delete QuickServer Backup
@@ -2246,7 +2246,7 @@ if (password != null)
   /// Update QuickServer Order
   ///
   /// Updates QuickServer metadata or stored settings associated with the order.
-  Future updateQsInfo(String id) async {
+  Future<SuccessTextResponse> updateQsInfo(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -2289,9 +2289,9 @@ if (password != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
 }

@@ -99,7 +99,7 @@ end:
 //
 // Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
 //
-void
+success_text_response_t*
 DNSAPI_addDnsDomain(apiClient_t *apiClient, char *domain, char *ip)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -158,15 +158,25 @@ DNSAPI_addDnsDomain(apiClient_t *apiClient, char *domain, char *ip)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *DNSAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(DNSAPIlocalVarJSON);
+        cJSON_Delete(DNSAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -186,7 +196,7 @@ end:
         free(valueForm_domain);
         valueForm_domain = NULL;
     }
-    keyValuePair_free(keyPairForm_domain);
+    free(keyPairForm_domain);
     if (keyForm_ip) {
         free(keyForm_ip);
         keyForm_ip = NULL;
@@ -195,7 +205,11 @@ end:
         free(valueForm_ip);
         valueForm_ip = NULL;
     }
-    keyValuePair_free(keyPairForm_ip);
+    free(keyPairForm_ip);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -373,7 +387,7 @@ end:
 //
 // Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
 //
-void
+success_text_response_t*
 DNSAPI_deleteDnsDomain(apiClient_t *apiClient, char *id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -418,15 +432,25 @@ DNSAPI_deleteDnsDomain(apiClient_t *apiClient, char *id)
                     "DELETE");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *DNSAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(DNSAPIlocalVarJSON);
+        cJSON_Delete(DNSAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -439,6 +463,10 @@ end:
     
     free(localVarPath);
     free(localVarToReplace_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -446,7 +474,7 @@ end:
 //
 // Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
 //
-void
+success_text_response_t*
 DNSAPI_deleteDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -507,15 +535,25 @@ DNSAPI_deleteDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId)
                     "DELETE");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *DNSAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(DNSAPIlocalVarJSON);
+        cJSON_Delete(DNSAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -529,6 +567,10 @@ end:
     free(localVarPath);
     free(localVarToReplace_domainId);
     free(localVarToReplace_recordId);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -719,7 +761,7 @@ end:
 //
 // Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
 //
-void
+success_text_response_t*
 DNSAPI_updateDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId, char *name, dns_record_type_e type, char *content, char *ttl, char *prio, char *disabled, char *ordername, char *auth)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -878,15 +920,25 @@ DNSAPI_updateDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId, cha
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *DNSAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(DNSAPIlocalVarJSON);
+        cJSON_Delete(DNSAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -908,7 +960,7 @@ end:
         free(valueForm_name);
         valueForm_name = NULL;
     }
-    keyValuePair_free(keyPairForm_name);
+    free(keyPairForm_name);
     if (keyForm_type) {
         free(keyForm_type);
         keyForm_type = NULL;
@@ -922,7 +974,7 @@ end:
         free(valueForm_content);
         valueForm_content = NULL;
     }
-    keyValuePair_free(keyPairForm_content);
+    free(keyPairForm_content);
     if (keyForm_ttl) {
         free(keyForm_ttl);
         keyForm_ttl = NULL;
@@ -931,7 +983,7 @@ end:
         free(valueForm_ttl);
         valueForm_ttl = NULL;
     }
-    keyValuePair_free(keyPairForm_ttl);
+    free(keyPairForm_ttl);
     if (keyForm_prio) {
         free(keyForm_prio);
         keyForm_prio = NULL;
@@ -940,7 +992,7 @@ end:
         free(valueForm_prio);
         valueForm_prio = NULL;
     }
-    keyValuePair_free(keyPairForm_prio);
+    free(keyPairForm_prio);
     if (keyForm_disabled) {
         free(keyForm_disabled);
         keyForm_disabled = NULL;
@@ -949,7 +1001,7 @@ end:
         free(valueForm_disabled);
         valueForm_disabled = NULL;
     }
-    keyValuePair_free(keyPairForm_disabled);
+    free(keyPairForm_disabled);
     if (keyForm_ordername) {
         free(keyForm_ordername);
         keyForm_ordername = NULL;
@@ -958,7 +1010,7 @@ end:
         free(valueForm_ordername);
         valueForm_ordername = NULL;
     }
-    keyValuePair_free(keyPairForm_ordername);
+    free(keyPairForm_ordername);
     if (keyForm_auth) {
         free(keyForm_auth);
         keyForm_auth = NULL;
@@ -967,7 +1019,11 @@ end:
         free(valueForm_auth);
         valueForm_auth = NULL;
     }
-    keyValuePair_free(keyPairForm_auth);
+    free(keyPairForm_auth);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

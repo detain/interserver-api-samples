@@ -28,70 +28,66 @@ class InlineResponse20025(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'text': 'str',
-        'ticket': 'int'
+        'message': 'str',
+        'success': 'bool'
     }
 
     attribute_map = {
-        'text': 'text',
-        'ticket': 'ticket'
+        'message': 'message',
+        'success': 'success'
     }
 
-    def __init__(self, text=None, ticket=None):  # noqa: E501
+    def __init__(self, message=None, success=None):  # noqa: E501
         """InlineResponse20025 - a model defined in Swagger"""  # noqa: E501
-        self._text = None
-        self._ticket = None
+        self._message = None
+        self._success = None
         self.discriminator = None
-        if text is not None:
-            self.text = text
-        if ticket is not None:
-            self.ticket = ticket
+        if message is not None:
+            self.message = message
+        if success is not None:
+            self.success = success
 
     @property
-    def text(self):
-        """Gets the text of this InlineResponse20025.  # noqa: E501
+    def message(self):
+        """Gets the message of this InlineResponse20025.  # noqa: E501
 
-        Confirmation message.  # noqa: E501
 
-        :return: The text of this InlineResponse20025.  # noqa: E501
+        :return: The message of this InlineResponse20025.  # noqa: E501
         :rtype: str
         """
-        return self._text
+        return self._message
 
-    @text.setter
-    def text(self, text):
-        """Sets the text of this InlineResponse20025.
+    @message.setter
+    def message(self, message):
+        """Sets the message of this InlineResponse20025.
 
-        Confirmation message.  # noqa: E501
 
-        :param text: The text of this InlineResponse20025.  # noqa: E501
+        :param message: The message of this InlineResponse20025.  # noqa: E501
         :type: str
         """
 
-        self._text = text
+        self._message = message
 
     @property
-    def ticket(self):
-        """Gets the ticket of this InlineResponse20025.  # noqa: E501
+    def success(self):
+        """Gets the success of this InlineResponse20025.  # noqa: E501
 
-        The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  # noqa: E501
 
-        :return: The ticket of this InlineResponse20025.  # noqa: E501
-        :rtype: int
+        :return: The success of this InlineResponse20025.  # noqa: E501
+        :rtype: bool
         """
-        return self._ticket
+        return self._success
 
-    @ticket.setter
-    def ticket(self, ticket):
-        """Sets the ticket of this InlineResponse20025.
+    @success.setter
+    def success(self, success):
+        """Sets the success of this InlineResponse20025.
 
-        The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  # noqa: E501
 
-        :param ticket: The ticket of this InlineResponse20025.  # noqa: E501
-        :type: int
+        :param success: The success of this InlineResponse20025.  # noqa: E501
+        :type: bool
         """
 
-        self._ticket = ticket
+        self._success = success
 
     def to_dict(self):
         """Returns the model properties as a dict"""

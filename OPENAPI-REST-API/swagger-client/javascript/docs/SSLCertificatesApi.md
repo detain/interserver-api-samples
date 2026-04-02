@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="addSsl"></a>
 # **addSsl**
-> addSsl()
+> ServiceOrderPostResponse addSsl()
 
 Place SSL Cert Order
 
@@ -50,7 +50,7 @@ apiInstance.addSsl((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ null (empty response body)
 
 <a name="getNewSsl"></a>
 # **getNewSsl**
-> getNewSsl()
+> Object getNewSsl()
 
 SSL Cert Ordering Information
 
@@ -107,7 +107,7 @@ apiInstance.getNewSsl((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -117,7 +117,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -130,7 +130,7 @@ null (empty response body)
 
 <a name="getSslInfo"></a>
 # **getSslInfo**
-> getSslInfo(id)
+> Object getSslInfo(id)
 
 Get SSL Cert Info
 
@@ -166,7 +166,7 @@ apiInstance.getSslInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -430,7 +430,7 @@ null (empty response body)
 
 <a name="sslCancel"></a>
 # **sslCancel**
-> InlineResponse20020 sslCancel(id)
+> InlineResponse20021 sslCancel(id)
 
 Cancel SSL Certificate Service
 
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -492,7 +492,7 @@ Name | Type | Description  | Notes
 
 <a name="updateSslInfo"></a>
 # **updateSslInfo**
-> updateSslInfo(id)
+> SuccessTextResponse updateSslInfo(id)
 
 Update SSL Cert Order
 
@@ -528,7 +528,7 @@ apiInstance.updateSslInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -541,7 +541,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

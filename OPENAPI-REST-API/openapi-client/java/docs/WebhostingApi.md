@@ -24,7 +24,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addWebsite"></a>
 # **addWebsite**
-> addWebsite()
+> ServiceOrderPostResponse addWebsite()
 
 Place Website Order
 
@@ -65,7 +65,8 @@ public class Example {
 
     WebhostingApi apiInstance = new WebhostingApi(defaultClient);
     try {
-      apiInstance.addWebsite();
+      ServiceOrderPostResponse result = apiInstance.addWebsite();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WebhostingApi#addWebsite");
       System.err.println("Status code: " + e.getCode());
@@ -82,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -96,8 +97,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="getNewWebsite"></a>
 # **getNewWebsite**
@@ -1160,7 +1161,7 @@ null (empty response body)
 
 <a id="updateWebsiteInfo"></a>
 # **updateWebsiteInfo**
-> updateWebsiteInfo(id)
+> SuccessTextResponse updateWebsiteInfo(id)
 
 Update Website Order
 
@@ -1202,7 +1203,8 @@ public class Example {
     WebhostingApi apiInstance = new WebhostingApi(defaultClient);
     String id = "id_example"; // String | The website service ID. Use `website_id` from `GET /websites`.
     try {
-      apiInstance.updateWebsiteInfo(id);
+      SuccessTextResponse result = apiInstance.updateWebsiteInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WebhostingApi#updateWebsiteInfo");
       System.err.println("Status code: " + e.getCode());
@@ -1222,7 +1224,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1236,8 +1238,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="webhostingCancel"></a>
 # **webhostingCancel**

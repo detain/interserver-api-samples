@@ -20,7 +20,7 @@ import cats.syntax.functor.*
   * @param protocol_id 
   * @param xdp_action 
   * @param destination_port 
-  * @param source_ip 
+  * @param source_ip Source IP address to match. Use '0.0.0.0' to match any source.
   * @param source_port 
   */
 case class CreateFirewallRule(

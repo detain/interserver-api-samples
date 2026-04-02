@@ -297,7 +297,7 @@ public class Example {
 
 <a id="deleteAccountCreditCard"></a>
 # **deleteAccountCreditCard**
-> deleteAccountCreditCard(id)
+> String deleteAccountCreditCard(id)
 
 Remove Credit Card
 
@@ -339,7 +339,8 @@ public class Example {
     BillingApi apiInstance = new BillingApi(defaultClient);
     String id = "id_example"; // String | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
     try {
-      apiInstance.deleteAccountCreditCard(id);
+      String result = apiInstance.deleteAccountCreditCard(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#deleteAccountCreditCard");
       System.err.println("Status code: " + e.getCode());
@@ -359,7 +360,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -373,8 +374,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Simple string response |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="deleteBillingCreditCard"></a>
 # **deleteBillingCreditCard**
@@ -1100,7 +1101,7 @@ This endpoint does not need any parameter.
 
 <a id="getBillingCart"></a>
 # **getBillingCart**
-> getBillingCart()
+> Object getBillingCart()
 
 Get Shopping Cart Contents
 
@@ -1141,7 +1142,8 @@ public class Example {
 
     BillingApi apiInstance = new BillingApi(defaultClient);
     try {
-      apiInstance.getBillingCart();
+      Object result = apiInstance.getBillingCart();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#getBillingCart");
       System.err.println("Status code: " + e.getCode());
@@ -1158,7 +1160,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1172,8 +1174,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Current shopping cart contents and available payment methods. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="getBillingCreditCardVerify"></a>
 # **getBillingCreditCardVerify**
@@ -1419,7 +1421,7 @@ This endpoint does not need any parameter.
 
 <a id="getBillingPrePays"></a>
 # **getBillingPrePays**
-> getBillingPrePays()
+> Object getBillingPrePays()
 
 List Prepay Balances
 
@@ -1460,7 +1462,8 @@ public class Example {
 
     BillingApi apiInstance = new BillingApi(defaultClient);
     try {
-      apiInstance.getBillingPrePays();
+      Object result = apiInstance.getBillingPrePays();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#getBillingPrePays");
       System.err.println("Status code: " + e.getCode());
@@ -1477,7 +1480,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1491,8 +1494,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Prepay balances and metadata. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="getInvoices"></a>
 # **getInvoices**
@@ -1752,7 +1755,7 @@ public class Example {
 
 <a id="updateAccountCreditCard"></a>
 # **updateAccountCreditCard**
-> updateAccountCreditCard(id)
+> String updateAccountCreditCard(id)
 
 Update Credit Card
 
@@ -1794,7 +1797,8 @@ public class Example {
     BillingApi apiInstance = new BillingApi(defaultClient);
     Integer id = 56; // Integer | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
     try {
-      apiInstance.updateAccountCreditCard(id);
+      String result = apiInstance.updateAccountCreditCard(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BillingApi#updateAccountCreditCard");
       System.err.println("Status code: " + e.getCode());
@@ -1814,7 +1818,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -1828,8 +1832,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Simple string response |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="updateAffiliateDockSetup"></a>
 # **updateAffiliateDockSetup**

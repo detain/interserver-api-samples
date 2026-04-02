@@ -14,6 +14,8 @@ private class OASQuickServersApiTest {
 
         OASClient client;
         OASQuickServersApi api;
+        OASServiceOrderPostResponse response;
+        OASServiceOrderPostResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -21,33 +23,57 @@ private class OASQuickServersApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.addQs();
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addQs();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addQs();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASQuickServersApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.addQs();
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addQs();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addQs();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASQuickServersApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.addQs();
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addQs();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addQs();
         System.assertEquals(expectedResponse, response);
     }
 
@@ -3205,6 +3231,8 @@ private class OASQuickServersApiTest {
 
         OASClient client;
         OASQuickServersApi api;
+        OASSuccessTextResponse response;
+        OASSuccessTextResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -3212,33 +3240,57 @@ private class OASQuickServersApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateQsInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateQsInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateQsInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASQuickServersApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateQsInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateQsInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateQsInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASQuickServersApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateQsInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateQsInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateQsInfo(params);
         System.assertEquals(expectedResponse, response);
     }
 }

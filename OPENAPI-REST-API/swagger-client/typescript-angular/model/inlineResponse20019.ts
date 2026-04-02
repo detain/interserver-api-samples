@@ -11,6 +11,16 @@
  */
 
 export interface InlineResponse20019 { 
-    success: boolean;
-    text: string;
+    /**
+     * Status message.
+     */
+    text?: string;
+    /**
+     * Invoice ID for payment.
+     */
+    invoice?: number;
+    /**
+     * Server order ID.
+     */
+    order?: number;
 }

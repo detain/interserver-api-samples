@@ -24,6 +24,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.api.MailApiService;
@@ -75,8 +76,8 @@ public class MailApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Mail" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response addMail() {
         return delegate.addMail(securityContext);
     }
@@ -636,8 +637,8 @@ public class MailApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Mail" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response updateMailInfo(
 @Parameter(description = "The mail service ID. Use `mail_id` from `GET /mail`.",required=true) @PathParam("id") String id
 ) {
@@ -672,7 +673,7 @@ public class MailApi  {
 ,  @Size(min=18,max=19) 
 @Parameter(description = "Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.")  @QueryParam("mailid") String mailid
 ,  
-@Parameter(description = "Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.")  @QueryParam("messageId") String messageId
+@Parameter(description = "Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.")  @QueryParam("messageId") String messageId
 ,  
 @Parameter(description = "Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.")  @QueryParam("replyto") String replyto
 ,  
@@ -689,7 +690,7 @@ public class MailApi  {
 ,  
 @Parameter(description = "Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.")  @QueryParam("startDate") StartDate startDate
 ,  
-@Parameter(description = "Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.")  @QueryParam("endDate") EndDate endDate
+@Parameter(description = "Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.")  @QueryParam("endDate") EndDate endDate
 ,  
 @Parameter(description = "Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).", schema=@Schema(allowableValues={ "time" })
 ) @DefaultValue("time") @QueryParam("sort") String sort

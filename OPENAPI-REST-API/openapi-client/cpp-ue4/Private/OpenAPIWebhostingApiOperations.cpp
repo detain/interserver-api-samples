@@ -57,19 +57,18 @@ void OpenAPIWebhostingApi::AddWebsiteResponse::SetHttpResponseCode(EHttpResponse
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIWebhostingApi::AddWebsiteResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIWebhostingApi::GetNewWebsiteRequest::ComputePath() const
@@ -681,19 +680,18 @@ void OpenAPIWebhostingApi::UpdateWebsiteInfoResponse::SetHttpResponseCode(EHttpR
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 0:
-	default:
-		SetResponseString(TEXT("Default response"));
 		break;
 	}
 }
 
 bool OpenAPIWebhostingApi::UpdateWebsiteInfoResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIWebhostingApi::WebhostingCancelRequest::ComputePath() const

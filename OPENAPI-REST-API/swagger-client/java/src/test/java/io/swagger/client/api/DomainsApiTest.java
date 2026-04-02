@@ -27,6 +27,7 @@ import io.swagger.client.model.DomainSearchResponse;
 import io.swagger.client.model.DomainWhoisPrivacyRequest;
 import io.swagger.client.model.InlineResponse2002;
 import io.swagger.client.model.InlineResponse401;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 import io.swagger.client.model.TextResponse;
 import org.junit.Test;
@@ -57,7 +58,7 @@ public class DomainsApiTest {
      */
     @Test
     public void addDomainTest() throws Exception {
-        api.addDomain();
+        ServiceOrderPostResponse response = api.addDomain();
 
         // TODO: test validations
     }
@@ -449,7 +450,7 @@ public class DomainsApiTest {
     @Test
     public void updateDomainInfoTest() throws Exception {
         String id = null;
-        api.updateDomainInfo(id);
+        SuccessTextResponse response = api.updateDomainInfo(id);
 
         // TODO: test validations
     }

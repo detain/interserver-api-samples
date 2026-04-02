@@ -13,7 +13,7 @@ package io.swagger.client.models
 
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  * @param text 
  * @param publicIp 
  * @param allowedIp 

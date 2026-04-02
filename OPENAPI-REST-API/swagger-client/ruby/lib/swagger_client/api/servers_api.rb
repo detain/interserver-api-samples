@@ -19,16 +19,16 @@ module SwaggerClient
     # Place Server Order
     # Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [InlineResponse20019]
     def add_server(opts = {})
-      add_server_with_http_info(opts)
-      nil
+      data, _status_code, _headers = add_server_with_http_info(opts)
+      data
     end
 
     # Place Server Order
     # Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(InlineResponse20019, Integer, Hash)>] InlineResponse20019 data, response status code and response headers
     def add_server_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ServersApi.add_server ...'
@@ -50,7 +50,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'InlineResponse20019' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -69,7 +69,7 @@ module SwaggerClient
     # Get Buy Now Server Options
     # Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20026]
+    # @return [InlineResponse20027]
     def buy_it_now_server_order(opts = {})
       data, _status_code, _headers = buy_it_now_server_order_with_http_info(opts)
       data
@@ -78,7 +78,7 @@ module SwaggerClient
     # Get Buy Now Server Options
     # Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20026, Integer, Hash)>] InlineResponse20026 data, response status code and response headers
+    # @return [Array<(InlineResponse20027, Integer, Hash)>] InlineResponse20027 data, response status code and response headers
     def buy_it_now_server_order_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ServersApi.buy_it_now_server_order ...'
@@ -100,7 +100,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'InlineResponse20026' 
+      return_type = opts[:return_type] || 'InlineResponse20027' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -1120,7 +1120,7 @@ module SwaggerClient
     # Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
     # @param id Server ID number
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20019]
+    # @return [InlineResponse20020]
     def servers_cancel(id, opts = {})
       data, _status_code, _headers = servers_cancel_with_http_info(id, opts)
       data
@@ -1130,7 +1130,7 @@ module SwaggerClient
     # Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
     # @param id Server ID number
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20019, Integer, Hash)>] InlineResponse20019 data, response status code and response headers
+    # @return [Array<(InlineResponse20020, Integer, Hash)>] InlineResponse20020 data, response status code and response headers
     def servers_cancel_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ServersApi.servers_cancel ...'
@@ -1156,7 +1156,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'InlineResponse20019' 
+      return_type = opts[:return_type] || 'InlineResponse20020' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
@@ -1176,17 +1176,17 @@ module SwaggerClient
     # Updates settings on a dedicated server order.
     # @param id Server ID number.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_server_info(id, opts = {})
-      update_server_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_server_info_with_http_info(id, opts)
+      data
     end
 
     # Update Server Order
     # Updates settings on a dedicated server order.
     # @param id Server ID number.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_server_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ServersApi.update_server_info ...'
@@ -1212,7 +1212,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

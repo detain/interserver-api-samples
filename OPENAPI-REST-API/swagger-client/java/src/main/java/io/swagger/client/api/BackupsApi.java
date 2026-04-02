@@ -1295,22 +1295,25 @@ public class BackupsApi {
      * Update Backup Information
      * Updates backup storage service metadata, such as stored credentials or settings for the order.
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateBackupInfo(Integer id) throws ApiException {
-        updateBackupInfoWithHttpInfo(id);
+    public SuccessTextResponse updateBackupInfo(Integer id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateBackupInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update Backup Information
      * Updates backup storage service metadata, such as stored credentials or settings for the order.
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateBackupInfoWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateBackupInfoWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = updateBackupInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1321,7 +1324,7 @@ public class BackupsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateBackupInfoAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateBackupInfoAsync(Integer id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1343,7 +1346,8 @@ public class BackupsApi {
         }
 
         com.squareup.okhttp.Call call = updateBackupInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**

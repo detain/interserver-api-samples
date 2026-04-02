@@ -53,7 +53,7 @@ export class DNSApi {
      * @param ip IP Address to point the domain to.
      */
     public addDnsDomain(domain: string, ip: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.SuccessTextResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/dns';
@@ -132,11 +132,11 @@ export class DNSApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.SuccessTextResponse;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.SuccessTextResponse, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -271,7 +271,7 @@ export class DNSApi {
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      */
     public deleteDnsDomain(id: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.SuccessTextResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/dns/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
@@ -326,11 +326,11 @@ export class DNSApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.SuccessTextResponse;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.SuccessTextResponse, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -345,7 +345,7 @@ export class DNSApi {
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
      */
     public deleteDnsRecord(domainId: number, recordId: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.SuccessTextResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/dns/{domainId}/{recordId}'.replace('{' + 'domainId' + '}', encodeURIComponent(String(domainId))).replace('{' + 'recordId' + '}', encodeURIComponent(String(recordId)));
@@ -405,11 +405,11 @@ export class DNSApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.SuccessTextResponse;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.SuccessTextResponse, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -572,7 +572,7 @@ export class DNSApi {
      * @param auth 
      */
     public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: models.DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.SuccessTextResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/dns/{domainId}/{recordId}'.replace('{' + 'domainId' + '}', encodeURIComponent(String(domainId))).replace('{' + 'recordId' + '}', encodeURIComponent(String(recordId)));
@@ -669,11 +669,11 @@ export class DNSApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.SuccessTextResponse;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.SuccessTextResponse, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

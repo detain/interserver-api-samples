@@ -434,8 +434,8 @@ export class AccountService {
      * @param gstin Your GST identification number (if applicable).
      
      */
-    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (name === null || name === undefined){
             throw new Error('Required parameter name was null or undefined when calling updateAccountInfo.');
@@ -530,10 +530,10 @@ export class AccountService {
             formData.append('gstin', <any>gstin);
         }
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/account`, formData, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/account`, formData, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;
@@ -547,8 +547,8 @@ export class AccountService {
      * @param end The ending (or last) IP address in the range.
      
      */
-    public updateAccountIpLimits(start: string, end: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateAccountIpLimits(start: string, end: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateAccountIpLimits(start: string, end: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateAccountIpLimits(start: string, end: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateAccountIpLimits(start: string, end: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (start === null || start === undefined){
             throw new Error('Required parameter start was null or undefined when calling updateAccountIpLimits.');
@@ -578,10 +578,10 @@ export class AccountService {
             formData.append('end', <any>end);
         }
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/account/iplimits`, formData, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/account/iplimits`, formData, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

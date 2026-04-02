@@ -142,7 +142,7 @@ def update_backup_info(id):  # noqa: E501
     :param id: The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
     :type id: int
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'
 

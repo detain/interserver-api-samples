@@ -11,12 +11,6 @@
  */
 
 export interface InlineResponse20025 { 
-    /**
-     * Confirmation message.
-     */
-    text?: string;
-    /**
-     * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
-     */
-    ticket?: number;
+    message?: string;
+    success?: boolean;
 }

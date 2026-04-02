@@ -52,7 +52,7 @@ Method | HTTP request | Description
 
 # **addVps**
 ```swift
-    open class func addVps(vpsOrderPostRequest: VpsOrderPostRequest? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func addVps(vpsOrderPostRequest: VpsOrderPostRequest? = nil, completion: @escaping (_ data: ServiceOrderPostResponse?, _ error: Error?) -> Void)
 ```
 
 Place VPS Order
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2174,7 +2174,7 @@ Name | Type | Description  | Notes
 
 # **updateVpsInfo**
 ```swift
-    open class func updateVpsInfo(id: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateVpsInfo(id: String, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Update VPS Order
@@ -2209,7 +2209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

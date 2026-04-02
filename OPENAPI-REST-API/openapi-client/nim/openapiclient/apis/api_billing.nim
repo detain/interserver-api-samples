@@ -33,6 +33,7 @@ import ../models/model_success_text_response
 import ../models/model_text_response
 import ../models/model_get_account_info401response
 import ../models/model_initiate_payment200response
+import ../models/model_object
 
 const basepath = "https://my.interserver.net/apiv2"
 
@@ -84,10 +85,11 @@ proc addBillingPrepay*(httpClient: HttpClient, billingPrepayRequest: BillingPrep
   constructResult[SuccessTextResponse](response)
 
 
-proc deleteAccountCreditCard*(httpClient: HttpClient, id: string): Response =
+proc deleteAccountCreditCard*(httpClient: HttpClient, id: string): (Option[string], Response) =
   ## Remove Credit Card
-  httpClient.delete(basepath & fmt"/account/creditcards/{id}")
 
+  let response = httpClient.delete(basepath & fmt"/account/creditcards/{id}")
+  constructResult[string](response)
 
 
 proc deleteBillingCreditCard*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
@@ -161,10 +163,11 @@ proc getAffiliateWebTraffic*(httpClient: HttpClient): (Option[seq[AffiliateTraff
   constructResult[seq[AffiliateTrafficRow]](response)
 
 
-proc getBillingCart*(httpClient: HttpClient): Response =
+proc getBillingCart*(httpClient: HttpClient): (Option[JsonNode], Response) =
   ## Get Shopping Cart Contents
-  httpClient.get(basepath & "/billing/cart")
 
+  let response = httpClient.get(basepath & "/billing/cart")
+  constructResult[JsonNode](response)
 
 
 proc getBillingCreditCardVerify*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
@@ -188,10 +191,11 @@ proc getBillingInvoices*(httpClient: HttpClient): (Option[BillingInvoiceList], R
   constructResult[BillingInvoiceList](response)
 
 
-proc getBillingPrePays*(httpClient: HttpClient): Response =
+proc getBillingPrePays*(httpClient: HttpClient): (Option[JsonNode], Response) =
   ## List Prepay Balances
-  httpClient.get(basepath & "/billing/prepays")
 
+  let response = httpClient.get(basepath & "/billing/prepays")
+  constructResult[JsonNode](response)
 
 
 proc getInvoices*(httpClient: HttpClient, searchString: string, skip: int, limit: int): (Option[seq[Invoice]], Response) =
@@ -224,10 +228,11 @@ proc postBillingCreditCardVerify*(httpClient: HttpClient, id: int, billingVerify
   constructResult[SuccessTextResponse](response)
 
 
-proc updateAccountCreditCard*(httpClient: HttpClient, id: int): Response =
+proc updateAccountCreditCard*(httpClient: HttpClient, id: int): (Option[string], Response) =
   ## Update Credit Card
-  httpClient.post(basepath & fmt"/account/creditcards/{id}")
 
+  let response = httpClient.post(basepath & fmt"/account/creditcards/{id}")
+  constructResult[string](response)
 
 
 proc updateAffiliateDockSetup*(httpClient: HttpClient, affiliateDockTitle: string, affiliateDockDescription: string, referrerCoupon: string): (Option[TextResponse], Response) =

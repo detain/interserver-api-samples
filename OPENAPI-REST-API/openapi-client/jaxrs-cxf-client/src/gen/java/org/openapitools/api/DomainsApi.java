@@ -15,6 +15,7 @@ import org.openapitools.model.DomainRow;
 import org.openapitools.model.DomainSearchResponse;
 import org.openapitools.model.DomainWhoisPrivacyRequest;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 
@@ -50,9 +51,9 @@ public interface DomainsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Place Domain Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void addDomain();
+        @ApiResponse(code = 200, message = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", response = ServiceOrderPostResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public ServiceOrderPostResponse addDomain();
 
     /**
      * Add Domain DNSSEC Records
@@ -445,9 +446,9 @@ public interface DomainsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update Domain Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateDomainInfo(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateDomainInfo(@PathParam("id") String id);
 
     /**
      * Replace Nameserver Set

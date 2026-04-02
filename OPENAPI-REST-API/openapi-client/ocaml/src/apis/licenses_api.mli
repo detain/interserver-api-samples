@@ -5,7 +5,7 @@
  *
  *)
 
-val add_license : unit -> unit Lwt.t
+val add_license : unit -> Service_order_post_response.t Lwt.t
 val get_license_info : id:int32 -> License.t Lwt.t
 val get_license_invoices : id:int32 -> Charge_invoice_rows.t Lwt.t
 val get_license_list : unit -> License_row.t list Lwt.t
@@ -15,4 +15,4 @@ val get_new_license : unit -> Licenses_order.t Lwt.t
 val licenses_cancel : id:int32 -> Licenses_cancel_200_response.t Lwt.t
 val post_license_change_ip : id:int32 -> ip_object_t:Ip_object.t -> Success_text_response.t Lwt.t
 val put_licenses : unit -> unit Lwt.t
-val update_license_info : id:string -> unit Lwt.t
+val update_license_info : id:string -> Success_text_response.t Lwt.t

@@ -51,21 +51,48 @@ static gpointer __QuickServersManagerthreadFunc(gpointer data)
 static bool addQsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	= reinterpret_cast<void(*)(ServiceOrderPostResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	ServiceOrderPostResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("ServiceOrderPostResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ServiceOrderPostResponse", "ServiceOrderPostResponse");
+			json_node_free(pJson);
+
+			if ("ServiceOrderPostResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -76,15 +103,15 @@ static bool addQsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, vo
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool addQsHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -154,8 +181,8 @@ static bool addQsHelper(char * accessToken,
 
 bool QuickServersManager::addQsAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData)
 {
 	return addQsHelper(accessToken,
 	
@@ -164,8 +191,8 @@ bool QuickServersManager::addQsAsync(char * accessToken,
 
 bool QuickServersManager::addQsSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData)
 {
 	return addQsHelper(accessToken,
 	
@@ -6501,21 +6528,48 @@ bool QuickServersManager::quickserversCancelSync(char * accessToken,
 static bool updateQsInfoProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	SuccessTextResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -6526,15 +6580,15 @@ static bool updateQsInfoProcessor(MemoryStruct_s p_chunk, long code, char* error
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool updateQsInfoHelper(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -6610,8 +6664,8 @@ static bool updateQsInfoHelper(char * accessToken,
 
 bool QuickServersManager::updateQsInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateQsInfoHelper(accessToken,
 	id, 
@@ -6620,8 +6674,8 @@ bool QuickServersManager::updateQsInfoAsync(char * accessToken,
 
 bool QuickServersManager::updateQsInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateQsInfoHelper(accessToken,
 	id, 

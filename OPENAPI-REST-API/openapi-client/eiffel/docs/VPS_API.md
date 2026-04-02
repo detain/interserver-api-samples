@@ -51,7 +51,7 @@ Feature | HTTP request | Description
 
 
 # **add_vps**
-> add_vps (vps_order_post_request:  detachable VPS_ORDER_POST_REQUEST )
+> add_vps (vps_order_post_request:  detachable VPS_ORDER_POST_REQUEST ): detachable SERVICE_ORDER_POST_RESPONSE
 
 
 Place VPS Order
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SERVICE_ORDER_POST_RESPONSE**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -902,7 +902,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_vps_info**
-> update_vps_info (id: STRING_32 )
+> update_vps_info (id: STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Update VPS Order
@@ -918,7 +918,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -1,8 +1,9 @@
 package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20021;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 
 import io.micronaut.http.HttpResponse;

@@ -1265,6 +1265,31 @@ export type AccountSshKey = {
 }
 
 /**
+ * 
+ * @export
+ */
+export type AddServer200Response = {
+    /**
+     * Status message.
+     * @type {string}
+     * @memberof AddServer200Response
+     */
+    text?: string;
+    /**
+     * Invoice ID for payment.
+     * @type {number}
+     * @memberof AddServer200Response
+     */
+    invoice?: number;
+    /**
+     * Server order ID.
+     * @type {number}
+     * @memberof AddServer200Response
+     */
+    order?: number;
+}
+
+/**
  * An affiliate banner image details.
  * @export
  */
@@ -3436,7 +3461,7 @@ export type CreateFirewallRule = {
      */
     destination_port?: number;
     /**
-     * 
+     * Source IP address to match. Use \'0.0.0.0\' to match any source.
      * @type {string}
      * @memberof CreateFirewallRule
      */
@@ -11846,7 +11871,7 @@ export type ServerExtraInfoTables = {
 }
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  * @export
  */
 export type ServerIpmiLiveInfo = {
@@ -13584,6 +13609,61 @@ export type ServiceCategory = {
      * @memberof ServiceCategory
      */
     category_module: string;
+}
+
+/**
+ * Generic response returned after placing a service order. Contains invoice IDs for payment and the new service ID.
+ * @export
+ */
+export type ServiceOrderPostResponse = {
+    /**
+     * Whether the order was accepted and can proceed to payment.
+     * @type {boolean}
+     * @memberof ServiceOrderPostResponse
+     */
+    _continue?: boolean;
+    /**
+     * List of validation errors (empty on success).
+     * @type {Array<string>}
+     * @memberof ServiceOrderPostResponse
+     */
+    errors?: Array<string>;
+    /**
+     * Total cost of the order.
+     * @type {string}
+     * @memberof ServiceOrderPostResponse
+     */
+    total_cost?: string;
+    /**
+     * Primary invoice ID for payment.
+     * @type {string}
+     * @memberof ServiceOrderPostResponse
+     */
+    iid?: string;
+    /**
+     * All invoice identifiers associated with the order.
+     * @type {Array<string>}
+     * @memberof ServiceOrderPostResponse
+     */
+    iids?: Array<string>;
+    /**
+     * Numeric invoice IDs for use with billing endpoints.
+     * @type {Array<string>}
+     * @memberof ServiceOrderPostResponse
+     */
+    real_iids?: Array<string>;
+    /**
+     * The new service ID created by the order.
+     * @type {number}
+     * @memberof ServiceOrderPostResponse
+     */
+    serviceId?: number;
+    /**
+     * Human-readable description of the invoice.
+     * @type {string}
+     * @memberof ServiceOrderPostResponse
+     */
+    invoice_description?: string;
 }
 
 /**
@@ -18229,9 +18309,9 @@ export type AccountApiType = {
 
     updateAccountFeatures(disableReset?: number, disableReinstall?: number, options?: RequestOptions): Promise<SuccessTextResponse>,
 
-    updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, options?: RequestOptions): Promise<Response>,
+    updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 
-    updateAccountIpLimits(start: string, end: string, options?: RequestOptions): Promise<Response>,
+    updateAccountIpLimits(start: string, end: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 
     updateAccountPassword(password: string, options?: RequestOptions): Promise<TextResponse>,
 
@@ -18432,11 +18512,11 @@ export const AccountApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Update Account Information
          * @throws {RequiredError}
          */
-        updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, options?: RequestOptions = {}): Promise<Response> {
+        updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = AccountApiFetchParamCreator(configuration).updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -18447,11 +18527,11 @@ export const AccountApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Add IP Access Restriction
          * @throws {RequiredError}
          */
-        updateAccountIpLimits(start: string, end: string, options?: RequestOptions = {}): Promise<Response> {
+        updateAccountIpLimits(start: string, end: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = AccountApiFetchParamCreator(configuration).updateAccountIpLimits(start, end, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -18990,7 +19070,7 @@ export type BackupsApiType = {
 
     getNewBackup(options?: RequestOptions): Promise<BackupsOrder>,
 
-    updateBackupInfo(id: number, options?: RequestOptions): Promise<Response>,
+    updateBackupInfo(id: number, options?: RequestOptions): Promise<SuccessTextResponse>,
 
     validateBackupOrder(validateOnly?: boolean, serviceType?: number, coupon?: string, options?: RequestOptions): Promise<BackupOrderPutResponse>,
 }
@@ -19127,11 +19207,11 @@ export const BackupsApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Update Backup Information
          * @throws {RequiredError}
          */
-        updateBackupInfo(id: number, options?: RequestOptions = {}): Promise<Response> {
+        updateBackupInfo(id: number, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = BackupsApiFetchParamCreator(configuration).updateBackupInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -20435,7 +20515,7 @@ export type BillingApiType = {
 
     addBillingPrepay(billingPrepayRequest: BillingPrepayRequest, options?: RequestOptions): Promise<SuccessTextResponse>,
 
-    deleteAccountCreditCard(id: string, options?: RequestOptions): Promise<Response>,
+    deleteAccountCreditCard(id: string, options?: RequestOptions): Promise<string>,
 
     deleteBillingCreditCard(id: number, options?: RequestOptions): Promise<SuccessTextResponse>,
 
@@ -20455,7 +20535,7 @@ export type BillingApiType = {
 
     getAffiliateWebTraffic(options?: RequestOptions): Promise<Array<AffiliateTrafficRow>>,
 
-    getBillingCart(options?: RequestOptions): Promise<Response>,
+    getBillingCart(options?: RequestOptions): Promise<Object>,
 
     getBillingCreditCardVerify(id: number, options?: RequestOptions): Promise<SuccessTextResponse>,
 
@@ -20463,7 +20543,7 @@ export type BillingApiType = {
 
     getBillingInvoices(options?: RequestOptions): Promise<BillingInvoiceList>,
 
-    getBillingPrePays(options?: RequestOptions): Promise<Response>,
+    getBillingPrePays(options?: RequestOptions): Promise<Object>,
 
     getInvoices(searchString?: string, skip?: number, limit?: number, options?: RequestOptions): Promise<Array<Invoice>>,
 
@@ -20471,7 +20551,7 @@ export type BillingApiType = {
 
     postBillingCreditCardVerify(id: number, billingVerifyCcRequest: BillingVerifyCcRequest, options?: RequestOptions): Promise<SuccessTextResponse>,
 
-    updateAccountCreditCard(id: number, options?: RequestOptions): Promise<Response>,
+    updateAccountCreditCard(id: number, options?: RequestOptions): Promise<string>,
 
     updateAffiliateDockSetup(affiliateDockTitle?: string, affiliateDockDescription?: string, referrerCoupon?: string, options?: RequestOptions): Promise<TextResponse>,
 
@@ -20541,11 +20621,11 @@ export const BillingApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Remove Credit Card
          * @throws {RequiredError}
          */
-        deleteAccountCreditCard(id: string, options?: RequestOptions = {}): Promise<Response> {
+        deleteAccountCreditCard(id: string, options?: RequestOptions = {}): Promise<string> {
             const localVarFetchArgs = BillingApiFetchParamCreator(configuration).deleteAccountCreditCard(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -20691,11 +20771,11 @@ export const BillingApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Get Shopping Cart Contents
          * @throws {RequiredError}
          */
-        getBillingCart(options?: RequestOptions = {}): Promise<Response> {
+        getBillingCart(options?: RequestOptions = {}): Promise<Object> {
             const localVarFetchArgs = BillingApiFetchParamCreator(configuration).getBillingCart(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -20751,11 +20831,11 @@ export const BillingApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary List Prepay Balances
          * @throws {RequiredError}
          */
-        getBillingPrePays(options?: RequestOptions = {}): Promise<Response> {
+        getBillingPrePays(options?: RequestOptions = {}): Promise<Object> {
             const localVarFetchArgs = BillingApiFetchParamCreator(configuration).getBillingPrePays(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -20811,11 +20891,11 @@ export const BillingApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Update Credit Card
          * @throws {RequiredError}
          */
-        updateAccountCreditCard(id: number, options?: RequestOptions = {}): Promise<Response> {
+        updateAccountCreditCard(id: number, options?: RequestOptions = {}): Promise<string> {
             const localVarFetchArgs = BillingApiFetchParamCreator(configuration).updateAccountCreditCard(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -21311,19 +21391,19 @@ export const DNSApiFetchParamCreator = function (configuration?: Configuration) 
 };
 
 export type DNSApiType = { 
-    addDnsDomain(domain: string, ip: string, options?: RequestOptions): Promise<Response>,
+    addDnsDomain(domain: string, ip: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 
     addDnsRecord(id: string, name: string, type: DnsRecordType, content: string, ttl?: number, prio?: number, options?: RequestOptions): Promise<Response>,
 
-    deleteDnsDomain(id: string, options?: RequestOptions): Promise<Response>,
+    deleteDnsDomain(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 
-    deleteDnsRecord(domainId: number, recordId: number, options?: RequestOptions): Promise<Response>,
+    deleteDnsRecord(domainId: number, recordId: number, options?: RequestOptions): Promise<SuccessTextResponse>,
 
     getDnsDomain(id: number, options?: RequestOptions): Promise<Array<DnsRecord>>,
 
     getDnsList(options?: RequestOptions): Promise<Array<DnsListItem>>,
 
-    updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, options?: RequestOptions): Promise<Response>,
+    updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 }
 
 /**
@@ -21338,11 +21418,11 @@ export const DNSApi = function(configuration?: Configuration, fetch: FetchAPI = 
          * @summary Create DNS Domain
          * @throws {RequiredError}
          */
-        addDnsDomain(domain: string, ip: string, options?: RequestOptions = {}): Promise<Response> {
+        addDnsDomain(domain: string, ip: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = DNSApiFetchParamCreator(configuration).addDnsDomain(domain, ip, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -21368,11 +21448,11 @@ export const DNSApi = function(configuration?: Configuration, fetch: FetchAPI = 
          * @summary Delete DNS Domain
          * @throws {RequiredError}
          */
-        deleteDnsDomain(id: string, options?: RequestOptions = {}): Promise<Response> {
+        deleteDnsDomain(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = DNSApiFetchParamCreator(configuration).deleteDnsDomain(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -21383,11 +21463,11 @@ export const DNSApi = function(configuration?: Configuration, fetch: FetchAPI = 
          * @summary Delete DNS Record
          * @throws {RequiredError}
          */
-        deleteDnsRecord(domainId: number, recordId: number, options?: RequestOptions = {}): Promise<Response> {
+        deleteDnsRecord(domainId: number, recordId: number, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = DNSApiFetchParamCreator(configuration).deleteDnsRecord(domainId, recordId, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -21428,11 +21508,11 @@ export const DNSApi = function(configuration?: Configuration, fetch: FetchAPI = 
          * @summary Update DNS Record
          * @throws {RequiredError}
          */
-        updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, options?: RequestOptions = {}): Promise<Response> {
+        updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = DNSApiFetchParamCreator(configuration).updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -22793,7 +22873,7 @@ export const DomainsApiFetchParamCreator = function (configuration?: Configurati
 };
 
 export type DomainsApiType = { 
-    addDomain(options?: RequestOptions): Promise<Response>,
+    addDomain(options?: RequestOptions): Promise<ServiceOrderPostResponse>,
 
     addDomainDnssec(id: number, domainDnssecRequest: DomainDnssecRequest, options?: RequestOptions): Promise<SuccessTextResponse>,
 
@@ -22845,7 +22925,7 @@ export type DomainsApiType = {
 
     updateDomainContact(id: number, domainContactDetails: DomainContactDetails, options?: RequestOptions): Promise<SuccessTextResponse>,
 
-    updateDomainInfo(id: string, options?: RequestOptions): Promise<Response>,
+    updateDomainInfo(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 
     updateDomainNameservers(id: number, domainNameserverPutRequest: DomainNameserverPutRequest, options?: RequestOptions): Promise<TextResponse>,
 
@@ -22864,11 +22944,11 @@ export const DomainsApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Place Domain Order
          * @throws {RequiredError}
          */
-        addDomain(options?: RequestOptions = {}): Promise<Response> {
+        addDomain(options?: RequestOptions = {}): Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = DomainsApiFetchParamCreator(configuration).addDomain(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -23254,11 +23334,11 @@ export const DomainsApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Update Domain Order
          * @throws {RequiredError}
          */
-        updateDomainInfo(id: string, options?: RequestOptions = {}): Promise<Response> {
+        updateDomainInfo(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = DomainsApiFetchParamCreator(configuration).updateDomainInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -23748,11 +23828,11 @@ export const FloatingIPsApiFetchParamCreator = function (configuration?: Configu
 };
 
 export type FloatingIPsApiType = { 
-    addFloatingIp(options?: RequestOptions): Promise<Response>,
+    addFloatingIp(options?: RequestOptions): Promise<ServiceOrderPostResponse>,
 
     floatingIpsCancel(id: number, options?: RequestOptions): Promise<FloatingIpsCancel200Response>,
 
-    getFloatingIpInfo(id: number, options?: RequestOptions): Promise<Response>,
+    getFloatingIpInfo(id: number, options?: RequestOptions): Promise<Object>,
 
     getFloatingIpInvoices(id: number, options?: RequestOptions): Promise<ChargeInvoiceRows>,
 
@@ -23760,13 +23840,13 @@ export type FloatingIPsApiType = {
 
     getFloatingIpsWelcomeEmail(id: number, options?: RequestOptions): Promise<SuccessTextResponse>,
 
-    getNewFloatingIp(options?: RequestOptions): Promise<Response>,
+    getNewFloatingIp(options?: RequestOptions): Promise<Object>,
 
     postFloatingIpsChangeIp(id: number, ip: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 
     putFloatingIps(options?: RequestOptions): Promise<Response>,
 
-    updateFloatingIpInfo(id: string, options?: RequestOptions): Promise<Response>,
+    updateFloatingIpInfo(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 }
 
 /**
@@ -23781,11 +23861,11 @@ export const FloatingIPsApi = function(configuration?: Configuration, fetch: Fet
          * @summary Place Floating IP Order
          * @throws {RequiredError}
          */
-        addFloatingIp(options?: RequestOptions = {}): Promise<Response> {
+        addFloatingIp(options?: RequestOptions = {}): Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).addFloatingIp(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -23811,11 +23891,11 @@ export const FloatingIPsApi = function(configuration?: Configuration, fetch: Fet
          * @summary View Floating IP
          * @throws {RequiredError}
          */
-        getFloatingIpInfo(id: number, options?: RequestOptions = {}): Promise<Response> {
+        getFloatingIpInfo(id: number, options?: RequestOptions = {}): Promise<Object> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).getFloatingIpInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -23871,11 +23951,11 @@ export const FloatingIPsApi = function(configuration?: Configuration, fetch: Fet
          * @summary Get Floating IP Ordering Information
          * @throws {RequiredError}
          */
-        getNewFloatingIp(options?: RequestOptions = {}): Promise<Response> {
+        getNewFloatingIp(options?: RequestOptions = {}): Promise<Object> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).getNewFloatingIp(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -23916,11 +23996,11 @@ export const FloatingIPsApi = function(configuration?: Configuration, fetch: Fet
          * @summary Update Floating IP
          * @throws {RequiredError}
          */
-        updateFloatingIpInfo(id: string, options?: RequestOptions = {}): Promise<Response> {
+        updateFloatingIpInfo(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = FloatingIPsApiFetchParamCreator(configuration).updateFloatingIpInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -24423,7 +24503,7 @@ export const LicensesApiFetchParamCreator = function (configuration?: Configurat
 };
 
 export type LicensesApiType = { 
-    addLicense(options?: RequestOptions): Promise<Response>,
+    addLicense(options?: RequestOptions): Promise<ServiceOrderPostResponse>,
 
     getLicenseInfo(id: number, options?: RequestOptions): Promise<License>,
 
@@ -24443,7 +24523,7 @@ export type LicensesApiType = {
 
     putLicenses(options?: RequestOptions): Promise<Response>,
 
-    updateLicenseInfo(id: string, options?: RequestOptions): Promise<Response>,
+    updateLicenseInfo(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 }
 
 /**
@@ -24458,11 +24538,11 @@ export const LicensesApi = function(configuration?: Configuration, fetch: FetchA
          * @summary Place License Order
          * @throws {RequiredError}
          */
-        addLicense(options?: RequestOptions = {}): Promise<Response> {
+        addLicense(options?: RequestOptions = {}): Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = LicensesApiFetchParamCreator(configuration).addLicense(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -24608,11 +24688,11 @@ export const LicensesApi = function(configuration?: Configuration, fetch: FetchA
          * @summary Update License
          * @throws {RequiredError}
          */
-        updateLicenseInfo(id: string, options?: RequestOptions = {}): Promise<Response> {
+        updateLicenseInfo(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = LicensesApiFetchParamCreator(configuration).updateLicenseInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -25925,7 +26005,7 @@ export const MailApiFetchParamCreator = function (configuration?: Configuration)
 };
 
 export type MailApiType = { 
-    addMail(options?: RequestOptions): Promise<Response>,
+    addMail(options?: RequestOptions): Promise<ServiceOrderPostResponse>,
 
     addRule(id: number, denyRuleNew: DenyRuleNew, options?: RequestOptions): Promise<GenericResponse>,
 
@@ -25973,7 +26053,7 @@ export type MailApiType = {
 
     updateMailAlert(id: number, mailAlertUpdateRequest: MailAlertUpdateRequest, options?: RequestOptions): Promise<SuccessTextResponse>,
 
-    updateMailInfo(id: string, options?: RequestOptions): Promise<Response>,
+    updateMailInfo(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 
     viewMailLog(id: number, id2?: number, origin?: string, mx?: string, from?: string, to?: string, subject?: string, mailid?: string, messageId?: string, replyto?: string, headerfrom?: string, delivered?: 0 | 1, skip?: number, limit?: number, startDate?: ViewMailLogStartDateParameter, endDate?: ViewMailLogStartDateParameter, sort?: 'time', dir?: 'asc' | 'desc', groupby?: 'message' | 'recipient', options?: RequestOptions): Promise<MailLog>,
 }
@@ -25990,11 +26070,11 @@ export const MailApi = function(configuration?: Configuration, fetch: FetchAPI =
          * @summary Place Mail Order
          * @throws {RequiredError}
          */
-        addMail(options?: RequestOptions = {}): Promise<Response> {
+        addMail(options?: RequestOptions = {}): Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = MailApiFetchParamCreator(configuration).addMail(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -26350,11 +26430,11 @@ export const MailApi = function(configuration?: Configuration, fetch: FetchAPI =
          * @summary Update Mail Order
          * @throws {RequiredError}
          */
-        updateMailInfo(id: string, options?: RequestOptions = {}): Promise<Response> {
+        updateMailInfo(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = MailApiFetchParamCreator(configuration).updateMailInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -29175,7 +29255,7 @@ export const QuickServersApiFetchParamCreator = function (configuration?: Config
 };
 
 export type QuickServersApiType = { 
-    addQs(options?: RequestOptions): Promise<Response>,
+    addQs(options?: RequestOptions): Promise<ServiceOrderPostResponse>,
 
     deleteQsBackup(id: number, file: string, all?: '0' | '1', options?: RequestOptions): Promise<SuccessTextResponse>,
 
@@ -29261,7 +29341,7 @@ export type QuickServersApiType = {
 
     quickserversCancel(id: number, options?: RequestOptions): Promise<QuickserversCancel200Response>,
 
-    updateQsInfo(id: string, options?: RequestOptions): Promise<Response>,
+    updateQsInfo(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 }
 
 /**
@@ -29276,11 +29356,11 @@ export const QuickServersApi = function(configuration?: Configuration, fetch: Fe
          * @summary Place QuickServer Order
          * @throws {RequiredError}
          */
-        addQs(options?: RequestOptions = {}): Promise<Response> {
+        addQs(options?: RequestOptions = {}): Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = QuickServersApiFetchParamCreator(configuration).addQs(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -29921,11 +30001,11 @@ export const QuickServersApi = function(configuration?: Configuration, fetch: Fe
          * @summary Update QuickServer Order
          * @throws {RequiredError}
          */
-        updateQsInfo(id: string, options?: RequestOptions = {}): Promise<Response> {
+        updateQsInfo(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = QuickServersApiFetchParamCreator(configuration).updateQsInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -30330,11 +30410,11 @@ export const SSLCertificatesApiFetchParamCreator = function (configuration?: Con
 };
 
 export type SSLCertificatesApiType = { 
-    addSsl(options?: RequestOptions): Promise<Response>,
+    addSsl(options?: RequestOptions): Promise<ServiceOrderPostResponse>,
 
-    getNewSsl(options?: RequestOptions): Promise<Response>,
+    getNewSsl(options?: RequestOptions): Promise<Object>,
 
-    getSslInfo(id: number, options?: RequestOptions): Promise<Response>,
+    getSslInfo(id: number, options?: RequestOptions): Promise<Object>,
 
     getSslInvoices(id: number, options?: RequestOptions): Promise<ChargeInvoiceRows>,
 
@@ -30346,7 +30426,7 @@ export type SSLCertificatesApiType = {
 
     sslCancel(id: number, options?: RequestOptions): Promise<SslCancel200Response>,
 
-    updateSslInfo(id: string, options?: RequestOptions): Promise<Response>,
+    updateSslInfo(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 }
 
 /**
@@ -30361,11 +30441,11 @@ export const SSLCertificatesApi = function(configuration?: Configuration, fetch:
          * @summary Place SSL Cert Order
          * @throws {RequiredError}
          */
-        addSsl(options?: RequestOptions = {}): Promise<Response> {
+        addSsl(options?: RequestOptions = {}): Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = SSLCertificatesApiFetchParamCreator(configuration).addSsl(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -30376,11 +30456,11 @@ export const SSLCertificatesApi = function(configuration?: Configuration, fetch:
          * @summary SSL Cert Ordering Information
          * @throws {RequiredError}
          */
-        getNewSsl(options?: RequestOptions = {}): Promise<Response> {
+        getNewSsl(options?: RequestOptions = {}): Promise<Object> {
             const localVarFetchArgs = SSLCertificatesApiFetchParamCreator(configuration).getNewSsl(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -30391,11 +30471,11 @@ export const SSLCertificatesApi = function(configuration?: Configuration, fetch:
          * @summary Get SSL Cert Info
          * @throws {RequiredError}
          */
-        getSslInfo(id: number, options?: RequestOptions = {}): Promise<Response> {
+        getSslInfo(id: number, options?: RequestOptions = {}): Promise<Object> {
             const localVarFetchArgs = SSLCertificatesApiFetchParamCreator(configuration).getSslInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -30481,11 +30561,11 @@ export const SSLCertificatesApi = function(configuration?: Configuration, fetch:
          * @summary Update SSL Cert Order
          * @throws {RequiredError}
          */
-        updateSslInfo(id: string, options?: RequestOptions = {}): Promise<Response> {
+        updateSslInfo(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = SSLCertificatesApiFetchParamCreator(configuration).updateSslInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -32370,7 +32450,7 @@ export const ServersApiFetchParamCreator = function (configuration?: Configurati
 };
 
 export type ServersApiType = { 
-    addServer(options?: RequestOptions): Promise<Response>,
+    addServer(options?: RequestOptions): Promise<AddServer200Response>,
 
     buyItNowServerOrder(options?: RequestOptions): Promise<BuyItNowServerOrder200Response>,
 
@@ -32404,7 +32484,7 @@ export type ServersApiType = {
 
     serversCancel(id: number, options?: RequestOptions): Promise<ServersCancel200Response>,
 
-    updateServerInfo(id: string, options?: RequestOptions): Promise<Response>,
+    updateServerInfo(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 }
 
 /**
@@ -32419,11 +32499,11 @@ export const ServersApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Place Server Order
          * @throws {RequiredError}
          */
-        addServer(options?: RequestOptions = {}): Promise<Response> {
+        addServer(options?: RequestOptions = {}): Promise<AddServer200Response> {
             const localVarFetchArgs = ServersApiFetchParamCreator(configuration).addServer(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -32674,11 +32754,11 @@ export const ServersApi = function(configuration?: Configuration, fetch: FetchAP
          * @summary Update Server Order
          * @throws {RequiredError}
          */
-        updateServerInfo(id: string, options?: RequestOptions = {}): Promise<Response> {
+        updateServerInfo(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = ServersApiFetchParamCreator(configuration).updateServerInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -35486,7 +35566,7 @@ export const VPSApiFetchParamCreator = function (configuration?: Configuration) 
 };
 
 export type VPSApiType = { 
-    addVps(vpsOrderPostRequest?: VpsOrderPostRequest, options?: RequestOptions): Promise<Response>,
+    addVps(vpsOrderPostRequest?: VpsOrderPostRequest, options?: RequestOptions): Promise<ServiceOrderPostResponse>,
 
     deleteVpsBackup(id: number, file: string, all?: '0' | '1', options?: RequestOptions): Promise<SuccessTextResponse>,
 
@@ -35570,7 +35650,7 @@ export type VPSApiType = {
 
     putVps(vpsOrderPutRequest?: VpsOrderPutRequest, options?: RequestOptions): Promise<VpsOrderPutResponse>,
 
-    updateVpsInfo(id: string, options?: RequestOptions): Promise<Response>,
+    updateVpsInfo(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 
     vPSCancel(id: number, options?: RequestOptions): Promise<VPSCancel200Response>,
 }
@@ -35587,11 +35667,11 @@ export const VPSApi = function(configuration?: Configuration, fetch: FetchAPI = 
          * @summary Place VPS Order
          * @throws {RequiredError}
          */
-        addVps(vpsOrderPostRequest?: VpsOrderPostRequest, options?: RequestOptions = {}): Promise<Response> {
+        addVps(vpsOrderPostRequest?: VpsOrderPostRequest, options?: RequestOptions = {}): Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = VPSApiFetchParamCreator(configuration).addVps(vpsOrderPostRequest, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -36217,11 +36297,11 @@ export const VPSApi = function(configuration?: Configuration, fetch: FetchAPI = 
          * @summary Update VPS Order
          * @throws {RequiredError}
          */
-        updateVpsInfo(id: string, options?: RequestOptions = {}): Promise<Response> {
+        updateVpsInfo(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = VPSApiFetchParamCreator(configuration).updateVpsInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -36980,7 +37060,7 @@ export const WebhostingApiFetchParamCreator = function (configuration?: Configur
 };
 
 export type WebhostingApiType = { 
-    addWebsite(options?: RequestOptions): Promise<Response>,
+    addWebsite(options?: RequestOptions): Promise<ServiceOrderPostResponse>,
 
     getNewWebsite(options?: RequestOptions): Promise<WebsitesOrder>,
 
@@ -37008,7 +37088,7 @@ export type WebhostingApiType = {
 
     putWebsites(options?: RequestOptions): Promise<Response>,
 
-    updateWebsiteInfo(id: string, options?: RequestOptions): Promise<Response>,
+    updateWebsiteInfo(id: string, options?: RequestOptions): Promise<SuccessTextResponse>,
 
     webhostingCancel(id: string, options?: RequestOptions): Promise<WebhostingCancel200Response>,
 }
@@ -37025,11 +37105,11 @@ export const WebhostingApi = function(configuration?: Configuration, fetch: Fetc
          * @summary Place Website Order
          * @throws {RequiredError}
          */
-        addWebsite(options?: RequestOptions = {}): Promise<Response> {
+        addWebsite(options?: RequestOptions = {}): Promise<ServiceOrderPostResponse> {
             const localVarFetchArgs = WebhostingApiFetchParamCreator(configuration).addWebsite(options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }
@@ -37235,11 +37315,11 @@ export const WebhostingApi = function(configuration?: Configuration, fetch: Fetc
          * @summary Update Website Order
          * @throws {RequiredError}
          */
-        updateWebsiteInfo(id: string, options?: RequestOptions = {}): Promise<Response> {
+        updateWebsiteInfo(id: string, options?: RequestOptions = {}): Promise<SuccessTextResponse> {
             const localVarFetchArgs = WebhostingApiFetchParamCreator(configuration).updateWebsiteInfo(id, options);
             return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    return response;
+                    return response.json();
                 } else {
                     throw response;
                 }

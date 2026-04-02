@@ -176,9 +176,9 @@ public class BillingApi  {
 @SecurityRequirement(name = "sessionIdHeaderAuth")
     }, tags={ "Billing" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Current shopping cart contents and available payment methods.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response getBillingCart(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.getBillingCart(securityContext);
@@ -244,9 +244,9 @@ public class BillingApi  {
 @SecurityRequirement(name = "sessionIdHeaderAuth")
     }, tags={ "Billing" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Prepay balances and metadata.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public Response getBillingPrePays(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.getBillingPrePays(securityContext);

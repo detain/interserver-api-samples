@@ -552,7 +552,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateBackupInfo**
-> updateBackupInfo($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateBackupInfo($id)
 
 Update Backup Information
 
@@ -582,7 +582,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BackupsApi(
 $id = 56; // int | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 try {
-    $apiInstance->updateBackupInfo($id);
+    $result = $apiInstance->updateBackupInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BackupsApi->updateBackupInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -597,7 +598,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

@@ -7,9 +7,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
-@ApiModel(description="Information about the IPMI connectioj.")
+@ApiModel(description="Information about the IPMI connection.")
 
 public class ServerIpmiLiveInfo  {
   

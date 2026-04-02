@@ -424,7 +424,8 @@ $disableEmailNotifications = true; // bool |
 $gstin = "gstin_example"; // string | 
 
 try {
-    $apiInstance->updateAccountInfo($name, $company, $address, $address2, $city, $state, $zip, $country, $phone, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin);
+    $result = $apiInstance->updateAccountInfo($name, $company, $address, $address2, $city, $state, $zip, $country, $phone, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->updateAccountInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -452,7 +453,8 @@ $start = "start_example"; // string |
 $end = "end_example"; // string | 
 
 try {
-    $apiInstance->updateAccountIpLimits($start, $end);
+    $result = $apiInstance->updateAccountIpLimits($start, $end);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->updateAccountIpLimits: ', $e->getMessage(), PHP_EOL;
 }
@@ -1045,11 +1047,12 @@ Class | Method | HTTP request | Description
  - [InlineResponse20024](docs/Model/InlineResponse20024.md)
  - [InlineResponse20025](docs/Model/InlineResponse20025.md)
  - [InlineResponse20026](docs/Model/InlineResponse20026.md)
- - [InlineResponse20026Bandwidth](docs/Model/InlineResponse20026Bandwidth.md)
- - [InlineResponse20026Cp](docs/Model/InlineResponse20026Cp.md)
- - [InlineResponse20026Ips](docs/Model/InlineResponse20026Ips.md)
- - [InlineResponse20026Os](docs/Model/InlineResponse20026Os.md)
- - [InlineResponse20026Raid](docs/Model/InlineResponse20026Raid.md)
+ - [InlineResponse20027](docs/Model/InlineResponse20027.md)
+ - [InlineResponse20027Bandwidth](docs/Model/InlineResponse20027Bandwidth.md)
+ - [InlineResponse20027Cp](docs/Model/InlineResponse20027Cp.md)
+ - [InlineResponse20027Ips](docs/Model/InlineResponse20027Ips.md)
+ - [InlineResponse20027Os](docs/Model/InlineResponse20027Os.md)
+ - [InlineResponse20027Raid](docs/Model/InlineResponse20027Raid.md)
  - [InlineResponse2003](docs/Model/InlineResponse2003.md)
  - [InlineResponse2004](docs/Model/InlineResponse2004.md)
  - [InlineResponse2005](docs/Model/InlineResponse2005.md)
@@ -1233,6 +1236,7 @@ Class | Method | HTTP request | Description
  - [Service](docs/Model/Service.md)
  - [ServiceCategories](docs/Model/ServiceCategories.md)
  - [ServiceCategory](docs/Model/ServiceCategory.md)
+ - [ServiceOrderPostResponse](docs/Model/ServiceOrderPostResponse.md)
  - [ServiceType](docs/Model/ServiceType.md)
  - [ServiceTypes](docs/Model/ServiceTypes.md)
  - [Services](docs/Model/Services.md)

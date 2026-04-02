@@ -28,42 +28,68 @@ class InlineResponse20023(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'ips': 'dict(str, str)'
+        'success': 'bool',
+        'text': 'str'
     }
 
     attribute_map = {
-        'ips': 'ips'
+        'success': 'success',
+        'text': 'text'
     }
 
-    def __init__(self, ips=None):  # noqa: E501
+    def __init__(self, success=None, text=None):  # noqa: E501
         """InlineResponse20023 - a model defined in Swagger"""  # noqa: E501
-        self._ips = None
+        self._success = None
+        self._text = None
         self.discriminator = None
-        if ips is not None:
-            self.ips = ips
+        self.success = success
+        self.text = text
 
     @property
-    def ips(self):
-        """Gets the ips of this InlineResponse20023.  # noqa: E501
+    def success(self):
+        """Gets the success of this InlineResponse20023.  # noqa: E501
 
-        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :return: The ips of this InlineResponse20023.  # noqa: E501
-        :rtype: dict(str, str)
+        :return: The success of this InlineResponse20023.  # noqa: E501
+        :rtype: bool
         """
-        return self._ips
+        return self._success
 
-    @ips.setter
-    def ips(self, ips):
-        """Sets the ips of this InlineResponse20023.
+    @success.setter
+    def success(self, success):
+        """Sets the success of this InlineResponse20023.
 
-        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :param ips: The ips of this InlineResponse20023.  # noqa: E501
-        :type: dict(str, str)
+        :param success: The success of this InlineResponse20023.  # noqa: E501
+        :type: bool
         """
+        if success is None:
+            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
 
-        self._ips = ips
+        self._success = success
+
+    @property
+    def text(self):
+        """Gets the text of this InlineResponse20023.  # noqa: E501
+
+
+        :return: The text of this InlineResponse20023.  # noqa: E501
+        :rtype: str
+        """
+        return self._text
+
+    @text.setter
+    def text(self, text):
+        """Sets the text of this InlineResponse20023.
+
+
+        :param text: The text of this InlineResponse20023.  # noqa: E501
+        :type: str
+        """
+        if text is None:
+            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
+
+        self._text = text
 
     def to_dict(self):
         """Returns the model properties as a dict"""

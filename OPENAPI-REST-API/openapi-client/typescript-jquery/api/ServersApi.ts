@@ -51,7 +51,7 @@ export class ServersApi {
      * @summary Place Server Order
      */
     public addServer(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.AddServer200Response;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/servers/order';
@@ -101,11 +101,11 @@ export class ServersApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.AddServer200Response;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.AddServer200Response, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -1319,7 +1319,7 @@ export class ServersApi {
      * @param id Server ID number.
      */
     public updateServerInfo(id: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: models.SuccessTextResponse;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/servers/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
@@ -1374,11 +1374,11 @@ export class ServersApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: models.SuccessTextResponse;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.SuccessTextResponse, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

@@ -5,7 +5,7 @@
  *
  *)
 
-val add_server : unit -> unit Lwt.t
+val add_server : unit -> Add_server_200_response.t Lwt.t
 val buy_it_now_server_order : unit -> Buy_it_now_server_order_200_response.t Lwt.t
 val get_mp_servers : unit -> Buy_it_now_list.t Lwt.t
 val get_new_server : unit -> Server_order.t Lwt.t
@@ -22,4 +22,4 @@ val server_ipmi_live_post : id:int32 -> ip:string -> ?asset:int32 -> unit -> Ser
 val server_ipmi_power_get : id:int32 -> Text_response.t Lwt.t
 val server_ipmi_power_post : id:int32 -> action:Enums.action -> ?asset:int32 -> unit -> Text_response.t Lwt.t
 val servers_cancel : id:int32 -> Servers_cancel_200_response.t Lwt.t
-val update_server_info : id:string -> unit Lwt.t
+val update_server_info : id:string -> Success_text_response.t Lwt.t

@@ -51,7 +51,7 @@ class CreateFirewallRuleTest : ShouldSpec() {
             //modelInstance.destinationPort shouldBe ("TODO")
         }
 
-        // to test the property `sourceIp`
+        // to test the property `sourceIp` - Source IP address to match. Use '0.0.0.0' to match any source.
         should("test sourceIp") {
             // uncomment below to test the property
             //modelInstance.sourceIp shouldBe ("TODO")

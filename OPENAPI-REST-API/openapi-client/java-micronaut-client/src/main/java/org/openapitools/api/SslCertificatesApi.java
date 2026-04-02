@@ -19,6 +19,7 @@ import io.micronaut.core.convert.format.Format;
 import reactor.core.publisher.Mono;
 import org.openapitools.model.ChargeInvoiceRows;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SslCancel200Response;
 import org.openapitools.model.SuccessTextResponse;
 import javax.annotation.Generated;
@@ -29,36 +30,39 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface SslCertificatesApi {
     /**
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
      *
+     * @return ServiceOrderPostResponse
      */
     @Post(uri="/ssl/order")
     @Consumes({"application/json"})
-    Mono<Void> addSsl();
+    Mono<ServiceOrderPostResponse> addSsl();
 
     /**
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
      *
+     * @return Object
      */
     @Get(uri="/ssl/order")
     @Consumes({"application/json"})
-    Mono<Void> getNewSsl();
+    Mono<Object> getNewSsl();
 
     /**
      * Get SSL Cert Info
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      *
      * @param id SSL certificate ID number. (required)
+     * @return Object
      */
     @Get(uri="/ssl/{id}")
     @Consumes({"application/json"})
-    Mono<Void> getSslInfo(
+    Mono<Object> getSslInfo(
         @PathVariable(name="id") @NotNull Integer id
     );
 
@@ -124,10 +128,11 @@ public interface SslCertificatesApi {
      * Updates settings on an SSL certificate order.
      *
      * @param id SSL certificate ID number. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/ssl/{id}")
     @Consumes({"application/json"})
-    Mono<Void> updateSslInfo(
+    Mono<SuccessTextResponse> updateSslInfo(
         @PathVariable(name="id") @NotNull String id
     );
 

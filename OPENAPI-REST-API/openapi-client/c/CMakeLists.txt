@@ -67,6 +67,7 @@ set(SRCS
     model/account_info_oauthproviders.c
     model/account_info_post.c
     model/account_ssh_key.c
+    model/add_server_200_response.c
     model/affiliate_banner_row.c
     model/affiliate_dock_setup.c
     model/affiliate_payment_setup.c
@@ -399,6 +400,7 @@ set(SRCS
     model/service.c
     model/service_categories.c
     model/service_category.c
+    model/service_order_post_response.c
     model/service_type.c
     model/service_types.c
     model/services.c
@@ -544,6 +546,7 @@ set(HDRS
     model/account_info_oauthproviders.h
     model/account_info_post.h
     model/account_ssh_key.h
+    model/add_server_200_response.h
     model/affiliate_banner_row.h
     model/affiliate_dock_setup.h
     model/affiliate_payment_setup.h
@@ -876,6 +879,7 @@ set(HDRS
     model/service.h
     model/service_categories.h
     model/service_category.h
+    model/service_order_post_response.h
     model/service_type.h
     model/service_types.h
     model/services.h

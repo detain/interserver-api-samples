@@ -200,7 +200,7 @@ describe 'AccountApi' do
   # @param disable_email_notifications 
   # @param gstin 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_account_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -212,7 +212,7 @@ describe 'AccountApi' do
   # Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
   # @param body 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_account_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -225,7 +225,7 @@ describe 'AccountApi' do
   # @param start 
   # @param _end 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_account_ip_limits test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -237,7 +237,7 @@ describe 'AccountApi' do
   # Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
   # @param body The lower and upper bounds of an ip range.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_account_ip_limits test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

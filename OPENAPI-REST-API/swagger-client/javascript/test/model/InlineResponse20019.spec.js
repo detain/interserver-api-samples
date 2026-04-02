@@ -40,16 +40,22 @@
         expect(instance).to.be.a(InterServerManagementApi.InlineResponse20019);
       });
 
-      it('should have the property success (base name: "success")', function() {
-        // TODO: update the code to test the property success
-        expect(instance).to.have.property('success');
-        // expect(instance.success).to.be(expectedValueLiteral);
-      });
-
       it('should have the property text (base name: "text")', function() {
         // TODO: update the code to test the property text
         expect(instance).to.have.property('text');
         // expect(instance.text).to.be(expectedValueLiteral);
+      });
+
+      it('should have the property invoice (base name: "invoice")', function() {
+        // TODO: update the code to test the property invoice
+        expect(instance).to.have.property('invoice');
+        // expect(instance.invoice).to.be(expectedValueLiteral);
+      });
+
+      it('should have the property order (base name: "order")', function() {
+        // TODO: update the code to test the property order
+        expect(instance).to.have.property('order');
+        // expect(instance.order).to.be(expectedValueLiteral);
       });
 
     });

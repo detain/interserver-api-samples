@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 //
 // Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
 //
-void BillingAPI_deleteAccountCreditCard(apiClient_t *apiClient, char *id);
+char* BillingAPI_deleteAccountCreditCard(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -151,7 +151,9 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+char*
+
+
 
 ### Authorization
 
@@ -445,7 +447,7 @@ Name | Type | Description  | Notes
 //
 // Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
 //
-void BillingAPI_getBillingCart(apiClient_t *apiClient);
+object_t* BillingAPI_getBillingCart(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -455,7 +457,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[object_t](object.md) *
+
 
 ### Authorization
 
@@ -566,7 +569,7 @@ Name | Type | Description  | Notes
 //
 // Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
 //
-void BillingAPI_getBillingPrePays(apiClient_t *apiClient);
+object_t* BillingAPI_getBillingPrePays(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -576,7 +579,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[object_t](object.md) *
+
 
 ### Authorization
 
@@ -692,7 +696,7 @@ Name | Type | Description  | Notes
 //
 // Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
 //
-void BillingAPI_updateAccountCreditCard(apiClient_t *apiClient, int *id);
+char* BillingAPI_updateAccountCreditCard(apiClient_t *apiClient, int *id);
 ```
 
 ### Parameters
@@ -703,7 +707,9 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+char*
+
+
 
 ### Authorization
 

@@ -24,6 +24,7 @@ local openapiclient_invoice = require "openapiclient.model.invoice"
 local openapiclient_monthly_counts = require "openapiclient.model.monthly_counts"
 local openapiclient_status_monthly_breakdown = require "openapiclient.model.status_monthly_breakdown"
 local openapiclient_success_text_response = require "openapiclient.model.success_text_response"
+local openapiclient_todo_object_mapping = require "openapiclient.model.todo_object_mapping"
 local openapiclient_text_response = require "openapiclient.model.text_response"
 local openapiclient_billing_add_cc_request = require "openapiclient.model.billing_add_cc_request"
 local openapiclient_billing_payment_method_request = require "openapiclient.model.billing_payment_method_request"
@@ -278,7 +279,18 @@ function billing_api:delete_account_credit_card(id)
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return result, headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -813,7 +825,18 @@ function billing_api:get_billing_cart()
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_TODO_OBJECT_MAPPING.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -1018,7 +1041,18 @@ function billing_api:get_billing_pre_pays()
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_TODO_OBJECT_MAPPING.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -1232,7 +1266,18 @@ function billing_api:update_account_credit_card(id)
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return result, headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then

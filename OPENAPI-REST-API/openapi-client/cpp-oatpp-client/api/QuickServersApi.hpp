@@ -35,6 +35,7 @@
 #include "QuickserversCancel_200_response.hpp"
 #include "RestoreRequest.hpp"
 #include "ReverseDnsEntries.hpp"
+#include "ServiceOrderPostResponse.hpp"
 #include "SuccessTextResponse.hpp"
 #include "TextResponse.hpp"
 #include "VpsBackupRows.hpp"

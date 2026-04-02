@@ -269,6 +269,8 @@ private class OASBillingApiTest {
 
         OASClient client;
         OASBillingApi api;
+        String response;
+        String expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -276,33 +278,33 @@ private class OASBillingApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize('');
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.deleteAccountCreditCard(params);
+        expectedResponse = '';
+        response = (String) api.deleteAccountCreditCard(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBillingApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize('');
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.deleteAccountCreditCard(params);
+        expectedResponse = '';
+        response = (String) api.deleteAccountCreditCard(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBillingApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize('');
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.deleteAccountCreditCard(params);
+        expectedResponse = '';
+        response = (String) api.deleteAccountCreditCard(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -1033,6 +1035,8 @@ private class OASBillingApiTest {
 
         OASClient client;
         OASBillingApi api;
+        Object response;
+        Object expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -1040,33 +1044,33 @@ private class OASBillingApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getBillingCart();
+        expectedResponse = null;
+        response = (Object) api.getBillingCart();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBillingApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getBillingCart();
+        expectedResponse = null;
+        response = (Object) api.getBillingCart();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBillingApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getBillingCart();
+        expectedResponse = null;
+        response = (Object) api.getBillingCart();
         System.assertEquals(expectedResponse, response);
     }
 
@@ -1323,6 +1327,8 @@ private class OASBillingApiTest {
 
         OASClient client;
         OASBillingApi api;
+        Object response;
+        Object expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -1330,33 +1336,33 @@ private class OASBillingApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getBillingPrePays();
+        expectedResponse = null;
+        response = (Object) api.getBillingPrePays();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBillingApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getBillingPrePays();
+        expectedResponse = null;
+        response = (Object) api.getBillingPrePays();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBillingApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getBillingPrePays();
+        expectedResponse = null;
+        response = (Object) api.getBillingPrePays();
         System.assertEquals(expectedResponse, response);
     }
 
@@ -1649,6 +1655,8 @@ private class OASBillingApiTest {
 
         OASClient client;
         OASBillingApi api;
+        String response;
+        String expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -1656,33 +1664,33 @@ private class OASBillingApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize('');
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountCreditCard(params);
+        expectedResponse = '';
+        response = (String) api.updateAccountCreditCard(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBillingApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize('');
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountCreditCard(params);
+        expectedResponse = '';
+        response = (String) api.updateAccountCreditCard(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBillingApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize('');
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountCreditCard(params);
+        expectedResponse = '';
+        response = (String) api.updateAccountCreditCard(params);
         System.assertEquals(expectedResponse, response);
     }
 

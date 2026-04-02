@@ -6,8 +6,9 @@
 package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20021;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -44,13 +45,13 @@ public interface SslApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "SSL-Certificates" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/ssl/order",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> addSsl();
+    ResponseEntity<ServiceOrderPostResponse> addSsl();
 
 
     @Operation(summary = "SSL Cert Ordering Information", description = "Retrieves available SSL certificate types and pricing for ordering.", security = {
@@ -58,13 +59,13 @@ public interface SslApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "SSL-Certificates" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Available SSL certificate types and pricing for ordering.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/ssl/order",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> getNewSsl();
+    ResponseEntity<Object> getNewSsl();
 
 
     @Operation(summary = "Get SSL Cert Info", description = "Returns detailed information about a specific SSL certificate including its domain and expiration.", security = {
@@ -72,13 +73,13 @@ public interface SslApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "SSL-Certificates" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Detailed SSL certificate information.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/ssl/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> getSslInfo(@Parameter(in = ParameterIn.PATH, description = "SSL certificate ID number.", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    ResponseEntity<Object> getSslInfo(@Parameter(in = ParameterIn.PATH, description = "SSL certificate ID number.", required=true, schema=@Schema()) @PathVariable("id") Integer id
 );
 
 
@@ -147,13 +148,13 @@ public interface SslApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "SSL-Certificates" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "SSL Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20020.class))),
+        @ApiResponse(responseCode = "200", description = "SSL Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20021.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/ssl/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<InlineResponse20020> sslCancel(@Parameter(in = ParameterIn.PATH, description = "SSL Cert ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    ResponseEntity<InlineResponse20021> sslCancel(@Parameter(in = ParameterIn.PATH, description = "SSL Cert ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
 );
 
 
@@ -162,13 +163,13 @@ public interface SslApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "SSL-Certificates" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/ssl/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> updateSslInfo(@Parameter(in = ParameterIn.PATH, description = "SSL certificate ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
+    ResponseEntity<SuccessTextResponse> updateSslInfo(@Parameter(in = ParameterIn.PATH, description = "SSL certificate ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
 );
 
 }

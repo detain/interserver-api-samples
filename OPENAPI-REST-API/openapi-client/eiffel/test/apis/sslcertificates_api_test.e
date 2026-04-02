@@ -18,10 +18,11 @@ feature -- Test routines
             --
             -- Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         local
+            l_response: SERVICE_ORDER_POST_RESPONSE
         do
             -- TODO: Initialize required params.
 
-            -- api.add_ssl
+            -- l_response := api.add_ssl
             assert ("not_implemented", False)
         end
 
@@ -30,10 +31,11 @@ feature -- Test routines
             --
             -- Retrieves available SSL certificate types and pricing for ordering.
         local
+            l_response: ANY
         do
             -- TODO: Initialize required params.
 
-            -- api.new_ssl
+            -- l_response := api.new_ssl
             assert ("not_implemented", False)
         end
 
@@ -69,12 +71,13 @@ feature -- Test routines
             --
             -- Returns detailed information about a specific SSL certificate including its domain and expiration.
         local
+            l_response: ANY
             l_id: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.ssl_info(l_id)
+            -- l_response := api.ssl_info(l_id)
             assert ("not_implemented", False)
         end
 
@@ -125,12 +128,13 @@ feature -- Test routines
             --
             -- Updates settings on an SSL certificate order.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_ssl_info(l_id)
+            -- l_response := api.update_ssl_info(l_id)
             assert ("not_implemented", False)
         end
 

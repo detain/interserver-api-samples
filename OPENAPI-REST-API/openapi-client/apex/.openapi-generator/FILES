@@ -83,6 +83,10 @@ force-app/main/default/classes/OASAccountSshKey.cls
 force-app/main/default/classes/OASAccountSshKey.cls-meta.xml
 force-app/main/default/classes/OASAccountSshKeyTest.cls
 force-app/main/default/classes/OASAccountSshKeyTest.cls-meta.xml
+force-app/main/default/classes/OASAddServer200Response.cls
+force-app/main/default/classes/OASAddServer200Response.cls-meta.xml
+force-app/main/default/classes/OASAddServer200ResponseTest.cls
+force-app/main/default/classes/OASAddServer200ResponseTest.cls-meta.xml
 force-app/main/default/classes/OASAffiliateBannerRow.cls
 force-app/main/default/classes/OASAffiliateBannerRow.cls-meta.xml
 force-app/main/default/classes/OASAffiliateBannerRowTest.cls
@@ -1433,6 +1437,10 @@ force-app/main/default/classes/OASServiceCategory.cls
 force-app/main/default/classes/OASServiceCategory.cls-meta.xml
 force-app/main/default/classes/OASServiceCategoryTest.cls
 force-app/main/default/classes/OASServiceCategoryTest.cls-meta.xml
+force-app/main/default/classes/OASServiceOrderPostResponse.cls
+force-app/main/default/classes/OASServiceOrderPostResponse.cls-meta.xml
+force-app/main/default/classes/OASServiceOrderPostResponseTest.cls
+force-app/main/default/classes/OASServiceOrderPostResponseTest.cls-meta.xml
 force-app/main/default/classes/OASServiceTest.cls
 force-app/main/default/classes/OASServiceTest.cls-meta.xml
 force-app/main/default/classes/OASServiceType.cls

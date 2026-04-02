@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\DomainsApi
 
-Domain Registration related services
+Domain registration, transfers, renewals, WHOIS, nameserver management, and DNSSEC configuration.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -40,7 +40,7 @@ All URIs are relative to https://my.interserver.net/apiv2, except if the operati
 ## `addDomain()`
 
 ```php
-addDomain()
+addDomain(): \Interserver\MyAdmin\Model\ServiceOrderPostResponse
 ```
 
 Place Domain Order
@@ -78,7 +78,8 @@ $apiInstance = new Interserver\MyAdmin\Api\DomainsApi(
 );
 
 try {
-    $apiInstance->addDomain();
+    $result = $apiInstance->addDomain();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->addDomain: ', $e->getMessage(), PHP_EOL;
 }
@@ -90,7 +91,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1904,7 +1905,7 @@ try {
 ## `updateDomainInfo()`
 
 ```php
-updateDomainInfo($id)
+updateDomainInfo($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update Domain Order
@@ -1943,7 +1944,8 @@ $apiInstance = new Interserver\MyAdmin\Api\DomainsApi(
 $id = 'id_example'; // string | The domain service ID. Use `domain_id` from `GET /domains`.
 
 try {
-    $apiInstance->updateDomainInfo($id);
+    $result = $apiInstance->updateDomainInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->updateDomainInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1957,7 +1959,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

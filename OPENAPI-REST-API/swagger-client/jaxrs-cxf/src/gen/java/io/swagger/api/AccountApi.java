@@ -255,10 +255,10 @@ public interface AccountApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update Account Information", tags={ "Account" })
     @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "422", description = "Validation error while updating account data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateAccountInfo(@Multipart(value = "name")  String name, @Multipart(value = "company")  String company, @Multipart(value = "address")  String address, @Multipart(value = "address2")  String address2, @Multipart(value = "city")  String city, @Multipart(value = "state")  String state, @Multipart(value = "zip")  String zip, @Multipart(value = "country")  String country, @Multipart(value = "phone")  String phone, @Multipart(value = "locale")  String locale, @Multipart(value = "email_invoices")  String emailInvoices, @Multipart(value = "email_abuse")  String emailAbuse, @Multipart(value = "disable_reset")  Boolean disableReset, @Multipart(value = "disable_reinstall")  Boolean disableReinstall, @Multipart(value = "disable_server_notifications")  Boolean disableServerNotifications, @Multipart(value = "disable_email_notifications")  Boolean disableEmailNotifications, @Multipart(value = "gstin")  String gstin);
+        @ApiResponse(responseCode = "422", description = "Validation error while updating account data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))) })
+    public SuccessTextResponse updateAccountInfo(@Multipart(value = "name")  String name, @Multipart(value = "company")  String company, @Multipart(value = "address")  String address, @Multipart(value = "address2")  String address2, @Multipart(value = "city")  String city, @Multipart(value = "state")  String state, @Multipart(value = "zip")  String zip, @Multipart(value = "country")  String country, @Multipart(value = "phone")  String phone, @Multipart(value = "locale")  String locale, @Multipart(value = "email_invoices")  String emailInvoices, @Multipart(value = "email_abuse")  String emailAbuse, @Multipart(value = "disable_reset")  Boolean disableReset, @Multipart(value = "disable_reinstall")  Boolean disableReinstall, @Multipart(value = "disable_server_notifications")  Boolean disableServerNotifications, @Multipart(value = "disable_email_notifications")  Boolean disableEmailNotifications, @Multipart(value = "gstin")  String gstin);
 
     /**
      * Update Account Information
@@ -272,10 +272,10 @@ public interface AccountApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update Account Information", tags={ "Account" })
     @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "422", description = "Validation error while updating account data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateAccountInfo(@Valid AccountInfoPost body);
+        @ApiResponse(responseCode = "422", description = "Validation error while updating account data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))) })
+    public SuccessTextResponse updateAccountInfo(@Valid AccountInfoPost body);
 
     /**
      * Add IP Access Restriction
@@ -289,10 +289,10 @@ public interface AccountApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Add IP Access Restriction", tags={ "Account" })
     @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateAccountIpLimits(@Multipart(value = "start")  String start, @Multipart(value = "end")  String end);
+        @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))) })
+    public SuccessTextResponse updateAccountIpLimits(@Multipart(value = "start")  String start, @Multipart(value = "end")  String end);
 
     /**
      * Add IP Access Restriction
@@ -306,10 +306,10 @@ public interface AccountApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Add IP Access Restriction", tags={ "Account" })
     @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateAccountIpLimits(@Valid IpLimitRange body);
+        @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))) })
+    public SuccessTextResponse updateAccountIpLimits(@Valid IpLimitRange body);
 
     /**
      * Change Account Password

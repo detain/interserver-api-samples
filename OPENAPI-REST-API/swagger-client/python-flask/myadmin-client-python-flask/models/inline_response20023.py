@@ -14,20 +14,25 @@ class InlineResponse20023(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, ips: Dict[str, str]=None):  # noqa: E501
+    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
         """InlineResponse20023 - a model defined in Swagger
 
-        :param ips: The ips of this InlineResponse20023.  # noqa: E501
-        :type ips: Dict[str, str]
+        :param success: The success of this InlineResponse20023.  # noqa: E501
+        :type success: bool
+        :param text: The text of this InlineResponse20023.  # noqa: E501
+        :type text: str
         """
         self.swagger_types = {
-            'ips': Dict[str, str]
+            'success': bool,
+            'text': str
         }
 
         self.attribute_map = {
-            'ips': 'ips'
+            'success': 'success',
+            'text': 'text'
         }
-        self._ips = ips
+        self._success = success
+        self._text = text
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20023':
@@ -41,24 +46,47 @@ class InlineResponse20023(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def ips(self) -> Dict[str, str]:
-        """Gets the ips of this InlineResponse20023.
+    def success(self) -> bool:
+        """Gets the success of this InlineResponse20023.
 
-        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :return: The ips of this InlineResponse20023.
-        :rtype: Dict[str, str]
+        :return: The success of this InlineResponse20023.
+        :rtype: bool
         """
-        return self._ips
+        return self._success
 
-    @ips.setter
-    def ips(self, ips: Dict[str, str]):
-        """Sets the ips of this InlineResponse20023.
+    @success.setter
+    def success(self, success: bool):
+        """Sets the success of this InlineResponse20023.
 
-        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :param ips: The ips of this InlineResponse20023.
-        :type ips: Dict[str, str]
+        :param success: The success of this InlineResponse20023.
+        :type success: bool
         """
+        if success is None:
+            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
 
-        self._ips = ips
+        self._success = success
+
+    @property
+    def text(self) -> str:
+        """Gets the text of this InlineResponse20023.
+
+
+        :return: The text of this InlineResponse20023.
+        :rtype: str
+        """
+        return self._text
+
+    @text.setter
+    def text(self, text: str):
+        """Sets the text of this InlineResponse20023.
+
+
+        :param text: The text of this InlineResponse20023.
+        :type text: str
+        """
+        if text is None:
+            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
+
+        self._text = text

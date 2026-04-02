@@ -15,6 +15,7 @@ import org.openapitools.client.model.DnsListItem
 import org.openapitools.client.model.DnsRecord
 import org.openapitools.client.model.DnsRecordType
 import org.openapitools.client.model.GetAccountInfo401Response
+import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
 import org.openapitools.client.core.ApiKeyLocations._
@@ -30,8 +31,8 @@ class DNSApi(baseUrl: String) {
    * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -41,15 +42,15 @@ class DNSApi(baseUrl: String) {
    * @param domain The domain name.
    * @param ip IP Address to point the domain to.
    */
-  def addDnsDomain(domain: String, ip: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, baseUrl, "/dns", "multipart/form-data")
+  def addDnsDomain(domain: String, ip: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[SuccessTextResponse] =
+    ApiRequest[SuccessTextResponse](ApiMethods.POST, baseUrl, "/dns", "multipart/form-data")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
       .withFormParam("domain", domain)
       .withFormParam("ip", ip)
+      .withSuccessResponse[SuccessTextResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**
@@ -90,8 +91,8 @@ class DNSApi(baseUrl: String) {
    * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -100,22 +101,22 @@ class DNSApi(baseUrl: String) {
    * 
    * @param id The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
    */
-  def deleteDnsDomain(id: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.DELETE, baseUrl, "/dns/{id}", "application/json")
+  def deleteDnsDomain(id: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[SuccessTextResponse] =
+    ApiRequest[SuccessTextResponse](ApiMethods.DELETE, baseUrl, "/dns/{id}", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
       .withPathParam("id", id)
+      .withSuccessResponse[SuccessTextResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**
    * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -125,15 +126,15 @@ class DNSApi(baseUrl: String) {
    * @param domainId The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
    * @param recordId The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
    */
-  def deleteDnsRecord(domainId: Int, recordId: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.DELETE, baseUrl, "/dns/{domainId}/{recordId}", "application/json")
+  def deleteDnsRecord(domainId: Int, recordId: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[SuccessTextResponse] =
+    ApiRequest[SuccessTextResponse](ApiMethods.DELETE, baseUrl, "/dns/{domainId}/{recordId}", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
       .withPathParam("domainId", domainId)
       .withPathParam("recordId", recordId)
+      .withSuccessResponse[SuccessTextResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**
@@ -185,8 +186,8 @@ class DNSApi(baseUrl: String) {
    * Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -204,8 +205,8 @@ class DNSApi(baseUrl: String) {
    * @param ordername 
    * @param auth 
    */
-  def updateDnsRecord(domainId: Int, recordId: Int, name: Option[String] = None, `type`: Option[DnsRecordType] = None, content: Option[String] = None, ttl: Option[String] = None, prio: Option[String] = None, disabled: Option[String] = None, ordername: Option[String] = None, auth: Option[String] = None)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, baseUrl, "/dns/{domainId}/{recordId}", "multipart/form-data")
+  def updateDnsRecord(domainId: Int, recordId: Int, name: Option[String] = None, `type`: Option[DnsRecordType] = None, content: Option[String] = None, ttl: Option[String] = None, prio: Option[String] = None, disabled: Option[String] = None, ordername: Option[String] = None, auth: Option[String] = None)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[SuccessTextResponse] =
+    ApiRequest[SuccessTextResponse](ApiMethods.POST, baseUrl, "/dns/{domainId}/{recordId}", "multipart/form-data")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
@@ -219,8 +220,8 @@ class DNSApi(baseUrl: String) {
       .withFormParam("auth", auth)
       .withPathParam("domainId", domainId)
       .withPathParam("recordId", recordId)
+      .withSuccessResponse[SuccessTextResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
 

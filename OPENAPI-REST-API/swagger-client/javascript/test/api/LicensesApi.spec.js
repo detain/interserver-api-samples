@@ -37,7 +37,7 @@
     describe('LicensesApi', function() {
       describe('addLicense', function() {
         it('should call addLicense successfully', function(done) {
-          // TODO: uncomment addLicense call
+          // TODO: uncomment addLicense call and complete the assertions
           /*
 
           instance.addLicense(function(error, data, response) {
@@ -45,6 +45,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.ServiceOrderPostResponse);
 
             done();
           });
@@ -237,7 +239,7 @@
       });
       describe('updateLicenseInfo', function() {
         it('should call updateLicenseInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateLicenseInfo call
+          // TODO: uncomment, update parameter values for updateLicenseInfo call and complete the assertions
           /*
 
           instance.updateLicenseInfo(id, function(error, data, response) {
@@ -245,6 +247,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

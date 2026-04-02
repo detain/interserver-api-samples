@@ -20,6 +20,7 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
+import { AddServer200Response } from '../model/addServer200Response';
 import { BuyItNowList } from '../model/buyItNowList';
 import { BuyItNowServerOrder200Response } from '../model/buyItNowServerOrder200Response';
 import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
@@ -55,8 +56,8 @@ export class ServersService {
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
      
      */
-    public addServer(observe?: 'body', headers?: Headers): Observable<any>;
-    public addServer(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public addServer(observe?: 'body', headers?: Headers): Observable<AddServer200Response>;
+    public addServer(observe?: 'response', headers?: Headers): Observable<HttpResponse<AddServer200Response>>;
     public addServer(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -69,10 +70,10 @@ export class ServersService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/servers/order`, headers);
+        const response: Observable<HttpResponse<AddServer200Response>> = this.httpClient.post(`${this.basePath}/servers/order`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <AddServer200Response>(httpResponse.response))
                );
         }
         return response;
@@ -637,8 +638,8 @@ export class ServersService {
      * @param id Server ID number.
      
      */
-    public updateServerInfo(id: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateServerInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateServerInfo(id: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateServerInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateServerInfo(id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateServerInfo.');
@@ -655,10 +656,10 @@ export class ServersService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/servers/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/servers/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

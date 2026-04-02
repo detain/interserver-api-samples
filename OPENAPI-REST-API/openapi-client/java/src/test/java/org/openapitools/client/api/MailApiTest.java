@@ -34,6 +34,7 @@ import org.openapitools.client.model.MailSchema;
 import org.openapitools.client.model.MailStatsType;
 import org.openapitools.client.model.SendMail;
 import org.openapitools.client.model.SendMailAdv;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.openapitools.client.model.ViewMailLogStartDateParameter;
 import org.junit.jupiter.api.Disabled;
@@ -61,7 +62,7 @@ public class MailApiTest {
      */
     @Test
     public void addMailTest() throws ApiException {
-        api.addMail();
+        ServiceOrderPostResponse response = api.addMail();
         // TODO: test validations
     }
 
@@ -404,7 +405,7 @@ public class MailApiTest {
     @Test
     public void updateMailInfoTest() throws ApiException {
         String id = null;
-        api.updateMailInfo(id);
+        SuccessTextResponse response = api.updateMailInfo(id);
         // TODO: test validations
     }
 

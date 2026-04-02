@@ -669,6 +669,59 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in .Models.AddServer200Response_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Text.Is_Null then
+         Into.Write_Entity ("text", Value.Text);
+      end if;
+      if not Value.Invoice.Is_Null then
+         Into.Write_Entity ("invoice", Value.Invoice);
+      end if;
+      if not Value.Order.Is_Null then
+         Into.Write_Entity ("order", Value.Order);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AddServer200Response_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.AddServer200Response_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "text", Value.Text);
+      Swagger.Streams.Deserialize (Object, "invoice", Value.Invoice);
+      Swagger.Streams.Deserialize (Object, "order", Value.Order);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out AddServer200Response_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.AddServer200Response_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in .Models.AffiliateBannerRow_Type) is
    begin
       Into.Start_Entity (Name);
@@ -13872,6 +13925,73 @@ package body .Models is
                           Value : in out ServiceCategory_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : .Models.ServiceCategory_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ServiceOrderPostResponse_Type) is
+   begin
+      Into.Start_Entity (Name);
+      if not Value.Continue.Is_Null then
+         Into.Write_Entity ("continue", Value.Continue);
+      end if;
+      Serialize (Into, "errors", Value.Errors);
+      if not Value.Total_Cost.Is_Null then
+         Into.Write_Entity ("total_cost", Value.Total_Cost);
+      end if;
+      if not Value.Iid.Is_Null then
+         Into.Write_Entity ("iid", Value.Iid);
+      end if;
+      Serialize (Into, "iids", Value.Iids);
+      Serialize (Into, "real_iids", Value.Real_Iids);
+      if not Value.Service_Id.Is_Null then
+         Into.Write_Entity ("serviceId", Value.Service_Id);
+      end if;
+      if not Value.Invoice_Description.Is_Null then
+         Into.Write_Entity ("invoice_description", Value.Invoice_Description);
+      end if;
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServiceOrderPostResponse_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServiceOrderPostResponse_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "continue", Value.Continue);
+      Swagger.Streams.Deserialize (Object, "errors", Value.Errors);
+      Swagger.Streams.Deserialize (Object, "total_cost", Value.Total_Cost);
+      Swagger.Streams.Deserialize (Object, "iid", Value.Iid);
+      Swagger.Streams.Deserialize (Object, "iids", Value.Iids);
+      Swagger.Streams.Deserialize (Object, "real_iids", Value.Real_Iids);
+      Swagger.Streams.Deserialize (Object, "serviceId", Value.Service_Id);
+      Swagger.Streams.Deserialize (Object, "invoice_description", Value.Invoice_Description);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServiceOrderPostResponse_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : .Models.ServiceOrderPostResponse_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);

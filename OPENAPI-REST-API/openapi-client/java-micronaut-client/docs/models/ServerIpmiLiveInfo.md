@@ -2,7 +2,7 @@
 
 # ServerIpmiLiveInfo
 
-Information about the IPMI connectioj.
+Information about the IPMI connection.
 
 The class is defined in **[ServerIpmiLiveInfo.java](../../src/main/java/org/openapitools/model/ServerIpmiLiveInfo.java)**
 

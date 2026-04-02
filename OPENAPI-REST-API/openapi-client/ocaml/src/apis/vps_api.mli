@@ -5,7 +5,7 @@
  *
  *)
 
-val add_vps : vps_order_post_request_t:Vps_order_post_request.t -> unit -> unit Lwt.t
+val add_vps : vps_order_post_request_t:Vps_order_post_request.t -> unit -> Service_order_post_response.t Lwt.t
 val delete_vps_backup : id:int32 -> file:string -> ?all:Enums.xdp_action -> unit -> Success_text_response.t Lwt.t
 val do_vps_block_smtp : id:int32 -> Queue_response.t Lwt.t
 val do_vps_disable_cd : id:int32 -> Queue_response.t Lwt.t
@@ -47,5 +47,5 @@ val post_vps_setup_vnc : id:int32 -> Queue_response.t Lwt.t
 val post_vps_slices : id:int32 -> unit Lwt.t
 val post_vps_view_desktop : id:int32 -> unit Lwt.t
 val put_vps : vps_order_put_request_t:Vps_order_put_request.t -> unit -> Vps_order_put_response.t Lwt.t
-val update_vps_info : id:string -> unit Lwt.t
+val update_vps_info : id:string -> Success_text_response.t Lwt.t
 val v_ps_cancel : id:int32 -> Vps_cancel_200_response.t Lwt.t

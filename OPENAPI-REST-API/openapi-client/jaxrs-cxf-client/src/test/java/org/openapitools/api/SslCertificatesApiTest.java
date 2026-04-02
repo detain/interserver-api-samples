@@ -15,6 +15,7 @@ package org.openapitools.api;
 
 import org.openapitools.model.ChargeInvoiceRows;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SslCancel200Response;
 import org.openapitools.model.SuccessTextResponse;
 import org.junit.Test;
@@ -72,8 +73,8 @@ public class SslCertificatesApiTest {
      */
     @Test
     public void addSslTest() {
-        //api.addSsl();
-        
+        //ServiceOrderPostResponse response = api.addSsl();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -89,8 +90,8 @@ public class SslCertificatesApiTest {
      */
     @Test
     public void getNewSslTest() {
-        //api.getNewSsl();
-        
+        //Object response = api.getNewSsl();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -107,8 +108,8 @@ public class SslCertificatesApiTest {
     @Test
     public void getSslInfoTest() {
         Integer id = null;
-        //api.getSslInfo(id);
-        
+        //Object response = api.getSslInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -213,8 +214,8 @@ public class SslCertificatesApiTest {
     @Test
     public void updateSslInfoTest() {
         String id = null;
-        //api.updateSslInfo(id);
-        
+        //SuccessTextResponse response = api.updateSslInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 

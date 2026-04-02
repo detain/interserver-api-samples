@@ -224,11 +224,12 @@ class DomainsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\ServiceOrderPostResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function addDomain(string $contentType = self::contentTypes['addDomain'][0])
     {
-        $this->addDomainWithHttpInfo($contentType);
+        list($response) = $this->addDomainWithHttpInfo($contentType);
+        return $response;
     }
 
     /**
@@ -240,7 +241,7 @@ class DomainsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\ServiceOrderPostResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function addDomainWithHttpInfo(string $contentType = self::contentTypes['addDomain'][0])
     {
@@ -269,9 +270,51 @@ class DomainsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -319,14 +362,27 @@ class DomainsApi
      */
     public function addDomainAsyncWithHttpInfo(string $contentType = self::contentTypes['addDomain'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addDomainRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -7584,11 +7640,12 @@ class DomainsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function updateDomainInfo($id, string $contentType = self::contentTypes['updateDomainInfo'][0])
     {
-        $this->updateDomainInfoWithHttpInfo($id, $contentType);
+        list($response) = $this->updateDomainInfoWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -7601,7 +7658,7 @@ class DomainsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDomainInfoWithHttpInfo($id, string $contentType = self::contentTypes['updateDomainInfo'][0])
     {
@@ -7630,9 +7687,51 @@ class DomainsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -7682,14 +7781,27 @@ class DomainsApi
      */
     public function updateDomainInfoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['updateDomainInfo'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateDomainInfoRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

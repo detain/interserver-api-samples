@@ -51,8 +51,8 @@ open class LicensesAPI {
     /// - API Key:
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
-    /// - returns: AnyPublisher<Void, Error> 
-    open func addLicense() -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<ServiceOrderPostResponse, Error> 
+    open func addLicense() -> AnyPublisher<ServiceOrderPostResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -68,7 +68,7 @@ open class LicensesAPI {
                 request.httpMethod = "POST"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<ServiceOrderPostResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -82,7 +82,7 @@ open class LicensesAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(ServiceOrderPostResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -677,8 +677,8 @@ open class LicensesAPI {
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
     /// - parameter id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func updateLicenseInfo(id: String) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func updateLicenseInfo(id: String) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -695,7 +695,7 @@ open class LicensesAPI {
                 request.httpMethod = "POST"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -709,7 +709,7 @@ open class LicensesAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()

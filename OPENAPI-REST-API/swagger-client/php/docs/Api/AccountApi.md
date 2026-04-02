@@ -769,7 +769,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateAccountInfo**
-> updateAccountInfo($name, $company, $address, $address2, $city, $state, $zip, $country, $phone, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateAccountInfo($name, $company, $address, $address2, $city, $state, $zip, $country, $phone, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin)
 
 Update Account Information
 
@@ -815,7 +815,8 @@ $disableEmailNotifications = true; // bool |
 $gstin = "gstin_example"; // string | 
 
 try {
-    $apiInstance->updateAccountInfo($name, $company, $address, $address2, $city, $state, $zip, $country, $phone, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin);
+    $result = $apiInstance->updateAccountInfo($name, $company, $address, $address2, $city, $state, $zip, $country, $phone, $locale, $emailInvoices, $emailAbuse, $disableReset, $disableReinstall, $disableServerNotifications, $disableEmailNotifications, $gstin);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->updateAccountInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -846,7 +847,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -860,7 +861,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateAccountInfo**
-> updateAccountInfo($body)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateAccountInfo($body)
 
 Update Account Information
 
@@ -890,7 +891,8 @@ $apiInstance = new Interserver\MyAdmin\Api\AccountApi(
 $body = new \Interserver\MyAdmin\Model\AccountInfoPost(); // \Interserver\MyAdmin\Model\AccountInfoPost | 
 
 try {
-    $apiInstance->updateAccountInfo($body);
+    $result = $apiInstance->updateAccountInfo($body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->updateAccountInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -905,7 +907,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -919,7 +921,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateAccountIpLimits**
-> updateAccountIpLimits($start, $end)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateAccountIpLimits($start, $end)
 
 Add IP Access Restriction
 
@@ -950,7 +952,8 @@ $start = "start_example"; // string |
 $end = "end_example"; // string | 
 
 try {
-    $apiInstance->updateAccountIpLimits($start, $end);
+    $result = $apiInstance->updateAccountIpLimits($start, $end);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->updateAccountIpLimits: ', $e->getMessage(), PHP_EOL;
 }
@@ -966,7 +969,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -980,7 +983,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateAccountIpLimits**
-> updateAccountIpLimits($body)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateAccountIpLimits($body)
 
 Add IP Access Restriction
 
@@ -1010,7 +1013,8 @@ $apiInstance = new Interserver\MyAdmin\Api\AccountApi(
 $body = new \Interserver\MyAdmin\Model\IpLimitRange(); // \Interserver\MyAdmin\Model\IpLimitRange | The lower and upper bounds of an ip range.
 
 try {
-    $apiInstance->updateAccountIpLimits($body);
+    $result = $apiInstance->updateAccountIpLimits($body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->updateAccountIpLimits: ', $e->getMessage(), PHP_EOL;
 }
@@ -1025,7 +1029,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

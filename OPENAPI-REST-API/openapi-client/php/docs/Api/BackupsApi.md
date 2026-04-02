@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\BackupsApi
 
-Backup related services
+Cloud backup storage services. Order, view, and manage backup storage quotas and credentials.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -595,7 +595,7 @@ This endpoint does not need any parameter.
 ## `updateBackupInfo()`
 
 ```php
-updateBackupInfo($id)
+updateBackupInfo($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update Backup Information
@@ -634,7 +634,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BackupsApi(
 $id = 56; // int | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 try {
-    $apiInstance->updateBackupInfo($id);
+    $result = $apiInstance->updateBackupInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BackupsApi->updateBackupInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -648,7 +649,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

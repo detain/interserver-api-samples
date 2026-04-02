@@ -24,6 +24,7 @@ internal/client/model_account_info_oauth_config_providers_value.go
 internal/client/model_account_info_oauthproviders.go
 internal/client/model_account_info_post.go
 internal/client/model_account_ssh_key.go
+internal/client/model_add_server_200_response.go
 internal/client/model_affiliate_banner_row.go
 internal/client/model_affiliate_dock_setup.go
 internal/client/model_affiliate_payment_setup.go
@@ -356,6 +357,7 @@ internal/client/model_servers_cancel_200_response.go
 internal/client/model_service.go
 internal/client/model_service_categories.go
 internal/client/model_service_category.go
+internal/client/model_service_order_post_response.go
 internal/client/model_service_type.go
 internal/client/model_service_types.go
 internal/client/model_services.go

@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 # **deleteAccountCreditCard**
 ```swift
-    open class func deleteAccountCreditCard(id: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func deleteAccountCreditCard(id: String, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
 Remove Credit Card
@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+**String**
 
 ### Authorization
 
@@ -685,7 +685,7 @@ This endpoint does not need any parameter.
 
 # **getBillingCart**
 ```swift
-    open class func getBillingCart(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getBillingCart(completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
 ```
 
 Get Shopping Cart Contents
@@ -716,7 +716,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+**JSONValue**
 
 ### Authorization
 
@@ -877,7 +877,7 @@ This endpoint does not need any parameter.
 
 # **getBillingPrePays**
 ```swift
-    open class func getBillingPrePays(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getBillingPrePays(completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
 ```
 
 List Prepay Balances
@@ -908,7 +908,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+**JSONValue**
 
 ### Authorization
 
@@ -1081,7 +1081,7 @@ Name | Type | Description  | Notes
 
 # **updateAccountCreditCard**
 ```swift
-    open class func updateAccountCreditCard(id: Int, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateAccountCreditCard(id: Int, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
 Update Credit Card
@@ -1116,7 +1116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+**String**
 
 ### Authorization
 

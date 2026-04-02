@@ -20,6 +20,7 @@
 #include "../model/domain_search_response.h"
 #include "../model/domain_whois_privacy_request.h"
 #include "../model/get_account_info_401_response.h"
+#include "../model/service_order_post_response.h"
 #include "../model/success_text_response.h"
 #include "../model/text_response.h"
 
@@ -28,7 +29,7 @@
 //
 // Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
 //
-void
+service_order_post_response_t*
 DomainsAPI_addDomain(apiClient_t *apiClient);
 
 
@@ -236,7 +237,7 @@ DomainsAPI_updateDomainContact(apiClient_t *apiClient, int *id, domain_contact_d
 //
 // Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
 //
-void
+success_text_response_t*
 DomainsAPI_updateDomainInfo(apiClient_t *apiClient, char *id);
 
 

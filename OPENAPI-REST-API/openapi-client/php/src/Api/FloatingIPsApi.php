@@ -163,11 +163,12 @@ class FloatingIPsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\ServiceOrderPostResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function addFloatingIp(string $contentType = self::contentTypes['addFloatingIp'][0])
     {
-        $this->addFloatingIpWithHttpInfo($contentType);
+        list($response) = $this->addFloatingIpWithHttpInfo($contentType);
+        return $response;
     }
 
     /**
@@ -179,7 +180,7 @@ class FloatingIPsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\ServiceOrderPostResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function addFloatingIpWithHttpInfo(string $contentType = self::contentTypes['addFloatingIp'][0])
     {
@@ -208,9 +209,51 @@ class FloatingIPsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -258,14 +301,27 @@ class FloatingIPsApi
      */
     public function addFloatingIpAsyncWithHttpInfo(string $contentType = self::contentTypes['addFloatingIp'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addFloatingIpRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -672,11 +728,12 @@ class FloatingIPsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return object|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function getFloatingIpInfo($id, string $contentType = self::contentTypes['getFloatingIpInfo'][0])
     {
-        $this->getFloatingIpInfoWithHttpInfo($id, $contentType);
+        list($response) = $this->getFloatingIpInfoWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -689,7 +746,7 @@ class FloatingIPsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFloatingIpInfoWithHttpInfo($id, string $contentType = self::contentTypes['getFloatingIpInfo'][0])
     {
@@ -718,9 +775,51 @@ class FloatingIPsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -770,14 +869,27 @@ class FloatingIPsApi
      */
     public function getFloatingIpInfoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getFloatingIpInfo'][0])
     {
-        $returnType = '';
+        $returnType = 'object';
         $request = $this->getFloatingIpInfoRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1707,11 +1819,12 @@ class FloatingIPsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return object|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function getNewFloatingIp(string $contentType = self::contentTypes['getNewFloatingIp'][0])
     {
-        $this->getNewFloatingIpWithHttpInfo($contentType);
+        list($response) = $this->getNewFloatingIpWithHttpInfo($contentType);
+        return $response;
     }
 
     /**
@@ -1723,7 +1836,7 @@ class FloatingIPsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNewFloatingIpWithHttpInfo(string $contentType = self::contentTypes['getNewFloatingIp'][0])
     {
@@ -1752,9 +1865,51 @@ class FloatingIPsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1802,14 +1957,27 @@ class FloatingIPsApi
      */
     public function getNewFloatingIpAsyncWithHttpInfo(string $contentType = self::contentTypes['getNewFloatingIp'][0])
     {
-        $returnType = '';
+        $returnType = 'object';
         $request = $this->getNewFloatingIpRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2454,11 +2622,12 @@ class FloatingIPsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function updateFloatingIpInfo($id, string $contentType = self::contentTypes['updateFloatingIpInfo'][0])
     {
-        $this->updateFloatingIpInfoWithHttpInfo($id, $contentType);
+        list($response) = $this->updateFloatingIpInfoWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -2471,7 +2640,7 @@ class FloatingIPsApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateFloatingIpInfoWithHttpInfo($id, string $contentType = self::contentTypes['updateFloatingIpInfo'][0])
     {
@@ -2500,9 +2669,51 @@ class FloatingIPsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2552,14 +2763,27 @@ class FloatingIPsApi
      */
     public function updateFloatingIpInfoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['updateFloatingIpInfo'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateFloatingIpInfoRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

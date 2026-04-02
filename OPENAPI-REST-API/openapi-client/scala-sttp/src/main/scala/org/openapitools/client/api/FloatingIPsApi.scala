@@ -14,6 +14,7 @@ package org.openapitools.client.api
 import org.openapitools.client.model.ChargeInvoiceRows
 import org.openapitools.client.model.FloatingIpsCancel200Response
 import org.openapitools.client.model.GetAccountInfo401Response
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.core.JsonSupport._
 import sttp.client3._
@@ -29,8 +30,8 @@ class FloatingIPsApi(baseUrl: String) {
    * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -38,14 +39,14 @@ class FloatingIPsApi(baseUrl: String) {
    *   sessionIdHeaderAuth (apiKey)
    */
   def addFloatingIp(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], ServiceOrderPostResponse], Any] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/floating_ips/order")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred.
@@ -75,8 +76,8 @@ class FloatingIPsApi(baseUrl: String) {
    * Returns detailed information about a specific Floating IP service including its current target IP assignment.
    * 
    * Expected answers:
+   *   code 200 : Any (Detailed Floating IP service information.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -86,14 +87,14 @@ class FloatingIPsApi(baseUrl: String) {
    * @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
    */
   def getFloatingIpInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: Int
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], Any], Any] =
     basicRequest
       .method(Method.GET, uri"$baseUrl/floating_ips/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[Any])
 
   /**
    * Returns the billing invoices associated with this Floating IP service.
@@ -170,8 +171,8 @@ class FloatingIPsApi(baseUrl: String) {
    * Retrieves available options and pricing for ordering a new Floating IP.
    * 
    * Expected answers:
+   *   code 200 : Any (Available options and pricing for ordering a Floating IP.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -179,14 +180,14 @@ class FloatingIPsApi(baseUrl: String) {
    *   sessionIdHeaderAuth (apiKey)
    */
   def getNewFloatingIp(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], Any], Any] =
     basicRequest
       .method(Method.GET, uri"$baseUrl/floating_ips/order")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[Any])
 
   /**
    * Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes.
@@ -243,8 +244,8 @@ class FloatingIPsApi(baseUrl: String) {
    * Updates settings on a Floating IP service, such as its label or configuration metadata.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -254,13 +255,13 @@ class FloatingIPsApi(baseUrl: String) {
    * @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
    */
   def updateFloatingIpInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], SuccessTextResponse], Any] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/floating_ips/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
 }

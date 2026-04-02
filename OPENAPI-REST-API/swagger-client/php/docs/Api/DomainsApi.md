@@ -35,7 +35,7 @@ Method | HTTP request | Description
 [**updateDomainWhoisPrivacy**](DomainsApi.md#updatedomainwhoisprivacy) | **POST** /domains/{id}/whois | Update Whois Privacy
 
 # **addDomain**
-> addDomain()
+> \Interserver\MyAdmin\Model\ServiceOrderPostResponse addDomain()
 
 Place Domain Order
 
@@ -64,7 +64,8 @@ $apiInstance = new Interserver\MyAdmin\Api\DomainsApi(
 );
 
 try {
-    $apiInstance->addDomain();
+    $result = $apiInstance->addDomain();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->addDomain: ', $e->getMessage(), PHP_EOL;
 }
@@ -76,7 +77,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1802,7 +1803,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateDomainInfo**
-> updateDomainInfo($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateDomainInfo($id)
 
 Update Domain Order
 
@@ -1832,7 +1833,8 @@ $apiInstance = new Interserver\MyAdmin\Api\DomainsApi(
 $id = "id_example"; // string | The domain service ID. Use `domain_id` from `GET /domains`.
 
 try {
-    $apiInstance->updateDomainInfo($id);
+    $result = $apiInstance->updateDomainInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->updateDomainInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1847,7 +1849,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

@@ -91,6 +91,13 @@ class TestServersApi(unittest.TestCase):
         """
         pass
 
+    def test_place_buy_now_server(self):
+        """Test case for place_buy_now_server
+
+        Place Buy Now Server Order  # noqa: E501
+        """
+        pass
+
     def test_post_server_reverse_dns(self):
         """Test case for post_server_reverse_dns
 

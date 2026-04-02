@@ -269,16 +269,16 @@ trait BackupsApiService {
   def getNewBackup()
       (implicit toEntityMarshallerBackupsOrder: ToEntityMarshaller[BackupsOrder], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def updateBackupInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def updateBackupInfo401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def updateBackupInfo0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def updateBackupInfo(id: Int)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def validateBackupOrder200(responseBackupOrderPutResponse: BackupOrderPutResponse)(implicit toEntityMarshallerBackupOrderPutResponse: ToEntityMarshaller[BackupOrderPutResponse]): Route =
     complete((200, responseBackupOrderPutResponse))
@@ -328,6 +328,8 @@ trait BackupsApiMarshaller {
   implicit def toEntityMarshallerBackupsOrder: ToEntityMarshaller[BackupsOrder]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

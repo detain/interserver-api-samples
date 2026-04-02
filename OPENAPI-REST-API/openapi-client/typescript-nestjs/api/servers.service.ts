@@ -14,6 +14,7 @@
 import { HttpService, Injectable, Optional } from '@nestjs/common';
 import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
+import { AddServer200Response } from '../model/addServer200Response';
 import { BuyItNowList } from '../model/buyItNowList';
 import { BuyItNowServerOrder200Response } from '../model/buyItNowServerOrder200Response';
 import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
@@ -63,7 +64,7 @@ export class ServersService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [addServerOpts.config] Override http request option.
      */
-    public addServer(addServerOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public addServer(addServerOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<AddServer200Response>>;
     public addServer(addServerOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -98,7 +99,7 @@ export class ServersService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/servers/order`,
+                return this.httpClient.post<AddServer200Response>(`${this.basePath}/servers/order`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -1077,7 +1078,7 @@ export class ServersService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateServerInfoOpts.config] Override http request option.
      */
-    public updateServerInfo(id: string, updateServerInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateServerInfo(id: string, updateServerInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateServerInfo(id: string, updateServerInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateServerInfo.');
@@ -1116,7 +1117,7 @@ export class ServersService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/servers/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/servers/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

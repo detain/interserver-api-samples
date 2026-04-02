@@ -11,6 +11,7 @@ import io.swagger.server.model.DnsNewRecord
 import io.swagger.server.model.DnsRecord
 import io.swagger.server.model.DnsRecordType
 import io.swagger.server.model.DnsUpdateRecord
+import io.swagger.server.model.SuccessTextResponse
 import io.swagger.server.model.inline_response_401
 
 class DNSApi(
@@ -129,16 +130,16 @@ class DNSApi(
 
 trait DNSApiService {
 
+  def addDnsDomain200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def addDnsDomain401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def addDnsDomain0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def addDnsDomain(domain: String, ip: String, body: DnsNewDomain)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def addDnsRecord200: Route =
     complete((200, "Add DNS Domain Response"))
@@ -151,27 +152,27 @@ trait DNSApiService {
   def addDnsRecord(name: String, &#x60;type&#x60;: String, content: String, ttl: Int, prio: Int, body: DnsNewRecord, id: String)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def deleteDnsDomain200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def deleteDnsDomain401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def deleteDnsDomain0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def deleteDnsDomain(id: String)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def deleteDnsRecord200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def deleteDnsRecord401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def deleteDnsRecord0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def deleteDnsRecord(domainId: Int, recordId: Int)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getDnsDomain200(responseDnsRecordarray: List[DnsRecord])(implicit toEntityMarshallerDnsRecordarray: ToEntityMarshaller[List[DnsRecord]]): Route =
     complete((200, responseDnsRecordarray))
@@ -195,16 +196,16 @@ trait DNSApiService {
   def getDnsList()
       (implicit toEntityMarshallerDnsListItemarray: ToEntityMarshaller[List[DnsListItem]], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def updateDnsRecord200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def updateDnsRecord401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def updateDnsRecord0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def updateDnsRecord(name: String, &#x60;type&#x60;: String, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String, body: DnsUpdateRecord, domainId: Int, recordId: Int)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
 }
 
@@ -216,11 +217,17 @@ trait DNSApiMarshaller {
   implicit def fromRequestUnmarshallerDnsNewRecord: FromRequestUnmarshaller[DnsNewRecord]
 
 
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -231,6 +238,8 @@ trait DNSApiMarshaller {
   implicit def toEntityMarshallerDnsListItemarray: ToEntityMarshaller[List[DnsListItem]]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

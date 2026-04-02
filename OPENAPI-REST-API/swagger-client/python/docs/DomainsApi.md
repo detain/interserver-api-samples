@@ -35,7 +35,7 @@ Method | HTTP request | Description
 [**update_domain_whois_privacy**](DomainsApi.md#update_domain_whois_privacy) | **POST** /domains/{id}/whois | Update Whois Privacy
 
 # **add_domain**
-> add_domain()
+> ServiceOrderPostResponse add_domain()
 
 Place Domain Order
 
@@ -70,7 +70,8 @@ api_instance = myadmin-client-python.DomainsApi(myadmin-client-python.ApiClient(
 
 try:
     # Place Domain Order
-    api_instance.add_domain()
+    api_response = api_instance.add_domain()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DomainsApi->add_domain: %s\n" % e)
 ```
@@ -80,7 +81,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1686,7 +1687,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_domain_info**
-> update_domain_info(id)
+> SuccessTextResponse update_domain_info(id)
 
 Update Domain Order
 
@@ -1722,7 +1723,8 @@ id = 'id_example' # str | The domain service ID. Use `domain_id` from `GET /doma
 
 try:
     # Update Domain Order
-    api_instance.update_domain_info(id)
+    api_response = api_instance.update_domain_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DomainsApi->update_domain_info: %s\n" % e)
 ```
@@ -1735,7 +1737,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -13,25 +13,23 @@ require 'date'
 
 module SwaggerClient
   class InlineResponse20025
-    # Confirmation message.
-    attr_accessor :text
+    attr_accessor :message
 
-    # The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
-    attr_accessor :ticket
+    attr_accessor :success
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'text' => :'text',
-        :'ticket' => :'ticket'
+        :'message' => :'message',
+        :'success' => :'success'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'text' => :'Object',
-        :'ticket' => :'Object'
+        :'message' => :'Object',
+        :'success' => :'Object'
       }
     end
 
@@ -56,12 +54,12 @@ module SwaggerClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'text')
-        self.text = attributes[:'text']
+      if attributes.key?(:'message')
+        self.message = attributes[:'message']
       end
 
-      if attributes.key?(:'ticket')
-        self.ticket = attributes[:'ticket']
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
       end
     end
 
@@ -83,8 +81,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          text == o.text &&
-          ticket == o.ticket
+          message == o.message &&
+          success == o.success
     end
 
     # @see the `==` method
@@ -96,7 +94,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [text, ticket].hash
+      [message, success].hash
     end
 
     # Builds the object from hash

@@ -527,13 +527,15 @@ void OAIBillingApi::deleteAccountCreditCardCallback(OAIHttpRequestWorker *worker
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    QString output;
+    ::OpenAPI::fromStringValue(QString(worker->response), output);
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT deleteAccountCreditCardSignal();
-        Q_EMIT deleteAccountCreditCardSignalFull(worker);
+        Q_EMIT deleteAccountCreditCardSignal(output);
+        Q_EMIT deleteAccountCreditCardSignalFull(worker, output);
     } else {
-        Q_EMIT deleteAccountCreditCardSignalError(error_type, error_str);
+        Q_EMIT deleteAccountCreditCardSignalError(output, error_type, error_str);
         Q_EMIT deleteAccountCreditCardSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -1138,13 +1140,14 @@ void OAIBillingApi::getBillingCartCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIObject output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getBillingCartSignal();
-        Q_EMIT getBillingCartSignalFull(worker);
+        Q_EMIT getBillingCartSignal(output);
+        Q_EMIT getBillingCartSignalFull(worker, output);
     } else {
-        Q_EMIT getBillingCartSignalError(error_type, error_str);
+        Q_EMIT getBillingCartSignalError(output, error_type, error_str);
         Q_EMIT getBillingCartSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -1373,13 +1376,14 @@ void OAIBillingApi::getBillingPrePaysCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIObject output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getBillingPrePaysSignal();
-        Q_EMIT getBillingPrePaysSignalFull(worker);
+        Q_EMIT getBillingPrePaysSignal(output);
+        Q_EMIT getBillingPrePaysSignalFull(worker, output);
     } else {
-        Q_EMIT getBillingPrePaysSignalError(error_type, error_str);
+        Q_EMIT getBillingPrePaysSignalError(output, error_type, error_str);
         Q_EMIT getBillingPrePaysSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -1696,13 +1700,15 @@ void OAIBillingApi::updateAccountCreditCardCallback(OAIHttpRequestWorker *worker
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    QString output;
+    ::OpenAPI::fromStringValue(QString(worker->response), output);
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateAccountCreditCardSignal();
-        Q_EMIT updateAccountCreditCardSignalFull(worker);
+        Q_EMIT updateAccountCreditCardSignal(output);
+        Q_EMIT updateAccountCreditCardSignalFull(worker, output);
     } else {
-        Q_EMIT updateAccountCreditCardSignalError(error_type, error_str);
+        Q_EMIT updateAccountCreditCardSignalError(output, error_type, error_str);
         Q_EMIT updateAccountCreditCardSignalErrorFull(worker, error_type, error_str);
     }
 }

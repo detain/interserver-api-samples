@@ -757,7 +757,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_info**
-> update_account_info(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
+> SuccessTextResponse update_account_info(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
 
 Update Account Information
 
@@ -809,7 +809,8 @@ gstin = 'gstin_example' # str |
 
 try:
     # Update Account Information
-    api_instance.update_account_info(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
+    api_response = api_instance.update_account_info(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AccountApi->update_account_info: %s\n" % e)
 ```
@@ -838,7 +839,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -852,7 +853,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_ip_limits**
-> update_account_ip_limits(start, end)
+> SuccessTextResponse update_account_ip_limits(start, end)
 
 Add IP Access Restriction
 
@@ -889,7 +890,8 @@ end = 'end_example' # str |
 
 try:
     # Add IP Access Restriction
-    api_instance.update_account_ip_limits(start, end)
+    api_response = api_instance.update_account_ip_limits(start, end)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AccountApi->update_account_ip_limits: %s\n" % e)
 ```
@@ -903,7 +905,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

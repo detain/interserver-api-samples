@@ -61,7 +61,7 @@ Method | HTTP request | Description
 [**v_ps_cancel**](VPSApi.md#v_ps_cancel) | **DELETE** /vps/{id} | Cancel VPS Service
 
 # **add_vps**
-> add_vps(opts)
+> ServiceOrderPostResponse add_vps(opts)
 
 Place VPS Order
 
@@ -96,7 +96,8 @@ opts = {
 
 begin
   #Place VPS Order
-  api_instance.add_vps(opts)
+  result = api_instance.add_vps(opts)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling VPSApi->add_vps: #{e}"
 end
@@ -110,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -124,7 +125,7 @@ nil (empty response body)
 
 
 # **add_vps**
-> add_vps(opts)
+> ServiceOrderPostResponse add_vps(opts)
 
 Place VPS Order
 
@@ -169,7 +170,8 @@ opts = {
 
 begin
   #Place VPS Order
-  api_instance.add_vps(opts)
+  result = api_instance.add_vps(opts)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling VPSApi->add_vps: #{e}"
 end
@@ -193,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3479,7 +3481,7 @@ Name | Type | Description  | Notes
 
 
 # **update_vps_info**
-> update_vps_info(id)
+> SuccessTextResponse update_vps_info(id)
 
 Update VPS Order
 
@@ -3513,7 +3515,8 @@ id = 'id_example' # String | VPS ID number.
 
 begin
   #Update VPS Order
-  api_instance.update_vps_info(id)
+  result = api_instance.update_vps_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling VPSApi->update_vps_info: #{e}"
 end
@@ -3527,7 +3530,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -3541,7 +3544,7 @@ nil (empty response body)
 
 
 # **v_ps_cancel**
-> InlineResponse20021 v_ps_cancel(id)
+> InlineResponse20022 v_ps_cancel(id)
 
 Cancel VPS Service
 
@@ -3590,7 +3593,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 

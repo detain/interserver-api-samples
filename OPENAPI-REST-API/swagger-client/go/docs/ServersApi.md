@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**UpdateServerInfo**](ServersApi.md#UpdateServerInfo) | **Post** /servers/{id} | Update Server Order
 
 # **AddServer**
-> AddServer(ctx, )
+> InlineResponse20019 AddServer(ctx, )
 Place Server Order
 
 Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
@@ -34,7 +34,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**InlineResponse20019**](inline_response_200_19.md)
 
 ### Authorization
 
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **BuyItNowServerOrder**
-> InlineResponse20026 BuyItNowServerOrder(ctx, )
+> InlineResponse20027 BuyItNowServerOrder(ctx, )
 Get Buy Now Server Options
 
 Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.
@@ -58,7 +58,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20026**](inline_response_200_26.md)
+[**InlineResponse20027**](inline_response_200_27.md)
 
 ### Authorization
 
@@ -462,7 +462,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ServersCancel**
-> InlineResponse20019 ServersCancel(ctx, id)
+> InlineResponse20020 ServersCancel(ctx, id)
 Cancel Server Service
 
 Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20019**](inline_response_200_19.md)
+[**InlineResponse20020**](inline_response_200_20.md)
 
 ### Authorization
 
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateServerInfo**
-> UpdateServerInfo(ctx, id)
+> SuccessTextResponse UpdateServerInfo(ctx, id)
 Update Server Order
 
 Updates settings on a dedicated server order.
@@ -504,7 +504,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

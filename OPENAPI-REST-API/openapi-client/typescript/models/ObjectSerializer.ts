@@ -17,6 +17,7 @@ export * from '../models/AccountInfoOauthConfigProvidersValue';
 export * from '../models/AccountInfoOauthproviders';
 export * from '../models/AccountInfoPost';
 export * from '../models/AccountSshKey';
+export * from '../models/AddServer200Response';
 export * from '../models/AffiliateBannerRow';
 export * from '../models/AffiliateDockSetup';
 export * from '../models/AffiliatePaymentSetup';
@@ -349,6 +350,7 @@ export * from '../models/ServersCancel200Response';
 export * from '../models/Service';
 export * from '../models/ServiceCategories';
 export * from '../models/ServiceCategory';
+export * from '../models/ServiceOrderPostResponse';
 export * from '../models/ServiceType';
 export * from '../models/ServiceTypes';
 export * from '../models/Services';
@@ -468,6 +470,7 @@ import { AccountInfoOauthConfigProvidersValue } from '../models/AccountInfoOauth
 import { AccountInfoOauthprovidersClass } from '../models/AccountInfoOauthproviders';
 import { AccountInfoPost } from '../models/AccountInfoPost';
 import { AccountSshKey } from '../models/AccountSshKey';
+import { AddServer200Response } from '../models/AddServer200Response';
 import { AffiliateBannerRow } from '../models/AffiliateBannerRow';
 import { AffiliateDockSetup } from '../models/AffiliateDockSetup';
 import { AffiliatePaymentSetup } from '../models/AffiliatePaymentSetup';
@@ -800,6 +803,7 @@ import { ServersCancel200Response } from '../models/ServersCancel200Response';
 import { Service } from '../models/Service';
 import { ServiceCategories } from '../models/ServiceCategories';
 import { ServiceCategory } from '../models/ServiceCategory';
+import { ServiceOrderPostResponse } from '../models/ServiceOrderPostResponse';
 import { ServiceType } from '../models/ServiceType';
 import { ServiceTypes } from '../models/ServiceTypes';
 import { Services } from '../models/Services';
@@ -954,6 +958,7 @@ let typeMap: {[index: string]: any} = {
     "AccountInfoOauthproviders": AccountInfoOauthprovidersClass,
     "AccountInfoPost": AccountInfoPost,
     "AccountSshKey": AccountSshKey,
+    "AddServer200Response": AddServer200Response,
     "AffiliateBannerRow": AffiliateBannerRow,
     "AffiliateDockSetup": AffiliateDockSetup,
     "AffiliatePaymentSetup": AffiliatePaymentSetup,
@@ -1285,6 +1290,7 @@ let typeMap: {[index: string]: any} = {
     "Service": Service,
     "ServiceCategories": ServiceCategories,
     "ServiceCategory": ServiceCategory,
+    "ServiceOrderPostResponse": ServiceOrderPostResponse,
     "ServiceType": ServiceType,
     "ServiceTypes": ServiceTypes,
     "Services": Services,

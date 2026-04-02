@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**update_dns_record**](DNSApi.md#update_dns_record) | **POST** /dns/{domainId}/{recordId} | Update DNS Record
 
 # **add_dns_domain**
-> add_dns_domain(domain, ip)
+> SuccessTextResponse add_dns_domain(domain, ip)
 
 Create DNS Domain
 
@@ -50,7 +50,8 @@ ip = 'ip_example' # str |
 
 try:
     # Create DNS Domain
-    api_instance.add_dns_domain(domain, ip)
+    api_response = api_instance.add_dns_domain(domain, ip)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DNSApi->add_dns_domain: %s\n" % e)
 ```
@@ -64,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -151,7 +152,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dns_domain**
-> delete_dns_domain(id)
+> SuccessTextResponse delete_dns_domain(id)
 
 Delete DNS Domain
 
@@ -187,7 +188,8 @@ id = 'id_example' # str | The DNS domain ID to delete. Use the `id` from `GET /d
 
 try:
     # Delete DNS Domain
-    api_instance.delete_dns_domain(id)
+    api_response = api_instance.delete_dns_domain(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DNSApi->delete_dns_domain: %s\n" % e)
 ```
@@ -200,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -214,7 +216,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dns_record**
-> delete_dns_record(domain_id, record_id)
+> SuccessTextResponse delete_dns_record(domain_id, record_id)
 
 Delete DNS Record
 
@@ -251,7 +253,8 @@ record_id = 56 # int | The DNS record ID within the domain. Use the record `id` 
 
 try:
     # Delete DNS Record
-    api_instance.delete_dns_record(domain_id, record_id)
+    api_response = api_instance.delete_dns_record(domain_id, record_id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DNSApi->delete_dns_record: %s\n" % e)
 ```
@@ -265,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -403,7 +406,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_dns_record**
-> update_dns_record(name, type, content, ttl, prio, disabled, ordername, auth, domain_id, record_id)
+> SuccessTextResponse update_dns_record(name, type, content, ttl, prio, disabled, ordername, auth, domain_id, record_id)
 
 Update DNS Record
 
@@ -448,7 +451,8 @@ record_id = 56 # int | The DNS record ID within the domain. Use the record `id` 
 
 try:
     # Update DNS Record
-    api_instance.update_dns_record(name, type, content, ttl, prio, disabled, ordername, auth, domain_id, record_id)
+    api_response = api_instance.update_dns_record(name, type, content, ttl, prio, disabled, ordername, auth, domain_id, record_id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DNSApi->update_dns_record: %s\n" % e)
 ```
@@ -470,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

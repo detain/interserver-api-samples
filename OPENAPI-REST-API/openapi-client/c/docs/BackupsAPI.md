@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 //
 // Updates backup storage service metadata, such as stored credentials or settings for the order.
 //
-void BackupsAPI_updateBackupInfo(apiClient_t *apiClient, int *id);
+success_text_response_t* BackupsAPI_updateBackupInfo(apiClient_t *apiClient, int *id);
 ```
 
 ### Parameters
@@ -281,7 +281,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

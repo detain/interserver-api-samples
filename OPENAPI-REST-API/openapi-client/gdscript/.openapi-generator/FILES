@@ -55,6 +55,7 @@ models/AccountInfoOauthConfigProvidersValue.gd
 models/AccountInfoOauthproviders.gd
 models/AccountInfoPost.gd
 models/AccountSshKey.gd
+models/AddServer200Response.gd
 models/AffiliateBannerRow.gd
 models/AffiliateDockSetup.gd
 models/AffiliatePaymentSetup.gd
@@ -387,6 +388,7 @@ models/ServersCancel200Response.gd
 models/Service.gd
 models/ServiceCategories.gd
 models/ServiceCategory.gd
+models/ServiceOrderPostResponse.gd
 models/ServiceType.gd
 models/ServiceTypes.gd
 models/Services.gd

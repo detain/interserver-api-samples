@@ -1174,7 +1174,7 @@ type ApiUpdateBackupInfoRequest struct {
 	id int32
 }
 
-func (r ApiUpdateBackupInfoRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateBackupInfoRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.UpdateBackupInfoExecute(r)
 }
 
@@ -1196,16 +1196,18 @@ func (a *BackupsAPIService) UpdateBackupInfo(ctx context.Context, id int32) ApiU
 }
 
 // Execute executes the request
-func (a *BackupsAPIService) UpdateBackupInfoExecute(r ApiUpdateBackupInfoRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *BackupsAPIService) UpdateBackupInfoExecute(r ApiUpdateBackupInfoRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsAPIService.UpdateBackupInfo")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/backups/{id}"
@@ -1262,19 +1264,19 @@ func (a *BackupsAPIService) UpdateBackupInfoExecute(r ApiUpdateBackupInfoRequest
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1287,16 +1289,24 @@ func (a *BackupsAPIService) UpdateBackupInfoExecute(r ApiUpdateBackupInfoRequest
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiValidateBackupOrderRequest struct {

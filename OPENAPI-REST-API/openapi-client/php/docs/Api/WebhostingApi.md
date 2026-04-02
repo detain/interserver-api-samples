@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\WebhostingApi
 
-Webhosting related services
+Shared and reseller web hosting packages. Order, manage, and access hosting control panels, backups, and reverse DNS.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -27,7 +27,7 @@ All URIs are relative to https://my.interserver.net/apiv2, except if the operati
 ## `addWebsite()`
 
 ```php
-addWebsite()
+addWebsite(): \Interserver\MyAdmin\Model\ServiceOrderPostResponse
 ```
 
 Place Website Order
@@ -65,7 +65,8 @@ $apiInstance = new Interserver\MyAdmin\Api\WebhostingApi(
 );
 
 try {
-    $apiInstance->addWebsite();
+    $result = $apiInstance->addWebsite();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhostingApi->addWebsite: ', $e->getMessage(), PHP_EOL;
 }
@@ -77,7 +78,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1027,7 +1028,7 @@ void (empty response body)
 ## `updateWebsiteInfo()`
 
 ```php
-updateWebsiteInfo($id)
+updateWebsiteInfo($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update Website Order
@@ -1066,7 +1067,8 @@ $apiInstance = new Interserver\MyAdmin\Api\WebhostingApi(
 $id = 'id_example'; // string | The website service ID. Use `website_id` from `GET /websites`.
 
 try {
-    $apiInstance->updateWebsiteInfo($id);
+    $result = $apiInstance->updateWebsiteInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhostingApi->updateWebsiteInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1080,7 +1082,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

@@ -51,9 +51,9 @@ var api = LicensesApi.new(config)
 # Invoke an endpoint
 api.add_license(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_license", response)
-		
+		assert(response.data is ServiceOrderPostResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -536,9 +536,9 @@ api.update_license_info(
 	# The license service ID. Use `license_id` from `GET /licenses`.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_license_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

@@ -9,6 +9,7 @@ from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoice
 from myadmin-client-python-flask.models.inline_response2003 import InlineResponse2003  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.ip_object import IpObject  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.test import BaseTestCase
 

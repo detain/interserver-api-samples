@@ -20,6 +20,7 @@ import org.openapitools.client.model.PostWebsiteMigration200Response
 import org.openapitools.client.model.PostWebsiteMigrationRequest
 import org.openapitools.client.model.PostWebsiteMigrationRequest1
 import org.openapitools.client.model.ReverseDnsEntries
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
 import org.openapitools.client.model.WebhostingCancel200Response
@@ -69,15 +70,15 @@ case class WebhostingApi[Auth <: org.openapitools.client.core.Authorization] pri
    * Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addWebsite(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def addWebsite(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], ServiceOrderPostResponse]] =
     val requestURL =
       uri"$baseUrl/websites/order"
 
@@ -87,7 +88,7 @@ case class WebhostingApi[Auth <: org.openapitools.client.core.Authorization] pri
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Retrieves available webhosting plans and pricing for ordering.
@@ -441,8 +442,8 @@ case class WebhostingApi[Auth <: org.openapitools.client.core.Authorization] pri
    * Updates settings on a webhosting order.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -451,7 +452,7 @@ case class WebhostingApi[Auth <: org.openapitools.client.core.Authorization] pri
    * 
    * @param id The website service ID. Use `website_id` from `GET /websites`.
    */
-  def updateWebsiteInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateWebsiteInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/websites/${idPathParam}"
@@ -462,7 +463,7 @@ case class WebhostingApi[Auth <: org.openapitools.client.core.Authorization] pri
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.

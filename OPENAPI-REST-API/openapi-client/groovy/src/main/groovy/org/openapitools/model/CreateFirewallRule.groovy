@@ -58,8 +58,8 @@ class CreateFirewallRule {
     XdpActionEnum xdpAction
     
     Integer destinationPort = 80
-    
-    String sourceIp = "0"
+    /* Source IP address to match. Use '0.0.0.0' to match any source. */
+    String sourceIp = "0.0.0.0"
     
     Integer sourcePort = 0
 }

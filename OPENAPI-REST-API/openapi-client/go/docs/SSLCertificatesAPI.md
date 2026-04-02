@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## AddSsl
 
-> AddSsl(ctx).Execute()
+> ServiceOrderPostResponse AddSsl(ctx).Execute()
 
 Place SSL Cert Order
 
@@ -40,11 +40,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SSLCertificatesAPI.AddSsl(context.Background()).Execute()
+	resp, r, err := apiClient.SSLCertificatesAPI.AddSsl(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SSLCertificatesAPI.AddSsl``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AddSsl`: ServiceOrderPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `SSLCertificatesAPI.AddSsl`: %v\n", resp)
 }
 ```
 
@@ -59,7 +61,7 @@ Other parameters are passed through a pointer to a apiAddSslRequest struct via t
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -77,7 +79,7 @@ Other parameters are passed through a pointer to a apiAddSslRequest struct via t
 
 ## GetNewSsl
 
-> GetNewSsl(ctx).Execute()
+> map[string]interface{} GetNewSsl(ctx).Execute()
 
 SSL Cert Ordering Information
 
@@ -99,11 +101,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SSLCertificatesAPI.GetNewSsl(context.Background()).Execute()
+	resp, r, err := apiClient.SSLCertificatesAPI.GetNewSsl(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SSLCertificatesAPI.GetNewSsl``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetNewSsl`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `SSLCertificatesAPI.GetNewSsl`: %v\n", resp)
 }
 ```
 
@@ -118,7 +122,7 @@ Other parameters are passed through a pointer to a apiGetNewSslRequest struct vi
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -136,7 +140,7 @@ Other parameters are passed through a pointer to a apiGetNewSslRequest struct vi
 
 ## GetSslInfo
 
-> GetSslInfo(ctx, id).Execute()
+> map[string]interface{} GetSslInfo(ctx, id).Execute()
 
 Get SSL Cert Info
 
@@ -159,11 +163,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SSLCertificatesAPI.GetSslInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.SSLCertificatesAPI.GetSslInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SSLCertificatesAPI.GetSslInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetSslInfo`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `SSLCertificatesAPI.GetSslInfo`: %v\n", resp)
 }
 ```
 
@@ -186,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -532,7 +538,7 @@ Name | Type | Description  | Notes
 
 ## UpdateSslInfo
 
-> UpdateSslInfo(ctx, id).Execute()
+> SuccessTextResponse UpdateSslInfo(ctx, id).Execute()
 
 Update SSL Cert Order
 
@@ -555,11 +561,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SSLCertificatesAPI.UpdateSslInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.SSLCertificatesAPI.UpdateSslInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SSLCertificatesAPI.UpdateSslInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateSslInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `SSLCertificatesAPI.UpdateSslInfo`: %v\n", resp)
 }
 ```
 
@@ -582,7 +590,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -78,16 +78,9 @@ class InlineResponse20024Test extends TestCase
     }
 
     /**
-     * Test attribute "message"
+     * Test attribute "ips"
      */
-    public function testPropertyMessage()
-    {
-    }
-
-    /**
-     * Test attribute "success"
-     */
-    public function testPropertySuccess()
+    public function testPropertyIps()
     {
     }
 }

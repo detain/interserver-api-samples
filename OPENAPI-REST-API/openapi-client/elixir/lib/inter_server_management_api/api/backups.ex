@@ -278,10 +278,10 @@ defmodule InterServerManagementAPI.Api.Backups do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, InterServerManagementAPI.Model.SuccessTextResponse.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec update_backup_info(Tesla.Env.client, integer(), keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec update_backup_info(Tesla.Env.client, integer(), keyword()) :: {:ok, InterServerManagementAPI.Model.SuccessTextResponse.t} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
   def update_backup_info(connection, id, _opts \\ []) do
     request =
       %{}
@@ -293,8 +293,8 @@ defmodule InterServerManagementAPI.Api.Backups do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, InterServerManagementAPI.Model.SuccessTextResponse},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 

@@ -13,11 +13,13 @@ package io.swagger.client.model
 
 
 /**
- * @param success 
- * @param text 
+ * @param text Status message. for example: '''Order Completed'''
+ * @param invoice Invoice ID for payment.
+ * @param order Server order ID.
  */
 case class InlineResponse20019 (
-  success: Boolean,
-  text: String
+  text: Option[String] = None,
+  invoice: Option[Integer] = None,
+  order: Option[Integer] = None
 )
 

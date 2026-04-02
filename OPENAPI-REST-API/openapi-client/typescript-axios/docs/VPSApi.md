@@ -50,7 +50,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 |[**vPSCancel**](#vpscancel) | **DELETE** /vps/{id} | Cancel VPS Service|
 
 # **addVps**
-> addVps()
+> ServiceOrderPostResponse addVps()
 
 Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
 
@@ -82,7 +82,7 @@ const { status, data } = await apiInstance.addVps(
 
 ### Return type
 
-void (empty response body)
+**ServiceOrderPostResponse**
 
 ### Authorization
 
@@ -97,8 +97,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2271,7 +2271,7 @@ const { status, data } = await apiInstance.putVps(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateVpsInfo**
-> updateVpsInfo()
+> SuccessTextResponse updateVpsInfo()
 
 Updates settings on a VPS order.
 
@@ -2302,7 +2302,7 @@ const { status, data } = await apiInstance.updateVpsInfo(
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -2317,8 +2317,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | A response indicating the operation completed successfully with a text message. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

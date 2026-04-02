@@ -52,10 +52,11 @@ var __xdpUnderscoreaction__allowable__values := ["0", "1"]
 		destinationUnderscoreport = value
 var __destinationUnderscoreport__was__set := false
 
+# Source IP address to match. Use '0.0.0.0' to match any source.
 # Required: False
 # Example: 1.2.4.5
 # isArray: false
-@export var sourceUnderscoreip: String = "0":
+@export var sourceUnderscoreip: String = "0.0.0.0":
 	set(value):
 		__sourceUnderscoreip__was__set = true
 		sourceUnderscoreip = value

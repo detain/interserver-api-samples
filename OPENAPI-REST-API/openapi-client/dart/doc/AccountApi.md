@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateAccountInfo**
-> updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+> SuccessTextResponse updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
 
 Update Account Information
 
@@ -697,7 +697,8 @@ final disableEmailNotifications = true; // bool | Set to `true` to disable email
 final gstin = gstin_example; // String | Your GST identification number (if applicable).
 
 try {
-    api_instance.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+    final result = api_instance.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+    print(result);
 } catch (e) {
     print('Exception when calling AccountApi->updateAccountInfo: $e\n');
 }
@@ -727,7 +728,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -741,7 +742,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateAccountIpLimits**
-> updateAccountIpLimits(start, end)
+> SuccessTextResponse updateAccountIpLimits(start, end)
 
 Add IP Access Restriction
 
@@ -768,7 +769,8 @@ final start = start_example; // String | The begining (or first) IP address in t
 final end = end_example; // String | The ending (or last) IP address in the range.
 
 try {
-    api_instance.updateAccountIpLimits(start, end);
+    final result = api_instance.updateAccountIpLimits(start, end);
+    print(result);
 } catch (e) {
     print('Exception when calling AccountApi->updateAccountIpLimits: $e\n');
 }
@@ -783,7 +785,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 <a name="addqs"></a>
 # **AddQs**
-> void AddQs ()
+> ServiceOrderPostResponse AddQs ()
 
 Place QuickServer Order
 
@@ -89,7 +89,8 @@ namespace Example
             try
             {
                 // Place QuickServer Order
-                apiInstance.AddQs();
+                ServiceOrderPostResponse result = apiInstance.AddQs();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -105,7 +106,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3178,7 +3179,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updateqsinfo"></a>
 # **UpdateQsInfo**
-> void UpdateQsInfo (string id)
+> SuccessTextResponse UpdateQsInfo (string id)
 
 Update QuickServer Order
 
@@ -3217,7 +3218,8 @@ namespace Example
             try
             {
                 // Update QuickServer Order
-                apiInstance.UpdateQsInfo(id);
+                SuccessTextResponse result = apiInstance.UpdateQsInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -3236,7 +3238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

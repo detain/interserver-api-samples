@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 <a name="adddomain"></a>
 # **AddDomain**
-> void AddDomain ()
+> ServiceOrderPostResponse AddDomain ()
 
 Place Domain Order
 
@@ -75,7 +75,8 @@ namespace Example
             try
             {
                 // Place Domain Order
-                apiInstance.AddDomain();
+                ServiceOrderPostResponse result = apiInstance.AddDomain();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -91,7 +92,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1973,7 +1974,7 @@ Name | Type | Description  | Notes
 
 <a name="updatedomaininfo"></a>
 # **UpdateDomainInfo**
-> void UpdateDomainInfo (string id)
+> SuccessTextResponse UpdateDomainInfo (string id)
 
 Update Domain Order
 
@@ -2013,7 +2014,8 @@ namespace Example
             try
             {
                 // Update Domain Order
-                apiInstance.UpdateDomainInfo(id);
+                SuccessTextResponse result = apiInstance.UpdateDomainInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -2032,7 +2034,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

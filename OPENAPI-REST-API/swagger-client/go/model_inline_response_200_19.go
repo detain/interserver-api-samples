@@ -10,6 +10,10 @@
 package myadmin
 
 type InlineResponse20019 struct {
-	Success bool `json:"success"`
-	Text string `json:"text"`
+	// Status message.
+	Text string `json:"text,omitempty"`
+	// Invoice ID for payment.
+	Invoice int32 `json:"invoice,omitempty"`
+	// Server order ID.
+	Order int32 `json:"order,omitempty"`
 }

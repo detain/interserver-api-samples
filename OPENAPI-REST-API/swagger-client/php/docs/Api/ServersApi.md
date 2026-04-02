@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**updateServerInfo**](ServersApi.md#updateserverinfo) | **POST** /servers/{id} | Update Server Order
 
 # **addServer**
-> addServer()
+> \Interserver\MyAdmin\Model\InlineResponse20019 addServer()
 
 Place Server Order
 
@@ -53,7 +53,8 @@ $apiInstance = new Interserver\MyAdmin\Api\ServersApi(
 );
 
 try {
-    $apiInstance->addServer();
+    $result = $apiInstance->addServer();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ServersApi->addServer: ', $e->getMessage(), PHP_EOL;
 }
@@ -65,7 +66,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\InlineResponse20019**](../Model/InlineResponse20019.md)
 
 ### Authorization
 
@@ -79,7 +80,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **buyItNowServerOrder**
-> \Interserver\MyAdmin\Model\InlineResponse20026 buyItNowServerOrder()
+> \Interserver\MyAdmin\Model\InlineResponse20027 buyItNowServerOrder()
 
 Get Buy Now Server Options
 
@@ -121,7 +122,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20026**](../Model/InlineResponse20026.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20027**](../Model/InlineResponse20027.md)
 
 ### Authorization
 
@@ -1154,7 +1155,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **serversCancel**
-> \Interserver\MyAdmin\Model\InlineResponse20019 serversCancel($id)
+> \Interserver\MyAdmin\Model\InlineResponse20020 serversCancel($id)
 
 Cancel Server Service
 
@@ -1200,7 +1201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20019**](../Model/InlineResponse20019.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20020**](../Model/InlineResponse20020.md)
 
 ### Authorization
 
@@ -1214,7 +1215,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateServerInfo**
-> updateServerInfo($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateServerInfo($id)
 
 Update Server Order
 
@@ -1244,7 +1245,8 @@ $apiInstance = new Interserver\MyAdmin\Api\ServersApi(
 $id = "id_example"; // string | Server ID number.
 
 try {
-    $apiInstance->updateServerInfo($id);
+    $result = $apiInstance->updateServerInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ServersApi->updateServerInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1259,7 +1261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

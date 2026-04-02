@@ -70,8 +70,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //VpsOrderPostRequest body = null;
-            //instance.AddVps(body);
-            
+            //var response = instance.AddVps(body);
+            //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
         /// Test DeleteVpsBackup
@@ -545,8 +545,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.UpdateVpsInfo(id);
-            
+            //var response = instance.UpdateVpsInfo(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test VPSCancel
@@ -557,7 +557,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.VPSCancel(id);
-            //Assert.IsInstanceOf<InlineResponse20021> (response, "response is InlineResponse20021");
+            //Assert.IsInstanceOf<InlineResponse20022> (response, "response is InlineResponse20022");
         }
     }
 

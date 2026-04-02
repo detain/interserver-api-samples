@@ -30,6 +30,7 @@ import org.openapitools.client.api.PostWebsiteMigration200Response
 import org.openapitools.client.api.PostWebsiteMigrationRequest
 import org.openapitools.client.api.PostWebsiteMigrationRequest1
 import org.openapitools.client.api.ReverseDnsEntries
+import org.openapitools.client.api.ServiceOrderPostResponse
 import org.openapitools.client.api.SuccessTextResponse
 import org.openapitools.client.api.TextResponse
 import org.openapitools.client.api.WebhostingCancel200Response
@@ -45,7 +46,9 @@ object WebhostingApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addWebsite(host: String): Task[Unit] = {
+  def addWebsite(host: String): Task[ServiceOrderPostResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
+
     val path = "/websites/order"
 
     val httpMethod = Method.POST
@@ -59,7 +62,7 @@ object WebhostingApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
   }
@@ -335,7 +338,9 @@ object WebhostingApi {
     } yield resp
   }
 
-  def updateWebsiteInfo(host: String, id: String): Task[Unit] = {
+  def updateWebsiteInfo(host: String, id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/websites/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -349,7 +354,7 @@ object WebhostingApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -382,7 +387,9 @@ class HttpServiceWebhostingApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addWebsite(): Task[Unit] = {
+  def addWebsite(): Task[ServiceOrderPostResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
+
     val path = "/websites/order"
 
     val httpMethod = Method.POST
@@ -396,7 +403,7 @@ class HttpServiceWebhostingApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
   }
@@ -672,7 +679,9 @@ class HttpServiceWebhostingApi(service: HttpService) {
     } yield resp
   }
 
-  def updateWebsiteInfo(id: String): Task[Unit] = {
+  def updateWebsiteInfo(id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/websites/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -686,7 +695,7 @@ class HttpServiceWebhostingApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }

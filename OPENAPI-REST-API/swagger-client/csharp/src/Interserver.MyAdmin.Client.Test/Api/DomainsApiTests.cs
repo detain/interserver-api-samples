@@ -69,8 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddDomainTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AddDomain();
-            
+            //var response = instance.AddDomain();
+            //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
         /// Test AddDomainDnssec
@@ -357,8 +357,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.UpdateDomainInfo(id);
-            
+            //var response = instance.UpdateDomainInfo(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test UpdateDomainNameservers

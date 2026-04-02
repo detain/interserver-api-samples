@@ -45,7 +45,7 @@ public interface TicketsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create New Ticket", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "A successful response after creating a ticket", response = TicketNewResponse.class),
+        @ApiResponse(code = 200, message = "A successful response after creating a ticket.", response = TicketNewResponse.class),
         @ApiResponse(code = 400, message = "A successful response after creating a ticket", response = TicketNewResponse.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
     public TicketNewResponse addNewTicket(TicketNew ticketNew);

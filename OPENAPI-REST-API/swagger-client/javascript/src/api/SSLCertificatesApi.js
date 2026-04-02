@@ -15,8 +15,9 @@
  */
 import ApiClient from "../ApiClient";
 import ChargeInvoiceRows from '../model/ChargeInvoiceRows';
-import InlineResponse20020 from '../model/InlineResponse20020';
+import InlineResponse20021 from '../model/InlineResponse20021';
 import InlineResponse401 from '../model/InlineResponse401';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 
 /**
@@ -42,7 +43,7 @@ export default class SSLCertificatesApi {
      * Callback function to receive the result of the addSsl operation.
      * @callback moduleapi/SSLCertificatesApi~addSslCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -50,6 +51,7 @@ export default class SSLCertificatesApi {
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
      * @param {module:api/SSLCertificatesApi~addSslCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addSsl(callback) {
       
@@ -71,7 +73,7 @@ export default class SSLCertificatesApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
 
       return this.apiClient.callApi(
         '/ssl/order', 'POST',
@@ -83,7 +85,7 @@ export default class SSLCertificatesApi {
      * Callback function to receive the result of the getNewSsl operation.
      * @callback moduleapi/SSLCertificatesApi~getNewSslCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Object{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -91,6 +93,7 @@ export default class SSLCertificatesApi {
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
      * @param {module:api/SSLCertificatesApi~getNewSslCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getNewSsl(callback) {
       
@@ -112,7 +115,7 @@ export default class SSLCertificatesApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = Object;
 
       return this.apiClient.callApi(
         '/ssl/order', 'GET',
@@ -124,7 +127,7 @@ export default class SSLCertificatesApi {
      * Callback function to receive the result of the getSslInfo operation.
      * @callback moduleapi/SSLCertificatesApi~getSslInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Object{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -133,6 +136,7 @@ export default class SSLCertificatesApi {
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param {Number} id SSL certificate ID number.
      * @param {module:api/SSLCertificatesApi~getSslInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getSslInfo(id, callback) {
       
@@ -158,7 +162,7 @@ export default class SSLCertificatesApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = Object;
 
       return this.apiClient.callApi(
         '/ssl/{id}', 'GET',
@@ -346,7 +350,7 @@ export default class SSLCertificatesApi {
      * Callback function to receive the result of the sslCancel operation.
      * @callback moduleapi/SSLCertificatesApi~sslCancelCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20020{ data The data returned by the service call.
+     * @param {module:model/InlineResponse20021{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -381,7 +385,7 @@ export default class SSLCertificatesApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse20020;
+      let returnType = InlineResponse20021;
 
       return this.apiClient.callApi(
         '/ssl/{id}', 'DELETE',
@@ -393,7 +397,7 @@ export default class SSLCertificatesApi {
      * Callback function to receive the result of the updateSslInfo operation.
      * @callback moduleapi/SSLCertificatesApi~updateSslInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -402,6 +406,7 @@ export default class SSLCertificatesApi {
      * Updates settings on an SSL certificate order.
      * @param {String} id SSL certificate ID number.
      * @param {module:api/SSLCertificatesApi~updateSslInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateSslInfo(id, callback) {
       
@@ -427,7 +432,7 @@ export default class SSLCertificatesApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
 
       return this.apiClient.callApi(
         '/ssl/{id}', 'POST',

@@ -117,7 +117,7 @@ ApiRequest[[**TicketNewResponse**](TicketNewResponse.md)]
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | A successful response after creating a ticket |  -  |
+| **200** | A successful response after creating a ticket. |  -  |
 | **400** | A successful response after creating a ticket |  -  |
 | **401** | Unauthorized |  -  |
 

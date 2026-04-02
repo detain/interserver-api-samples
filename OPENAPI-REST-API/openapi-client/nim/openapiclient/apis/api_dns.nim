@@ -21,6 +21,7 @@ import uri
 import ../models/model_dns_list_item
 import ../models/model_dns_record
 import ../models/model_dns_record_type
+import ../models/model_success_text_response
 import ../models/model_get_account_info401response
 
 const basepath = "https://my.interserver.net/apiv2"
@@ -38,15 +39,16 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addDnsDomain*(httpClient: HttpClient, domain: string, ip: string): Response =
+proc addDnsDomain*(httpClient: HttpClient, domain: string, ip: string): (Option[SuccessTextResponse], Response) =
   ## Create DNS Domain
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "domain": $domain, # The domain name.
     "ip": $ip, # IP Address to point the domain to.
   })
-  httpClient.post(basepath & "/dns", multipart=multipart_data)
 
+  let response = httpClient.post(basepath & "/dns", multipart=multipart_data)
+  constructResult[SuccessTextResponse](response)
 
 
 proc addDnsRecord*(httpClient: HttpClient, id: string, name: string, `type`: DnsRecordType, content: string, ttl: int, prio: int): Response =
@@ -63,16 +65,18 @@ proc addDnsRecord*(httpClient: HttpClient, id: string, name: string, `type`: Dns
 
 
 
-proc deleteDnsDomain*(httpClient: HttpClient, id: string): Response =
+proc deleteDnsDomain*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Delete DNS Domain
-  httpClient.delete(basepath & fmt"/dns/{id}")
+
+  let response = httpClient.delete(basepath & fmt"/dns/{id}")
+  constructResult[SuccessTextResponse](response)
 
 
-
-proc deleteDnsRecord*(httpClient: HttpClient, domainId: int, recordId: int): Response =
+proc deleteDnsRecord*(httpClient: HttpClient, domainId: int, recordId: int): (Option[SuccessTextResponse], Response) =
   ## Delete DNS Record
-  httpClient.delete(basepath & fmt"/dns/{domainId}/{recordId}")
 
+  let response = httpClient.delete(basepath & fmt"/dns/{domainId}/{recordId}")
+  constructResult[SuccessTextResponse](response)
 
 
 proc getDnsDomain*(httpClient: HttpClient, id: int): (Option[seq[DnsRecord]], Response) =
@@ -89,7 +93,7 @@ proc getDnsList*(httpClient: HttpClient): (Option[seq[DnsListItem]], Response) =
   constructResult[seq[DnsListItem]](response)
 
 
-proc updateDnsRecord*(httpClient: HttpClient, domainId: int, recordId: int, name: string, `type`: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string): Response =
+proc updateDnsRecord*(httpClient: HttpClient, domainId: int, recordId: int, name: string, `type`: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string): (Option[SuccessTextResponse], Response) =
   ## Update DNS Record
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
@@ -102,6 +106,7 @@ proc updateDnsRecord*(httpClient: HttpClient, domainId: int, recordId: int, name
     "ordername": $ordername, # 
     "auth": $auth, # 
   })
-  httpClient.post(basepath & fmt"/dns/{domainId}/{recordId}", multipart=multipart_data)
 
+  let response = httpClient.post(basepath & fmt"/dns/{domainId}/{recordId}", multipart=multipart_data)
+  constructResult[SuccessTextResponse](response)
 

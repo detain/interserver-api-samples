@@ -15,13 +15,9 @@ open class WebhostingAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addWebsite(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addWebsite(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
         addWebsiteWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -39,17 +35,27 @@ open class WebhostingAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addWebsiteWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func addWebsiteWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/websites/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -201,7 +207,7 @@ open class WebhostingAPI {
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getWebsiteBuyIp(_id: Int, completion: @escaping ((_ data: InlineResponse20023?,_ error: Error?) -> Void)) {
+    open class func getWebsiteBuyIp(_id: Int, completion: @escaping ((_ data: InlineResponse20024?,_ error: Error?) -> Void)) {
         getWebsiteBuyIpWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -228,9 +234,9 @@ open class WebhostingAPI {
 }}]
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse20023> 
+     - returns: RequestBuilder<InlineResponse20024> 
      */
-    open class func getWebsiteBuyIpWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20023> {
+    open class func getWebsiteBuyIpWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20024> {
         var path = "/websites/{id}/buy_ip"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -240,7 +246,7 @@ open class WebhostingAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20023>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20024>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -708,7 +714,7 @@ open class WebhostingAPI {
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func postWebsiteBuyIp(body: IdBuyIpBody, _id: Int, completion: @escaping ((_ data: InlineResponse20024?,_ error: Error?) -> Void)) {
+    open class func postWebsiteBuyIp(body: IdBuyIpBody, _id: Int, completion: @escaping ((_ data: InlineResponse20025?,_ error: Error?) -> Void)) {
         postWebsiteBuyIpWithRequestBuilder(body: body, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -735,9 +741,9 @@ open class WebhostingAPI {
      - parameter body: (body)  
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse20024> 
+     - returns: RequestBuilder<InlineResponse20025> 
      */
-    open class func postWebsiteBuyIpWithRequestBuilder(body: IdBuyIpBody, _id: Int) -> RequestBuilder<InlineResponse20024> {
+    open class func postWebsiteBuyIpWithRequestBuilder(body: IdBuyIpBody, _id: Int) -> RequestBuilder<InlineResponse20025> {
         var path = "/websites/{id}/buy_ip"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -747,7 +753,7 @@ open class WebhostingAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20024>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20025>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -758,7 +764,7 @@ open class WebhostingAPI {
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func postWebsiteBuyIp(ips: [String:String], _id: Int, completion: @escaping ((_ data: InlineResponse20024?,_ error: Error?) -> Void)) {
+    open class func postWebsiteBuyIp(ips: [String:String], _id: Int, completion: @escaping ((_ data: InlineResponse20025?,_ error: Error?) -> Void)) {
         postWebsiteBuyIpWithRequestBuilder(ips: ips, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -785,9 +791,9 @@ open class WebhostingAPI {
      - parameter ips: (form)  
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse20024> 
+     - returns: RequestBuilder<InlineResponse20025> 
      */
-    open class func postWebsiteBuyIpWithRequestBuilder(ips: [String:String], _id: Int) -> RequestBuilder<InlineResponse20024> {
+    open class func postWebsiteBuyIpWithRequestBuilder(ips: [String:String], _id: Int) -> RequestBuilder<InlineResponse20025> {
         var path = "/websites/{id}/buy_ip"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -797,7 +803,7 @@ open class WebhostingAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20024>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20025>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -808,7 +814,7 @@ open class WebhostingAPI {
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func postWebsiteMigration(body: IdMigrationBody, _id: Int, completion: @escaping ((_ data: InlineResponse20025?,_ error: Error?) -> Void)) {
+    open class func postWebsiteMigration(body: IdMigrationBody, _id: Int, completion: @escaping ((_ data: InlineResponse20026?,_ error: Error?) -> Void)) {
         postWebsiteMigrationWithRequestBuilder(body: body, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -835,9 +841,9 @@ open class WebhostingAPI {
      - parameter body: (body)  
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse20025> 
+     - returns: RequestBuilder<InlineResponse20026> 
      */
-    open class func postWebsiteMigrationWithRequestBuilder(body: IdMigrationBody, _id: Int) -> RequestBuilder<InlineResponse20025> {
+    open class func postWebsiteMigrationWithRequestBuilder(body: IdMigrationBody, _id: Int) -> RequestBuilder<InlineResponse20026> {
         var path = "/websites/{id}/migration"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -847,7 +853,7 @@ open class WebhostingAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20025>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20026>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -870,7 +876,7 @@ open class WebhostingAPI {
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func postWebsiteMigration(custPortal: String, regEmail: String, password: String, ctrlPanel: String, ftpUsername: String, ftpPassword: String, siteBusyMig: String, splReqMig: String, domainReg: String, dataMig: String, domainRegPortal: String, domainRegEmail: String, domainRegPassword: String, _id: Int, completion: @escaping ((_ data: InlineResponse20025?,_ error: Error?) -> Void)) {
+    open class func postWebsiteMigration(custPortal: String, regEmail: String, password: String, ctrlPanel: String, ftpUsername: String, ftpPassword: String, siteBusyMig: String, splReqMig: String, domainReg: String, dataMig: String, domainRegPortal: String, domainRegEmail: String, domainRegPassword: String, _id: Int, completion: @escaping ((_ data: InlineResponse20026?,_ error: Error?) -> Void)) {
         postWebsiteMigrationWithRequestBuilder(custPortal: custPortal, regEmail: regEmail, password: password, ctrlPanel: ctrlPanel, ftpUsername: ftpUsername, ftpPassword: ftpPassword, siteBusyMig: siteBusyMig, splReqMig: splReqMig, domainReg: domainReg, dataMig: dataMig, domainRegPortal: domainRegPortal, domainRegEmail: domainRegEmail, domainRegPassword: domainRegPassword, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -909,9 +915,9 @@ open class WebhostingAPI {
      - parameter domainRegPassword: (form)  
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse20025> 
+     - returns: RequestBuilder<InlineResponse20026> 
      */
-    open class func postWebsiteMigrationWithRequestBuilder(custPortal: String, regEmail: String, password: String, ctrlPanel: String, ftpUsername: String, ftpPassword: String, siteBusyMig: String, splReqMig: String, domainReg: String, dataMig: String, domainRegPortal: String, domainRegEmail: String, domainRegPassword: String, _id: Int) -> RequestBuilder<InlineResponse20025> {
+    open class func postWebsiteMigrationWithRequestBuilder(custPortal: String, regEmail: String, password: String, ctrlPanel: String, ftpUsername: String, ftpPassword: String, siteBusyMig: String, splReqMig: String, domainReg: String, dataMig: String, domainRegPortal: String, domainRegEmail: String, domainRegPassword: String, _id: Int) -> RequestBuilder<InlineResponse20026> {
         var path = "/websites/{id}/migration"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -921,7 +927,7 @@ open class WebhostingAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20025>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20026>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -1072,13 +1078,9 @@ open class WebhostingAPI {
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateWebsiteInfo(_id: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateWebsiteInfo(_id: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateWebsiteInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -1096,11 +1098,15 @@ open class WebhostingAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateWebsiteInfoWithRequestBuilder(_id: String) -> RequestBuilder<Void> {
+    open class func updateWebsiteInfoWithRequestBuilder(_id: String) -> RequestBuilder<SuccessTextResponse> {
         var path = "/websites/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1110,7 +1116,7 @@ open class WebhostingAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -1120,7 +1126,7 @@ open class WebhostingAPI {
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func webhostingCancel(_id: String, completion: @escaping ((_ data: InlineResponse20022?,_ error: Error?) -> Void)) {
+    open class func webhostingCancel(_id: String, completion: @escaping ((_ data: InlineResponse20023?,_ error: Error?) -> Void)) {
         webhostingCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -1146,9 +1152,9 @@ open class WebhostingAPI {
 }}]
      - parameter _id: (path) The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse20022> 
+     - returns: RequestBuilder<InlineResponse20023> 
      */
-    open class func webhostingCancelWithRequestBuilder(_id: String) -> RequestBuilder<InlineResponse20022> {
+    open class func webhostingCancelWithRequestBuilder(_id: String) -> RequestBuilder<InlineResponse20023> {
         var path = "/websites/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1158,7 +1164,7 @@ open class WebhostingAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20022>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20023>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

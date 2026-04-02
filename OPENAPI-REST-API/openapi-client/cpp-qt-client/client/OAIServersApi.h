@@ -18,6 +18,7 @@
 #include "OAIServerConfiguration.h"
 #include "OAIOauth.h"
 
+#include "OAIAddServer_200_response.h"
 #include "OAIBuyItNowList.h"
 #include "OAIBuyItNowServerOrder_200_response.h"
 #include "OAIChargeInvoiceRows.h"
@@ -206,7 +207,7 @@ private:
 
 Q_SIGNALS:
 
-    void addServerSignal();
+    void addServerSignal(OAIAddServer_200_response summary);
     void buyItNowServerOrderSignal(OAIBuyItNowServerOrder_200_response summary);
     void getMPServersSignal(OAIBuyItNowList<OAIBuyItNowRow> summary);
     void getNewServerSignal(OAIServerOrder summary);
@@ -223,10 +224,10 @@ Q_SIGNALS:
     void serverIpmiPowerGetSignal(OAITextResponse summary);
     void serverIpmiPowerPostSignal(OAITextResponse summary);
     void serversCancelSignal(OAIServersCancel_200_response summary);
-    void updateServerInfoSignal();
+    void updateServerInfoSignal(OAISuccessTextResponse summary);
 
 
-    void addServerSignalFull(OAIHttpRequestWorker *worker);
+    void addServerSignalFull(OAIHttpRequestWorker *worker, OAIAddServer_200_response summary);
     void buyItNowServerOrderSignalFull(OAIHttpRequestWorker *worker, OAIBuyItNowServerOrder_200_response summary);
     void getMPServersSignalFull(OAIHttpRequestWorker *worker, OAIBuyItNowList<OAIBuyItNowRow> summary);
     void getNewServerSignalFull(OAIHttpRequestWorker *worker, OAIServerOrder summary);
@@ -243,9 +244,9 @@ Q_SIGNALS:
     void serverIpmiPowerGetSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void serverIpmiPowerPostSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void serversCancelSignalFull(OAIHttpRequestWorker *worker, OAIServersCancel_200_response summary);
-    void updateServerInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateServerInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    void addServerSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addServerSignalError(OAIAddServer_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void buyItNowServerOrderSignalError(OAIBuyItNowServerOrder_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getMPServersSignalError(OAIBuyItNowList<OAIBuyItNowRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewServerSignalError(OAIServerOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -262,7 +263,7 @@ Q_SIGNALS:
     void serverIpmiPowerGetSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void serverIpmiPowerPostSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void serversCancelSignalError(OAIServersCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateServerInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateServerInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addServerSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void buyItNowServerOrderSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

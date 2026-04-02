@@ -29,6 +29,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -66,13 +67,13 @@ public interface MailApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Mail" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/mail/order",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> addMail();
+    ResponseEntity<ServiceOrderPostResponse> addMail();
 
 
     @Operation(summary = "Create Deny Rule", description = "Adds a new deny rule to automatically block emails that match the specified criteria.", security = {
@@ -466,13 +467,13 @@ public interface MailApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Mail" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/mail/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> updateMailInfo(@Parameter(in = ParameterIn.PATH, description = "The mail service ID. Use `mail_id` from `GET /mail`.", required=true, schema=@Schema()) @PathVariable("id") String id
+    ResponseEntity<SuccessTextResponse> updateMailInfo(@Parameter(in = ParameterIn.PATH, description = "The mail service ID. Use `mail_id` from `GET /mail`.", required=true, schema=@Schema()) @PathVariable("id") String id
 );
 
 
@@ -495,7 +496,7 @@ public interface MailApi {
 , @Parameter(in = ParameterIn.QUERY, description = "Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved." ,schema=@Schema()) @Valid @RequestParam(value = "to", required = false) String to
 , @Parameter(in = ParameterIn.QUERY, description = "Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response." ,schema=@Schema()) @Valid @RequestParam(value = "subject", required = false) String subject
 , @Size(min=18,max=19) @Parameter(in = ParameterIn.QUERY, description = "Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`." ,schema=@Schema()) @Valid @RequestParam(value = "mailid", required = false) String mailid
-, @Parameter(in = ParameterIn.QUERY, description = "Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`." ,schema=@Schema()) @Valid @RequestParam(value = "messageId", required = false) String messageId
+, @Parameter(in = ParameterIn.QUERY, description = "Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`." ,schema=@Schema()) @Valid @RequestParam(value = "messageId", required = false) String messageId
 , @Parameter(in = ParameterIn.QUERY, description = "Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set." ,schema=@Schema()) @Valid @RequestParam(value = "replyto", required = false) String replyto
 , @Parameter(in = ParameterIn.QUERY, description = "Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address." ,schema=@Schema()) @Valid @RequestParam(value = "headerfrom", required = false) String headerfrom
 , @Parameter(in = ParameterIn.QUERY, description = "Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status." ,schema=@Schema(allowableValues={ "0", "1" }
@@ -505,7 +506,7 @@ public interface MailApi {
 , @Min(1) @Max(10000) @Parameter(in = ParameterIn.QUERY, description = "Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages." ,schema=@Schema(allowableValues={ "1", "10000" }, minimum="1", maximum="10000"
 , defaultValue="100")) @Valid @RequestParam(value = "limit", required = false, defaultValue="100") Integer limit
 , @Parameter(in = ParameterIn.QUERY, description = "Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included." ,schema=@Schema()) @Valid @RequestParam(value = "startDate", required = false) StartDate startDate
-, @Parameter(in = ParameterIn.QUERY, description = "Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included." ,schema=@Schema()) @Valid @RequestParam(value = "endDate", required = false) EndDate endDate
+, @Parameter(in = ParameterIn.QUERY, description = "Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included." ,schema=@Schema()) @Valid @RequestParam(value = "endDate", required = false) EndDate endDate
 , @Parameter(in = ParameterIn.QUERY, description = "Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order)." ,schema=@Schema(allowableValues={ "time" }
 , defaultValue="time")) @Valid @RequestParam(value = "sort", required = false, defaultValue="time") String sort
 , @Parameter(in = ParameterIn.QUERY, description = "Sort direction.  `desc` returns newest first (default), `asc` returns oldest first." ,schema=@Schema(allowableValues={ "asc", "desc" }

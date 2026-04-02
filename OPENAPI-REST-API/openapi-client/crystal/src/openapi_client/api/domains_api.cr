@@ -19,15 +19,15 @@ module OpenAPIClient
     end
     # Place Domain Order
     # Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_domain()
-      add_domain_with_http_info()
-      nil
+      data, _status_code, _headers = add_domain_with_http_info()
+      data
     end
 
     # Place Domain Order
     # Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_domain_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: DomainsApi.add_domain ..."}
@@ -71,7 +71,7 @@ module OpenAPIClient
         Log.debug {"API called: DomainsApi#add_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return ServiceOrderPostResponse.from_json(data), status_code, headers
     end
 
     # Add Domain DNSSEC Records
@@ -1672,16 +1672,16 @@ module OpenAPIClient
     # Update Domain Order
     # Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
     # @param id [String] The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_domain_info(id : String)
-      update_domain_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_domain_info_with_http_info(id)
+      data
     end
 
     # Update Domain Order
     # Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
     # @param id [String] The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_domain_info_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: DomainsApi.update_domain_info ..."}
@@ -1729,7 +1729,7 @@ module OpenAPIClient
         Log.debug {"API called: DomainsApi#update_domain_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # Replace Nameserver Set

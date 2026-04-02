@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="addFloatingIp"></a>
 # **addFloatingIp**
-> addFloatingIp()
+> ServiceOrderPostResponse addFloatingIp()
 
 Place Floating IP Order
 
@@ -51,7 +51,7 @@ apiInstance.addFloatingIp((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -61,7 +61,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 <a name="getFloatingIpInfo"></a>
 # **getFloatingIpInfo**
-> getFloatingIpInfo(id)
+> Object getFloatingIpInfo(id)
 
 View Floating IP
 
@@ -172,7 +172,7 @@ apiInstance.getFloatingIpInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 
 <a name="getNewFloatingIp"></a>
 # **getNewFloatingIp**
-> getNewFloatingIp()
+> Object getNewFloatingIp()
 
 Get Floating IP Ordering Information
 
@@ -413,7 +413,7 @@ apiInstance.getNewFloatingIp((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -423,7 +423,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -559,7 +559,7 @@ null (empty response body)
 
 <a name="updateFloatingIpInfo"></a>
 # **updateFloatingIpInfo**
-> updateFloatingIpInfo(id)
+> SuccessTextResponse updateFloatingIpInfo(id)
 
 Update Floating IP
 
@@ -595,7 +595,7 @@ apiInstance.updateFloatingIpInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -608,7 +608,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

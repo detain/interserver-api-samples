@@ -861,7 +861,7 @@ Name | Type | Description  | Notes
 
 <a name="updateAccountInfo"></a>
 # **updateAccountInfo**
-> updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+> SuccessTextResponse updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
 
 Update Account Information
 
@@ -915,7 +915,8 @@ Boolean disableServerNotifications = true; // Boolean |
 Boolean disableEmailNotifications = true; // Boolean | 
 String gstin = "gstin_example"; // String | 
 try {
-    apiInstance.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+    SuccessTextResponse result = apiInstance.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountApi#updateAccountInfo");
     e.printStackTrace();
@@ -946,7 +947,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -959,7 +960,7 @@ null (empty response body)
 
 <a name="updateAccountInfo"></a>
 # **updateAccountInfo**
-> updateAccountInfo(body)
+> SuccessTextResponse updateAccountInfo(body)
 
 Update Account Information
 
@@ -997,7 +998,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 AccountApi apiInstance = new AccountApi();
 AccountInfoPost body = new AccountInfoPost(); // AccountInfoPost | 
 try {
-    apiInstance.updateAccountInfo(body);
+    SuccessTextResponse result = apiInstance.updateAccountInfo(body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountApi#updateAccountInfo");
     e.printStackTrace();
@@ -1012,7 +1014,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1025,7 +1027,7 @@ null (empty response body)
 
 <a name="updateAccountIpLimits"></a>
 # **updateAccountIpLimits**
-> updateAccountIpLimits(start, end)
+> SuccessTextResponse updateAccountIpLimits(start, end)
 
 Add IP Access Restriction
 
@@ -1064,7 +1066,8 @@ AccountApi apiInstance = new AccountApi();
 String start = "start_example"; // String | 
 String end = "end_example"; // String | 
 try {
-    apiInstance.updateAccountIpLimits(start, end);
+    SuccessTextResponse result = apiInstance.updateAccountIpLimits(start, end);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountApi#updateAccountIpLimits");
     e.printStackTrace();
@@ -1080,7 +1083,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1093,7 +1096,7 @@ null (empty response body)
 
 <a name="updateAccountIpLimits"></a>
 # **updateAccountIpLimits**
-> updateAccountIpLimits(body)
+> SuccessTextResponse updateAccountIpLimits(body)
 
 Add IP Access Restriction
 
@@ -1131,7 +1134,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 AccountApi apiInstance = new AccountApi();
 IpLimitRange body = new IpLimitRange(); // IpLimitRange | The lower and upper bounds of an ip range.
 try {
-    apiInstance.updateAccountIpLimits(body);
+    SuccessTextResponse result = apiInstance.updateAccountIpLimits(body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AccountApi#updateAccountIpLimits");
     e.printStackTrace();
@@ -1146,7 +1150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

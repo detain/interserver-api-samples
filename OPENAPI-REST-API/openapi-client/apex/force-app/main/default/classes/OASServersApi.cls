@@ -28,13 +28,14 @@ public class OASServersApi {
     /**
      * Place Server Order
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+     * @return OASAddServer200Response
      * @throws OAS.ApiException if fails to make API call
      */
-    public void addServer() {
+    public OASAddServer200Response addServer() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASAddServer200Response) client.invoke(
             'POST', '/servers/order', '',
             query, form,
             new Map<String, Object>(),
@@ -42,7 +43,7 @@ public class OASServersApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASAddServer200Response.class
         );
     }
     /**
@@ -443,14 +444,15 @@ public class OASServersApi {
      * Update Server Order
      * Updates settings on a dedicated server order.
      * @param id Server ID number. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateServerInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateServerInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/servers/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -460,7 +462,7 @@ public class OASServersApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
 }

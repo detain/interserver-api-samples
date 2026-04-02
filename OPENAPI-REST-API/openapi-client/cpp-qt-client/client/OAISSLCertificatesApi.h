@@ -20,6 +20,8 @@
 
 #include "OAIChargeInvoiceRows.h"
 #include "OAIGetAccountInfo_401_response.h"
+#include "OAIObject.h"
+#include "OAIServiceOrderPostResponse.h"
 #include "OAISslCancel_200_response.h"
 #include "OAISuccessTextResponse.h"
 #include <QString>
@@ -140,36 +142,36 @@ private:
 
 Q_SIGNALS:
 
-    void addSslSignal();
-    void getNewSslSignal();
-    void getSslInfoSignal();
+    void addSslSignal(OAIServiceOrderPostResponse summary);
+    void getNewSslSignal(OAIObject summary);
+    void getSslInfoSignal(OAIObject summary);
     void getSslInvoicesSignal(OAIChargeInvoiceRows summary);
     void getSslListSignal();
     void getSslWelcomeEmailSignal(OAISuccessTextResponse summary);
     void putSslSignal();
     void sslCancelSignal(OAISslCancel_200_response summary);
-    void updateSslInfoSignal();
+    void updateSslInfoSignal(OAISuccessTextResponse summary);
 
 
-    void addSslSignalFull(OAIHttpRequestWorker *worker);
-    void getNewSslSignalFull(OAIHttpRequestWorker *worker);
-    void getSslInfoSignalFull(OAIHttpRequestWorker *worker);
+    void addSslSignalFull(OAIHttpRequestWorker *worker, OAIServiceOrderPostResponse summary);
+    void getNewSslSignalFull(OAIHttpRequestWorker *worker, OAIObject summary);
+    void getSslInfoSignalFull(OAIHttpRequestWorker *worker, OAIObject summary);
     void getSslInvoicesSignalFull(OAIHttpRequestWorker *worker, OAIChargeInvoiceRows summary);
     void getSslListSignalFull(OAIHttpRequestWorker *worker);
     void getSslWelcomeEmailSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void putSslSignalFull(OAIHttpRequestWorker *worker);
     void sslCancelSignalFull(OAIHttpRequestWorker *worker, OAISslCancel_200_response summary);
-    void updateSslInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateSslInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    void addSslSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getNewSslSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getSslInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addSslSignalError(OAIServiceOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getNewSslSignalError(OAIObject summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getSslInfoSignalError(OAIObject summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getSslInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getSslListSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getSslWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void putSslSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void sslCancelSignalError(OAISslCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateSslInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateSslInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addSslSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewSslSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

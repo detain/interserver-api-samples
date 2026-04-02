@@ -24,7 +24,7 @@ inherit
 feature -- API Access
 
 
-	add_dns_domain (domain: STRING_32; ip: STRING_32)
+	add_dns_domain (domain: STRING_32; ip: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Create DNS Domain
 			-- Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#39;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
 			-- 
@@ -33,6 +33,7 @@ feature -- API Access
 			-- argument: ip IP Address to point the domain to. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -56,9 +57,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<"multipart/form-data", "application/json">>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -118,13 +123,14 @@ feature -- API Access
 			end
 		end
 
-	delete_dns_domain (id: STRING_32)
+	delete_dns_domain (id: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Delete DNS Domain
 			-- Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
 			-- 
 			-- argument: id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -143,13 +149,17 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Delete", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Delete", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
-	delete_dns_record (domain_id: INTEGER_32; record_id: INTEGER_32)
+	delete_dns_record (domain_id: INTEGER_32; record_id: INTEGER_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Delete DNS Record
 			-- Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
 			-- 
@@ -158,6 +168,7 @@ feature -- API Access
 			-- argument: record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -177,9 +188,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Delete", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Delete", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -252,7 +267,7 @@ feature -- API Access
 			end
 		end
 
-	update_dns_record (domain_id: INTEGER_32; record_id: INTEGER_32; name: STRING_32; type: detachable DNS_RECORD_TYPE; content: STRING_32; ttl: STRING_32; prio: STRING_32; disabled: STRING_32; ordername: STRING_32; auth: STRING_32)
+	update_dns_record (domain_id: INTEGER_32; record_id: INTEGER_32; name: STRING_32; type: detachable DNS_RECORD_TYPE; content: STRING_32; ttl: STRING_32; prio: STRING_32; disabled: STRING_32; ordername: STRING_32; auth: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update DNS Record
 			-- Updates an existing DNS record with new values. Use &#x60;GET /dns/{id}&#x60; to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
 			-- 
@@ -277,6 +292,7 @@ feature -- API Access
 			-- argument: auth  (optional, default to null)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -320,9 +336,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<"multipart/form-data", "application/json">>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

@@ -16,6 +16,7 @@ import io.swagger.model.QuickserverOrder;
 import io.swagger.model.QuickserverRow;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.TimezoneUpdate;
@@ -40,10 +41,10 @@ public interface QsApi {
 
 
     @Operation(summary = "Place QuickServer Order", operationId = "addQs", description = "Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment." , tags = {"QuickServers"})
+    @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/qs/order", produces = { "application/json" })
-    default Single<HttpResponse<Void>> addQs() {
+    default Single<HttpResponse<ServiceOrderPostResponse>> addQs() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -559,10 +560,10 @@ public interface QsApi {
 
 
     @Operation(summary = "Update QuickServer Order", operationId = "updateQsInfo", description = "Updates QuickServer metadata or stored settings associated with the order." , tags = {"QuickServers"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/qs/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateQsInfo(@Parameter(description = "QuickServer ID number.") @PathVariable("id") String id) {
+    default Single<HttpResponse<SuccessTextResponse>> updateQsInfo(@Parameter(description = "QuickServer ID number.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

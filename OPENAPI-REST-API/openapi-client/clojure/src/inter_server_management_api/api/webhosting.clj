@@ -188,6 +188,7 @@
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
             [inter-server-management-api.specs.license :refer :all]
+            [inter-server-management-api.specs.add-server-200-response :refer :all]
             [inter-server-management-api.specs.post-oauth-callback-request :refer :all]
             [inter-server-management-api.specs.mail-alert-update-request :refer :all]
             [inter-server-management-api.specs.billing-prepay-request :refer :all]
@@ -304,6 +305,7 @@
             [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
+            [inter-server-management-api.specs.service-order-post-response :refer :all]
             [inter-server-management-api.specs.vps-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-network-info-switchports :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types :refer :all]
@@ -471,13 +473,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec add-website any?
+(defn-spec add-website service-order-post-response-spec
   "Place Website Order
   Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first."
   []
   (let [res (:data (add-website-with-http-info))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode service-order-post-response-spec res st/string-transformer)
        res)))
 
 
@@ -807,13 +809,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec update-website-info any?
+(defn-spec update-website-info success-text-response-spec
   "Update Website Order
   Updates settings on a webhosting order."
   [id string?]
   (let [res (:data (update-website-info-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode success-text-response-spec res st/string-transformer)
        res)))
 
 

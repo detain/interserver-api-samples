@@ -15,6 +15,7 @@
 import ApiClient from "../ApiClient";
 import ChargeInvoiceRows from '../model/ChargeInvoiceRows';
 import GetAccountInfo401Response from '../model/GetAccountInfo401Response';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SslCancel200Response from '../model/SslCancel200Response';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 
@@ -41,7 +42,7 @@ export default class SSLCertificatesApi {
      * Callback function to receive the result of the addSsl operation.
      * @callback module:api/SSLCertificatesApi~addSslCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -49,6 +50,7 @@ export default class SSLCertificatesApi {
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
      * @param {module:api/SSLCertificatesApi~addSslCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceOrderPostResponse}
      */
     addSsl(callback) {
       let postBody = null;
@@ -65,7 +67,7 @@ export default class SSLCertificatesApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
       return this.apiClient.callApi(
         '/ssl/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -77,7 +79,7 @@ export default class SSLCertificatesApi {
      * Callback function to receive the result of the getNewSsl operation.
      * @callback module:api/SSLCertificatesApi~getNewSslCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Object} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -85,6 +87,7 @@ export default class SSLCertificatesApi {
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
      * @param {module:api/SSLCertificatesApi~getNewSslCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Object}
      */
     getNewSsl(callback) {
       let postBody = null;
@@ -101,7 +104,7 @@ export default class SSLCertificatesApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = Object;
       return this.apiClient.callApi(
         '/ssl/order', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -113,7 +116,7 @@ export default class SSLCertificatesApi {
      * Callback function to receive the result of the getSslInfo operation.
      * @callback module:api/SSLCertificatesApi~getSslInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Object} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -122,6 +125,7 @@ export default class SSLCertificatesApi {
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param {Number} id SSL certificate ID number.
      * @param {module:api/SSLCertificatesApi~getSslInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Object}
      */
     getSslInfo(id, callback) {
       let postBody = null;
@@ -143,7 +147,7 @@ export default class SSLCertificatesApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = Object;
       return this.apiClient.callApi(
         '/ssl/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -356,7 +360,7 @@ export default class SSLCertificatesApi {
      * Callback function to receive the result of the updateSslInfo operation.
      * @callback module:api/SSLCertificatesApi~updateSslInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -365,6 +369,7 @@ export default class SSLCertificatesApi {
      * Updates settings on an SSL certificate order.
      * @param {String} id SSL certificate ID number.
      * @param {module:api/SSLCertificatesApi~updateSslInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateSslInfo(id, callback) {
       let postBody = null;
@@ -386,7 +391,7 @@ export default class SSLCertificatesApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/ssl/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

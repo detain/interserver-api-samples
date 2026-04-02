@@ -56,7 +56,7 @@ Method | HTTP request | Description
 
 
 # **add_vps**
-> add_vps(vps_order_post_request => $vps_order_post_request)
+> ServiceOrderPostResponse add_vps(vps_order_post_request => $vps_order_post_request)
 
 Place VPS Order
 
@@ -85,7 +85,8 @@ my $api_instance = OpenAPIClient::VPSApi->new(
 my $vps_order_post_request = OpenAPIClient::Object::VpsOrderPostRequest->new(); # VpsOrderPostRequest | 
 
 eval {
-    $api_instance->add_vps(vps_order_post_request => $vps_order_post_request);
+    my $result = $api_instance->add_vps(vps_order_post_request => $vps_order_post_request);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling VPSApi->add_vps: $@\n";
@@ -100,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2546,7 +2547,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_vps_info**
-> update_vps_info(id => $id)
+> SuccessTextResponse update_vps_info(id => $id)
 
 Update VPS Order
 
@@ -2575,7 +2576,8 @@ my $api_instance = OpenAPIClient::VPSApi->new(
 my $id = "id_example"; # string | VPS ID number.
 
 eval {
-    $api_instance->update_vps_info(id => $id);
+    my $result = $api_instance->update_vps_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling VPSApi->update_vps_info: $@\n";
@@ -2590,7 +2592,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

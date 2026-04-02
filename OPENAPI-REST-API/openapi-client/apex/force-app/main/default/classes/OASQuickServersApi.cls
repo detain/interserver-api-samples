@@ -28,13 +28,14 @@ public class OASQuickServersApi {
     /**
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
+     * @return OASServiceOrderPostResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void addQs() {
+    public OASServiceOrderPostResponse addQs() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASServiceOrderPostResponse) client.invoke(
             'POST', '/qs/order', '',
             query, form,
             new Map<String, Object>(),
@@ -42,7 +43,7 @@ public class OASQuickServersApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASServiceOrderPostResponse.class
         );
     }
     /**
@@ -1108,14 +1109,15 @@ public class OASQuickServersApi {
      * Update QuickServer Order
      * Updates QuickServer metadata or stored settings associated with the order.
      * @param id QuickServer ID number. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateQsInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateQsInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/qs/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -1125,7 +1127,7 @@ public class OASQuickServersApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
 }

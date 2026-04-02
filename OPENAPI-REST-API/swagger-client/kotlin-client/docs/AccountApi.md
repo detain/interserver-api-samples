@@ -601,7 +601,7 @@ Name | Type | Description  | Notes
 
 <a name="updateAccountInfo"></a>
 # **updateAccountInfo**
-> updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+> SuccessTextResponse updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
 
 Update Account Information
 
@@ -632,7 +632,8 @@ val disableServerNotifications : kotlin.Boolean = true // kotlin.Boolean |
 val disableEmailNotifications : kotlin.Boolean = true // kotlin.Boolean | 
 val gstin : kotlin.String = gstin_example // kotlin.String | 
 try {
-    apiInstance.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+    val result : SuccessTextResponse = apiInstance.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AccountApi#updateAccountInfo")
     e.printStackTrace()
@@ -666,7 +667,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -679,7 +680,7 @@ null (empty response body)
 
 <a name="updateAccountInfo"></a>
 # **updateAccountInfo**
-> updateAccountInfo(body)
+> SuccessTextResponse updateAccountInfo(body)
 
 Update Account Information
 
@@ -694,7 +695,8 @@ Updates the stored contact and billing information on your account. Submit only 
 val apiInstance = AccountApi()
 val body : AccountInfoPost =  // AccountInfoPost | 
 try {
-    apiInstance.updateAccountInfo(body)
+    val result : SuccessTextResponse = apiInstance.updateAccountInfo(body)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AccountApi#updateAccountInfo")
     e.printStackTrace()
@@ -712,7 +714,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -725,7 +727,7 @@ null (empty response body)
 
 <a name="updateAccountIpLimits"></a>
 # **updateAccountIpLimits**
-> updateAccountIpLimits(start, end)
+> SuccessTextResponse updateAccountIpLimits(start, end)
 
 Add IP Access Restriction
 
@@ -741,7 +743,8 @@ val apiInstance = AccountApi()
 val start : kotlin.String = start_example // kotlin.String | 
 val end : kotlin.String = end_example // kotlin.String | 
 try {
-    apiInstance.updateAccountIpLimits(start, end)
+    val result : SuccessTextResponse = apiInstance.updateAccountIpLimits(start, end)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AccountApi#updateAccountIpLimits")
     e.printStackTrace()
@@ -760,7 +763,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -773,7 +776,7 @@ null (empty response body)
 
 <a name="updateAccountIpLimits"></a>
 # **updateAccountIpLimits**
-> updateAccountIpLimits(body)
+> SuccessTextResponse updateAccountIpLimits(body)
 
 Add IP Access Restriction
 
@@ -793,7 +796,8 @@ val body : IpLimitRange = {
   }
 } // IpLimitRange | The lower and upper bounds of an ip range.
 try {
-    apiInstance.updateAccountIpLimits(body)
+    val result : SuccessTextResponse = apiInstance.updateAccountIpLimits(body)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AccountApi#updateAccountIpLimits")
     e.printStackTrace()
@@ -811,7 +815,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

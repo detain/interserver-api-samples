@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            String
+            ServiceOrderPostResponse
         >
         MailApi::
         addMail(
@@ -35,7 +35,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            ServiceOrderPostResponse obj(output_string);
+
+
+            Response<ServiceOrderPostResponse> response(obj, httpCode);
             return response;
         }
 
@@ -1293,7 +1298,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            SuccessTextResponse
         >
         MailApi::
         updateMailInfo(
@@ -1334,7 +1339,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 

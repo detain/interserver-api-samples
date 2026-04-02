@@ -22,6 +22,7 @@ import org.openapitools.client.model.QuickserverRow
 import org.openapitools.client.model.QuickserversCancel200Response
 import org.openapitools.client.model.RestoreRequest
 import org.openapitools.client.model.ReverseDnsEntries
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
 import org.openapitools.client.model.VpsBackupRows
@@ -41,21 +42,21 @@ class QuickServersApi(baseUrl: String) {
    * Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addQs()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, baseUrl, "/qs/order", "application/json")
+  def addQs()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[ServiceOrderPostResponse] =
+    ApiRequest[ServiceOrderPostResponse](ApiMethods.POST, baseUrl, "/qs/order", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
+      .withSuccessResponse[ServiceOrderPostResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**
@@ -1079,8 +1080,8 @@ class QuickServersApi(baseUrl: String) {
    * Updates QuickServer metadata or stored settings associated with the order.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -1089,14 +1090,14 @@ class QuickServersApi(baseUrl: String) {
    * 
    * @param id QuickServer ID number.
    */
-  def updateQsInfo(id: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, baseUrl, "/qs/{id}", "application/json")
+  def updateQsInfo(id: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[SuccessTextResponse] =
+    ApiRequest[SuccessTextResponse](ApiMethods.POST, baseUrl, "/qs/{id}", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
       .withPathParam("id", id)
+      .withSuccessResponse[SuccessTextResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
 

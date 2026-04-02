@@ -12,7 +12,7 @@
 /*
  * ServerIpmiLiveInfo.h
  *
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 
 #ifndef ServerIpmiLiveInfo_H_

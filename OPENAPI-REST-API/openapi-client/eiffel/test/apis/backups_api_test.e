@@ -135,12 +135,13 @@ feature -- Test routines
             --
             -- Updates backup storage service metadata, such as stored credentials or settings for the order.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_backup_info(l_id)
+            -- l_response := api.update_backup_info(l_id)
             assert ("not_implemented", False)
         end
 

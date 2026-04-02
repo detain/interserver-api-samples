@@ -26,6 +26,7 @@ import org.openapitools.client.model.DomainRow
 import org.openapitools.client.model.DomainSearchResponse
 import org.openapitools.client.model.DomainWhoisPrivacyRequest
 import org.openapitools.client.model.GetAccountInfo401Response
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
 import org.openapitools.client.core._
@@ -43,21 +44,21 @@ class DomainsApi(baseUrl: String) {
    * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addDomain()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, baseUrl, "/domains/order", "application/json")
+  def addDomain()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[ServiceOrderPostResponse] =
+    ApiRequest[ServiceOrderPostResponse](ApiMethods.POST, baseUrl, "/domains/order", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
+      .withSuccessResponse[ServiceOrderPostResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**
@@ -668,8 +669,8 @@ class DomainsApi(baseUrl: String) {
    * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -678,14 +679,14 @@ class DomainsApi(baseUrl: String) {
    * 
    * @param id The domain service ID. Use `domain_id` from `GET /domains`.
    */
-  def updateDomainInfo(id: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, baseUrl, "/domains/{id}", "application/json")
+  def updateDomainInfo(id: String)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[SuccessTextResponse] =
+    ApiRequest[SuccessTextResponse](ApiMethods.POST, baseUrl, "/domains/{id}", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
       .withPathParam("id", id)
+      .withSuccessResponse[SuccessTextResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
-      .withDefaultErrorResponse[Unit]
       
 
   /**

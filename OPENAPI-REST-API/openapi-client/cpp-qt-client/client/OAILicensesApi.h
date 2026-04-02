@@ -25,6 +25,7 @@
 #include "OAILicenseRow.h"
 #include "OAILicensesCancel_200_response.h"
 #include "OAILicensesOrder.h"
+#include "OAIServiceOrderPostResponse.h"
 #include "OAISuccessTextResponse.h"
 #include <QString>
 
@@ -157,7 +158,7 @@ private:
 
 Q_SIGNALS:
 
-    void addLicenseSignal();
+    void addLicenseSignal(OAIServiceOrderPostResponse summary);
     void getLicenseInfoSignal(OAILicense summary);
     void getLicenseInvoicesSignal(OAIChargeInvoiceRows summary);
     void getLicenseListSignal(QList<OAILicenseRow> summary);
@@ -167,10 +168,10 @@ Q_SIGNALS:
     void licensesCancelSignal(OAILicensesCancel_200_response summary);
     void postLicenseChangeIpSignal(OAISuccessTextResponse summary);
     void putLicensesSignal();
-    void updateLicenseInfoSignal();
+    void updateLicenseInfoSignal(OAISuccessTextResponse summary);
 
 
-    void addLicenseSignalFull(OAIHttpRequestWorker *worker);
+    void addLicenseSignalFull(OAIHttpRequestWorker *worker, OAIServiceOrderPostResponse summary);
     void getLicenseInfoSignalFull(OAIHttpRequestWorker *worker, OAILicense summary);
     void getLicenseInvoicesSignalFull(OAIHttpRequestWorker *worker, OAIChargeInvoiceRows summary);
     void getLicenseListSignalFull(OAIHttpRequestWorker *worker, QList<OAILicenseRow> summary);
@@ -180,9 +181,9 @@ Q_SIGNALS:
     void licensesCancelSignalFull(OAIHttpRequestWorker *worker, OAILicensesCancel_200_response summary);
     void postLicenseChangeIpSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void putLicensesSignalFull(OAIHttpRequestWorker *worker);
-    void updateLicenseInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateLicenseInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    void addLicenseSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addLicenseSignalError(OAIServiceOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicenseInfoSignalError(OAILicense summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicenseInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicenseListSignalError(QList<OAILicenseRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -192,7 +193,7 @@ Q_SIGNALS:
     void licensesCancelSignalError(OAILicensesCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postLicenseChangeIpSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void putLicensesSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateLicenseInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateLicenseInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addLicenseSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicenseInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

@@ -59,10 +59,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'add_floating_ip' } = {
         summary => 'Place Floating IP Order',
         params => $params,
-        returns => undef,
+        returns => 'ServiceOrderPostResponse',
         };
 }
-# @return void
+# @return ServiceOrderPostResponse
 #
 sub add_floating_ip {
     my ($self, %args) = @_;
@@ -87,10 +87,14 @@ sub add_floating_ip {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ServiceOrderPostResponse', $response);
+    return $_response_object;
 }
 
 #
@@ -177,10 +181,10 @@ sub floating_ips_cancel {
     __PACKAGE__->method_documentation->{ 'get_floating_ip_info' } = {
         summary => 'View Floating IP',
         params => $params,
-        returns => undef,
+        returns => 'object',
         };
 }
-# @return void
+# @return object
 #
 sub get_floating_ip_info {
     my ($self, %args) = @_;
@@ -217,10 +221,14 @@ sub get_floating_ip_info {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
 }
 
 #
@@ -413,10 +421,10 @@ sub get_floating_ips_welcome_email {
     __PACKAGE__->method_documentation->{ 'get_new_floating_ip' } = {
         summary => 'Get Floating IP Ordering Information',
         params => $params,
-        returns => undef,
+        returns => 'object',
         };
 }
-# @return void
+# @return object
 #
 sub get_new_floating_ip {
     my ($self, %args) = @_;
@@ -441,10 +449,14 @@ sub get_new_floating_ip {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
 }
 
 #
@@ -592,10 +604,10 @@ sub put_floating_ips {
     __PACKAGE__->method_documentation->{ 'update_floating_ip_info' } = {
         summary => 'Update Floating IP',
         params => $params,
-        returns => undef,
+        returns => 'SuccessTextResponse',
         };
 }
-# @return void
+# @return SuccessTextResponse
 #
 sub update_floating_ip_info {
     my ($self, %args) = @_;
@@ -632,10 +644,14 @@ sub update_floating_ip_info {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SuccessTextResponse', $response);
+    return $_response_object;
 }
 
 1;

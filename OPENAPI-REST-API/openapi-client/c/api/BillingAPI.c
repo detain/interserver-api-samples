@@ -512,7 +512,7 @@ end:
 //
 // Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
 //
-void
+char*
 BillingAPI_deleteAccountCreditCard(apiClient_t *apiClient, char *id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -557,15 +557,18 @@ BillingAPI_deleteAccountCreditCard(apiClient_t *apiClient, char *id)
                     "DELETE");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Simple string response");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //primitive return type simple string
+    char* elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300)
+        elementToReturn = strdup((char*)apiClient->dataReceived);
+
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -578,6 +581,10 @@ end:
     
     free(localVarPath);
     free(localVarToReplace_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -1366,7 +1373,7 @@ end:
 //
 // Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
 //
-void
+object_t*
 BillingAPI_getBillingCart(apiClient_t *apiClient)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -1399,15 +1406,25 @@ BillingAPI_getBillingCart(apiClient_t *apiClient)
                     "GET");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Current shopping cart contents and available payment methods.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    object_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = object_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -1419,6 +1436,10 @@ end:
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -1678,7 +1699,7 @@ end:
 //
 // Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
 //
-void
+object_t*
 BillingAPI_getBillingPrePays(apiClient_t *apiClient)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -1711,15 +1732,25 @@ BillingAPI_getBillingPrePays(apiClient_t *apiClient)
                     "GET");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Prepay balances and metadata.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    object_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = object_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -1731,6 +1762,10 @@ end:
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -2110,7 +2145,7 @@ end:
 //
 // Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
 //
-void
+char*
 BillingAPI_updateAccountCreditCard(apiClient_t *apiClient, int *id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -2157,15 +2192,18 @@ BillingAPI_updateAccountCreditCard(apiClient_t *apiClient, int *id)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Simple string response");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //primitive return type simple string
+    char* elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300)
+        elementToReturn = strdup((char*)apiClient->dataReceived);
+
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -2178,6 +2216,10 @@ end:
     
     free(localVarPath);
     free(localVarToReplace_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

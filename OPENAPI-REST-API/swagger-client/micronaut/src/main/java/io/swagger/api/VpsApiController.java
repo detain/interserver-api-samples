@@ -8,7 +8,7 @@ import io.swagger.model.IdBackupsBody2;
 
 import io.swagger.model.InlineResponse20011;
 
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20022;
 
 import io.swagger.model.InlineResponse401;
 
@@ -19,6 +19,8 @@ import io.swagger.model.QueueResponse;
 import io.swagger.model.RestoreRequest;
 
 import io.swagger.model.ReverseDnsEntries;
+
+import io.swagger.model.ServiceOrderPostResponse;
 
 import io.swagger.model.SuccessTextResponse;
 
@@ -62,13 +64,13 @@ import java.util.Map;
 public class VpsApiController implements VpsApi {
 
     @Override
-    public Single<HttpResponse<Void>> addVps(@Nullable @Valid VpsOrderPostRequest body) {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addVps(@Nullable @Valid VpsOrderPostRequest body) {
         // TODO: Implement me
         return VpsApi.super.addVps(body);
     }
 
     @Override
-    public Single<HttpResponse<Void>> addVps(@Nullable String osDistro, @Nullable @Min(1) @Max(32) Integer slices, @Nullable String vpsPlatform, @Nullable String controlpanel, @Nullable @Min(1) @Max(12) Integer period, @Nullable @Min(1) @Max(3) Integer location, @Nullable String osVersion, @Nullable String hostname, @Nullable String coupon, @Nullable String rootpass, @Nullable String comment) {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addVps(@Nullable String osDistro, @Nullable @Min(1) @Max(32) Integer slices, @Nullable String vpsPlatform, @Nullable String controlpanel, @Nullable @Min(1) @Max(12) Integer period, @Nullable @Min(1) @Max(3) Integer location, @Nullable String osVersion, @Nullable String hostname, @Nullable String coupon, @Nullable String rootpass, @Nullable String comment) {
         // TODO: Implement me
         return VpsApi.super.addVps(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
     }
@@ -380,13 +382,13 @@ public class VpsApiController implements VpsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateVpsInfo(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateVpsInfo(String id) {
         // TODO: Implement me
         return VpsApi.super.updateVpsInfo(id);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20021>> vPSCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse20022>> vPSCancel(Integer id) {
         // TODO: Implement me
         return VpsApi.super.vPSCancel(id);
     }

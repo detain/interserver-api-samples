@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 ## AddServer
 
-> AddServer(ctx).Execute()
+> AddServer200Response AddServer(ctx).Execute()
 
 Place Server Order
 
@@ -49,11 +49,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ServersAPI.AddServer(context.Background()).Execute()
+	resp, r, err := apiClient.ServersAPI.AddServer(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServersAPI.AddServer``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AddServer`: AddServer200Response
+	fmt.Fprintf(os.Stdout, "Response from `ServersAPI.AddServer`: %v\n", resp)
 }
 ```
 
@@ -68,7 +70,7 @@ Other parameters are passed through a pointer to a apiAddServerRequest struct vi
 
 ### Return type
 
- (empty response body)
+[**AddServer200Response**](AddServer200Response.md)
 
 ### Authorization
 
@@ -1165,7 +1167,7 @@ Name | Type | Description  | Notes
 
 ## UpdateServerInfo
 
-> UpdateServerInfo(ctx, id).Execute()
+> SuccessTextResponse UpdateServerInfo(ctx, id).Execute()
 
 Update Server Order
 
@@ -1188,11 +1190,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ServersAPI.UpdateServerInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.ServersAPI.UpdateServerInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServersAPI.UpdateServerInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateServerInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `ServersAPI.UpdateServerInfo`: %v\n", resp)
 }
 ```
 
@@ -1215,7 +1219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -169,8 +169,8 @@ class QuickServersApiSimulation extends Simulation {
         .feed(deleteQsBackupPATHFeeder)
         .exec(http("deleteQsBackup")
         .httpRequest("DELETE","/qs/${id}/backups")
-        .queryParam("all","${all}")
         .queryParam("file","${file}")
+        .queryParam("all","${all}")
 )
 
     // Run scndeleteQsBackup with warm up and reach a constant rate for entire duration

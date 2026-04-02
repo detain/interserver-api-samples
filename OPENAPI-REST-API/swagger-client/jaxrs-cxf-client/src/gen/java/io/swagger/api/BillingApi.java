@@ -151,9 +151,9 @@ public interface BillingApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Remove Credit Card", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void deleteAccountCreditCard(@PathParam("id") String id);
+        @ApiResponse(responseCode = "200", description = "Simple string response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public String deleteAccountCreditCard(@PathParam("id") String id);
 
     /**
      * Delete Credit Card
@@ -301,9 +301,9 @@ public interface BillingApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Get Shopping Cart Contents", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void getBillingCart();
+        @ApiResponse(responseCode = "200", description = "Current shopping cart contents and available payment methods.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public Object getBillingCart();
 
     /**
      * Get Credit Card Verification Requirements
@@ -361,9 +361,9 @@ public interface BillingApi  {
     @Produces({ "application/json" })
     @Operation(summary = "List Prepay Balances", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void getBillingPrePays();
+        @ApiResponse(responseCode = "200", description = "Prepay balances and metadata.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public Object getBillingPrePays();
 
     /**
      * Get Invoices
@@ -440,9 +440,9 @@ public interface BillingApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update Credit Card", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateAccountCreditCard(@PathParam("id") Integer id);
+        @ApiResponse(responseCode = "200", description = "Simple string response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public String updateAccountCreditCard(@PathParam("id") Integer id);
 
     /**
      * Configure Affiliate Dock Settings

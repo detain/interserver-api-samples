@@ -84,7 +84,8 @@ class BillingApiTest : ShouldSpec() {
         should("test deleteAccountCreditCard") {
             // uncomment below to test deleteAccountCreditCard
             //val id : kotlin.String = id_example // kotlin.String | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-            //apiInstance.deleteAccountCreditCard(id)
+            //val result : kotlin.String = apiInstance.deleteAccountCreditCard(id)
+            //result shouldBe ("TODO")
         }
 
         // to test deleteBillingCreditCard
@@ -158,7 +159,8 @@ class BillingApiTest : ShouldSpec() {
         // to test getBillingCart
         should("test getBillingCart") {
             // uncomment below to test getBillingCart
-            //apiInstance.getBillingCart()
+            //val result : kotlin.Any = apiInstance.getBillingCart()
+            //result shouldBe ("TODO")
         }
 
         // to test getBillingCreditCardVerify
@@ -187,7 +189,8 @@ class BillingApiTest : ShouldSpec() {
         // to test getBillingPrePays
         should("test getBillingPrePays") {
             // uncomment below to test getBillingPrePays
-            //apiInstance.getBillingPrePays()
+            //val result : kotlin.Any = apiInstance.getBillingPrePays()
+            //result shouldBe ("TODO")
         }
 
         // to test getInvoices
@@ -222,7 +225,8 @@ class BillingApiTest : ShouldSpec() {
         should("test updateAccountCreditCard") {
             // uncomment below to test updateAccountCreditCard
             //val id : kotlin.Int = 56 // kotlin.Int | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-            //apiInstance.updateAccountCreditCard(id)
+            //val result : kotlin.String = apiInstance.updateAccountCreditCard(id)
+            //result shouldBe ("TODO")
         }
 
         // to test updateAffiliateDockSetup

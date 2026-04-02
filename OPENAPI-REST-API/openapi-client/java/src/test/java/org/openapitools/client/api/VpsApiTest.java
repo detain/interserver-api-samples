@@ -21,6 +21,7 @@ import org.openapitools.client.model.GetAccountInfo401Response;
 import org.openapitools.client.model.QueueResponse;
 import org.openapitools.client.model.RestoreRequest;
 import org.openapitools.client.model.ReverseDnsEntries;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.openapitools.client.model.TextResponse;
 import org.openapitools.client.model.VPSCancel200Response;
@@ -59,7 +60,7 @@ public class VpsApiTest {
     @Test
     public void addVpsTest() throws ApiException {
         VpsOrderPostRequest vpsOrderPostRequest = null;
-        api.addVps(vpsOrderPostRequest);
+        ServiceOrderPostResponse response = api.addVps(vpsOrderPostRequest);
         // TODO: test validations
     }
 
@@ -660,7 +661,7 @@ public class VpsApiTest {
     @Test
     public void updateVpsInfoTest() throws ApiException {
         String id = null;
-        api.updateVpsInfo(id);
+        SuccessTextResponse response = api.updateVpsInfo(id);
         // TODO: test validations
     }
 

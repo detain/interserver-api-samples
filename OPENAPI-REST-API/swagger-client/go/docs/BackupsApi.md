@@ -235,7 +235,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateBackupInfo**
-> UpdateBackupInfo(ctx, id)
+> SuccessTextResponse UpdateBackupInfo(ctx, id)
 Update Backup Information
 
 Updates backup storage service metadata, such as stored credentials or settings for the order.
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

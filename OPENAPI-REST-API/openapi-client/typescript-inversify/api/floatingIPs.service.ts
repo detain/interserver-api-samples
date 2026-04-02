@@ -23,6 +23,7 @@ import HttpResponse from '../HttpResponse';
 import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
 import { FloatingIpsCancel200Response } from '../model/floatingIpsCancel200Response';
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 
 import { COLLECTION_FORMATS }  from '../variables';
@@ -44,8 +45,8 @@ export class FloatingIPsService {
      * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
      
      */
-    public addFloatingIp(observe?: 'body', headers?: Headers): Observable<any>;
-    public addFloatingIp(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public addFloatingIp(observe?: 'body', headers?: Headers): Observable<ServiceOrderPostResponse>;
+    public addFloatingIp(observe?: 'response', headers?: Headers): Observable<HttpResponse<ServiceOrderPostResponse>>;
     public addFloatingIp(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -58,10 +59,10 @@ export class FloatingIPsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/floating_ips/order`, headers);
+        const response: Observable<HttpResponse<ServiceOrderPostResponse>> = this.httpClient.post(`${this.basePath}/floating_ips/order`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <ServiceOrderPostResponse>(httpResponse.response))
                );
         }
         return response;
@@ -108,8 +109,8 @@ export class FloatingIPsService {
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      
      */
-    public getFloatingIpInfo(id: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public getFloatingIpInfo(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public getFloatingIpInfo(id: number, observe?: 'body', headers?: Headers): Observable<object>;
+    public getFloatingIpInfo(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<object>>;
     public getFloatingIpInfo(id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling getFloatingIpInfo.');
@@ -126,10 +127,10 @@ export class FloatingIPsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<object>> = this.httpClient.get(`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <object>(httpResponse.response))
                );
         }
         return response;
@@ -238,8 +239,8 @@ export class FloatingIPsService {
      * Retrieves available options and pricing for ordering a new Floating IP.
      
      */
-    public getNewFloatingIp(observe?: 'body', headers?: Headers): Observable<any>;
-    public getNewFloatingIp(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public getNewFloatingIp(observe?: 'body', headers?: Headers): Observable<object>;
+    public getNewFloatingIp(observe?: 'response', headers?: Headers): Observable<HttpResponse<object>>;
     public getNewFloatingIp(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -252,10 +253,10 @@ export class FloatingIPsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.basePath}/floating_ips/order`, headers);
+        const response: Observable<HttpResponse<object>> = this.httpClient.get(`${this.basePath}/floating_ips/order`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <object>(httpResponse.response))
                );
         }
         return response;
@@ -342,8 +343,8 @@ export class FloatingIPsService {
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      
      */
-    public updateFloatingIpInfo(id: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateFloatingIpInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateFloatingIpInfo(id: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateFloatingIpInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateFloatingIpInfo(id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateFloatingIpInfo.');
@@ -360,10 +361,10 @@ export class FloatingIPsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

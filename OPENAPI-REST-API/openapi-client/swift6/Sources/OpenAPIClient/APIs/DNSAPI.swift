@@ -15,9 +15,9 @@ open class DNSAPI {
      - parameter domain: (form) The domain name. 
      - parameter ip: (form) IP Address to point the domain to. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: SuccessTextResponse
      */
-    open class func addDnsDomain(domain: String, ip: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func addDnsDomain(domain: String, ip: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SuccessTextResponse {
         return try await addDnsDomainWithRequestBuilder(domain: domain, ip: ip, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -37,9 +37,9 @@ open class DNSAPI {
      - parameter domain: (form) The domain name. 
      - parameter ip: (form) IP Address to point the domain to. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func addDnsDomainWithRequestBuilder(domain: String, ip: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func addDnsDomainWithRequestBuilder(domain: String, ip: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<SuccessTextResponse> {
         let localVariablePath = "/dns"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableFormParams: [String: (any Sendable)?] = [
@@ -58,7 +58,7 @@ open class DNSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SuccessTextResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -136,9 +136,9 @@ open class DNSAPI {
      
      - parameter id: (path) The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: SuccessTextResponse
      */
-    open class func deleteDnsDomain(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func deleteDnsDomain(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SuccessTextResponse {
         return try await deleteDnsDomainWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -157,9 +157,9 @@ open class DNSAPI {
        - name: sessionIdHeaderAuth
      - parameter id: (path) The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func deleteDnsDomainWithRequestBuilder(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func deleteDnsDomainWithRequestBuilder(id: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<SuccessTextResponse> {
         var localVariablePath = "/dns/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -175,7 +175,7 @@ open class DNSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SuccessTextResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -186,9 +186,9 @@ open class DNSAPI {
      - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: SuccessTextResponse
      */
-    open class func deleteDnsRecord(domainId: Int, recordId: Int, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func deleteDnsRecord(domainId: Int, recordId: Int, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SuccessTextResponse {
         return try await deleteDnsRecordWithRequestBuilder(domainId: domainId, recordId: recordId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -208,9 +208,9 @@ open class DNSAPI {
      - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func deleteDnsRecordWithRequestBuilder(domainId: Int, recordId: Int, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func deleteDnsRecordWithRequestBuilder(domainId: Int, recordId: Int, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<SuccessTextResponse> {
         var localVariablePath = "/dns/{domainId}/{recordId}"
         let domainIdPreEscape = "\(APIHelper.mapValueToPathItem(domainId))"
         let domainIdPostEscape = domainIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -229,7 +229,7 @@ open class DNSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SuccessTextResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -341,9 +341,9 @@ open class DNSAPI {
      - parameter ordername: (form)  (optional)
      - parameter auth: (form)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: SuccessTextResponse
      */
-    open class func updateDnsRecord(domainId: Int, recordId: Int, name: String? = nil, type: DnsRecordType? = nil, content: String? = nil, ttl: String? = nil, prio: String? = nil, disabled: String? = nil, ordername: String? = nil, auth: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func updateDnsRecord(domainId: Int, recordId: Int, name: String? = nil, type: DnsRecordType? = nil, content: String? = nil, ttl: String? = nil, prio: String? = nil, disabled: String? = nil, ordername: String? = nil, auth: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SuccessTextResponse {
         return try await updateDnsRecordWithRequestBuilder(domainId: domainId, recordId: recordId, name: name, type: type, content: content, ttl: ttl, prio: prio, disabled: disabled, ordername: ordername, auth: auth, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -371,9 +371,9 @@ open class DNSAPI {
      - parameter ordername: (form)  (optional)
      - parameter auth: (form)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateDnsRecordWithRequestBuilder(domainId: Int, recordId: Int, name: String? = nil, type: DnsRecordType? = nil, content: String? = nil, ttl: String? = nil, prio: String? = nil, disabled: String? = nil, ordername: String? = nil, auth: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func updateDnsRecordWithRequestBuilder(domainId: Int, recordId: Int, name: String? = nil, type: DnsRecordType? = nil, content: String? = nil, ttl: String? = nil, prio: String? = nil, disabled: String? = nil, ordername: String? = nil, auth: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<SuccessTextResponse> {
         var localVariablePath = "/dns/{domainId}/{recordId}"
         let domainIdPreEscape = "\(APIHelper.mapValueToPathItem(domainId))"
         let domainIdPostEscape = domainIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -404,7 +404,7 @@ open class DNSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SuccessTextResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }

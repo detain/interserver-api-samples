@@ -20,6 +20,7 @@ import org.openapitools.client.model.PostWebsiteMigration200Response
 import org.openapitools.client.model.PostWebsiteMigrationRequest
 import org.openapitools.client.model.PostWebsiteMigrationRequest1
 import org.openapitools.client.model.ReverseDnsEntries
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
 import org.openapitools.client.model.WebhostingCancel200Response
@@ -42,8 +43,8 @@ class WebhostingApi(baseUrl: String) {
    * Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -51,14 +52,14 @@ class WebhostingApi(baseUrl: String) {
    *   sessionIdHeaderAuth (apiKey)
    */
   def addWebsite(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], ServiceOrderPostResponse], Any] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/websites/order")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Retrieves available webhosting plans and pricing for ordering.
@@ -376,8 +377,8 @@ class WebhostingApi(baseUrl: String) {
    * Updates settings on a webhosting order.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -387,14 +388,14 @@ class WebhostingApi(baseUrl: String) {
    * @param id The website service ID. Use `website_id` from `GET /websites`.
    */
   def updateWebsiteInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], SuccessTextResponse], Any] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/websites/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.

@@ -14,6 +14,7 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
+import org.openapitools.client.model.AddServer200Response;
 import org.openapitools.client.model.BuyItNowList;
 import org.openapitools.client.model.BuyItNowServerOrder200Response;
 import org.openapitools.client.model.ChargeInvoiceRows;
@@ -54,7 +55,7 @@ public class ServersApiTest {
      */
     @Test
     public void addServerTest() throws ApiException {
-        api.addServer();
+        AddServer200Response response = api.addServer();
         // TODO: test validations
     }
 
@@ -292,7 +293,7 @@ public class ServersApiTest {
     @Test
     public void updateServerInfoTest() throws ApiException {
         String id = null;
-        api.updateServerInfo(id);
+        SuccessTextResponse response = api.updateServerInfo(id);
         // TODO: test validations
     }
 

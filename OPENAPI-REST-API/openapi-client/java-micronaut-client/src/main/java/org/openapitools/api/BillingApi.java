@@ -40,7 +40,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface BillingApi {
     /**
@@ -106,10 +106,11 @@ public interface BillingApi {
      * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
      *
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
+     * @return String
      */
     @Delete(uri="/account/creditcards/{id}")
     @Consumes({"application/json"})
-    Mono<Void> deleteAccountCreditCard(
+    Mono<String> deleteAccountCreditCard(
         @PathVariable(name="id") @NotNull String id
     );
 
@@ -222,10 +223,11 @@ public interface BillingApi {
      * Get Shopping Cart Contents
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
      *
+     * @return Object
      */
     @Get(uri="/billing/cart")
     @Consumes({"application/json"})
-    Mono<Void> getBillingCart();
+    Mono<Object> getBillingCart();
 
     /**
      * Get Credit Card Verification Requirements
@@ -267,10 +269,11 @@ public interface BillingApi {
      * List Prepay Balances
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
      *
+     * @return Object
      */
     @Get(uri="/billing/prepays")
     @Consumes({"application/json"})
-    Mono<Void> getBillingPrePays();
+    Mono<Object> getBillingPrePays();
 
     /**
      * Get Invoices
@@ -325,10 +328,11 @@ public interface BillingApi {
      * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
      *
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
+     * @return String
      */
     @Post(uri="/account/creditcards/{id}")
     @Consumes({"application/json"})
-    Mono<Void> updateAccountCreditCard(
+    Mono<String> updateAccountCreditCard(
         @PathVariable(name="id") @NotNull Integer id
     );
 

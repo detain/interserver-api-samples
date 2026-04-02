@@ -27,6 +27,7 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
+import org.openapitools.client.models.AddServer200Response
 import org.openapitools.client.models.BuyItNowList
 import org.openapitools.client.models.BuyItNowServerOrder200Response
 import org.openapitools.client.models.ChargeInvoiceRows
@@ -71,19 +72,20 @@ open class ServersApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * POST /servers/order
      * Place Server Order
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
-     * @return void
+     * @return AddServer200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun addServer() : Unit {
+    fun addServer() : AddServer200Response {
         val localVarResponse = addServerWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as AddServer200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -101,15 +103,16 @@ open class ServersApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * POST /servers/order
      * Place Server Order
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<AddServer200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun addServerWithHttpInfo() : ApiResponse<Unit?> {
+    fun addServerWithHttpInfo() : ApiResponse<AddServer200Response?> {
         val localVariableConfig = addServerRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, AddServer200Response>(
             localVariableConfig
         )
     }
@@ -1332,19 +1335,20 @@ open class ServersApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Update Server Order
      * Updates settings on a dedicated server order.
      * @param id Server ID number.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateServerInfo(id: kotlin.String) : Unit {
+    fun updateServerInfo(id: kotlin.String) : SuccessTextResponse {
         val localVarResponse = updateServerInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1363,15 +1367,16 @@ open class ServersApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Update Server Order
      * Updates settings on a dedicated server order.
      * @param id Server ID number.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateServerInfoWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun updateServerInfoWithHttpInfo(id: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateServerInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }

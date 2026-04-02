@@ -10,8 +10,6 @@
 package myadmin
 
 type InlineResponse20025 struct {
-	// Confirmation message.
-	Text string `json:"text,omitempty"`
-	// The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
-	Ticket int32 `json:"ticket,omitempty"`
+	Message string `json:"message,omitempty"`
+	Success bool `json:"success,omitempty"`
 }

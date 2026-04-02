@@ -660,7 +660,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateAccountInfo"></a>
 # **updateAccountInfo**
-> updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+> SuccessTextResponse updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
 
 Update Account Information
 
@@ -691,7 +691,8 @@ val disableServerNotifications : kotlin.Boolean = true // kotlin.Boolean | Set t
 val disableEmailNotifications : kotlin.Boolean = true // kotlin.Boolean | Set to `true` to disable email notifications, or `false` to enable them.
 val gstin : kotlin.String = gstin_example // kotlin.String | Your GST identification number (if applicable).
 try {
-    apiInstance.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+    val result : SuccessTextResponse = apiInstance.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AccountApi#updateAccountInfo")
     e.printStackTrace()
@@ -724,7 +725,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -746,7 +747,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateAccountIpLimits"></a>
 # **updateAccountIpLimits**
-> updateAccountIpLimits(start, end)
+> SuccessTextResponse updateAccountIpLimits(start, end)
 
 Add IP Access Restriction
 
@@ -762,7 +763,8 @@ val apiInstance = AccountApi()
 val start : kotlin.String = start_example // kotlin.String | The begining (or first) IP address in the range.
 val end : kotlin.String = end_example // kotlin.String | The ending (or last) IP address in the range.
 try {
-    apiInstance.updateAccountIpLimits(start, end)
+    val result : SuccessTextResponse = apiInstance.updateAccountIpLimits(start, end)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AccountApi#updateAccountIpLimits")
     e.printStackTrace()
@@ -780,7 +782,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

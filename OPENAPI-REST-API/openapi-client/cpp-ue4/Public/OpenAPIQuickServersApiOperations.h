@@ -26,6 +26,7 @@
 #include "OpenAPIQuickserversCancel200Response.h"
 #include "OpenAPIRestoreRequest.h"
 #include "OpenAPIReverseDnsEntries.h"
+#include "OpenAPIServiceOrderPostResponse.h"
 #include "OpenAPISuccessTextResponse.h"
 #include "OpenAPITextResponse.h"
 #include "OpenAPIVpsBackupRows.h"
@@ -54,7 +55,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPIServiceOrderPostResponse Content;
 };
 
 /* Delete QuickServer Backup
@@ -1161,7 +1162,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 }

@@ -18,6 +18,7 @@ import { DnsListItem } from '../model/dnsListItem';
 import { DnsRecord } from '../model/dnsRecord';
 import { DnsRecordType } from '../model/dnsRecordType';
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
+import { SuccessTextResponse } from '../model/successTextResponse';
 import { Configuration } from '../configuration';
 import { COLLECTION_FORMATS } from '../variables';
 
@@ -54,7 +55,7 @@ export class DNSService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [addDnsDomainOpts.config] Override http request option.
      */
-    public addDnsDomain(domain: string, ip: string, addDnsDomainOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public addDnsDomain(domain: string, ip: string, addDnsDomainOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public addDnsDomain(domain: string, ip: string, addDnsDomainOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (domain === null || domain === undefined) {
             throw new Error('Required parameter domain was null or undefined when calling addDnsDomain.');
@@ -119,7 +120,7 @@ export class DNSService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/dns`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/dns`,
                     convertFormParamsToString ? formParams!.toString() : formParams!,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -247,7 +248,7 @@ export class DNSService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [deleteDnsDomainOpts.config] Override http request option.
      */
-    public deleteDnsDomain(id: string, deleteDnsDomainOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public deleteDnsDomain(id: string, deleteDnsDomainOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public deleteDnsDomain(id: string, deleteDnsDomainOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling deleteDnsDomain.');
@@ -286,7 +287,7 @@ export class DNSService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.delete<any>(`${this.basePath}/dns/${encodeURIComponent(String(id))}`,
+                return this.httpClient.delete<SuccessTextResponse>(`${this.basePath}/dns/${encodeURIComponent(String(id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...deleteDnsDomainOpts?.config,
@@ -305,7 +306,7 @@ export class DNSService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [deleteDnsRecordOpts.config] Override http request option.
      */
-    public deleteDnsRecord(domainId: number, recordId: number, deleteDnsRecordOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public deleteDnsRecord(domainId: number, recordId: number, deleteDnsRecordOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public deleteDnsRecord(domainId: number, recordId: number, deleteDnsRecordOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (domainId === null || domainId === undefined) {
             throw new Error('Required parameter domainId was null or undefined when calling deleteDnsRecord.');
@@ -348,7 +349,7 @@ export class DNSService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.delete<any>(`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
+                return this.httpClient.delete<SuccessTextResponse>(`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...deleteDnsRecordOpts?.config,
@@ -484,7 +485,7 @@ export class DNSService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateDnsRecordOpts.config] Override http request option.
      */
-    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, updateDnsRecordOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, updateDnsRecordOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, updateDnsRecordOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (domainId === null || domainId === undefined) {
             throw new Error('Required parameter domainId was null or undefined when calling updateDnsRecord.');
@@ -573,7 +574,7 @@ export class DNSService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
                     convertFormParamsToString ? formParams!.toString() : formParams!,
                     {
                         withCredentials: this.configuration.withCredentials,

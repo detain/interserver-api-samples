@@ -24,11 +24,12 @@ inherit
 feature -- API Access
 
 
-	add_website 
+	add_website : detachable SERVICE_ORDER_POST_RESPONSE
 			-- Place Website Order
 			-- Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
 			-- 
 			-- 
+			-- Result SERVICE_ORDER_POST_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -46,9 +47,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SERVICE_ORDER_POST_RESPONSE } l_response.data ({ SERVICE_ORDER_POST_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -263,13 +268,14 @@ feature -- API Access
 			end
 		end
 
-	update_website_info (id: STRING_32)
+	update_website_info (id: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update Website Order
 			-- Updates settings on a webhosting order.
 			-- 
 			-- argument: id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -288,9 +294,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

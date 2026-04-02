@@ -7,6 +7,7 @@ import org.openapitools.model.License;
 import org.openapitools.model.LicenseRow;
 import org.openapitools.model.LicensesCancel200Response;
 import org.openapitools.model.LicensesOrder;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,7 @@ public class LicensesApiTest {
         // given
 
         // when
-        api.addLicense().block();
+        ServiceOrderPostResponse body = api.addLicense().block();
 
         // then
         // TODO implement the addLicenseTest()
@@ -229,7 +230,7 @@ public class LicensesApiTest {
         String id = "example";
 
         // when
-        api.updateLicenseInfo(id).block();
+        SuccessTextResponse body = api.updateLicenseInfo(id).block();
 
         // then
         // TODO implement the updateLicenseInfoTest()

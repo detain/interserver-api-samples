@@ -22,6 +22,7 @@ docs/ACCOUNT_INFO_OAUTH_CONFIG_PROVIDERS.md
 docs/ACCOUNT_INFO_OAUTH_CONFIG_PROVIDERS_VALUE.md
 docs/ACCOUNT_INFO_POST.md
 docs/ACCOUNT_SSH_KEY.md
+docs/ADD_SERVER_200_RESPONSE.md
 docs/AFFILIATE_BANNER_ROW.md
 docs/AFFILIATE_DOCK_SETUP.md
 docs/AFFILIATE_PAYMENT_SETUP.md
@@ -367,6 +368,7 @@ docs/SERVICES.md
 docs/SERVICES_INFO.md
 docs/SERVICE_CATEGORIES.md
 docs/SERVICE_CATEGORY.md
+docs/SERVICE_ORDER_POST_RESPONSE.md
 docs/SERVICE_TYPE.md
 docs/SERVICE_TYPES.md
 docs/SSLCERTIFICATES_API.md
@@ -504,6 +506,7 @@ src/domain/account_info_oauth_config_providers_value.e
 src/domain/account_info_oauthproviders.e
 src/domain/account_info_post.e
 src/domain/account_ssh_key.e
+src/domain/add_server_200_response.e
 src/domain/affiliate_banner_row.e
 src/domain/affiliate_dock_setup.e
 src/domain/affiliate_payment_setup.e
@@ -836,6 +839,7 @@ src/domain/servers_cancel_200_response.e
 src/domain/service.e
 src/domain/service_categories.e
 src/domain/service_category.e
+src/domain/service_order_post_response.e
 src/domain/service_type.e
 src/domain/service_types.e
 src/domain/services.e

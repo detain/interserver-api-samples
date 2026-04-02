@@ -847,11 +847,19 @@ class AccountApi {
   ///
   /// * [String] gstin:
   ///   Your GST identification number (if applicable).
-  Future<void> updateAccountInfo(String name, String address, String city, String state, String zip, String country, String phone, { String? company, String? address2, String? locale, String? emailInvoices, String? emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, String? gstin, }) async {
+  Future<SuccessTextResponse?> updateAccountInfo(String name, String address, String city, String state, String zip, String country, String phone, { String? company, String? address2, String? locale, String? emailInvoices, String? emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, String? gstin, }) async {
     final response = await updateAccountInfoWithHttpInfo(name, address, city, state, zip, country, phone,  company: company, address2: address2, locale: locale, emailInvoices: emailInvoices, emailAbuse: emailAbuse, disableReset: disableReset, disableReinstall: disableReinstall, disableServerNotifications: disableServerNotifications, disableEmailNotifications: disableEmailNotifications, gstin: gstin, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// Add IP Access Restriction
@@ -916,11 +924,19 @@ class AccountApi {
   ///
   /// * [String] end (required):
   ///   The ending (or last) IP address in the range.
-  Future<void> updateAccountIpLimits(String start, String end,) async {
+  Future<SuccessTextResponse?> updateAccountIpLimits(String start, String end,) async {
     final response = await updateAccountIpLimitsWithHttpInfo(start, end,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// Change Account Password

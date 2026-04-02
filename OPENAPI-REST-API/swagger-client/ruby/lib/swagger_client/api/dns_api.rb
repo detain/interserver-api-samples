@@ -21,10 +21,10 @@ module SwaggerClient
     # @param domain 
     # @param ip 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def add_dns_domain(domain, ip, opts = {})
-      add_dns_domain_with_http_info(domain, ip, opts)
-      nil
+      data, _status_code, _headers = add_dns_domain_with_http_info(domain, ip, opts)
+      data
     end
 
     # Create DNS Domain
@@ -32,7 +32,7 @@ module SwaggerClient
     # @param domain 
     # @param ip 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def add_dns_domain_with_http_info(domain, ip, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DNSApi.add_dns_domain ...'
@@ -66,7 +66,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -86,17 +86,17 @@ module SwaggerClient
     # Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
     # @param body 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def add_dns_domain(body, opts = {})
-      add_dns_domain_with_http_info(body, opts)
-      nil
+      data, _status_code, _headers = add_dns_domain_with_http_info(body, opts)
+      data
     end
 
     # Create DNS Domain
     # Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
     # @param body 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def add_dns_domain_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DNSApi.add_dns_domain ...'
@@ -126,7 +126,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -308,17 +308,17 @@ module SwaggerClient
     # Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
     # @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def delete_dns_domain(id, opts = {})
-      delete_dns_domain_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = delete_dns_domain_with_http_info(id, opts)
+      data
     end
 
     # Delete DNS Domain
     # Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
     # @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def delete_dns_domain_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DNSApi.delete_dns_domain ...'
@@ -344,7 +344,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
@@ -365,10 +365,10 @@ module SwaggerClient
     # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def delete_dns_record(domain_id, record_id, opts = {})
-      delete_dns_record_with_http_info(domain_id, record_id, opts)
-      nil
+      data, _status_code, _headers = delete_dns_record_with_http_info(domain_id, record_id, opts)
+      data
     end
 
     # Delete DNS Record
@@ -376,7 +376,7 @@ module SwaggerClient
     # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def delete_dns_record_with_http_info(domain_id, record_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DNSApi.delete_dns_record ...'
@@ -406,7 +406,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
@@ -541,10 +541,10 @@ module SwaggerClient
     # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_dns_record(name, type, content, ttl, prio, disabled, ordername, auth, domain_id, record_id, opts = {})
-      update_dns_record_with_http_info(name, type, content, ttl, prio, disabled, ordername, auth, domain_id, record_id, opts)
-      nil
+      data, _status_code, _headers = update_dns_record_with_http_info(name, type, content, ttl, prio, disabled, ordername, auth, domain_id, record_id, opts)
+      data
     end
 
     # Update DNS Record
@@ -560,7 +560,7 @@ module SwaggerClient
     # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_dns_record_with_http_info(name, type, content, ttl, prio, disabled, ordername, auth, domain_id, record_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DNSApi.update_dns_record ...'
@@ -632,7 +632,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -654,10 +654,10 @@ module SwaggerClient
     # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_dns_record(body, domain_id, record_id, opts = {})
-      update_dns_record_with_http_info(body, domain_id, record_id, opts)
-      nil
+      data, _status_code, _headers = update_dns_record_with_http_info(body, domain_id, record_id, opts)
+      data
     end
 
     # Update DNS Record
@@ -666,7 +666,7 @@ module SwaggerClient
     # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_dns_record_with_http_info(body, domain_id, record_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DNSApi.update_dns_record ...'
@@ -710,7 +710,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

@@ -20,6 +20,7 @@ import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
 import io.swagger.model.InlineResponse2002;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -57,13 +58,13 @@ public interface DomainsApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Domains" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/domains/order",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> addDomain();
+    ResponseEntity<ServiceOrderPostResponse> addDomain();
 
 
     @Operation(summary = "Add Domain DNSSEC Records", description = "Adds DNSSEC DS records to the domain registration. Provide one or more DNSSEC record entries (algorithm, digest type, digest, key tag). Registrations must be active.", security = {
@@ -455,13 +456,13 @@ public interface DomainsApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Domains" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/domains/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> updateDomainInfo(@Parameter(in = ParameterIn.PATH, description = "The domain service ID. Use `domain_id` from `GET /domains`.", required=true, schema=@Schema()) @PathVariable("id") String id
+    ResponseEntity<SuccessTextResponse> updateDomainInfo(@Parameter(in = ParameterIn.PATH, description = "The domain service ID. Use `domain_id` from `GET /domains`.", required=true, schema=@Schema()) @PathVariable("id") String id
 );
 
 

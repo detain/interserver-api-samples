@@ -35,7 +35,7 @@ class TicketsApi(baseUrl: String) {
    * Creates a new support ticket. Optionally link it to a specific service by providing the service ID and module.
    * 
    * Expected answers:
-   *   code 200 : TicketNewResponse (A successful response after creating a ticket)
+   *   code 200 : TicketNewResponse (A successful response after creating a ticket.)
    *   code 400 : TicketNewResponse (A successful response after creating a ticket)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
    * 

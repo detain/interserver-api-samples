@@ -31,6 +31,7 @@ import { QuickserverRow } from '../model/quickserverRow';
 import { QuickserversCancel200Response } from '../model/quickserversCancel200Response';
 import { RestoreRequest } from '../model/restoreRequest';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 import { VpsBackupRows } from '../model/vpsBackupRows';
@@ -55,8 +56,8 @@ export class QuickServersService {
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
      
      */
-    public addQs(observe?: 'body', headers?: Headers): Observable<any>;
-    public addQs(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public addQs(observe?: 'body', headers?: Headers): Observable<ServiceOrderPostResponse>;
+    public addQs(observe?: 'response', headers?: Headers): Observable<HttpResponse<ServiceOrderPostResponse>>;
     public addQs(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -69,10 +70,10 @@ export class QuickServersService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/qs/order`, headers);
+        const response: Observable<HttpResponse<ServiceOrderPostResponse>> = this.httpClient.post(`${this.basePath}/qs/order`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <ServiceOrderPostResponse>(httpResponse.response))
                );
         }
         return response;
@@ -1553,8 +1554,8 @@ export class QuickServersService {
      * @param id QuickServer ID number.
      
      */
-    public updateQsInfo(id: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateQsInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateQsInfo(id: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateQsInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateQsInfo(id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateQsInfo.');
@@ -1571,10 +1572,10 @@ export class QuickServersService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/qs/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/qs/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

@@ -14,8 +14,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place Website Order Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        void AddWebsite ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddWebsite ();
         /// <summary>
         /// Website Ordering Information Retrieves available webhosting plans and pricing for ordering.
         /// </summary>
@@ -25,8 +25,8 @@ namespace IO.Swagger.Api
         /// Get Website IP Information Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
         /// </summary>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20023</returns>
-        InlineResponse20023 GetWebsiteBuyIp (int? id);
+        /// <returns>InlineResponse20024</returns>
+        InlineResponse20024 GetWebsiteBuyIp (int? id);
         /// <summary>
         /// Get Website Order Returns detailed information about a specific webhosting order including its domain, plan, and status.
         /// </summary>
@@ -73,22 +73,22 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20024</returns>
-        InlineResponse20024 PostWebsiteBuyIp (IdBuyIpBody body, int? id);
+        /// <returns>InlineResponse20025</returns>
+        InlineResponse20025 PostWebsiteBuyIp (IdBuyIpBody body, int? id);
         /// <summary>
         /// Update Website IP DNS Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
         /// </summary>
         /// <param name="ips"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20024</returns>
-        InlineResponse20024 PostWebsiteBuyIp (Dictionary<string, string> ips, int? id);
+        /// <returns>InlineResponse20025</returns>
+        InlineResponse20025 PostWebsiteBuyIp (Dictionary<string, string> ips, int? id);
         /// <summary>
         /// Request Website Migration Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
         /// </summary>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20025</returns>
-        InlineResponse20025 PostWebsiteMigration (IdMigrationBody body, int? id);
+        /// <returns>InlineResponse20026</returns>
+        InlineResponse20026 PostWebsiteMigration (IdMigrationBody body, int? id);
         /// <summary>
         /// Request Website Migration Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
         /// </summary>
@@ -106,8 +106,8 @@ namespace IO.Swagger.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20025</returns>
-        InlineResponse20025 PostWebsiteMigration (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
+        /// <returns>InlineResponse20026</returns>
+        InlineResponse20026 PostWebsiteMigration (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id);
         /// <summary>
         /// Update Website Reverse DNS Updates the reverse DNS entries for each of the IP addresses for the website.
         /// </summary>
@@ -131,14 +131,14 @@ namespace IO.Swagger.Api
         /// Update Website Order Updates settings on a webhosting order.
         /// </summary>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns></returns>
-        void UpdateWebsiteInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateWebsiteInfo (string id);
         /// <summary>
         /// Cancel Website Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
         /// </summary>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20022</returns>
-        InlineResponse20022 WebhostingCancel (string id);
+        /// <returns>InlineResponse20023</returns>
+        InlineResponse20023 WebhostingCancel (string id);
     }
   
     /// <summary>
@@ -197,8 +197,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place Website Order Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        public void AddWebsite ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddWebsite ()
         {
     
             var path = "/websites/order";
@@ -222,7 +222,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddWebsite: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (ServiceOrderPostResponse) ApiClient.Deserialize(response.Content, typeof(ServiceOrderPostResponse), response.Headers);
         }
     
         /// <summary>
@@ -260,8 +260,8 @@ namespace IO.Swagger.Api
         /// Get Website IP Information Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
         /// </summary>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20023</returns>
-        public InlineResponse20023 GetWebsiteBuyIp (int? id)
+        /// <returns>InlineResponse20024</returns>
+        public InlineResponse20024 GetWebsiteBuyIp (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetWebsiteBuyIp");
@@ -288,7 +288,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling GetWebsiteBuyIp: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20023) ApiClient.Deserialize(response.Content, typeof(InlineResponse20023), response.Headers);
+            return (InlineResponse20024) ApiClient.Deserialize(response.Content, typeof(InlineResponse20024), response.Headers);
         }
     
         /// <summary>
@@ -537,8 +537,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20024</returns>
-        public InlineResponse20024 PostWebsiteBuyIp (IdBuyIpBody body, int? id)
+        /// <returns>InlineResponse20025</returns>
+        public InlineResponse20025 PostWebsiteBuyIp (IdBuyIpBody body, int? id)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling PostWebsiteBuyIp");
@@ -568,7 +568,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostWebsiteBuyIp: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20024) ApiClient.Deserialize(response.Content, typeof(InlineResponse20024), response.Headers);
+            return (InlineResponse20025) ApiClient.Deserialize(response.Content, typeof(InlineResponse20025), response.Headers);
         }
     
         /// <summary>
@@ -576,8 +576,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="ips"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20024</returns>
-        public InlineResponse20024 PostWebsiteBuyIp (Dictionary<string, string> ips, int? id)
+        /// <returns>InlineResponse20025</returns>
+        public InlineResponse20025 PostWebsiteBuyIp (Dictionary<string, string> ips, int? id)
         {
             // verify the required parameter 'ips' is set
             if (ips == null) throw new ApiException(400, "Missing required parameter 'ips' when calling PostWebsiteBuyIp");
@@ -607,7 +607,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostWebsiteBuyIp: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20024) ApiClient.Deserialize(response.Content, typeof(InlineResponse20024), response.Headers);
+            return (InlineResponse20025) ApiClient.Deserialize(response.Content, typeof(InlineResponse20025), response.Headers);
         }
     
         /// <summary>
@@ -615,8 +615,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20025</returns>
-        public InlineResponse20025 PostWebsiteMigration (IdMigrationBody body, int? id)
+        /// <returns>InlineResponse20026</returns>
+        public InlineResponse20026 PostWebsiteMigration (IdMigrationBody body, int? id)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling PostWebsiteMigration");
@@ -646,7 +646,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostWebsiteMigration: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20025) ApiClient.Deserialize(response.Content, typeof(InlineResponse20025), response.Headers);
+            return (InlineResponse20026) ApiClient.Deserialize(response.Content, typeof(InlineResponse20026), response.Headers);
         }
     
         /// <summary>
@@ -666,8 +666,8 @@ namespace IO.Swagger.Api
         /// <param name="domainRegEmail"></param>
         /// <param name="domainRegPassword"></param>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20025</returns>
-        public InlineResponse20025 PostWebsiteMigration (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
+        /// <returns>InlineResponse20026</returns>
+        public InlineResponse20026 PostWebsiteMigration (string custPortal, string regEmail, string password, string ctrlPanel, string ftpUsername, string ftpPassword, string siteBusyMig, string splReqMig, string domainReg, string dataMig, string domainRegPortal, string domainRegEmail, string domainRegPassword, int? id)
         {
             // verify the required parameter 'custPortal' is set
             if (custPortal == null) throw new ApiException(400, "Missing required parameter 'custPortal' when calling PostWebsiteMigration");
@@ -733,7 +733,7 @@ if (domainRegPassword != null) formParams.Add("domainRegPassword", ApiClient.Par
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PostWebsiteMigration: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20025) ApiClient.Deserialize(response.Content, typeof(InlineResponse20025), response.Headers);
+            return (InlineResponse20026) ApiClient.Deserialize(response.Content, typeof(InlineResponse20026), response.Headers);
         }
     
         /// <summary>
@@ -849,8 +849,8 @@ if (domainRegPassword != null) formParams.Add("domainRegPassword", ApiClient.Par
         /// Update Website Order Updates settings on a webhosting order.
         /// </summary>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateWebsiteInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateWebsiteInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateWebsiteInfo");
@@ -877,15 +877,15 @@ if (domainRegPassword != null) formParams.Add("domainRegPassword", ApiClient.Par
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateWebsiteInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
         /// Cancel Website Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
         /// </summary>
         /// <param name="id">The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.</param>
-        /// <returns>InlineResponse20022</returns>
-        public InlineResponse20022 WebhostingCancel (string id)
+        /// <returns>InlineResponse20023</returns>
+        public InlineResponse20023 WebhostingCancel (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling WebhostingCancel");
@@ -912,7 +912,7 @@ if (domainRegPassword != null) formParams.Add("domainRegPassword", ApiClient.Par
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling WebhostingCancel: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20022) ApiClient.Deserialize(response.Content, typeof(InlineResponse20022), response.Headers);
+            return (InlineResponse20023) ApiClient.Deserialize(response.Content, typeof(InlineResponse20023), response.Headers);
         }
     
     }

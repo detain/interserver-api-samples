@@ -21,6 +21,7 @@ import { AccountInfoOauthConfigProvidersValue } from '../models/AccountInfoOauth
 import { AccountInfoOauthproviders } from '../models/AccountInfoOauthproviders';
 import { AccountInfoPost } from '../models/AccountInfoPost';
 import { AccountSshKey } from '../models/AccountSshKey';
+import { AddServer200Response } from '../models/AddServer200Response';
 import { AffiliateBannerRow } from '../models/AffiliateBannerRow';
 import { AffiliateDockSetup } from '../models/AffiliateDockSetup';
 import { AffiliatePaymentSetup } from '../models/AffiliatePaymentSetup';
@@ -353,6 +354,7 @@ import { ServersCancel200Response } from '../models/ServersCancel200Response';
 import { Service } from '../models/Service';
 import { ServiceCategories } from '../models/ServiceCategories';
 import { ServiceCategory } from '../models/ServiceCategory';
+import { ServiceOrderPostResponse } from '../models/ServiceOrderPostResponse';
 import { ServiceType } from '../models/ServiceType';
 import { ServiceTypes } from '../models/ServiceTypes';
 import { Services } from '../models/Services';
@@ -735,7 +737,7 @@ export class PromiseAccountApi {
      * @param [disableEmailNotifications] Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them.
      * @param [gstin] Your GST identification number (if applicable).
      */
-    public updateAccountInfoWithHttpInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateAccountInfoWithHttpInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAccountInfoWithHttpInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, observableOptions);
         return result.toPromise();
@@ -762,7 +764,7 @@ export class PromiseAccountApi {
      * @param [disableEmailNotifications] Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them.
      * @param [gstin] Your GST identification number (if applicable).
      */
-    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, observableOptions);
         return result.toPromise();
@@ -774,7 +776,7 @@ export class PromiseAccountApi {
      * @param start The begining (or first) IP address in the range.
      * @param end The ending (or last) IP address in the range.
      */
-    public updateAccountIpLimitsWithHttpInfo(start: string, end: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateAccountIpLimitsWithHttpInfo(start: string, end: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAccountIpLimitsWithHttpInfo(start, end, observableOptions);
         return result.toPromise();
@@ -786,7 +788,7 @@ export class PromiseAccountApi {
      * @param start The begining (or first) IP address in the range.
      * @param end The ending (or last) IP address in the range.
      */
-    public updateAccountIpLimits(start: string, end: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateAccountIpLimits(start: string, end: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAccountIpLimits(start, end, observableOptions);
         return result.toPromise();
@@ -1058,7 +1060,7 @@ export class PromiseBackupsApi {
      * Update Backup Information
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
      */
-    public updateBackupInfoWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateBackupInfoWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateBackupInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -1069,7 +1071,7 @@ export class PromiseBackupsApi {
      * Update Backup Information
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
      */
-    public updateBackupInfo(id: number, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateBackupInfo(id: number, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateBackupInfo(id, observableOptions);
         return result.toPromise();
@@ -1207,7 +1209,7 @@ export class PromiseBillingApi {
      * Remove Credit Card
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
-    public deleteAccountCreditCardWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public deleteAccountCreditCardWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<string>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteAccountCreditCardWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -1218,7 +1220,7 @@ export class PromiseBillingApi {
      * Remove Credit Card
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
-    public deleteAccountCreditCard(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public deleteAccountCreditCard(id: string, _options?: PromiseConfigurationOptions): Promise<string> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteAccountCreditCard(id, observableOptions);
         return result.toPromise();
@@ -1418,7 +1420,7 @@ export class PromiseBillingApi {
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
      * Get Shopping Cart Contents
      */
-    public getBillingCartWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public getBillingCartWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getBillingCartWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -1428,7 +1430,7 @@ export class PromiseBillingApi {
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
      * Get Shopping Cart Contents
      */
-    public getBillingCart(_options?: PromiseConfigurationOptions): Promise<void> {
+    public getBillingCart(_options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getBillingCart(observableOptions);
         return result.toPromise();
@@ -1502,7 +1504,7 @@ export class PromiseBillingApi {
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
      * List Prepay Balances
      */
-    public getBillingPrePaysWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public getBillingPrePaysWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getBillingPrePaysWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -1512,7 +1514,7 @@ export class PromiseBillingApi {
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
      * List Prepay Balances
      */
-    public getBillingPrePays(_options?: PromiseConfigurationOptions): Promise<void> {
+    public getBillingPrePays(_options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getBillingPrePays(observableOptions);
         return result.toPromise();
@@ -1597,7 +1599,7 @@ export class PromiseBillingApi {
      * Update Credit Card
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
-    public updateAccountCreditCardWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateAccountCreditCardWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<string>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAccountCreditCardWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -1608,7 +1610,7 @@ export class PromiseBillingApi {
      * Update Credit Card
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
-    public updateAccountCreditCard(id: number, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateAccountCreditCard(id: number, _options?: PromiseConfigurationOptions): Promise<string> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAccountCreditCard(id, observableOptions);
         return result.toPromise();
@@ -1759,7 +1761,7 @@ export class PromiseDNSApi {
      * @param domain The domain name.
      * @param ip IP Address to point the domain to.
      */
-    public addDnsDomainWithHttpInfo(domain: string, ip: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addDnsDomainWithHttpInfo(domain: string, ip: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addDnsDomainWithHttpInfo(domain, ip, observableOptions);
         return result.toPromise();
@@ -1771,7 +1773,7 @@ export class PromiseDNSApi {
      * @param domain The domain name.
      * @param ip IP Address to point the domain to.
      */
-    public addDnsDomain(domain: string, ip: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public addDnsDomain(domain: string, ip: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addDnsDomain(domain, ip, observableOptions);
         return result.toPromise();
@@ -1814,7 +1816,7 @@ export class PromiseDNSApi {
      * Delete DNS Domain
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      */
-    public deleteDnsDomainWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public deleteDnsDomainWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteDnsDomainWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -1825,7 +1827,7 @@ export class PromiseDNSApi {
      * Delete DNS Domain
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      */
-    public deleteDnsDomain(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public deleteDnsDomain(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteDnsDomain(id, observableOptions);
         return result.toPromise();
@@ -1837,7 +1839,7 @@ export class PromiseDNSApi {
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
      */
-    public deleteDnsRecordWithHttpInfo(domainId: number, recordId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public deleteDnsRecordWithHttpInfo(domainId: number, recordId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteDnsRecordWithHttpInfo(domainId, recordId, observableOptions);
         return result.toPromise();
@@ -1849,7 +1851,7 @@ export class PromiseDNSApi {
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
      */
-    public deleteDnsRecord(domainId: number, recordId: number, _options?: PromiseConfigurationOptions): Promise<void> {
+    public deleteDnsRecord(domainId: number, recordId: number, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteDnsRecord(domainId, recordId, observableOptions);
         return result.toPromise();
@@ -1911,7 +1913,7 @@ export class PromiseDNSApi {
      * @param [ordername]
      * @param [auth]
      */
-    public updateDnsRecordWithHttpInfo(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateDnsRecordWithHttpInfo(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateDnsRecordWithHttpInfo(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, observableOptions);
         return result.toPromise();
@@ -1931,7 +1933,7 @@ export class PromiseDNSApi {
      * @param [ordername]
      * @param [auth]
      */
-    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, observableOptions);
         return result.toPromise();
@@ -1960,7 +1962,7 @@ export class PromiseDomainsApi {
      * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
      * Place Domain Order
      */
-    public addDomainWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addDomainWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addDomainWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -1970,7 +1972,7 @@ export class PromiseDomainsApi {
      * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
      * Place Domain Order
      */
-    public addDomain(_options?: PromiseConfigurationOptions): Promise<void> {
+    public addDomain(_options?: PromiseConfigurationOptions): Promise<ServiceOrderPostResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addDomain(observableOptions);
         return result.toPromise();
@@ -2535,7 +2537,7 @@ export class PromiseDomainsApi {
      * Update Domain Order
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
      */
-    public updateDomainInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateDomainInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateDomainInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -2546,7 +2548,7 @@ export class PromiseDomainsApi {
      * Update Domain Order
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
      */
-    public updateDomainInfo(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateDomainInfo(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateDomainInfo(id, observableOptions);
         return result.toPromise();
@@ -2623,7 +2625,7 @@ export class PromiseFloatingIPsApi {
      * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
      * Place Floating IP Order
      */
-    public addFloatingIpWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addFloatingIpWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addFloatingIpWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -2633,7 +2635,7 @@ export class PromiseFloatingIPsApi {
      * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
      * Place Floating IP Order
      */
-    public addFloatingIp(_options?: PromiseConfigurationOptions): Promise<void> {
+    public addFloatingIp(_options?: PromiseConfigurationOptions): Promise<ServiceOrderPostResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addFloatingIp(observableOptions);
         return result.toPromise();
@@ -2666,7 +2668,7 @@ export class PromiseFloatingIPsApi {
      * View Floating IP
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
-    public getFloatingIpInfoWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public getFloatingIpInfoWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getFloatingIpInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -2677,7 +2679,7 @@ export class PromiseFloatingIPsApi {
      * View Floating IP
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
-    public getFloatingIpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<void> {
+    public getFloatingIpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getFloatingIpInfo(id, observableOptions);
         return result.toPromise();
@@ -2751,7 +2753,7 @@ export class PromiseFloatingIPsApi {
      * Retrieves available options and pricing for ordering a new Floating IP.
      * Get Floating IP Ordering Information
      */
-    public getNewFloatingIpWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public getNewFloatingIpWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getNewFloatingIpWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -2761,7 +2763,7 @@ export class PromiseFloatingIPsApi {
      * Retrieves available options and pricing for ordering a new Floating IP.
      * Get Floating IP Ordering Information
      */
-    public getNewFloatingIp(_options?: PromiseConfigurationOptions): Promise<void> {
+    public getNewFloatingIp(_options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getNewFloatingIp(observableOptions);
         return result.toPromise();
@@ -2816,7 +2818,7 @@ export class PromiseFloatingIPsApi {
      * Update Floating IP
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
-    public updateFloatingIpInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateFloatingIpInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateFloatingIpInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -2827,7 +2829,7 @@ export class PromiseFloatingIPsApi {
      * Update Floating IP
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
-    public updateFloatingIpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateFloatingIpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateFloatingIpInfo(id, observableOptions);
         return result.toPromise();
@@ -2856,7 +2858,7 @@ export class PromiseLicensesApi {
      * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
      * Place License Order
      */
-    public addLicenseWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addLicenseWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addLicenseWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -2866,7 +2868,7 @@ export class PromiseLicensesApi {
      * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
      * Place License Order
      */
-    public addLicense(_options?: PromiseConfigurationOptions): Promise<void> {
+    public addLicense(_options?: PromiseConfigurationOptions): Promise<ServiceOrderPostResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addLicense(observableOptions);
         return result.toPromise();
@@ -3071,7 +3073,7 @@ export class PromiseLicensesApi {
      * Update License
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
      */
-    public updateLicenseInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateLicenseInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLicenseInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -3082,7 +3084,7 @@ export class PromiseLicensesApi {
      * Update License
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
      */
-    public updateLicenseInfo(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateLicenseInfo(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateLicenseInfo(id, observableOptions);
         return result.toPromise();
@@ -3111,7 +3113,7 @@ export class PromiseMailApi {
      * Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
      * Place Mail Order
      */
-    public addMailWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addMailWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addMailWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -3121,7 +3123,7 @@ export class PromiseMailApi {
      * Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
      * Place Mail Order
      */
-    public addMail(_options?: PromiseConfigurationOptions): Promise<void> {
+    public addMail(_options?: PromiseConfigurationOptions): Promise<ServiceOrderPostResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addMail(observableOptions);
         return result.toPromise();
@@ -3652,7 +3654,7 @@ export class PromiseMailApi {
      * Update Mail Order
      * @param id The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.
      */
-    public updateMailInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateMailInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateMailInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -3663,7 +3665,7 @@ export class PromiseMailApi {
      * Update Mail Order
      * @param id The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.
      */
-    public updateMailInfo(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateMailInfo(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateMailInfo(id, observableOptions);
         return result.toPromise();
@@ -3680,14 +3682,14 @@ export class PromiseMailApi {
      * @param [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
      * @param [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
      * @param [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-     * @param [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+     * @param [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
      * @param [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
      * @param [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
      * @param [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
      * @param [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
      * @param [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
      * @param [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-     * @param [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+     * @param [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
      * @param [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
      * @param [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
      * @param [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -3709,14 +3711,14 @@ export class PromiseMailApi {
      * @param [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
      * @param [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
      * @param [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-     * @param [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+     * @param [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
      * @param [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
      * @param [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
      * @param [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
      * @param [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
      * @param [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
      * @param [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-     * @param [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+     * @param [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
      * @param [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
      * @param [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
      * @param [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -4031,7 +4033,7 @@ export class PromiseQuickServersApi {
      * Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
      * Place QuickServer Order
      */
-    public addQsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addQsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addQsWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -4041,7 +4043,7 @@ export class PromiseQuickServersApi {
      * Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
      * Place QuickServer Order
      */
-    public addQs(_options?: PromiseConfigurationOptions): Promise<void> {
+    public addQs(_options?: PromiseConfigurationOptions): Promise<ServiceOrderPostResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addQs(observableOptions);
         return result.toPromise();
@@ -4986,7 +4988,7 @@ export class PromiseQuickServersApi {
      * Update QuickServer Order
      * @param id QuickServer ID number.
      */
-    public updateQsInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateQsInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateQsInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -4997,7 +4999,7 @@ export class PromiseQuickServersApi {
      * Update QuickServer Order
      * @param id QuickServer ID number.
      */
-    public updateQsInfo(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateQsInfo(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateQsInfo(id, observableOptions);
         return result.toPromise();
@@ -5026,7 +5028,7 @@ export class PromiseSSLCertificatesApi {
      * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
      * Place SSL Cert Order
      */
-    public addSslWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addSslWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addSslWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -5036,7 +5038,7 @@ export class PromiseSSLCertificatesApi {
      * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
      * Place SSL Cert Order
      */
-    public addSsl(_options?: PromiseConfigurationOptions): Promise<void> {
+    public addSsl(_options?: PromiseConfigurationOptions): Promise<ServiceOrderPostResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addSsl(observableOptions);
         return result.toPromise();
@@ -5046,7 +5048,7 @@ export class PromiseSSLCertificatesApi {
      * Retrieves available SSL certificate types and pricing for ordering.
      * SSL Cert Ordering Information
      */
-    public getNewSslWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public getNewSslWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getNewSslWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -5056,7 +5058,7 @@ export class PromiseSSLCertificatesApi {
      * Retrieves available SSL certificate types and pricing for ordering.
      * SSL Cert Ordering Information
      */
-    public getNewSsl(_options?: PromiseConfigurationOptions): Promise<void> {
+    public getNewSsl(_options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getNewSsl(observableOptions);
         return result.toPromise();
@@ -5067,7 +5069,7 @@ export class PromiseSSLCertificatesApi {
      * Get SSL Cert Info
      * @param id SSL certificate ID number.
      */
-    public getSslInfoWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public getSslInfoWithHttpInfo(id: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getSslInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -5078,7 +5080,7 @@ export class PromiseSSLCertificatesApi {
      * Get SSL Cert Info
      * @param id SSL certificate ID number.
      */
-    public getSslInfo(id: number, _options?: PromiseConfigurationOptions): Promise<void> {
+    public getSslInfo(id: number, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getSslInfo(id, observableOptions);
         return result.toPromise();
@@ -5195,7 +5197,7 @@ export class PromiseSSLCertificatesApi {
      * Update SSL Cert Order
      * @param id SSL certificate ID number.
      */
-    public updateSslInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateSslInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSslInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -5206,7 +5208,7 @@ export class PromiseSSLCertificatesApi {
      * Update SSL Cert Order
      * @param id SSL certificate ID number.
      */
-    public updateSslInfo(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateSslInfo(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateSslInfo(id, observableOptions);
         return result.toPromise();
@@ -5612,7 +5614,7 @@ export class PromiseServersApi {
      * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
      * Place Server Order
      */
-    public addServerWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addServerWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<AddServer200Response>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addServerWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -5622,7 +5624,7 @@ export class PromiseServersApi {
      * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
      * Place Server Order
      */
-    public addServer(_options?: PromiseConfigurationOptions): Promise<void> {
+    public addServer(_options?: PromiseConfigurationOptions): Promise<AddServer200Response> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addServer(observableOptions);
         return result.toPromise();
@@ -5985,7 +5987,7 @@ export class PromiseServersApi {
      * Update Server Order
      * @param id Server ID number.
      */
-    public updateServerInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateServerInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateServerInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -5996,7 +5998,7 @@ export class PromiseServersApi {
      * Update Server Order
      * @param id Server ID number.
      */
-    public updateServerInfo(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateServerInfo(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateServerInfo(id, observableOptions);
         return result.toPromise();
@@ -6291,7 +6293,7 @@ export class PromiseVPSApi {
      * Place VPS Order
      * @param [vpsOrderPostRequest]
      */
-    public addVpsWithHttpInfo(vpsOrderPostRequest?: VpsOrderPostRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addVpsWithHttpInfo(vpsOrderPostRequest?: VpsOrderPostRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addVpsWithHttpInfo(vpsOrderPostRequest, observableOptions);
         return result.toPromise();
@@ -6302,7 +6304,7 @@ export class PromiseVPSApi {
      * Place VPS Order
      * @param [vpsOrderPostRequest]
      */
-    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, _options?: PromiseConfigurationOptions): Promise<void> {
+    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, _options?: PromiseConfigurationOptions): Promise<ServiceOrderPostResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addVps(vpsOrderPostRequest, observableOptions);
         return result.toPromise();
@@ -7241,7 +7243,7 @@ export class PromiseVPSApi {
      * Update VPS Order
      * @param id VPS ID number.
      */
-    public updateVpsInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateVpsInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateVpsInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -7252,7 +7254,7 @@ export class PromiseVPSApi {
      * Update VPS Order
      * @param id VPS ID number.
      */
-    public updateVpsInfo(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateVpsInfo(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateVpsInfo(id, observableOptions);
         return result.toPromise();
@@ -7303,7 +7305,7 @@ export class PromiseWebhostingApi {
      * Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
      * Place Website Order
      */
-    public addWebsiteWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public addWebsiteWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addWebsiteWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -7313,7 +7315,7 @@ export class PromiseWebhostingApi {
      * Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
      * Place Website Order
      */
-    public addWebsite(_options?: PromiseConfigurationOptions): Promise<void> {
+    public addWebsite(_options?: PromiseConfigurationOptions): Promise<ServiceOrderPostResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addWebsite(observableOptions);
         return result.toPromise();
@@ -7610,7 +7612,7 @@ export class PromiseWebhostingApi {
      * Update Website Order
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
      */
-    public updateWebsiteInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateWebsiteInfoWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateWebsiteInfoWithHttpInfo(id, observableOptions);
         return result.toPromise();
@@ -7621,7 +7623,7 @@ export class PromiseWebhostingApi {
      * Update Website Order
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
      */
-    public updateWebsiteInfo(id: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public updateWebsiteInfo(id: string, _options?: PromiseConfigurationOptions): Promise<SuccessTextResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateWebsiteInfo(id, observableOptions);
         return result.toPromise();

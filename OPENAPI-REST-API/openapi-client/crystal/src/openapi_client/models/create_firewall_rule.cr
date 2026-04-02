@@ -27,7 +27,8 @@ module OpenAPIClient
     @[JSON::Field(key: "destination_port", type: Int32?, default: 80, nillable: true, emit_null: false)]
     property destination_port : Int32?
 
-    @[JSON::Field(key: "source_ip", type: String?, default: "0", nillable: true, emit_null: false)]
+    # Source IP address to match. Use '0.0.0.0' to match any source.
+    @[JSON::Field(key: "source_ip", type: String?, default: "0.0.0.0", nillable: true, emit_null: false)]
     property source_ip : String?
 
     @[JSON::Field(key: "source_port", type: Int32?, default: 0, nillable: true, emit_null: false)]

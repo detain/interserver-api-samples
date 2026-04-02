@@ -23,6 +23,7 @@ goog.require('API.Client.QuickserverOrder');
 goog.require('API.Client.QuickserverRow');
 goog.require('API.Client.RestoreRequest');
 goog.require('API.Client.ReverseDnsEntries');
+goog.require('API.Client.ServiceOrderPostResponse');
 goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.TextResponse');
 goog.require('API.Client.VpsBackupRows');
@@ -63,7 +64,7 @@ API.Client.QuickServersApi.$inject = ['$http', '$httpParamSerializer', '$injecto
  * Place QuickServer Order
  * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.ServiceOrderPostResponse>}
  */
 API.Client.QuickServersApi.prototype.addQs = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -1686,7 +1687,7 @@ API.Client.QuickServersApi.prototype.quickserversCancel = function(id, opt_extra
  * Updates QuickServer metadata or stored settings associated with the order.
  * @param {!string} id QuickServer ID number.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.QuickServersApi.prototype.updateQsInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

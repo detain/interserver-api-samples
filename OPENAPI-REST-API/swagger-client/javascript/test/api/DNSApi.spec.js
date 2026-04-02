@@ -37,7 +37,7 @@
     describe('DNSApi', function() {
       describe('addDnsDomain', function() {
         it('should call addDnsDomain successfully', function(done) {
-          // TODO: uncomment, update parameter values for addDnsDomain call
+          // TODO: uncomment, update parameter values for addDnsDomain call and complete the assertions
           /*
 
           instance.addDnsDomain(domain, ip, body, function(error, data, response) {
@@ -45,6 +45,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });
@@ -73,7 +75,7 @@
       });
       describe('deleteDnsDomain', function() {
         it('should call deleteDnsDomain successfully', function(done) {
-          // TODO: uncomment, update parameter values for deleteDnsDomain call
+          // TODO: uncomment, update parameter values for deleteDnsDomain call and complete the assertions
           /*
 
           instance.deleteDnsDomain(id, function(error, data, response) {
@@ -81,6 +83,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });
@@ -91,7 +95,7 @@
       });
       describe('deleteDnsRecord', function() {
         it('should call deleteDnsRecord successfully', function(done) {
-          // TODO: uncomment, update parameter values for deleteDnsRecord call
+          // TODO: uncomment, update parameter values for deleteDnsRecord call and complete the assertions
           /*
 
           instance.deleteDnsRecord(domainId, recordId, function(error, data, response) {
@@ -99,6 +103,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });
@@ -161,7 +167,7 @@
       });
       describe('updateDnsRecord', function() {
         it('should call updateDnsRecord successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateDnsRecord call
+          // TODO: uncomment, update parameter values for updateDnsRecord call and complete the assertions
           /*
 
           instance.updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId, function(error, data, response) {
@@ -169,6 +175,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

@@ -27,39 +27,20 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20026 : IEquatable<InlineResponse20026>
     { 
         /// <summary>
-        /// Gets or Sets Bandwidth
+        /// Confirmation message.
         /// </summary>
+        /// <value>Confirmation message.</value>
 
-        [DataMember(Name="bandwidth")]
-        public List<InlineResponse20026Bandwidth> Bandwidth { get; set; }
+        [DataMember(Name="text")]
+        public string Text { get; set; }
 
         /// <summary>
-        /// Gets or Sets Ips
+        /// The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.
         /// </summary>
+        /// <value>The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.</value>
 
-        [DataMember(Name="ips")]
-        public List<InlineResponse20026Ips> Ips { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Os
-        /// </summary>
-
-        [DataMember(Name="os")]
-        public List<InlineResponse20026Os> Os { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cp
-        /// </summary>
-
-        [DataMember(Name="cp")]
-        public List<InlineResponse20026Cp> Cp { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Raid
-        /// </summary>
-
-        [DataMember(Name="raid")]
-        public List<InlineResponse20026Raid> Raid { get; set; }
+        [DataMember(Name="ticket")]
+        public int? Ticket { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,11 +50,8 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20026 {\n");
-            sb.Append("  Bandwidth: ").Append(Bandwidth).Append("\n");
-            sb.Append("  Ips: ").Append(Ips).Append("\n");
-            sb.Append("  Os: ").Append(Os).Append("\n");
-            sb.Append("  Cp: ").Append(Cp).Append("\n");
-            sb.Append("  Raid: ").Append(Raid).Append("\n");
+            sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  Ticket: ").Append(Ticket).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -111,29 +89,14 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Bandwidth == other.Bandwidth ||
-                    Bandwidth != null &&
-                    Bandwidth.SequenceEqual(other.Bandwidth)
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 ) && 
                 (
-                    Ips == other.Ips ||
-                    Ips != null &&
-                    Ips.SequenceEqual(other.Ips)
-                ) && 
-                (
-                    Os == other.Os ||
-                    Os != null &&
-                    Os.SequenceEqual(other.Os)
-                ) && 
-                (
-                    Cp == other.Cp ||
-                    Cp != null &&
-                    Cp.SequenceEqual(other.Cp)
-                ) && 
-                (
-                    Raid == other.Raid ||
-                    Raid != null &&
-                    Raid.SequenceEqual(other.Raid)
+                    Ticket == other.Ticket ||
+                    Ticket != null &&
+                    Ticket.Equals(other.Ticket)
                 );
         }
 
@@ -147,16 +110,10 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Bandwidth != null)
-                    hashCode = hashCode * 59 + Bandwidth.GetHashCode();
-                    if (Ips != null)
-                    hashCode = hashCode * 59 + Ips.GetHashCode();
-                    if (Os != null)
-                    hashCode = hashCode * 59 + Os.GetHashCode();
-                    if (Cp != null)
-                    hashCode = hashCode * 59 + Cp.GetHashCode();
-                    if (Raid != null)
-                    hashCode = hashCode * 59 + Raid.GetHashCode();
+                    if (Text != null)
+                    hashCode = hashCode * 59 + Text.GetHashCode();
+                    if (Ticket != null)
+                    hashCode = hashCode * 59 + Ticket.GetHashCode();
                 return hashCode;
             }
         }

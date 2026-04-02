@@ -44,7 +44,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="addDnsDomain"></a>
 # **addDnsDomain**
 ```java
-Mono<Void> DnsApi.addDnsDomain(domainip)
+Mono<SuccessTextResponse> DnsApi.addDnsDomain(domainip)
 ```
 
 Create DNS Domain
@@ -58,7 +58,8 @@ Creates a new DNS domain and assigns an initial A record pointing to the supplie
 | **ip** | `String`| IP Address to point the domain to. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -104,7 +105,7 @@ Adds a new DNS record to the specified domain. Provide the record type (A, AAAA,
 <a id="deleteDnsDomain"></a>
 # **deleteDnsDomain**
 ```java
-Mono<Void> DnsApi.deleteDnsDomain(id)
+Mono<SuccessTextResponse> DnsApi.deleteDnsDomain(id)
 ```
 
 Delete DNS Domain
@@ -117,7 +118,8 @@ Deletes a DNS domain and all of its associated records from the DNS servers. Thi
 | **id** | `String`| The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -131,7 +133,7 @@ Deletes a DNS domain and all of its associated records from the DNS servers. Thi
 <a id="deleteDnsRecord"></a>
 # **deleteDnsRecord**
 ```java
-Mono<Void> DnsApi.deleteDnsRecord(domainIdrecordId)
+Mono<SuccessTextResponse> DnsApi.deleteDnsRecord(domainIdrecordId)
 ```
 
 Delete DNS Record
@@ -145,7 +147,8 @@ Removes a DNS record from the specified domain. The deletion takes effect on the
 | **recordId** | `Integer`| The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -211,7 +214,7 @@ Returns the DNS domains on your account along with their primary A record conten
 <a id="updateDnsRecord"></a>
 # **updateDnsRecord**
 ```java
-Mono<Void> DnsApi.updateDnsRecord(domainIdrecordIdnametypecontentttlpriodisabledordernameauth)
+Mono<SuccessTextResponse> DnsApi.updateDnsRecord(domainIdrecordIdnametypecontentttlpriodisabledordernameauth)
 ```
 
 Update DNS Record
@@ -233,7 +236,8 @@ Updates an existing DNS record with new values. Use &#x60;GET /dns/{id}&#x60; to
 | **auth** | `String`|  | [optional parameter] |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

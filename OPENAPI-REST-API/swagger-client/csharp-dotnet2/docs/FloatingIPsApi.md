@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="addfloatingip"></a>
 # **AddFloatingIp**
-> void AddFloatingIp ()
+> ServiceOrderPostResponse AddFloatingIp ()
 
 Place Floating IP Order
 
@@ -56,7 +56,8 @@ namespace Example
             try
             {
                 // Place Floating IP Order
-                apiInstance.AddFloatingIp();
+                ServiceOrderPostResponse result = apiInstance.AddFloatingIp();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -72,7 +73,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -162,7 +163,7 @@ Name | Type | Description  | Notes
 
 <a name="getfloatingipinfo"></a>
 # **GetFloatingIpInfo**
-> void GetFloatingIpInfo (int? id)
+> Object GetFloatingIpInfo (int? id)
 
 View Floating IP
 
@@ -202,7 +203,8 @@ namespace Example
             try
             {
                 // View Floating IP
-                apiInstance.GetFloatingIpInfo(id);
+                Object result = apiInstance.GetFloatingIpInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -221,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -456,7 +458,7 @@ Name | Type | Description  | Notes
 
 <a name="getnewfloatingip"></a>
 # **GetNewFloatingIp**
-> void GetNewFloatingIp ()
+> Object GetNewFloatingIp ()
 
 Get Floating IP Ordering Information
 
@@ -495,7 +497,8 @@ namespace Example
             try
             {
                 // Get Floating IP Ordering Information
-                apiInstance.GetNewFloatingIp();
+                Object result = apiInstance.GetNewFloatingIp();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -511,7 +514,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -673,7 +676,7 @@ void (empty response body)
 
 <a name="updatefloatingipinfo"></a>
 # **UpdateFloatingIpInfo**
-> void UpdateFloatingIpInfo (string id)
+> SuccessTextResponse UpdateFloatingIpInfo (string id)
 
 Update Floating IP
 
@@ -713,7 +716,8 @@ namespace Example
             try
             {
                 // Update Floating IP
-                apiInstance.UpdateFloatingIpInfo(id);
+                SuccessTextResponse result = apiInstance.UpdateFloatingIpInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -732,7 +736,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

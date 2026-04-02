@@ -21,6 +21,7 @@ import { AccountInfoOauthConfigProvidersValue } from '../models/AccountInfoOauth
 import { AccountInfoOauthproviders } from '../models/AccountInfoOauthproviders';
 import { AccountInfoPost } from '../models/AccountInfoPost';
 import { AccountSshKey } from '../models/AccountSshKey';
+import { AddServer200Response } from '../models/AddServer200Response';
 import { AffiliateBannerRow } from '../models/AffiliateBannerRow';
 import { AffiliateDockSetup } from '../models/AffiliateDockSetup';
 import { AffiliatePaymentSetup } from '../models/AffiliatePaymentSetup';
@@ -353,6 +354,7 @@ import { ServersCancel200Response } from '../models/ServersCancel200Response';
 import { Service } from '../models/Service';
 import { ServiceCategories } from '../models/ServiceCategories';
 import { ServiceCategory } from '../models/ServiceCategory';
+import { ServiceOrderPostResponse } from '../models/ServiceOrderPostResponse';
 import { ServiceType } from '../models/ServiceType';
 import { ServiceTypes } from '../models/ServiceTypes';
 import { Services } from '../models/Services';
@@ -917,7 +919,7 @@ export class ObjectAccountApi {
      * Update Account Information
      * @param param the request object
      */
-    public updateAccountInfoWithHttpInfo(param: AccountApiUpdateAccountInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateAccountInfoWithHttpInfo(param: AccountApiUpdateAccountInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateAccountInfoWithHttpInfo(param.name, param.address, param.city, param.state, param.zip, param.country, param.phone, param.company, param.address2, param.locale, param.emailInvoices, param.emailAbuse, param.disableReset, param.disableReinstall, param.disableServerNotifications, param.disableEmailNotifications, param.gstin,  options).toPromise();
     }
 
@@ -926,7 +928,7 @@ export class ObjectAccountApi {
      * Update Account Information
      * @param param the request object
      */
-    public updateAccountInfo(param: AccountApiUpdateAccountInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateAccountInfo(param: AccountApiUpdateAccountInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateAccountInfo(param.name, param.address, param.city, param.state, param.zip, param.country, param.phone, param.company, param.address2, param.locale, param.emailInvoices, param.emailAbuse, param.disableReset, param.disableReinstall, param.disableServerNotifications, param.disableEmailNotifications, param.gstin,  options).toPromise();
     }
 
@@ -935,7 +937,7 @@ export class ObjectAccountApi {
      * Add IP Access Restriction
      * @param param the request object
      */
-    public updateAccountIpLimitsWithHttpInfo(param: AccountApiUpdateAccountIpLimitsRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateAccountIpLimitsWithHttpInfo(param: AccountApiUpdateAccountIpLimitsRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateAccountIpLimitsWithHttpInfo(param.start, param.end,  options).toPromise();
     }
 
@@ -944,7 +946,7 @@ export class ObjectAccountApi {
      * Add IP Access Restriction
      * @param param the request object
      */
-    public updateAccountIpLimits(param: AccountApiUpdateAccountIpLimitsRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateAccountIpLimits(param: AccountApiUpdateAccountIpLimitsRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateAccountIpLimits(param.start, param.end,  options).toPromise();
     }
 
@@ -1277,7 +1279,7 @@ export class ObjectBackupsApi {
      * Update Backup Information
      * @param param the request object
      */
-    public updateBackupInfoWithHttpInfo(param: BackupsApiUpdateBackupInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateBackupInfoWithHttpInfo(param: BackupsApiUpdateBackupInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateBackupInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -1286,7 +1288,7 @@ export class ObjectBackupsApi {
      * Update Backup Information
      * @param param the request object
      */
-    public updateBackupInfo(param: BackupsApiUpdateBackupInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateBackupInfo(param: BackupsApiUpdateBackupInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateBackupInfo(param.id,  options).toPromise();
     }
 
@@ -1718,7 +1720,7 @@ export class ObjectBillingApi {
      * Remove Credit Card
      * @param param the request object
      */
-    public deleteAccountCreditCardWithHttpInfo(param: BillingApiDeleteAccountCreditCardRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public deleteAccountCreditCardWithHttpInfo(param: BillingApiDeleteAccountCreditCardRequest, options?: ConfigurationOptions): Promise<HttpInfo<string>> {
         return this.api.deleteAccountCreditCardWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -1727,7 +1729,7 @@ export class ObjectBillingApi {
      * Remove Credit Card
      * @param param the request object
      */
-    public deleteAccountCreditCard(param: BillingApiDeleteAccountCreditCardRequest, options?: ConfigurationOptions): Promise<void> {
+    public deleteAccountCreditCard(param: BillingApiDeleteAccountCreditCardRequest, options?: ConfigurationOptions): Promise<string> {
         return this.api.deleteAccountCreditCard(param.id,  options).toPromise();
     }
 
@@ -1898,7 +1900,7 @@ export class ObjectBillingApi {
      * Get Shopping Cart Contents
      * @param param the request object
      */
-    public getBillingCartWithHttpInfo(param: BillingApiGetBillingCartRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public getBillingCartWithHttpInfo(param: BillingApiGetBillingCartRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.getBillingCartWithHttpInfo( options).toPromise();
     }
 
@@ -1907,7 +1909,7 @@ export class ObjectBillingApi {
      * Get Shopping Cart Contents
      * @param param the request object
      */
-    public getBillingCart(param: BillingApiGetBillingCartRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public getBillingCart(param: BillingApiGetBillingCartRequest = {}, options?: ConfigurationOptions): Promise<any> {
         return this.api.getBillingCart( options).toPromise();
     }
 
@@ -1970,7 +1972,7 @@ export class ObjectBillingApi {
      * List Prepay Balances
      * @param param the request object
      */
-    public getBillingPrePaysWithHttpInfo(param: BillingApiGetBillingPrePaysRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public getBillingPrePaysWithHttpInfo(param: BillingApiGetBillingPrePaysRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.getBillingPrePaysWithHttpInfo( options).toPromise();
     }
 
@@ -1979,7 +1981,7 @@ export class ObjectBillingApi {
      * List Prepay Balances
      * @param param the request object
      */
-    public getBillingPrePays(param: BillingApiGetBillingPrePaysRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public getBillingPrePays(param: BillingApiGetBillingPrePaysRequest = {}, options?: ConfigurationOptions): Promise<any> {
         return this.api.getBillingPrePays( options).toPromise();
     }
 
@@ -2042,7 +2044,7 @@ export class ObjectBillingApi {
      * Update Credit Card
      * @param param the request object
      */
-    public updateAccountCreditCardWithHttpInfo(param: BillingApiUpdateAccountCreditCardRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateAccountCreditCardWithHttpInfo(param: BillingApiUpdateAccountCreditCardRequest, options?: ConfigurationOptions): Promise<HttpInfo<string>> {
         return this.api.updateAccountCreditCardWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -2051,7 +2053,7 @@ export class ObjectBillingApi {
      * Update Credit Card
      * @param param the request object
      */
-    public updateAccountCreditCard(param: BillingApiUpdateAccountCreditCardRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateAccountCreditCard(param: BillingApiUpdateAccountCreditCardRequest, options?: ConfigurationOptions): Promise<string> {
         return this.api.updateAccountCreditCard(param.id,  options).toPromise();
     }
 
@@ -2337,7 +2339,7 @@ export class ObjectDNSApi {
      * Create DNS Domain
      * @param param the request object
      */
-    public addDnsDomainWithHttpInfo(param: DNSApiAddDnsDomainRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addDnsDomainWithHttpInfo(param: DNSApiAddDnsDomainRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.addDnsDomainWithHttpInfo(param.domain, param.ip,  options).toPromise();
     }
 
@@ -2346,7 +2348,7 @@ export class ObjectDNSApi {
      * Create DNS Domain
      * @param param the request object
      */
-    public addDnsDomain(param: DNSApiAddDnsDomainRequest, options?: ConfigurationOptions): Promise<void> {
+    public addDnsDomain(param: DNSApiAddDnsDomainRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.addDnsDomain(param.domain, param.ip,  options).toPromise();
     }
 
@@ -2373,7 +2375,7 @@ export class ObjectDNSApi {
      * Delete DNS Domain
      * @param param the request object
      */
-    public deleteDnsDomainWithHttpInfo(param: DNSApiDeleteDnsDomainRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public deleteDnsDomainWithHttpInfo(param: DNSApiDeleteDnsDomainRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.deleteDnsDomainWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -2382,7 +2384,7 @@ export class ObjectDNSApi {
      * Delete DNS Domain
      * @param param the request object
      */
-    public deleteDnsDomain(param: DNSApiDeleteDnsDomainRequest, options?: ConfigurationOptions): Promise<void> {
+    public deleteDnsDomain(param: DNSApiDeleteDnsDomainRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.deleteDnsDomain(param.id,  options).toPromise();
     }
 
@@ -2391,7 +2393,7 @@ export class ObjectDNSApi {
      * Delete DNS Record
      * @param param the request object
      */
-    public deleteDnsRecordWithHttpInfo(param: DNSApiDeleteDnsRecordRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public deleteDnsRecordWithHttpInfo(param: DNSApiDeleteDnsRecordRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.deleteDnsRecordWithHttpInfo(param.domainId, param.recordId,  options).toPromise();
     }
 
@@ -2400,7 +2402,7 @@ export class ObjectDNSApi {
      * Delete DNS Record
      * @param param the request object
      */
-    public deleteDnsRecord(param: DNSApiDeleteDnsRecordRequest, options?: ConfigurationOptions): Promise<void> {
+    public deleteDnsRecord(param: DNSApiDeleteDnsRecordRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.deleteDnsRecord(param.domainId, param.recordId,  options).toPromise();
     }
 
@@ -2445,7 +2447,7 @@ export class ObjectDNSApi {
      * Update DNS Record
      * @param param the request object
      */
-    public updateDnsRecordWithHttpInfo(param: DNSApiUpdateDnsRecordRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateDnsRecordWithHttpInfo(param: DNSApiUpdateDnsRecordRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateDnsRecordWithHttpInfo(param.domainId, param.recordId, param.name, param.type, param.content, param.ttl, param.prio, param.disabled, param.ordername, param.auth,  options).toPromise();
     }
 
@@ -2454,7 +2456,7 @@ export class ObjectDNSApi {
      * Update DNS Record
      * @param param the request object
      */
-    public updateDnsRecord(param: DNSApiUpdateDnsRecordRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateDnsRecord(param: DNSApiUpdateDnsRecordRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateDnsRecord(param.domainId, param.recordId, param.name, param.type, param.content, param.ttl, param.prio, param.disabled, param.ordername, param.auth,  options).toPromise();
     }
 
@@ -2781,7 +2783,7 @@ export class ObjectDomainsApi {
      * Place Domain Order
      * @param param the request object
      */
-    public addDomainWithHttpInfo(param: DomainsApiAddDomainRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addDomainWithHttpInfo(param: DomainsApiAddDomainRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         return this.api.addDomainWithHttpInfo( options).toPromise();
     }
 
@@ -2790,7 +2792,7 @@ export class ObjectDomainsApi {
      * Place Domain Order
      * @param param the request object
      */
-    public addDomain(param: DomainsApiAddDomainRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public addDomain(param: DomainsApiAddDomainRequest = {}, options?: ConfigurationOptions): Promise<ServiceOrderPostResponse> {
         return this.api.addDomain( options).toPromise();
     }
 
@@ -3249,7 +3251,7 @@ export class ObjectDomainsApi {
      * Update Domain Order
      * @param param the request object
      */
-    public updateDomainInfoWithHttpInfo(param: DomainsApiUpdateDomainInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateDomainInfoWithHttpInfo(param: DomainsApiUpdateDomainInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateDomainInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -3258,7 +3260,7 @@ export class ObjectDomainsApi {
      * Update Domain Order
      * @param param the request object
      */
-    public updateDomainInfo(param: DomainsApiUpdateDomainInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateDomainInfo(param: DomainsApiUpdateDomainInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateDomainInfo(param.id,  options).toPromise();
     }
 
@@ -3394,7 +3396,7 @@ export class ObjectFloatingIPsApi {
      * Place Floating IP Order
      * @param param the request object
      */
-    public addFloatingIpWithHttpInfo(param: FloatingIPsApiAddFloatingIpRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addFloatingIpWithHttpInfo(param: FloatingIPsApiAddFloatingIpRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         return this.api.addFloatingIpWithHttpInfo( options).toPromise();
     }
 
@@ -3403,7 +3405,7 @@ export class ObjectFloatingIPsApi {
      * Place Floating IP Order
      * @param param the request object
      */
-    public addFloatingIp(param: FloatingIPsApiAddFloatingIpRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public addFloatingIp(param: FloatingIPsApiAddFloatingIpRequest = {}, options?: ConfigurationOptions): Promise<ServiceOrderPostResponse> {
         return this.api.addFloatingIp( options).toPromise();
     }
 
@@ -3430,7 +3432,7 @@ export class ObjectFloatingIPsApi {
      * View Floating IP
      * @param param the request object
      */
-    public getFloatingIpInfoWithHttpInfo(param: FloatingIPsApiGetFloatingIpInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public getFloatingIpInfoWithHttpInfo(param: FloatingIPsApiGetFloatingIpInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.getFloatingIpInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -3439,7 +3441,7 @@ export class ObjectFloatingIPsApi {
      * View Floating IP
      * @param param the request object
      */
-    public getFloatingIpInfo(param: FloatingIPsApiGetFloatingIpInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public getFloatingIpInfo(param: FloatingIPsApiGetFloatingIpInfoRequest, options?: ConfigurationOptions): Promise<any> {
         return this.api.getFloatingIpInfo(param.id,  options).toPromise();
     }
 
@@ -3502,7 +3504,7 @@ export class ObjectFloatingIPsApi {
      * Get Floating IP Ordering Information
      * @param param the request object
      */
-    public getNewFloatingIpWithHttpInfo(param: FloatingIPsApiGetNewFloatingIpRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public getNewFloatingIpWithHttpInfo(param: FloatingIPsApiGetNewFloatingIpRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.getNewFloatingIpWithHttpInfo( options).toPromise();
     }
 
@@ -3511,7 +3513,7 @@ export class ObjectFloatingIPsApi {
      * Get Floating IP Ordering Information
      * @param param the request object
      */
-    public getNewFloatingIp(param: FloatingIPsApiGetNewFloatingIpRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public getNewFloatingIp(param: FloatingIPsApiGetNewFloatingIpRequest = {}, options?: ConfigurationOptions): Promise<any> {
         return this.api.getNewFloatingIp( options).toPromise();
     }
 
@@ -3556,7 +3558,7 @@ export class ObjectFloatingIPsApi {
      * Update Floating IP
      * @param param the request object
      */
-    public updateFloatingIpInfoWithHttpInfo(param: FloatingIPsApiUpdateFloatingIpInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateFloatingIpInfoWithHttpInfo(param: FloatingIPsApiUpdateFloatingIpInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateFloatingIpInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -3565,7 +3567,7 @@ export class ObjectFloatingIPsApi {
      * Update Floating IP
      * @param param the request object
      */
-    public updateFloatingIpInfo(param: FloatingIPsApiUpdateFloatingIpInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateFloatingIpInfo(param: FloatingIPsApiUpdateFloatingIpInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateFloatingIpInfo(param.id,  options).toPromise();
     }
 
@@ -3674,7 +3676,7 @@ export class ObjectLicensesApi {
      * Place License Order
      * @param param the request object
      */
-    public addLicenseWithHttpInfo(param: LicensesApiAddLicenseRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addLicenseWithHttpInfo(param: LicensesApiAddLicenseRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         return this.api.addLicenseWithHttpInfo( options).toPromise();
     }
 
@@ -3683,7 +3685,7 @@ export class ObjectLicensesApi {
      * Place License Order
      * @param param the request object
      */
-    public addLicense(param: LicensesApiAddLicenseRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public addLicense(param: LicensesApiAddLicenseRequest = {}, options?: ConfigurationOptions): Promise<ServiceOrderPostResponse> {
         return this.api.addLicense( options).toPromise();
     }
 
@@ -3854,7 +3856,7 @@ export class ObjectLicensesApi {
      * Update License
      * @param param the request object
      */
-    public updateLicenseInfoWithHttpInfo(param: LicensesApiUpdateLicenseInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateLicenseInfoWithHttpInfo(param: LicensesApiUpdateLicenseInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateLicenseInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -3863,7 +3865,7 @@ export class ObjectLicensesApi {
      * Update License
      * @param param the request object
      */
-    public updateLicenseInfo(param: LicensesApiUpdateLicenseInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateLicenseInfo(param: LicensesApiUpdateLicenseInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateLicenseInfo(param.id,  options).toPromise();
     }
 
@@ -4216,7 +4218,7 @@ export interface MailApiViewMailLogRequest {
      */
     mailid?: string
     /**
-     * Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+     * Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
      * Defaults to: undefined
      * @type string
      * @memberof MailApiviewMailLog
@@ -4268,7 +4270,7 @@ export interface MailApiViewMailLogRequest {
      */
     startDate?: ViewMailLogStartDateParameter
     /**
-     * Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+     * Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
      * Defaults to: undefined
      * @type ViewMailLogStartDateParameter
      * @memberof MailApiviewMailLog
@@ -4309,7 +4311,7 @@ export class ObjectMailApi {
      * Place Mail Order
      * @param param the request object
      */
-    public addMailWithHttpInfo(param: MailApiAddMailRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addMailWithHttpInfo(param: MailApiAddMailRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         return this.api.addMailWithHttpInfo( options).toPromise();
     }
 
@@ -4318,7 +4320,7 @@ export class ObjectMailApi {
      * Place Mail Order
      * @param param the request object
      */
-    public addMail(param: MailApiAddMailRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public addMail(param: MailApiAddMailRequest = {}, options?: ConfigurationOptions): Promise<ServiceOrderPostResponse> {
         return this.api.addMail( options).toPromise();
     }
 
@@ -4741,7 +4743,7 @@ export class ObjectMailApi {
      * Update Mail Order
      * @param param the request object
      */
-    public updateMailInfoWithHttpInfo(param: MailApiUpdateMailInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateMailInfoWithHttpInfo(param: MailApiUpdateMailInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateMailInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -4750,7 +4752,7 @@ export class ObjectMailApi {
      * Update Mail Order
      * @param param the request object
      */
-    public updateMailInfo(param: MailApiUpdateMailInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateMailInfo(param: MailApiUpdateMailInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateMailInfo(param.id,  options).toPromise();
     }
 
@@ -5592,7 +5594,7 @@ export class ObjectQuickServersApi {
      * Place QuickServer Order
      * @param param the request object
      */
-    public addQsWithHttpInfo(param: QuickServersApiAddQsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addQsWithHttpInfo(param: QuickServersApiAddQsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         return this.api.addQsWithHttpInfo( options).toPromise();
     }
 
@@ -5601,7 +5603,7 @@ export class ObjectQuickServersApi {
      * Place QuickServer Order
      * @param param the request object
      */
-    public addQs(param: QuickServersApiAddQsRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public addQs(param: QuickServersApiAddQsRequest = {}, options?: ConfigurationOptions): Promise<ServiceOrderPostResponse> {
         return this.api.addQs( options).toPromise();
     }
 
@@ -6366,7 +6368,7 @@ export class ObjectQuickServersApi {
      * Update QuickServer Order
      * @param param the request object
      */
-    public updateQsInfoWithHttpInfo(param: QuickServersApiUpdateQsInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateQsInfoWithHttpInfo(param: QuickServersApiUpdateQsInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateQsInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -6375,7 +6377,7 @@ export class ObjectQuickServersApi {
      * Update QuickServer Order
      * @param param the request object
      */
-    public updateQsInfo(param: QuickServersApiUpdateQsInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateQsInfo(param: QuickServersApiUpdateQsInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateQsInfo(param.id,  options).toPromise();
     }
 
@@ -6458,7 +6460,7 @@ export class ObjectSSLCertificatesApi {
      * Place SSL Cert Order
      * @param param the request object
      */
-    public addSslWithHttpInfo(param: SSLCertificatesApiAddSslRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addSslWithHttpInfo(param: SSLCertificatesApiAddSslRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         return this.api.addSslWithHttpInfo( options).toPromise();
     }
 
@@ -6467,7 +6469,7 @@ export class ObjectSSLCertificatesApi {
      * Place SSL Cert Order
      * @param param the request object
      */
-    public addSsl(param: SSLCertificatesApiAddSslRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public addSsl(param: SSLCertificatesApiAddSslRequest = {}, options?: ConfigurationOptions): Promise<ServiceOrderPostResponse> {
         return this.api.addSsl( options).toPromise();
     }
 
@@ -6476,7 +6478,7 @@ export class ObjectSSLCertificatesApi {
      * SSL Cert Ordering Information
      * @param param the request object
      */
-    public getNewSslWithHttpInfo(param: SSLCertificatesApiGetNewSslRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public getNewSslWithHttpInfo(param: SSLCertificatesApiGetNewSslRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.getNewSslWithHttpInfo( options).toPromise();
     }
 
@@ -6485,7 +6487,7 @@ export class ObjectSSLCertificatesApi {
      * SSL Cert Ordering Information
      * @param param the request object
      */
-    public getNewSsl(param: SSLCertificatesApiGetNewSslRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public getNewSsl(param: SSLCertificatesApiGetNewSslRequest = {}, options?: ConfigurationOptions): Promise<any> {
         return this.api.getNewSsl( options).toPromise();
     }
 
@@ -6494,7 +6496,7 @@ export class ObjectSSLCertificatesApi {
      * Get SSL Cert Info
      * @param param the request object
      */
-    public getSslInfoWithHttpInfo(param: SSLCertificatesApiGetSslInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public getSslInfoWithHttpInfo(param: SSLCertificatesApiGetSslInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.getSslInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -6503,7 +6505,7 @@ export class ObjectSSLCertificatesApi {
      * Get SSL Cert Info
      * @param param the request object
      */
-    public getSslInfo(param: SSLCertificatesApiGetSslInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public getSslInfo(param: SSLCertificatesApiGetSslInfoRequest, options?: ConfigurationOptions): Promise<any> {
         return this.api.getSslInfo(param.id,  options).toPromise();
     }
 
@@ -6602,7 +6604,7 @@ export class ObjectSSLCertificatesApi {
      * Update SSL Cert Order
      * @param param the request object
      */
-    public updateSslInfoWithHttpInfo(param: SSLCertificatesApiUpdateSslInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateSslInfoWithHttpInfo(param: SSLCertificatesApiUpdateSslInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateSslInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -6611,7 +6613,7 @@ export class ObjectSSLCertificatesApi {
      * Update SSL Cert Order
      * @param param the request object
      */
-    public updateSslInfo(param: SSLCertificatesApiUpdateSslInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateSslInfo(param: SSLCertificatesApiUpdateSslInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateSslInfo(param.id,  options).toPromise();
     }
 
@@ -7277,7 +7279,7 @@ export class ObjectServersApi {
      * Place Server Order
      * @param param the request object
      */
-    public addServerWithHttpInfo(param: ServersApiAddServerRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addServerWithHttpInfo(param: ServersApiAddServerRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<AddServer200Response>> {
         return this.api.addServerWithHttpInfo( options).toPromise();
     }
 
@@ -7286,7 +7288,7 @@ export class ObjectServersApi {
      * Place Server Order
      * @param param the request object
      */
-    public addServer(param: ServersApiAddServerRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public addServer(param: ServersApiAddServerRequest = {}, options?: ConfigurationOptions): Promise<AddServer200Response> {
         return this.api.addServer( options).toPromise();
     }
 
@@ -7583,7 +7585,7 @@ export class ObjectServersApi {
      * Update Server Order
      * @param param the request object
      */
-    public updateServerInfoWithHttpInfo(param: ServersApiUpdateServerInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateServerInfoWithHttpInfo(param: ServersApiUpdateServerInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateServerInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -7592,7 +7594,7 @@ export class ObjectServersApi {
      * Update Server Order
      * @param param the request object
      */
-    public updateServerInfo(param: ServersApiUpdateServerInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateServerInfo(param: ServersApiUpdateServerInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateServerInfo(param.id,  options).toPromise();
     }
 
@@ -8470,7 +8472,7 @@ export class ObjectVPSApi {
      * Place VPS Order
      * @param param the request object
      */
-    public addVpsWithHttpInfo(param: VPSApiAddVpsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addVpsWithHttpInfo(param: VPSApiAddVpsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         return this.api.addVpsWithHttpInfo(param.vpsOrderPostRequest,  options).toPromise();
     }
 
@@ -8479,7 +8481,7 @@ export class ObjectVPSApi {
      * Place VPS Order
      * @param param the request object
      */
-    public addVps(param: VPSApiAddVpsRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public addVps(param: VPSApiAddVpsRequest = {}, options?: ConfigurationOptions): Promise<ServiceOrderPostResponse> {
         return this.api.addVps(param.vpsOrderPostRequest,  options).toPromise();
     }
 
@@ -9226,7 +9228,7 @@ export class ObjectVPSApi {
      * Update VPS Order
      * @param param the request object
      */
-    public updateVpsInfoWithHttpInfo(param: VPSApiUpdateVpsInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateVpsInfoWithHttpInfo(param: VPSApiUpdateVpsInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateVpsInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -9235,7 +9237,7 @@ export class ObjectVPSApi {
      * Update VPS Order
      * @param param the request object
      */
-    public updateVpsInfo(param: VPSApiUpdateVpsInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateVpsInfo(param: VPSApiUpdateVpsInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateVpsInfo(param.id,  options).toPromise();
     }
 
@@ -9424,7 +9426,7 @@ export class ObjectWebhostingApi {
      * Place Website Order
      * @param param the request object
      */
-    public addWebsiteWithHttpInfo(param: WebhostingApiAddWebsiteRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public addWebsiteWithHttpInfo(param: WebhostingApiAddWebsiteRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ServiceOrderPostResponse>> {
         return this.api.addWebsiteWithHttpInfo( options).toPromise();
     }
 
@@ -9433,7 +9435,7 @@ export class ObjectWebhostingApi {
      * Place Website Order
      * @param param the request object
      */
-    public addWebsite(param: WebhostingApiAddWebsiteRequest = {}, options?: ConfigurationOptions): Promise<void> {
+    public addWebsite(param: WebhostingApiAddWebsiteRequest = {}, options?: ConfigurationOptions): Promise<ServiceOrderPostResponse> {
         return this.api.addWebsite( options).toPromise();
     }
 
@@ -9676,7 +9678,7 @@ export class ObjectWebhostingApi {
      * Update Website Order
      * @param param the request object
      */
-    public updateWebsiteInfoWithHttpInfo(param: WebhostingApiUpdateWebsiteInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+    public updateWebsiteInfoWithHttpInfo(param: WebhostingApiUpdateWebsiteInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<SuccessTextResponse>> {
         return this.api.updateWebsiteInfoWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -9685,7 +9687,7 @@ export class ObjectWebhostingApi {
      * Update Website Order
      * @param param the request object
      */
-    public updateWebsiteInfo(param: WebhostingApiUpdateWebsiteInfoRequest, options?: ConfigurationOptions): Promise<void> {
+    public updateWebsiteInfo(param: WebhostingApiUpdateWebsiteInfoRequest, options?: ConfigurationOptions): Promise<SuccessTextResponse> {
         return this.api.updateWebsiteInfo(param.id,  options).toPromise();
     }
 

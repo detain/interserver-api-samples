@@ -4,12 +4,13 @@ import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
 import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TemplateRequest;
 import io.swagger.model.TextResponse;
@@ -71,10 +72,19 @@ public class VpsApiController implements VpsApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> addVps(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody VpsOrderPostRequest body
+    public ResponseEntity<ServiceOrderPostResponse> addVps(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody VpsOrderPostRequest body
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<ServiceOrderPostResponse>(objectMapper.readValue("{\n  \"continue\" : true,\n  \"errors\" : [ ],\n  \"total_cost\" : \"5.00\",\n  \"iid\" : \"25296600\",\n  \"iids\" : [ \"SERVICE12345\" ],\n  \"real_iids\" : [ \"25296600\" ],\n  \"serviceId\" : 12345,\n  \"invoice_description\" : \"New Service Order\"\n}", ServiceOrderPostResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<SuccessTextResponse> deleteVpsBackup(@Parameter(in = ParameterIn.PATH, description = "VPS ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -627,25 +637,34 @@ public class VpsApiController implements VpsApi {
         return new ResponseEntity<VpsOrderPutResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateVpsInfo(@Parameter(in = ParameterIn.PATH, description = "VPS ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
-) {
-        String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<InlineResponse20021> vPSCancel(@Parameter(in = ParameterIn.PATH, description = "VPS ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    public ResponseEntity<SuccessTextResponse> updateVpsInfo(@Parameter(in = ParameterIn.PATH, description = "VPS ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<InlineResponse20021>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"VPS is canceled.\"\n}", InlineResponse20021.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<InlineResponse20021>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<InlineResponse20021>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<InlineResponse20022> vPSCancel(@Parameter(in = ParameterIn.PATH, description = "VPS ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
+) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<InlineResponse20022>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"VPS is canceled.\"\n}", InlineResponse20022.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<InlineResponse20022>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<InlineResponse20022>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

@@ -3,7 +3,8 @@ package io.swagger.api;
 import io.swagger.model.BuyItNowList;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.InlineResponse20019;
-import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20027;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OrderBuyNowServerBody;
 import io.swagger.model.ReverseDnsEntries;
@@ -56,9 +57,9 @@ public interface ServersApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Place Server Order", tags={ "Servers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void addServer();
+        @ApiResponse(responseCode = "200", description = "Server order placed successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20019.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public InlineResponse20019 addServer();
 
     /**
      * Get Buy Now Server Options
@@ -71,9 +72,9 @@ public interface ServersApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Get Buy Now Server Options", tags={ "Servers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Available server configurations with pricing and hardware options.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20026.class))),
+        @ApiResponse(responseCode = "200", description = "Available server configurations with pricing and hardware options.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20027.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
-    public InlineResponse20026 buyItNowServerOrder();
+    public InlineResponse20027 buyItNowServerOrder();
 
     /**
      * List Marketplace Servers
@@ -190,7 +191,7 @@ public interface ServersApi  {
     @Path("/servers/order/buy_now_server")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @Operation(summary = "Place Buy Now Server Order", tags={ "servers" })
+    @Operation(summary = "Place Buy Now Server Order", tags={ "Servers" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Order placed successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServersBuyNowResponse.class))),
         @ApiResponse(responseCode = "400", description = "Order validation failed.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServersBuyNowError.class))),
@@ -350,9 +351,9 @@ public interface ServersApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Cancel Server Service", tags={ "Servers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Servers Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20019.class))),
+        @ApiResponse(responseCode = "200", description = "Servers Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20020.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
-    public InlineResponse20019 serversCancel(@PathParam("id") Integer id);
+    public InlineResponse20020 serversCancel(@PathParam("id") Integer id);
 
     /**
      * Update Server Order
@@ -365,7 +366,7 @@ public interface ServersApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update Server Order", tags={ "Servers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateServerInfo(@PathParam("id") String id);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse updateServerInfo(@PathParam("id") String id);
 }

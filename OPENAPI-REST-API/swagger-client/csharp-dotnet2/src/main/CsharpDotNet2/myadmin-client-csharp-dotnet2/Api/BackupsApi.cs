@@ -69,8 +69,8 @@ namespace IO.Swagger.Api
         /// Update Backup Information Updates backup storage service metadata, such as stored credentials or settings for the order.
         /// </summary>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns></returns>
-        void UpdateBackupInfo (int? id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateBackupInfo (int? id);
         /// <summary>
         /// Validate Backup Order Validates a backup storage order without placing it, returning calculated pricing and any validation errors. Use this to display a confirmation screen with the final price before submitting the order via &#x60;POST /backups/order&#x60;.
         /// </summary>
@@ -459,8 +459,8 @@ if (coupon != null) formParams.Add("coupon", ApiClient.ParameterToString(coupon)
         /// Update Backup Information Updates backup storage service metadata, such as stored credentials or settings for the order.
         /// </summary>
         /// <param name="id">The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.</param>
-        /// <returns></returns>
-        public void UpdateBackupInfo (int? id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateBackupInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateBackupInfo");
@@ -487,7 +487,7 @@ if (coupon != null) formParams.Add("coupon", ApiClient.ParameterToString(coupon)
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateBackupInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>

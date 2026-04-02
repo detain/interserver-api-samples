@@ -1,7 +1,7 @@
 /*
  * server_ipmi_live_info.h
  *
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 
 #ifndef _server_ipmi_live_info_H_

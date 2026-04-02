@@ -22,7 +22,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 |[**webhostingCancel**](#webhostingcancel) | **DELETE** /websites/{id} | Cancel Website|
 
 # **addWebsite**
-> addWebsite()
+> ServiceOrderPostResponse addWebsite()
 
 Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
 
@@ -46,7 +46,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-void (empty response body)
+**ServiceOrderPostResponse**
 
 ### Authorization
 
@@ -61,8 +61,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -734,7 +734,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateWebsiteInfo**
-> updateWebsiteInfo()
+> SuccessTextResponse updateWebsiteInfo()
 
 Updates settings on a webhosting order.
 
@@ -765,7 +765,7 @@ const { status, data } = await apiInstance.updateWebsiteInfo(
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -780,8 +780,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | A response indicating the operation completed successfully with a text message. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

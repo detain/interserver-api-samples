@@ -30,12 +30,13 @@ import io.swagger.client.model.ChargeInvoiceRows;
 import io.swagger.client.model.HostnameObject;
 import io.swagger.client.model.IdBackupsBody2;
 import io.swagger.client.model.InlineResponse20011;
-import io.swagger.client.model.InlineResponse20021;
+import io.swagger.client.model.InlineResponse20022;
 import io.swagger.client.model.InlineResponse401;
 import io.swagger.client.model.PasswordRequest;
 import io.swagger.client.model.QueueResponse;
 import io.swagger.client.model.RestoreRequest;
 import io.swagger.client.model.ReverseDnsEntries;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 import io.swagger.client.model.TemplateRequest;
 import io.swagger.client.model.TextResponse;
@@ -149,22 +150,25 @@ public class VpsApi {
      * Place VPS Order
      * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
      * @param body  (optional)
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addVps(VpsOrderPostRequest body) throws ApiException {
-        addVpsWithHttpInfo(body);
+    public ServiceOrderPostResponse addVps(VpsOrderPostRequest body) throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> resp = addVpsWithHttpInfo(body);
+        return resp.getData();
     }
 
     /**
      * Place VPS Order
      * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
      * @param body  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addVpsWithHttpInfo(VpsOrderPostRequest body) throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addVpsWithHttpInfo(VpsOrderPostRequest body) throws ApiException {
         com.squareup.okhttp.Call call = addVpsValidateBeforeCall(body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -175,7 +179,7 @@ public class VpsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addVpsAsync(VpsOrderPostRequest body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addVpsAsync(VpsOrderPostRequest body, final ApiCallback<ServiceOrderPostResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -197,7 +201,8 @@ public class VpsApi {
         }
 
         com.squareup.okhttp.Call call = addVpsValidateBeforeCall(body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -310,10 +315,12 @@ public class VpsApi {
      * @param coupon  (optional)
      * @param rootpass  (optional)
      * @param comment  (optional)
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addVps(String osDistro, Integer slices, String vpsPlatform, String controlpanel, Integer period, Integer location, String osVersion, String hostname, String coupon, String rootpass, String comment) throws ApiException {
-        addVpsWithHttpInfo(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+    public ServiceOrderPostResponse addVps(String osDistro, Integer slices, String vpsPlatform, String controlpanel, Integer period, Integer location, String osVersion, String hostname, String coupon, String rootpass, String comment) throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> resp = addVpsWithHttpInfo(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+        return resp.getData();
     }
 
     /**
@@ -330,12 +337,13 @@ public class VpsApi {
      * @param coupon  (optional)
      * @param rootpass  (optional)
      * @param comment  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addVpsWithHttpInfo(String osDistro, Integer slices, String vpsPlatform, String controlpanel, Integer period, Integer location, String osVersion, String hostname, String coupon, String rootpass, String comment) throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addVpsWithHttpInfo(String osDistro, Integer slices, String vpsPlatform, String controlpanel, Integer period, Integer location, String osVersion, String hostname, String coupon, String rootpass, String comment) throws ApiException {
         com.squareup.okhttp.Call call = addVpsValidateBeforeCall(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -356,7 +364,7 @@ public class VpsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addVpsAsync(String osDistro, Integer slices, String vpsPlatform, String controlpanel, Integer period, Integer location, String osVersion, String hostname, String coupon, String rootpass, String comment, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addVpsAsync(String osDistro, Integer slices, String vpsPlatform, String controlpanel, Integer period, Integer location, String osVersion, String hostname, String coupon, String rootpass, String comment, final ApiCallback<ServiceOrderPostResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -378,7 +386,8 @@ public class VpsApi {
         }
 
         com.squareup.okhttp.Call call = addVpsValidateBeforeCall(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -7206,22 +7215,25 @@ public class VpsApi {
      * Update VPS Order
      * Updates settings on a VPS order.
      * @param id VPS ID number. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateVpsInfo(String id) throws ApiException {
-        updateVpsInfoWithHttpInfo(id);
+    public SuccessTextResponse updateVpsInfo(String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateVpsInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update VPS Order
      * Updates settings on a VPS order.
      * @param id VPS ID number. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateVpsInfoWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateVpsInfoWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = updateVpsInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -7232,7 +7244,7 @@ public class VpsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateVpsInfoAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateVpsInfoAsync(String id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7254,7 +7266,8 @@ public class VpsApi {
         }
 
         com.squareup.okhttp.Call call = updateVpsInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -7330,11 +7343,11 @@ public class VpsApi {
      * Cancel VPS Service
      * Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
      * @param id VPS ID number (required)
-     * @return InlineResponse20021
+     * @return InlineResponse20022
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20021 vPSCancel(Integer id) throws ApiException {
-        ApiResponse<InlineResponse20021> resp = vPSCancelWithHttpInfo(id);
+    public InlineResponse20022 vPSCancel(Integer id) throws ApiException {
+        ApiResponse<InlineResponse20022> resp = vPSCancelWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -7342,12 +7355,12 @@ public class VpsApi {
      * Cancel VPS Service
      * Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
      * @param id VPS ID number (required)
-     * @return ApiResponse&lt;InlineResponse20021&gt;
+     * @return ApiResponse&lt;InlineResponse20022&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20021> vPSCancelWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<InlineResponse20022> vPSCancelWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = vPSCancelValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -7359,7 +7372,7 @@ public class VpsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call vPSCancelAsync(Integer id, final ApiCallback<InlineResponse20021> callback) throws ApiException {
+    public com.squareup.okhttp.Call vPSCancelAsync(Integer id, final ApiCallback<InlineResponse20022> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7381,7 +7394,7 @@ public class VpsApi {
         }
 
         com.squareup.okhttp.Call call = vPSCancelValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20021>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20022>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

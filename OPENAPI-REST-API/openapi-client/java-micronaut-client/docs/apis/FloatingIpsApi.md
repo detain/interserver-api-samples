@@ -47,7 +47,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="addFloatingIp"></a>
 # **addFloatingIp**
 ```java
-Mono<Void> FloatingIpsApi.addFloatingIp()
+Mono<ServiceOrderPostResponse> FloatingIpsApi.addFloatingIp()
 ```
 
 Place Floating IP Order
@@ -56,7 +56,8 @@ Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order
 
 
 
-
+### Return type
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -98,7 +99,7 @@ Cancels a Floating IP service. After cancellation the IP assignment is released 
 <a id="getFloatingIpInfo"></a>
 # **getFloatingIpInfo**
 ```java
-Mono<Void> FloatingIpsApi.getFloatingIpInfo(id)
+Mono<Object> FloatingIpsApi.getFloatingIpInfo(id)
 ```
 
 View Floating IP
@@ -111,7 +112,8 @@ Returns detailed information about a specific Floating IP service including its 
 | **id** | `Integer`| The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. | |
 
 
-
+### Return type
+`Object`
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -204,7 +206,7 @@ Resends the welcome email for the Floating IP service. The email contains setup 
 <a id="getNewFloatingIp"></a>
 # **getNewFloatingIp**
 ```java
-Mono<Void> FloatingIpsApi.getNewFloatingIp()
+Mono<Object> FloatingIpsApi.getNewFloatingIp()
 ```
 
 Get Floating IP Ordering Information
@@ -213,7 +215,8 @@ Retrieves available options and pricing for ordering a new Floating IP.
 
 
 
-
+### Return type
+`Object`
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -279,7 +282,7 @@ Validates a Floating IP order before placing it. Use this to check for errors be
 <a id="updateFloatingIpInfo"></a>
 # **updateFloatingIpInfo**
 ```java
-Mono<Void> FloatingIpsApi.updateFloatingIpInfo(id)
+Mono<SuccessTextResponse> FloatingIpsApi.updateFloatingIpInfo(id)
 ```
 
 Update Floating IP
@@ -292,7 +295,8 @@ Updates settings on a Floating IP service, such as its label or configuration me
 | **id** | `String`| The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

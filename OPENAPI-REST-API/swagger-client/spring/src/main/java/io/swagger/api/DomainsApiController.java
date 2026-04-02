@@ -15,6 +15,7 @@ import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
 import io.swagger.model.InlineResponse2002;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,9 +65,18 @@ public class DomainsApiController implements DomainsApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> addDomain() {
+    public ResponseEntity<ServiceOrderPostResponse> addDomain() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<ServiceOrderPostResponse>(objectMapper.readValue("{\n  \"continue\" : true,\n  \"errors\" : [ ],\n  \"total_cost\" : \"5.00\",\n  \"iid\" : \"25296600\",\n  \"iids\" : [ \"SERVICE12345\" ],\n  \"real_iids\" : [ \"25296600\" ],\n  \"serviceId\" : 12345,\n  \"invoice_description\" : \"New Service Order\"\n}", ServiceOrderPostResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<SuccessTextResponse> addDomainDnssec(@Parameter(in = ParameterIn.PATH, description = "The domain service ID. Use `domain_id` from `GET /domains`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -410,10 +420,19 @@ public class DomainsApiController implements DomainsApi {
         return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateDomainInfo(@Parameter(in = ParameterIn.PATH, description = "The domain service ID. Use `domain_id` from `GET /domains`.", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<SuccessTextResponse> updateDomainInfo(@Parameter(in = ParameterIn.PATH, description = "The domain service ID. Use `domain_id` from `GET /domains`.", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<TextResponse> updateDomainNameservers(@Parameter(in = ParameterIn.PATH, description = "The domain service ID. Use `domain_id` from `GET /domains`.", required=true, schema=@Schema()) @PathVariable("id") Integer id

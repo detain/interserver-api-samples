@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\PublicApi
 
-Commands usable without an active session or api credentials.
+Endpoints that do not require authentication. Use these to check API availability, look up reference data (countries, currencies, timezones), and authenticate.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 

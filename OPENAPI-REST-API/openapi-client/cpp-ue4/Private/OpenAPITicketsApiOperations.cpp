@@ -69,7 +69,7 @@ void OpenAPITicketsApi::AddNewTicketResponse::SetHttpResponseCode(EHttpResponseC
 	switch ((int)InHttpResponseCode)
 	{
 	case 200:
-		SetResponseString(TEXT("A successful response after creating a ticket"));
+		SetResponseString(TEXT("A successful response after creating a ticket."));
 		break;
 	case 400:
 		SetResponseString(TEXT("A successful response after creating a ticket"));

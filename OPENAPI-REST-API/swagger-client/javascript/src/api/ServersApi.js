@@ -17,7 +17,8 @@ import ApiClient from "../ApiClient";
 import BuyItNowList from '../model/BuyItNowList';
 import ChargeInvoiceRows from '../model/ChargeInvoiceRows';
 import InlineResponse20019 from '../model/InlineResponse20019';
-import InlineResponse20026 from '../model/InlineResponse20026';
+import InlineResponse20020 from '../model/InlineResponse20020';
+import InlineResponse20027 from '../model/InlineResponse20027';
 import InlineResponse401 from '../model/InlineResponse401';
 import OrderBuyNowServerBody from '../model/OrderBuyNowServerBody';
 import ReverseDnsEntries from '../model/ReverseDnsEntries';
@@ -55,7 +56,7 @@ export default class ServersApi {
      * Callback function to receive the result of the addServer operation.
      * @callback moduleapi/ServersApi~addServerCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/InlineResponse20019{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -63,6 +64,7 @@ export default class ServersApi {
      * Place Server Order
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
      * @param {module:api/ServersApi~addServerCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addServer(callback) {
       
@@ -84,7 +86,7 @@ export default class ServersApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = InlineResponse20019;
 
       return this.apiClient.callApi(
         '/servers/order', 'POST',
@@ -96,7 +98,7 @@ export default class ServersApi {
      * Callback function to receive the result of the buyItNowServerOrder operation.
      * @callback moduleapi/ServersApi~buyItNowServerOrderCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20026{ data The data returned by the service call.
+     * @param {module:model/InlineResponse20027{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -126,7 +128,7 @@ export default class ServersApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse20026;
+      let returnType = InlineResponse20027;
 
       return this.apiClient.callApi(
         '/servers/order/buy_now_server', 'GET',
@@ -812,7 +814,7 @@ export default class ServersApi {
      * Callback function to receive the result of the serversCancel operation.
      * @callback moduleapi/ServersApi~serversCancelCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20019{ data The data returned by the service call.
+     * @param {module:model/InlineResponse20020{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -847,7 +849,7 @@ export default class ServersApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse20019;
+      let returnType = InlineResponse20020;
 
       return this.apiClient.callApi(
         '/servers/{id}', 'DELETE',
@@ -859,7 +861,7 @@ export default class ServersApi {
      * Callback function to receive the result of the updateServerInfo operation.
      * @callback moduleapi/ServersApi~updateServerInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -868,6 +870,7 @@ export default class ServersApi {
      * Updates settings on a dedicated server order.
      * @param {String} id Server ID number.
      * @param {module:api/ServersApi~updateServerInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateServerInfo(id, callback) {
       
@@ -893,7 +896,7 @@ export default class ServersApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
 
       return this.apiClient.callApi(
         '/servers/{id}', 'POST',

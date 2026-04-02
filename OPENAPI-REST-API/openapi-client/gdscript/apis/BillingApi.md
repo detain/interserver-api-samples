@@ -234,9 +234,9 @@ api.delete_account_credit_card(
 	# The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "delete_account_credit_card", response)
-		
+		assert(response.data is string)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -709,9 +709,9 @@ var api = BillingApi.new(config)
 # Invoke an endpoint
 api.get_billing_cart(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "get_billing_cart", response)
-		
+		assert(response.data is )
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -899,9 +899,9 @@ var api = BillingApi.new(config)
 # Invoke an endpoint
 api.get_billing_pre_pays(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "get_billing_pre_pays", response)
-		
+		assert(response.data is )
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -1108,9 +1108,9 @@ api.update_account_credit_card(
 	# The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_account_credit_card", response)
-		
+		assert(response.data is string)
 		pass  # do things, make stuff
 		,
 	# On Error

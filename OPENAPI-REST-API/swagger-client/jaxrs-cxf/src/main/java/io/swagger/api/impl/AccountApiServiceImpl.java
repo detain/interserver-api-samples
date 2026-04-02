@@ -197,10 +197,10 @@ public class AccountApiServiceImpl implements AccountApi {
      * Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
      *
      */
-    public void updateAccountInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, Boolean disableReset, Boolean disableReinstall, Boolean disableServerNotifications, Boolean disableEmailNotifications, String gstin) {
+    public SuccessTextResponse updateAccountInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, Boolean disableReset, Boolean disableReinstall, Boolean disableServerNotifications, Boolean disableEmailNotifications, String gstin) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -209,10 +209,10 @@ public class AccountApiServiceImpl implements AccountApi {
      * Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
      *
      */
-    public void updateAccountInfo(AccountInfoPost body) {
+    public SuccessTextResponse updateAccountInfo(AccountInfoPost body) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -221,10 +221,10 @@ public class AccountApiServiceImpl implements AccountApi {
      * Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      *
      */
-    public void updateAccountIpLimits(String start, String end) {
+    public SuccessTextResponse updateAccountIpLimits(String start, String end) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -233,10 +233,10 @@ public class AccountApiServiceImpl implements AccountApi {
      * Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      *
      */
-    public void updateAccountIpLimits(IpLimitRange body) {
+    public SuccessTextResponse updateAccountIpLimits(IpLimitRange body) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**

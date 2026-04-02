@@ -71,10 +71,10 @@ public interface AccountApi {
 
 
     @Operation(summary = "Remove Credit Card", operationId = "deleteAccountCreditCard", description = "Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward." , tags = {"Billing"})
+    @ApiResponse(responseCode = "200", description = "Simple string response")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Delete(value = "/account/creditcards/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> deleteAccountCreditCard(@Parameter(description = "The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.") @PathVariable("id") String id) {
+    default Single<HttpResponse<String>> deleteAccountCreditCard(@Parameter(description = "The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -180,10 +180,10 @@ public interface AccountApi {
 
 
     @Operation(summary = "Update Credit Card", operationId = "updateAccountCreditCard", description = "Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address." , tags = {"Billing"})
+    @ApiResponse(responseCode = "200", description = "Simple string response")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/account/creditcards/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateAccountCreditCard(@Parameter(description = "The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<String>> updateAccountCreditCard(@Parameter(description = "The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -215,11 +215,11 @@ public interface AccountApi {
 
 
     @Operation(summary = "Update Account Information", operationId = "updateAccountInfo", description = "Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages." , tags = {"Account"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @ApiResponse(responseCode = "422", description = "Validation error while updating account data.")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/account", produces = { "application/json" }, consumes = {"multipart/form-data", "application/json"})
-    default Single<HttpResponse<Void>> updateAccountInfo(@NotNull @Parameter(description = "") @Body(value = "name")  String name,@NotNull @Parameter(description = "") @Body(value = "company")  String company,@NotNull @Parameter(description = "") @Body(value = "address")  String address,@NotNull @Parameter(description = "") @Body(value = "address2")  String address2,@NotNull @Parameter(description = "") @Body(value = "city")  String city,@NotNull @Parameter(description = "") @Body(value = "state")  String state,@NotNull @Parameter(description = "") @Body(value = "zip")  String zip,@NotNull @Parameter(description = "") @Body(value = "country")  String country,@NotNull @Parameter(description = "") @Body(value = "phone")  String phone,@NotNull @Parameter(description = "") @Body(value = "locale")  String locale,@NotNull @Parameter(description = "") @Body(value = "email_invoices")  String emailInvoices,@NotNull @Parameter(description = "") @Body(value = "email_abuse")  String emailAbuse,@NotNull @Parameter(description = "") @Body(value = "disable_reset")  Boolean disableReset,@NotNull @Parameter(description = "") @Body(value = "disable_reinstall")  Boolean disableReinstall,@NotNull @Parameter(description = "") @Body(value = "disable_server_notifications")  Boolean disableServerNotifications,@NotNull @Parameter(description = "") @Body(value = "disable_email_notifications")  Boolean disableEmailNotifications,@NotNull @Parameter(description = "") @Body(value = "gstin")  String gstin) {
+    default Single<HttpResponse<SuccessTextResponse>> updateAccountInfo(@NotNull @Parameter(description = "") @Body(value = "name")  String name,@NotNull @Parameter(description = "") @Body(value = "company")  String company,@NotNull @Parameter(description = "") @Body(value = "address")  String address,@NotNull @Parameter(description = "") @Body(value = "address2")  String address2,@NotNull @Parameter(description = "") @Body(value = "city")  String city,@NotNull @Parameter(description = "") @Body(value = "state")  String state,@NotNull @Parameter(description = "") @Body(value = "zip")  String zip,@NotNull @Parameter(description = "") @Body(value = "country")  String country,@NotNull @Parameter(description = "") @Body(value = "phone")  String phone,@NotNull @Parameter(description = "") @Body(value = "locale")  String locale,@NotNull @Parameter(description = "") @Body(value = "email_invoices")  String emailInvoices,@NotNull @Parameter(description = "") @Body(value = "email_abuse")  String emailAbuse,@NotNull @Parameter(description = "") @Body(value = "disable_reset")  Boolean disableReset,@NotNull @Parameter(description = "") @Body(value = "disable_reinstall")  Boolean disableReinstall,@NotNull @Parameter(description = "") @Body(value = "disable_server_notifications")  Boolean disableServerNotifications,@NotNull @Parameter(description = "") @Body(value = "disable_email_notifications")  Boolean disableEmailNotifications,@NotNull @Parameter(description = "") @Body(value = "gstin")  String gstin) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -227,11 +227,11 @@ public interface AccountApi {
 
 
     @Operation(summary = "Update Account Information", operationId = "updateAccountInfo", description = "Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages." , tags = {"Account"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @ApiResponse(responseCode = "422", description = "Validation error while updating account data.")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/account", produces = { "application/json" }, consumes = {"multipart/form-data", "application/json"})
-    default Single<HttpResponse<Void>> updateAccountInfo(@NotNull @Valid @Parameter(description = "") @Body AccountInfoPost body) {
+    default Single<HttpResponse<SuccessTextResponse>> updateAccountInfo(@NotNull @Valid @Parameter(description = "") @Body AccountInfoPost body) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -239,11 +239,11 @@ public interface AccountApi {
 
 
     @Operation(summary = "Add IP Access Restriction", operationId = "updateAccountIpLimits", description = "Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation." , tags = {"Account"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/account/iplimits", produces = { "application/json" }, consumes = {"multipart/form-data", "application/json"})
-    default Single<HttpResponse<Void>> updateAccountIpLimits(@NotNull @Parameter(description = "") @Body(value = "start")  String start,@NotNull @Parameter(description = "") @Body(value = "end")  String end) {
+    default Single<HttpResponse<SuccessTextResponse>> updateAccountIpLimits(@NotNull @Parameter(description = "") @Body(value = "start")  String start,@NotNull @Parameter(description = "") @Body(value = "end")  String end) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -251,11 +251,11 @@ public interface AccountApi {
 
 
     @Operation(summary = "Add IP Access Restriction", operationId = "updateAccountIpLimits", description = "Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation." , tags = {"Account"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/account/iplimits", produces = { "application/json" }, consumes = {"multipart/form-data", "application/json"})
-    default Single<HttpResponse<Void>> updateAccountIpLimits(@NotNull @Valid @Parameter(description = "The lower and upper bounds of an ip range.") @Body IpLimitRange body) {
+    default Single<HttpResponse<SuccessTextResponse>> updateAccountIpLimits(@NotNull @Valid @Parameter(description = "The lower and upper bounds of an ip range.") @Body IpLimitRange body) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

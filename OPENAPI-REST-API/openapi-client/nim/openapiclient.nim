@@ -27,6 +27,7 @@ import openapiclient/models/model_account_info_oauth_config_providers_value
 import openapiclient/models/model_account_info_oauthproviders
 import openapiclient/models/model_account_info_post
 import openapiclient/models/model_account_ssh_key
+import openapiclient/models/model_add_server200response
 import openapiclient/models/model_affiliate_banner_row
 import openapiclient/models/model_affiliate_dock_setup
 import openapiclient/models/model_affiliate_payment_setup
@@ -359,6 +360,7 @@ import openapiclient/models/model_servers_cancel200response
 import openapiclient/models/model_service
 import openapiclient/models/model_service_categories
 import openapiclient/models/model_service_category
+import openapiclient/models/model_service_order_post_response
 import openapiclient/models/model_service_type
 import openapiclient/models/model_service_types
 import openapiclient/models/model_services
@@ -478,6 +480,7 @@ export model_account_info_oauth_config_providers_value
 export model_account_info_oauthproviders
 export model_account_info_post
 export model_account_ssh_key
+export model_add_server200response
 export model_affiliate_banner_row
 export model_affiliate_dock_setup
 export model_affiliate_payment_setup
@@ -810,6 +813,7 @@ export model_servers_cancel200response
 export model_service
 export model_service_categories
 export model_service_category
+export model_service_order_post_response
 export model_service_type
 export model_service_types
 export model_services

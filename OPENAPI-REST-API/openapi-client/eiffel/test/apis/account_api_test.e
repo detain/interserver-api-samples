@@ -180,6 +180,7 @@ feature -- Test routines
             --
             -- Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_name: STRING_32
             l_address: STRING_32
             l_city: STRING_32
@@ -207,7 +208,7 @@ feature -- Test routines
             -- l_country
             -- l_phone
 
-            -- api.update_account_info(l_name, l_address, l_city, l_state, l_zip, l_country, l_phone, l_company, l_address2, l_locale, l_email_invoices, l_email_abuse, l_disable_reset, l_disable_reinstall, l_disable_server_notifications, l_disable_email_notifications, l_gstin)
+            -- l_response := api.update_account_info(l_name, l_address, l_city, l_state, l_zip, l_country, l_phone, l_company, l_address2, l_locale, l_email_invoices, l_email_abuse, l_disable_reset, l_disable_reinstall, l_disable_server_notifications, l_disable_email_notifications, l_gstin)
             assert ("not_implemented", False)
         end
 
@@ -216,6 +217,7 @@ feature -- Test routines
             --
             -- Adds an IP address range to the account&#39;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_start: STRING_32
             l_var_end: STRING_32
         do
@@ -223,7 +225,7 @@ feature -- Test routines
             -- l_start
             -- l_var_end
 
-            -- api.update_account_ip_limits(l_start, l_var_end)
+            -- l_response := api.update_account_ip_limits(l_start, l_var_end)
             assert ("not_implemented", False)
         end
 

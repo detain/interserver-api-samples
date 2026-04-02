@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **addDnsDomain**
-> addDnsDomain()
+> SuccessTextResponse addDnsDomain()
 
 Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer\'s DNS servers. Use `/dns/{id}` to manage records after creation.
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -65,8 +65,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | A response indicating the operation completed successfully with a text message. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **deleteDnsDomain**
-> deleteDnsDomain()
+> SuccessTextResponse deleteDnsDomain()
 
 Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -188,13 +188,13 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | A response indicating the operation completed successfully with a text message. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **deleteDnsRecord**
-> deleteDnsRecord()
+> SuccessTextResponse deleteDnsRecord()
 
 Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -245,8 +245,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | A response indicating the operation completed successfully with a text message. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -352,7 +352,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateDnsRecord**
-> updateDnsRecord()
+> SuccessTextResponse updateDnsRecord()
 
 Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -427,8 +427,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | A response indicating the operation completed successfully with a text message. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -468,7 +468,7 @@ API.Client.AccountApi.prototype.updateAccountFeatures = function(opt_disableRese
  * @param {!boolean=} opt_disableEmailNotifications Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them.
  * @param {!string=} opt_gstin Your GST identification number (if applicable).
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.AccountApi.prototype.updateAccountInfo = function(name, address, city, state, zip, country, phone, opt_company, opt_address2, opt_locale, opt_emailInvoices, opt_emailAbuse, opt_disableReset, opt_disableReinstall, opt_disableServerNotifications, opt_disableEmailNotifications, opt_gstin, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -569,7 +569,7 @@ API.Client.AccountApi.prototype.updateAccountInfo = function(name, address, city
  * @param {!string} start The begining (or first) IP address in the range.
  * @param {!string} end The ending (or last) IP address in the range.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.AccountApi.prototype.updateAccountIpLimits = function(start, end, opt_extraHttpRequestParams) {
   /** @const {string} */

@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **deleteAccountCreditCard**
-> deleteAccountCreditCard($id)
+> string deleteAccountCreditCard($id)
 
 Remove Credit Card
 
@@ -459,7 +459,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BillingApi(
 $id = "id_example"; // string | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 try {
-    $apiInstance->deleteAccountCreditCard($id);
+    $result = $apiInstance->deleteAccountCreditCard($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->deleteAccountCreditCard: ', $e->getMessage(), PHP_EOL;
 }
@@ -474,7 +475,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -1012,7 +1013,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBillingCart**
-> getBillingCart()
+> object getBillingCart()
 
 Get Shopping Cart Contents
 
@@ -1041,7 +1042,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BillingApi(
 );
 
 try {
-    $apiInstance->getBillingCart();
+    $result = $apiInstance->getBillingCart();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->getBillingCart: ', $e->getMessage(), PHP_EOL;
 }
@@ -1053,7 +1055,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1243,7 +1245,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBillingPrePays**
-> getBillingPrePays()
+> object getBillingPrePays()
 
 List Prepay Balances
 
@@ -1272,7 +1274,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BillingApi(
 );
 
 try {
-    $apiInstance->getBillingPrePays();
+    $result = $apiInstance->getBillingPrePays();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->getBillingPrePays: ', $e->getMessage(), PHP_EOL;
 }
@@ -1284,7 +1287,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1556,7 +1559,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateAccountCreditCard**
-> updateAccountCreditCard($id)
+> string updateAccountCreditCard($id)
 
 Update Credit Card
 
@@ -1586,7 +1589,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BillingApi(
 $id = 56; // int | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 try {
-    $apiInstance->updateAccountCreditCard($id);
+    $result = $apiInstance->updateAccountCreditCard($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->updateAccountCreditCard: ', $e->getMessage(), PHP_EOL;
 }
@@ -1601,7 +1605,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

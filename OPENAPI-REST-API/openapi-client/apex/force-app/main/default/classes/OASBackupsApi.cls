@@ -225,14 +225,15 @@ public class OASBackupsApi {
      * Update Backup Information
      * Updates backup storage service metadata, such as stored credentials or settings for the order.
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateBackupInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateBackupInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/backups/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -242,7 +243,7 @@ public class OASBackupsApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
     /**

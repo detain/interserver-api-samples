@@ -42,6 +42,7 @@ import org.openapitools.client.models.DomainRow
 import org.openapitools.client.models.DomainSearchResponse
 import org.openapitools.client.models.DomainWhoisPrivacyRequest
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 
@@ -73,19 +74,20 @@ open class DomainsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * POST /domains/order
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
-     * @return void
+     * @return ServiceOrderPostResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun addDomain() : Unit {
+    fun addDomain() : ServiceOrderPostResponse {
         val localVarResponse = addDomainWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -103,15 +105,16 @@ open class DomainsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * POST /domains/order
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<ServiceOrderPostResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun addDomainWithHttpInfo() : ApiResponse<Unit?> {
+    fun addDomainWithHttpInfo() : ApiResponse<ServiceOrderPostResponse?> {
         val localVariableConfig = addDomainRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, ServiceOrderPostResponse>(
             localVariableConfig
         )
     }
@@ -1974,19 +1977,20 @@ open class DomainsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Update Domain Order
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateDomainInfo(id: kotlin.String) : Unit {
+    fun updateDomainInfo(id: kotlin.String) : SuccessTextResponse {
         val localVarResponse = updateDomainInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -2005,15 +2009,16 @@ open class DomainsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Update Domain Order
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateDomainInfoWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun updateDomainInfoWithHttpInfo(id: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateDomainInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }

@@ -37,7 +37,7 @@
     describe('DomainsApi', function() {
       describe('addDomain', function() {
         it('should call addDomain successfully', function(done) {
-          // TODO: uncomment addDomain call
+          // TODO: uncomment addDomain call and complete the assertions
           /*
 
           instance.addDomain(function(error, data, response) {
@@ -45,6 +45,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.ServiceOrderPostResponse);
 
             done();
           });
@@ -553,7 +555,7 @@
       });
       describe('updateDomainInfo', function() {
         it('should call updateDomainInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateDomainInfo call
+          // TODO: uncomment, update parameter values for updateDomainInfo call and complete the assertions
           /*
 
           instance.updateDomainInfo(id, function(error, data, response) {
@@ -561,6 +563,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

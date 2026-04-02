@@ -7,7 +7,7 @@
 | **protocolId** | [**inline**](#ProtocolId) | 1 &#x3D; TCP, 2 &#x3D; UDP |  |
 | **xdpAction** | [**inline**](#XdpAction) | 1 &#x3D; Block,  0 &#x3D; Whitelist |  |
 | **destinationPort** | **kotlin.Int** |  |  [optional] |
-| **sourceIp** | **kotlin.String** |  |  [optional] |
+| **sourceIp** | **kotlin.String** | Source IP address to match. Use &#39;0.0.0.0&#39; to match any source. |  [optional] |
 | **sourcePort** | **kotlin.Int** |  |  [optional] |
 
 

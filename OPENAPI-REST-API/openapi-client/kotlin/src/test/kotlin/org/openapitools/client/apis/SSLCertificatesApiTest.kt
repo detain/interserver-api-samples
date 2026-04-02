@@ -29,6 +29,7 @@ import io.kotlintest.specs.ShouldSpec
 import org.openapitools.client.apis.SSLCertificatesApi
 import org.openapitools.client.models.ChargeInvoiceRows
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SslCancel200Response
 import org.openapitools.client.models.SuccessTextResponse
 
@@ -40,20 +41,23 @@ class SSLCertificatesApiTest : ShouldSpec() {
         // to test addSsl
         should("test addSsl") {
             // uncomment below to test addSsl
-            //apiInstance.addSsl()
+            //val result : ServiceOrderPostResponse = apiInstance.addSsl()
+            //result shouldBe ("TODO")
         }
 
         // to test getNewSsl
         should("test getNewSsl") {
             // uncomment below to test getNewSsl
-            //apiInstance.getNewSsl()
+            //val result : kotlin.Any = apiInstance.getNewSsl()
+            //result shouldBe ("TODO")
         }
 
         // to test getSslInfo
         should("test getSslInfo") {
             // uncomment below to test getSslInfo
             //val id : kotlin.Int = 56 // kotlin.Int | SSL certificate ID number.
-            //apiInstance.getSslInfo(id)
+            //val result : kotlin.Any = apiInstance.getSslInfo(id)
+            //result shouldBe ("TODO")
         }
 
         // to test getSslInvoices
@@ -96,7 +100,8 @@ class SSLCertificatesApiTest : ShouldSpec() {
         should("test updateSslInfo") {
             // uncomment below to test updateSslInfo
             //val id : kotlin.String = id_example // kotlin.String | SSL certificate ID number.
-            //apiInstance.updateSslInfo(id)
+            //val result : SuccessTextResponse = apiInstance.updateSslInfo(id)
+            //result shouldBe ("TODO")
         }
 
     }

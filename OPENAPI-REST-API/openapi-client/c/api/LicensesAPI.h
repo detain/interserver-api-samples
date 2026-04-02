@@ -12,6 +12,7 @@
 #include "../model/license_row.h"
 #include "../model/licenses_cancel_200_response.h"
 #include "../model/licenses_order.h"
+#include "../model/service_order_post_response.h"
 #include "../model/success_text_response.h"
 
 
@@ -19,7 +20,7 @@
 //
 // Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
 //
-void
+service_order_post_response_t*
 LicensesAPI_addLicense(apiClient_t *apiClient);
 
 
@@ -99,7 +100,7 @@ LicensesAPI_putLicenses(apiClient_t *apiClient);
 //
 // Updates settings on a license service such as its assigned IP.
 //
-void
+success_text_response_t*
 LicensesAPI_updateLicenseInfo(apiClient_t *apiClient, char *id);
 
 

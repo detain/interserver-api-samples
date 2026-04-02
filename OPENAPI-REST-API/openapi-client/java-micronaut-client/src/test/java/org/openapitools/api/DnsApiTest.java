@@ -4,6 +4,7 @@ import org.openapitools.model.DnsListItem;
 import org.openapitools.model.DnsRecord;
 import org.openapitools.model.DnsRecordType;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.SuccessTextResponse;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -39,7 +40,7 @@ public class DnsApiTest {
         String ip = "example";
 
         // when
-        api.addDnsDomain(domain, ip).block();
+        SuccessTextResponse body = api.addDnsDomain(domain, ip).block();
 
         // then
         // TODO implement the addDnsDomainTest()
@@ -82,7 +83,7 @@ public class DnsApiTest {
         String id = "example";
 
         // when
-        api.deleteDnsDomain(id).block();
+        SuccessTextResponse body = api.deleteDnsDomain(id).block();
 
         // then
         // TODO implement the deleteDnsDomainTest()
@@ -102,7 +103,7 @@ public class DnsApiTest {
         Integer recordId = 56;
 
         // when
-        api.deleteDnsRecord(domainId, recordId).block();
+        SuccessTextResponse body = api.deleteDnsRecord(domainId, recordId).block();
 
         // then
         // TODO implement the deleteDnsRecordTest()
@@ -167,7 +168,7 @@ public class DnsApiTest {
         String auth = "example";
 
         // when
-        api.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth).block();
+        SuccessTextResponse body = api.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth).block();
 
         // then
         // TODO implement the updateDnsRecordTest()

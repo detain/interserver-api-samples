@@ -53,7 +53,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="addWebsite"></a>
 # **addWebsite**
 ```java
-Mono<Void> WebhostingApi.addWebsite()
+Mono<ServiceOrderPostResponse> WebhostingApi.addWebsite()
 ```
 
 Place Website Order
@@ -62,7 +62,8 @@ Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60
 
 
 
-
+### Return type
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -430,7 +431,7 @@ Validates a webhosting order before placing it.
 <a id="updateWebsiteInfo"></a>
 # **updateWebsiteInfo**
 ```java
-Mono<Void> WebhostingApi.updateWebsiteInfo(id)
+Mono<SuccessTextResponse> WebhostingApi.updateWebsiteInfo(id)
 ```
 
 Update Website Order
@@ -443,7 +444,8 @@ Updates settings on a webhosting order.
 | **id** | `String`| The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

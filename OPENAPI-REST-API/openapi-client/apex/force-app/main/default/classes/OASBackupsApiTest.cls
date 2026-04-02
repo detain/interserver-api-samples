@@ -660,6 +660,8 @@ private class OASBackupsApiTest {
 
         OASClient client;
         OASBackupsApi api;
+        OASSuccessTextResponse response;
+        OASSuccessTextResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -667,33 +669,57 @@ private class OASBackupsApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateBackupInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateBackupInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateBackupInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBackupsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateBackupInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateBackupInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateBackupInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBackupsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateBackupInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateBackupInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateBackupInfo(params);
         System.assertEquals(expectedResponse, response);
     }
 

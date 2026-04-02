@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **addFloatingIp**
-> addFloatingIp()
+> ServiceOrderPostResponse addFloatingIp()
 
 Place Floating IP Order
 
@@ -47,7 +47,8 @@ import 'package:openapi/api.dart';
 final api = Openapi().getFloatingIPsApi();
 
 try {
-    api.addFloatingIp();
+    final response = api.addFloatingIp();
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling FloatingIPsApi->addFloatingIp: $e\n');
 }
@@ -58,7 +59,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -127,7 +128,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFloatingIpInfo**
-> getFloatingIpInfo(id)
+> JsonObject getFloatingIpInfo(id)
 
 View Floating IP
 
@@ -153,7 +154,8 @@ final api = Openapi().getFloatingIPsApi();
 final int id = 56; // int | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 try {
-    api.getFloatingIpInfo(id);
+    final response = api.getFloatingIpInfo(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling FloatingIPsApi->getFloatingIpInfo: $e\n');
 }
@@ -167,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**JsonObject**](JsonObject.md)
 
 ### Authorization
 
@@ -341,7 +343,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getNewFloatingIp**
-> getNewFloatingIp()
+> JsonObject getNewFloatingIp()
 
 Get Floating IP Ordering Information
 
@@ -366,7 +368,8 @@ import 'package:openapi/api.dart';
 final api = Openapi().getFloatingIPsApi();
 
 try {
-    api.getNewFloatingIp();
+    final response = api.getNewFloatingIp();
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling FloatingIPsApi->getNewFloatingIp: $e\n');
 }
@@ -377,7 +380,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**JsonObject**](JsonObject.md)
 
 ### Authorization
 
@@ -498,7 +501,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateFloatingIpInfo**
-> updateFloatingIpInfo(id)
+> SuccessTextResponse updateFloatingIpInfo(id)
 
 Update Floating IP
 
@@ -524,7 +527,8 @@ final api = Openapi().getFloatingIPsApi();
 final String id = id_example; // String | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 try {
-    api.updateFloatingIpInfo(id);
+    final response = api.updateFloatingIpInfo(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling FloatingIPsApi->updateFloatingIpInfo: $e\n');
 }
@@ -538,7 +542,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

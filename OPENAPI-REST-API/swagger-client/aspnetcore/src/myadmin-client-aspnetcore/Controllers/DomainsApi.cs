@@ -31,23 +31,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// Place Domain Order
         /// </summary>
         /// <remarks>Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.</remarks>
+        /// <response code="200">Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;.</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/domains/order")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AddDomain")]
+        [SwaggerResponse(statusCode: 200, type: typeof(ServiceOrderPostResponse), description: "Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult AddDomain()
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(ServiceOrderPostResponse));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"continue\" : true,\n  \"errors\" : [ ],\n  \"total_cost\" : \"5.00\",\n  \"iid\" : \"25296600\",\n  \"iids\" : [ \"SERVICE12345\" ],\n  \"real_iids\" : [ \"25296600\" ],\n  \"serviceId\" : 12345,\n  \"invoice_description\" : \"New Service Order\"\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<ServiceOrderPostResponse>(exampleJson)
+                        : default(ServiceOrderPostResponse);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -793,23 +799,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.</remarks>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
+        /// <response code="200">A response indicating the operation completed successfully with a text message.</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/domains/{id}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UpdateDomainInfo")]
+        [SwaggerResponse(statusCode: 200, type: typeof(SuccessTextResponse), description: "A response indicating the operation completed successfully with a text message.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult UpdateDomainInfo([FromRoute][Required]string id)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(SuccessTextResponse));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<SuccessTextResponse>(exampleJson)
+                        : default(SuccessTextResponse);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>

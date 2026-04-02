@@ -16,6 +16,7 @@ import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Observable, from, of, switchMap } from 'rxjs';
 import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SslCancel200Response } from '../model/sslCancel200Response';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { Configuration } from '../configuration';
@@ -52,7 +53,7 @@ export class SSLCertificatesService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [addSslOpts.config] Override http request option.
      */
-    public addSsl(addSslOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public addSsl(addSslOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ServiceOrderPostResponse>>;
     public addSsl(addSslOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -87,7 +88,7 @@ export class SSLCertificatesService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/ssl/order`,
+                return this.httpClient.post<ServiceOrderPostResponse>(`${this.basePath}/ssl/order`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -105,7 +106,7 @@ export class SSLCertificatesService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getNewSslOpts.config] Override http request option.
      */
-    public getNewSsl(getNewSslOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public getNewSsl(getNewSslOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<object>>;
     public getNewSsl(getNewSslOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -140,7 +141,7 @@ export class SSLCertificatesService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.get<any>(`${this.basePath}/ssl/order`,
+                return this.httpClient.get<object>(`${this.basePath}/ssl/order`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...getNewSslOpts?.config,
@@ -158,7 +159,7 @@ export class SSLCertificatesService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getSslInfoOpts.config] Override http request option.
      */
-    public getSslInfo(id: number, getSslInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public getSslInfo(id: number, getSslInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<object>>;
     public getSslInfo(id: number, getSslInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getSslInfo.');
@@ -197,7 +198,7 @@ export class SSLCertificatesService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.get<any>(`${this.basePath}/ssl/${encodeURIComponent(String(id))}`,
+                return this.httpClient.get<object>(`${this.basePath}/ssl/${encodeURIComponent(String(id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...getSslInfoOpts?.config,
@@ -491,7 +492,7 @@ export class SSLCertificatesService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateSslInfoOpts.config] Override http request option.
      */
-    public updateSslInfo(id: string, updateSslInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateSslInfo(id: string, updateSslInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateSslInfo(id: string, updateSslInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateSslInfo.');
@@ -530,7 +531,7 @@ export class SSLCertificatesService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/ssl/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/ssl/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

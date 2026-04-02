@@ -530,7 +530,7 @@ export class BackupsService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateBackupInfoOpts.config] Override http request option.
      */
-    public updateBackupInfo(id: number, updateBackupInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateBackupInfo(id: number, updateBackupInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateBackupInfo(id: number, updateBackupInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateBackupInfo.');
@@ -569,7 +569,7 @@ export class BackupsService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/backups/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/backups/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

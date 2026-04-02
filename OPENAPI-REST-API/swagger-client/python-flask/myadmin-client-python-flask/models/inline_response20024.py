@@ -14,25 +14,20 @@ class InlineResponse20024(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, message: str=None, success: bool=None):  # noqa: E501
+    def __init__(self, ips: Dict[str, str]=None):  # noqa: E501
         """InlineResponse20024 - a model defined in Swagger
 
-        :param message: The message of this InlineResponse20024.  # noqa: E501
-        :type message: str
-        :param success: The success of this InlineResponse20024.  # noqa: E501
-        :type success: bool
+        :param ips: The ips of this InlineResponse20024.  # noqa: E501
+        :type ips: Dict[str, str]
         """
         self.swagger_types = {
-            'message': str,
-            'success': bool
+            'ips': Dict[str, str]
         }
 
         self.attribute_map = {
-            'message': 'message',
-            'success': 'success'
+            'ips': 'ips'
         }
-        self._message = message
-        self._success = success
+        self._ips = ips
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20024':
@@ -46,43 +41,24 @@ class InlineResponse20024(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def message(self) -> str:
-        """Gets the message of this InlineResponse20024.
+    def ips(self) -> Dict[str, str]:
+        """Gets the ips of this InlineResponse20024.
 
+        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :return: The message of this InlineResponse20024.
-        :rtype: str
+        :return: The ips of this InlineResponse20024.
+        :rtype: Dict[str, str]
         """
-        return self._message
+        return self._ips
 
-    @message.setter
-    def message(self, message: str):
-        """Sets the message of this InlineResponse20024.
+    @ips.setter
+    def ips(self, ips: Dict[str, str]):
+        """Sets the ips of this InlineResponse20024.
 
+        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :param message: The message of this InlineResponse20024.
-        :type message: str
-        """
-
-        self._message = message
-
-    @property
-    def success(self) -> bool:
-        """Gets the success of this InlineResponse20024.
-
-
-        :return: The success of this InlineResponse20024.
-        :rtype: bool
-        """
-        return self._success
-
-    @success.setter
-    def success(self, success: bool):
-        """Sets the success of this InlineResponse20024.
-
-
-        :param success: The success of this InlineResponse20024.
-        :type success: bool
+        :param ips: The ips of this InlineResponse20024.
+        :type ips: Dict[str, str]
         """
 
-        self._success = success
+        self._ips = ips

@@ -218,16 +218,16 @@ module OpenAPIClient
     # Remove Credit Card
     # Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
     # @param id [String] The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
-    # @return [nil]
+    # @return [String]
     def delete_account_credit_card(id : String)
-      delete_account_credit_card_with_http_info(id)
-      nil
+      data, _status_code, _headers = delete_account_credit_card_with_http_info(id)
+      data
     end
 
     # Remove Credit Card
     # Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
     # @param id [String] The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def delete_account_credit_card_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: BillingApi.delete_account_credit_card ..."}
@@ -275,7 +275,7 @@ module OpenAPIClient
         Log.debug {"API called: BillingApi#delete_account_credit_card\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return String.from_json(data), status_code, headers
     end
 
     # Delete Credit Card
@@ -813,15 +813,15 @@ module OpenAPIClient
 
     # Get Shopping Cart Contents
     # Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
-    # @return [nil]
+    # @return [JSON::Any]
     def get_billing_cart()
-      get_billing_cart_with_http_info()
-      nil
+      data, _status_code, _headers = get_billing_cart_with_http_info()
+      data
     end
 
     # Get Shopping Cart Contents
     # Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(JSON::Any, Integer, Hash)>] JSON::Any data, response status code and response headers
     def get_billing_cart_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: BillingApi.get_billing_cart ..."}
@@ -865,7 +865,7 @@ module OpenAPIClient
         Log.debug {"API called: BillingApi#get_billing_cart\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return JSON::Any.from_json(data), status_code, headers
     end
 
     # Get Credit Card Verification Requirements
@@ -1053,15 +1053,15 @@ module OpenAPIClient
 
     # List Prepay Balances
     # Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
-    # @return [nil]
+    # @return [JSON::Any]
     def get_billing_pre_pays()
-      get_billing_pre_pays_with_http_info()
-      nil
+      data, _status_code, _headers = get_billing_pre_pays_with_http_info()
+      data
     end
 
     # List Prepay Balances
     # Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(JSON::Any, Integer, Hash)>] JSON::Any data, response status code and response headers
     def get_billing_pre_pays_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: BillingApi.get_billing_pre_pays ..."}
@@ -1105,7 +1105,7 @@ module OpenAPIClient
         Log.debug {"API called: BillingApi#get_billing_pre_pays\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return JSON::Any.from_json(data), status_code, headers
     end
 
     # Get Invoices
@@ -1328,16 +1328,16 @@ module OpenAPIClient
     # Update Credit Card
     # Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
     # @param id [Int32] The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
-    # @return [nil]
+    # @return [String]
     def update_account_credit_card(id : Int32)
-      update_account_credit_card_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_account_credit_card_with_http_info(id)
+      data
     end
 
     # Update Credit Card
     # Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
     # @param id [Int32] The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def update_account_credit_card_with_http_info(id : Int32)
       if @api_client.config.debugging
         Log.debug {"Calling API: BillingApi.update_account_credit_card ..."}
@@ -1385,7 +1385,7 @@ module OpenAPIClient
         Log.debug {"API called: BillingApi#update_account_credit_card\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return String.from_json(data), status_code, headers
     end
 
     # Configure Affiliate Dock Settings

@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\VPSApi
 
-VPS related services
+Virtual Private Server management. Order, configure, backup, restore, reinstall, and control VPS instances with full root access.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -55,7 +55,7 @@ All URIs are relative to https://my.interserver.net/apiv2, except if the operati
 ## `addVps()`
 
 ```php
-addVps($vpsOrderPostRequest)
+addVps($vpsOrderPostRequest): \Interserver\MyAdmin\Model\ServiceOrderPostResponse
 ```
 
 Place VPS Order
@@ -94,7 +94,8 @@ $apiInstance = new Interserver\MyAdmin\Api\VPSApi(
 $vpsOrderPostRequest = new \Interserver\MyAdmin\Model\VpsOrderPostRequest(); // \Interserver\MyAdmin\Model\VpsOrderPostRequest
 
 try {
-    $apiInstance->addVps($vpsOrderPostRequest);
+    $result = $apiInstance->addVps($vpsOrderPostRequest);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSApi->addVps: ', $e->getMessage(), PHP_EOL;
 }
@@ -108,7 +109,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3093,7 +3094,7 @@ try {
 ## `updateVpsInfo()`
 
 ```php
-updateVpsInfo($id)
+updateVpsInfo($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update VPS Order
@@ -3132,7 +3133,8 @@ $apiInstance = new Interserver\MyAdmin\Api\VPSApi(
 $id = 'id_example'; // string | VPS ID number.
 
 try {
-    $apiInstance->updateVpsInfo($id);
+    $result = $apiInstance->updateVpsInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSApi->updateVpsInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -3146,7 +3148,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

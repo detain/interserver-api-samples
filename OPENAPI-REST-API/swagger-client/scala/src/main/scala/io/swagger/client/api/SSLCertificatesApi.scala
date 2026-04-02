@@ -14,8 +14,9 @@ package io.swagger.client.api
 import java.text.SimpleDateFormat
 
 import io.swagger.client.model.ChargeInvoiceRows
+import io.swagger.client.model.ServiceOrderPostResponse
 import io.swagger.client.model.SuccessTextResponse
-import io.swagger.client.model.inline_response_200_20
+import io.swagger.client.model.inline_response_200_21
 import io.swagger.client.model.inline_response_401
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -85,9 +86,9 @@ class SSLCertificatesApi(
    * Place SSL Cert Order
    * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
    *
-   * @return void
+   * @return ServiceOrderPostResponse
    */
-  def addSsl() = {
+  def addSsl(): Option[ServiceOrderPostResponse] = {
     val await = Try(Await.result(addSslAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -99,9 +100,9 @@ class SSLCertificatesApi(
    * Place SSL Cert Order asynchronously
    * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
    *
-   * @return Future(void)
+   * @return Future(ServiceOrderPostResponse)
    */
-  def addSslAsync() = {
+  def addSslAsync(): Future[ServiceOrderPostResponse] = {
       helper.addSsl()
   }
 
@@ -109,9 +110,9 @@ class SSLCertificatesApi(
    * SSL Cert Ordering Information
    * Retrieves available SSL certificate types and pricing for ordering.
    *
-   * @return void
+   * @return Any
    */
-  def getNewSsl() = {
+  def getNewSsl(): Option[Any] = {
     val await = Try(Await.result(getNewSslAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -123,9 +124,9 @@ class SSLCertificatesApi(
    * SSL Cert Ordering Information asynchronously
    * Retrieves available SSL certificate types and pricing for ordering.
    *
-   * @return Future(void)
+   * @return Future(Any)
    */
-  def getNewSslAsync() = {
+  def getNewSslAsync(): Future[Any] = {
       helper.getNewSsl()
   }
 
@@ -134,9 +135,9 @@ class SSLCertificatesApi(
    * Returns detailed information about a specific SSL certificate including its domain and expiration.
    *
    * @param id SSL certificate ID number. 
-   * @return void
+   * @return Any
    */
-  def getSslInfo(id: Integer) = {
+  def getSslInfo(id: Integer): Option[Any] = {
     val await = Try(Await.result(getSslInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -149,9 +150,9 @@ class SSLCertificatesApi(
    * Returns detailed information about a specific SSL certificate including its domain and expiration.
    *
    * @param id SSL certificate ID number. 
-   * @return Future(void)
+   * @return Future(Any)
    */
-  def getSslInfoAsync(id: Integer) = {
+  def getSslInfoAsync(id: Integer): Future[Any] = {
       helper.getSslInfo(id)
   }
 
@@ -260,9 +261,9 @@ class SSLCertificatesApi(
    * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
    *
    * @param id SSL Cert ID number 
-   * @return inline_response_200_20
+   * @return inline_response_200_21
    */
-  def sslCancel(id: Integer): Option[inline_response_200_20] = {
+  def sslCancel(id: Integer): Option[inline_response_200_21] = {
     val await = Try(Await.result(sslCancelAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -275,9 +276,9 @@ class SSLCertificatesApi(
    * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
    *
    * @param id SSL Cert ID number 
-   * @return Future(inline_response_200_20)
+   * @return Future(inline_response_200_21)
    */
-  def sslCancelAsync(id: Integer): Future[inline_response_200_20] = {
+  def sslCancelAsync(id: Integer): Future[inline_response_200_21] = {
       helper.sslCancel(id)
   }
 
@@ -286,9 +287,9 @@ class SSLCertificatesApi(
    * Updates settings on an SSL certificate order.
    *
    * @param id SSL certificate ID number. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateSslInfo(id: String) = {
+  def updateSslInfo(id: String): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateSslInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -301,9 +302,9 @@ class SSLCertificatesApi(
    * Updates settings on an SSL certificate order.
    *
    * @param id SSL certificate ID number. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateSslInfoAsync(id: String) = {
+  def updateSslInfoAsync(id: String): Future[SuccessTextResponse] = {
       helper.updateSslInfo(id)
   }
 
@@ -311,7 +312,7 @@ class SSLCertificatesApi(
 
 class SSLCertificatesApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def addSsl()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def addSsl()(implicit reader: ClientResponseReader[ServiceOrderPostResponse]): Future[ServiceOrderPostResponse] = {
     // create path and map variables
     val path = (addFmt("/ssl/order"))
 
@@ -326,7 +327,7 @@ class SSLCertificatesApiAsyncHelper(client: TransportClient, config: SwaggerConf
     }
   }
 
-  def getNewSsl()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def getNewSsl()(implicit reader: ClientResponseReader[Any]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/ssl/order"))
 
@@ -341,7 +342,7 @@ class SSLCertificatesApiAsyncHelper(client: TransportClient, config: SwaggerConf
     }
   }
 
-  def getSslInfo(id: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def getSslInfo(id: Integer)(implicit reader: ClientResponseReader[Any]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/ssl/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -419,7 +420,7 @@ class SSLCertificatesApiAsyncHelper(client: TransportClient, config: SwaggerConf
     }
   }
 
-  def sslCancel(id: Integer)(implicit reader: ClientResponseReader[inline_response_200_20]): Future[inline_response_200_20] = {
+  def sslCancel(id: Integer)(implicit reader: ClientResponseReader[inline_response_200_21]): Future[inline_response_200_21] = {
     // create path and map variables
     val path = (addFmt("/ssl/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -435,7 +436,7 @@ class SSLCertificatesApiAsyncHelper(client: TransportClient, config: SwaggerConf
     }
   }
 
-  def updateSslInfo(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateSslInfo(id: String)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/ssl/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

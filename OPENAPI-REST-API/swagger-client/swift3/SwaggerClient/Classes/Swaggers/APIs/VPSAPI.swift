@@ -15,9 +15,9 @@ open class VPSAPI: APIBase {
      - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addVps(body: VpsOrderPostRequest? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func addVps(body: VpsOrderPostRequest? = nil, completion: @escaping ((_ data: ServiceOrderPostResponse?, _ error: ErrorResponse?) -> Void)) {
         addVpsWithRequestBuilder(body: body).execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -33,10 +33,20 @@ open class VPSAPI: APIBase {
        - name: sessionIdCookieAuth     - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}}]
      - parameter body: (body)  (optional)
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addVpsWithRequestBuilder(body: VpsOrderPostRequest? = nil) -> RequestBuilder<Void> {
+    open class func addVpsWithRequestBuilder(body: VpsOrderPostRequest? = nil) -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/vps/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = body?.encodeToJSON()
@@ -44,7 +54,7 @@ open class VPSAPI: APIBase {
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -82,9 +92,9 @@ open class VPSAPI: APIBase {
      - parameter comment: (form)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addVps(osDistro: String? = nil, slices: Int32? = nil, vpsPlatform: VpsPlatform_addVps? = nil, controlpanel: Controlpanel_addVps? = nil, period: Int32? = nil, location: Int32? = nil, osVersion: String? = nil, hostname: String? = nil, coupon: String? = nil, rootpass: String? = nil, comment: String? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func addVps(osDistro: String? = nil, slices: Int32? = nil, vpsPlatform: VpsPlatform_addVps? = nil, controlpanel: Controlpanel_addVps? = nil, period: Int32? = nil, location: Int32? = nil, osVersion: String? = nil, hostname: String? = nil, coupon: String? = nil, rootpass: String? = nil, comment: String? = nil, completion: @escaping ((_ data: ServiceOrderPostResponse?, _ error: ErrorResponse?) -> Void)) {
         addVpsWithRequestBuilder(osDistro: osDistro, slices: slices, vpsPlatform: vpsPlatform, controlpanel: controlpanel, period: period, location: location, osVersion: osVersion, hostname: hostname, coupon: coupon, rootpass: rootpass, comment: comment).execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -100,6 +110,16 @@ open class VPSAPI: APIBase {
        - name: sessionIdCookieAuth     - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}}]
      - parameter osDistro: (form)  (optional)
      - parameter slices: (form)  (optional)
      - parameter vpsPlatform: (form)  (optional)
@@ -111,9 +131,9 @@ open class VPSAPI: APIBase {
      - parameter coupon: (form)  (optional)
      - parameter rootpass: (form)  (optional)
      - parameter comment: (form)  (optional)
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addVpsWithRequestBuilder(osDistro: String? = nil, slices: Int32? = nil, vpsPlatform: VpsPlatform_addVps? = nil, controlpanel: Controlpanel_addVps? = nil, period: Int32? = nil, location: Int32? = nil, osVersion: String? = nil, hostname: String? = nil, coupon: String? = nil, rootpass: String? = nil, comment: String? = nil) -> RequestBuilder<Void> {
+    open class func addVpsWithRequestBuilder(osDistro: String? = nil, slices: Int32? = nil, vpsPlatform: VpsPlatform_addVps? = nil, controlpanel: Controlpanel_addVps? = nil, period: Int32? = nil, location: Int32? = nil, osVersion: String? = nil, hostname: String? = nil, coupon: String? = nil, rootpass: String? = nil, comment: String? = nil) -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/vps/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = body?.encodeToJSON()
@@ -121,7 +141,7 @@ open class VPSAPI: APIBase {
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -2951,9 +2971,9 @@ open class VPSAPI: APIBase {
      - parameter id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateVpsInfo(id: String, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func updateVpsInfo(id: String, completion: @escaping ((_ data: SuccessTextResponse?, _ error: ErrorResponse?) -> Void)) {
         updateVpsInfoWithRequestBuilder(id: id).execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -2969,10 +2989,14 @@ open class VPSAPI: APIBase {
        - name: sessionIdCookieAuth     - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter id: (path) VPS ID number. 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateVpsInfoWithRequestBuilder(id: String) -> RequestBuilder<Void> {
+    open class func updateVpsInfoWithRequestBuilder(id: String) -> RequestBuilder<SuccessTextResponse> {
         var path = "/vps/{id}"
         let idPreEscape = "\(id)"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2983,7 +3007,7 @@ open class VPSAPI: APIBase {
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -2993,7 +3017,7 @@ open class VPSAPI: APIBase {
      - parameter id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func vPSCancel(id: Int32, completion: @escaping ((_ data: InlineResponse20021?, _ error: ErrorResponse?) -> Void)) {
+    open class func vPSCancel(id: Int32, completion: @escaping ((_ data: InlineResponse20022?, _ error: ErrorResponse?) -> Void)) {
         vPSCancelWithRequestBuilder(id: id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -3016,9 +3040,9 @@ open class VPSAPI: APIBase {
   "text" : "VPS is canceled."
 }}]
      - parameter id: (path) VPS ID number 
-     - returns: RequestBuilder<InlineResponse20021> 
+     - returns: RequestBuilder<InlineResponse20022> 
      */
-    open class func vPSCancelWithRequestBuilder(id: Int32) -> RequestBuilder<InlineResponse20021> {
+    open class func vPSCancelWithRequestBuilder(id: Int32) -> RequestBuilder<InlineResponse20022> {
         var path = "/vps/{id}"
         let idPreEscape = "\(id)"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -3029,7 +3053,7 @@ open class VPSAPI: APIBase {
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
         ])
 
-        let requestBuilder: RequestBuilder<InlineResponse20021>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20022>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

@@ -29,6 +29,7 @@ import { PostWebsiteMigration200Response } from '../model/postWebsiteMigration20
 import { PostWebsiteMigrationRequest } from '../model/postWebsiteMigrationRequest';
 import { PostWebsiteMigrationRequest1 } from '../model/postWebsiteMigrationRequest1';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 import { WebhostingCancel200Response } from '../model/webhostingCancel200Response';
@@ -57,8 +58,8 @@ export class WebhostingService {
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
      
      */
-    public addWebsite(observe?: 'body', headers?: Headers): Observable<any>;
-    public addWebsite(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public addWebsite(observe?: 'body', headers?: Headers): Observable<ServiceOrderPostResponse>;
+    public addWebsite(observe?: 'response', headers?: Headers): Observable<HttpResponse<ServiceOrderPostResponse>>;
     public addWebsite(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -71,10 +72,10 @@ export class WebhostingService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/websites/order`, headers);
+        const response: Observable<HttpResponse<ServiceOrderPostResponse>> = this.httpClient.post(`${this.basePath}/websites/order`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <ServiceOrderPostResponse>(httpResponse.response))
                );
         }
         return response;
@@ -532,8 +533,8 @@ export class WebhostingService {
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
      
      */
-    public updateWebsiteInfo(id: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateWebsiteInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateWebsiteInfo(id: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateWebsiteInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateWebsiteInfo(id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateWebsiteInfo.');
@@ -550,10 +551,10 @@ export class WebhostingService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/websites/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/websites/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

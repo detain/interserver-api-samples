@@ -3,6 +3,5 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **String** |  | [optional] 
-**success** | **BOOLEAN** |  | [optional] 
+**ips** | **Hash&lt;String, String&gt;** | A map of IP addresses to their current reverse DNS hostnames. | [optional] 
 

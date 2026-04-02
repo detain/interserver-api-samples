@@ -33,7 +33,7 @@ import javax.annotation.Generated;
   GetScrubIpDetails200ResponseFilterFirewallFiltersInner.JSON_PROPERTY_FILTER
 })
 @JsonTypeName("getScrubIpDetails_200_response_filter_firewall_filters_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class GetScrubIpDetails200ResponseFilterFirewallFiltersInner {
     public static final String JSON_PROPERTY_DADDR = "daddr";

@@ -293,13 +293,14 @@ void OAIServersApi::addServerCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIAddServer_200_response output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addServerSignal();
-        Q_EMIT addServerSignalFull(worker);
+        Q_EMIT addServerSignal(output);
+        Q_EMIT addServerSignalFull(worker, output);
     } else {
-        Q_EMIT addServerSignalError(error_type, error_str);
+        Q_EMIT addServerSignalError(output, error_type, error_str);
         Q_EMIT addServerSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -1364,13 +1365,14 @@ void OAIServersApi::updateServerInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateServerInfoSignal();
-        Q_EMIT updateServerInfoSignalFull(worker);
+        Q_EMIT updateServerInfoSignal(output);
+        Q_EMIT updateServerInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateServerInfoSignalError(error_type, error_str);
+        Q_EMIT updateServerInfoSignalError(output, error_type, error_str);
         Q_EMIT updateServerInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

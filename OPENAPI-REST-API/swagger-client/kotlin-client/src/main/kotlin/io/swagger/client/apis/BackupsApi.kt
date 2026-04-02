@@ -271,21 +271,22 @@ class BackupsApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") :
      * Update Backup Information
      * Updates backup storage service metadata, such as stored credentials or settings for the order.
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateBackupInfo(id: kotlin.Int): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateBackupInfo(id: kotlin.Int): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/backups/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

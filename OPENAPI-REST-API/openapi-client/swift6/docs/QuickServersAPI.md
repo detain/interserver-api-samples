@@ -52,7 +52,7 @@ Method | HTTP request | Description
 
 # **addQs**
 ```swift
-    open class func addQs(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func addQs(completion: @escaping (_ data: ServiceOrderPostResponse?, _ error: Error?) -> Void)
 ```
 
 Place QuickServer Order
@@ -83,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2202,7 +2202,7 @@ Name | Type | Description  | Notes
 
 # **updateQsInfo**
 ```swift
-    open class func updateQsInfo(id: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateQsInfo(id: String, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Update QuickServer Order
@@ -2237,7 +2237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

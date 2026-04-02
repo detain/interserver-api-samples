@@ -10,7 +10,7 @@ class LicensesApi {
   /// Place License Order
   ///
   /// Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
-  Future addLicense() async {
+  Future<ServiceOrderPostResponse> addLicense() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,9 +50,9 @@ class LicensesApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'ServiceOrderPostResponse') as ServiceOrderPostResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get License
@@ -517,7 +517,7 @@ class LicensesApi {
   /// Update License
   ///
   /// Updates settings on a license service such as its assigned IP.
-  Future updateLicenseInfo(String id) async {
+  Future<SuccessTextResponse> updateLicenseInfo(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -560,9 +560,9 @@ class LicensesApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
 }

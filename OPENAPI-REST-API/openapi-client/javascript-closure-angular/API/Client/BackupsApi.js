@@ -351,7 +351,7 @@ API.Client.BackupsApi.prototype.getNewBackup = function(opt_extraHttpRequestPara
  * Updates backup storage service metadata, such as stored credentials or settings for the order.
  * @param {!number} id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.BackupsApi.prototype.updateBackupInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 
 # **add_license**
-> add_license()
+> ServiceOrderPostResponse add_license()
 
 Place License Order
 
@@ -51,7 +51,8 @@ my $api_instance = OpenAPIClient::LicensesApi->new(
 
 
 eval {
-    $api_instance->add_license();
+    my $result = $api_instance->add_license();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling LicensesApi->add_license: $@\n";
@@ -63,7 +64,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -596,7 +597,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_license_info**
-> update_license_info(id => $id)
+> SuccessTextResponse update_license_info(id => $id)
 
 Update License
 
@@ -625,7 +626,8 @@ my $api_instance = OpenAPIClient::LicensesApi->new(
 my $id = "id_example"; # string | The license service ID. Use `license_id` from `GET /licenses`.
 
 eval {
-    $api_instance->update_license_info(id => $id);
+    my $result = $api_instance->update_license_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling LicensesApi->update_license_info: $@\n";
@@ -640,7 +642,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

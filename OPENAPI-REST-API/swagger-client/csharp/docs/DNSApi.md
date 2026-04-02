@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="adddnsdomain"></a>
 # **AddDnsDomain**
-> void AddDnsDomain (string domain, string ip)
+> SuccessTextResponse AddDnsDomain (string domain, string ip)
 
 Create DNS Domain
 
@@ -54,7 +54,8 @@ namespace Example
             try
             {
                 // Create DNS Domain
-                apiInstance.AddDnsDomain(domain, ip);
+                SuccessTextResponse result = apiInstance.AddDnsDomain(domain, ip);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -74,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -170,7 +171,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="deletednsdomain"></a>
 # **DeleteDnsDomain**
-> void DeleteDnsDomain (string id)
+> SuccessTextResponse DeleteDnsDomain (string id)
 
 Delete DNS Domain
 
@@ -209,7 +210,8 @@ namespace Example
             try
             {
                 // Delete DNS Domain
-                apiInstance.DeleteDnsDomain(id);
+                SuccessTextResponse result = apiInstance.DeleteDnsDomain(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -228,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -242,7 +244,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="deletednsrecord"></a>
 # **DeleteDnsRecord**
-> void DeleteDnsRecord (int? domainId, int? recordId)
+> SuccessTextResponse DeleteDnsRecord (int? domainId, int? recordId)
 
 Delete DNS Record
 
@@ -282,7 +284,8 @@ namespace Example
             try
             {
                 // Delete DNS Record
-                apiInstance.DeleteDnsRecord(domainId, recordId);
+                SuccessTextResponse result = apiInstance.DeleteDnsRecord(domainId, recordId);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -302,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -458,7 +461,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updatednsrecord"></a>
 # **UpdateDnsRecord**
-> void UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
+> SuccessTextResponse UpdateDnsRecord (string name, DnsRecordType type, string content, string ttl, string prio, string disabled, string ordername, string auth, int? domainId, int? recordId)
 
 Update DNS Record
 
@@ -506,7 +509,8 @@ namespace Example
             try
             {
                 // Update DNS Record
-                apiInstance.UpdateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+                SuccessTextResponse result = apiInstance.UpdateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -534,7 +538,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

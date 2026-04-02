@@ -74,7 +74,7 @@ public class BillingApiController implements BillingApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> getBillingCart() {
+    public Single<HttpResponse<Object>> getBillingCart() {
         // TODO: Implement me
         return BillingApi.super.getBillingCart();
     }
@@ -98,7 +98,7 @@ public class BillingApiController implements BillingApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> getBillingPrePays() {
+    public Single<HttpResponse<Object>> getBillingPrePays() {
         // TODO: Implement me
         return BillingApi.super.getBillingPrePays();
     }

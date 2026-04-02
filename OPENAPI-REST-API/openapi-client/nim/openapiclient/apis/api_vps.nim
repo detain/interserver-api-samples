@@ -22,6 +22,7 @@ import ../models/model_charge_invoice_rows
 import ../models/model_queue_response
 import ../models/model_restore_request
 import ../models/model_reverse_dns_entries
+import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_text_response
 import ../models/model_vps_cancel200response
@@ -53,11 +54,12 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addVps*(httpClient: HttpClient, vpsOrderPostRequest: VpsOrderPostRequest): Response =
+proc addVps*(httpClient: HttpClient, vpsOrderPostRequest: VpsOrderPostRequest): (Option[ServiceOrderPostResponse], Response) =
   ## Place VPS Order
   httpClient.headers["Content-Type"] = "application/json"
-  httpClient.post(basepath & "/vps/order", $(%vpsOrderPostRequest))
 
+  let response = httpClient.post(basepath & "/vps/order", $(%vpsOrderPostRequest))
+  constructResult[ServiceOrderPostResponse](response)
 
 
 proc deleteVpsBackup*(httpClient: HttpClient, id: int, file: string, all: string): (Option[SuccessTextResponse], Response) =
@@ -381,10 +383,11 @@ proc putVps*(httpClient: HttpClient, vpsOrderPutRequest: VpsOrderPutRequest): (O
   constructResult[VpsOrderPutResponse](response)
 
 
-proc updateVpsInfo*(httpClient: HttpClient, id: string): Response =
+proc updateVpsInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Update VPS Order
-  httpClient.post(basepath & fmt"/vps/{id}")
 
+  let response = httpClient.post(basepath & fmt"/vps/{id}")
+  constructResult[SuccessTextResponse](response)
 
 
 proc vPSCancel*(httpClient: HttpClient, id: int): (Option[VPSCancel_200_response], Response) =

@@ -315,13 +315,14 @@ void OAIDomainsApi::addDomainCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIServiceOrderPostResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addDomainSignal();
-        Q_EMIT addDomainSignalFull(worker);
+        Q_EMIT addDomainSignal(output);
+        Q_EMIT addDomainSignalFull(worker, output);
     } else {
-        Q_EMIT addDomainSignalError(error_type, error_str);
+        Q_EMIT addDomainSignalError(output, error_type, error_str);
         Q_EMIT addDomainSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -2040,13 +2041,14 @@ void OAIDomainsApi::updateDomainInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateDomainInfoSignal();
-        Q_EMIT updateDomainInfoSignalFull(worker);
+        Q_EMIT updateDomainInfoSignal(output);
+        Q_EMIT updateDomainInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateDomainInfoSignalError(error_type, error_str);
+        Q_EMIT updateDomainInfoSignalError(output, error_type, error_str);
         Q_EMIT updateDomainInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

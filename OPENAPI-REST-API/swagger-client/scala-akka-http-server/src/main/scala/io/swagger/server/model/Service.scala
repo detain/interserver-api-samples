@@ -9,7 +9,7 @@ import java.math.BigDecimal
  *
  * @param services_id  for example: ''31''
  * @param services_name  for example: ''OpenVZ VPS Slice''
- * @param services_cost  for example: ''6.0''
+ * @param services_cost  for example: ''6''
  * @param services_currency  for example: ''USD''
  * @param services_category  for example: ''1''
  * @param services_buyable  for example: ''true''

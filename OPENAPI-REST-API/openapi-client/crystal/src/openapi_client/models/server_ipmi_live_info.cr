@@ -9,7 +9,7 @@
 #
 
 module OpenAPIClient
-  # Information about the IPMI connectioj.
+  # Information about the IPMI connection.
   class ServerIpmiLiveInfo
     include JSON::Serializable
     include YAML::Serializable

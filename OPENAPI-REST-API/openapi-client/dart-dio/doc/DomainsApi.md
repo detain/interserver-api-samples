@@ -41,7 +41,7 @@ Method | HTTP request | Description
 
 
 # **addDomain**
-> addDomain()
+> ServiceOrderPostResponse addDomain()
 
 Place Domain Order
 
@@ -66,7 +66,8 @@ import 'package:openapi/api.dart';
 final api = Openapi().getDomainsApi();
 
 try {
-    api.addDomain();
+    final response = api.addDomain();
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling DomainsApi->addDomain: $e\n');
 }
@@ -77,7 +78,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1458,7 +1459,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateDomainInfo**
-> updateDomainInfo(id)
+> SuccessTextResponse updateDomainInfo(id)
 
 Update Domain Order
 
@@ -1484,7 +1485,8 @@ final api = Openapi().getDomainsApi();
 final String id = id_example; // String | The domain service ID. Use `domain_id` from `GET /domains`.
 
 try {
-    api.updateDomainInfo(id);
+    final response = api.updateDomainInfo(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling DomainsApi->updateDomainInfo: $e\n');
 }
@@ -1498,7 +1500,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

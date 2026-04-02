@@ -3,11 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bandwidth** | [**\Interserver\MyAdmin\Model\InlineResponse20026Bandwidth[]**](InlineResponse20026Bandwidth.md) |  | [optional] 
-**ips** | [**\Interserver\MyAdmin\Model\InlineResponse20026Ips[]**](InlineResponse20026Ips.md) |  | [optional] 
-**os** | [**\Interserver\MyAdmin\Model\InlineResponse20026Os[]**](InlineResponse20026Os.md) |  | [optional] 
-**cp** | [**\Interserver\MyAdmin\Model\InlineResponse20026Cp[]**](InlineResponse20026Cp.md) |  | [optional] 
-**raid** | [**\Interserver\MyAdmin\Model\InlineResponse20026Raid[]**](InlineResponse20026Raid.md) |  | [optional] 
+**text** | **string** | Confirmation message. | [optional] 
+**ticket** | **int** | The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

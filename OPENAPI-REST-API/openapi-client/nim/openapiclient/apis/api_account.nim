@@ -131,7 +131,7 @@ proc updateAccountFeatures*(httpClient: HttpClient, disableReset: int, disableRe
   constructResult[SuccessTextResponse](response)
 
 
-proc updateAccountInfo*(httpClient: HttpClient, name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company: string, address2: string, locale: string, emailInvoices: string, emailAbuse: string, disableReset: bool, disableReinstall: bool, disableServerNotifications: bool, disableEmailNotifications: bool, gstin: string): Response =
+proc updateAccountInfo*(httpClient: HttpClient, name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company: string, address2: string, locale: string, emailInvoices: string, emailAbuse: string, disableReset: bool, disableReinstall: bool, disableServerNotifications: bool, disableEmailNotifications: bool, gstin: string): (Option[SuccessTextResponse], Response) =
   ## Update Account Information
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
@@ -153,19 +153,21 @@ proc updateAccountInfo*(httpClient: HttpClient, name: string, address: string, c
     "disable_email_notifications": $disableEmailNotifications, # Set to `true` to disable email notifications, or `false` to enable them.
     "gstin": $gstin, # Your GST identification number (if applicable).
   })
-  httpClient.post(basepath & "/account", multipart=multipart_data)
+
+  let response = httpClient.post(basepath & "/account", multipart=multipart_data)
+  constructResult[SuccessTextResponse](response)
 
 
-
-proc updateAccountIpLimits*(httpClient: HttpClient, start: string, `end`: string): Response =
+proc updateAccountIpLimits*(httpClient: HttpClient, start: string, `end`: string): (Option[SuccessTextResponse], Response) =
   ## Add IP Access Restriction
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "start": $start, # The begining (or first) IP address in the range.
     "end": $`end`, # The ending (or last) IP address in the range.
   })
-  httpClient.post(basepath & "/account/iplimits", multipart=multipart_data)
 
+  let response = httpClient.post(basepath & "/account/iplimits", multipart=multipart_data)
+  constructResult[SuccessTextResponse](response)
 
 
 proc updateAccountPassword*(httpClient: HttpClient, password: string): (Option[TextResponse], Response) =

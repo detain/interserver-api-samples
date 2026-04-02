@@ -201,7 +201,7 @@ API.Client.BillingApi.prototype.addBillingPrepay = function(billingPrepayRequest
  * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
  * @param {!string} id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.BillingApi.prototype.deleteAccountCreditCard = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -544,7 +544,7 @@ API.Client.BillingApi.prototype.getAffiliateWebTraffic = function(opt_extraHttpR
  * Get Shopping Cart Contents
  * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.Object>}
  */
 API.Client.BillingApi.prototype.getBillingCart = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -680,7 +680,7 @@ API.Client.BillingApi.prototype.getBillingInvoices = function(opt_extraHttpReque
  * List Prepay Balances
  * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.Object>}
  */
 API.Client.BillingApi.prototype.getBillingPrePays = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -844,7 +844,7 @@ API.Client.BillingApi.prototype.postBillingCreditCardVerify = function(id, billi
  * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
  * @param {!number} id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.BillingApi.prototype.updateAccountCreditCard = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

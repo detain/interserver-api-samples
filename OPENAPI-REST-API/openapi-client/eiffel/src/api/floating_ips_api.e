@@ -24,11 +24,12 @@ inherit
 feature -- API Access
 
 
-	add_floating_ip 
+	add_floating_ip : detachable SERVICE_ORDER_POST_RESPONSE
 			-- Place Floating IP Order
 			-- Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
 			-- 
 			-- 
+			-- Result SERVICE_ORDER_POST_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -46,19 +47,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SERVICE_ORDER_POST_RESPONSE } l_response.data ({ SERVICE_ORDER_POST_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
-	floating_ip_info (id: INTEGER_32)
+	floating_ip_info (id: INTEGER_32): detachable ANY
 			-- View Floating IP
 			-- Returns detailed information about a specific Floating IP service including its current target IP assignment.
 			-- 
 			-- argument: id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
 			-- 
 			-- 
+			-- Result ANY
 		require
 		local
   			l_path: STRING
@@ -77,9 +83,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { ANY } l_response.data ({ ANY }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -219,11 +229,12 @@ feature -- API Access
 			end
 		end
 
-	new_floating_ip 
+	new_floating_ip : detachable ANY
 			-- Get Floating IP Ordering Information
 			-- Retrieves available options and pricing for ordering a new Floating IP.
 			-- 
 			-- 
+			-- Result ANY
 		require
 		local
   			l_path: STRING
@@ -241,9 +252,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { ANY } l_response.data ({ ANY }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -316,13 +331,14 @@ feature -- API Access
 			end
 		end
 
-	update_floating_ip_info (id: STRING_32)
+	update_floating_ip_info (id: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update Floating IP
 			-- Updates settings on a Floating IP service, such as its label or configuration metadata.
 			-- 
 			-- argument: id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -341,9 +357,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

@@ -11,26 +11,17 @@
  */
 package io.swagger.client.models
 
-import io.swagger.client.models.InlineResponse20026Bandwidth
-import io.swagger.client.models.InlineResponse20026Cp
-import io.swagger.client.models.InlineResponse20026Ips
-import io.swagger.client.models.InlineResponse20026Os
-import io.swagger.client.models.InlineResponse20026Raid
 
 /**
  * 
- * @param bandwidth 
- * @param ips 
- * @param os 
- * @param cp 
- * @param raid 
+ * @param text Confirmation message.
+ * @param ticket The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
  */
 data class InlineResponse20026 (
 
-    val bandwidth: kotlin.Array<InlineResponse20026Bandwidth>? = null,
-    val ips: kotlin.Array<InlineResponse20026Ips>? = null,
-    val os: kotlin.Array<InlineResponse20026Os>? = null,
-    val cp: kotlin.Array<InlineResponse20026Cp>? = null,
-    val raid: kotlin.Array<InlineResponse20026Raid>? = null
+    /* Confirmation message. */
+    val text: kotlin.String? = null,
+    /* The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress. */
+    val ticket: kotlin.Int? = null
 ) {
 }

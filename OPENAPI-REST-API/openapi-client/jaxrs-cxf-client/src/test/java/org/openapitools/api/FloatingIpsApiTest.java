@@ -16,6 +16,7 @@ package org.openapitools.api;
 import org.openapitools.model.ChargeInvoiceRows;
 import org.openapitools.model.FloatingIpsCancel200Response;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.junit.Test;
 import org.junit.Before;
@@ -72,8 +73,8 @@ public class FloatingIpsApiTest {
      */
     @Test
     public void addFloatingIpTest() {
-        //api.addFloatingIp();
-        
+        //ServiceOrderPostResponse response = api.addFloatingIp();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -108,8 +109,8 @@ public class FloatingIpsApiTest {
     @Test
     public void getFloatingIpInfoTest() {
         Integer id = null;
-        //api.getFloatingIpInfo(id);
-        
+        //Object response = api.getFloatingIpInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -178,8 +179,8 @@ public class FloatingIpsApiTest {
      */
     @Test
     public void getNewFloatingIpTest() {
-        //api.getNewFloatingIp();
-        
+        //Object response = api.getNewFloatingIp();
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -232,8 +233,8 @@ public class FloatingIpsApiTest {
     @Test
     public void updateFloatingIpInfoTest() {
         String id = null;
-        //api.updateFloatingIpInfo(id);
-        
+        //SuccessTextResponse response = api.updateFloatingIpInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 

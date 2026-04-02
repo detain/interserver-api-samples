@@ -13,35 +13,25 @@ require 'date'
 
 module SwaggerClient
   class InlineResponse20026
-    attr_accessor :bandwidth
+    # Confirmation message.
+    attr_accessor :text
 
-    attr_accessor :ips
-
-    attr_accessor :os
-
-    attr_accessor :cp
-
-    attr_accessor :raid
+    # The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+    attr_accessor :ticket
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'bandwidth' => :'bandwidth',
-        :'ips' => :'ips',
-        :'os' => :'os',
-        :'cp' => :'cp',
-        :'raid' => :'raid'
+        :'text' => :'text',
+        :'ticket' => :'ticket'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'bandwidth' => :'Object',
-        :'ips' => :'Object',
-        :'os' => :'Object',
-        :'cp' => :'Object',
-        :'raid' => :'Object'
+        :'text' => :'Object',
+        :'ticket' => :'Object'
       }
     end
 
@@ -66,34 +56,12 @@ module SwaggerClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'bandwidth')
-        if (value = attributes[:'bandwidth']).is_a?(Array)
-          self.bandwidth = value
-        end
+      if attributes.key?(:'text')
+        self.text = attributes[:'text']
       end
 
-      if attributes.key?(:'ips')
-        if (value = attributes[:'ips']).is_a?(Array)
-          self.ips = value
-        end
-      end
-
-      if attributes.key?(:'os')
-        if (value = attributes[:'os']).is_a?(Array)
-          self.os = value
-        end
-      end
-
-      if attributes.key?(:'cp')
-        if (value = attributes[:'cp']).is_a?(Array)
-          self.cp = value
-        end
-      end
-
-      if attributes.key?(:'raid')
-        if (value = attributes[:'raid']).is_a?(Array)
-          self.raid = value
-        end
+      if attributes.key?(:'ticket')
+        self.ticket = attributes[:'ticket']
       end
     end
 
@@ -115,11 +83,8 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          bandwidth == o.bandwidth &&
-          ips == o.ips &&
-          os == o.os &&
-          cp == o.cp &&
-          raid == o.raid
+          text == o.text &&
+          ticket == o.ticket
     end
 
     # @see the `==` method
@@ -131,7 +96,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [bandwidth, ips, os, cp, raid].hash
+      [text, ticket].hash
     end
 
     # Builds the object from hash

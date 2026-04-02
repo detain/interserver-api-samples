@@ -37,7 +37,7 @@ describe 'DNSApi' do
   # @param domain 
   # @param ip 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'add_dns_domain test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -49,7 +49,7 @@ describe 'DNSApi' do
   # Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
   # @param body 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'add_dns_domain test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -91,7 +91,7 @@ describe 'DNSApi' do
   # Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
   # @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'delete_dns_domain test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -104,7 +104,7 @@ describe 'DNSApi' do
   # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
   # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'delete_dns_record test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -148,7 +148,7 @@ describe 'DNSApi' do
   # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
   # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_dns_record test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -162,7 +162,7 @@ describe 'DNSApi' do
   # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
   # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_dns_record test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

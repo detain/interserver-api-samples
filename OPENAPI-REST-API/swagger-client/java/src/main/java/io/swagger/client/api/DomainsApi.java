@@ -41,6 +41,7 @@ import io.swagger.client.model.DomainSearchResponse;
 import io.swagger.client.model.DomainWhoisPrivacyRequest;
 import io.swagger.client.model.InlineResponse2002;
 import io.swagger.client.model.InlineResponse401;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 import io.swagger.client.model.TextResponse;
 
@@ -140,21 +141,24 @@ public class DomainsApi {
     /**
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addDomain() throws ApiException {
-        addDomainWithHttpInfo();
+    public ServiceOrderPostResponse addDomain() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> resp = addDomainWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addDomainWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addDomainWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = addDomainValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -164,7 +168,7 @@ public class DomainsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addDomainAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addDomainAsync(final ApiCallback<ServiceOrderPostResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -186,7 +190,8 @@ public class DomainsApi {
         }
 
         com.squareup.okhttp.Call call = addDomainValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -4047,22 +4052,25 @@ public class DomainsApi {
      * Update Domain Order
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateDomainInfo(String id) throws ApiException {
-        updateDomainInfoWithHttpInfo(id);
+    public SuccessTextResponse updateDomainInfo(String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateDomainInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update Domain Order
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateDomainInfoWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateDomainInfoWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = updateDomainInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -4073,7 +4081,7 @@ public class DomainsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateDomainInfoAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateDomainInfoAsync(String id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4095,7 +4103,8 @@ public class DomainsApi {
         }
 
         com.squareup.okhttp.Call call = updateDomainInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**

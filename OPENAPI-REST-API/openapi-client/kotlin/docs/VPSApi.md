@@ -52,7 +52,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addVps"></a>
 # **addVps**
-> addVps(vpsOrderPostRequest)
+> ServiceOrderPostResponse addVps(vpsOrderPostRequest)
 
 Place VPS Order
 
@@ -67,7 +67,8 @@ Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the or
 val apiInstance = VPSApi()
 val vpsOrderPostRequest : VpsOrderPostRequest =  // VpsOrderPostRequest | 
 try {
-    apiInstance.addVps(vpsOrderPostRequest)
+    val result : ServiceOrderPostResponse = apiInstance.addVps(vpsOrderPostRequest)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling VPSApi#addVps")
     e.printStackTrace()
@@ -84,7 +85,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2376,7 +2377,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateVpsInfo"></a>
 # **updateVpsInfo**
-> updateVpsInfo(id)
+> SuccessTextResponse updateVpsInfo(id)
 
 Update VPS Order
 
@@ -2391,7 +2392,8 @@ Updates settings on a VPS order.
 val apiInstance = VPSApi()
 val id : kotlin.String = id_example // kotlin.String | VPS ID number.
 try {
-    apiInstance.updateVpsInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateVpsInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling VPSApi#updateVpsInfo")
     e.printStackTrace()
@@ -2408,7 +2410,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

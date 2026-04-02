@@ -49,7 +49,7 @@ public interface TicketsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Create New Ticket", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "A successful response after creating a ticket", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TicketNewResponse.class))),
+        @ApiResponse(responseCode = "200", description = "A successful response after creating a ticket.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TicketNewResponse.class))),
         @ApiResponse(responseCode = "400", description = "A successful response after creating a ticket", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TicketNewResponse.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public TicketNewResponse addNewTicket(TicketNew body);
@@ -66,7 +66,7 @@ public interface TicketsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Create New Ticket", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "A successful response after creating a ticket", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TicketNewResponse.class))),
+        @ApiResponse(responseCode = "200", description = "A successful response after creating a ticket.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TicketNewResponse.class))),
         @ApiResponse(responseCode = "400", description = "A successful response after creating a ticket", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TicketNewResponse.class))),
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     public TicketNewResponse addNewTicket(@Multipart(value = "subject")  String subject, @Multipart(value = "body")  String body, @Multipart(value = "service_id")  Integer serviceId, @Multipart(value = "service_module")  String serviceModule);

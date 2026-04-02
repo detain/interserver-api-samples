@@ -561,7 +561,7 @@ Other parameters are passed through a pointer to a apiGetNewBackupRequest struct
 
 ## UpdateBackupInfo
 
-> UpdateBackupInfo(ctx, id).Execute()
+> SuccessTextResponse UpdateBackupInfo(ctx, id).Execute()
 
 Update Backup Information
 
@@ -584,11 +584,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BackupsAPI.UpdateBackupInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.BackupsAPI.UpdateBackupInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BackupsAPI.UpdateBackupInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateBackupInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `BackupsAPI.UpdateBackupInfo`: %v\n", resp)
 }
 ```
 
@@ -611,7 +613,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

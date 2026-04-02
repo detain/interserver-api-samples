@@ -26,7 +26,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addServer"></a>
 # **addServer**
-> addServer()
+> AddServer200Response addServer()
 
 Place Server Order
 
@@ -40,7 +40,8 @@ Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; t
 
 val apiInstance = ServersApi()
 try {
-    apiInstance.addServer()
+    val result : AddServer200Response = apiInstance.addServer()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ServersApi#addServer")
     e.printStackTrace()
@@ -55,7 +56,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**AddServer200Response**](AddServer200Response.md)
 
 ### Authorization
 
@@ -951,7 +952,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateServerInfo"></a>
 # **updateServerInfo**
-> updateServerInfo(id)
+> SuccessTextResponse updateServerInfo(id)
 
 Update Server Order
 
@@ -966,7 +967,8 @@ Updates settings on a dedicated server order.
 val apiInstance = ServersApi()
 val id : kotlin.String = id_example // kotlin.String | Server ID number.
 try {
-    apiInstance.updateServerInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateServerInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ServersApi#updateServerInfo")
     e.printStackTrace()
@@ -983,7 +985,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -95,11 +95,12 @@ class VPSApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\ServiceOrderPostResponse
      */
     public function addVps($body = null)
     {
-        $this->addVpsWithHttpInfo($body);
+        list($response) = $this->addVpsWithHttpInfo($body);
+        return $response;
     }
 
     /**
@@ -111,11 +112,11 @@ class VPSApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\ServiceOrderPostResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addVpsWithHttpInfo($body = null)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addVpsRequest($body);
 
         try {
@@ -146,10 +147,32 @@ class VPSApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -195,14 +218,28 @@ class VPSApi
      */
     public function addVpsAsyncWithHttpInfo($body = null)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addVpsRequest($body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -386,11 +423,12 @@ class VPSApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\ServiceOrderPostResponse
      */
     public function addVps($osDistro = null, $slices = null, $vpsPlatform = null, $controlpanel = null, $period = null, $location = null, $osVersion = null, $hostname = null, $coupon = null, $rootpass = null, $comment = null)
     {
-        $this->addVpsWithHttpInfo($osDistro, $slices, $vpsPlatform, $controlpanel, $period, $location, $osVersion, $hostname, $coupon, $rootpass, $comment);
+        list($response) = $this->addVpsWithHttpInfo($osDistro, $slices, $vpsPlatform, $controlpanel, $period, $location, $osVersion, $hostname, $coupon, $rootpass, $comment);
+        return $response;
     }
 
     /**
@@ -412,11 +450,11 @@ class VPSApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\ServiceOrderPostResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addVpsWithHttpInfo($osDistro = null, $slices = null, $vpsPlatform = null, $controlpanel = null, $period = null, $location = null, $osVersion = null, $hostname = null, $coupon = null, $rootpass = null, $comment = null)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addVpsRequest($osDistro, $slices, $vpsPlatform, $controlpanel, $period, $location, $osVersion, $hostname, $coupon, $rootpass, $comment);
 
         try {
@@ -447,10 +485,32 @@ class VPSApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -516,14 +576,28 @@ class VPSApi
      */
     public function addVpsAsyncWithHttpInfo($osDistro = null, $slices = null, $vpsPlatform = null, $controlpanel = null, $period = null, $location = null, $osVersion = null, $hostname = null, $coupon = null, $rootpass = null, $comment = null)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addVpsRequest($osDistro, $slices, $vpsPlatform, $controlpanel, $period, $location, $osVersion, $hostname, $coupon, $rootpass, $comment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -15435,11 +15509,12 @@ class VPSApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\SuccessTextResponse
      */
     public function updateVpsInfo($id)
     {
-        $this->updateVpsInfoWithHttpInfo($id);
+        list($response) = $this->updateVpsInfoWithHttpInfo($id);
+        return $response;
     }
 
     /**
@@ -15451,11 +15526,11 @@ class VPSApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\SuccessTextResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateVpsInfoWithHttpInfo($id)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateVpsInfoRequest($id);
 
         try {
@@ -15486,10 +15561,32 @@ class VPSApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -15535,14 +15632,28 @@ class VPSApi
      */
     public function updateVpsInfoAsyncWithHttpInfo($id)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateVpsInfoRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -15683,7 +15794,7 @@ class VPSApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Interserver\MyAdmin\Model\InlineResponse20021
+     * @return \Interserver\MyAdmin\Model\InlineResponse20022
      */
     public function vPSCancel($id)
     {
@@ -15700,11 +15811,11 @@ class VPSApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Interserver\MyAdmin\Model\InlineResponse20021, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20022, HTTP status code, HTTP response headers (array of strings)
      */
     public function vPSCancelWithHttpInfo($id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20021';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20022';
         $request = $this->vPSCancelRequest($id);
 
         try {
@@ -15756,7 +15867,7 @@ class VPSApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Interserver\MyAdmin\Model\InlineResponse20021',
+                        '\Interserver\MyAdmin\Model\InlineResponse20022',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -15806,7 +15917,7 @@ class VPSApi
      */
     public function vPSCancelAsyncWithHttpInfo($id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20021';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20022';
         $request = $this->vPSCancelRequest($id);
 
         return $this->client

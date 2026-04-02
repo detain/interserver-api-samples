@@ -23,6 +23,7 @@
 #include "DomainSearchResponse.h"
 #include "DomainWhoisPrivacyRequest.h"
 #include "GetAccountInfo_401_response.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
 
@@ -45,7 +46,7 @@ public:
     * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
     */
     Response<
-            String
+                ServiceOrderPostResponse
         >
     addDomain(
     );
@@ -414,7 +415,7 @@ public:
     * \param id The domain service ID. Use `domain_id` from `GET /domains`. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateDomainInfo(
             

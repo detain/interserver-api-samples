@@ -21,6 +21,7 @@ import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
 import { QueueResponse } from '../model/queueResponse';
 import { RestoreRequest } from '../model/restoreRequest';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 import { VPSCancel200Response } from '../model/vPSCancel200Response';
@@ -68,7 +69,7 @@ export class VPSService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [addVpsOpts.config] Override http request option.
      */
-    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, addVpsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, addVpsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ServiceOrderPostResponse>>;
     public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, addVpsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -109,7 +110,7 @@ export class VPSService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/vps/order`,
+                return this.httpClient.post<ServiceOrderPostResponse>(`${this.basePath}/vps/order`,
                     vpsOrderPostRequest,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -2679,7 +2680,7 @@ export class VPSService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateVpsInfoOpts.config] Override http request option.
      */
-    public updateVpsInfo(id: string, updateVpsInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateVpsInfo(id: string, updateVpsInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateVpsInfo(id: string, updateVpsInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateVpsInfo.');
@@ -2718,7 +2719,7 @@ export class VPSService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/vps/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/vps/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

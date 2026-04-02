@@ -12,6 +12,7 @@ import io.swagger.model.QuickserverOrder;
 import io.swagger.model.QuickserverRow;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.TimezoneUpdate;
@@ -43,10 +44,10 @@ public class QuickServersApiServiceImpl implements QuickServersApi {
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
      *
      */
-    public void addQs() {
+    public ServiceOrderPostResponse addQs() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -607,10 +608,10 @@ public class QuickServersApiServiceImpl implements QuickServersApi {
      * Updates QuickServer metadata or stored settings associated with the order.
      *
      */
-    public void updateQsInfo(String id) {
+    public SuccessTextResponse updateQsInfo(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

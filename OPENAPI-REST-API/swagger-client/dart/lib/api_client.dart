@@ -412,16 +412,18 @@ class ApiClient {
           return new InlineResponse20025.fromJson(value);
         case 'InlineResponse20026':
           return new InlineResponse20026.fromJson(value);
-        case 'InlineResponse20026Bandwidth':
-          return new InlineResponse20026Bandwidth.fromJson(value);
-        case 'InlineResponse20026Cp':
-          return new InlineResponse20026Cp.fromJson(value);
-        case 'InlineResponse20026Ips':
-          return new InlineResponse20026Ips.fromJson(value);
-        case 'InlineResponse20026Os':
-          return new InlineResponse20026Os.fromJson(value);
-        case 'InlineResponse20026Raid':
-          return new InlineResponse20026Raid.fromJson(value);
+        case 'InlineResponse20027':
+          return new InlineResponse20027.fromJson(value);
+        case 'InlineResponse20027Bandwidth':
+          return new InlineResponse20027Bandwidth.fromJson(value);
+        case 'InlineResponse20027Cp':
+          return new InlineResponse20027Cp.fromJson(value);
+        case 'InlineResponse20027Ips':
+          return new InlineResponse20027Ips.fromJson(value);
+        case 'InlineResponse20027Os':
+          return new InlineResponse20027Os.fromJson(value);
+        case 'InlineResponse20027Raid':
+          return new InlineResponse20027Raid.fromJson(value);
         case 'InlineResponse2003':
           return new InlineResponse2003.fromJson(value);
         case 'InlineResponse2004':
@@ -788,6 +790,8 @@ class ApiClient {
           return new ServiceCategories.fromJson(value);
         case 'ServiceCategory':
           return new ServiceCategory.fromJson(value);
+        case 'ServiceOrderPostResponse':
+          return new ServiceOrderPostResponse.fromJson(value);
         case 'ServiceType':
           return new ServiceType.fromJson(value);
         case 'ServiceTypes':

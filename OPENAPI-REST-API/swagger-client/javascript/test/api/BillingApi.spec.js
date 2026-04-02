@@ -97,7 +97,7 @@
       });
       describe('deleteAccountCreditCard', function() {
         it('should call deleteAccountCreditCard successfully', function(done) {
-          // TODO: uncomment, update parameter values for deleteAccountCreditCard call
+          // TODO: uncomment, update parameter values for deleteAccountCreditCard call and complete the assertions
           /*
 
           instance.deleteAccountCreditCard(id, function(error, data, response) {
@@ -105,6 +105,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(&#x27;string&#x27;);
+            // expect(data).to.be(null);
 
             done();
           });
@@ -309,7 +312,7 @@
       });
       describe('getBillingCart', function() {
         it('should call getBillingCart successfully', function(done) {
-          // TODO: uncomment getBillingCart call
+          // TODO: uncomment getBillingCart call and complete the assertions
           /*
 
           instance.getBillingCart(function(error, data, response) {
@@ -317,6 +320,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(Object);
+            // expect(data).to.be(null);
 
             done();
           });
@@ -387,7 +393,7 @@
       });
       describe('getBillingPrePays', function() {
         it('should call getBillingPrePays successfully', function(done) {
-          // TODO: uncomment getBillingPrePays call
+          // TODO: uncomment getBillingPrePays call and complete the assertions
           /*
 
           instance.getBillingPrePays(function(error, data, response) {
@@ -395,6 +401,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(Object);
+            // expect(data).to.be(null);
 
             done();
           });
@@ -472,7 +481,7 @@
       });
       describe('updateAccountCreditCard', function() {
         it('should call updateAccountCreditCard successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateAccountCreditCard call
+          // TODO: uncomment, update parameter values for updateAccountCreditCard call and complete the assertions
           /*
 
           instance.updateAccountCreditCard(id, function(error, data, response) {
@@ -480,6 +489,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(&#x27;string&#x27;);
+            // expect(data).to.be(null);
 
             done();
           });

@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAccountCreditCard
 
-> DeleteAccountCreditCard(ctx, id).Execute()
+> string DeleteAccountCreditCard(ctx, id).Execute()
 
 Remove Credit Card
 
@@ -273,11 +273,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BillingAPI.DeleteAccountCreditCard(context.Background(), id).Execute()
+	resp, r, err := apiClient.BillingAPI.DeleteAccountCreditCard(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.DeleteAccountCreditCard``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `DeleteAccountCreditCard`: string
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.DeleteAccountCreditCard`: %v\n", resp)
 }
 ```
 
@@ -300,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -904,7 +906,7 @@ Other parameters are passed through a pointer to a apiGetAffiliateWebTrafficRequ
 
 ## GetBillingCart
 
-> GetBillingCart(ctx).Execute()
+> map[string]interface{} GetBillingCart(ctx).Execute()
 
 Get Shopping Cart Contents
 
@@ -926,11 +928,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BillingAPI.GetBillingCart(context.Background()).Execute()
+	resp, r, err := apiClient.BillingAPI.GetBillingCart(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetBillingCart``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetBillingCart`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetBillingCart`: %v\n", resp)
 }
 ```
 
@@ -945,7 +949,7 @@ Other parameters are passed through a pointer to a apiGetBillingCartRequest stru
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -1164,7 +1168,7 @@ Other parameters are passed through a pointer to a apiGetBillingInvoicesRequest 
 
 ## GetBillingPrePays
 
-> GetBillingPrePays(ctx).Execute()
+> map[string]interface{} GetBillingPrePays(ctx).Execute()
 
 List Prepay Balances
 
@@ -1186,11 +1190,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BillingAPI.GetBillingPrePays(context.Background()).Execute()
+	resp, r, err := apiClient.BillingAPI.GetBillingPrePays(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetBillingPrePays``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetBillingPrePays`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetBillingPrePays`: %v\n", resp)
 }
 ```
 
@@ -1205,7 +1211,7 @@ Other parameters are passed through a pointer to a apiGetBillingPrePaysRequest s
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -1438,7 +1444,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAccountCreditCard
 
-> UpdateAccountCreditCard(ctx, id).Execute()
+> string UpdateAccountCreditCard(ctx, id).Execute()
 
 Update Credit Card
 
@@ -1461,11 +1467,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BillingAPI.UpdateAccountCreditCard(context.Background(), id).Execute()
+	resp, r, err := apiClient.BillingAPI.UpdateAccountCreditCard(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.UpdateAccountCreditCard``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateAccountCreditCard`: string
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.UpdateAccountCreditCard`: %v\n", resp)
 }
 ```
 
@@ -1488,7 +1496,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 

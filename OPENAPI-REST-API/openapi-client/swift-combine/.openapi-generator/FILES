@@ -35,6 +35,7 @@ OpenAPIClient/Sources/Models/AccountInfoOauthConfigProvidersValue.swift
 OpenAPIClient/Sources/Models/AccountInfoOauthproviders.swift
 OpenAPIClient/Sources/Models/AccountInfoPost.swift
 OpenAPIClient/Sources/Models/AccountSshKey.swift
+OpenAPIClient/Sources/Models/AddServer200Response.swift
 OpenAPIClient/Sources/Models/AffiliateBannerRow.swift
 OpenAPIClient/Sources/Models/AffiliateDockSetup.swift
 OpenAPIClient/Sources/Models/AffiliatePaymentSetup.swift
@@ -367,6 +368,7 @@ OpenAPIClient/Sources/Models/ServersCancel200Response.swift
 OpenAPIClient/Sources/Models/Service.swift
 OpenAPIClient/Sources/Models/ServiceCategories.swift
 OpenAPIClient/Sources/Models/ServiceCategory.swift
+OpenAPIClient/Sources/Models/ServiceOrderPostResponse.swift
 OpenAPIClient/Sources/Models/ServiceType.swift
 OpenAPIClient/Sources/Models/ServiceTypes.swift
 OpenAPIClient/Sources/Models/Services.swift

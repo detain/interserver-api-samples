@@ -189,11 +189,12 @@ InlineResponse20023 : io.swagger.model.InlineResponse20023
 InlineResponse20024 : io.swagger.model.InlineResponse20024
 InlineResponse20025 : io.swagger.model.InlineResponse20025
 InlineResponse20026 : io.swagger.model.InlineResponse20026
-InlineResponse20026Bandwidth : io.swagger.model.InlineResponse20026Bandwidth
-InlineResponse20026Cp : io.swagger.model.InlineResponse20026Cp
-InlineResponse20026Ips : io.swagger.model.InlineResponse20026Ips
-InlineResponse20026Os : io.swagger.model.InlineResponse20026Os
-InlineResponse20026Raid : io.swagger.model.InlineResponse20026Raid
+InlineResponse20027 : io.swagger.model.InlineResponse20027
+InlineResponse20027Bandwidth : io.swagger.model.InlineResponse20027Bandwidth
+InlineResponse20027Cp : io.swagger.model.InlineResponse20027Cp
+InlineResponse20027Ips : io.swagger.model.InlineResponse20027Ips
+InlineResponse20027Os : io.swagger.model.InlineResponse20027Os
+InlineResponse20027Raid : io.swagger.model.InlineResponse20027Raid
 InlineResponse2003 : io.swagger.model.InlineResponse2003
 InlineResponse2004 : io.swagger.model.InlineResponse2004
 InlineResponse2005 : io.swagger.model.InlineResponse2005
@@ -377,6 +378,7 @@ ServersBuyNowResponseOrderDetails : io.swagger.model.ServersBuyNowResponseOrderD
 Service : io.swagger.model.Service
 ServiceCategories : io.swagger.model.ServiceCategories
 ServiceCategory : io.swagger.model.ServiceCategory
+ServiceOrderPostResponse : io.swagger.model.ServiceOrderPostResponse
 ServiceType : io.swagger.model.ServiceType
 ServiceTypes : io.swagger.model.ServiceTypes
 Services : io.swagger.model.Services

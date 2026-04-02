@@ -726,7 +726,7 @@ Name | Type | Description  | Notes
 
 ## updateAccountInfo
 
-> updateAccountInfo(name, address, city, state, zip, country, phone, opts)
+> SuccessTextResponse updateAccountInfo(name, address, city, state, zip, country, phone, opts)
 
 Update Account Information
 
@@ -777,7 +777,7 @@ apiInstance.updateAccountInfo(name, address, city, state, zip, country, phone, o
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -807,7 +807,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -821,7 +821,7 @@ null (empty response body)
 
 ## updateAccountIpLimits
 
-> updateAccountIpLimits(start, end)
+> SuccessTextResponse updateAccountIpLimits(start, end)
 
 Add IP Access Restriction
 
@@ -855,7 +855,7 @@ apiInstance.updateAccountIpLimits(start, end, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -870,7 +870,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

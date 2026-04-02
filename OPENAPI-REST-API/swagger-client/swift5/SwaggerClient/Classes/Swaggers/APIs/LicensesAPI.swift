@@ -15,13 +15,9 @@ open class LicensesAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addLicense(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addLicense(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
         addLicenseWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -39,17 +35,27 @@ open class LicensesAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addLicenseWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func addLicenseWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/licenses/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -669,13 +675,9 @@ open class LicensesAPI {
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateLicenseInfo(_id: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateLicenseInfo(_id: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateLicenseInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -693,11 +695,15 @@ open class LicensesAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateLicenseInfoWithRequestBuilder(_id: String) -> RequestBuilder<Void> {
+    open class func updateLicenseInfoWithRequestBuilder(_id: String) -> RequestBuilder<SuccessTextResponse> {
         var path = "/licenses/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -707,7 +713,7 @@ open class LicensesAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

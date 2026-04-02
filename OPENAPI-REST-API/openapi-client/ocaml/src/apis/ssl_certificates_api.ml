@@ -12,7 +12,7 @@ let add_ssl () =
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Service_order_post_response.of_yojson) resp body
 
 let get_new_ssl () =
     let open Lwt.Infix in
@@ -21,7 +21,7 @@ let get_new_ssl () =
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body  resp body
 
 let get_ssl_info ~id =
     let open Lwt.Infix in
@@ -45,7 +45,7 @@ let get_ssl_info ~id =
         
  id in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body  resp body
 
 let get_ssl_invoices ~id =
     let open Lwt.Infix in
@@ -159,5 +159,5 @@ let update_ssl_info ~id =
         
  id in
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 

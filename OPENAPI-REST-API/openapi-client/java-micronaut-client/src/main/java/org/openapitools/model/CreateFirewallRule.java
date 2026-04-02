@@ -32,7 +32,7 @@ import javax.annotation.Generated;
   CreateFirewallRule.JSON_PROPERTY_SOURCE_PORT
 })
 @JsonTypeName("CreateFirewallRule")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class CreateFirewallRule {
     /**
@@ -111,7 +111,7 @@ public class CreateFirewallRule {
     private Integer destinationPort = 80;
 
     public static final String JSON_PROPERTY_SOURCE_IP = "source_ip";
-    private String sourceIp = "0";
+    private String sourceIp = "0.0.0.0";
 
     public static final String JSON_PROPERTY_SOURCE_PORT = "source_port";
     private Integer sourcePort = 0;
@@ -193,7 +193,7 @@ public class CreateFirewallRule {
     }
 
     /**
-     * Get sourceIp
+     * Source IP address to match. Use &#39;0.0.0.0&#39; to match any source.
      * @return sourceIp
      */
     @Nullable

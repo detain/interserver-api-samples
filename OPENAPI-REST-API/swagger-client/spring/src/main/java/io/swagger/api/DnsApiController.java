@@ -7,6 +7,7 @@ import io.swagger.model.DnsRecord;
 import io.swagger.model.DnsRecordType;
 import io.swagger.model.DnsUpdateRecord;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.SuccessTextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -54,11 +55,20 @@ public class DnsApiController implements DnsApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> addDnsDomain(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="domain", required=true)  String domain
+    public ResponseEntity<SuccessTextResponse> addDnsDomain(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="domain", required=true)  String domain
 ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="ip", required=true)  String ip
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<Void> addDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS Domain ID.", required=true, schema=@Schema()) @PathVariable("id") String id
@@ -72,17 +82,35 @@ public class DnsApiController implements DnsApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> deleteDnsDomain(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<SuccessTextResponse> deleteDnsDomain(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> deleteDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("domainId") Integer domainId
+    public ResponseEntity<SuccessTextResponse> deleteDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("domainId") Integer domainId
 ,@Parameter(in = ParameterIn.PATH, description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.", required=true, schema=@Schema()) @PathVariable("recordId") Integer recordId
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<List<DnsRecord>> getDnsDomain(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -114,7 +142,7 @@ public class DnsApiController implements DnsApi {
         return new ResponseEntity<List<DnsListItem>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("domainId") Integer domainId
+    public ResponseEntity<SuccessTextResponse> updateDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("domainId") Integer domainId
 ,@Parameter(in = ParameterIn.PATH, description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.", required=true, schema=@Schema()) @PathVariable("recordId") Integer recordId
 ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="name", required=true)  String name
 ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="type", required=true)  DnsRecordType type
@@ -126,7 +154,16 @@ public class DnsApiController implements DnsApi {
 ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="auth", required=true)  String auth
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

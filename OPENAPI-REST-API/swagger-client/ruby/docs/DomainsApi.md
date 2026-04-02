@@ -40,7 +40,7 @@ Method | HTTP request | Description
 [**update_domain_whois_privacy**](DomainsApi.md#update_domain_whois_privacy) | **POST** /domains/{id}/whois | Update Whois Privacy
 
 # **add_domain**
-> add_domain
+> ServiceOrderPostResponse add_domain
 
 Place Domain Order
 
@@ -72,7 +72,8 @@ api_instance = SwaggerClient::DomainsApi.new
 
 begin
   #Place Domain Order
-  api_instance.add_domain
+  result = api_instance.add_domain
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DomainsApi->add_domain: #{e}"
 end
@@ -83,7 +84,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1889,7 +1890,7 @@ Name | Type | Description  | Notes
 
 
 # **update_domain_info**
-> update_domain_info(id)
+> SuccessTextResponse update_domain_info(id)
 
 Update Domain Order
 
@@ -1923,7 +1924,8 @@ id = 'id_example' # String | The domain service ID. Use `domain_id` from `GET /d
 
 begin
   #Update Domain Order
-  api_instance.update_domain_info(id)
+  result = api_instance.update_domain_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DomainsApi->update_domain_info: #{e}"
 end
@@ -1937,7 +1939,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

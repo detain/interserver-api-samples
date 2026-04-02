@@ -26,9 +26,10 @@ func Test_myadmin_DNSAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.DNSAPI.AddDnsDomain(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DNSAPI.AddDnsDomain(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -52,9 +53,10 @@ func Test_myadmin_DNSAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.DNSAPI.DeleteDnsDomain(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.DNSAPI.DeleteDnsDomain(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -66,9 +68,10 @@ func Test_myadmin_DNSAPIService(t *testing.T) {
 		var domainId int32
 		var recordId int32
 
-		httpRes, err := apiClient.DNSAPI.DeleteDnsRecord(context.Background(), domainId, recordId).Execute()
+		resp, httpRes, err := apiClient.DNSAPI.DeleteDnsRecord(context.Background(), domainId, recordId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -106,9 +109,10 @@ func Test_myadmin_DNSAPIService(t *testing.T) {
 		var domainId int32
 		var recordId int32
 
-		httpRes, err := apiClient.DNSAPI.UpdateDnsRecord(context.Background(), domainId, recordId).Execute()
+		resp, httpRes, err := apiClient.DNSAPI.UpdateDnsRecord(context.Background(), domainId, recordId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

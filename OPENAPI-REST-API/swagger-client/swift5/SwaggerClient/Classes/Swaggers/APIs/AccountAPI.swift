@@ -1025,13 +1025,9 @@ open class AccountAPI {
      - parameter gstin: (form)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateAccountInfo(name: String, company: String, address: String, address2: String, city: String, state: String, zip: String, country: String, phone: String, locale: String, emailInvoices: String, emailAbuse: String, disableReset: Bool, disableReinstall: Bool, disableServerNotifications: Bool, disableEmailNotifications: Bool, gstin: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateAccountInfo(name: String, company: String, address: String, address2: String, city: String, state: String, zip: String, country: String, phone: String, locale: String, emailInvoices: String, emailAbuse: String, disableReset: Bool, disableReinstall: Bool, disableServerNotifications: Bool, disableEmailNotifications: Bool, gstin: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateAccountInfoWithRequestBuilder(name: name, company: company, address: address, address2: address2, city: city, state: state, zip: zip, country: country, phone: phone, locale: locale, emailInvoices: emailInvoices, emailAbuse: emailAbuse, disableReset: disableReset, disableReinstall: disableReinstall, disableServerNotifications: disableServerNotifications, disableEmailNotifications: disableEmailNotifications, gstin: gstin).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -1049,6 +1045,10 @@ open class AccountAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter name: (form)  
      - parameter company: (form)  
      - parameter address: (form)  
@@ -1067,16 +1067,16 @@ open class AccountAPI {
      - parameter disableEmailNotifications: (form)  
      - parameter gstin: (form)  
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateAccountInfoWithRequestBuilder(name: String, company: String, address: String, address2: String, city: String, state: String, zip: String, country: String, phone: String, locale: String, emailInvoices: String, emailAbuse: String, disableReset: Bool, disableReinstall: Bool, disableServerNotifications: Bool, disableEmailNotifications: Bool, gstin: String) -> RequestBuilder<Void> {
+    open class func updateAccountInfoWithRequestBuilder(name: String, company: String, address: String, address2: String, city: String, state: String, zip: String, country: String, phone: String, locale: String, emailInvoices: String, emailAbuse: String, disableReset: Bool, disableReinstall: Bool, disableServerNotifications: Bool, disableEmailNotifications: Bool, gstin: String) -> RequestBuilder<SuccessTextResponse> {
         let path = "/account"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -1086,13 +1086,9 @@ open class AccountAPI {
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateAccountInfo(body: AccountInfoPost, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateAccountInfo(body: AccountInfoPost, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateAccountInfoWithRequestBuilder(body: body).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -1110,18 +1106,22 @@ open class AccountAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter body: (body)  
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateAccountInfoWithRequestBuilder(body: AccountInfoPost) -> RequestBuilder<Void> {
+    open class func updateAccountInfoWithRequestBuilder(body: AccountInfoPost) -> RequestBuilder<SuccessTextResponse> {
         let path = "/account"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -1132,13 +1132,9 @@ open class AccountAPI {
      - parameter end: (form)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateAccountIpLimits(start: String, end: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateAccountIpLimits(start: String, end: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateAccountIpLimitsWithRequestBuilder(start: start, end: end).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -1156,19 +1152,23 @@ open class AccountAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter start: (form)  
      - parameter end: (form)  
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateAccountIpLimitsWithRequestBuilder(start: String, end: String) -> RequestBuilder<Void> {
+    open class func updateAccountIpLimitsWithRequestBuilder(start: String, end: String) -> RequestBuilder<SuccessTextResponse> {
         let path = "/account/iplimits"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -1178,13 +1178,9 @@ open class AccountAPI {
      - parameter body: (body) The lower and upper bounds of an ip range. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateAccountIpLimits(body: IpLimitRange, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateAccountIpLimits(body: IpLimitRange, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateAccountIpLimitsWithRequestBuilder(body: body).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -1202,18 +1198,22 @@ open class AccountAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter body: (body) The lower and upper bounds of an ip range. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateAccountIpLimitsWithRequestBuilder(body: IpLimitRange) -> RequestBuilder<Void> {
+    open class func updateAccountIpLimitsWithRequestBuilder(body: IpLimitRange) -> RequestBuilder<SuccessTextResponse> {
         let path = "/account/iplimits"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }

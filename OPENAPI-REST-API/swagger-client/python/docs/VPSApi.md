@@ -50,7 +50,7 @@ Method | HTTP request | Description
 [**v_ps_cancel**](VPSApi.md#v_ps_cancel) | **DELETE** /vps/{id} | Cancel VPS Service
 
 # **add_vps**
-> add_vps(body=body)
+> ServiceOrderPostResponse add_vps(body=body)
 
 Place VPS Order
 
@@ -86,7 +86,8 @@ body = myadmin-client-python.VpsOrderPostRequest() # VpsOrderPostRequest |  (opt
 
 try:
     # Place VPS Order
-    api_instance.add_vps(body=body)
+    api_response = api_instance.add_vps(body=body)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling VPSApi->add_vps: %s\n" % e)
 ```
@@ -99,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2750,7 +2751,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_vps_info**
-> update_vps_info(id)
+> SuccessTextResponse update_vps_info(id)
 
 Update VPS Order
 
@@ -2786,7 +2787,8 @@ id = 'id_example' # str | VPS ID number.
 
 try:
     # Update VPS Order
-    api_instance.update_vps_info(id)
+    api_response = api_instance.update_vps_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling VPSApi->update_vps_info: %s\n" % e)
 ```
@@ -2799,7 +2801,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -2813,7 +2815,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v_ps_cancel**
-> InlineResponse20021 v_ps_cancel(id)
+> InlineResponse20022 v_ps_cancel(id)
 
 Cancel VPS Service
 
@@ -2863,7 +2865,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 

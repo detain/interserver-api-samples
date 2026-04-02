@@ -19,6 +19,8 @@ private class OASDNSApiTest {
 
         OASClient client;
         OASDNSApi api;
+        OASSuccessTextResponse response;
+        OASSuccessTextResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -26,33 +28,57 @@ private class OASDNSApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.addDnsDomain(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.addDnsDomain(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.addDnsDomain(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASDNSApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.addDnsDomain(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.addDnsDomain(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.addDnsDomain(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASDNSApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.addDnsDomain(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.addDnsDomain(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.addDnsDomain(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -134,6 +160,8 @@ private class OASDNSApiTest {
 
         OASClient client;
         OASDNSApi api;
+        OASSuccessTextResponse response;
+        OASSuccessTextResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -141,33 +169,57 @@ private class OASDNSApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.deleteDnsDomain(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsDomain(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsDomain(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASDNSApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.deleteDnsDomain(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsDomain(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsDomain(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASDNSApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.deleteDnsDomain(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsDomain(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsDomain(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -190,6 +242,8 @@ private class OASDNSApiTest {
 
         OASClient client;
         OASDNSApi api;
+        OASSuccessTextResponse response;
+        OASSuccessTextResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -197,33 +251,57 @@ private class OASDNSApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.deleteDnsRecord(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsRecord(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsRecord(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASDNSApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.deleteDnsRecord(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsRecord(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsRecord(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASDNSApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.deleteDnsRecord(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsRecord(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.deleteDnsRecord(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -412,6 +490,8 @@ private class OASDNSApiTest {
 
         OASClient client;
         OASDNSApi api;
+        OASSuccessTextResponse response;
+        OASSuccessTextResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -419,33 +499,57 @@ private class OASDNSApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateDnsRecord(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateDnsRecord(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateDnsRecord(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASDNSApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateDnsRecord(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateDnsRecord(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateDnsRecord(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASDNSApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateDnsRecord(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateDnsRecord(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateDnsRecord(params);
         System.assertEquals(expectedResponse, response);
     }
 }

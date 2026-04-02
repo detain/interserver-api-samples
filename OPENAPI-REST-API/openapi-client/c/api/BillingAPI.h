@@ -17,6 +17,7 @@
 #include "../model/initiate_payment_200_response.h"
 #include "../model/invoice.h"
 #include "../model/monthly_counts.h"
+#include "../model/object.h"
 #include "../model/status_monthly_breakdown.h"
 #include "../model/success_text_response.h"
 #include "../model/text_response.h"
@@ -53,7 +54,7 @@ BillingAPI_addBillingPrepay(apiClient_t *apiClient, billing_prepay_request_t *bi
 //
 // Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
 //
-void
+char*
 BillingAPI_deleteAccountCreditCard(apiClient_t *apiClient, char *id);
 
 
@@ -133,7 +134,7 @@ BillingAPI_getAffiliateWebTraffic(apiClient_t *apiClient);
 //
 // Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
 //
-void
+object_t*
 BillingAPI_getBillingCart(apiClient_t *apiClient);
 
 
@@ -165,7 +166,7 @@ BillingAPI_getBillingInvoices(apiClient_t *apiClient);
 //
 // Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
 //
-void
+object_t*
 BillingAPI_getBillingPrePays(apiClient_t *apiClient);
 
 
@@ -197,7 +198,7 @@ BillingAPI_postBillingCreditCardVerify(apiClient_t *apiClient, int *id, billing_
 //
 // Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
 //
-void
+char*
 BillingAPI_updateAccountCreditCard(apiClient_t *apiClient, int *id);
 
 

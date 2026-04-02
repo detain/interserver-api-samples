@@ -1248,7 +1248,7 @@ class AccountApi(object):
         :param bool disable_server_notifications: (required)
         :param bool disable_email_notifications: (required)
         :param str gstin: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1286,7 +1286,7 @@ class AccountApi(object):
         :param bool disable_server_notifications: (required)
         :param bool disable_email_notifications: (required)
         :param str gstin: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1442,7 +1442,7 @@ class AccountApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1461,7 +1461,7 @@ class AccountApi(object):
 
         :param async_req bool
         :param AccountInfoPost body: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1483,7 +1483,7 @@ class AccountApi(object):
 
         :param async_req bool
         :param AccountInfoPost body: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1575,7 +1575,7 @@ class AccountApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1595,7 +1595,7 @@ class AccountApi(object):
         :param async_req bool
         :param str start: (required)
         :param str end: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1618,7 +1618,7 @@ class AccountApi(object):
         :param async_req bool
         :param str start: (required)
         :param str end: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1684,7 +1684,7 @@ class AccountApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1703,7 +1703,7 @@ class AccountApi(object):
 
         :param async_req bool
         :param IpLimitRange body: The lower and upper bounds of an ip range. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1725,7 +1725,7 @@ class AccountApi(object):
 
         :param async_req bool
         :param IpLimitRange body: The lower and upper bounds of an ip range. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1787,7 +1787,7 @@ class AccountApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

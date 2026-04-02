@@ -50,7 +50,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 |[**updateQsInfo**](#updateqsinfo) | **POST** /qs/{id} | Update QuickServer Order|
 
 # **addQs**
-> addQs()
+> ServiceOrderPostResponse addQs()
 
 Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
 
@@ -74,7 +74,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-void (empty response body)
+**ServiceOrderPostResponse**
 
 ### Authorization
 
@@ -89,8 +89,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2286,7 +2286,7 @@ const { status, data } = await apiInstance.quickserversCancel(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateQsInfo**
-> updateQsInfo()
+> SuccessTextResponse updateQsInfo()
 
 Updates QuickServer metadata or stored settings associated with the order.
 
@@ -2317,7 +2317,7 @@ const { status, data } = await apiInstance.updateQsInfo(
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -2332,8 +2332,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | A response indicating the operation completed successfully with a text message. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -13,23 +13,20 @@ require 'date'
 
 module SwaggerClient
   class InlineResponse20024
-    attr_accessor :message
-
-    attr_accessor :success
+    # A map of IP addresses to their current reverse DNS hostnames.
+    attr_accessor :ips
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'message' => :'message',
-        :'success' => :'success'
+        :'ips' => :'ips'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'message' => :'Object',
-        :'success' => :'Object'
+        :'ips' => :'Object'
       }
     end
 
@@ -54,12 +51,10 @@ module SwaggerClient
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'message')
-        self.message = attributes[:'message']
-      end
-
-      if attributes.key?(:'success')
-        self.success = attributes[:'success']
+      if attributes.key?(:'ips')
+        if (value = attributes[:'ips']).is_a?(Hash)
+          self.ips = value
+        end
       end
     end
 
@@ -81,8 +76,7 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          message == o.message &&
-          success == o.success
+          ips == o.ips
     end
 
     # @see the `==` method
@@ -94,7 +88,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [message, success].hash
+      [ips].hash
     end
 
     # Builds the object from hash

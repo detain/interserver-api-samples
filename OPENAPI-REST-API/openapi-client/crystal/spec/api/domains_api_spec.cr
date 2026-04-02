@@ -25,7 +25,7 @@ Spectator.describe "DomainsApi" do
   # Place Domain Order
   # Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe "add_domain test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -339,7 +339,7 @@ Spectator.describe "DomainsApi" do
   # Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
   # @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "update_domain_info test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

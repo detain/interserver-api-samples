@@ -20,6 +20,7 @@ import uri
 
 import ../models/model_charge_invoice_rows
 import ../models/model_reverse_dns_entries
+import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_text_response
 import ../models/model_website
@@ -51,10 +52,11 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addWebsite*(httpClient: HttpClient): Response =
+proc addWebsite*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
   ## Place Website Order
-  httpClient.post(basepath & "/websites/order")
 
+  let response = httpClient.post(basepath & "/websites/order")
+  constructResult[ServiceOrderPostResponse](response)
 
 
 proc getNewWebsite*(httpClient: HttpClient): (Option[WebsitesOrder], Response) =
@@ -150,10 +152,11 @@ proc putWebsites*(httpClient: HttpClient): Response =
 
 
 
-proc updateWebsiteInfo*(httpClient: HttpClient, id: string): Response =
+proc updateWebsiteInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Update Website Order
-  httpClient.post(basepath & fmt"/websites/{id}")
 
+  let response = httpClient.post(basepath & fmt"/websites/{id}")
+  constructResult[SuccessTextResponse](response)
 
 
 proc webhostingCancel*(httpClient: HttpClient, id: string): (Option[webhostingCancel_200_response], Response) =

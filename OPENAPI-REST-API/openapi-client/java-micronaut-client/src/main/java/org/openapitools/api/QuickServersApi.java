@@ -28,6 +28,7 @@ import org.openapitools.model.QuickserverRow;
 import org.openapitools.model.QuickserversCancel200Response;
 import org.openapitools.model.RestoreRequest;
 import org.openapitools.model.ReverseDnsEntries;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import org.openapitools.model.VpsBackupRows;
@@ -40,17 +41,18 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface QuickServersApi {
     /**
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
      *
+     * @return ServiceOrderPostResponse
      */
     @Post(uri="/qs/order")
     @Consumes({"application/json"})
-    Mono<Void> addQs();
+    Mono<ServiceOrderPostResponse> addQs();
 
     /**
      * Delete QuickServer Backup
@@ -603,10 +605,11 @@ public interface QuickServersApi {
      * Updates QuickServer metadata or stored settings associated with the order.
      *
      * @param id QuickServer ID number. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/qs/{id}")
     @Consumes({"application/json"})
-    Mono<Void> updateQsInfo(
+    Mono<SuccessTextResponse> updateQsInfo(
         @PathVariable(name="id") @NotNull String id
     );
 

@@ -9,6 +9,7 @@
 #include "../model/dns_record.h"
 #include "../model/dns_record_type.h"
 #include "../model/get_account_info_401_response.h"
+#include "../model/success_text_response.h"
 
 // Enum  for DNSAPI_addDnsRecord
 typedef enum  { interserver_management_api_addDnsRecord__NULL = 0, interserver_management_api_addDnsRecord__A, interserver_management_api_addDnsRecord__A6, interserver_management_api_addDnsRecord__AAAA, interserver_management_api_addDnsRecord__AFSDB, interserver_management_api_addDnsRecord__ALIAS, interserver_management_api_addDnsRecord__CAA, interserver_management_api_addDnsRecord__CDNSKEY, interserver_management_api_addDnsRecord__CDS, interserver_management_api_addDnsRecord__CERT, interserver_management_api_addDnsRecord__CNAME, interserver_management_api_addDnsRecord__DHCID, interserver_management_api_addDnsRecord__DLV, interserver_management_api_addDnsRecord__DNSKEY, interserver_management_api_addDnsRecord__DNAME, interserver_management_api_addDnsRecord__DS, interserver_management_api_addDnsRecord__EUI48, interserver_management_api_addDnsRecord__EUI64, interserver_management_api_addDnsRecord__HINFO, interserver_management_api_addDnsRecord__IPSECKEY, interserver_management_api_addDnsRecord__KEY, interserver_management_api_addDnsRecord__KX, interserver_management_api_addDnsRecord__LOC, interserver_management_api_addDnsRecord__MAILA, interserver_management_api_addDnsRecord__MAILB, interserver_management_api_addDnsRecord__MINFO, interserver_management_api_addDnsRecord__MR, interserver_management_api_addDnsRecord__MX, interserver_management_api_addDnsRecord__NAPTR, interserver_management_api_addDnsRecord__NS, interserver_management_api_addDnsRecord__NSEC, interserver_management_api_addDnsRecord__NSEC3, interserver_management_api_addDnsRecord__NSEC3PARAM, interserver_management_api_addDnsRecord__OPENPGPKEY, interserver_management_api_addDnsRecord__OPT, interserver_management_api_addDnsRecord__PTR, interserver_management_api_addDnsRecord__RKEY, interserver_management_api_addDnsRecord__RP, interserver_management_api_addDnsRecord__RRSIG, interserver_management_api_addDnsRecord__SIG, interserver_management_api_addDnsRecord__SOA, interserver_management_api_addDnsRecord__SPF, interserver_management_api_addDnsRecord__SRV, interserver_management_api_addDnsRecord__SSHFP, interserver_management_api_addDnsRecord__TLSA, interserver_management_api_addDnsRecord__TKEY, interserver_management_api_addDnsRecord__TSIG, interserver_management_api_addDnsRecord__TXT, interserver_management_api_addDnsRecord__WKS, interserver_management_api_addDnsRecord__URI⏎ } interserver_management_api_addDnsRecord_type_e;
@@ -21,7 +22,7 @@ typedef enum  { interserver_management_api_updateDnsRecord__NULL = 0, interserve
 //
 // Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
 //
-void
+success_text_response_t*
 DNSAPI_addDnsDomain(apiClient_t *apiClient, char *domain, char *ip);
 
 
@@ -37,7 +38,7 @@ DNSAPI_addDnsRecord(apiClient_t *apiClient, char *id, char *name, dns_record_typ
 //
 // Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
 //
-void
+success_text_response_t*
 DNSAPI_deleteDnsDomain(apiClient_t *apiClient, char *id);
 
 
@@ -45,7 +46,7 @@ DNSAPI_deleteDnsDomain(apiClient_t *apiClient, char *id);
 //
 // Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
 //
-void
+success_text_response_t*
 DNSAPI_deleteDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId);
 
 
@@ -69,7 +70,7 @@ DNSAPI_getDnsList(apiClient_t *apiClient);
 //
 // Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
 //
-void
+success_text_response_t*
 DNSAPI_updateDnsRecord(apiClient_t *apiClient, int *domainId, int *recordId, char *name, dns_record_type_e type, char *content, char *ttl, char *prio, char *disabled, char *ordername, char *auth);
 
 

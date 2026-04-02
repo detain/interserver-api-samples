@@ -18,6 +18,7 @@ import org.openapitools.client.model.GetAccountInfo401Response
 import org.openapitools.client.model.QueueResponse
 import org.openapitools.client.model.RestoreRequest
 import org.openapitools.client.model.ReverseDnsEntries
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
 import org.openapitools.client.model.VPSCancel200Response
@@ -71,8 +72,8 @@ case class VPSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -81,7 +82,7 @@ case class VPSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * 
    * @param vpsOrderPostRequest 
    */
-  def addVps(vpsOrderPostRequest: Option[VpsOrderPostRequest] = scala.None)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def addVps(vpsOrderPostRequest: Option[VpsOrderPostRequest] = scala.None)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], ServiceOrderPostResponse]] =
     val requestURL =
       uri"$baseUrl/vps/order"
 
@@ -92,7 +93,7 @@ case class VPSApi[Auth <: org.openapitools.client.core.Authorization] private (b
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
       .body(asJson(vpsOrderPostRequest))
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Permanently removes the specified backup file from storage. Use `GET /vps/{id}/backups` to list available backup filenames before deleting.
@@ -1266,8 +1267,8 @@ case class VPSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * Updates settings on a VPS order.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -1276,7 +1277,7 @@ case class VPSApi[Auth <: org.openapitools.client.core.Authorization] private (b
    * 
    * @param id VPS ID number.
    */
-  def updateVpsInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], Unit]] =
+  def updateVpsInfo(id: String)(using Auth <:< org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey | org.openapitools.client.core.Authorization.ApiKey): sttp.client4.Request[Either[ResponseException[String], SuccessTextResponse]] =
     val idPathParam = PathSerializable.serialize("id", id, PathStyleFormat.SIMPLE, false)
     val requestURL =
       uri"$baseUrl/vps/${idPathParam}"
@@ -1287,7 +1288,7 @@ case class VPSApi[Auth <: org.openapitools.client.core.Authorization] private (b
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.COOKIE, "sessionid")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "X-API-KEY")
       .auth(authConfig, org.openapitools.client.core.ApiKeyLocation.HEADER, "sessionid")
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.

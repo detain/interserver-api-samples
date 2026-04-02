@@ -70,6 +70,7 @@ docs/account_info_oauth_config_providers_value.md
 docs/account_info_oauthproviders.md
 docs/account_info_post.md
 docs/account_ssh_key.md
+docs/add_server_200_response.md
 docs/affiliate_banner_row.md
 docs/affiliate_dock_setup.md
 docs/affiliate_payment_setup.md
@@ -402,6 +403,7 @@ docs/servers_cancel_200_response.md
 docs/service.md
 docs/service_categories.md
 docs/service_category.md
+docs/service_order_post_response.md
 docs/service_type.md
 docs/service_types.md
 docs/services.md
@@ -547,6 +549,8 @@ model/account_info_post.c
 model/account_info_post.h
 model/account_ssh_key.c
 model/account_ssh_key.h
+model/add_server_200_response.c
+model/add_server_200_response.h
 model/affiliate_banner_row.c
 model/affiliate_banner_row.h
 model/affiliate_dock_setup.c
@@ -1214,6 +1218,8 @@ model/service_categories.c
 model/service_categories.h
 model/service_category.c
 model/service_category.h
+model/service_order_post_response.c
+model/service_order_post_response.h
 model/service_type.c
 model/service_type.h
 model/service_types.c
@@ -1436,6 +1442,7 @@ unit-test/test_account_info_oauth_config_providers_value.c
 unit-test/test_account_info_oauthproviders.c
 unit-test/test_account_info_post.c
 unit-test/test_account_ssh_key.c
+unit-test/test_add_server_200_response.c
 unit-test/test_affiliate_banner_row.c
 unit-test/test_affiliate_dock_setup.c
 unit-test/test_affiliate_payment_setup.c
@@ -1768,6 +1775,7 @@ unit-test/test_servers_cancel_200_response.c
 unit-test/test_service.c
 unit-test/test_service_categories.c
 unit-test/test_service_category.c
+unit-test/test_service_order_post_response.c
 unit-test/test_service_type.c
 unit-test/test_service_types.c
 unit-test/test_services.c

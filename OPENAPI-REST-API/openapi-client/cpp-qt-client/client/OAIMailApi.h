@@ -38,6 +38,7 @@
 #include "OAIMailStatsType.h"
 #include "OAISendMail.h"
 #include "OAISendMailAdv.h"
+#include "OAIServiceOrderPostResponse.h"
 #include "OAISuccessTextResponse.h"
 #include "OAIViewMailLog_startDate_parameter.h"
 #include <QString>
@@ -288,7 +289,7 @@ private:
 
 Q_SIGNALS:
 
-    void addMailSignal();
+    void addMailSignal(OAIServiceOrderPostResponse summary);
     void addRuleSignal(OAIGenericResponse summary);
     void createMailAlertSignal(OAISuccessTextResponse summary);
     void deleteMailAlertSignal(OAISuccessTextResponse summary);
@@ -312,11 +313,11 @@ Q_SIGNALS:
     void sendAdvMailSignal(OAIGenericResponse summary);
     void sendMailSignal(OAIGenericResponse summary);
     void updateMailAlertSignal(OAISuccessTextResponse summary);
-    void updateMailInfoSignal();
+    void updateMailInfoSignal(OAISuccessTextResponse summary);
     void viewMailLogSignal(OAIMailLog summary);
 
 
-    void addMailSignalFull(OAIHttpRequestWorker *worker);
+    void addMailSignalFull(OAIHttpRequestWorker *worker, OAIServiceOrderPostResponse summary);
     void addRuleSignalFull(OAIHttpRequestWorker *worker, OAIGenericResponse summary);
     void createMailAlertSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void deleteMailAlertSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
@@ -340,10 +341,10 @@ Q_SIGNALS:
     void sendAdvMailSignalFull(OAIHttpRequestWorker *worker, OAIGenericResponse summary);
     void sendMailSignalFull(OAIHttpRequestWorker *worker, OAIGenericResponse summary);
     void updateMailAlertSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
-    void updateMailInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateMailInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void viewMailLogSignalFull(OAIHttpRequestWorker *worker, OAIMailLog summary);
 
-    void addMailSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addMailSignalError(OAIServiceOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void addRuleSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void createMailAlertSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteMailAlertSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -367,7 +368,7 @@ Q_SIGNALS:
     void sendAdvMailSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void sendMailSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateMailAlertSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateMailInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateMailInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void viewMailLogSignalError(OAIMailLog summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addMailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

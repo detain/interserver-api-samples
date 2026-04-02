@@ -345,13 +345,14 @@ void OAIQuickServersApi::addQsCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIServiceOrderPostResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addQsSignal();
-        Q_EMIT addQsSignalFull(worker);
+        Q_EMIT addQsSignal(output);
+        Q_EMIT addQsSignalFull(worker, output);
     } else {
-        Q_EMIT addQsSignalError(error_type, error_str);
+        Q_EMIT addQsSignalError(output, error_type, error_str);
         Q_EMIT addQsSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -3229,13 +3230,14 @@ void OAIQuickServersApi::updateQsInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateQsInfoSignal();
-        Q_EMIT updateQsInfoSignalFull(worker);
+        Q_EMIT updateQsInfoSignal(output);
+        Q_EMIT updateQsInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateQsInfoSignalError(error_type, error_str);
+        Q_EMIT updateQsInfoSignalError(output, error_type, error_str);
         Q_EMIT updateQsInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

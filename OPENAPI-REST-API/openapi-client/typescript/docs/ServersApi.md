@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 
 # **addServer**
-> addServer()
+> AddServer200Response addServer()
 
 Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
 
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**AddServer200Response**
 
 ### Authorization
 
@@ -66,8 +66,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Server order placed successfully. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -924,7 +924,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateServerInfo**
-> updateServerInfo()
+> SuccessTextResponse updateServerInfo()
 
 Updates settings on a dedicated server order.
 
@@ -957,7 +957,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -972,8 +972,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | A response indicating the operation completed successfully with a text message. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

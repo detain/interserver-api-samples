@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace IO.Swagger.Model {
 
   /// <summary>
-  /// Information about the IPMI connectioj.
+  /// Information about the IPMI connection.
   /// </summary>
   [DataContract]
   public class ServerIpmiLiveInfo {

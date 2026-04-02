@@ -16,6 +16,7 @@
 goog.provide('API.Client.FloatingIPsApi');
 
 goog.require('API.Client.ChargeInvoiceRows');
+goog.require('API.Client.ServiceOrderPostResponse');
 goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.floating_ipsCancel_200_response');
 goog.require('API.Client.getAccountInfo_401_response');
@@ -51,7 +52,7 @@ API.Client.FloatingIPsApi.$inject = ['$http', '$httpParamSerializer', '$injector
  * Place Floating IP Order
  * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.ServiceOrderPostResponse>}
  */
 API.Client.FloatingIPsApi.prototype.addFloatingIp = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -120,7 +121,7 @@ API.Client.FloatingIPsApi.prototype.floatingIpsCancel = function(id, opt_extraHt
  * Returns detailed information about a specific Floating IP service including its current target IP assignment.
  * @param {!number} id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.Object>}
  */
 API.Client.FloatingIPsApi.prototype.getFloatingIpInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -261,7 +262,7 @@ API.Client.FloatingIPsApi.prototype.getFloatingIpsWelcomeEmail = function(id, op
  * Get Floating IP Ordering Information
  * Retrieves available options and pricing for ordering a new Floating IP.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.Object>}
  */
 API.Client.FloatingIPsApi.prototype.getNewFloatingIp = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -374,7 +375,7 @@ API.Client.FloatingIPsApi.prototype.putFloatingIps = function(opt_extraHttpReque
  * Updates settings on a Floating IP service, such as its label or configuration metadata.
  * @param {!string} id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.FloatingIPsApi.prototype.updateFloatingIpInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

@@ -29,7 +29,7 @@ type ApiAddWebsiteRequest struct {
 	ApiService *WebhostingAPIService
 }
 
-func (r ApiAddWebsiteRequest) Execute() (*http.Response, error) {
+func (r ApiAddWebsiteRequest) Execute() (*ServiceOrderPostResponse, *http.Response, error) {
 	return r.ApiService.AddWebsiteExecute(r)
 }
 
@@ -49,16 +49,18 @@ func (a *WebhostingAPIService) AddWebsite(ctx context.Context) ApiAddWebsiteRequ
 }
 
 // Execute executes the request
-func (a *WebhostingAPIService) AddWebsiteExecute(r ApiAddWebsiteRequest) (*http.Response, error) {
+//  @return ServiceOrderPostResponse
+func (a *WebhostingAPIService) AddWebsiteExecute(r ApiAddWebsiteRequest) (*ServiceOrderPostResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ServiceOrderPostResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhostingAPIService.AddWebsite")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/websites/order"
@@ -114,19 +116,19 @@ func (a *WebhostingAPIService) AddWebsiteExecute(r ApiAddWebsiteRequest) (*http.
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -139,16 +141,24 @@ func (a *WebhostingAPIService) AddWebsiteExecute(r ApiAddWebsiteRequest) (*http.
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetNewWebsiteRequest struct {
@@ -2000,7 +2010,7 @@ type ApiUpdateWebsiteInfoRequest struct {
 	id string
 }
 
-func (r ApiUpdateWebsiteInfoRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateWebsiteInfoRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.UpdateWebsiteInfoExecute(r)
 }
 
@@ -2022,16 +2032,18 @@ func (a *WebhostingAPIService) UpdateWebsiteInfo(ctx context.Context, id string)
 }
 
 // Execute executes the request
-func (a *WebhostingAPIService) UpdateWebsiteInfoExecute(r ApiUpdateWebsiteInfoRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *WebhostingAPIService) UpdateWebsiteInfoExecute(r ApiUpdateWebsiteInfoRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhostingAPIService.UpdateWebsiteInfo")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/websites/{id}"
@@ -2088,19 +2100,19 @@ func (a *WebhostingAPIService) UpdateWebsiteInfoExecute(r ApiUpdateWebsiteInfoRe
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -2113,16 +2125,24 @@ func (a *WebhostingAPIService) UpdateWebsiteInfoExecute(r ApiUpdateWebsiteInfoRe
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiWebhostingCancelRequest struct {

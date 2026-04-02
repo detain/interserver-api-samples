@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 
 # **add_website**
-> add_website()
+> ServiceOrderPostResponse add_website()
 
 Place Website Order
 
@@ -56,7 +56,8 @@ my $api_instance = OpenAPIClient::WebhostingApi->new(
 
 
 eval {
-    $api_instance->add_website();
+    my $result = $api_instance->add_website();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling WebhostingApi->add_website: $@\n";
@@ -68,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -842,7 +843,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_website_info**
-> update_website_info(id => $id)
+> SuccessTextResponse update_website_info(id => $id)
 
 Update Website Order
 
@@ -871,7 +872,8 @@ my $api_instance = OpenAPIClient::WebhostingApi->new(
 my $id = "id_example"; # string | The website service ID. Use `website_id` from `GET /websites`.
 
 eval {
-    $api_instance->update_website_info(id => $id);
+    my $result = $api_instance->update_website_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling WebhostingApi->update_website_info: $@\n";
@@ -886,7 +888,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

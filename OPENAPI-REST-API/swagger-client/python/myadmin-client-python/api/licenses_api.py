@@ -42,7 +42,7 @@ class LicensesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class LicensesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -111,7 +111,7 @@ class LicensesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='ServiceOrderPostResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1084,7 +1084,7 @@ class LicensesApi(object):
 
         :param async_req bool
         :param str id: The license service ID. Use `license_id` from `GET /licenses`. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1106,7 +1106,7 @@ class LicensesApi(object):
 
         :param async_req bool
         :param str id: The license service ID. Use `license_id` from `GET /licenses`. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1160,7 +1160,7 @@ class LicensesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

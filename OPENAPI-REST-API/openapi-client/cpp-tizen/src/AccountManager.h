@@ -365,8 +365,8 @@ bool updateAccountFeaturesAsync(char * accessToken,
  */
 bool updateAccountInfoSync(char * accessToken,
 	std::string name, std::string address, std::string city, std::string state, std::string zip, std::string country, std::string phone, std::string company, std::string address2, std::string locale, std::string emailInvoices, std::string emailAbuse, bool disableReset, bool disableReinstall, bool disableServerNotifications, bool disableEmailNotifications, std::string gstin, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update Account Information. *Asynchronous*
  *
@@ -394,8 +394,8 @@ bool updateAccountInfoSync(char * accessToken,
  */
 bool updateAccountInfoAsync(char * accessToken,
 	std::string name, std::string address, std::string city, std::string state, std::string zip, std::string country, std::string phone, std::string company, std::string address2, std::string locale, std::string emailInvoices, std::string emailAbuse, bool disableReset, bool disableReinstall, bool disableServerNotifications, bool disableEmailNotifications, std::string gstin, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Add IP Access Restriction. *Synchronous*
@@ -409,8 +409,8 @@ bool updateAccountInfoAsync(char * accessToken,
  */
 bool updateAccountIpLimitsSync(char * accessToken,
 	std::string start, std::string end, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Add IP Access Restriction. *Asynchronous*
  *
@@ -423,8 +423,8 @@ bool updateAccountIpLimitsSync(char * accessToken,
  */
 bool updateAccountIpLimitsAsync(char * accessToken,
 	std::string start, std::string end, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Change Account Password. *Synchronous*

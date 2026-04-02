@@ -11,18 +11,14 @@ import Foundation
 
 public struct InlineResponse20026: Codable {
 
-    public var bandwidth: [InlineResponse20026Bandwidth]?
-    public var ips: [InlineResponse20026Ips]?
-    public var os: [InlineResponse20026Os]?
-    public var cp: [InlineResponse20026Cp]?
-    public var raid: [InlineResponse20026Raid]?
+    /** Confirmation message. */
+    public var text: String?
+    /** The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. */
+    public var ticket: Int?
 
-    public init(bandwidth: [InlineResponse20026Bandwidth]? = nil, ips: [InlineResponse20026Ips]? = nil, os: [InlineResponse20026Os]? = nil, cp: [InlineResponse20026Cp]? = nil, raid: [InlineResponse20026Raid]? = nil) {
-        self.bandwidth = bandwidth
-        self.ips = ips
-        self.os = os
-        self.cp = cp
-        self.raid = raid
+    public init(text: String? = nil, ticket: Int? = nil) {
+        self.text = text
+        self.ticket = ticket
     }
 
 

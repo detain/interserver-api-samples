@@ -411,9 +411,9 @@ class AccountApi(
    * @param disable_email_notifications  
    * @param gstin  
    * @param body  
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateAccountInfo(name: String, company: String, address: String, address2: String, city: String, state: String, zip: String, country: String, phone: String, locale: String, email_invoices: String, email_abuse: String, disable_reset: Boolean, disable_reinstall: Boolean, disable_server_notifications: Boolean, disable_email_notifications: Boolean, gstin: String, body: AccountInfoPost) = {
+  def updateAccountInfo(name: String, company: String, address: String, address2: String, city: String, state: String, zip: String, country: String, phone: String, locale: String, email_invoices: String, email_abuse: String, disable_reset: Boolean, disable_reinstall: Boolean, disable_server_notifications: Boolean, disable_email_notifications: Boolean, gstin: String, body: AccountInfoPost): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateAccountInfoAsync(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -443,9 +443,9 @@ class AccountApi(
    * @param disable_email_notifications  
    * @param gstin  
    * @param body  
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateAccountInfoAsync(name: String, company: String, address: String, address2: String, city: String, state: String, zip: String, country: String, phone: String, locale: String, email_invoices: String, email_abuse: String, disable_reset: Boolean, disable_reinstall: Boolean, disable_server_notifications: Boolean, disable_email_notifications: Boolean, gstin: String, body: AccountInfoPost) = {
+  def updateAccountInfoAsync(name: String, company: String, address: String, address2: String, city: String, state: String, zip: String, country: String, phone: String, locale: String, email_invoices: String, email_abuse: String, disable_reset: Boolean, disable_reinstall: Boolean, disable_server_notifications: Boolean, disable_email_notifications: Boolean, gstin: String, body: AccountInfoPost): Future[SuccessTextResponse] = {
       helper.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, body)
   }
 
@@ -456,9 +456,9 @@ class AccountApi(
    * @param start  
    * @param end  
    * @param body The lower and upper bounds of an ip range. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateAccountIpLimits(start: String, end: String, body: IpLimitRange) = {
+  def updateAccountIpLimits(start: String, end: String, body: IpLimitRange): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateAccountIpLimitsAsync(start, end, body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -473,9 +473,9 @@ class AccountApi(
    * @param start  
    * @param end  
    * @param body The lower and upper bounds of an ip range. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateAccountIpLimitsAsync(start: String, end: String, body: IpLimitRange) = {
+  def updateAccountIpLimitsAsync(start: String, end: String, body: IpLimitRange): Future[SuccessTextResponse] = {
       helper.updateAccountIpLimits(start, end, body)
   }
 
@@ -773,7 +773,7 @@ class AccountApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     disable_server_notifications: Boolean,
     disable_email_notifications: Boolean,
     gstin: String,
-    body: AccountInfoPost)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[AccountInfoPost]): Future[Unit] = {
+    body: AccountInfoPost)(implicit reader: ClientResponseReader[SuccessTextResponse], writer: RequestWriter[AccountInfoPost]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/account"))
 
@@ -817,7 +817,7 @@ class AccountApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def updateAccountIpLimits(start: String,
     end: String,
-    body: IpLimitRange)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[IpLimitRange]): Future[Unit] = {
+    body: IpLimitRange)(implicit reader: ClientResponseReader[SuccessTextResponse], writer: RequestWriter[IpLimitRange]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/account/iplimits"))
 

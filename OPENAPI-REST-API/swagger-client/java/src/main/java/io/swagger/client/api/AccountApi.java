@@ -1866,10 +1866,12 @@ public class AccountApi {
      * @param disableServerNotifications  (required)
      * @param disableEmailNotifications  (required)
      * @param gstin  (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateAccountInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, Boolean disableReset, Boolean disableReinstall, Boolean disableServerNotifications, Boolean disableEmailNotifications, String gstin) throws ApiException {
-        updateAccountInfoWithHttpInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+    public SuccessTextResponse updateAccountInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, Boolean disableReset, Boolean disableReinstall, Boolean disableServerNotifications, Boolean disableEmailNotifications, String gstin) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateAccountInfoWithHttpInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+        return resp.getData();
     }
 
     /**
@@ -1892,12 +1894,13 @@ public class AccountApi {
      * @param disableServerNotifications  (required)
      * @param disableEmailNotifications  (required)
      * @param gstin  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateAccountInfoWithHttpInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, Boolean disableReset, Boolean disableReinstall, Boolean disableServerNotifications, Boolean disableEmailNotifications, String gstin) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateAccountInfoWithHttpInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, Boolean disableReset, Boolean disableReinstall, Boolean disableServerNotifications, Boolean disableEmailNotifications, String gstin) throws ApiException {
         com.squareup.okhttp.Call call = updateAccountInfoValidateBeforeCall(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1924,7 +1927,7 @@ public class AccountApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateAccountInfoAsync(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, Boolean disableReset, Boolean disableReinstall, Boolean disableServerNotifications, Boolean disableEmailNotifications, String gstin, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateAccountInfoAsync(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, Boolean disableReset, Boolean disableReinstall, Boolean disableServerNotifications, Boolean disableEmailNotifications, String gstin, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1946,7 +1949,8 @@ public class AccountApi {
         }
 
         com.squareup.okhttp.Call call = updateAccountInfoValidateBeforeCall(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -2021,22 +2025,25 @@ public class AccountApi {
      * Update Account Information
      * Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
      * @param body  (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateAccountInfo(AccountInfoPost body) throws ApiException {
-        updateAccountInfoWithHttpInfo(body);
+    public SuccessTextResponse updateAccountInfo(AccountInfoPost body) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateAccountInfoWithHttpInfo(body);
+        return resp.getData();
     }
 
     /**
      * Update Account Information
      * Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
      * @param body  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateAccountInfoWithHttpInfo(AccountInfoPost body) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateAccountInfoWithHttpInfo(AccountInfoPost body) throws ApiException {
         com.squareup.okhttp.Call call = updateAccountInfoValidateBeforeCall(body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2047,7 +2054,7 @@ public class AccountApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateAccountInfoAsync(AccountInfoPost body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateAccountInfoAsync(AccountInfoPost body, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2069,7 +2076,8 @@ public class AccountApi {
         }
 
         com.squareup.okhttp.Call call = updateAccountInfoValidateBeforeCall(body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -2154,10 +2162,12 @@ public class AccountApi {
      * Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param start  (required)
      * @param end  (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateAccountIpLimits(String start, String end) throws ApiException {
-        updateAccountIpLimitsWithHttpInfo(start, end);
+    public SuccessTextResponse updateAccountIpLimits(String start, String end) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateAccountIpLimitsWithHttpInfo(start, end);
+        return resp.getData();
     }
 
     /**
@@ -2165,12 +2175,13 @@ public class AccountApi {
      * Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param start  (required)
      * @param end  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateAccountIpLimitsWithHttpInfo(String start, String end) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateAccountIpLimitsWithHttpInfo(String start, String end) throws ApiException {
         com.squareup.okhttp.Call call = updateAccountIpLimitsValidateBeforeCall(start, end, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2182,7 +2193,7 @@ public class AccountApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateAccountIpLimitsAsync(String start, String end, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateAccountIpLimitsAsync(String start, String end, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2204,7 +2215,8 @@ public class AccountApi {
         }
 
         com.squareup.okhttp.Call call = updateAccountIpLimitsValidateBeforeCall(start, end, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -2279,22 +2291,25 @@ public class AccountApi {
      * Add IP Access Restriction
      * Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param body The lower and upper bounds of an ip range. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateAccountIpLimits(IpLimitRange body) throws ApiException {
-        updateAccountIpLimitsWithHttpInfo(body);
+    public SuccessTextResponse updateAccountIpLimits(IpLimitRange body) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateAccountIpLimitsWithHttpInfo(body);
+        return resp.getData();
     }
 
     /**
      * Add IP Access Restriction
      * Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param body The lower and upper bounds of an ip range. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateAccountIpLimitsWithHttpInfo(IpLimitRange body) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateAccountIpLimitsWithHttpInfo(IpLimitRange body) throws ApiException {
         com.squareup.okhttp.Call call = updateAccountIpLimitsValidateBeforeCall(body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2305,7 +2320,7 @@ public class AccountApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateAccountIpLimitsAsync(IpLimitRange body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateAccountIpLimitsAsync(IpLimitRange body, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2327,7 +2342,8 @@ public class AccountApi {
         }
 
         com.squareup.okhttp.Call call = updateAccountIpLimitsValidateBeforeCall(body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**

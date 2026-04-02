@@ -20,6 +20,7 @@
 #include "InitiatePayment_200_response.h"
 #include "Invoice.h"
 #include "MonthlyCounts.h"
+#include "Object.h"
 #include "StatusMonthlyBreakdown.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
@@ -118,7 +119,7 @@ public:
     * \param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`. *Required*
     */
     Response<
-            String
+                std::string
         >
     deleteAccountCreditCard(
             
@@ -241,7 +242,7 @@ public:
     * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
     */
     Response<
-            String
+                Object
         >
     getBillingCart(
     );
@@ -289,7 +290,7 @@ public:
     * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
     */
     Response<
-            String
+                Object
         >
     getBillingPrePays(
     );
@@ -358,7 +359,7 @@ public:
     * \param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`. *Required*
     */
     Response<
-            String
+                std::string
         >
     updateAccountCreditCard(
             

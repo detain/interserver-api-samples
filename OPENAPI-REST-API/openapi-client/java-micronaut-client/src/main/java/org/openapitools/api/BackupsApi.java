@@ -35,7 +35,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface BackupsApi {
     /**
@@ -146,10 +146,11 @@ public interface BackupsApi {
      * Updates backup storage service metadata, such as stored credentials or settings for the order.
      *
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/backups/{id}")
     @Consumes({"application/json"})
-    Mono<Void> updateBackupInfo(
+    Mono<SuccessTextResponse> updateBackupInfo(
         @PathVariable(name="id") @NotNull Integer id
     );
 

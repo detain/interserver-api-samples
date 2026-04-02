@@ -15,6 +15,7 @@ import { HttpClient } from 'aurelia-http-client';
 import { Api } from './Api';
 import { AuthStorage } from './AuthStorage';
 import {
+  SuccessTextResponse,
   DnsRecordType,
   DnsRecord,
   DnsListItem,
@@ -106,7 +107,7 @@ export class DNSApi extends Api {
    * @param params.domain The domain name.
    * @param params.ip IP Address to point the domain to.
    */
-  async addDnsDomain(params: IAddDnsDomainParams): Promise<any> {
+  async addDnsDomain(params: IAddDnsDomainParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('addDnsDomain', params, 'domain');
     this.ensureParamIsSet('addDnsDomain', params, 'ip');
@@ -195,7 +196,7 @@ export class DNSApi extends Api {
    * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
    * @param params.id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
    */
-  async deleteDnsDomain(params: IDeleteDnsDomainParams): Promise<any> {
+  async deleteDnsDomain(params: IDeleteDnsDomainParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('deleteDnsDomain', params, 'id');
 
@@ -229,7 +230,7 @@ export class DNSApi extends Api {
    * @param params.domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
    * @param params.recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
    */
-  async deleteDnsRecord(params: IDeleteDnsRecordParams): Promise<any> {
+  async deleteDnsRecord(params: IDeleteDnsRecordParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('deleteDnsRecord', params, 'domainId');
     this.ensureParamIsSet('deleteDnsRecord', params, 'recordId');
@@ -336,7 +337,7 @@ export class DNSApi extends Api {
    * @param params.ordername 
    * @param params.auth 
    */
-  async updateDnsRecord(params: IUpdateDnsRecordParams): Promise<any> {
+  async updateDnsRecord(params: IUpdateDnsRecordParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateDnsRecord', params, 'domainId');
     this.ensureParamIsSet('updateDnsRecord', params, 'recordId');

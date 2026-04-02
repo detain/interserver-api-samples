@@ -13,6 +13,7 @@ import io.swagger.server.model.QuickserverOrder
 import io.swagger.server.model.QuickserverRow
 import io.swagger.server.model.RestoreRequest
 import io.swagger.server.model.ReverseDnsEntries
+import io.swagger.server.model.ServiceOrderPostResponse
 import io.swagger.server.model.SuccessTextResponse
 import io.swagger.server.model.TextResponse
 import io.swagger.server.model.TimezoneUpdate
@@ -693,16 +694,16 @@ class QuickServersApi(
 
 trait QuickServersApiService {
 
+  def addQs200(responseServiceOrderPostResponse: ServiceOrderPostResponse)(implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse]): Route =
+    complete((200, responseServiceOrderPostResponse))
   def addQs401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def addQs0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def addQs()
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def deleteQsBackup200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
@@ -1169,16 +1170,16 @@ trait QuickServersApiService {
   def quickserversCancel(id: Int)
       (implicit toEntityMarshallerinline_response_200_10: ToEntityMarshaller[inline_response_200_10], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def updateQsInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def updateQsInfo401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def updateQsInfo0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def updateQsInfo(id: String)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
 }
 
@@ -1191,6 +1192,8 @@ trait QuickServersApiMarshaller {
 
   implicit def fromRequestUnmarshallerReverseDnsEntries: FromRequestUnmarshaller[ReverseDnsEntries]
 
+
+  implicit def toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -1339,6 +1342,8 @@ trait QuickServersApiMarshaller {
   implicit def toEntityMarshallerinline_response_200_10: ToEntityMarshaller[inline_response_200_10]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

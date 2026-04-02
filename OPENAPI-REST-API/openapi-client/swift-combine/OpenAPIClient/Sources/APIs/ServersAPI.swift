@@ -51,8 +51,8 @@ open class ServersAPI {
     /// - API Key:
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
-    /// - returns: AnyPublisher<Void, Error> 
-    open func addServer() -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<AddServer200Response, Error> 
+    open func addServer() -> AnyPublisher<AddServer200Response, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -68,7 +68,7 @@ open class ServersAPI {
                 request.httpMethod = "POST"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<AddServer200Response, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -82,7 +82,7 @@ open class ServersAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(AddServer200Response.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
@@ -1183,8 +1183,8 @@ open class ServersAPI {
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
     /// - parameter id: (path) Server ID number. 
-    /// - returns: AnyPublisher<Void, Error> 
-    open func updateServerInfo(id: String) -> AnyPublisher<Void, Error> {
+    /// - returns: AnyPublisher<SuccessTextResponse, Error> 
+    open func updateServerInfo(id: String) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -1201,7 +1201,7 @@ open class ServersAPI {
                 request.httpMethod = "POST"
                 return request
             }.publisher
-        }.flatMap { request -> AnyPublisher<Void, Error> in 
+        }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
             return self.transport.send(request: request)
                 .mapError { transportError -> Error in 
                     if transportError.statusCode == 401 {
@@ -1215,7 +1215,7 @@ open class ServersAPI {
                     return transportError
                 }
                 .tryMap { response in
-                    return ()
+                    try self.decoder.decode(SuccessTextResponse.self, from: response.data)
                 }
                 .eraseToAnyPublisher()
         }.eraseToAnyPublisher()

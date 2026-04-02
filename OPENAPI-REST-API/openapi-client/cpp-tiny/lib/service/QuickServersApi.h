@@ -19,6 +19,7 @@
 #include "QuickserversCancel_200_response.h"
 #include "RestoreRequest.h"
 #include "ReverseDnsEntries.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
 #include "VpsBackupRows.h"
@@ -43,7 +44,7 @@ public:
     * Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
     */
     Response<
-            String
+                ServiceOrderPostResponse
         >
     addQs(
     );
@@ -662,7 +663,7 @@ public:
     * \param id QuickServer ID number. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateQsInfo(
             

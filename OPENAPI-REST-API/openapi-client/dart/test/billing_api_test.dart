@@ -48,7 +48,7 @@ void main() {
     //
     // Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
     //
-    //Future deleteAccountCreditCard(String id) async
+    //Future<String> deleteAccountCreditCard(String id) async
     test('test deleteAccountCreditCard', () async {
       // TODO
     });
@@ -138,7 +138,7 @@ void main() {
     //
     // Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
     //
-    //Future getBillingCart() async
+    //Future<Object> getBillingCart() async
     test('test getBillingCart', () async {
       // TODO
     });
@@ -174,7 +174,7 @@ void main() {
     //
     // Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
     //
-    //Future getBillingPrePays() async
+    //Future<Object> getBillingPrePays() async
     test('test getBillingPrePays', () async {
       // TODO
     });
@@ -210,7 +210,7 @@ void main() {
     //
     // Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
     //
-    //Future updateAccountCreditCard(int id) async
+    //Future<String> updateAccountCreditCard(int id) async
     test('test updateAccountCreditCard', () async {
       // TODO
     });

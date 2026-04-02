@@ -4,6 +4,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.validation.Validated;
 import javax.validation.Valid;
@@ -16,50 +19,36 @@ import javax.validation.constraints.*;
 @Introspected
 
 public class InlineResponse20024   {
-  @JsonProperty("message")
-  private String message = null;
+  @JsonProperty("ips")
+  @Valid
+  private Map<String, String> ips = null;
 
-  @JsonProperty("success")
-  private Boolean success = null;
+  public InlineResponse20024 ips(Map<String, String> ips) {
+    this.ips = ips;
+    return this;
+  }
 
-  public InlineResponse20024 message(String message) {
-    this.message = message;
+  public InlineResponse20024 putIpsItem(String key, String ipsItem) {
+    if (this.ips == null) {
+      this.ips = new HashMap<String, String>();
+    }
+    this.ips.put(key, ipsItem);
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * A map of IP addresses to their current reverse DNS hostnames.
+   * @return ips
   **/
-  @Schema(description = "")
+  @Schema(description = "A map of IP addresses to their current reverse DNS hostnames.")
   @NotNull
 
-  public String getMessage() {
-    return message;
+  public Map<String, String> getIps() {
+    return ips;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  public InlineResponse20024 success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
-  /**
-   * Get success
-   * @return success
-  **/
-  @Schema(description = "")
-  @NotNull
-
-  public Boolean isSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
+  public void setIps(Map<String, String> ips) {
+    this.ips = ips;
   }
 
 
@@ -72,13 +61,12 @@ public class InlineResponse20024   {
       return false;
     }
     InlineResponse20024 inlineResponse20024 = (InlineResponse20024) o;
-    return Objects.equals(this.message, inlineResponse20024.message) &&
-        Objects.equals(this.success, inlineResponse20024.success);
+    return Objects.equals(this.ips, inlineResponse20024.ips);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, success);
+    return Objects.hash(ips);
   }
 
   @Override
@@ -86,8 +74,7 @@ public class InlineResponse20024   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20024 {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("}");
     return sb.toString();
   }

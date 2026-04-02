@@ -1,7 +1,7 @@
 /*
  * ServerIpmiLiveInfo.h
  *
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 
 #ifndef _ServerIpmiLiveInfo_H_
@@ -20,7 +20,7 @@ namespace Tizen {
 namespace ArtikCloud {
 
 
-/*! \brief Information about the IPMI connectioj.
+/*! \brief Information about the IPMI connection.
  *
  *  \ingroup Models
  *

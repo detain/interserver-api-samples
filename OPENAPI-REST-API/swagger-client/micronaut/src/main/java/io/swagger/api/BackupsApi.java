@@ -136,10 +136,10 @@ public interface BackupsApi {
 
 
     @Operation(summary = "Update Backup Information", operationId = "updateBackupInfo", description = "Updates backup storage service metadata, such as stored credentials or settings for the order." , tags = {"Backups"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/backups/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateBackupInfo(@Parameter(description = "The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<SuccessTextResponse>> updateBackupInfo(@Parameter(description = "The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

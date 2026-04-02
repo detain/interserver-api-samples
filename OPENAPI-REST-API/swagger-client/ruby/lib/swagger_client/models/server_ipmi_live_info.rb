@@ -12,7 +12,7 @@ Swagger Codegen version: 3.0.78
 require 'date'
 
 module SwaggerClient
-  # Information about the IPMI connectioj.
+  # Information about the IPMI connection.
   class ServerIpmiLiveInfo
     attr_accessor :text
 

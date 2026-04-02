@@ -42,6 +42,7 @@ src/gatling/scala/org/openapitools/client/model/AccountInfoOauthConfigProvidersV
 src/gatling/scala/org/openapitools/client/model/AccountInfoOauthproviders.scala
 src/gatling/scala/org/openapitools/client/model/AccountInfoPost.scala
 src/gatling/scala/org/openapitools/client/model/AccountSshKey.scala
+src/gatling/scala/org/openapitools/client/model/AddServer200Response.scala
 src/gatling/scala/org/openapitools/client/model/AffiliateBannerRow.scala
 src/gatling/scala/org/openapitools/client/model/AffiliateDockSetup.scala
 src/gatling/scala/org/openapitools/client/model/AffiliatePaymentSetup.scala
@@ -374,6 +375,7 @@ src/gatling/scala/org/openapitools/client/model/ServersCancel200Response.scala
 src/gatling/scala/org/openapitools/client/model/Service.scala
 src/gatling/scala/org/openapitools/client/model/ServiceCategories.scala
 src/gatling/scala/org/openapitools/client/model/ServiceCategory.scala
+src/gatling/scala/org/openapitools/client/model/ServiceOrderPostResponse.scala
 src/gatling/scala/org/openapitools/client/model/ServiceType.scala
 src/gatling/scala/org/openapitools/client/model/ServiceTypes.scala
 src/gatling/scala/org/openapitools/client/model/Services.scala

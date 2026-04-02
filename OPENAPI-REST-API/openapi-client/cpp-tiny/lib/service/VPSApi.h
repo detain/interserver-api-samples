@@ -15,6 +15,7 @@
 #include "QueueResponse.h"
 #include "RestoreRequest.h"
 #include "ReverseDnsEntries.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
 #include "VPSCancel_200_response.h"
@@ -48,7 +49,7 @@ public:
     * \param vpsOrderPostRequest 
     */
     Response<
-            String
+                ServiceOrderPostResponse
         >
     addVps(
             
@@ -688,7 +689,7 @@ public:
     * \param id VPS ID number. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateVpsInfo(
             

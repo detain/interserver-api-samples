@@ -69,8 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddMailTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AddMail();
-            
+            //var response = instance.AddMail();
+            //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
         /// Test AddRule
@@ -340,8 +340,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.UpdateMailInfo(id);
-            
+            //var response = instance.UpdateMailInfo(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test ViewMailLog

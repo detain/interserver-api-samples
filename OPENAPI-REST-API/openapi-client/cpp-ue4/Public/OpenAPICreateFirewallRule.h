@@ -50,6 +50,7 @@ public:
 	/* 1 = Block,  0 = Whitelist */
 	XdpActionEnum XdpAction = XdpActionEnum._0;
 	TOptional<int32> DestinationPort;
+	/* Source IP address to match. Use '0.0.0.0' to match any source. */
 	TOptional<FString> SourceIp;
 	TOptional<int32> SourcePort;
 };

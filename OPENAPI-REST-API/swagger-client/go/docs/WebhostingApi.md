@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**WebhostingCancel**](WebhostingApi.md#WebhostingCancel) | **Delete** /websites/{id} | Cancel Website
 
 # **AddWebsite**
-> AddWebsite(ctx, )
+> ServiceOrderPostResponse AddWebsite(ctx, )
 Place Website Order
 
 Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
@@ -32,7 +32,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetWebsiteBuyIp**
-> InlineResponse20023 GetWebsiteBuyIp(ctx, id)
+> InlineResponse20024 GetWebsiteBuyIp(ctx, id)
 Get Website IP Information
 
 Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via `POST /websites/{id}/buy_ip`.
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](inline_response_200_23.md)
+[**InlineResponse20024**](inline_response_200_24.md)
 
 ### Authorization
 
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PostWebsiteBuyIp**
-> InlineResponse20024 PostWebsiteBuyIp(ctx, body, ips, id)
+> InlineResponse20025 PostWebsiteBuyIp(ctx, body, ips, id)
 Update Website IP DNS
 
 Updates the reverse DNS hostnames for the website's IP addresses. Provide an `ips` object mapping each IP address to its desired hostname.
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](inline_response_200_24.md)
+[**InlineResponse20025**](inline_response_200_25.md)
 
 ### Authorization
 
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PostWebsiteMigration**
-> InlineResponse20025 PostWebsiteMigration(ctx, body, custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
+> InlineResponse20026 PostWebsiteMigration(ctx, body, custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
 Request Website Migration
 
 Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned `ticket` ID with `/tickets/{id}` to monitor status.
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](inline_response_200_25.md)
+[**InlineResponse20026**](inline_response_200_26.md)
 
 ### Authorization
 
@@ -416,7 +416,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateWebsiteInfo**
-> UpdateWebsiteInfo(ctx, id)
+> SuccessTextResponse UpdateWebsiteInfo(ctx, id)
 Update Website Order
 
 Updates settings on a webhosting order.
@@ -430,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **WebhostingCancel**
-> InlineResponse20022 WebhostingCancel(ctx, id)
+> InlineResponse20023 WebhostingCancel(ctx, id)
 Cancel Website
 
 Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](inline_response_200_22.md)
+[**InlineResponse20023**](inline_response_200_23.md)
 
 ### Authorization
 

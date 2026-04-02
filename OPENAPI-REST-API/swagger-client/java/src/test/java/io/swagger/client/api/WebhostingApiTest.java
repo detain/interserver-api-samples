@@ -15,12 +15,13 @@ package io.swagger.client.api;
 import io.swagger.client.model.ChargeInvoiceRows;
 import io.swagger.client.model.IdBuyIpBody;
 import io.swagger.client.model.IdMigrationBody;
-import io.swagger.client.model.InlineResponse20022;
 import io.swagger.client.model.InlineResponse20023;
 import io.swagger.client.model.InlineResponse20024;
 import io.swagger.client.model.InlineResponse20025;
+import io.swagger.client.model.InlineResponse20026;
 import io.swagger.client.model.InlineResponse401;
 import io.swagger.client.model.ReverseDnsEntries;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 import io.swagger.client.model.TextResponse;
 import io.swagger.client.model.Website;
@@ -56,7 +57,7 @@ public class WebhostingApiTest {
      */
     @Test
     public void addWebsiteTest() throws Exception {
-        api.addWebsite();
+        ServiceOrderPostResponse response = api.addWebsite();
 
         // TODO: test validations
     }
@@ -85,7 +86,7 @@ public class WebhostingApiTest {
     @Test
     public void getWebsiteBuyIpTest() throws Exception {
         Integer id = null;
-        InlineResponse20023 response = api.getWebsiteBuyIp(id);
+        InlineResponse20024 response = api.getWebsiteBuyIp(id);
 
         // TODO: test validations
     }
@@ -205,7 +206,7 @@ public class WebhostingApiTest {
     public void postWebsiteBuyIpTest() throws Exception {
         IdBuyIpBody body = null;
         Integer id = null;
-        InlineResponse20024 response = api.postWebsiteBuyIp(body, id);
+        InlineResponse20025 response = api.postWebsiteBuyIp(body, id);
 
         // TODO: test validations
     }
@@ -221,7 +222,7 @@ public class WebhostingApiTest {
     public void postWebsiteMigrationTest() throws Exception {
         IdMigrationBody body = null;
         Integer id = null;
-        InlineResponse20025 response = api.postWebsiteMigration(body, id);
+        InlineResponse20026 response = api.postWebsiteMigration(body, id);
 
         // TODO: test validations
     }
@@ -266,7 +267,7 @@ public class WebhostingApiTest {
     @Test
     public void updateWebsiteInfoTest() throws Exception {
         String id = null;
-        api.updateWebsiteInfo(id);
+        SuccessTextResponse response = api.updateWebsiteInfo(id);
 
         // TODO: test validations
     }
@@ -281,7 +282,7 @@ public class WebhostingApiTest {
     @Test
     public void webhostingCancelTest() throws Exception {
         String id = null;
-        InlineResponse20022 response = api.webhostingCancel(id);
+        InlineResponse20023 response = api.webhostingCancel(id);
 
         // TODO: test validations
     }

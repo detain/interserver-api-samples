@@ -55,7 +55,7 @@ Method | HTTP request | Description
 [**updateQsInfo**](QuickServersApi.md#updateQsInfo) | **POST** /qs/{id} | Update QuickServer Order
 
 # **addQs**
-> addQs()
+> ServiceOrderPostResponse addQs()
 
 Place QuickServer Order
 
@@ -80,7 +80,8 @@ import 'package:swagger/api.dart';
 var api_instance = new QuickServersApi();
 
 try {
-    api_instance.addQs();
+    var result = api_instance.addQs();
+    print(result);
 } catch (e) {
     print("Exception when calling QuickServersApi->addQs: $e\n");
 }
@@ -91,7 +92,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2418,7 +2419,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateQsInfo**
-> updateQsInfo(id)
+> SuccessTextResponse updateQsInfo(id)
 
 Update QuickServer Order
 
@@ -2444,7 +2445,8 @@ var api_instance = new QuickServersApi();
 var id = id_example; // String | QuickServer ID number.
 
 try {
-    api_instance.updateQsInfo(id);
+    var result = api_instance.updateQsInfo(id);
+    print(result);
 } catch (e) {
     print("Exception when calling QuickServersApi->updateQsInfo: $e\n");
 }
@@ -2458,7 +2460,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

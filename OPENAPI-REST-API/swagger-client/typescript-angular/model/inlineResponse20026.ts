@@ -9,16 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { InlineResponse20026Bandwidth } from './inlineResponse20026Bandwidth';
-import { InlineResponse20026Cp } from './inlineResponse20026Cp';
-import { InlineResponse20026Ips } from './inlineResponse20026Ips';
-import { InlineResponse20026Os } from './inlineResponse20026Os';
-import { InlineResponse20026Raid } from './inlineResponse20026Raid';
 
 export interface InlineResponse20026 { 
-    bandwidth?: Array<InlineResponse20026Bandwidth>;
-    ips?: Array<InlineResponse20026Ips>;
-    os?: Array<InlineResponse20026Os>;
-    cp?: Array<InlineResponse20026Cp>;
-    raid?: Array<InlineResponse20026Raid>;
+    /**
+     * Confirmation message.
+     */
+    text?: string;
+    /**
+     * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+     */
+    ticket?: number;
 }

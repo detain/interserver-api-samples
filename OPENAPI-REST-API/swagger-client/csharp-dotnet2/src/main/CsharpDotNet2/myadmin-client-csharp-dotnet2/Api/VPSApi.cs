@@ -15,8 +15,8 @@ namespace IO.Swagger.Api
         /// Place VPS Order Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
         /// </summary>
         /// <param name="body"></param>
-        /// <returns></returns>
-        void AddVps (VpsOrderPostRequest body);
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddVps (VpsOrderPostRequest body);
         /// <summary>
         /// Place VPS Order Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
         /// </summary>
@@ -31,8 +31,8 @@ namespace IO.Swagger.Api
         /// <param name="coupon"></param>
         /// <param name="rootpass"></param>
         /// <param name="comment"></param>
-        /// <returns></returns>
-        void AddVps (string osDistro, int? slices, string vpsPlatform, string controlpanel, int? period, int? location, string osVersion, string hostname, string coupon, string rootpass, string comment);
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddVps (string osDistro, int? slices, string vpsPlatform, string controlpanel, int? period, int? location, string osVersion, string hostname, string coupon, string rootpass, string comment);
         /// <summary>
         /// Delete VPS Backup Permanently removes the specified backup file from storage. Use &#x60;GET /vps/{id}/backups&#x60; to list available backup filenames before deleting.
         /// </summary>
@@ -377,14 +377,14 @@ namespace IO.Swagger.Api
         /// Update VPS Order Updates settings on a VPS order.
         /// </summary>
         /// <param name="id">VPS ID number.</param>
-        /// <returns></returns>
-        void UpdateVpsInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateVpsInfo (string id);
         /// <summary>
         /// Cancel VPS Service Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
         /// </summary>
         /// <param name="id">VPS ID number</param>
-        /// <returns>InlineResponse20021</returns>
-        InlineResponse20021 VPSCancel (int? id);
+        /// <returns>InlineResponse20022</returns>
+        InlineResponse20022 VPSCancel (int? id);
     }
   
     /// <summary>
@@ -444,8 +444,8 @@ namespace IO.Swagger.Api
         /// Place VPS Order Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
         /// </summary>
         /// <param name="body"></param>
-        /// <returns></returns>
-        public void AddVps (VpsOrderPostRequest body)
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddVps (VpsOrderPostRequest body)
         {
     
             var path = "/vps/order";
@@ -470,7 +470,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddVps: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (ServiceOrderPostResponse) ApiClient.Deserialize(response.Content, typeof(ServiceOrderPostResponse), response.Headers);
         }
     
         /// <summary>
@@ -487,8 +487,8 @@ namespace IO.Swagger.Api
         /// <param name="coupon"></param>
         /// <param name="rootpass"></param>
         /// <param name="comment"></param>
-        /// <returns></returns>
-        public void AddVps (string osDistro, int? slices, string vpsPlatform, string controlpanel, int? period, int? location, string osVersion, string hostname, string coupon, string rootpass, string comment)
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddVps (string osDistro, int? slices, string vpsPlatform, string controlpanel, int? period, int? location, string osVersion, string hostname, string coupon, string rootpass, string comment)
         {
     
             var path = "/vps/order";
@@ -523,7 +523,7 @@ if (comment != null) formParams.Add("comment", ApiClient.ParameterToString(comme
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddVps: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (ServiceOrderPostResponse) ApiClient.Deserialize(response.Content, typeof(ServiceOrderPostResponse), response.Headers);
         }
     
         /// <summary>
@@ -2419,8 +2419,8 @@ if (comment != null) formParams.Add("comment", ApiClient.ParameterToString(comme
         /// Update VPS Order Updates settings on a VPS order.
         /// </summary>
         /// <param name="id">VPS ID number.</param>
-        /// <returns></returns>
-        public void UpdateVpsInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateVpsInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateVpsInfo");
@@ -2447,15 +2447,15 @@ if (comment != null) formParams.Add("comment", ApiClient.ParameterToString(comme
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateVpsInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>
         /// Cancel VPS Service Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
         /// </summary>
         /// <param name="id">VPS ID number</param>
-        /// <returns>InlineResponse20021</returns>
-        public InlineResponse20021 VPSCancel (int? id)
+        /// <returns>InlineResponse20022</returns>
+        public InlineResponse20022 VPSCancel (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling VPSCancel");
@@ -2482,7 +2482,7 @@ if (comment != null) formParams.Add("comment", ApiClient.ParameterToString(comme
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling VPSCancel: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20021) ApiClient.Deserialize(response.Content, typeof(InlineResponse20021), response.Headers);
+            return (InlineResponse20022) ApiClient.Deserialize(response.Content, typeof(InlineResponse20022), response.Headers);
         }
     
     }

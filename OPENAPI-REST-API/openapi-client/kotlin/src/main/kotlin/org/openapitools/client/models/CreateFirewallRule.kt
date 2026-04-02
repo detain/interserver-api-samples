@@ -33,7 +33,7 @@ import com.squareup.moshi.JsonClass
  * @param protocolId 1 = TCP, 2 = UDP
  * @param xdpAction 1 = Block,  0 = Whitelist
  * @param destinationPort 
- * @param sourceIp 
+ * @param sourceIp Source IP address to match. Use '0.0.0.0' to match any source.
  * @param sourcePort 
  */
 
@@ -51,8 +51,9 @@ data class CreateFirewallRule (
     @Json(name = "destination_port")
     val destinationPort: kotlin.Int? = 80,
 
+    /* Source IP address to match. Use '0.0.0.0' to match any source. */
     @Json(name = "source_ip")
-    val sourceIp: kotlin.String? = "0",
+    val sourceIp: kotlin.String? = "0.0.0.0",
 
     @Json(name = "source_port")
     val sourcePort: kotlin.Int? = 0

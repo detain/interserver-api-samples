@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 <a name="addlicense"></a>
 # **AddLicense**
-> void AddLicense ()
+> ServiceOrderPostResponse AddLicense ()
 
 Place License Order
 
@@ -56,7 +56,8 @@ namespace Example
             try
             {
                 // Place License Order
-                apiInstance.AddLicense();
+                ServiceOrderPostResponse result = apiInstance.AddLicense();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -72,7 +73,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -731,7 +732,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="updatelicenseinfo"></a>
 # **UpdateLicenseInfo**
-> void UpdateLicenseInfo (string id)
+> SuccessTextResponse UpdateLicenseInfo (string id)
 
 Update License
 
@@ -770,7 +771,8 @@ namespace Example
             try
             {
                 // Update License
-                apiInstance.UpdateLicenseInfo(id);
+                SuccessTextResponse result = apiInstance.UpdateLicenseInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -789,7 +791,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

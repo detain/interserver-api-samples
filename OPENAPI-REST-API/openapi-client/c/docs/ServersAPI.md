@@ -30,7 +30,7 @@ Method | HTTP request | Description
 //
 // Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
 //
-void ServersAPI_addServer(apiClient_t *apiClient);
+add_server_200_response_t* ServersAPI_addServer(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -40,7 +40,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[add_server_200_response_t](add_server_200_response.md) *
+
 
 ### Authorization
 
@@ -554,7 +555,7 @@ Name | Type | Description  | Notes
 //
 // Updates settings on a dedicated server order.
 //
-void ServersAPI_updateServerInfo(apiClient_t *apiClient, char *id);
+success_text_response_t* ServersAPI_updateServerInfo(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -565,7 +566,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

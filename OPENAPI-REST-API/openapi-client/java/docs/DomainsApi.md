@@ -37,7 +37,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addDomain"></a>
 # **addDomain**
-> addDomain()
+> ServiceOrderPostResponse addDomain()
 
 Place Domain Order
 
@@ -78,7 +78,8 @@ public class Example {
 
     DomainsApi apiInstance = new DomainsApi(defaultClient);
     try {
-      apiInstance.addDomain();
+      ServiceOrderPostResponse result = apiInstance.addDomain();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DomainsApi#addDomain");
       System.err.println("Status code: " + e.getCode());
@@ -95,7 +96,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -109,8 +110,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="addDomainDnssec"></a>
 # **addDomainDnssec**
@@ -2158,7 +2159,7 @@ public class Example {
 
 <a id="updateDomainInfo"></a>
 # **updateDomainInfo**
-> updateDomainInfo(id)
+> SuccessTextResponse updateDomainInfo(id)
 
 Update Domain Order
 
@@ -2200,7 +2201,8 @@ public class Example {
     DomainsApi apiInstance = new DomainsApi(defaultClient);
     String id = "id_example"; // String | The domain service ID. Use `domain_id` from `GET /domains`.
     try {
-      apiInstance.updateDomainInfo(id);
+      SuccessTextResponse result = apiInstance.updateDomainInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling DomainsApi#updateDomainInfo");
       System.err.println("Status code: " + e.getCode());
@@ -2220,7 +2222,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -2234,8 +2236,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="updateDomainNameservers"></a>
 # **updateDomainNameservers**

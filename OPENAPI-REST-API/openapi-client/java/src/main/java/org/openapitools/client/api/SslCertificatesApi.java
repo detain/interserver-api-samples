@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import org.openapitools.client.model.ChargeInvoiceRows;
 import org.openapitools.client.model.GetAccountInfo401Response;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SslCancel200Response;
 import org.openapitools.client.model.SuccessTextResponse;
 
@@ -84,8 +85,8 @@ public class SslCertificatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call addSslCall(final ApiCallback _callback) throws ApiException {
@@ -141,35 +142,38 @@ public class SslCertificatesApi {
     /**
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void addSsl() throws ApiException {
-        addSslWithHttpInfo();
+    public ServiceOrderPostResponse addSsl() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> localVarResp = addSslWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> addSslWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addSslWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = addSslValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -182,14 +186,15 @@ public class SslCertificatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addSslAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call addSslAsync(final ApiCallback<ServiceOrderPostResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addSslValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -201,8 +206,8 @@ public class SslCertificatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Available SSL certificate types and pricing for ordering. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getNewSslCall(final ApiCallback _callback) throws ApiException {
@@ -258,35 +263,38 @@ public class SslCertificatesApi {
     /**
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Available SSL certificate types and pricing for ordering. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void getNewSsl() throws ApiException {
-        getNewSslWithHttpInfo();
+    public Object getNewSsl() throws ApiException {
+        ApiResponse<Object> localVarResp = getNewSslWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Available SSL certificate types and pricing for ordering. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getNewSslWithHttpInfo() throws ApiException {
+    public ApiResponse<Object> getNewSslWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getNewSslValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -299,14 +307,15 @@ public class SslCertificatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Available SSL certificate types and pricing for ordering. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getNewSslAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getNewSslAsync(final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getNewSslValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -319,8 +328,8 @@ public class SslCertificatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Detailed SSL certificate information. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSslInfoCall(@javax.annotation.Nonnull Integer id, final ApiCallback _callback) throws ApiException {
@@ -383,36 +392,39 @@ public class SslCertificatesApi {
      * Get SSL Cert Info
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param id SSL certificate ID number. (required)
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Detailed SSL certificate information. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void getSslInfo(@javax.annotation.Nonnull Integer id) throws ApiException {
-        getSslInfoWithHttpInfo(id);
+    public Object getSslInfo(@javax.annotation.Nonnull Integer id) throws ApiException {
+        ApiResponse<Object> localVarResp = getSslInfoWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
      * Get SSL Cert Info
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param id SSL certificate ID number. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Detailed SSL certificate information. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> getSslInfoWithHttpInfo(@javax.annotation.Nonnull Integer id) throws ApiException {
+    public ApiResponse<Object> getSslInfoWithHttpInfo(@javax.annotation.Nonnull Integer id) throws ApiException {
         okhttp3.Call localVarCall = getSslInfoValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -426,14 +438,15 @@ public class SslCertificatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Detailed SSL certificate information. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSslInfoAsync(@javax.annotation.Nonnull Integer id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSslInfoAsync(@javax.annotation.Nonnull Integer id, final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSslInfoValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1077,8 +1090,8 @@ public class SslCertificatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateSslInfoCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1141,36 +1154,39 @@ public class SslCertificatesApi {
      * Update SSL Cert Order
      * Updates settings on an SSL certificate order.
      * @param id SSL certificate ID number. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void updateSslInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        updateSslInfoWithHttpInfo(id);
+    public SuccessTextResponse updateSslInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = updateSslInfoWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
      * Update SSL Cert Order
      * Updates settings on an SSL certificate order.
      * @param id SSL certificate ID number. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateSslInfoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateSslInfoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = updateSslInfoValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1184,14 +1200,15 @@ public class SslCertificatesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateSslInfoAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateSslInfoAsync(@javax.annotation.Nonnull String id, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateSslInfoValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

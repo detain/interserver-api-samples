@@ -7,6 +7,7 @@ import io.swagger.model.DnsRecord;
 import io.swagger.model.DnsRecordType;
 import io.swagger.model.DnsUpdateRecord;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.SuccessTextResponse;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -45,9 +46,9 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Create DNS Domain", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void addDnsDomain(@Multipart(value = "domain")  String domain, @Multipart(value = "ip")  String ip);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse addDnsDomain(@Multipart(value = "domain")  String domain, @Multipart(value = "ip")  String ip);
 
     /**
      * Create DNS Domain
@@ -61,9 +62,9 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Create DNS Domain", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void addDnsDomain(DnsNewDomain body);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse addDnsDomain(DnsNewDomain body);
 
     /**
      * Add DNS Record to Domain
@@ -108,9 +109,9 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Delete DNS Domain", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void deleteDnsDomain(@PathParam("id") String id);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse deleteDnsDomain(@PathParam("id") String id);
 
     /**
      * Delete DNS Record
@@ -123,9 +124,9 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Delete DNS Record", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void deleteDnsRecord(@PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse deleteDnsRecord(@PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId);
 
     /**
      * List Domain DNS Records
@@ -169,9 +170,9 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update DNS Record", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateDnsRecord(@Multipart(value = "name")  String name, @Multipart(value = "type")  DnsRecordType type, @Multipart(value = "content")  String content, @Multipart(value = "ttl")  String ttl, @Multipart(value = "prio")  String prio, @Multipart(value = "disabled")  String disabled, @Multipart(value = "ordername")  String ordername, @Multipart(value = "auth")  String auth, @PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse updateDnsRecord(@Multipart(value = "name")  String name, @Multipart(value = "type")  DnsRecordType type, @Multipart(value = "content")  String content, @Multipart(value = "ttl")  String ttl, @Multipart(value = "prio")  String prio, @Multipart(value = "disabled")  String disabled, @Multipart(value = "ordername")  String ordername, @Multipart(value = "auth")  String auth, @PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId);
 
     /**
      * Update DNS Record
@@ -185,7 +186,7 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update DNS Record", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateDnsRecord(DnsUpdateRecord body, @PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse updateDnsRecord(DnsUpdateRecord body, @PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId);
 }

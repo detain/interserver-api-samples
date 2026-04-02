@@ -11,7 +11,7 @@ void main() {
     //
     // Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
     //
-    //Future addMail() async
+    //Future<ServiceOrderPostResponse> addMail() async
     test('test addMail', () async {
       // TODO
     });
@@ -227,7 +227,7 @@ void main() {
     //
     // Updates mail service metadata for the order, such as stored settings or account details.
     //
-    //Future updateMailInfo(String id) async
+    //Future<SuccessTextResponse> updateMailInfo(String id) async
     test('test updateMailInfo', () async {
       // TODO
     });

@@ -50,7 +50,7 @@ Method | HTTP request | Description
 [**updateQsInfo**](QuickServersApi.md#updateqsinfo) | **POST** /qs/{id} | Update QuickServer Order
 
 # **addQs**
-> addQs()
+> \Interserver\MyAdmin\Model\ServiceOrderPostResponse addQs()
 
 Place QuickServer Order
 
@@ -79,7 +79,8 @@ $apiInstance = new Interserver\MyAdmin\Api\QuickServersApi(
 );
 
 try {
-    $apiInstance->addQs();
+    $result = $apiInstance->addQs();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuickServersApi->addQs: ', $e->getMessage(), PHP_EOL;
 }
@@ -91,7 +92,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2870,7 +2871,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateQsInfo**
-> updateQsInfo($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateQsInfo($id)
 
 Update QuickServer Order
 
@@ -2900,7 +2901,8 @@ $apiInstance = new Interserver\MyAdmin\Api\QuickServersApi(
 $id = "id_example"; // string | QuickServer ID number.
 
 try {
-    $apiInstance->updateQsInfo($id);
+    $result = $apiInstance->updateQsInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuickServersApi->updateQsInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -2915,7 +2917,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

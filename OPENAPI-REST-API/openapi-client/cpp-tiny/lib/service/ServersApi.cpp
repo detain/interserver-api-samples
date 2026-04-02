@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            String
+            AddServer_200_response
         >
         ServersApi::
         addServer(
@@ -35,7 +35,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            AddServer_200_response obj(output_string);
+
+
+            Response<AddServer_200_response> response(obj, httpCode);
             return response;
         }
 
@@ -841,7 +846,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            SuccessTextResponse
         >
         ServersApi::
         updateServerInfo(
@@ -882,7 +887,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 

@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **addDnsDomain**
-> addDnsDomain(domain, ip)
+> SuccessTextResponse addDnsDomain(domain, ip)
 
 Create DNS Domain
 
@@ -46,7 +46,8 @@ final String domain = domain_example; // String | The domain name.
 final String ip = ip_example; // String | IP Address to point the domain to.
 
 try {
-    api.addDnsDomain(domain, ip);
+    final response = api.addDnsDomain(domain, ip);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling DNSApi->addDnsDomain: $e\n');
 }
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -139,7 +140,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDnsDomain**
-> deleteDnsDomain(id)
+> SuccessTextResponse deleteDnsDomain(id)
 
 Delete DNS Domain
 
@@ -165,7 +166,8 @@ final api = Openapi().getDNSApi();
 final String id = id_example; // String | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 
 try {
-    api.deleteDnsDomain(id);
+    final response = api.deleteDnsDomain(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling DNSApi->deleteDnsDomain: $e\n');
 }
@@ -179,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -193,7 +195,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteDnsRecord**
-> deleteDnsRecord(domainId, recordId)
+> SuccessTextResponse deleteDnsRecord(domainId, recordId)
 
 Delete DNS Record
 
@@ -220,7 +222,8 @@ final int domainId = 56; // int | The DNS domain ID. Use the `id` from `GET /dns
 final int recordId = 56; // int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 try {
-    api.deleteDnsRecord(domainId, recordId);
+    final response = api.deleteDnsRecord(domainId, recordId);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling DNSApi->deleteDnsRecord: $e\n');
 }
@@ -235,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -355,7 +358,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateDnsRecord**
-> updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
+> SuccessTextResponse updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
 
 Update DNS Record
 
@@ -390,7 +393,8 @@ final String ordername = ordername_example; // String |
 final String auth = auth_example; // String | 
 
 try {
-    api.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
+    final response = api.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling DNSApi->updateDnsRecord: $e\n');
 }
@@ -413,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

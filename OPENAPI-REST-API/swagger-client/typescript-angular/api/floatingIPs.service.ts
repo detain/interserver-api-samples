@@ -21,6 +21,7 @@ import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
 import { InlineResponse2003 } from '../model/inlineResponse2003';
 import { InlineResponse401 } from '../model/inlineResponse401';
 import { IpObject } from '../model/ipObject';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -65,9 +66,9 @@ export class FloatingIPsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addFloatingIp(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addFloatingIp(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addFloatingIp(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addFloatingIp(observe?: 'body', reportProgress?: boolean): Observable<ServiceOrderPostResponse>;
+    public addFloatingIp(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addFloatingIp(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addFloatingIp(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -102,7 +103,7 @@ export class FloatingIPsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/floating_ips/order`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post',`${this.basePath}/floating_ips/order`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -671,9 +672,9 @@ export class FloatingIPsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateFloatingIpInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateFloatingIpInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateFloatingIpInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateFloatingIpInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateFloatingIpInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateFloatingIpInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateFloatingIpInfo(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -712,7 +713,7 @@ export class FloatingIPsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

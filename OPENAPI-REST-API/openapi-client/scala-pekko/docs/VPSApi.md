@@ -97,7 +97,7 @@ Method | HTTP request | Description
 
 ## addVps
 
-> addVps(addVpsRequest): ApiRequest[Unit]
+> addVps(addVpsRequest): ApiRequest[ServiceOrderPostResponse]
 
 Place VPS Order
 
@@ -107,6 +107,7 @@ Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the or
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -142,6 +143,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling VPSApi#addVps")
@@ -166,8 +168,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -181,8 +183,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## deleteVpsBackup
@@ -3940,7 +3942,7 @@ ApiRequest[[**VpsOrderPutResponse**](VpsOrderPutResponse.md)]
 
 ## updateVpsInfo
 
-> updateVpsInfo(updateVpsInfoRequest): ApiRequest[Unit]
+> updateVpsInfo(updateVpsInfoRequest): ApiRequest[SuccessTextResponse]
 
 Update VPS Order
 
@@ -3950,6 +3952,7 @@ Updates settings on a VPS order.
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -3984,6 +3987,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling VPSApi#updateVpsInfo")
@@ -4008,8 +4012,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -4023,8 +4027,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## vPSCancel

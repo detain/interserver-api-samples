@@ -24,7 +24,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addWebsite"></a>
 # **addWebsite**
-> addWebsite()
+> ServiceOrderPostResponse addWebsite()
 
 Place Website Order
 
@@ -38,7 +38,8 @@ Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60
 
 val apiInstance = WebhostingApi()
 try {
-    apiInstance.addWebsite()
+    val result : ServiceOrderPostResponse = apiInstance.addWebsite()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#addWebsite")
     e.printStackTrace()
@@ -53,7 +54,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -786,7 +787,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateWebsiteInfo"></a>
 # **updateWebsiteInfo**
-> updateWebsiteInfo(id)
+> SuccessTextResponse updateWebsiteInfo(id)
 
 Update Website Order
 
@@ -801,7 +802,8 @@ Updates settings on a webhosting order.
 val apiInstance = WebhostingApi()
 val id : kotlin.String = id_example // kotlin.String | The website service ID. Use `website_id` from `GET /websites`.
 try {
-    apiInstance.updateWebsiteInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateWebsiteInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling WebhostingApi#updateWebsiteInfo")
     e.printStackTrace()
@@ -818,7 +820,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

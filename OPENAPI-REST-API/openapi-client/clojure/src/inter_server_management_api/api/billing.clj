@@ -188,6 +188,7 @@
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
             [inter-server-management-api.specs.license :refer :all]
+            [inter-server-management-api.specs.add-server-200-response :refer :all]
             [inter-server-management-api.specs.post-oauth-callback-request :refer :all]
             [inter-server-management-api.specs.mail-alert-update-request :refer :all]
             [inter-server-management-api.specs.billing-prepay-request :refer :all]
@@ -304,6 +305,7 @@
             [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
+            [inter-server-management-api.specs.service-order-post-response :refer :all]
             [inter-server-management-api.specs.vps-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-network-info-switchports :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types :refer :all]
@@ -547,13 +549,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec delete-account-credit-card any?
+(defn-spec delete-account-credit-card string?
   "Remove Credit Card
   Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward."
   [id string?]
   (let [res (:data (delete-account-credit-card-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode string? res st/string-transformer)
        res)))
 
 
@@ -976,13 +978,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec update-account-credit-card any?
+(defn-spec update-account-credit-card string?
   "Update Credit Card
   Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address."
   [id int?]
   (let [res (:data (update-account-credit-card-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode string? res st/string-transformer)
        res)))
 
 

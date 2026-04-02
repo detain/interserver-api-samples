@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **add_floating_ip**
-> add_floating_ip()
+> ServiceOrderPostResponse add_floating_ip()
 
 Place Floating IP Order
 
@@ -50,7 +50,8 @@ my $api_instance = OpenAPIClient::FloatingIPsApi->new(
 
 
 eval {
-    $api_instance->add_floating_ip();
+    my $result = $api_instance->add_floating_ip();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling FloatingIPsApi->add_floating_ip: $@\n";
@@ -62,7 +63,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -135,7 +136,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_floating_ip_info**
-> get_floating_ip_info(id => $id)
+> object get_floating_ip_info(id => $id)
 
 View Floating IP
 
@@ -164,7 +165,8 @@ my $api_instance = OpenAPIClient::FloatingIPsApi->new(
 my $id = 56; # int | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 eval {
-    $api_instance->get_floating_ip_info(id => $id);
+    my $result = $api_instance->get_floating_ip_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling FloatingIPsApi->get_floating_ip_info: $@\n";
@@ -179,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -365,7 +367,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_new_floating_ip**
-> get_new_floating_ip()
+> object get_new_floating_ip()
 
 Get Floating IP Ordering Information
 
@@ -393,7 +395,8 @@ my $api_instance = OpenAPIClient::FloatingIPsApi->new(
 
 
 eval {
-    $api_instance->get_new_floating_ip();
+    my $result = $api_instance->get_new_floating_ip();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling FloatingIPsApi->get_new_floating_ip: $@\n";
@@ -405,7 +408,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -534,7 +537,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_floating_ip_info**
-> update_floating_ip_info(id => $id)
+> SuccessTextResponse update_floating_ip_info(id => $id)
 
 Update Floating IP
 
@@ -563,7 +566,8 @@ my $api_instance = OpenAPIClient::FloatingIPsApi->new(
 my $id = "id_example"; # string | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 eval {
-    $api_instance->update_floating_ip_info(id => $id);
+    my $result = $api_instance->update_floating_ip_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling FloatingIPsApi->update_floating_ip_info: $@\n";
@@ -578,7 +582,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -413,7 +413,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            SuccessTextResponse
         >
         BackupsApi::
         updateBackupInfo(
@@ -454,7 +454,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 

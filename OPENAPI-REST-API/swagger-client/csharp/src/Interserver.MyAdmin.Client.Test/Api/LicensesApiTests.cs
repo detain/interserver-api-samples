@@ -69,8 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddLicenseTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AddLicense();
-            
+            //var response = instance.AddLicense();
+            //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
         /// Test GetLicenseInfo
@@ -177,8 +177,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.UpdateLicenseInfo(id);
-            
+            //var response = instance.UpdateLicenseInfo(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
     }
 

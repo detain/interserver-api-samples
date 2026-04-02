@@ -11,7 +11,7 @@
  */
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 public class OASServerIpmiLiveInfo implements OAS.MappedProperties {
     /**

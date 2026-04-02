@@ -20,6 +20,7 @@ src/model/openapi_account_info_oauth_config_providers_value.erl
 src/model/openapi_account_info_oauthproviders.erl
 src/model/openapi_account_info_post.erl
 src/model/openapi_account_ssh_key.erl
+src/model/openapi_add_server_200_response.erl
 src/model/openapi_affiliate_banner_row.erl
 src/model/openapi_affiliate_dock_setup.erl
 src/model/openapi_affiliate_payment_setup.erl
@@ -352,6 +353,7 @@ src/model/openapi_servers_cancel_200_response.erl
 src/model/openapi_service.erl
 src/model/openapi_service_categories.erl
 src/model/openapi_service_category.erl
+src/model/openapi_service_order_post_response.erl
 src/model/openapi_service_type.erl
 src/model/openapi_service_types.erl
 src/model/openapi_services.erl

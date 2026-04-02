@@ -34,6 +34,7 @@ import org.openapitools.client.models.License
 import org.openapitools.client.models.LicenseRow
 import org.openapitools.client.models.LicensesCancel200Response
 import org.openapitools.client.models.LicensesOrder
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 
 class LicensesApiTest : ShouldSpec() {
@@ -44,7 +45,8 @@ class LicensesApiTest : ShouldSpec() {
         // to test addLicense
         should("test addLicense") {
             // uncomment below to test addLicense
-            //apiInstance.addLicense()
+            //val result : ServiceOrderPostResponse = apiInstance.addLicense()
+            //result shouldBe ("TODO")
         }
 
         // to test getLicenseInfo
@@ -119,7 +121,8 @@ class LicensesApiTest : ShouldSpec() {
         should("test updateLicenseInfo") {
             // uncomment below to test updateLicenseInfo
             //val id : kotlin.String = id_example // kotlin.String | The license service ID. Use `license_id` from `GET /licenses`.
-            //apiInstance.updateLicenseInfo(id)
+            //val result : SuccessTextResponse = apiInstance.updateLicenseInfo(id)
+            //result shouldBe ("TODO")
         }
 
     }

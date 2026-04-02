@@ -189,11 +189,12 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\AddServer200Response|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function addServer(string $contentType = self::contentTypes['addServer'][0])
     {
-        $this->addServerWithHttpInfo($contentType);
+        list($response) = $this->addServerWithHttpInfo($contentType);
+        return $response;
     }
 
     /**
@@ -205,7 +206,7 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\AddServer200Response|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function addServerWithHttpInfo(string $contentType = self::contentTypes['addServer'][0])
     {
@@ -234,9 +235,51 @@ class ServersApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\AddServer200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\AddServer200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\AddServer200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -284,14 +327,27 @@ class ServersApi
      */
     public function addServerAsyncWithHttpInfo(string $contentType = self::contentTypes['addServer'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\AddServer200Response';
         $request = $this->addServerRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -5006,11 +5062,12 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function updateServerInfo($id, string $contentType = self::contentTypes['updateServerInfo'][0])
     {
-        $this->updateServerInfoWithHttpInfo($id, $contentType);
+        list($response) = $this->updateServerInfoWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -5023,7 +5080,7 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateServerInfoWithHttpInfo($id, string $contentType = self::contentTypes['updateServerInfo'][0])
     {
@@ -5052,9 +5109,51 @@ class ServersApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5104,14 +5203,27 @@ class ServersApi
      */
     public function updateServerInfoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['updateServerInfo'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateServerInfoRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

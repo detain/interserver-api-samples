@@ -253,9 +253,11 @@ package body .Clients is
        Disable_Reinstall : in Swagger.Nullable_Boolean;
        Disable_Server_Notifications : in Swagger.Nullable_Boolean;
        Disable_Email_Notifications : in Swagger.Nullable_Boolean;
-       Gstin : in Swagger.Nullable_UString) is
+       Gstin : in Swagger.Nullable_UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
@@ -279,7 +281,8 @@ package body .Clients is
       .Models.Serialize (Req.Stream, "gstin", Gstin);
 
       URI.Set_Path ("/account");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Account_Info;
 
    --  Add IP Access Restriction
@@ -287,9 +290,11 @@ package body .Clients is
    procedure Update_Account_Ip_Limits
       (Client : in out Client_Type;
        Start : in Swagger.UString;
-       P_End : in Swagger.UString) is
+       P_End : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
@@ -298,7 +303,8 @@ package body .Clients is
       .Models.Serialize (Req.Stream, "end", P_End);
 
       URI.Set_Path ("/account/iplimits");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Account_Ip_Limits;
 
    --  Change Account Password
@@ -511,15 +517,18 @@ package body .Clients is
    --  Updates backup storage service metadata, such as stored credentials or settings for the order.
    procedure Update_Backup_Info
       (Client : in out Client_Type;
-       Id : in Integer) is
+       Id : in Integer;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/backups/{id}");
       URI.Set_Path_Param ("id", .Models.To_String (Id));
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Backup_Info;
 
    --  Validate Backup Order
@@ -624,15 +633,18 @@ package body .Clients is
    --  Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
    procedure Delete_Account_Credit_Card
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/account/creditcards/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.DELETE, URI);
+      Client.Call (Swagger.Clients.DELETE, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Delete_Account_Credit_Card;
 
    --  Delete Credit Card
@@ -792,14 +804,17 @@ package body .Clients is
    --  Get Shopping Cart Contents
    --  Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
    procedure Get_Billing_Cart
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.Object) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/billing/cart");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Get_Billing_Cart;
 
    --  Get Credit Card Verification Requirements
@@ -857,14 +872,17 @@ package body .Clients is
    --  List Prepay Balances
    --  Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
    procedure Get_Billing_Pre_Pays
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.Object) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/billing/prepays");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Get_Billing_Pre_Pays;
 
    --  Get Invoices
@@ -934,15 +952,18 @@ package body .Clients is
    --  Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
    procedure Update_Account_Credit_Card
       (Client : in out Client_Type;
-       Id : in Integer) is
+       Id : in Integer;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/account/creditcards/{id}");
       URI.Set_Path_Param ("id", .Models.To_String (Id));
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Account_Credit_Card;
 
    --  Configure Affiliate Dock Settings
@@ -1057,9 +1078,11 @@ package body .Clients is
    procedure Add_Dns_Domain
       (Client : in out Client_Type;
        Domain : in Swagger.UString;
-       Ip : in Swagger.UString) is
+       Ip : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
@@ -1068,7 +1091,8 @@ package body .Clients is
       .Models.Serialize (Req.Stream, "ip", Ip);
 
       URI.Set_Path ("/dns");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_Dns_Domain;
 
    --  Add DNS Record to Domain
@@ -1102,15 +1126,18 @@ package body .Clients is
    --  Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
    procedure Delete_Dns_Domain
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/dns/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.DELETE, URI);
+      Client.Call (Swagger.Clients.DELETE, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Delete_Dns_Domain;
 
    --  Delete DNS Record
@@ -1118,8 +1145,10 @@ package body .Clients is
    procedure Delete_Dns_Record
       (Client : in out Client_Type;
        Domain_Id : in Integer;
-       Record_Id : in Integer) is
+       Record_Id : in Integer;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
@@ -1127,7 +1156,8 @@ package body .Clients is
       URI.Set_Path ("/dns/{domainId}/{recordId}");
       URI.Set_Path_Param ("domainId", .Models.To_String (Domain_Id));
       URI.Set_Path_Param ("recordId", .Models.To_String (Record_Id));
-      Client.Call (Swagger.Clients.DELETE, URI);
+      Client.Call (Swagger.Clients.DELETE, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Delete_Dns_Record;
 
    --  List Domain DNS Records
@@ -1177,9 +1207,11 @@ package body .Clients is
        Prio : in Swagger.Nullable_UString;
        Disabled : in Swagger.Nullable_UString;
        Ordername : in Swagger.Nullable_UString;
-       Auth : in Swagger.Nullable_UString) is
+       Auth : in Swagger.Nullable_UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
@@ -1196,20 +1228,24 @@ package body .Clients is
       URI.Set_Path ("/dns/{domainId}/{recordId}");
       URI.Set_Path_Param ("domainId", .Models.To_String (Domain_Id));
       URI.Set_Path_Param ("recordId", .Models.To_String (Record_Id));
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Dns_Record;
 
    --  Place Domain Order
    --  Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
    procedure Add_Domain
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/domains/order");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_Domain;
 
    --  Add Domain DNSSEC Records
@@ -1661,15 +1697,18 @@ package body .Clients is
    --  Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
    procedure Update_Domain_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/domains/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Domain_Info;
 
    --  Replace Nameserver Set
@@ -1717,14 +1756,17 @@ package body .Clients is
    --  Place Floating IP Order
    --  Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
    procedure Add_Floating_Ip
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/floating_ips/order");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_Floating_Ip;
 
    --  Cancel Floating IP
@@ -1749,15 +1791,18 @@ package body .Clients is
    --  Returns detailed information about a specific Floating IP service including its current target IP assignment.
    procedure Get_Floating_Ip_Info
       (Client : in out Client_Type;
-       Id : in Integer) is
+       Id : in Integer;
+       Result : out Swagger.Object) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/floating_ips/{id}");
       URI.Set_Path_Param ("id", .Models.To_String (Id));
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Get_Floating_Ip_Info;
 
    --  Get Floating IP Invoices
@@ -1812,14 +1857,17 @@ package body .Clients is
    --  Get Floating IP Ordering Information
    --  Retrieves available options and pricing for ordering a new Floating IP.
    procedure Get_New_Floating_Ip
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.Object) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/floating_ips/order");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Get_New_Floating_Ip;
 
    --  Change Floating IP Target
@@ -1861,28 +1909,34 @@ package body .Clients is
    --  Updates settings on a Floating IP service, such as its label or configuration metadata.
    procedure Update_Floating_Ip_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/floating_ips/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Floating_Ip_Info;
 
    --  Place License Order
    --  Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
    procedure Add_License
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/licenses/order");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_License;
 
    --  Get License
@@ -2042,28 +2096,34 @@ package body .Clients is
    --  Updates settings on a license service such as its assigned IP.
    procedure Update_License_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/licenses/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_License_Info;
 
    --  Place Mail Order
    --  Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
    procedure Add_Mail
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/mail/order");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_Mail;
 
    --  Create Deny Rule
@@ -2503,15 +2563,18 @@ package body .Clients is
    --  Updates mail service metadata for the order, such as stored settings or account details.
    procedure Update_Mail_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/mail/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Mail_Info;
 
    --  View Mail Log
@@ -2803,14 +2866,17 @@ package body .Clients is
    --  Place QuickServer Order
    --  Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
    procedure Add_Qs
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/qs/order");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_Qs;
 
    --  Delete QuickServer Backup
@@ -3555,56 +3621,68 @@ package body .Clients is
    --  Updates QuickServer metadata or stored settings associated with the order.
    procedure Update_Qs_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/qs/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Qs_Info;
 
    --  Place SSL Cert Order
    --  Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
    procedure Add_Ssl
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/ssl/order");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_Ssl;
 
    --  SSL Cert Ordering Information
    --  Retrieves available SSL certificate types and pricing for ordering.
    procedure Get_New_Ssl
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.Object) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/ssl/order");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Get_New_Ssl;
 
    --  Get SSL Cert Info
    --  Returns detailed information about a specific SSL certificate including its domain and expiration.
    procedure Get_Ssl_Info
       (Client : in out Client_Type;
-       Id : in Integer) is
+       Id : in Integer;
+       Result : out Swagger.Object) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/ssl/{id}");
       URI.Set_Path_Param ("id", .Models.To_String (Id));
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Get_Ssl_Info;
 
    --  Get SSL Cert Invoices
@@ -3691,15 +3769,18 @@ package body .Clients is
    --  Updates settings on an SSL certificate order.
    procedure Update_Ssl_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/ssl/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Ssl_Info;
 
    --  Cancel Scrub IP Service
@@ -4006,14 +4087,17 @@ package body .Clients is
    --  Place Server Order
    --  Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
    procedure Add_Server
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out .Models.AddServer200Response_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/servers/order");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_Server;
 
    --  Get Buy Now Server Options
@@ -4311,15 +4395,18 @@ package body .Clients is
    --  Updates settings on a dedicated server order.
    procedure Update_Server_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/servers/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Server_Info;
 
    --  Create New Ticket
@@ -4528,16 +4615,19 @@ package body .Clients is
    --  Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
    procedure Add_Vps
       (Client : in out Client_Type;
-       Vps_Order_Post_Request_Type : in .Models.VpsOrderPostRequest_Type) is
+       Vps_Order_Post_Request_Type : in .Models.VpsOrderPostRequest_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
       Client.Initialize (Req, Media_List_2);
       .Models.Serialize (Req.Stream, "", Vps_Order_Post_Request_Type);
 
       URI.Set_Path ("/vps/order");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_Vps;
 
    --  Delete VPS Backup
@@ -5297,15 +5387,18 @@ package body .Clients is
    --  Updates settings on a VPS order.
    procedure Update_Vps_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/vps/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Vps_Info;
 
    --  Cancel VPS Service
@@ -5329,14 +5422,17 @@ package body .Clients is
    --  Place Website Order
    --  Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
    procedure Add_Website
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/websites/order");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Add_Website;
 
    --  Website Ordering Information
@@ -5577,15 +5673,18 @@ package body .Clients is
    --  Updates settings on a webhosting order.
    procedure Update_Website_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString) is
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept (Media_List_1);
 
 
       URI.Set_Path ("/websites/{id}");
       URI.Set_Path_Param ("id", Id);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      .Models.Deserialize (Reply, "", Result);
    end Update_Website_Info;
 
    --  Cancel Website

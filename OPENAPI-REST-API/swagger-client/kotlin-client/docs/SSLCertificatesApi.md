@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="addSsl"></a>
 # **addSsl**
-> addSsl()
+> ServiceOrderPostResponse addSsl()
 
 Place SSL Cert Order
 
@@ -30,7 +30,8 @@ Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to val
 
 val apiInstance = SSLCertificatesApi()
 try {
-    apiInstance.addSsl()
+    val result : ServiceOrderPostResponse = apiInstance.addSsl()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling SSLCertificatesApi#addSsl")
     e.printStackTrace()
@@ -45,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -58,7 +59,7 @@ null (empty response body)
 
 <a name="getNewSsl"></a>
 # **getNewSsl**
-> getNewSsl()
+> kotlin.Any getNewSsl()
 
 SSL Cert Ordering Information
 
@@ -72,7 +73,8 @@ Retrieves available SSL certificate types and pricing for ordering.
 
 val apiInstance = SSLCertificatesApi()
 try {
-    apiInstance.getNewSsl()
+    val result : kotlin.Any = apiInstance.getNewSsl()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling SSLCertificatesApi#getNewSsl")
     e.printStackTrace()
@@ -87,7 +89,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.Any**
 
 ### Authorization
 
@@ -100,7 +102,7 @@ null (empty response body)
 
 <a name="getSslInfo"></a>
 # **getSslInfo**
-> getSslInfo(id)
+> kotlin.Any getSslInfo(id)
 
 Get SSL Cert Info
 
@@ -115,7 +117,8 @@ Returns detailed information about a specific SSL certificate including its doma
 val apiInstance = SSLCertificatesApi()
 val id : kotlin.Int = 56 // kotlin.Int | SSL certificate ID number.
 try {
-    apiInstance.getSslInfo(id)
+    val result : kotlin.Any = apiInstance.getSslInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling SSLCertificatesApi#getSslInfo")
     e.printStackTrace()
@@ -133,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.Any**
 
 ### Authorization
 
@@ -324,7 +327,7 @@ null (empty response body)
 
 <a name="sslCancel"></a>
 # **sslCancel**
-> InlineResponse20020 sslCancel(id)
+> InlineResponse20021 sslCancel(id)
 
 Cancel SSL Certificate Service
 
@@ -339,7 +342,7 @@ Cancels the SSL certificate service. The certificate will not be renewed and bil
 val apiInstance = SSLCertificatesApi()
 val id : kotlin.Int = 56 // kotlin.Int | SSL Cert ID number
 try {
-    val result : InlineResponse20020 = apiInstance.sslCancel(id)
+    val result : InlineResponse20021 = apiInstance.sslCancel(id)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling SSLCertificatesApi#sslCancel")
@@ -358,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -371,7 +374,7 @@ Name | Type | Description  | Notes
 
 <a name="updateSslInfo"></a>
 # **updateSslInfo**
-> updateSslInfo(id)
+> SuccessTextResponse updateSslInfo(id)
 
 Update SSL Cert Order
 
@@ -386,7 +389,8 @@ Updates settings on an SSL certificate order.
 val apiInstance = SSLCertificatesApi()
 val id : kotlin.String = id_example // kotlin.String | SSL certificate ID number.
 try {
-    apiInstance.updateSslInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateSslInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling SSLCertificatesApi#updateSslInfo")
     e.printStackTrace()
@@ -404,7 +408,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

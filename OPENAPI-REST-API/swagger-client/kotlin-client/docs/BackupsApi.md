@@ -436,7 +436,7 @@ This endpoint does not need any parameter.
 
 <a name="updateBackupInfo"></a>
 # **updateBackupInfo**
-> updateBackupInfo(id)
+> SuccessTextResponse updateBackupInfo(id)
 
 Update Backup Information
 
@@ -451,7 +451,8 @@ Updates backup storage service metadata, such as stored credentials or settings 
 val apiInstance = BackupsApi()
 val id : kotlin.Int = 56 // kotlin.Int | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 try {
-    apiInstance.updateBackupInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateBackupInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling BackupsApi#updateBackupInfo")
     e.printStackTrace()
@@ -469,7 +470,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

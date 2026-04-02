@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.api
 
+import org.openapitools.client.model.AddServer200Response
 import org.openapitools.client.model.BuyItNowList
 import org.openapitools.client.model.BuyItNowServerOrder200Response
 import org.openapitools.client.model.ChargeInvoiceRows
@@ -40,22 +41,22 @@ class ServersApi(baseUrl: String) {
    * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
    * 
    * Expected answers:
+   *   code 200 : AddServer200Response (Server order placed successfully.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addServer(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(): Request[Either[ResponseException[String, Exception], Unit]] =
+  def addServer(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(): Request[Either[ResponseException[String, Exception], AddServer200Response]] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/servers/order")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[AddServer200Response])
 
   /**
    * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.
@@ -440,8 +441,8 @@ class ServersApi(baseUrl: String) {
    * Updates settings on a dedicated server order.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -450,13 +451,13 @@ class ServersApi(baseUrl: String) {
    * 
    * @param id Server ID number.
    */
-  def updateServerInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String): Request[Either[ResponseException[String, Exception], Unit]] =
+  def updateServerInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String): Request[Either[ResponseException[String, Exception], SuccessTextResponse]] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/servers/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
 }

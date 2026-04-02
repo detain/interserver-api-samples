@@ -19,7 +19,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addLicense"></a>
 # **addLicense**
-> addLicense()
+> ServiceOrderPostResponse addLicense()
 
 Place License Order
 
@@ -33,7 +33,8 @@ Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; 
 
 val apiInstance = LicensesApi()
 try {
-    apiInstance.addLicense()
+    val result : ServiceOrderPostResponse = apiInstance.addLicense()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling LicensesApi#addLicense")
     e.printStackTrace()
@@ -48,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -556,7 +557,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateLicenseInfo"></a>
 # **updateLicenseInfo**
-> updateLicenseInfo(id)
+> SuccessTextResponse updateLicenseInfo(id)
 
 Update License
 
@@ -571,7 +572,8 @@ Updates settings on a license service such as its assigned IP.
 val apiInstance = LicensesApi()
 val id : kotlin.String = id_example // kotlin.String | The license service ID. Use `license_id` from `GET /licenses`.
 try {
-    apiInstance.updateLicenseInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateLicenseInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling LicensesApi#updateLicenseInfo")
     e.printStackTrace()
@@ -588,7 +590,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

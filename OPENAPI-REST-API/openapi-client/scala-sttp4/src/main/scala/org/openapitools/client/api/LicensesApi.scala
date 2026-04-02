@@ -18,6 +18,7 @@ import org.openapitools.client.model.License
 import org.openapitools.client.model.LicenseRow
 import org.openapitools.client.model.LicensesCancel200Response
 import org.openapitools.client.model.LicensesOrder
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.core.JsonSupport._
 import sttp.client4._
@@ -33,22 +34,22 @@ class LicensesApi(baseUrl: String) {
    * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addLicense(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(): Request[Either[ResponseException[String, Exception], Unit]] =
+  def addLicense(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(): Request[Either[ResponseException[String, Exception], ServiceOrderPostResponse]] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/licenses/order")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Returns detailed information about a specific license including its type, IP assignment, and status.
@@ -257,8 +258,8 @@ class LicensesApi(baseUrl: String) {
    * Updates settings on a license service such as its assigned IP.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -267,13 +268,13 @@ class LicensesApi(baseUrl: String) {
    * 
    * @param id The license service ID. Use `license_id` from `GET /licenses`.
    */
-  def updateLicenseInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String): Request[Either[ResponseException[String, Exception], Unit]] =
+  def updateLicenseInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String): Request[Either[ResponseException[String, Exception], SuccessTextResponse]] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/licenses/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
 }

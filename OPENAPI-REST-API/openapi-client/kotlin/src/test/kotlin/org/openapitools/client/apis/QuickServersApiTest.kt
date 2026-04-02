@@ -38,6 +38,7 @@ import org.openapitools.client.models.QuickserverRow
 import org.openapitools.client.models.QuickserversCancel200Response
 import org.openapitools.client.models.RestoreRequest
 import org.openapitools.client.models.ReverseDnsEntries
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 import org.openapitools.client.models.VpsBackupRows
@@ -51,7 +52,8 @@ class QuickServersApiTest : ShouldSpec() {
         // to test addQs
         should("test addQs") {
             // uncomment below to test addQs
-            //apiInstance.addQs()
+            //val result : ServiceOrderPostResponse = apiInstance.addQs()
+            //result shouldBe ("TODO")
         }
 
         // to test deleteQsBackup
@@ -388,7 +390,8 @@ class QuickServersApiTest : ShouldSpec() {
         should("test updateQsInfo") {
             // uncomment below to test updateQsInfo
             //val id : kotlin.String = id_example // kotlin.String | QuickServer ID number.
-            //apiInstance.updateQsInfo(id)
+            //val result : SuccessTextResponse = apiInstance.updateQsInfo(id)
+            //result shouldBe ("TODO")
         }
 
     }

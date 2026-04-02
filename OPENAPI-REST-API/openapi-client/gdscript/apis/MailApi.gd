@@ -46,6 +46,7 @@ func add_mail(
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
+			bzz_response.data = ServiceOrderPostResponse.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):
@@ -1667,6 +1668,7 @@ func update_mail_info(
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
+			bzz_response.data = SuccessTextResponse.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):
@@ -1723,7 +1725,7 @@ func view_mail_log(
 	# Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
 	mailid = "",
 	# messageId: String = ""   Eg: <abc123@yourdomain.com>
-	# Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+	# Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
 	messageId = "",
 	# replyto: String   Eg: replies@sender.com
 	# Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
@@ -1744,7 +1746,7 @@ func view_mail_log(
 	# Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
 	startDate = null,
 	# endDate: ViewMailLogStartDateParameter   Eg: 1673317008
-	# Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+	# Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
 	endDate = null,
 	# sort: String = "time"   Eg: time
 	# Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
@@ -1872,7 +1874,7 @@ func view_mail_log_threaded(
 	# Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
 	mailid = "",
 	# messageId: String = ""   Eg: <abc123@yourdomain.com>
-	# Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+	# Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
 	messageId = "",
 	# replyto: String   Eg: replies@sender.com
 	# Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
@@ -1893,7 +1895,7 @@ func view_mail_log_threaded(
 	# Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
 	startDate = null,
 	# endDate: ViewMailLogStartDateParameter   Eg: 1673317008
-	# Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+	# Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
 	endDate = null,
 	# sort: String = "time"   Eg: time
 	# Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).

@@ -69,8 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddFloatingIpTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AddFloatingIp();
-            
+            //var response = instance.AddFloatingIp();
+            //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
         /// Test FloatingIpsCancel
@@ -91,8 +91,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
-            //instance.GetFloatingIpInfo(id);
-            
+            //var response = instance.GetFloatingIpInfo(id);
+            //Assert.IsInstanceOf<Object> (response, "response is Object");
         }
         /// <summary>
         /// Test GetFloatingIpInvoices
@@ -133,8 +133,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void GetNewFloatingIpTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.GetNewFloatingIp();
-            
+            //var response = instance.GetNewFloatingIp();
+            //Assert.IsInstanceOf<Object> (response, "response is Object");
         }
         /// <summary>
         /// Test PostFloatingIpsChangeIp
@@ -166,8 +166,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.UpdateFloatingIpInfo(id);
-            
+            //var response = instance.UpdateFloatingIpInfo(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
     }
 

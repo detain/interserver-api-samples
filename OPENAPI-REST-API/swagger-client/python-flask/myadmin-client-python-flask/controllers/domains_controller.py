@@ -16,6 +16,7 @@ from myadmin-client-python-flask.models.domain_search_response import DomainSear
 from myadmin-client-python-flask.models.domain_whois_privacy_request import DomainWhoisPrivacyRequest  # noqa: E501
 from myadmin-client-python-flask.models.inline_response2002 import InlineResponse2002  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.models.text_response import TextResponse  # noqa: E501
 from myadmin-client-python-flask import util
@@ -27,7 +28,7 @@ def add_domain():  # noqa: E501
     Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order. # noqa: E501
 
 
-    :rtype: None
+    :rtype: ServiceOrderPostResponse
     """
     return 'do some magic!'
 
@@ -454,7 +455,7 @@ def update_domain_info(id):  # noqa: E501
     :param id: The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
     :type id: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'
 

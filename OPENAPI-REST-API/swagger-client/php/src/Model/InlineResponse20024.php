@@ -56,8 +56,7 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'message' => 'string',
-        'success' => 'bool'
+        'ips' => 'map[string,string]'
     ];
 
     /**
@@ -66,8 +65,7 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'message' => null,
-        'success' => null
+        'ips' => null
     ];
 
     /**
@@ -97,8 +95,7 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'success' => 'success'
+        'ips' => 'ips'
     ];
 
     /**
@@ -107,8 +104,7 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'success' => 'setSuccess'
+        'ips' => 'setIps'
     ];
 
     /**
@@ -117,8 +113,7 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'success' => 'getSuccess'
+        'ips' => 'getIps'
     ];
 
     /**
@@ -179,8 +174,7 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
+        $this->container['ips'] = isset($data['ips']) ? $data['ips'] : null;
     }
 
     /**
@@ -208,49 +202,25 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets message
+     * Gets ips
      *
-     * @return string
+     * @return map[string,string]
      */
-    public function getMessage()
+    public function getIps()
     {
-        return $this->container['message'];
+        return $this->container['ips'];
     }
 
     /**
-     * Sets message
+     * Sets ips
      *
-     * @param string $message message
+     * @param map[string,string] $ips A map of IP addresses to their current reverse DNS hostnames.
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setIps($ips)
     {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets success
-     *
-     * @return bool
-     */
-    public function getSuccess()
-    {
-        return $this->container['success'];
-    }
-
-    /**
-     * Sets success
-     *
-     * @param bool $success success
-     *
-     * @return $this
-     */
-    public function setSuccess($success)
-    {
-        $this->container['success'] = $success;
+        $this->container['ips'] = $ips;
 
         return $this;
     }

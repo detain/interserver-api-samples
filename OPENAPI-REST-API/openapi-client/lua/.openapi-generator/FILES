@@ -37,6 +37,7 @@ openapiclient/model/account_info_oauth_config_providers_value.lua
 openapiclient/model/account_info_oauthproviders.lua
 openapiclient/model/account_info_post.lua
 openapiclient/model/account_ssh_key.lua
+openapiclient/model/add_server_200_response.lua
 openapiclient/model/affiliate_banner_row.lua
 openapiclient/model/affiliate_dock_setup.lua
 openapiclient/model/affiliate_payment_setup.lua
@@ -369,6 +370,7 @@ openapiclient/model/servers_cancel_200_response.lua
 openapiclient/model/service.lua
 openapiclient/model/service_categories.lua
 openapiclient/model/service_category.lua
+openapiclient/model/service_order_post_response.lua
 openapiclient/model/service_type.lua
 openapiclient/model/service_types.lua
 openapiclient/model/services.lua
@@ -488,6 +490,7 @@ spec/account_info_oauthproviders_spec.lua
 spec/account_info_post_spec.lua
 spec/account_info_spec.lua
 spec/account_ssh_key_spec.lua
+spec/add_server_200_response_spec.lua
 spec/affiliate_banner_row_spec.lua
 spec/affiliate_dock_setup_spec.lua
 spec/affiliate_payment_setup_spec.lua
@@ -830,6 +833,7 @@ spec/servers_buy_now_response_spec.lua
 spec/servers_cancel_200_response_spec.lua
 spec/service_categories_spec.lua
 spec/service_category_spec.lua
+spec/service_order_post_response_spec.lua
 spec/service_spec.lua
 spec/service_type_spec.lua
 spec/service_types_spec.lua

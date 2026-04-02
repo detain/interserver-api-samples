@@ -28,13 +28,14 @@ public class OASFloatingIPsApi {
     /**
      * Place Floating IP Order
      * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
+     * @return OASServiceOrderPostResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void addFloatingIp() {
+    public OASServiceOrderPostResponse addFloatingIp() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASServiceOrderPostResponse) client.invoke(
             'POST', '/floating_ips/order', '',
             query, form,
             new Map<String, Object>(),
@@ -42,7 +43,7 @@ public class OASFloatingIPsApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASServiceOrderPostResponse.class
         );
     }
     /**
@@ -74,14 +75,15 @@ public class OASFloatingIPsApi {
      * View Floating IP
      * Returns detailed information about a specific Floating IP service including its current target IP assignment.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
+     * @return Object
      * @throws OAS.ApiException if fails to make API call
      */
-    public void getFloatingIpInfo(Map<String, Object> params) {
+    public Object getFloatingIpInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (Object) client.invoke(
             'GET', '/floating_ips/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -91,7 +93,7 @@ public class OASFloatingIPsApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            Object.class
         );
     }
     /**
@@ -167,13 +169,14 @@ public class OASFloatingIPsApi {
     /**
      * Get Floating IP Ordering Information
      * Retrieves available options and pricing for ordering a new Floating IP.
+     * @return Object
      * @throws OAS.ApiException if fails to make API call
      */
-    public void getNewFloatingIp() {
+    public Object getNewFloatingIp() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (Object) client.invoke(
             'GET', '/floating_ips/order', '',
             query, form,
             new Map<String, Object>(),
@@ -181,7 +184,7 @@ public class OASFloatingIPsApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            Object.class
         );
     }
     /**
@@ -238,14 +241,15 @@ public class OASFloatingIPsApi {
      * Update Floating IP
      * Updates settings on a Floating IP service, such as its label or configuration metadata.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateFloatingIpInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateFloatingIpInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/floating_ips/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -255,7 +259,7 @@ public class OASFloatingIPsApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
 }

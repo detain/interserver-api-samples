@@ -847,9 +847,9 @@ export class AccountService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateAccountInfoForm(name: string, company: string, address: string, address2: string, city: string, state: string, zip: string, country: string, phone: string, locale: string, email_invoices: string, email_abuse: string, disable_reset: boolean, disable_reinstall: boolean, disable_server_notifications: boolean, disable_email_notifications: boolean, gstin: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateAccountInfoForm(name: string, company: string, address: string, address2: string, city: string, state: string, zip: string, country: string, phone: string, locale: string, email_invoices: string, email_abuse: string, disable_reset: boolean, disable_reinstall: boolean, disable_server_notifications: boolean, disable_email_notifications: boolean, gstin: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateAccountInfoForm(name: string, company: string, address: string, address2: string, city: string, state: string, zip: string, country: string, phone: string, locale: string, email_invoices: string, email_abuse: string, disable_reset: boolean, disable_reinstall: boolean, disable_server_notifications: boolean, disable_email_notifications: boolean, gstin: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateAccountInfoForm(name: string, company: string, address: string, address2: string, city: string, state: string, zip: string, country: string, phone: string, locale: string, email_invoices: string, email_abuse: string, disable_reset: boolean, disable_reinstall: boolean, disable_server_notifications: boolean, disable_email_notifications: boolean, gstin: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateAccountInfoForm(name: string, company: string, address: string, address2: string, city: string, state: string, zip: string, country: string, phone: string, locale: string, email_invoices: string, email_abuse: string, disable_reset: boolean, disable_reinstall: boolean, disable_server_notifications: boolean, disable_email_notifications: boolean, gstin: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateAccountInfoForm(name: string, company: string, address: string, address2: string, city: string, state: string, zip: string, country: string, phone: string, locale: string, email_invoices: string, email_abuse: string, disable_reset: boolean, disable_reinstall: boolean, disable_server_notifications: boolean, disable_email_notifications: boolean, gstin: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateAccountInfoForm(name: string, company: string, address: string, address2: string, city: string, state: string, zip: string, country: string, phone: string, locale: string, email_invoices: string, email_abuse: string, disable_reset: boolean, disable_reinstall: boolean, disable_server_notifications: boolean, disable_email_notifications: boolean, gstin: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (name === null || name === undefined) {
@@ -1017,7 +1017,7 @@ export class AccountService {
             formParams = formParams.append('gstin', <any>gstin) as any || formParams;
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/account`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/account`,
             {
                 body: convertFormParamsToString ? formParams.toString() : formParams,
                 params: queryParameters,
@@ -1036,9 +1036,9 @@ export class AccountService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateAccountInfo(body: AccountInfoPost, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateAccountInfo(body: AccountInfoPost, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateAccountInfo(body: AccountInfoPost, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateAccountInfo(body: AccountInfoPost, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateAccountInfo(body: AccountInfoPost, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateAccountInfo(body: AccountInfoPost, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateAccountInfo(body: AccountInfoPost, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -1083,7 +1083,7 @@ export class AccountService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/account`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/account`,
             {
                 body: body,
                 params: queryParameters,
@@ -1103,9 +1103,9 @@ export class AccountService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateAccountIpLimitsForm(start: string, end: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateAccountIpLimitsForm(start: string, end: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateAccountIpLimitsForm(start: string, end: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateAccountIpLimitsForm(start: string, end: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateAccountIpLimitsForm(start: string, end: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateAccountIpLimitsForm(start: string, end: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateAccountIpLimitsForm(start: string, end: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (start === null || start === undefined) {
@@ -1168,7 +1168,7 @@ export class AccountService {
             formParams = formParams.append('end', <any>end) as any || formParams;
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/account/iplimits`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/account/iplimits`,
             {
                 body: convertFormParamsToString ? formParams.toString() : formParams,
                 params: queryParameters,
@@ -1187,9 +1187,9 @@ export class AccountService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateAccountIpLimits(body: IpLimitRange, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateAccountIpLimits(body: IpLimitRange, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateAccountIpLimits(body: IpLimitRange, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateAccountIpLimits(body: IpLimitRange, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateAccountIpLimits(body: IpLimitRange, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateAccountIpLimits(body: IpLimitRange, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateAccountIpLimits(body: IpLimitRange, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -1234,7 +1234,7 @@ export class AccountService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/account/iplimits`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/account/iplimits`,
             {
                 body: body,
                 params: queryParameters,

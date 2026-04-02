@@ -149,7 +149,7 @@ def delete_account_credit_card(id):  # noqa: E501
     :param id: The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
     :type id: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -269,7 +269,7 @@ def get_billing_cart():  # noqa: E501
     Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;. # noqa: E501
 
 
-    :rtype: None
+    :rtype: object
     """
     return 'do some magic!'
 
@@ -317,7 +317,7 @@ def get_billing_pre_pays():  # noqa: E501
     Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method. # noqa: E501
 
 
-    :rtype: None
+    :rtype: object
     """
     return 'do some magic!'
 
@@ -402,7 +402,7 @@ def update_account_credit_card(id):  # noqa: E501
     :param id: The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
     :type id: int
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 

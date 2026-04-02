@@ -11,48 +11,46 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class InlineResponse20025   {
 
-  private @Valid String text = null;
+  private @Valid String message = null;
 
-  private @Valid Integer ticket = null;
+  private @Valid Boolean success = null;
 
   /**
-   * Confirmation message.
    **/
-  public InlineResponse20025 text(String text) {
-    this.text = text;
+  public InlineResponse20025 message(String message) {
+    this.message = message;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Confirmation message.")
-  @JsonProperty("text")
+  @ApiModelProperty(value = "")
+  @JsonProperty("message")
   @NotNull
 
-  public String getText() {
-    return text;
+  public String getMessage() {
+    return message;
   }
-  public void setText(String text) {
-    this.text = text;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
   /**
-   * The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.
    **/
-  public InlineResponse20025 ticket(Integer ticket) {
-    this.ticket = ticket;
+  public InlineResponse20025 success(Boolean success) {
+    this.success = success;
     return this;
   }
 
   
-  @ApiModelProperty(value = "The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.")
-  @JsonProperty("ticket")
+  @ApiModelProperty(value = "")
+  @JsonProperty("success")
   @NotNull
 
-  public Integer getTicket() {
-    return ticket;
+  public Boolean isSuccess() {
+    return success;
   }
-  public void setTicket(Integer ticket) {
-    this.ticket = ticket;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
 
@@ -65,13 +63,13 @@ public class InlineResponse20025   {
       return false;
     }
     InlineResponse20025 inlineResponse20025 = (InlineResponse20025) o;
-    return Objects.equals(text, inlineResponse20025.text) &&
-        Objects.equals(ticket, inlineResponse20025.ticket);
+    return Objects.equals(message, inlineResponse20025.message) &&
+        Objects.equals(success, inlineResponse20025.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, ticket);
+    return Objects.hash(message, success);
   }
 
   @Override
@@ -79,8 +77,8 @@ public class InlineResponse20025   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20025 {\n");
     
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    ticket: ").append(toIndentedString(ticket)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

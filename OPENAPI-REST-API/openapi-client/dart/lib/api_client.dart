@@ -220,6 +220,8 @@ class ApiClient {
           return AccountInfoPost.fromJson(value);
         case 'AccountSshKey':
           return AccountSshKey.fromJson(value);
+        case 'AddServer200Response':
+          return AddServer200Response.fromJson(value);
         case 'AffiliateBannerRow':
           return AffiliateBannerRow.fromJson(value);
         case 'AffiliateDockSetup':
@@ -884,6 +886,8 @@ class ApiClient {
           return ServiceCategories.fromJson(value);
         case 'ServiceCategory':
           return ServiceCategory.fromJson(value);
+        case 'ServiceOrderPostResponse':
+          return ServiceOrderPostResponse.fromJson(value);
         case 'ServiceType':
           return ServiceType.fromJson(value);
         case 'ServiceTypes':

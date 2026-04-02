@@ -424,33 +424,33 @@ trait AccountApiService {
   def updateAccountFeatures(disableReset: Int, disableReinstall: Int, body: AccountFeatures)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route
 
+  def updateAccountInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def updateAccountInfo401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   def updateAccountInfo422(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
     complete((422, responseTextResponse))
-  def updateAccountInfo0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    * Code: 422, Message: Validation error while updating account data., DataType: TextResponse
-   * Code: 0, Message: Default response
    */
   def updateAccountInfo(name: String, company: String, address: String, address2: String, city: String, state: String, zip: String, country: String, phone: String, locale: String, emailInvoices: String, emailAbuse: String, disableReset: Boolean, disableReinstall: Boolean, disableServerNotifications: Boolean, disableEmailNotifications: Boolean, gstin: String, body: AccountInfoPost)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route
 
+  def updateAccountIpLimits200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def updateAccountIpLimits401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   def updateAccountIpLimits422(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
     complete((422, responseTextResponse))
-  def updateAccountIpLimits0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    * Code: 422, Message: IP limit payload contains an invalid address., DataType: TextResponse
-   * Code: 0, Message: Default response
    */
   def updateAccountIpLimits(start: String, end: String, body: IpLimitRange)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route
 
   def updateAccountPassword200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
     complete((200, responseTextResponse))
@@ -556,9 +556,13 @@ trait AccountApiMarshaller {
 
   implicit def toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]
 
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
+
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

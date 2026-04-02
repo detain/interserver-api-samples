@@ -30,8 +30,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AddDomain ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddDomain ();
 
         /// <summary>
         /// Place Domain Order
@@ -40,8 +40,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddDomainWithHttpInfo ();
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        ApiResponse<ServiceOrderPostResponse> AddDomainWithHttpInfo ();
         /// <summary>
         /// Add Domain DNSSEC Records
         /// </summary>
@@ -682,8 +682,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns></returns>
-        void UpdateDomainInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateDomainInfo (string id);
 
         /// <summary>
         /// Update Domain Order
@@ -693,8 +693,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateDomainInfoWithHttpInfo (string id);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateDomainInfoWithHttpInfo (string id);
         /// <summary>
         /// Replace Nameserver Set
         /// </summary>
@@ -826,8 +826,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddDomainAsync ();
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        System.Threading.Tasks.Task<ServiceOrderPostResponse> AddDomainAsync ();
 
         /// <summary>
         /// Place Domain Order
@@ -836,8 +836,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddDomainAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddDomainAsyncWithHttpInfo ();
         /// <summary>
         /// Add Domain DNSSEC Records
         /// </summary>
@@ -1478,8 +1478,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateDomainInfoAsync (string id);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateDomainInfoAsync (string id);
 
         /// <summary>
         /// Update Domain Order
@@ -1489,8 +1489,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateDomainInfoAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateDomainInfoAsyncWithHttpInfo (string id);
         /// <summary>
         /// Replace Nameserver Set
         /// </summary>
@@ -1728,18 +1728,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place Domain Order Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AddDomain ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddDomain ()
         {
-             AddDomainWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = AddDomainWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Place Domain Order Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddDomainWithHttpInfo ()
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        public ApiResponse< ServiceOrderPostResponse > AddDomainWithHttpInfo ()
         {
 
             var localVarPath = "/domains/order";
@@ -1792,19 +1793,20 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
         /// Place Domain Order Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddDomainAsync ()
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        public async System.Threading.Tasks.Task<ServiceOrderPostResponse> AddDomainAsync ()
         {
-             await AddDomainAsyncWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = await AddDomainAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -1812,8 +1814,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place Domain Order Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddDomainAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddDomainAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/domains/order";
@@ -1866,9 +1868,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
@@ -6706,10 +6708,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateDomainInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateDomainInfo (string id)
         {
-             UpdateDomainInfoWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateDomainInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6717,8 +6720,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateDomainInfoWithHttpInfo (string id)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateDomainInfoWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6775,9 +6778,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -6785,10 +6788,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateDomainInfoAsync (string id)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateDomainInfoAsync (string id)
         {
-             await UpdateDomainInfoAsyncWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateDomainInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -6797,8 +6801,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateDomainInfoAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateDomainInfoAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6855,9 +6859,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>

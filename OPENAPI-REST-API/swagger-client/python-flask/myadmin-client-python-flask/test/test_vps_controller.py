@@ -9,12 +9,13 @@ from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoice
 from myadmin-client-python-flask.models.hostname_object import HostnameObject  # noqa: E501
 from myadmin-client-python-flask.models.id_backups_body2 import IdBackupsBody2  # noqa: E501
 from myadmin-client-python-flask.models.inline_response20011 import InlineResponse20011  # noqa: E501
-from myadmin-client-python-flask.models.inline_response20021 import InlineResponse20021  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20022 import InlineResponse20022  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.password_request import PasswordRequest  # noqa: E501
 from myadmin-client-python-flask.models.queue_response import QueueResponse  # noqa: E501
 from myadmin-client-python-flask.models.restore_request import RestoreRequest  # noqa: E501
 from myadmin-client-python-flask.models.reverse_dns_entries import ReverseDnsEntries  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.models.template_request import TemplateRequest  # noqa: E501
 from myadmin-client-python-flask.models.text_response import TextResponse  # noqa: E501

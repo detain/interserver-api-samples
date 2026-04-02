@@ -29,6 +29,7 @@ goog.require('API.Client.DomainOrder');
 goog.require('API.Client.DomainRow');
 goog.require('API.Client.DomainSearchResponse');
 goog.require('API.Client.DomainWhoisPrivacyRequest');
+goog.require('API.Client.ServiceOrderPostResponse');
 goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.TextResponse');
 goog.require('API.Client.getAccountInfo_401_response');
@@ -64,7 +65,7 @@ API.Client.DomainsApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * Place Domain Order
  * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.ServiceOrderPostResponse>}
  */
 API.Client.DomainsApi.prototype.addDomain = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -1039,7 +1040,7 @@ API.Client.DomainsApi.prototype.updateDomainContact = function(id, domainContact
  * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
  * @param {!string} id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.DomainsApi.prototype.updateDomainInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

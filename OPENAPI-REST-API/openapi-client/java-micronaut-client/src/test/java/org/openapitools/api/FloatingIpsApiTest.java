@@ -3,6 +3,7 @@ package org.openapitools.api;
 import org.openapitools.model.ChargeInvoiceRows;
 import org.openapitools.model.FloatingIpsCancel200Response;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,7 @@ public class FloatingIpsApiTest {
         // given
 
         // when
-        api.addFloatingIp().block();
+        ServiceOrderPostResponse body = api.addFloatingIp().block();
 
         // then
         // TODO implement the addFloatingIpTest()
@@ -75,7 +76,7 @@ public class FloatingIpsApiTest {
         Integer id = 56;
 
         // when
-        api.getFloatingIpInfo(id).block();
+        Object body = api.getFloatingIpInfo(id).block();
 
         // then
         // TODO implement the getFloatingIpInfoTest()
@@ -149,7 +150,7 @@ public class FloatingIpsApiTest {
         // given
 
         // when
-        api.getNewFloatingIp().block();
+        Object body = api.getNewFloatingIp().block();
 
         // then
         // TODO implement the getNewFloatingIpTest()
@@ -206,7 +207,7 @@ public class FloatingIpsApiTest {
         String id = "example";
 
         // when
-        api.updateFloatingIpInfo(id).block();
+        SuccessTextResponse body = api.updateFloatingIpInfo(id).block();
 
         // then
         // TODO implement the updateFloatingIpInfoTest()

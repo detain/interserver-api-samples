@@ -28,6 +28,7 @@ import {
   DownloadQsBackup200Response,
   VpsTemplatesList,
   QuickserversCancel200Response,
+  ServiceOrderPostResponse,
   RestoreRequest,
 } from './models';
 
@@ -363,7 +364,7 @@ export class QuickServersApi extends Api {
    * Place QuickServer Order
    * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
    */
-  async addQs(): Promise<any> {
+  async addQs(): Promise<ServiceOrderPostResponse> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -1811,7 +1812,7 @@ export class QuickServersApi extends Api {
    * Updates QuickServer metadata or stored settings associated with the order.
    * @param params.id QuickServer ID number.
    */
-  async updateQsInfo(params: IUpdateQsInfoParams): Promise<any> {
+  async updateQsInfo(params: IUpdateQsInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateQsInfo', params, 'id');
 

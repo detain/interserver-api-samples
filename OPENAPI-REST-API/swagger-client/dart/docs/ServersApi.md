@@ -29,7 +29,7 @@ Method | HTTP request | Description
 [**updateServerInfo**](ServersApi.md#updateServerInfo) | **POST** /servers/{id} | Update Server Order
 
 # **addServer**
-> addServer()
+> InlineResponse20019 addServer()
 
 Place Server Order
 
@@ -54,7 +54,8 @@ import 'package:swagger/api.dart';
 var api_instance = new ServersApi();
 
 try {
-    api_instance.addServer();
+    var result = api_instance.addServer();
+    print(result);
 } catch (e) {
     print("Exception when calling ServersApi->addServer: $e\n");
 }
@@ -65,7 +66,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -79,7 +80,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **buyItNowServerOrder**
-> InlineResponse20026 buyItNowServerOrder()
+> InlineResponse20027 buyItNowServerOrder()
 
 Get Buy Now Server Options
 
@@ -116,7 +117,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -899,7 +900,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **serversCancel**
-> InlineResponse20019 serversCancel(id)
+> InlineResponse20020 serversCancel(id)
 
 Cancel Server Service
 
@@ -940,7 +941,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -954,7 +955,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateServerInfo**
-> updateServerInfo(id)
+> SuccessTextResponse updateServerInfo(id)
 
 Update Server Order
 
@@ -980,7 +981,8 @@ var api_instance = new ServersApi();
 var id = id_example; // String | Server ID number.
 
 try {
-    api_instance.updateServerInfo(id);
+    var result = api_instance.updateServerInfo(id);
+    print(result);
 } catch (e) {
     print("Exception when calling ServersApi->updateServerInfo: $e\n");
 }
@@ -994,7 +996,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

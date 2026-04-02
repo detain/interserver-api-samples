@@ -43,7 +43,7 @@ func (r ApiAddDnsDomainRequest) Ip(ip string) ApiAddDnsDomainRequest {
 	return r
 }
 
-func (r ApiAddDnsDomainRequest) Execute() (*http.Response, error) {
+func (r ApiAddDnsDomainRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.AddDnsDomainExecute(r)
 }
 
@@ -63,16 +63,18 @@ func (a *DNSAPIService) AddDnsDomain(ctx context.Context) ApiAddDnsDomainRequest
 }
 
 // Execute executes the request
-func (a *DNSAPIService) AddDnsDomainExecute(r ApiAddDnsDomainRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *DNSAPIService) AddDnsDomainExecute(r ApiAddDnsDomainRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSAPIService.AddDnsDomain")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/dns"
@@ -81,10 +83,10 @@ func (a *DNSAPIService) AddDnsDomainExecute(r ApiAddDnsDomainRequest) (*http.Res
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.domain == nil {
-		return nil, reportError("domain is required and must be specified")
+		return localVarReturnValue, nil, reportError("domain is required and must be specified")
 	}
 	if r.ip == nil {
-		return nil, reportError("ip is required and must be specified")
+		return localVarReturnValue, nil, reportError("ip is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -136,19 +138,19 @@ func (a *DNSAPIService) AddDnsDomainExecute(r ApiAddDnsDomainRequest) (*http.Res
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -161,16 +163,24 @@ func (a *DNSAPIService) AddDnsDomainExecute(r ApiAddDnsDomainRequest) (*http.Res
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiAddDnsRecordRequest struct {
@@ -361,7 +371,7 @@ type ApiDeleteDnsDomainRequest struct {
 	id string
 }
 
-func (r ApiDeleteDnsDomainRequest) Execute() (*http.Response, error) {
+func (r ApiDeleteDnsDomainRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.DeleteDnsDomainExecute(r)
 }
 
@@ -383,16 +393,18 @@ func (a *DNSAPIService) DeleteDnsDomain(ctx context.Context, id string) ApiDelet
 }
 
 // Execute executes the request
-func (a *DNSAPIService) DeleteDnsDomainExecute(r ApiDeleteDnsDomainRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *DNSAPIService) DeleteDnsDomainExecute(r ApiDeleteDnsDomainRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSAPIService.DeleteDnsDomain")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/dns/{id}"
@@ -449,19 +461,19 @@ func (a *DNSAPIService) DeleteDnsDomainExecute(r ApiDeleteDnsDomainRequest) (*ht
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -474,16 +486,24 @@ func (a *DNSAPIService) DeleteDnsDomainExecute(r ApiDeleteDnsDomainRequest) (*ht
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiDeleteDnsRecordRequest struct {
@@ -493,7 +513,7 @@ type ApiDeleteDnsRecordRequest struct {
 	recordId int32
 }
 
-func (r ApiDeleteDnsRecordRequest) Execute() (*http.Response, error) {
+func (r ApiDeleteDnsRecordRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.DeleteDnsRecordExecute(r)
 }
 
@@ -517,16 +537,18 @@ func (a *DNSAPIService) DeleteDnsRecord(ctx context.Context, domainId int32, rec
 }
 
 // Execute executes the request
-func (a *DNSAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *DNSAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSAPIService.DeleteDnsRecord")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/dns/{domainId}/{recordId}"
@@ -584,19 +606,19 @@ func (a *DNSAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordRequest) (*ht
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -609,16 +631,24 @@ func (a *DNSAPIService) DeleteDnsRecordExecute(r ApiDeleteDnsRecordRequest) (*ht
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetDnsDomainRequest struct {
@@ -954,7 +984,7 @@ func (r ApiUpdateDnsRecordRequest) Auth(auth string) ApiUpdateDnsRecordRequest {
 	return r
 }
 
-func (r ApiUpdateDnsRecordRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateDnsRecordRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.UpdateDnsRecordExecute(r)
 }
 
@@ -978,16 +1008,18 @@ func (a *DNSAPIService) UpdateDnsRecord(ctx context.Context, domainId int32, rec
 }
 
 // Execute executes the request
-func (a *DNSAPIService) UpdateDnsRecordExecute(r ApiUpdateDnsRecordRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *DNSAPIService) UpdateDnsRecordExecute(r ApiUpdateDnsRecordRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DNSAPIService.UpdateDnsRecord")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/dns/{domainId}/{recordId}"
@@ -1069,19 +1101,19 @@ func (a *DNSAPIService) UpdateDnsRecordExecute(r ApiUpdateDnsRecordRequest) (*ht
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1094,14 +1126,22 @@ func (a *DNSAPIService) UpdateDnsRecordExecute(r ApiUpdateDnsRecordRequest) (*ht
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

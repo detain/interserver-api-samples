@@ -436,7 +436,7 @@ if (coupon != null)
   /// Update Backup Information
   ///
   /// Updates backup storage service metadata, such as stored credentials or settings for the order.
-  Future updateBackupInfo(int id) async {
+  Future<SuccessTextResponse> updateBackupInfo(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -479,9 +479,9 @@ if (coupon != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Validate Backup Order

@@ -24,6 +24,7 @@ import org.openapitools.model.License;
 import org.openapitools.model.LicenseRow;
 import org.openapitools.model.LicensesCancel200Response;
 import org.openapitools.model.LicensesOrder;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import javax.annotation.Generated;
 import java.util.ArrayList;
@@ -33,17 +34,18 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface LicensesApi {
     /**
      * Place License Order
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
      *
+     * @return ServiceOrderPostResponse
      */
     @Post(uri="/licenses/order")
     @Consumes({"application/json"})
-    Mono<Void> addLicense();
+    Mono<ServiceOrderPostResponse> addLicense();
 
     /**
      * Get License
@@ -159,10 +161,11 @@ public interface LicensesApi {
      * Updates settings on a license service such as its assigned IP.
      *
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/licenses/{id}")
     @Consumes({"application/json"})
-    Mono<Void> updateLicenseInfo(
+    Mono<SuccessTextResponse> updateLicenseInfo(
         @PathVariable(name="id") @NotNull String id
     );
 

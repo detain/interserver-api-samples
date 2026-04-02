@@ -20,6 +20,7 @@ import GetAccountInfo401Response from '../model/GetAccountInfo401Response';
 import QueueResponse from '../model/QueueResponse';
 import RestoreRequest from '../model/RestoreRequest';
 import ReverseDnsEntries from '../model/ReverseDnsEntries';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 import TextResponse from '../model/TextResponse';
 import VPSCancel200Response from '../model/VPSCancel200Response';
@@ -56,7 +57,7 @@ export default class VPSApi {
      * Callback function to receive the result of the addVps operation.
      * @callback module:api/VPSApi~addVpsCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -66,6 +67,7 @@ export default class VPSApi {
      * @param {Object} opts Optional parameters
      * @param {module:model/VpsOrderPostRequest} [VpsOrderPostRequest] 
      * @param {module:api/VPSApi~addVpsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceOrderPostResponse}
      */
     addVps(opts, callback) {
       opts = opts || {};
@@ -83,7 +85,7 @@ export default class VPSApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = ['application/json', 'multipart/form-data'];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
       return this.apiClient.callApi(
         '/vps/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -1909,7 +1911,7 @@ export default class VPSApi {
      * Callback function to receive the result of the updateVpsInfo operation.
      * @callback module:api/VPSApi~updateVpsInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -1918,6 +1920,7 @@ export default class VPSApi {
      * Updates settings on a VPS order.
      * @param {String} id VPS ID number.
      * @param {module:api/VPSApi~updateVpsInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateVpsInfo(id, callback) {
       let postBody = null;
@@ -1939,7 +1942,7 @@ export default class VPSApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/vps/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

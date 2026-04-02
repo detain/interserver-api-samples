@@ -11,14 +11,12 @@ import Foundation
 
 public struct InlineResponse20025: Codable {
 
-    /** Confirmation message. */
-    public var text: String?
-    /** The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. */
-    public var ticket: Int?
+    public var message: String?
+    public var success: Bool?
 
-    public init(text: String? = nil, ticket: Int? = nil) {
-        self.text = text
-        self.ticket = ticket
+    public init(message: String? = nil, success: Bool? = nil) {
+        self.message = message
+        self.success = success
     }
 
 

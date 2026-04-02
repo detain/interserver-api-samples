@@ -3,7 +3,7 @@
 
 defmodule InterServerManagementAPI.Model.ServerIpmiLiveInfo do
   @moduledoc """
-  Information about the IPMI connectioj.
+  Information about the IPMI connection.
   """
 
   @derive JSON.Encoder

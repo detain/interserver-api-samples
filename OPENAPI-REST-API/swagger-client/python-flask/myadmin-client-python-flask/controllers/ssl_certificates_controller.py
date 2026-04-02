@@ -2,8 +2,9 @@ import connexion
 import six
 
 from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoiceRows  # noqa: E501
-from myadmin-client-python-flask.models.inline_response20020 import InlineResponse20020  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20021 import InlineResponse20021  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask import util
 
@@ -14,7 +15,7 @@ def add_ssl():  # noqa: E501
     Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first. # noqa: E501
 
 
-    :rtype: None
+    :rtype: ServiceOrderPostResponse
     """
     return 'do some magic!'
 
@@ -25,7 +26,7 @@ def get_new_ssl():  # noqa: E501
     Retrieves available SSL certificate types and pricing for ordering. # noqa: E501
 
 
-    :rtype: None
+    :rtype: object
     """
     return 'do some magic!'
 
@@ -38,7 +39,7 @@ def get_ssl_info(id):  # noqa: E501
     :param id: SSL certificate ID number.
     :type id: int
 
-    :rtype: None
+    :rtype: object
     """
     return 'do some magic!'
 
@@ -99,7 +100,7 @@ def ssl_cancel(id):  # noqa: E501
     :param id: SSL Cert ID number
     :type id: int
 
-    :rtype: InlineResponse20020
+    :rtype: InlineResponse20021
     """
     return 'do some magic!'
 
@@ -112,6 +113,6 @@ def update_ssl_info(id):  # noqa: E501
     :param id: SSL certificate ID number.
     :type id: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'

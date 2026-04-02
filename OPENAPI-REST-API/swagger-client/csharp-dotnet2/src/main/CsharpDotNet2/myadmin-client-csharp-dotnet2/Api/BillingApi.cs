@@ -69,8 +69,8 @@ namespace IO.Swagger.Api
         /// Remove Credit Card Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
         /// </summary>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns></returns>
-        void DeleteAccountCreditCard (string id);
+        /// <returns>string</returns>
+        string DeleteAccountCreditCard (string id);
         /// <summary>
         /// Delete Credit Card Removes the selected credit card from the account. Use &#x60;/billing/payment_method&#x60; to select a new default payment method after deleting a card.
         /// </summary>
@@ -124,8 +124,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get Shopping Cart Contents Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </summary>
-        /// <returns></returns>
-        void GetBillingCart ();
+        /// <returns>Object</returns>
+        Object GetBillingCart ();
         /// <summary>
         /// Get Credit Card Verification Requirements Retrieves the verification requirements for a newly added credit card. The response indicates whether the card requires micro-charge amount confirmation or CVV validation. Use this before presenting a verification form to the user.
         /// </summary>
@@ -146,8 +146,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// List Prepay Balances Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </summary>
-        /// <returns></returns>
-        void GetBillingPrePays ();
+        /// <returns>Object</returns>
+        Object GetBillingPrePays ();
         /// <summary>
         /// Get Invoices Returns a paginated list of invoices for the authenticated account. Each invoice includes the invoice number, date, total amount, and payment status. Use the optional &#x60;searchString&#x60; parameter to filter results and &#x60;skip&#x60;/&#x60;limit&#x60; for pagination.
         /// </summary>
@@ -185,8 +185,8 @@ namespace IO.Swagger.Api
         /// Update Credit Card Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
         /// </summary>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns></returns>
-        void UpdateAccountCreditCard (int? id);
+        /// <returns>string</returns>
+        string UpdateAccountCreditCard (int? id);
         /// <summary>
         /// Configure Affiliate Dock Settings Updates the affiliate dock settings including the referral coupon and marketing copy. The dock is the branded landing page shown to visitors arriving via your affiliate link. Use this to customize the coupon code and promotional text.
         /// </summary>
@@ -588,8 +588,8 @@ if (automaticUse != null) formParams.Add("automatic_use", ApiClient.ParameterToS
         /// Remove Credit Card Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
         /// </summary>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns></returns>
-        public void DeleteAccountCreditCard (string id)
+        /// <returns>string</returns>
+        public string DeleteAccountCreditCard (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling DeleteAccountCreditCard");
@@ -616,7 +616,7 @@ if (automaticUse != null) formParams.Add("automatic_use", ApiClient.ParameterToS
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DeleteAccountCreditCard: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -917,8 +917,8 @@ if (automaticUse != null) formParams.Add("automatic_use", ApiClient.ParameterToS
         /// <summary>
         /// Get Shopping Cart Contents Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </summary>
-        /// <returns></returns>
-        public void GetBillingCart ()
+        /// <returns>Object</returns>
+        public Object GetBillingCart ()
         {
     
             var path = "/billing/cart";
@@ -942,7 +942,7 @@ if (automaticUse != null) formParams.Add("automatic_use", ApiClient.ParameterToS
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling GetBillingCart: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Object) ApiClient.Deserialize(response.Content, typeof(Object), response.Headers);
         }
     
         /// <summary>
@@ -1049,8 +1049,8 @@ if (automaticUse != null) formParams.Add("automatic_use", ApiClient.ParameterToS
         /// <summary>
         /// List Prepay Balances Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </summary>
-        /// <returns></returns>
-        public void GetBillingPrePays ()
+        /// <returns>Object</returns>
+        public Object GetBillingPrePays ()
         {
     
             var path = "/billing/prepays";
@@ -1074,7 +1074,7 @@ if (automaticUse != null) formParams.Add("automatic_use", ApiClient.ParameterToS
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling GetBillingPrePays: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Object) ApiClient.Deserialize(response.Content, typeof(Object), response.Headers);
         }
     
         /// <summary>
@@ -1251,8 +1251,8 @@ if (terms != null) formParams.Add("terms", ApiClient.ParameterToString(terms)); 
         /// Update Credit Card Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
         /// </summary>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateAccountCreditCard (int? id)
+        /// <returns>string</returns>
+        public string UpdateAccountCreditCard (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateAccountCreditCard");
@@ -1279,7 +1279,7 @@ if (terms != null) formParams.Add("terms", ApiClient.ParameterToString(terms)); 
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateAccountCreditCard: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>

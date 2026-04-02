@@ -17,6 +17,7 @@
 #include "PostWebsiteMigration_request.h"
 #include "PostWebsiteMigration_request_1.h"
 #include "ReverseDnsEntries.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
 #include "WebhostingCancel_200_response.h"
@@ -45,7 +46,7 @@ public:
     * Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
     */
     Response<
-            String
+                ServiceOrderPostResponse
         >
     addWebsite(
     );
@@ -238,7 +239,7 @@ public:
     * \param id The website service ID. Use `website_id` from `GET /websites`. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateWebsiteInfo(
             

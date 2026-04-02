@@ -150,10 +150,11 @@ feature -- Test routines
             --
             -- Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         local
+            l_response: ANY
         do
             -- TODO: Initialize required params.
 
-            -- api.billing_cart
+            -- l_response := api.billing_cart
             assert ("not_implemented", False)
         end
 
@@ -205,10 +206,11 @@ feature -- Test routines
             --
             -- Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         local
+            l_response: ANY
         do
             -- TODO: Initialize required params.
 
-            -- api.billing_pre_pays
+            -- l_response := api.billing_pre_pays
             assert ("not_implemented", False)
         end
 
@@ -217,12 +219,13 @@ feature -- Test routines
             --
             -- Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
         local
+            l_response: STRING_32
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.delete_account_credit_card(l_id)
+            -- l_response := api.delete_account_credit_card(l_id)
             assert ("not_implemented", False)
         end
 
@@ -326,12 +329,13 @@ feature -- Test routines
             --
             -- Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
         local
+            l_response: STRING_32
             l_id: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_account_credit_card(l_id)
+            -- l_response := api.update_account_credit_card(l_id)
             assert ("not_implemented", False)
         end
 

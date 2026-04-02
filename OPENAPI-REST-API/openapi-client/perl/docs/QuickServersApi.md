@@ -56,7 +56,7 @@ Method | HTTP request | Description
 
 
 # **add_qs**
-> add_qs()
+> ServiceOrderPostResponse add_qs()
 
 Place QuickServer Order
 
@@ -84,7 +84,8 @@ my $api_instance = OpenAPIClient::QuickServersApi->new(
 
 
 eval {
-    $api_instance->add_qs();
+    my $result = $api_instance->add_qs();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling QuickServersApi->add_qs: $@\n";
@@ -96,7 +97,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2581,7 +2582,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_qs_info**
-> update_qs_info(id => $id)
+> SuccessTextResponse update_qs_info(id => $id)
 
 Update QuickServer Order
 
@@ -2610,7 +2611,8 @@ my $api_instance = OpenAPIClient::QuickServersApi->new(
 my $id = "id_example"; # string | QuickServer ID number.
 
 eval {
-    $api_instance->update_qs_info(id => $id);
+    my $result = $api_instance->update_qs_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling QuickServersApi->update_qs_info: $@\n";
@@ -2625,7 +2627,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

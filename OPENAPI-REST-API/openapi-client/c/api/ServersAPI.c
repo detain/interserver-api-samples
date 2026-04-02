@@ -65,7 +65,7 @@ end:
 //
 // Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
 //
-void
+add_server_200_response_t*
 ServersAPI_addServer(apiClient_t *apiClient)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -98,15 +98,25 @@ ServersAPI_addServer(apiClient_t *apiClient)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Server order placed successfully.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    add_server_200_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ServersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = add_server_200_response_parseFromJSON(ServersAPIlocalVarJSON);
+        cJSON_Delete(ServersAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -118,6 +128,10 @@ end:
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -1577,7 +1591,7 @@ end:
 //
 // Updates settings on a dedicated server order.
 //
-void
+success_text_response_t*
 ServersAPI_updateServerInfo(apiClient_t *apiClient, char *id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -1622,15 +1636,25 @@ ServersAPI_updateServerInfo(apiClient_t *apiClient, char *id)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ServersAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(ServersAPIlocalVarJSON);
+        cJSON_Delete(ServersAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -1643,6 +1667,10 @@ end:
     
     free(localVarPath);
     free(localVarToReplace_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

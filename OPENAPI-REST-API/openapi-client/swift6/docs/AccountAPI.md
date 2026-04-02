@@ -591,7 +591,7 @@ Name | Type | Description  | Notes
 
 # **updateAccountInfo**
 ```swift
-    open class func updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String? = nil, address2: String? = nil, locale: String? = nil, emailInvoices: String? = nil, emailAbuse: String? = nil, disableReset: Bool? = nil, disableReinstall: Bool? = nil, disableServerNotifications: Bool? = nil, disableEmailNotifications: Bool? = nil, gstin: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String? = nil, address2: String? = nil, locale: String? = nil, emailInvoices: String? = nil, emailAbuse: String? = nil, disableReset: Bool? = nil, disableReinstall: Bool? = nil, disableServerNotifications: Bool? = nil, disableEmailNotifications: Bool? = nil, gstin: String? = nil, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Update Account Information
@@ -658,7 +658,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -673,7 +673,7 @@ Void (empty response body)
 
 # **updateAccountIpLimits**
 ```swift
-    open class func updateAccountIpLimits(start: String, end: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateAccountIpLimits(start: String, end: String, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Add IP Access Restriction
@@ -710,7 +710,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

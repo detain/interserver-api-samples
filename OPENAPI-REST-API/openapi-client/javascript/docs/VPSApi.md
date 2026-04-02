@@ -53,7 +53,7 @@ Method | HTTP request | Description
 
 ## addVps
 
-> addVps(opts)
+> ServiceOrderPostResponse addVps(opts)
 
 Place VPS Order
 
@@ -88,7 +88,7 @@ apiInstance.addVps(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2653,7 +2653,7 @@ Name | Type | Description  | Notes
 
 ## updateVpsInfo
 
-> updateVpsInfo(id)
+> SuccessTextResponse updateVpsInfo(id)
 
 Update VPS Order
 
@@ -2686,7 +2686,7 @@ apiInstance.updateVpsInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -2700,7 +2700,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

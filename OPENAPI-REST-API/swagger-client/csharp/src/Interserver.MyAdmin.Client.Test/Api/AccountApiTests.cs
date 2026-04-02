@@ -210,8 +210,8 @@ namespace Interserver.MyAdmin.Client.Test
             //bool? disableServerNotifications = null;
             //bool? disableEmailNotifications = null;
             //string gstin = null;
-            //instance.UpdateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
-            
+            //var response = instance.UpdateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test UpdateAccountIpLimits
@@ -222,8 +222,8 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string start = null;
             //string end = null;
-            //instance.UpdateAccountIpLimits(start, end);
-            
+            //var response = instance.UpdateAccountIpLimits(start, end);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test UpdateAccountPassword

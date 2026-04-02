@@ -38,6 +38,7 @@ import org.openapitools.client.model.QuickserverRow;
 import org.openapitools.client.model.QuickserversCancel200Response;
 import org.openapitools.client.model.RestoreRequest;
 import org.openapitools.client.model.ReverseDnsEntries;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.openapitools.client.model.TextResponse;
 import org.openapitools.client.model.VpsBackupRows;
@@ -95,8 +96,8 @@ public class QuickServersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call addQsCall(final ApiCallback _callback) throws ApiException {
@@ -152,35 +153,38 @@ public class QuickServersApi {
     /**
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
+     * @return ServiceOrderPostResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void addQs() throws ApiException {
-        addQsWithHttpInfo();
+    public ServiceOrderPostResponse addQs() throws ApiException {
+        ApiResponse<ServiceOrderPostResponse> localVarResp = addQsWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;ServiceOrderPostResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> addQsWithHttpInfo() throws ApiException {
+    public ApiResponse<ServiceOrderPostResponse> addQsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = addQsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -193,14 +197,15 @@ public class QuickServersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addQsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call addQsAsync(final ApiCallback<ServiceOrderPostResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addQsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<ServiceOrderPostResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -5730,8 +5735,8 @@ public class QuickServersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateQsInfoCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -5794,36 +5799,39 @@ public class QuickServersApi {
      * Update QuickServer Order
      * Updates QuickServer metadata or stored settings associated with the order.
      * @param id QuickServer ID number. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void updateQsInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        updateQsInfoWithHttpInfo(id);
+    public SuccessTextResponse updateQsInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = updateQsInfoWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
      * Update QuickServer Order
      * Updates QuickServer metadata or stored settings associated with the order.
      * @param id QuickServer ID number. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateQsInfoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateQsInfoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = updateQsInfoValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -5837,14 +5845,15 @@ public class QuickServersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateQsInfoAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateQsInfoAsync(@javax.annotation.Nonnull String id, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateQsInfoValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

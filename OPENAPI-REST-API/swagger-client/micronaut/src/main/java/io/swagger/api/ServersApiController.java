@@ -4,7 +4,9 @@ import io.swagger.model.ChargeInvoiceRows;
 
 import io.swagger.model.InlineResponse20019;
 
-import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20020;
+
+import io.swagger.model.InlineResponse20027;
 
 import io.swagger.model.InlineResponse401;
 
@@ -46,13 +48,13 @@ import java.util.Map;
 public class ServersApiController implements ServersApi {
 
     @Override
-    public Single<HttpResponse<Void>> addServer() {
+    public Single<HttpResponse<InlineResponse20019>> addServer() {
         // TODO: Implement me
         return ServersApi.super.addServer();
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20026>> buyItNowServerOrder() {
+    public Single<HttpResponse<InlineResponse20027>> buyItNowServerOrder() {
         // TODO: Implement me
         return ServersApi.super.buyItNowServerOrder();
     }
@@ -154,13 +156,13 @@ public class ServersApiController implements ServersApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20019>> serversCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse20020>> serversCancel(Integer id) {
         // TODO: Implement me
         return ServersApi.super.serversCancel(id);
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateServerInfo(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateServerInfo(String id) {
         // TODO: Implement me
         return ServersApi.super.updateServerInfo(id);
     }

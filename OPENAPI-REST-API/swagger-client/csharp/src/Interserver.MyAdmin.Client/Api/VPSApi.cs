@@ -31,8 +31,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns></returns>
-        void AddVps (VpsOrderPostRequest body = null);
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddVps (VpsOrderPostRequest body = null);
 
         /// <summary>
         /// Place VPS Order
@@ -42,8 +42,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddVpsWithHttpInfo (VpsOrderPostRequest body = null);
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        ApiResponse<ServiceOrderPostResponse> AddVpsWithHttpInfo (VpsOrderPostRequest body = null);
         /// <summary>
         /// Place VPS Order
         /// </summary>
@@ -62,8 +62,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="coupon"> (optional)</param>
         /// <param name="rootpass"> (optional)</param>
         /// <param name="comment"> (optional)</param>
-        /// <returns></returns>
-        void AddVps (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null);
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddVps (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null);
 
         /// <summary>
         /// Place VPS Order
@@ -83,8 +83,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="coupon"> (optional)</param>
         /// <param name="rootpass"> (optional)</param>
         /// <param name="comment"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddVpsWithHttpInfo (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null);
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        ApiResponse<ServiceOrderPostResponse> AddVpsWithHttpInfo (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null);
         /// <summary>
         /// Delete VPS Backup
         /// </summary>
@@ -1232,8 +1232,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number.</param>
-        /// <returns></returns>
-        void UpdateVpsInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateVpsInfo (string id);
 
         /// <summary>
         /// Update VPS Order
@@ -1243,8 +1243,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateVpsInfoWithHttpInfo (string id);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateVpsInfoWithHttpInfo (string id);
         /// <summary>
         /// Cancel VPS Service
         /// </summary>
@@ -1253,8 +1253,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number</param>
-        /// <returns>InlineResponse20021</returns>
-        InlineResponse20021 VPSCancel (int? id);
+        /// <returns>InlineResponse20022</returns>
+        InlineResponse20022 VPSCancel (int? id);
 
         /// <summary>
         /// Cancel VPS Service
@@ -1264,8 +1264,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number</param>
-        /// <returns>ApiResponse of InlineResponse20021</returns>
-        ApiResponse<InlineResponse20021> VPSCancelWithHttpInfo (int? id);
+        /// <returns>ApiResponse of InlineResponse20022</returns>
+        ApiResponse<InlineResponse20022> VPSCancelWithHttpInfo (int? id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -1276,8 +1276,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddVpsAsync (VpsOrderPostRequest body = null);
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        System.Threading.Tasks.Task<ServiceOrderPostResponse> AddVpsAsync (VpsOrderPostRequest body = null);
 
         /// <summary>
         /// Place VPS Order
@@ -1287,8 +1287,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddVpsAsyncWithHttpInfo (VpsOrderPostRequest body = null);
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddVpsAsyncWithHttpInfo (VpsOrderPostRequest body = null);
         /// <summary>
         /// Place VPS Order
         /// </summary>
@@ -1307,8 +1307,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="coupon"> (optional)</param>
         /// <param name="rootpass"> (optional)</param>
         /// <param name="comment"> (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddVpsAsync (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null);
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        System.Threading.Tasks.Task<ServiceOrderPostResponse> AddVpsAsync (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null);
 
         /// <summary>
         /// Place VPS Order
@@ -1328,8 +1328,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="coupon"> (optional)</param>
         /// <param name="rootpass"> (optional)</param>
         /// <param name="comment"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddVpsAsyncWithHttpInfo (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null);
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddVpsAsyncWithHttpInfo (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null);
         /// <summary>
         /// Delete VPS Backup
         /// </summary>
@@ -2477,8 +2477,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateVpsInfoAsync (string id);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateVpsInfoAsync (string id);
 
         /// <summary>
         /// Update VPS Order
@@ -2488,8 +2488,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateVpsInfoAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateVpsInfoAsyncWithHttpInfo (string id);
         /// <summary>
         /// Cancel VPS Service
         /// </summary>
@@ -2498,8 +2498,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number</param>
-        /// <returns>Task of InlineResponse20021</returns>
-        System.Threading.Tasks.Task<InlineResponse20021> VPSCancelAsync (int? id);
+        /// <returns>Task of InlineResponse20022</returns>
+        System.Threading.Tasks.Task<InlineResponse20022> VPSCancelAsync (int? id);
 
         /// <summary>
         /// Cancel VPS Service
@@ -2509,8 +2509,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20021)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20021>> VPSCancelAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (InlineResponse20022)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20022>> VPSCancelAsyncWithHttpInfo (int? id);
         #endregion Asynchronous Operations
     }
 
@@ -2627,10 +2627,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns></returns>
-        public void AddVps (VpsOrderPostRequest body = null)
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddVps (VpsOrderPostRequest body = null)
         {
-             AddVpsWithHttpInfo(body);
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = AddVpsWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2638,8 +2639,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddVpsWithHttpInfo (VpsOrderPostRequest body = null)
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        public ApiResponse< ServiceOrderPostResponse > AddVpsWithHttpInfo (VpsOrderPostRequest body = null)
         {
 
             var localVarPath = "/vps/order";
@@ -2702,9 +2703,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
@@ -2712,10 +2713,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddVpsAsync (VpsOrderPostRequest body = null)
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        public async System.Threading.Tasks.Task<ServiceOrderPostResponse> AddVpsAsync (VpsOrderPostRequest body = null)
         {
-             await AddVpsAsyncWithHttpInfo(body);
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = await AddVpsAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -2724,8 +2726,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddVpsAsyncWithHttpInfo (VpsOrderPostRequest body = null)
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddVpsAsyncWithHttpInfo (VpsOrderPostRequest body = null)
         {
 
             var localVarPath = "/vps/order";
@@ -2788,9 +2790,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
@@ -2808,10 +2810,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="coupon"> (optional)</param>
         /// <param name="rootpass"> (optional)</param>
         /// <param name="comment"> (optional)</param>
-        /// <returns></returns>
-        public void AddVps (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null)
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddVps (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null)
         {
-             AddVpsWithHttpInfo(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = AddVpsWithHttpInfo(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2829,8 +2832,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="coupon"> (optional)</param>
         /// <param name="rootpass"> (optional)</param>
         /// <param name="comment"> (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddVpsWithHttpInfo (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null)
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        public ApiResponse< ServiceOrderPostResponse > AddVpsWithHttpInfo (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null)
         {
 
             var localVarPath = "/vps/order";
@@ -2896,9 +2899,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
@@ -2916,10 +2919,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="coupon"> (optional)</param>
         /// <param name="rootpass"> (optional)</param>
         /// <param name="comment"> (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddVpsAsync (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null)
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        public async System.Threading.Tasks.Task<ServiceOrderPostResponse> AddVpsAsync (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null)
         {
-             await AddVpsAsyncWithHttpInfo(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = await AddVpsAsyncWithHttpInfo(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+             return localVarResponse.Data;
 
         }
 
@@ -2938,8 +2942,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// <param name="coupon"> (optional)</param>
         /// <param name="rootpass"> (optional)</param>
         /// <param name="comment"> (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddVpsAsyncWithHttpInfo (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null)
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddVpsAsyncWithHttpInfo (string osDistro = null, int? slices = null, string vpsPlatform = null, string controlpanel = null, int? period = null, int? location = null, string osVersion = null, string hostname = null, string coupon = null, string rootpass = null, string comment = null)
         {
 
             var localVarPath = "/vps/order";
@@ -3005,9 +3009,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
@@ -11740,10 +11744,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number.</param>
-        /// <returns></returns>
-        public void UpdateVpsInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateVpsInfo (string id)
         {
-             UpdateVpsInfoWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateVpsInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -11751,8 +11756,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateVpsInfoWithHttpInfo (string id)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateVpsInfoWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -11809,9 +11814,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -11819,10 +11824,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateVpsInfoAsync (string id)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateVpsInfoAsync (string id)
         {
-             await UpdateVpsInfoAsyncWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateVpsInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -11831,8 +11837,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateVpsInfoAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateVpsInfoAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -11889,9 +11895,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -11899,10 +11905,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number</param>
-        /// <returns>InlineResponse20021</returns>
-        public InlineResponse20021 VPSCancel (int? id)
+        /// <returns>InlineResponse20022</returns>
+        public InlineResponse20022 VPSCancel (int? id)
         {
-             ApiResponse<InlineResponse20021> localVarResponse = VPSCancelWithHttpInfo(id);
+             ApiResponse<InlineResponse20022> localVarResponse = VPSCancelWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -11911,8 +11917,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number</param>
-        /// <returns>ApiResponse of InlineResponse20021</returns>
-        public ApiResponse< InlineResponse20021 > VPSCancelWithHttpInfo (int? id)
+        /// <returns>ApiResponse of InlineResponse20022</returns>
+        public ApiResponse< InlineResponse20022 > VPSCancelWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -11969,9 +11975,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20021>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20022>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20021) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20021)));
+                (InlineResponse20022) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20022)));
         }
 
         /// <summary>
@@ -11979,10 +11985,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number</param>
-        /// <returns>Task of InlineResponse20021</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20021> VPSCancelAsync (int? id)
+        /// <returns>Task of InlineResponse20022</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20022> VPSCancelAsync (int? id)
         {
-             ApiResponse<InlineResponse20021> localVarResponse = await VPSCancelAsyncWithHttpInfo(id);
+             ApiResponse<InlineResponse20022> localVarResponse = await VPSCancelAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -11992,8 +11998,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">VPS ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20021)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20021>> VPSCancelAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (InlineResponse20022)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20022>> VPSCancelAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -12050,9 +12056,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20021>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20022>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20021) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20021)));
+                (InlineResponse20022) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20022)));
         }
 
     }

@@ -8,7 +8,7 @@ class_name ServerIpmiLiveInfo
 # The OpenAPI Generator Community, © Public Domain, 2022
 
 # ServerIpmiLiveInfo Model
-# Information about the IPMI connectioj.
+# Information about the IPMI connection.
 
 
 # Required: False

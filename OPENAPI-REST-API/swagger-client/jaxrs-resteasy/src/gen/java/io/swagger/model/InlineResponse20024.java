@@ -5,38 +5,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
 public class InlineResponse20024   {
-  private String message = null;  private Boolean success = null;
+  private Map<String, String> ips = new HashMap<String, String>();
 
   /**
+   * A map of IP addresses to their current reverse DNS hostnames.
    **/
   
-  @Schema(description = "")
-  @JsonProperty("message")
+  @Schema(description = "A map of IP addresses to their current reverse DNS hostnames.")
+  @JsonProperty("ips")
   @NotNull
-  public String getMessage() {
-    return message;
+  public Map<String, String> getIps() {
+    return ips;
   }
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  /**
-   **/
-  
-  @Schema(description = "")
-  @JsonProperty("success")
-  @NotNull
-  public Boolean isSuccess() {
-    return success;
-  }
-  public void setSuccess(Boolean success) {
-    this.success = success;
+  public void setIps(Map<String, String> ips) {
+    this.ips = ips;
   }
 
 
@@ -49,13 +39,12 @@ public class InlineResponse20024   {
       return false;
     }
     InlineResponse20024 inlineResponse20024 = (InlineResponse20024) o;
-    return Objects.equals(message, inlineResponse20024.message) &&
-        Objects.equals(success, inlineResponse20024.success);
+    return Objects.equals(ips, inlineResponse20024.ips);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, success);
+    return Objects.hash(ips);
   }
 
   @Override
@@ -63,8 +52,7 @@ public class InlineResponse20024   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20024 {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("}");
     return sb.toString();
   }

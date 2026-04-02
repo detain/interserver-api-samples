@@ -26,6 +26,7 @@ import org.openapitools.client.model.DomainRow
 import org.openapitools.client.model.DomainSearchResponse
 import org.openapitools.client.model.DomainWhoisPrivacyRequest
 import org.openapitools.client.model.GetAccountInfo401Response
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.model.TextResponse
 import org.openapitools.client.core.JsonSupport._
@@ -42,8 +43,8 @@ class DomainsApi(baseUrl: String) {
    * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -51,14 +52,14 @@ class DomainsApi(baseUrl: String) {
    *   sessionIdHeaderAuth (apiKey)
    */
   def addDomain(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], ServiceOrderPostResponse], Any] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/domains/order")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Adds DNSSEC DS records to the domain registration. Provide one or more DNSSEC record entries (algorithm, digest type, digest, key tag). Registrations must be active.
@@ -667,8 +668,8 @@ class DomainsApi(baseUrl: String) {
    * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -678,14 +679,14 @@ class DomainsApi(baseUrl: String) {
    * @param id The domain service ID. Use `domain_id` from `GET /domains`.
    */
   def updateDomainInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], SuccessTextResponse], Any] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/domains/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Replaces the full nameserver assignment for the domain with the provided list. This is the primary method for changing which authoritative nameservers the domain delegates to.

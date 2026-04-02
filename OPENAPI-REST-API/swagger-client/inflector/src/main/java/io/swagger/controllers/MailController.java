@@ -34,6 +34,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 

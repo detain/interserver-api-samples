@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**updateSslInfo**](SSLCertificatesApi.md#updatesslinfo) | **POST** /ssl/{id} | Update SSL Cert Order
 
 # **addSsl**
-> addSsl()
+> \Interserver\MyAdmin\Model\ServiceOrderPostResponse addSsl()
 
 Place SSL Cert Order
 
@@ -44,7 +44,8 @@ $apiInstance = new Interserver\MyAdmin\Api\SSLCertificatesApi(
 );
 
 try {
-    $apiInstance->addSsl();
+    $result = $apiInstance->addSsl();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SSLCertificatesApi->addSsl: ', $e->getMessage(), PHP_EOL;
 }
@@ -56,7 +57,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -70,7 +71,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getNewSsl**
-> getNewSsl()
+> object getNewSsl()
 
 SSL Cert Ordering Information
 
@@ -99,7 +100,8 @@ $apiInstance = new Interserver\MyAdmin\Api\SSLCertificatesApi(
 );
 
 try {
-    $apiInstance->getNewSsl();
+    $result = $apiInstance->getNewSsl();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SSLCertificatesApi->getNewSsl: ', $e->getMessage(), PHP_EOL;
 }
@@ -111,7 +113,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -125,7 +127,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getSslInfo**
-> getSslInfo($id)
+> object getSslInfo($id)
 
 Get SSL Cert Info
 
@@ -155,7 +157,8 @@ $apiInstance = new Interserver\MyAdmin\Api\SSLCertificatesApi(
 $id = 56; // int | SSL certificate ID number.
 
 try {
-    $apiInstance->getSslInfo($id);
+    $result = $apiInstance->getSslInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SSLCertificatesApi->getSslInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -170,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -414,7 +417,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **sslCancel**
-> \Interserver\MyAdmin\Model\InlineResponse20020 sslCancel($id)
+> \Interserver\MyAdmin\Model\InlineResponse20021 sslCancel($id)
 
 Cancel SSL Certificate Service
 
@@ -460,7 +463,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20020**](../Model/InlineResponse20020.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20021**](../Model/InlineResponse20021.md)
 
 ### Authorization
 
@@ -474,7 +477,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateSslInfo**
-> updateSslInfo($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateSslInfo($id)
 
 Update SSL Cert Order
 
@@ -504,7 +507,8 @@ $apiInstance = new Interserver\MyAdmin\Api\SSLCertificatesApi(
 $id = "id_example"; // string | SSL certificate ID number.
 
 try {
-    $apiInstance->updateSslInfo($id);
+    $result = $apiInstance->updateSslInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SSLCertificatesApi->updateSslInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -519,7 +523,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

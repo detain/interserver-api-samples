@@ -21,6 +21,7 @@ import org.openapitools.model.MailSchema
 import org.openapitools.model.MailStatsType
 import org.openapitools.model.SendMail
 import org.openapitools.model.SendMailAdv
+import org.openapitools.model.ServiceOrderPostResponse
 import org.openapitools.model.SuccessTextResponse
 import org.openapitools.model.ViewMailLogStartDateParameter
 
@@ -48,7 +49,7 @@ class MailApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    ServiceOrderPostResponse.class )
 
     }
 
@@ -736,7 +737,7 @@ class MailApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 

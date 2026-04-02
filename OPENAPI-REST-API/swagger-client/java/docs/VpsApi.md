@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 <a name="addVps"></a>
 # **addVps**
-> addVps(body)
+> ServiceOrderPostResponse addVps(body)
 
 Place VPS Order
 
@@ -89,7 +89,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 VpsApi apiInstance = new VpsApi();
 VpsOrderPostRequest body = new VpsOrderPostRequest(); // VpsOrderPostRequest | 
 try {
-    apiInstance.addVps(body);
+    ServiceOrderPostResponse result = apiInstance.addVps(body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling VpsApi#addVps");
     e.printStackTrace();
@@ -104,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -117,7 +118,7 @@ null (empty response body)
 
 <a name="addVps"></a>
 # **addVps**
-> addVps(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment)
+> ServiceOrderPostResponse addVps(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment)
 
 Place VPS Order
 
@@ -165,7 +166,8 @@ String coupon = "coupon_example"; // String |
 String rootpass = "rootpass_example"; // String | 
 String comment = "comment_example"; // String | 
 try {
-    apiInstance.addVps(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+    ServiceOrderPostResponse result = apiInstance.addVps(osDistro, slices, vpsPlatform, controlpanel, period, location, osVersion, hostname, coupon, rootpass, comment);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling VpsApi#addVps");
     e.printStackTrace();
@@ -190,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3675,7 +3677,7 @@ Name | Type | Description  | Notes
 
 <a name="updateVpsInfo"></a>
 # **updateVpsInfo**
-> updateVpsInfo(id)
+> SuccessTextResponse updateVpsInfo(id)
 
 Update VPS Order
 
@@ -3713,7 +3715,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 VpsApi apiInstance = new VpsApi();
 String id = "id_example"; // String | VPS ID number.
 try {
-    apiInstance.updateVpsInfo(id);
+    SuccessTextResponse result = apiInstance.updateVpsInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling VpsApi#updateVpsInfo");
     e.printStackTrace();
@@ -3728,7 +3731,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -3741,7 +3744,7 @@ null (empty response body)
 
 <a name="vPSCancel"></a>
 # **vPSCancel**
-> InlineResponse20021 vPSCancel(id)
+> InlineResponse20022 vPSCancel(id)
 
 Cancel VPS Service
 
@@ -3779,7 +3782,7 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 VpsApi apiInstance = new VpsApi();
 Integer id = 56; // Integer | VPS ID number
 try {
-    InlineResponse20021 result = apiInstance.vPSCancel(id);
+    InlineResponse20022 result = apiInstance.vPSCancel(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling VpsApi#vPSCancel");
@@ -3795,7 +3798,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 

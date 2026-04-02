@@ -21,17 +21,17 @@ module OpenAPIClient
     # Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
     # @param domain [String] The domain name.
     # @param ip [String] IP Address to point the domain to.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def add_dns_domain(domain : String, ip : String)
-      add_dns_domain_with_http_info(domain, ip)
-      nil
+      data, _status_code, _headers = add_dns_domain_with_http_info(domain, ip)
+      data
     end
 
     # Create DNS Domain
     # Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#39;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
     # @param domain [String] The domain name.
     # @param ip [String] IP Address to point the domain to.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def add_dns_domain_with_http_info(domain : String, ip : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: DNSApi.add_dns_domain ..."}
@@ -87,7 +87,7 @@ module OpenAPIClient
         Log.debug {"API called: DNSApi#add_dns_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # Add DNS Record to Domain
@@ -181,16 +181,16 @@ module OpenAPIClient
     # Delete DNS Domain
     # Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
     # @param id [String] The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def delete_dns_domain(id : String)
-      delete_dns_domain_with_http_info(id)
-      nil
+      data, _status_code, _headers = delete_dns_domain_with_http_info(id)
+      data
     end
 
     # Delete DNS Domain
     # Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
     # @param id [String] The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def delete_dns_domain_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: DNSApi.delete_dns_domain ..."}
@@ -238,24 +238,24 @@ module OpenAPIClient
         Log.debug {"API called: DNSApi#delete_dns_domain\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # Delete DNS Record
     # Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
     # @param domain_id [Int32] The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id [Int32] The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def delete_dns_record(domain_id : Int32, record_id : Int32)
-      delete_dns_record_with_http_info(domain_id, record_id)
-      nil
+      data, _status_code, _headers = delete_dns_record_with_http_info(domain_id, record_id)
+      data
     end
 
     # Delete DNS Record
     # Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
     # @param domain_id [Int32] The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id [Int32] The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def delete_dns_record_with_http_info(domain_id : Int32, record_id : Int32)
       if @api_client.config.debugging
         Log.debug {"Calling API: DNSApi.delete_dns_record ..."}
@@ -307,7 +307,7 @@ module OpenAPIClient
         Log.debug {"API called: DNSApi#delete_dns_record\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # List Domain DNS Records
@@ -434,17 +434,17 @@ module OpenAPIClient
     # Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
     # @param domain_id [Int32] The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id [Int32] The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_dns_record(domain_id : Int32, record_id : Int32, name : String? = nil, _type : DnsRecordType? = nil, content : String? = nil, ttl : String? = nil, prio : String? = nil, disabled : String? = nil, ordername : String? = nil, auth : String? = nil)
-      update_dns_record_with_http_info(domain_id, record_id, name, _type, content, ttl, prio, disabled, ordername, auth)
-      nil
+      data, _status_code, _headers = update_dns_record_with_http_info(domain_id, record_id, name, _type, content, ttl, prio, disabled, ordername, auth)
+      data
     end
 
     # Update DNS Record
     # Updates an existing DNS record with new values. Use &#x60;GET /dns/{id}&#x60; to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
     # @param domain_id [Int32] The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
     # @param record_id [Int32] The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_dns_record_with_http_info(domain_id : Int32, record_id : Int32, name : String? = nil, _type : DnsRecordType? = nil, content : String? = nil, ttl : String? = nil, prio : String? = nil, disabled : String? = nil, ordername : String? = nil, auth : String? = nil)
       if @api_client.config.debugging
         Log.debug {"Calling API: DNSApi.update_dns_record ..."}
@@ -506,7 +506,7 @@ module OpenAPIClient
         Log.debug {"API called: DNSApi#update_dns_record\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
   end
 end

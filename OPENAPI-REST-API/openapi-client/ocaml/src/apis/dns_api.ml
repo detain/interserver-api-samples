@@ -44,7 +44,7 @@ let add_dns_domain ~domain ~ip =
  ip in
     let body = Request.finalize_form_encoded_body body in
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let add_dns_record ~id ~name ~_type ~content ?(ttl = 8640086400l) ?(prio = 00l) () =
     let open Lwt.Infix in
@@ -169,7 +169,7 @@ let delete_dns_domain ~id =
         
  id in
     Cohttp_lwt_unix.Client.call `DELETE uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let delete_dns_record ~domain_id ~record_id =
     let open Lwt.Infix in
@@ -208,7 +208,7 @@ let delete_dns_record ~domain_id ~record_id =
         
  record_id in
     Cohttp_lwt_unix.Client.call `DELETE uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let get_dns_domain ~id =
     let open Lwt.Infix in
@@ -402,5 +402,5 @@ let update_dns_record ~domain_id ~record_id ?name ?_type ?content ?ttl ?prio ?di
  auth in
     let body = Request.finalize_form_encoded_body body in
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 

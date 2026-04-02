@@ -48,6 +48,8 @@ import io.swagger.model.SendMail;
 
 import io.swagger.model.SendMailAdv;
 
+import io.swagger.model.ServiceOrderPostResponse;
+
 import io.swagger.model.StartDate;
 
 import io.swagger.model.SuccessTextResponse;
@@ -66,7 +68,7 @@ import java.util.Map;
 public class MailApiController implements MailApi {
 
     @Override
-    public Single<HttpResponse<Void>> addMail() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addMail() {
         // TODO: Implement me
         return MailApi.super.addMail();
     }
@@ -252,7 +254,7 @@ public class MailApiController implements MailApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateMailInfo(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateMailInfo(String id) {
         // TODO: Implement me
         return MailApi.super.updateMailInfo(id);
     }

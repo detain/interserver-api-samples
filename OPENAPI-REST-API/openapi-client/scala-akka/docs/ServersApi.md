@@ -45,7 +45,7 @@ Method | HTTP request | Description
 
 ## addServer
 
-> addServer(): ApiRequest[Unit]
+> addServer(): ApiRequest[AddServer200Response]
 
 Place Server Order
 
@@ -55,6 +55,7 @@ Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; t
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -87,6 +88,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling ServersApi#addServer")
@@ -108,8 +110,8 @@ This endpoint does not need any parameter.
 
 ### Return type
 
+ApiRequest[[**AddServer200Response**](AddServer200Response.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -123,8 +125,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Server order placed successfully. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## buyItNowServerOrder
@@ -1578,7 +1580,7 @@ ApiRequest[[**ServersCancel200Response**](ServersCancel200Response.md)]
 
 ## updateServerInfo
 
-> updateServerInfo(updateServerInfoRequest): ApiRequest[Unit]
+> updateServerInfo(updateServerInfoRequest): ApiRequest[SuccessTextResponse]
 
 Update Server Order
 
@@ -1588,6 +1590,7 @@ Updates settings on a dedicated server order.
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -1622,6 +1625,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling ServersApi#updateServerInfo")
@@ -1646,8 +1650,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -1661,6 +1665,6 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 

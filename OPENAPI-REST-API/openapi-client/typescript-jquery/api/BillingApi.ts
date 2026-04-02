@@ -324,7 +324,7 @@ export class BillingApi {
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
     public deleteAccountCreditCard(id: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: string;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/account/creditcards/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
@@ -379,11 +379,11 @@ export class BillingApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: string;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -1025,7 +1025,7 @@ export class BillingApi {
      * @summary Get Shopping Cart Contents
      */
     public getBillingCart(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: object;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/billing/cart';
@@ -1075,11 +1075,11 @@ export class BillingApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: object;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: object, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -1305,7 +1305,7 @@ export class BillingApi {
      * @summary List Prepay Balances
      */
     public getBillingPrePays(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: object;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/billing/prepays';
@@ -1355,11 +1355,11 @@ export class BillingApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: object;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: object, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})
@@ -1615,7 +1615,7 @@ export class BillingApi {
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
     public updateAccountCreditCard(id: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body?: any;  },
+    { response: JQueryXHR; body: string;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/account/creditcards/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
@@ -1670,11 +1670,11 @@ export class BillingApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body?: any;  },
+            { response: JQueryXHR; body: string;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

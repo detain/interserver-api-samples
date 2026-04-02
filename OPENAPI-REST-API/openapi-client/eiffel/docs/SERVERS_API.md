@@ -25,7 +25,7 @@ Feature | HTTP request | Description
 
 
 # **add_server**
-> add_server 
+> add_server : detachable ADD_SERVER_200_RESPONSE
 
 
 Place Server Order
@@ -38,7 +38,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**ADD_SERVER_200_RESPONSE**](addServer_200_response.md)
 
 ### Authorization
 
@@ -522,7 +522,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_server_info**
-> update_server_info (id: STRING_32 )
+> update_server_info (id: STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Update Server Order
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 

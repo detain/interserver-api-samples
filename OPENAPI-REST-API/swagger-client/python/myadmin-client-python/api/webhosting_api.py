@@ -42,7 +42,7 @@ class WebhostingApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class WebhostingApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -111,7 +111,7 @@ class WebhostingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='ServiceOrderPostResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -217,7 +217,7 @@ class WebhostingApi(object):
 
         :param async_req bool
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20023
+        :return: InlineResponse20024
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -239,7 +239,7 @@ class WebhostingApi(object):
 
         :param async_req bool
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20023
+        :return: InlineResponse20024
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -293,7 +293,7 @@ class WebhostingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20023',  # noqa: E501
+            response_type='InlineResponse20024',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -970,7 +970,7 @@ class WebhostingApi(object):
         :param async_req bool
         :param IdBuyIpBody body: (required)
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20024
+        :return: InlineResponse20025
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -993,7 +993,7 @@ class WebhostingApi(object):
         :param async_req bool
         :param IdBuyIpBody body: (required)
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20024
+        :return: InlineResponse20025
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1059,7 +1059,7 @@ class WebhostingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20024',  # noqa: E501
+            response_type='InlineResponse20025',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1079,7 +1079,7 @@ class WebhostingApi(object):
         :param async_req bool
         :param dict(str, str) ips: (required)
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20024
+        :return: InlineResponse20025
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1102,7 +1102,7 @@ class WebhostingApi(object):
         :param async_req bool
         :param dict(str, str) ips: (required)
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20024
+        :return: InlineResponse20025
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1168,7 +1168,7 @@ class WebhostingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20024',  # noqa: E501
+            response_type='InlineResponse20025',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1188,7 +1188,7 @@ class WebhostingApi(object):
         :param async_req bool
         :param IdMigrationBody body: (required)
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20025
+        :return: InlineResponse20026
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1211,7 +1211,7 @@ class WebhostingApi(object):
         :param async_req bool
         :param IdMigrationBody body: (required)
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20025
+        :return: InlineResponse20026
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1301,7 +1301,7 @@ class WebhostingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='InlineResponse20026',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1333,7 +1333,7 @@ class WebhostingApi(object):
         :param str domain_reg_email: (required)
         :param str domain_reg_password: (required)
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20025
+        :return: InlineResponse20026
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1368,7 +1368,7 @@ class WebhostingApi(object):
         :param str domain_reg_email: (required)
         :param str domain_reg_password: (required)
         :param int id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20025
+        :return: InlineResponse20026
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1506,7 +1506,7 @@ class WebhostingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20025',  # noqa: E501
+            response_type='InlineResponse20026',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1830,7 +1830,7 @@ class WebhostingApi(object):
 
         :param async_req bool
         :param str id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1852,7 +1852,7 @@ class WebhostingApi(object):
 
         :param async_req bool
         :param str id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1906,7 +1906,7 @@ class WebhostingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1925,7 +1925,7 @@ class WebhostingApi(object):
 
         :param async_req bool
         :param str id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20022
+        :return: InlineResponse20023
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1947,7 +1947,7 @@ class WebhostingApi(object):
 
         :param async_req bool
         :param str id: The website service ID. Use `website_id` from `GET /websites`. (required)
-        :return: InlineResponse20022
+        :return: InlineResponse20023
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -2001,7 +2001,7 @@ class WebhostingApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse20022',  # noqa: E501
+            response_type='InlineResponse20023',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

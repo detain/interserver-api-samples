@@ -16,7 +16,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 |[**updateFloatingIpInfo**](#updatefloatingipinfo) | **POST** /floating_ips/{id} | Update Floating IP|
 
 # **addFloatingIp**
-> addFloatingIp()
+> ServiceOrderPostResponse addFloatingIp()
 
 Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
 
@@ -40,7 +40,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-void (empty response body)
+**ServiceOrderPostResponse**
 
 ### Authorization
 
@@ -55,8 +55,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -113,7 +113,7 @@ const { status, data } = await apiInstance.floatingIpsCancel(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getFloatingIpInfo**
-> getFloatingIpInfo()
+> object getFloatingIpInfo()
 
 Returns detailed information about a specific Floating IP service including its current target IP assignment.
 
@@ -144,7 +144,7 @@ const { status, data } = await apiInstance.getFloatingIpInfo(
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -159,8 +159,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Detailed Floating IP service information. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -315,7 +315,7 @@ const { status, data } = await apiInstance.getFloatingIpsWelcomeEmail(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getNewFloatingIp**
-> getNewFloatingIp()
+> object getNewFloatingIp()
 
 Retrieves available options and pricing for ordering a new Floating IP.
 
@@ -339,7 +339,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -354,8 +354,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Available options and pricing for ordering a Floating IP. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -460,7 +460,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateFloatingIpInfo**
-> updateFloatingIpInfo()
+> SuccessTextResponse updateFloatingIpInfo()
 
 Updates settings on a Floating IP service, such as its label or configuration metadata.
 
@@ -491,7 +491,7 @@ const { status, data } = await apiInstance.updateFloatingIpInfo(
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -506,8 +506,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | A response indicating the operation completed successfully with a text message. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

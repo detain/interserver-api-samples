@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **addSsl**
-> addSsl()
+> ServiceOrderPostResponse addSsl()
 
 Place SSL Cert Order
 
@@ -46,7 +46,8 @@ import 'package:openapi/api.dart';
 final api_instance = SSLCertificatesApi();
 
 try {
-    api_instance.addSsl();
+    final result = api_instance.addSsl();
+    print(result);
 } catch (e) {
     print('Exception when calling SSLCertificatesApi->addSsl: $e\n');
 }
@@ -57,7 +58,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -71,7 +72,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getNewSsl**
-> getNewSsl()
+> Object getNewSsl()
 
 SSL Cert Ordering Information
 
@@ -96,7 +97,8 @@ import 'package:openapi/api.dart';
 final api_instance = SSLCertificatesApi();
 
 try {
-    api_instance.getNewSsl();
+    final result = api_instance.getNewSsl();
+    print(result);
 } catch (e) {
     print('Exception when calling SSLCertificatesApi->getNewSsl: $e\n');
 }
@@ -107,7 +109,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -121,7 +123,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSslInfo**
-> getSslInfo(id)
+> Object getSslInfo(id)
 
 Get SSL Cert Info
 
@@ -147,7 +149,8 @@ final api_instance = SSLCertificatesApi();
 final id = 56; // int | SSL certificate ID number.
 
 try {
-    api_instance.getSslInfo(id);
+    final result = api_instance.getSslInfo(id);
+    print(result);
 } catch (e) {
     print('Exception when calling SSLCertificatesApi->getSslInfo: $e\n');
 }
@@ -161,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**Object**
 
 ### Authorization
 
@@ -440,7 +443,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateSslInfo**
-> updateSslInfo(id)
+> SuccessTextResponse updateSslInfo(id)
 
 Update SSL Cert Order
 
@@ -466,7 +469,8 @@ final api_instance = SSLCertificatesApi();
 final id = id_example; // String | SSL certificate ID number.
 
 try {
-    api_instance.updateSslInfo(id);
+    final result = api_instance.updateSslInfo(id);
+    print(result);
 } catch (e) {
     print('Exception when calling SSLCertificatesApi->updateSslInfo: $e\n');
 }
@@ -480,7 +484,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

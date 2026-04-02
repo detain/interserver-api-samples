@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
-  * Information about the IPMI connectioj.
+  * Information about the IPMI connection.
  **/
-@Schema(description="Information about the IPMI connectioj.")
+@Schema(description="Information about the IPMI connection.")
 public class ServerIpmiLiveInfo   {
   
   @Schema(description = "")

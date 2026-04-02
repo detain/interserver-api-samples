@@ -36,6 +36,7 @@ import io.swagger.client.model.MailSchema;
 import io.swagger.client.model.MailStatsType;
 import io.swagger.client.model.SendMail;
 import io.swagger.client.model.SendMailAdv;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.StartDate;
 import io.swagger.client.model.SuccessTextResponse;
 import org.junit.Test;
@@ -66,7 +67,7 @@ public class MailApiTest {
      */
     @Test
     public void addMailTest() throws Exception {
-        api.addMail();
+        ServiceOrderPostResponse response = api.addMail();
 
         // TODO: test validations
     }
@@ -433,7 +434,7 @@ public class MailApiTest {
     @Test
     public void updateMailInfoTest() throws Exception {
         String id = null;
-        api.updateMailInfo(id);
+        SuccessTextResponse response = api.updateMailInfo(id);
 
         // TODO: test validations
     }

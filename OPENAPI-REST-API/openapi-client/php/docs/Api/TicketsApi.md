@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\TicketsApi
 
-Support Request System
+Support ticket system. Create new tickets, reply to existing ones, view ticket history, and close resolved issues.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 

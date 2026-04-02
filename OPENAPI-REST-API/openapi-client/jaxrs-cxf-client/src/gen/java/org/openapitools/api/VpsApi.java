@@ -7,6 +7,7 @@ import org.openapitools.model.GetAccountInfo401Response;
 import org.openapitools.model.QueueResponse;
 import org.openapitools.model.RestoreRequest;
 import org.openapitools.model.ReverseDnsEntries;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import org.openapitools.model.VPSCancel200Response;
@@ -53,9 +54,9 @@ public interface VpsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Place VPS Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void addVps(VpsOrderPostRequest vpsOrderPostRequest);
+        @ApiResponse(code = 200, message = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", response = ServiceOrderPostResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public ServiceOrderPostResponse addVps(VpsOrderPostRequest vpsOrderPostRequest);
 
     /**
      * Delete VPS Backup
@@ -694,9 +695,9 @@ public interface VpsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update VPS Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateVpsInfo(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateVpsInfo(@PathParam("id") String id);
 
     /**
      * Cancel VPS Service

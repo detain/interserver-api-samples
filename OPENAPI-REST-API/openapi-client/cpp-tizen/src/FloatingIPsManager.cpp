@@ -51,21 +51,48 @@ static gpointer __FloatingIPsManagerthreadFunc(gpointer data)
 static bool addFloatingIpProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	= reinterpret_cast<void(*)(ServiceOrderPostResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	ServiceOrderPostResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("ServiceOrderPostResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ServiceOrderPostResponse", "ServiceOrderPostResponse");
+			json_node_free(pJson);
+
+			if ("ServiceOrderPostResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -76,15 +103,15 @@ static bool addFloatingIpProcessor(MemoryStruct_s p_chunk, long code, char* erro
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool addFloatingIpHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -154,8 +181,8 @@ static bool addFloatingIpHelper(char * accessToken,
 
 bool FloatingIPsManager::addFloatingIpAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData)
 {
 	return addFloatingIpHelper(accessToken,
 	
@@ -164,8 +191,8 @@ bool FloatingIPsManager::addFloatingIpAsync(char * accessToken,
 
 bool FloatingIPsManager::addFloatingIpSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData)
 {
 	return addFloatingIpHelper(accessToken,
 	
@@ -332,21 +359,43 @@ bool FloatingIPsManager::floatingIpsCancelSync(char * accessToken,
 static bool getFloatingIpInfoProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -357,15 +406,15 @@ static bool getFloatingIpInfoProcessor(MemoryStruct_s p_chunk, long code, char* 
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool getFloatingIpInfoHelper(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -441,8 +490,8 @@ static bool getFloatingIpInfoHelper(char * accessToken,
 
 bool FloatingIPsManager::getFloatingIpInfoAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getFloatingIpInfoHelper(accessToken,
 	id, 
@@ -451,8 +500,8 @@ bool FloatingIPsManager::getFloatingIpInfoAsync(char * accessToken,
 
 bool FloatingIPsManager::getFloatingIpInfoSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getFloatingIpInfoHelper(accessToken,
 	id, 
@@ -900,21 +949,43 @@ bool FloatingIPsManager::getFloatingIpsWelcomeEmailSync(char * accessToken,
 static bool getNewFloatingIpProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -925,15 +996,15 @@ static bool getNewFloatingIpProcessor(MemoryStruct_s p_chunk, long code, char* e
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool getNewFloatingIpHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -1003,8 +1074,8 @@ static bool getNewFloatingIpHelper(char * accessToken,
 
 bool FloatingIPsManager::getNewFloatingIpAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getNewFloatingIpHelper(accessToken,
 	
@@ -1013,8 +1084,8 @@ bool FloatingIPsManager::getNewFloatingIpAsync(char * accessToken,
 
 bool FloatingIPsManager::getNewFloatingIpSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return getNewFloatingIpHelper(accessToken,
 	
@@ -1306,21 +1377,48 @@ bool FloatingIPsManager::putFloatingIpsSync(char * accessToken,
 static bool updateFloatingIpInfoProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	SuccessTextResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -1331,15 +1429,15 @@ static bool updateFloatingIpInfoProcessor(MemoryStruct_s p_chunk, long code, cha
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool updateFloatingIpInfoHelper(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -1415,8 +1513,8 @@ static bool updateFloatingIpInfoHelper(char * accessToken,
 
 bool FloatingIPsManager::updateFloatingIpInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateFloatingIpInfoHelper(accessToken,
 	id, 
@@ -1425,8 +1523,8 @@ bool FloatingIPsManager::updateFloatingIpInfoAsync(char * accessToken,
 
 bool FloatingIPsManager::updateFloatingIpInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateFloatingIpInfoHelper(accessToken,
 	id, 

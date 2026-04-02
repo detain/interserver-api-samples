@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\DNSApi
 
-DNS related items
+Manage DNS domains and records hosted on InterServer&#39;s nameservers. Create domains, add/update/delete A, AAAA, CNAME, MX, TXT, and other record types.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -18,7 +18,7 @@ All URIs are relative to https://my.interserver.net/apiv2, except if the operati
 ## `addDnsDomain()`
 
 ```php
-addDnsDomain($domain, $ip)
+addDnsDomain($domain, $ip): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Create DNS Domain
@@ -58,7 +58,8 @@ $domain = 'domain_example'; // string | The domain name.
 $ip = 'ip_example'; // string | IP Address to point the domain to.
 
 try {
-    $apiInstance->addDnsDomain($domain, $ip);
+    $result = $apiInstance->addDnsDomain($domain, $ip);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->addDnsDomain: ', $e->getMessage(), PHP_EOL;
 }
@@ -73,7 +74,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -172,7 +173,7 @@ void (empty response body)
 ## `deleteDnsDomain()`
 
 ```php
-deleteDnsDomain($id)
+deleteDnsDomain($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Delete DNS Domain
@@ -211,7 +212,8 @@ $apiInstance = new Interserver\MyAdmin\Api\DNSApi(
 $id = 'id_example'; // string | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 
 try {
-    $apiInstance->deleteDnsDomain($id);
+    $result = $apiInstance->deleteDnsDomain($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->deleteDnsDomain: ', $e->getMessage(), PHP_EOL;
 }
@@ -225,7 +227,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -243,7 +245,7 @@ void (empty response body)
 ## `deleteDnsRecord()`
 
 ```php
-deleteDnsRecord($domainId, $recordId)
+deleteDnsRecord($domainId, $recordId): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Delete DNS Record
@@ -283,7 +285,8 @@ $domainId = 56; // int | The DNS domain ID. Use the `id` from `GET /dns` to iden
 $recordId = 56; // int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 try {
-    $apiInstance->deleteDnsRecord($domainId, $recordId);
+    $result = $apiInstance->deleteDnsRecord($domainId, $recordId);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->deleteDnsRecord: ', $e->getMessage(), PHP_EOL;
 }
@@ -298,7 +301,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -457,7 +460,7 @@ This endpoint does not need any parameter.
 ## `updateDnsRecord()`
 
 ```php
-updateDnsRecord($domainId, $recordId, $name, $type, $content, $ttl, $prio, $disabled, $ordername, $auth)
+updateDnsRecord($domainId, $recordId, $name, $type, $content, $ttl, $prio, $disabled, $ordername, $auth): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update DNS Record
@@ -505,7 +508,8 @@ $ordername = 'ordername_example'; // string
 $auth = 'auth_example'; // string
 
 try {
-    $apiInstance->updateDnsRecord($domainId, $recordId, $name, $type, $content, $ttl, $prio, $disabled, $ordername, $auth);
+    $result = $apiInstance->updateDnsRecord($domainId, $recordId, $name, $type, $content, $ttl, $prio, $disabled, $ordername, $auth);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DNSApi->updateDnsRecord: ', $e->getMessage(), PHP_EOL;
 }
@@ -528,7 +532,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

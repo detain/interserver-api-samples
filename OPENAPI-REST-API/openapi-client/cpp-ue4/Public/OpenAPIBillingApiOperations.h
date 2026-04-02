@@ -136,7 +136,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    FString Content;
 };
 
 /* Delete Credit Card
@@ -376,7 +376,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    TSharedPtr<FJsonObject> Content;
 };
 
 /* Get Credit Card Verification Requirements
@@ -472,7 +472,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    TSharedPtr<FJsonObject> Content;
 };
 
 /* Get Invoices
@@ -594,7 +594,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    FString Content;
 };
 
 /* Configure Affiliate Dock Settings

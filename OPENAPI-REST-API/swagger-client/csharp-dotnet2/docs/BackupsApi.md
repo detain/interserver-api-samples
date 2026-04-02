@@ -613,7 +613,7 @@ This endpoint does not need any parameter.
 
 <a name="updatebackupinfo"></a>
 # **UpdateBackupInfo**
-> void UpdateBackupInfo (int? id)
+> SuccessTextResponse UpdateBackupInfo (int? id)
 
 Update Backup Information
 
@@ -653,7 +653,8 @@ namespace Example
             try
             {
                 // Update Backup Information
-                apiInstance.UpdateBackupInfo(id);
+                SuccessTextResponse result = apiInstance.UpdateBackupInfo(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -672,7 +673,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -213,7 +213,7 @@ def update_account_info(name, company, address, address2, city, state, zip, coun
     :param gstin: 
     :type gstin: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'
 
@@ -226,7 +226,7 @@ def update_account_info(body):  # noqa: E501
     :param body: 
     :type body: dict | bytes
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     if connexion.request.is_json:
         body = AccountInfoPost.from_dict(connexion.request.get_json())  # noqa: E501
@@ -243,7 +243,7 @@ def update_account_ip_limits(start, end):  # noqa: E501
     :param end: 
     :type end: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'
 
@@ -256,7 +256,7 @@ def update_account_ip_limits(body):  # noqa: E501
     :param body: The lower and upper bounds of an ip range.
     :type body: dict | bytes
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     if connexion.request.is_json:
         body = IpLimitRange.from_dict(connexion.request.get_json())  # noqa: E501

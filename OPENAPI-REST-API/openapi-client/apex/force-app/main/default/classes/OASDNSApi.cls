@@ -30,9 +30,10 @@ public class OASDNSApi {
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer\&#39;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param domain The domain name. (required)
      * @param ip IP Address to point the domain to. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void addDnsDomain(Map<String, Object> params) {
+    public OASSuccessTextResponse addDnsDomain(Map<String, Object> params) {
         client.assertNotNull(params.get('domain'), 'domain');
         client.assertNotNull(params.get('ip'), 'ip');
         List<OAS.Param> query = new List<OAS.Param>();
@@ -42,7 +43,7 @@ public class OASDNSApi {
         form.addAll(client.makeParam('domain', (String) params.get('domain')));
         form.addAll(client.makeParam('ip', (String) params.get('ip')));
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/dns', '',
             query, form,
             new Map<String, Object>(),
@@ -50,7 +51,7 @@ public class OASDNSApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'multipart/form-data', 'application/json' },
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
     /**
@@ -96,14 +97,15 @@ public class OASDNSApi {
      * Delete DNS Domain
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void deleteDnsDomain(Map<String, Object> params) {
+    public OASSuccessTextResponse deleteDnsDomain(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'DELETE', '/dns/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -113,7 +115,7 @@ public class OASDNSApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
     /**
@@ -121,15 +123,16 @@ public class OASDNSApi {
      * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void deleteDnsRecord(Map<String, Object> params) {
+    public OASSuccessTextResponse deleteDnsRecord(Map<String, Object> params) {
         client.assertNotNull(params.get('domainId'), 'domainId');
         client.assertNotNull(params.get('recordId'), 'recordId');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'DELETE', '/dns/{domainId}/{recordId}', '',
             query, form,
             new Map<String, Object>{
@@ -140,7 +143,7 @@ public class OASDNSApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
     /**
@@ -202,9 +205,10 @@ public class OASDNSApi {
      * @param disabled  (optional)
      * @param ordername  (optional)
      * @param auth  (optional)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateDnsRecord(Map<String, Object> params) {
+    public OASSuccessTextResponse updateDnsRecord(Map<String, Object> params) {
         client.assertNotNull(params.get('domainId'), 'domainId');
         client.assertNotNull(params.get('recordId'), 'recordId');
         List<OAS.Param> query = new List<OAS.Param>();
@@ -220,7 +224,7 @@ public class OASDNSApi {
         form.addAll(client.makeParam('ordername', (String) params.get('ordername')));
         form.addAll(client.makeParam('auth', (String) params.get('auth')));
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/dns/{domainId}/{recordId}', '',
             query, form,
             new Map<String, Object>{
@@ -231,7 +235,7 @@ public class OASDNSApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'multipart/form-data', 'application/json' },
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
 }

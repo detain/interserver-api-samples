@@ -48,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * Create firewall rule for your ip
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-03-25T16:38:48.461562589-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-02T06:50:46.756935446-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 public class CreateFirewallRule {
   /**
    * 1 &#x3D; TCP, 2 &#x3D; UDP
@@ -172,7 +172,7 @@ public class CreateFirewallRule {
   public static final String SERIALIZED_NAME_SOURCE_IP = "source_ip";
   @SerializedName(SERIALIZED_NAME_SOURCE_IP)
   @javax.annotation.Nullable
-  private String sourceIp = "0";
+  private String sourceIp = "0.0.0.0";
 
   public static final String SERIALIZED_NAME_SOURCE_PORT = "source_port";
   @SerializedName(SERIALIZED_NAME_SOURCE_PORT)
@@ -245,7 +245,7 @@ public class CreateFirewallRule {
   }
 
   /**
-   * Get sourceIp
+   * Source IP address to match. Use &#39;0.0.0.0&#39; to match any source.
    * @return sourceIp
    */
   @javax.annotation.Nullable

@@ -19,15 +19,15 @@ module OpenAPIClient
     end
     # Place Website Order
     # Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_website()
-      add_website_with_http_info()
-      nil
+      data, _status_code, _headers = add_website_with_http_info()
+      data
     end
 
     # Place Website Order
     # Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_website_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: WebhostingApi.add_website ..."}
@@ -71,7 +71,7 @@ module OpenAPIClient
         Log.debug {"API called: WebhostingApi#add_website\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return ServiceOrderPostResponse.from_json(data), status_code, headers
     end
 
     # Website Ordering Information
@@ -902,16 +902,16 @@ module OpenAPIClient
     # Update Website Order
     # Updates settings on a webhosting order.
     # @param id [String] The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_website_info(id : String)
-      update_website_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_website_info_with_http_info(id)
+      data
     end
 
     # Update Website Order
     # Updates settings on a webhosting order.
     # @param id [String] The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_website_info_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: WebhostingApi.update_website_info ..."}
@@ -959,7 +959,7 @@ module OpenAPIClient
         Log.debug {"API called: WebhostingApi#update_website_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # Cancel Website

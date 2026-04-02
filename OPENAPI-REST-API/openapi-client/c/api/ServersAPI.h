@@ -5,6 +5,7 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
+#include "../model/add_server_200_response.h"
 #include "../model/buy_it_now_list.h"
 #include "../model/buy_it_now_server_order_200_response.h"
 #include "../model/charge_invoice_rows.h"
@@ -29,7 +30,7 @@ typedef enum  { interserver_management_api_serverIpmiPowerPost_ACTION_NULL = 0, 
 //
 // Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
 //
-void
+add_server_200_response_t*
 ServersAPI_addServer(apiClient_t *apiClient);
 
 
@@ -165,7 +166,7 @@ ServersAPI_serversCancel(apiClient_t *apiClient, int *id);
 //
 // Updates settings on a dedicated server order.
 //
-void
+success_text_response_t*
 ServersAPI_updateServerInfo(apiClient_t *apiClient, char *id);
 
 

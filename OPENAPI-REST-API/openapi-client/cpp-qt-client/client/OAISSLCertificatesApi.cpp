@@ -275,13 +275,14 @@ void OAISSLCertificatesApi::addSslCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIServiceOrderPostResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addSslSignal();
-        Q_EMIT addSslSignalFull(worker);
+        Q_EMIT addSslSignal(output);
+        Q_EMIT addSslSignalFull(worker, output);
     } else {
-        Q_EMIT addSslSignalError(error_type, error_str);
+        Q_EMIT addSslSignalError(output, error_type, error_str);
         Q_EMIT addSslSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -326,13 +327,14 @@ void OAISSLCertificatesApi::getNewSslCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIObject output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getNewSslSignal();
-        Q_EMIT getNewSslSignalFull(worker);
+        Q_EMIT getNewSslSignal(output);
+        Q_EMIT getNewSslSignalFull(worker, output);
     } else {
-        Q_EMIT getNewSslSignalError(error_type, error_str);
+        Q_EMIT getNewSslSignalError(output, error_type, error_str);
         Q_EMIT getNewSslSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -391,13 +393,14 @@ void OAISSLCertificatesApi::getSslInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIObject output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getSslInfoSignal();
-        Q_EMIT getSslInfoSignalFull(worker);
+        Q_EMIT getSslInfoSignal(output);
+        Q_EMIT getSslInfoSignalFull(worker, output);
     } else {
-        Q_EMIT getSslInfoSignalError(error_type, error_str);
+        Q_EMIT getSslInfoSignalError(output, error_type, error_str);
         Q_EMIT getSslInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -756,13 +759,14 @@ void OAISSLCertificatesApi::updateSslInfoCallback(OAIHttpRequestWorker *worker) 
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateSslInfoSignal();
-        Q_EMIT updateSslInfoSignalFull(worker);
+        Q_EMIT updateSslInfoSignal(output);
+        Q_EMIT updateSslInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateSslInfoSignalError(error_type, error_str);
+        Q_EMIT updateSslInfoSignalError(output, error_type, error_str);
         Q_EMIT updateSslInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

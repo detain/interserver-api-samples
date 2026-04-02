@@ -19,15 +19,15 @@ module OpenAPIClient
     end
     # Place Mail Order
     # Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_mail()
-      add_mail_with_http_info()
-      nil
+      data, _status_code, _headers = add_mail_with_http_info()
+      data
     end
 
     # Place Mail Order
     # Places a Mail Baby order. On success, invoices are created for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_mail_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: MailApi.add_mail ..."}
@@ -71,7 +71,7 @@ module OpenAPIClient
         Log.debug {"API called: MailApi#add_mail\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return ServiceOrderPostResponse.from_json(data), status_code, headers
     end
 
     # Create Deny Rule
@@ -1577,16 +1577,16 @@ module OpenAPIClient
     # Update Mail Order
     # Updates mail service metadata for the order, such as stored settings or account details.
     # @param id [String] The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_mail_info(id : String)
-      update_mail_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_mail_info_with_http_info(id)
+      data
     end
 
     # Update Mail Order
     # Updates mail service metadata for the order, such as stored settings or account details.
     # @param id [String] The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_mail_info_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: MailApi.update_mail_info ..."}
@@ -1634,7 +1634,7 @@ module OpenAPIClient
         Log.debug {"API called: MailApi#update_mail_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # View Mail Log

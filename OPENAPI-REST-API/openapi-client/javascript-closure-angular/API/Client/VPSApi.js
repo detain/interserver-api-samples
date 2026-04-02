@@ -20,6 +20,7 @@ goog.require('API.Client.DownloadQsBackupRequest');
 goog.require('API.Client.QueueResponse');
 goog.require('API.Client.RestoreRequest');
 goog.require('API.Client.ReverseDnsEntries');
+goog.require('API.Client.ServiceOrderPostResponse');
 goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.TextResponse');
 goog.require('API.Client.VPSCancel_200_response');
@@ -68,7 +69,7 @@ API.Client.VPSApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
  * @param {!VpsOrderPostRequest=} opt_vpsOrderPostRequest 
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.ServiceOrderPostResponse>}
  */
 API.Client.VPSApi.prototype.addVps = function(opt_vpsOrderPostRequest, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -1724,7 +1725,7 @@ API.Client.VPSApi.prototype.putVps = function(opt_vpsOrderPutRequest, opt_extraH
  * Updates settings on a VPS order.
  * @param {!string} id VPS ID number.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.VPSApi.prototype.updateVpsInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

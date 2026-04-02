@@ -9,16 +9,15 @@ import Foundation
 
 
 open class InlineResponse20024: JSONEncodable {
-    public var message: String?
-    public var success: Bool?
+    /** A map of IP addresses to their current reverse DNS hostnames. */
+    public var ips: [String:String]?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["message"] = self.message
-        nillableDictionary["success"] = self.success
+        nillableDictionary["ips"] = self.ips?.encodeToJSON()
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

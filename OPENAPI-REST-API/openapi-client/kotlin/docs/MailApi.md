@@ -34,7 +34,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addMail"></a>
 # **addMail**
-> addMail()
+> ServiceOrderPostResponse addMail()
 
 Place Mail Order
 
@@ -48,7 +48,8 @@ Places a Mail Baby order. On success, invoices are created for payment; use &#x6
 
 val apiInstance = MailApi()
 try {
-    apiInstance.addMail()
+    val result : ServiceOrderPostResponse = apiInstance.addMail()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling MailApi#addMail")
     e.printStackTrace()
@@ -63,7 +64,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1360,7 +1361,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateMailInfo"></a>
 # **updateMailInfo**
-> updateMailInfo(id)
+> SuccessTextResponse updateMailInfo(id)
 
 Update Mail Order
 
@@ -1375,7 +1376,8 @@ Updates mail service metadata for the order, such as stored settings or account 
 val apiInstance = MailApi()
 val id : kotlin.String = id_example // kotlin.String | The mail service ID. Use `mail_id` from `GET /mail`.
 try {
-    apiInstance.updateMailInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateMailInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling MailApi#updateMailInfo")
     e.printStackTrace()
@@ -1392,7 +1394,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1435,14 +1437,14 @@ val from : kotlin.String = me@sender.com // kotlin.String | Filter by SMTP envel
 val to : kotlin.String = you@receiver.com // kotlin.String | Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
 val subject : kotlin.String = Your order has shipped // kotlin.String | Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
 val mailid : kotlin.String = 185997065c60008840 // kotlin.String | Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
-val messageId : kotlin.String = <abc123@yourdomain.com> // kotlin.String | Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+val messageId : kotlin.String = <abc123@yourdomain.com> // kotlin.String | Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
 val replyto : kotlin.String = replies@sender.com // kotlin.String | Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
 val headerfrom : kotlin.String = newsletter@sender.com // kotlin.String | Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
 val delivered : kotlin.Int = 1 // kotlin.Int | Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
 val skip : kotlin.Int = 0 // kotlin.Int | Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
 val limit : kotlin.Int = 100 // kotlin.Int | Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
 val startDate : ViewMailLogStartDateParameter = 1641781008 // ViewMailLogStartDateParameter | Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
-val endDate : ViewMailLogStartDateParameter = 1673317008 // ViewMailLogStartDateParameter | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+val endDate : ViewMailLogStartDateParameter = 1673317008 // ViewMailLogStartDateParameter | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
 val sort : kotlin.String = time // kotlin.String | Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
 val dir : kotlin.String = desc // kotlin.String | Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
 val groupby : kotlin.String = recipient // kotlin.String | Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.
@@ -1467,14 +1469,14 @@ try {
 | **to** | **kotlin.String**| Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved. | [optional] |
 | **subject** | **kotlin.String**| Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response. | [optional] |
 | **mailid** | **kotlin.String**| Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;. | [optional] |
-| **messageId** | **kotlin.String**| Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;. | [optional] |
+| **messageId** | **kotlin.String**| Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;. | [optional] |
 | **replyto** | **kotlin.String**| Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set. | [optional] |
 | **headerfrom** | **kotlin.String**| Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address. | [optional] |
 | **delivered** | **kotlin.Int**| Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status. | [optional] [enum: 0, 1] |
 | **skip** | **kotlin.Int**| Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip). | [optional] [default to 0] |
 | **limit** | **kotlin.Int**| Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages. | [optional] [default to 100] |
 | **startDate** | [**ViewMailLogStartDateParameter**](.md)| Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included. | [optional] |
-| **endDate** | [**ViewMailLogStartDateParameter**](.md)| Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included. | [optional] |
+| **endDate** | [**ViewMailLogStartDateParameter**](.md)| Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included. | [optional] |
 | **sort** | **kotlin.String**| Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order). | [optional] [default to Sort.time] [enum: time] |
 | **dir** | **kotlin.String**| Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first. | [optional] [default to Dir.desc] [enum: asc, desc] |
 | Name | Type | Description  | Notes |

@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**webhostingCancel**](WebhostingApi.md#webhostingcancel) | **DELETE** /websites/{id} | Cancel Website
 
 # **addWebsite**
-> addWebsite()
+> \Interserver\MyAdmin\Model\ServiceOrderPostResponse addWebsite()
 
 Place Website Order
 
@@ -51,7 +51,8 @@ $apiInstance = new Interserver\MyAdmin\Api\WebhostingApi(
 );
 
 try {
-    $apiInstance->addWebsite();
+    $result = $apiInstance->addWebsite();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhostingApi->addWebsite: ', $e->getMessage(), PHP_EOL;
 }
@@ -63,7 +64,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -133,7 +134,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getWebsiteBuyIp**
-> \Interserver\MyAdmin\Model\InlineResponse20023 getWebsiteBuyIp($id)
+> \Interserver\MyAdmin\Model\InlineResponse20024 getWebsiteBuyIp($id)
 
 Get Website IP Information
 
@@ -179,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20023**](../Model/InlineResponse20023.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20024**](../Model/InlineResponse20024.md)
 
 ### Authorization
 
@@ -609,7 +610,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postWebsiteBuyIp**
-> \Interserver\MyAdmin\Model\InlineResponse20024 postWebsiteBuyIp($body, $id)
+> \Interserver\MyAdmin\Model\InlineResponse20025 postWebsiteBuyIp($body, $id)
 
 Update Website IP DNS
 
@@ -657,7 +658,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20024**](../Model/InlineResponse20024.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20025**](../Model/InlineResponse20025.md)
 
 ### Authorization
 
@@ -671,7 +672,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postWebsiteBuyIp**
-> \Interserver\MyAdmin\Model\InlineResponse20024 postWebsiteBuyIp($ips, $id)
+> \Interserver\MyAdmin\Model\InlineResponse20025 postWebsiteBuyIp($ips, $id)
 
 Update Website IP DNS
 
@@ -719,7 +720,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20024**](../Model/InlineResponse20024.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20025**](../Model/InlineResponse20025.md)
 
 ### Authorization
 
@@ -733,7 +734,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postWebsiteMigration**
-> \Interserver\MyAdmin\Model\InlineResponse20025 postWebsiteMigration($body, $id)
+> \Interserver\MyAdmin\Model\InlineResponse20026 postWebsiteMigration($body, $id)
 
 Request Website Migration
 
@@ -781,7 +782,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20025**](../Model/InlineResponse20025.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20026**](../Model/InlineResponse20026.md)
 
 ### Authorization
 
@@ -795,7 +796,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postWebsiteMigration**
-> \Interserver\MyAdmin\Model\InlineResponse20025 postWebsiteMigration($custPortal, $regEmail, $password, $ctrlPanel, $ftpUsername, $ftpPassword, $siteBusyMig, $splReqMig, $domainReg, $dataMig, $domainRegPortal, $domainRegEmail, $domainRegPassword, $id)
+> \Interserver\MyAdmin\Model\InlineResponse20026 postWebsiteMigration($custPortal, $regEmail, $password, $ctrlPanel, $ftpUsername, $ftpPassword, $siteBusyMig, $splReqMig, $domainReg, $dataMig, $domainRegPortal, $domainRegEmail, $domainRegPassword, $id)
 
 Request Website Migration
 
@@ -867,7 +868,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20025**](../Model/InlineResponse20025.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20026**](../Model/InlineResponse20026.md)
 
 ### Authorization
 
@@ -1060,7 +1061,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateWebsiteInfo**
-> updateWebsiteInfo($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateWebsiteInfo($id)
 
 Update Website Order
 
@@ -1090,7 +1091,8 @@ $apiInstance = new Interserver\MyAdmin\Api\WebhostingApi(
 $id = "id_example"; // string | The website service ID. Use `website_id` from `GET /websites`.
 
 try {
-    $apiInstance->updateWebsiteInfo($id);
+    $result = $apiInstance->updateWebsiteInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhostingApi->updateWebsiteInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -1105,7 +1107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1119,7 +1121,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **webhostingCancel**
-> \Interserver\MyAdmin\Model\InlineResponse20022 webhostingCancel($id)
+> \Interserver\MyAdmin\Model\InlineResponse20023 webhostingCancel($id)
 
 Cancel Website
 
@@ -1165,7 +1167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20022**](../Model/InlineResponse20022.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20023**](../Model/InlineResponse20023.md)
 
 ### Authorization
 

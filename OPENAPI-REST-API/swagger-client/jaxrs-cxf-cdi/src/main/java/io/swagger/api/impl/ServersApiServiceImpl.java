@@ -7,7 +7,8 @@ import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.InlineResponse20019;
-import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20027;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OrderBuyNowServerBody;
 import io.swagger.model.ReverseDnsEntries;

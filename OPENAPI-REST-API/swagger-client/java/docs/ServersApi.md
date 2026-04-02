@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="addServer"></a>
 # **addServer**
-> addServer()
+> InlineResponse20019 addServer()
 
 Place Server Order
 
@@ -62,7 +62,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 ServersApi apiInstance = new ServersApi();
 try {
-    apiInstance.addServer();
+    InlineResponse20019 result = apiInstance.addServer();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ServersApi#addServer");
     e.printStackTrace();
@@ -74,7 +75,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -87,7 +88,7 @@ null (empty response body)
 
 <a name="buyItNowServerOrder"></a>
 # **buyItNowServerOrder**
-> InlineResponse20026 buyItNowServerOrder()
+> InlineResponse20027 buyItNowServerOrder()
 
 Get Buy Now Server Options
 
@@ -124,7 +125,7 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 ServersApi apiInstance = new ServersApi();
 try {
-    InlineResponse20026 result = apiInstance.buyItNowServerOrder();
+    InlineResponse20027 result = apiInstance.buyItNowServerOrder();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ServersApi#buyItNowServerOrder");
@@ -137,7 +138,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -1288,7 +1289,7 @@ Name | Type | Description  | Notes
 
 <a name="serversCancel"></a>
 # **serversCancel**
-> InlineResponse20019 serversCancel(id)
+> InlineResponse20020 serversCancel(id)
 
 Cancel Server Service
 
@@ -1326,7 +1327,7 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 ServersApi apiInstance = new ServersApi();
 Integer id = 56; // Integer | Server ID number
 try {
-    InlineResponse20019 result = apiInstance.serversCancel(id);
+    InlineResponse20020 result = apiInstance.serversCancel(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ServersApi#serversCancel");
@@ -1342,7 +1343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -1355,7 +1356,7 @@ Name | Type | Description  | Notes
 
 <a name="updateServerInfo"></a>
 # **updateServerInfo**
-> updateServerInfo(id)
+> SuccessTextResponse updateServerInfo(id)
 
 Update Server Order
 
@@ -1393,7 +1394,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 ServersApi apiInstance = new ServersApi();
 String id = "id_example"; // String | Server ID number.
 try {
-    apiInstance.updateServerInfo(id);
+    SuccessTextResponse result = apiInstance.updateServerInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ServersApi#updateServerInfo");
     e.printStackTrace();
@@ -1408,7 +1410,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

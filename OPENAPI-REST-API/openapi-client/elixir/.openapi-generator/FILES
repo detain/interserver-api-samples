@@ -41,6 +41,7 @@ lib/inter_server_management_api/model/account_info_oauth_config_providers_value.
 lib/inter_server_management_api/model/account_info_oauthproviders.ex
 lib/inter_server_management_api/model/account_info_post.ex
 lib/inter_server_management_api/model/account_ssh_key.ex
+lib/inter_server_management_api/model/add_server_200_response.ex
 lib/inter_server_management_api/model/affiliate_banner_row.ex
 lib/inter_server_management_api/model/affiliate_dock_setup.ex
 lib/inter_server_management_api/model/affiliate_payment_setup.ex
@@ -373,6 +374,7 @@ lib/inter_server_management_api/model/servers_cancel_200_response.ex
 lib/inter_server_management_api/model/service.ex
 lib/inter_server_management_api/model/service_categories.ex
 lib/inter_server_management_api/model/service_category.ex
+lib/inter_server_management_api/model/service_order_post_response.ex
 lib/inter_server_management_api/model/service_type.ex
 lib/inter_server_management_api/model/service_types.ex
 lib/inter_server_management_api/model/services.ex

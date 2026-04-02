@@ -212,8 +212,8 @@ Q_SIGNALS:
     void logoutAccountOauthSignal(OAISuccessTextResponse summary);
     void updateAccountApiKeySignal(OAISuccessTextResponse summary);
     void updateAccountFeaturesSignal(OAISuccessTextResponse summary);
-    void updateAccountInfoSignal();
-    void updateAccountIpLimitsSignal();
+    void updateAccountInfoSignal(OAISuccessTextResponse summary);
+    void updateAccountIpLimitsSignal(OAISuccessTextResponse summary);
     void updateAccountPasswordSignal(OAITextResponse summary);
     void updateAccountSshKeySignal(OAISuccessTextResponse summary);
     void updateAccountTfaSignal(OAISuccessTextResponse summary);
@@ -231,8 +231,8 @@ Q_SIGNALS:
     void logoutAccountOauthSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateAccountApiKeySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateAccountFeaturesSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
-    void updateAccountInfoSignalFull(OAIHttpRequestWorker *worker);
-    void updateAccountIpLimitsSignalFull(OAIHttpRequestWorker *worker);
+    void updateAccountInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
+    void updateAccountIpLimitsSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateAccountPasswordSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void updateAccountSshKeySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateAccountTfaSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
@@ -249,8 +249,8 @@ Q_SIGNALS:
     void logoutAccountOauthSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAccountApiKeySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAccountFeaturesSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateAccountInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateAccountIpLimitsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateAccountInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateAccountIpLimitsSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAccountPasswordSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAccountSshKeySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAccountTfaSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);

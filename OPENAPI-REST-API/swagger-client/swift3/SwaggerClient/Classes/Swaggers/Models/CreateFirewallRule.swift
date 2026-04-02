@@ -19,6 +19,7 @@ open class CreateFirewallRule: JSONEncodable {
         case _1 = 1
     }
     public var destinationPort: Int32?
+    /** Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source. */
     public var sourceIp: String?
     public var sourcePort: Int32?
     /** 1 &#x3D; TCP, 2 &#x3D; UDP */

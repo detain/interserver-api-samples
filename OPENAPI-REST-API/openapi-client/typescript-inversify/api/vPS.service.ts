@@ -27,6 +27,7 @@ import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
 import { QueueResponse } from '../model/queueResponse';
 import { RestoreRequest } from '../model/restoreRequest';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 import { VPSCancel200Response } from '../model/vPSCancel200Response';
@@ -60,8 +61,8 @@ export class VPSService {
      * @param vpsOrderPostRequest 
      
      */
-    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, observe?: 'body', headers?: Headers): Observable<any>;
-    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, observe?: 'body', headers?: Headers): Observable<ServiceOrderPostResponse>;
+    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, observe?: 'response', headers?: Headers): Observable<HttpResponse<ServiceOrderPostResponse>>;
     public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -75,10 +76,10 @@ export class VPSService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/vps/order`, vpsOrderPostRequest , headers);
+        const response: Observable<HttpResponse<ServiceOrderPostResponse>> = this.httpClient.post(`${this.basePath}/vps/order`, vpsOrderPostRequest , headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <ServiceOrderPostResponse>(httpResponse.response))
                );
         }
         return response;
@@ -1586,8 +1587,8 @@ export class VPSService {
      * @param id VPS ID number.
      
      */
-    public updateVpsInfo(id: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateVpsInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateVpsInfo(id: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateVpsInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateVpsInfo(id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateVpsInfo.');
@@ -1604,10 +1605,10 @@ export class VPSService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/vps/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/vps/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

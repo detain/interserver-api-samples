@@ -6,11 +6,20 @@
  * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
  *
  * body DnsNewDomain 
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.addDnsDomain = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -20,11 +29,20 @@ exports.addDnsDomain = function(body) {
  * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
  *
  * body DnsNewDomain 
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.addDnsDomain = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -64,11 +82,20 @@ exports.addDnsRecord = function(body,id) {
  * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
  *
  * id String The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.deleteDnsDomain = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -79,11 +106,20 @@ exports.deleteDnsDomain = function(id) {
  *
  * domainId Integer The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
  * recordId Integer The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.deleteDnsRecord = function(domainId,recordId) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -164,11 +200,20 @@ exports.getDnsList = function() {
  * body DnsUpdateRecord The request data to update a dns record.
  * domainId Integer The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
  * recordId Integer The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateDnsRecord = function(body,domainId,recordId) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -180,11 +225,20 @@ exports.updateDnsRecord = function(body,domainId,recordId) {
  * body DnsUpdateRecord The request data to update a dns record.
  * domainId Integer The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
  * recordId Integer The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateDnsRecord = function(body,domainId,recordId) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

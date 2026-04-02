@@ -26,6 +26,7 @@ import io.swagger.client.model.DomainOrder
 import io.swagger.client.model.DomainRow
 import io.swagger.client.model.DomainSearchResponse
 import io.swagger.client.model.DomainWhoisPrivacyRequest
+import io.swagger.client.model.ServiceOrderPostResponse
 import io.swagger.client.model.SuccessTextResponse
 import io.swagger.client.model.TextResponse
 import io.swagger.client.model.inline_response_200_2
@@ -98,9 +99,9 @@ class DomainsApi(
    * Place Domain Order
    * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
    *
-   * @return void
+   * @return ServiceOrderPostResponse
    */
-  def addDomain() = {
+  def addDomain(): Option[ServiceOrderPostResponse] = {
     val await = Try(Await.result(addDomainAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -112,9 +113,9 @@ class DomainsApi(
    * Place Domain Order asynchronously
    * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
    *
-   * @return Future(void)
+   * @return Future(ServiceOrderPostResponse)
    */
-  def addDomainAsync() = {
+  def addDomainAsync(): Future[ServiceOrderPostResponse] = {
       helper.addDomain()
   }
 
@@ -817,9 +818,9 @@ class DomainsApi(
    * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
    *
    * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateDomainInfo(id: String) = {
+  def updateDomainInfo(id: String): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateDomainInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -832,9 +833,9 @@ class DomainsApi(
    * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
    *
    * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateDomainInfoAsync(id: String) = {
+  def updateDomainInfoAsync(id: String): Future[SuccessTextResponse] = {
       helper.updateDomainInfo(id)
   }
 
@@ -932,7 +933,7 @@ class DomainsApi(
 
 class DomainsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def addDomain()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def addDomain()(implicit reader: ClientResponseReader[ServiceOrderPostResponse]): Future[ServiceOrderPostResponse] = {
     // create path and map variables
     val path = (addFmt("/domains/order"))
 
@@ -1423,7 +1424,7 @@ class DomainsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def updateDomainInfo(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateDomainInfo(id: String)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/domains/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

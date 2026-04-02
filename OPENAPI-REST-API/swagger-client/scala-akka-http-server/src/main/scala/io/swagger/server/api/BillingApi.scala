@@ -473,13 +473,13 @@ trait BillingApiService {
   def addBillingPrepay(body: BillingPrepayRequest, module: String, amount: String, automaticUse: String)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def deleteAccountCreditCard200(responseString: String): Route =
+    complete((200, responseString))
   def deleteAccountCreditCard401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def deleteAccountCreditCard0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Simple string response, DataType: String
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def deleteAccountCreditCard(id: String)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
@@ -583,13 +583,13 @@ trait BillingApiService {
   def getAffiliateWebTraffic()
       (implicit toEntityMarshallerAffiliateTrafficRowarray: ToEntityMarshaller[List[AffiliateTrafficRow]], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def getBillingCart200(responseObject: Object): Route =
+    complete((200, responseObject))
   def getBillingCart401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def getBillingCart0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Current shopping cart contents and available payment methods., DataType: Object
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def getBillingCart()
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
@@ -627,13 +627,13 @@ trait BillingApiService {
   def getBillingInvoices()
       (implicit toEntityMarshallerBillingInvoiceList: ToEntityMarshaller[BillingInvoiceList], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def getBillingPrePays200(responseObject: Object): Route =
+    complete((200, responseObject))
   def getBillingPrePays401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def getBillingPrePays0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Prepay balances and metadata., DataType: Object
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def getBillingPrePays()
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
@@ -677,13 +677,13 @@ trait BillingApiService {
   def postBillingCreditCardVerify(body: BillingVerifyCcRequest, idx: Int, ccCcv2: String, ccAmount1: String, ccAmount2: String, terms: Boolean, id: Int)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def updateAccountCreditCard200(responseString: String): Route =
+    complete((200, responseString))
   def updateAccountCreditCard401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def updateAccountCreditCard0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Simple string response, DataType: String
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def updateAccountCreditCard(id: Int)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route

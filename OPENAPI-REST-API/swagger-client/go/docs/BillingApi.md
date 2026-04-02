@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteAccountCreditCard**
-> DeleteAccountCreditCard(ctx, id)
+> string DeleteAccountCreditCard(ctx, id)
 Remove Credit Card
 
 Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -414,7 +414,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetBillingCart**
-> GetBillingCart(ctx, )
+> interface{} GetBillingCart(ctx, )
 Get Shopping Cart Contents
 
 Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
@@ -424,7 +424,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -518,7 +518,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetBillingPrePays**
-> GetBillingPrePays(ctx, )
+> interface{} GetBillingPrePays(ctx, )
 List Prepay Balances
 
 Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
@@ -528,7 +528,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**interface{}**](interface{}.md)
 
 ### Authorization
 
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateAccountCreditCard**
-> UpdateAccountCreditCard(ctx, id)
+> string UpdateAccountCreditCard(ctx, id)
 Update Credit Card
 
 Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 

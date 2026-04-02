@@ -39,6 +39,7 @@ docs/Model/AccountInfoOauthConfigProvidersValue.md
 docs/Model/AccountInfoOauthproviders.md
 docs/Model/AccountInfoPost.md
 docs/Model/AccountSshKey.md
+docs/Model/AddServer200Response.md
 docs/Model/AffiliateBannerRow.md
 docs/Model/AffiliateDockSetup.md
 docs/Model/AffiliatePaymentSetup.md
@@ -371,6 +372,7 @@ docs/Model/ServersCancel200Response.md
 docs/Model/Service.md
 docs/Model/ServiceCategories.md
 docs/Model/ServiceCategory.md
+docs/Model/ServiceOrderPostResponse.md
 docs/Model/ServiceType.md
 docs/Model/ServiceTypes.md
 docs/Model/Services.md
@@ -511,6 +513,7 @@ src/Model/AccountInfoOauthConfigProvidersValue.php
 src/Model/AccountInfoOauthproviders.php
 src/Model/AccountInfoPost.php
 src/Model/AccountSshKey.php
+src/Model/AddServer200Response.php
 src/Model/AffiliateBannerRow.php
 src/Model/AffiliateDockSetup.php
 src/Model/AffiliatePaymentSetup.php
@@ -844,6 +847,7 @@ src/Model/ServersCancel200Response.php
 src/Model/Service.php
 src/Model/ServiceCategories.php
 src/Model/ServiceCategory.php
+src/Model/ServiceOrderPostResponse.php
 src/Model/ServiceType.php
 src/Model/ServiceTypes.php
 src/Model/Services.php
@@ -979,6 +983,7 @@ test/Model/AccountInfoOauthprovidersTest.php
 test/Model/AccountInfoPostTest.php
 test/Model/AccountInfoTest.php
 test/Model/AccountSshKeyTest.php
+test/Model/AddServer200ResponseTest.php
 test/Model/AffiliateBannerRowTest.php
 test/Model/AffiliateDockSetupTest.php
 test/Model/AffiliatePaymentSetupTest.php
@@ -1310,6 +1315,7 @@ test/Model/ServersBuyNowResponseTest.php
 test/Model/ServersCancel200ResponseTest.php
 test/Model/ServiceCategoriesTest.php
 test/Model/ServiceCategoryTest.php
+test/Model/ServiceOrderPostResponseTest.php
 test/Model/ServiceTest.php
 test/Model/ServiceTypeTest.php
 test/Model/ServiceTypesTest.php

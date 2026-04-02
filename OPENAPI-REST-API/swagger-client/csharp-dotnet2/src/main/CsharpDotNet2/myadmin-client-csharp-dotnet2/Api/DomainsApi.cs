@@ -14,8 +14,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place Domain Order Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </summary>
-        /// <returns></returns>
-        void AddDomain ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddDomain ();
         /// <summary>
         /// Add Domain DNSSEC Records Adds DNSSEC DS records to the domain registration. Provide one or more DNSSEC record entries (algorithm, digest type, digest, key tag). Registrations must be active.
         /// </summary>
@@ -210,8 +210,8 @@ namespace IO.Swagger.Api
         /// Update Domain Order Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
         /// </summary>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns></returns>
-        void UpdateDomainInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateDomainInfo (string id);
         /// <summary>
         /// Replace Nameserver Set Replaces the full nameserver assignment for the domain with the provided list. This is the primary method for changing which authoritative nameservers the domain delegates to.
         /// </summary>
@@ -313,8 +313,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place Domain Order Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         /// </summary>
-        /// <returns></returns>
-        public void AddDomain ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddDomain ()
         {
     
             var path = "/domains/order";
@@ -338,7 +338,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddDomain: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (ServiceOrderPostResponse) ApiClient.Deserialize(response.Content, typeof(ServiceOrderPostResponse), response.Headers);
         }
     
         /// <summary>
@@ -1413,8 +1413,8 @@ if (lastName != null) formParams.Add("last_name", ApiClient.ParameterToString(la
         /// Update Domain Order Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
         /// </summary>
         /// <param name="id">The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateDomainInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateDomainInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateDomainInfo");
@@ -1441,7 +1441,7 @@ if (lastName != null) formParams.Add("last_name", ApiClient.ParameterToString(la
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateDomainInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
         /// <summary>

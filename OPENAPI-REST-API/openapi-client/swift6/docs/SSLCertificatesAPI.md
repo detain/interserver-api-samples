@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 # **addSsl**
 ```swift
-    open class func addSsl(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func addSsl(completion: @escaping (_ data: ServiceOrderPostResponse?, _ error: Error?) -> Void)
 ```
 
 Place SSL Cert Order
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Void (empty response body)
 
 # **getNewSsl**
 ```swift
-    open class func getNewSsl(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getNewSsl(completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
 ```
 
 SSL Cert Ordering Information
@@ -94,7 +94,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+**JSONValue**
 
 ### Authorization
 
@@ -109,7 +109,7 @@ Void (empty response body)
 
 # **getSslInfo**
 ```swift
-    open class func getSslInfo(id: Int, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func getSslInfo(id: Int, completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
 ```
 
 Get SSL Cert Info
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+**JSONValue**
 
 ### Authorization
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 
 # **updateSslInfo**
 ```swift
-    open class func updateSslInfo(id: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateSslInfo(id: String, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Update SSL Cert Order
@@ -436,7 +436,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

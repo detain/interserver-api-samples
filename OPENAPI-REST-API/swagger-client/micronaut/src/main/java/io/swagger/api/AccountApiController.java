@@ -58,7 +58,7 @@ public class AccountApiController implements AccountApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> deleteAccountCreditCard(String id) {
+    public Single<HttpResponse<String>> deleteAccountCreditCard(String id) {
         // TODO: Implement me
         return AccountApi.super.deleteAccountCreditCard(id);
     }
@@ -118,7 +118,7 @@ public class AccountApiController implements AccountApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateAccountCreditCard(Integer id) {
+    public Single<HttpResponse<String>> updateAccountCreditCard(Integer id) {
         // TODO: Implement me
         return AccountApi.super.updateAccountCreditCard(id);
     }
@@ -136,25 +136,25 @@ public class AccountApiController implements AccountApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateAccountInfo(@NotNull String name, @NotNull String company, @NotNull String address, @NotNull String address2, @NotNull String city, @NotNull String state, @NotNull String zip, @NotNull String country, @NotNull String phone, @NotNull String locale, @NotNull String emailInvoices, @NotNull String emailAbuse, @NotNull Boolean disableReset, @NotNull Boolean disableReinstall, @NotNull Boolean disableServerNotifications, @NotNull Boolean disableEmailNotifications, @NotNull String gstin) {
+    public Single<HttpResponse<SuccessTextResponse>> updateAccountInfo(@NotNull String name, @NotNull String company, @NotNull String address, @NotNull String address2, @NotNull String city, @NotNull String state, @NotNull String zip, @NotNull String country, @NotNull String phone, @NotNull String locale, @NotNull String emailInvoices, @NotNull String emailAbuse, @NotNull Boolean disableReset, @NotNull Boolean disableReinstall, @NotNull Boolean disableServerNotifications, @NotNull Boolean disableEmailNotifications, @NotNull String gstin) {
         // TODO: Implement me
         return AccountApi.super.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateAccountInfo(@NotNull @Valid AccountInfoPost body) {
+    public Single<HttpResponse<SuccessTextResponse>> updateAccountInfo(@NotNull @Valid AccountInfoPost body) {
         // TODO: Implement me
         return AccountApi.super.updateAccountInfo(body);
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateAccountIpLimits(@NotNull String start, @NotNull String end) {
+    public Single<HttpResponse<SuccessTextResponse>> updateAccountIpLimits(@NotNull String start, @NotNull String end) {
         // TODO: Implement me
         return AccountApi.super.updateAccountIpLimits(start, end);
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateAccountIpLimits(@NotNull @Valid IpLimitRange body) {
+    public Single<HttpResponse<SuccessTextResponse>> updateAccountIpLimits(@NotNull @Valid IpLimitRange body) {
         // TODO: Implement me
         return AccountApi.super.updateAccountIpLimits(body);
     }

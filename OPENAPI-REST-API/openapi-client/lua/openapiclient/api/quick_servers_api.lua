@@ -21,6 +21,7 @@ local openapiclient_queue_response = require "openapiclient.model.queue_response
 local openapiclient_quickserver = require "openapiclient.model.quickserver"
 local openapiclient_quickserver_order = require "openapiclient.model.quickserver_order"
 local openapiclient_quickserver_row = require "openapiclient.model.quickserver_row"
+local openapiclient_service_order_post_response = require "openapiclient.model.service_order_post_response"
 local openapiclient_success_text_response = require "openapiclient.model.success_text_response"
 local openapiclient_text_response = require "openapiclient.model.text_response"
 local openapiclient_vps_backup_rows = require "openapiclient.model.vps_backup_rows"
@@ -89,7 +90,18 @@ function quick_servers_api:add_qs()
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_service_order_post_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -2307,7 +2319,18 @@ function quick_servers_api:update_qs_info(id)
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_success_text_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then

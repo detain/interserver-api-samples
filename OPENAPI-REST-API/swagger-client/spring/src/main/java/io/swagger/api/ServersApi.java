@@ -7,7 +7,8 @@ package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.InlineResponse20019;
-import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20027;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OrderBuyNowServerBody;
 import io.swagger.model.ReverseDnsEntries;
@@ -56,13 +57,13 @@ public interface ServersApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Servers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "Server order placed successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20019.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/servers/order",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> addServer();
+    ResponseEntity<InlineResponse20019> addServer();
 
 
     @Operation(summary = "Get Buy Now Server Options", description = "Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.", security = {
@@ -70,13 +71,13 @@ public interface ServersApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Servers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Available server configurations with pricing and hardware options.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20026.class))),
+        @ApiResponse(responseCode = "200", description = "Available server configurations with pricing and hardware options.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20027.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/servers/order/buy_now_server",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<InlineResponse20026> buyItNowServerOrder();
+    ResponseEntity<InlineResponse20027> buyItNowServerOrder();
 
 
     @Operation(summary = "Server Ordering Information", description = "Retrieves available server configurations and pricing for ordering a new dedicated server.", security = {
@@ -170,7 +171,7 @@ public interface ServersApi {
     @Operation(summary = "Place Buy Now Server Order", description = "Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server` to retrieve available server configurations and their IDs before ordering.", security = {
         @SecurityRequirement(name = "apiKeyAuth"),
 @SecurityRequirement(name = "sessionIdCookieAuth"),
-@SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "servers" })
+@SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Servers" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "Order placed successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServersBuyNowResponse.class))),
         
@@ -290,13 +291,13 @@ public interface ServersApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Servers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "Servers Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20019.class))),
+        @ApiResponse(responseCode = "200", description = "Servers Cancel", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse20020.class))),
         
         @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/servers/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<InlineResponse20019> serversCancel(@Parameter(in = ParameterIn.PATH, description = "Server ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    ResponseEntity<InlineResponse20020> serversCancel(@Parameter(in = ParameterIn.PATH, description = "Server ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
 );
 
 
@@ -305,13 +306,13 @@ public interface ServersApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Servers" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/servers/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> updateServerInfo(@Parameter(in = ParameterIn.PATH, description = "Server ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
+    ResponseEntity<SuccessTextResponse> updateServerInfo(@Parameter(in = ParameterIn.PATH, description = "Server ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
 );
 
 }

@@ -3,5 +3,4 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | [**kotlin.String**](.md) |  |  [optional]
-**success** | [**kotlin.Boolean**](.md) |  |  [optional]
+**ips** | [**kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt;**](.md) | A map of IP addresses to their current reverse DNS hostnames. |  [optional]

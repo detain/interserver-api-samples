@@ -10,7 +10,7 @@ class SSLCertificatesApi {
   /// Place SSL Cert Order
   ///
   /// Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
-  Future addSsl() async {
+  Future<ServiceOrderPostResponse> addSsl() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,15 +50,15 @@ class SSLCertificatesApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'ServiceOrderPostResponse') as ServiceOrderPostResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// SSL Cert Ordering Information
   ///
   /// Retrieves available SSL certificate types and pricing for ordering.
-  Future getNewSsl() async {
+  Future<Object> getNewSsl() async {
     Object postBody = null;
 
     // verify required params are set
@@ -98,15 +98,15 @@ class SSLCertificatesApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'Object') as Object ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get SSL Cert Info
   ///
   /// Returns detailed information about a specific SSL certificate including its domain and expiration.
-  Future getSslInfo(int id) async {
+  Future<Object> getSslInfo(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -149,9 +149,9 @@ class SSLCertificatesApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'Object') as Object ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get SSL Cert Invoices
@@ -355,7 +355,7 @@ class SSLCertificatesApi {
   /// Cancel SSL Certificate Service
   ///
   /// Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
-  Future<InlineResponse20020> sslCancel(int id) async {
+  Future<InlineResponse20021> sslCancel(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -398,7 +398,7 @@ class SSLCertificatesApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'InlineResponse20020') as InlineResponse20020 ;
+          apiClient.deserialize(response.body, 'InlineResponse20021') as InlineResponse20021 ;
     } else {
       return null;
     }
@@ -406,7 +406,7 @@ class SSLCertificatesApi {
   /// Update SSL Cert Order
   ///
   /// Updates settings on an SSL certificate order.
-  Future updateSslInfo(String id) async {
+  Future<SuccessTextResponse> updateSslInfo(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -449,9 +449,9 @@ class SSLCertificatesApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
 }

@@ -14,7 +14,7 @@ package org.openapitools.client.model
 
   /**
    * Root Type for ServerIpmiLiveInfo
-   * Information about the IPMI connectioj.
+   * Information about the IPMI connection.
    */
 case class ServerIpmiLiveInfo(
   text: Option[String] = None,

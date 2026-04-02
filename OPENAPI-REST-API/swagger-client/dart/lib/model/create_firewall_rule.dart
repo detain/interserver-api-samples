@@ -3,8 +3,8 @@ part of swagger.api;
 class CreateFirewallRule {
   
   int destinationPort = 80;
-
-  String sourceIp = "0";
+/* Source IP address to match. Use '0.0.0.0' to match any source. */
+  String sourceIp = "0.0.0.0";
 
   int sourcePort = 0;
 /* 1 = TCP, 2 = UDP */

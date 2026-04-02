@@ -5,7 +5,7 @@
  *
  *)
 
-val add_website : unit -> unit Lwt.t
+val add_website : unit -> Service_order_post_response.t Lwt.t
 val get_new_website : unit -> Websites_order.t Lwt.t
 val get_website_buy_ip : id:int32 -> Get_website_buy_ip_200_response.t Lwt.t
 val get_website_info : id:int32 -> Website.t Lwt.t
@@ -19,5 +19,5 @@ val post_website_buy_ip : id:int32 -> post_website_buy_ip_request_t:Post_website
 val post_website_migration : id:int32 -> post_website_migration_request_t:Post_website_migration_request.t -> Post_website_migration_200_response.t Lwt.t
 val post_websites_reverse_dns : id:int32 -> reverse_dns_entries_t:Reverse_dns_entries.t -> Text_response.t Lwt.t
 val put_websites : unit -> unit Lwt.t
-val update_website_info : id:string -> unit Lwt.t
+val update_website_info : id:string -> Success_text_response.t Lwt.t
 val webhosting_cancel : id:string -> Webhosting_cancel_200_response.t Lwt.t

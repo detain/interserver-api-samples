@@ -26,6 +26,7 @@ import {
   ReverseDnsEntries,
   BuyItNowServerOrder200Response,
   BuyItNowList,
+  AddServer200Response,
   ServerRow,
   ServerOrder,
 } from './models';
@@ -175,7 +176,7 @@ export class ServersApi extends Api {
    * Place Server Order
    * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
    */
-  async addServer(): Promise<any> {
+  async addServer(): Promise<AddServer200Response> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -743,7 +744,7 @@ export class ServersApi extends Api {
    * Updates settings on a dedicated server order.
    * @param params.id Server ID number.
    */
-  async updateServerInfo(params: IUpdateServerInfoParams): Promise<any> {
+  async updateServerInfo(params: IUpdateServerInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateServerInfo', params, 'id');
 

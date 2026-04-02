@@ -21,6 +21,7 @@ import org.openapitools.model.DnsListItem;
 import org.openapitools.model.DnsRecord;
 import org.openapitools.model.DnsRecordType;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.SuccessTextResponse;
 import javax.annotation.Generated;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface DnsApi {
     /**
@@ -38,11 +39,12 @@ public interface DnsApi {
      *
      * @param domain The domain name. (required)
      * @param ip IP Address to point the domain to. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/dns")
     @Consumes({"application/json"})
     @Produces({"multipart/form-data", "application/json"})
-    Mono<Void> addDnsDomain(
+    Mono<SuccessTextResponse> addDnsDomain(
         @NotNull String domain, 
         @NotNull String ip
     );
@@ -75,10 +77,11 @@ public interface DnsApi {
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      *
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
+     * @return SuccessTextResponse
      */
     @Delete(uri="/dns/{id}")
     @Consumes({"application/json"})
-    Mono<Void> deleteDnsDomain(
+    Mono<SuccessTextResponse> deleteDnsDomain(
         @PathVariable(name="id") @NotNull String id
     );
 
@@ -88,10 +91,11 @@ public interface DnsApi {
      *
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
+     * @return SuccessTextResponse
      */
     @Delete(uri="/dns/{domainId}/{recordId}")
     @Consumes({"application/json"})
-    Mono<Void> deleteDnsRecord(
+    Mono<SuccessTextResponse> deleteDnsRecord(
         @PathVariable(name="domainId") @NotNull Integer domainId, 
         @PathVariable(name="recordId") @NotNull Integer recordId
     );
@@ -133,11 +137,12 @@ public interface DnsApi {
      * @param disabled  (optional)
      * @param ordername  (optional)
      * @param auth  (optional)
+     * @return SuccessTextResponse
      */
     @Post(uri="/dns/{domainId}/{recordId}")
     @Consumes({"application/json"})
     @Produces({"multipart/form-data", "application/json"})
-    Mono<Void> updateDnsRecord(
+    Mono<SuccessTextResponse> updateDnsRecord(
         @PathVariable(name="domainId") @NotNull Integer domainId, 
         @PathVariable(name="recordId") @NotNull Integer recordId, 
         @Nullable String name, 

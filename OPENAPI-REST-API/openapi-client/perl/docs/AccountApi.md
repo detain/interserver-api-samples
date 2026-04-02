@@ -703,7 +703,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_info**
-> update_account_info(name => $name, address => $address, city => $city, state => $state, zip => $zip, country => $country, phone => $phone, company => $company, address2 => $address2, locale => $locale, email_invoices => $email_invoices, email_abuse => $email_abuse, disable_reset => $disable_reset, disable_reinstall => $disable_reinstall, disable_server_notifications => $disable_server_notifications, disable_email_notifications => $disable_email_notifications, gstin => $gstin)
+> SuccessTextResponse update_account_info(name => $name, address => $address, city => $city, state => $state, zip => $zip, country => $country, phone => $phone, company => $company, address2 => $address2, locale => $locale, email_invoices => $email_invoices, email_abuse => $email_abuse, disable_reset => $disable_reset, disable_reinstall => $disable_reinstall, disable_server_notifications => $disable_server_notifications, disable_email_notifications => $disable_email_notifications, gstin => $gstin)
 
 Update Account Information
 
@@ -748,7 +748,8 @@ my $disable_email_notifications = null; # boolean | Set to `true` to disable ema
 my $gstin = "gstin_example"; # string | Your GST identification number (if applicable).
 
 eval {
-    $api_instance->update_account_info(name => $name, address => $address, city => $city, state => $state, zip => $zip, country => $country, phone => $phone, company => $company, address2 => $address2, locale => $locale, email_invoices => $email_invoices, email_abuse => $email_abuse, disable_reset => $disable_reset, disable_reinstall => $disable_reinstall, disable_server_notifications => $disable_server_notifications, disable_email_notifications => $disable_email_notifications, gstin => $gstin);
+    my $result = $api_instance->update_account_info(name => $name, address => $address, city => $city, state => $state, zip => $zip, country => $country, phone => $phone, company => $company, address2 => $address2, locale => $locale, email_invoices => $email_invoices, email_abuse => $email_abuse, disable_reset => $disable_reset, disable_reinstall => $disable_reinstall, disable_server_notifications => $disable_server_notifications, disable_email_notifications => $disable_email_notifications, gstin => $gstin);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AccountApi->update_account_info: $@\n";
@@ -779,7 +780,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -793,7 +794,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_ip_limits**
-> update_account_ip_limits(start => $start, end => $end)
+> SuccessTextResponse update_account_ip_limits(start => $start, end => $end)
 
 Add IP Access Restriction
 
@@ -823,7 +824,8 @@ my $start = "start_example"; # string | The begining (or first) IP address in th
 my $end = "end_example"; # string | The ending (or last) IP address in the range.
 
 eval {
-    $api_instance->update_account_ip_limits(start => $start, end => $end);
+    my $result = $api_instance->update_account_ip_limits(start => $start, end => $end);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AccountApi->update_account_ip_limits: $@\n";
@@ -839,7 +841,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

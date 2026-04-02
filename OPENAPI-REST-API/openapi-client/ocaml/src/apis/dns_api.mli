@@ -5,10 +5,10 @@
  *
  *)
 
-val add_dns_domain : domain:string -> ip:string -> unit Lwt.t
+val add_dns_domain : domain:string -> ip:string -> Success_text_response.t Lwt.t
 val add_dns_record : id:string -> name:string -> _type:Enums.dnsrecordtype -> content:string -> ?ttl:int32 -> ?prio:int32 -> unit -> unit Lwt.t
-val delete_dns_domain : id:string -> unit Lwt.t
-val delete_dns_record : domain_id:int32 -> record_id:int32 -> unit Lwt.t
+val delete_dns_domain : id:string -> Success_text_response.t Lwt.t
+val delete_dns_record : domain_id:int32 -> record_id:int32 -> Success_text_response.t Lwt.t
 val get_dns_domain : id:int32 -> Dns_record.t list Lwt.t
 val get_dns_list : unit -> Dns_list_item.t list Lwt.t
-val update_dns_record : domain_id:int32 -> record_id:int32 -> ?name:string -> ?_type:Enums.dnsrecordtype -> ?content:string -> ?ttl:string -> ?prio:string -> ?disabled:string -> ?ordername:string -> ?auth:string -> unit -> unit Lwt.t
+val update_dns_record : domain_id:int32 -> record_id:int32 -> ?name:string -> ?_type:Enums.dnsrecordtype -> ?content:string -> ?ttl:string -> ?prio:string -> ?disabled:string -> ?ordername:string -> ?auth:string -> unit -> Success_text_response.t Lwt.t

@@ -17,7 +17,9 @@ local basexx = require "basexx"
 
 -- model import
 local openapiclient_charge_invoice_rows = require "openapiclient.model.charge_invoice_rows"
+local openapiclient_service_order_post_response = require "openapiclient.model.service_order_post_response"
 local openapiclient_success_text_response = require "openapiclient.model.success_text_response"
+local openapiclient_todo_object_mapping = require "openapiclient.model.todo_object_mapping"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
 local openapiclient_ssl_cancel_200_response = require "openapiclient.model.ssl_cancel_200_response"
 
@@ -78,7 +80,18 @@ function ssl_certificates_api:add_ssl()
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_service_order_post_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -121,7 +134,18 @@ function ssl_certificates_api:get_new_ssl()
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_TODO_OBJECT_MAPPING.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -164,7 +188,18 @@ function ssl_certificates_api:get_ssl_info(id)
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_TODO_OBJECT_MAPPING.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -455,7 +490,18 @@ function ssl_certificates_api:update_ssl_info(id)
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_success_text_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then

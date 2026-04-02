@@ -42,6 +42,7 @@ import org.openapitools.client.models.DomainRow
 import org.openapitools.client.models.DomainSearchResponse
 import org.openapitools.client.models.DomainWhoisPrivacyRequest
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 
@@ -53,7 +54,8 @@ class DomainsApiTest : ShouldSpec() {
         // to test addDomain
         should("test addDomain") {
             // uncomment below to test addDomain
-            //apiInstance.addDomain()
+            //val result : ServiceOrderPostResponse = apiInstance.addDomain()
+            //result shouldBe ("TODO")
         }
 
         // to test addDomainDnssec
@@ -258,7 +260,8 @@ class DomainsApiTest : ShouldSpec() {
         should("test updateDomainInfo") {
             // uncomment below to test updateDomainInfo
             //val id : kotlin.String = id_example // kotlin.String | The domain service ID. Use `domain_id` from `GET /domains`.
-            //apiInstance.updateDomainInfo(id)
+            //val result : SuccessTextResponse = apiInstance.updateDomainInfo(id)
+            //result shouldBe ("TODO")
         }
 
         // to test updateDomainNameservers

@@ -169,7 +169,7 @@ end:
 //
 // Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
 //
-void
+service_order_post_response_t*
 VPSAPI_addVps(apiClient_t *apiClient, vps_order_post_request_t *vps_order_post_request)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -214,15 +214,25 @@ VPSAPI_addVps(apiClient_t *apiClient, vps_order_post_request_t *vps_order_post_r
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    service_order_post_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *VPSAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = service_order_post_response_parseFromJSON(VPSAPIlocalVarJSON);
+        cJSON_Delete(VPSAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -239,6 +249,10 @@ end:
         localVarSingleItemJSON_vps_order_post_request = NULL;
     }
     free(localVarBodyParameters);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 
@@ -4072,7 +4086,7 @@ end:
 //
 // Updates settings on a VPS order.
 //
-void
+success_text_response_t*
 VPSAPI_updateVpsInfo(apiClient_t *apiClient, char *id)
 {
     list_t    *localVarQueryParameters = NULL;
@@ -4117,15 +4131,25 @@ VPSAPI_updateVpsInfo(apiClient_t *apiClient, char *id)
                     "POST");
 
     // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","Default response");
-    //}
-    //No return type
-end:
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *VPSAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(VPSAPIlocalVarJSON);
+        cJSON_Delete(VPSAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
         apiClient->dataReceived = NULL;
@@ -4138,6 +4162,10 @@ end:
     
     free(localVarPath);
     free(localVarToReplace_id);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
 
 }
 

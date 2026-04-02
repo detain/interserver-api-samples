@@ -111,14 +111,16 @@ package .Clients is
        Disable_Reinstall : in Swagger.Nullable_Boolean;
        Disable_Server_Notifications : in Swagger.Nullable_Boolean;
        Disable_Email_Notifications : in Swagger.Nullable_Boolean;
-       Gstin : in Swagger.Nullable_UString);
+       Gstin : in Swagger.Nullable_UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Add IP Access Restriction
    --  Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
    procedure Update_Account_Ip_Limits
       (Client : in out Client_Type;
        Start : in Swagger.UString;
-       P_End : in Swagger.UString);
+       P_End : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Change Account Password
    --  Changes the account login password. The current password must be provided for verification. After a successful change, existing API keys remain valid but active sessions may require re-authentication.
@@ -201,7 +203,8 @@ package .Clients is
    --  Updates backup storage service metadata, such as stored credentials or settings for the order.
    procedure Update_Backup_Info
       (Client : in out Client_Type;
-       Id : in Integer);
+       Id : in Integer;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Validate Backup Order
    --  Validates a backup storage order without placing it, returning calculated pricing and any validation errors. Use this to display a confirmation screen with the final price before submitting the order via `POST /backups/order`.
@@ -245,7 +248,8 @@ package .Clients is
    --  Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
    procedure Delete_Account_Credit_Card
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Delete Credit Card
    --  Removes the selected credit card from the account. Use `/billing/payment_method` to select a new default payment method after deleting a card.
@@ -309,7 +313,8 @@ package .Clients is
    --  Get Shopping Cart Contents
    --  Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
    procedure Get_Billing_Cart
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.Object);
 
    --  Get Credit Card Verification Requirements
    --  Retrieves the verification requirements for a newly added credit card. The response indicates whether the card requires micro-charge amount confirmation or CVV validation. Use this before presenting a verification form to the user.
@@ -334,7 +339,8 @@ package .Clients is
    --  List Prepay Balances
    --  Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
    procedure Get_Billing_Pre_Pays
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.Object);
 
    --  Get Invoices
    --  Returns a paginated list of invoices for the authenticated account. Each invoice includes the invoice number, date, total amount, and payment status. Use the optional `searchString` parameter to filter results and `skip`/`limit` for pagination.
@@ -365,7 +371,8 @@ package .Clients is
    --  Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
    procedure Update_Account_Credit_Card
       (Client : in out Client_Type;
-       Id : in Integer);
+       Id : in Integer;
+       Result : out Swagger.UString);
 
    --  Configure Affiliate Dock Settings
    --  Updates the affiliate dock settings including the referral coupon and marketing copy. The dock is the branded landing page shown to visitors arriving via your affiliate link. Use this to customize the coupon code and promotional text.
@@ -412,7 +419,8 @@ package .Clients is
    procedure Add_Dns_Domain
       (Client : in out Client_Type;
        Domain : in Swagger.UString;
-       Ip : in Swagger.UString);
+       Ip : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Add DNS Record to Domain
    --  Adds a new DNS record to the specified domain. Provide the record type (A, AAAA, CNAME, MX, TXT, etc.), name, content, TTL, and priority. The record takes effect on the DNS servers immediately. Use `GET /dns/{id}` afterward to confirm the record was created.
@@ -429,14 +437,16 @@ package .Clients is
    --  Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
    procedure Delete_Dns_Domain
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Delete DNS Record
    --  Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
    procedure Delete_Dns_Record
       (Client : in out Client_Type;
        Domain_Id : in Integer;
-       Record_Id : in Integer);
+       Record_Id : in Integer;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  List Domain DNS Records
    --  Returns the full set of DNS records for the specified domain, including NS, A, AAAA, CNAME, MX, TXT, and other record types. Use the record `id` values with `/dns/{domainId}/{recordId}` to update or delete individual records.
@@ -464,12 +474,14 @@ package .Clients is
        Prio : in Swagger.Nullable_UString;
        Disabled : in Swagger.Nullable_UString;
        Ordername : in Swagger.Nullable_UString;
-       Auth : in Swagger.Nullable_UString);
+       Auth : in Swagger.Nullable_UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Place Domain Order
    --  Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
    procedure Add_Domain
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type);
 
    --  Add Domain DNSSEC Records
    --  Adds DNSSEC DS records to the domain registration. Provide one or more DNSSEC record entries (algorithm, digest type, digest, key tag). Registrations must be active.
@@ -648,7 +660,8 @@ package .Clients is
    --  Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
    procedure Update_Domain_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Replace Nameserver Set
    --  Replaces the full nameserver assignment for the domain with the provided list. This is the primary method for changing which authoritative nameservers the domain delegates to.
@@ -669,7 +682,8 @@ package .Clients is
    --  Place Floating IP Order
    --  Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
    procedure Add_Floating_Ip
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type);
 
    --  Cancel Floating IP
    --  Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred.
@@ -682,7 +696,8 @@ package .Clients is
    --  Returns detailed information about a specific Floating IP service including its current target IP assignment.
    procedure Get_Floating_Ip_Info
       (Client : in out Client_Type;
-       Id : in Integer);
+       Id : in Integer;
+       Result : out Swagger.Object);
 
    --  Get Floating IP Invoices
    --  Returns the billing invoices associated with this Floating IP service.
@@ -706,7 +721,8 @@ package .Clients is
    --  Get Floating IP Ordering Information
    --  Retrieves available options and pricing for ordering a new Floating IP.
    procedure Get_New_Floating_Ip
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.Object);
 
    --  Change Floating IP Target
    --  Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes.
@@ -725,12 +741,14 @@ package .Clients is
    --  Updates settings on a Floating IP service, such as its label or configuration metadata.
    procedure Update_Floating_Ip_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Place License Order
    --  Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
    procedure Add_License
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type);
 
    --  Get License
    --  Returns detailed information about a specific license including its type, IP assignment, and status.
@@ -795,12 +813,14 @@ package .Clients is
    --  Updates settings on a license service such as its assigned IP.
    procedure Update_License_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Place Mail Order
    --  Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
    procedure Add_Mail
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type);
 
    --  Create Deny Rule
    --  Adds a new deny rule to automatically block emails that match the specified criteria.
@@ -973,7 +993,8 @@ package .Clients is
    --  Updates mail service metadata for the order, such as stored settings or account details.
    procedure Update_Mail_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  View Mail Log
    --  Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.
@@ -1101,7 +1122,8 @@ package .Clients is
    --  Place QuickServer Order
    --  Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
    procedure Add_Qs
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type);
 
    --  Delete QuickServer Backup
    --  Permanently removes the specified backup file from storage. Use `GET /qs/{id}/backups` to list available backup filenames before deleting.
@@ -1395,23 +1417,27 @@ package .Clients is
    --  Updates QuickServer metadata or stored settings associated with the order.
    procedure Update_Qs_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Place SSL Cert Order
    --  Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
    procedure Add_Ssl
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type);
 
    --  SSL Cert Ordering Information
    --  Retrieves available SSL certificate types and pricing for ordering.
    procedure Get_New_Ssl
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.Object);
 
    --  Get SSL Cert Info
    --  Returns detailed information about a specific SSL certificate including its domain and expiration.
    procedure Get_Ssl_Info
       (Client : in out Client_Type;
-       Id : in Integer);
+       Id : in Integer;
+       Result : out Swagger.Object);
 
    --  Get SSL Cert Invoices
    --  Returns the billing invoices associated with this SSL certificate.
@@ -1448,7 +1474,8 @@ package .Clients is
    --  Updates settings on an SSL certificate order.
    procedure Update_Ssl_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Cancel Scrub IP Service
    --  Cancels the Scrub IP DDoS protection service. The protection will be removed and billing will stop at the end of the current billing cycle.
@@ -1568,7 +1595,8 @@ package .Clients is
    --  Place Server Order
    --  Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
    procedure Add_Server
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out .Models.AddServer200Response_Type);
 
    --  Get Buy Now Server Options
    --  Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.
@@ -1685,7 +1713,8 @@ package .Clients is
    --  Updates settings on a dedicated server order.
    procedure Update_Server_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Create New Ticket
    --  Creates a new support ticket. Optionally link it to a specific service by providing the service ID and module.
@@ -1769,7 +1798,8 @@ package .Clients is
    --  Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
    procedure Add_Vps
       (Client : in out Client_Type;
-       Vps_Order_Post_Request_Type : in .Models.VpsOrderPostRequest_Type);
+       Vps_Order_Post_Request_Type : in .Models.VpsOrderPostRequest_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type);
 
    --  Delete VPS Backup
    --  Permanently removes the specified backup file from storage. Use `GET /vps/{id}/backups` to list available backup filenames before deleting.
@@ -2066,7 +2096,8 @@ package .Clients is
    --  Updates settings on a VPS order.
    procedure Update_Vps_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Cancel VPS Service
    --  Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
@@ -2078,7 +2109,8 @@ package .Clients is
    --  Place Website Order
    --  Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
    procedure Add_Website
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out .Models.ServiceOrderPostResponse_Type);
 
    --  Website Ordering Information
    --  Retrieves available webhosting plans and pricing for ordering.
@@ -2174,7 +2206,8 @@ package .Clients is
    --  Updates settings on a webhosting order.
    procedure Update_Website_Info
       (Client : in out Client_Type;
-       Id : in Swagger.UString);
+       Id : in Swagger.UString;
+       Result : out .Models.SuccessTextResponse_Type);
 
    --  Cancel Website
    --  Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.

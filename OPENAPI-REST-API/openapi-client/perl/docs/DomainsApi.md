@@ -41,7 +41,7 @@ Method | HTTP request | Description
 
 
 # **add_domain**
-> add_domain()
+> ServiceOrderPostResponse add_domain()
 
 Place Domain Order
 
@@ -69,7 +69,8 @@ my $api_instance = OpenAPIClient::DomainsApi->new(
 
 
 eval {
-    $api_instance->add_domain();
+    my $result = $api_instance->add_domain();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DomainsApi->add_domain: $@\n";
@@ -81,7 +82,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1562,7 +1563,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_domain_info**
-> update_domain_info(id => $id)
+> SuccessTextResponse update_domain_info(id => $id)
 
 Update Domain Order
 
@@ -1591,7 +1592,8 @@ my $api_instance = OpenAPIClient::DomainsApi->new(
 my $id = "id_example"; # string | The domain service ID. Use `domain_id` from `GET /domains`.
 
 eval {
-    $api_instance->update_domain_info(id => $id);
+    my $result = $api_instance->update_domain_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling DomainsApi->update_domain_info: $@\n";
@@ -1606,7 +1608,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

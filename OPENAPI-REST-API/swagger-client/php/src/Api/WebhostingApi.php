@@ -94,11 +94,12 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\ServiceOrderPostResponse
      */
     public function addWebsite()
     {
-        $this->addWebsiteWithHttpInfo();
+        list($response) = $this->addWebsiteWithHttpInfo();
+        return $response;
     }
 
     /**
@@ -109,11 +110,11 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\ServiceOrderPostResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addWebsiteWithHttpInfo()
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addWebsiteRequest();
 
         try {
@@ -144,10 +145,32 @@ class WebhostingApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -191,14 +214,28 @@ class WebhostingApi
      */
     public function addWebsiteAsyncWithHttpInfo()
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addWebsiteRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -590,7 +627,7 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Interserver\MyAdmin\Model\InlineResponse20023
+     * @return \Interserver\MyAdmin\Model\InlineResponse20024
      */
     public function getWebsiteBuyIp($id)
     {
@@ -607,11 +644,11 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Interserver\MyAdmin\Model\InlineResponse20023, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20024, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWebsiteBuyIpWithHttpInfo($id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20023';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20024';
         $request = $this->getWebsiteBuyIpRequest($id);
 
         try {
@@ -663,7 +700,7 @@ class WebhostingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Interserver\MyAdmin\Model\InlineResponse20023',
+                        '\Interserver\MyAdmin\Model\InlineResponse20024',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -713,7 +750,7 @@ class WebhostingApi
      */
     public function getWebsiteBuyIpAsyncWithHttpInfo($id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20023';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20024';
         $request = $this->getWebsiteBuyIpRequest($id);
 
         return $this->client
@@ -2852,7 +2889,7 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Interserver\MyAdmin\Model\InlineResponse20024
+     * @return \Interserver\MyAdmin\Model\InlineResponse20025
      */
     public function postWebsiteBuyIp($body, $id)
     {
@@ -2870,11 +2907,11 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Interserver\MyAdmin\Model\InlineResponse20024, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20025, HTTP status code, HTTP response headers (array of strings)
      */
     public function postWebsiteBuyIpWithHttpInfo($body, $id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20024';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20025';
         $request = $this->postWebsiteBuyIpRequest($body, $id);
 
         try {
@@ -2926,7 +2963,7 @@ class WebhostingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Interserver\MyAdmin\Model\InlineResponse20024',
+                        '\Interserver\MyAdmin\Model\InlineResponse20025',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2978,7 +3015,7 @@ class WebhostingApi
      */
     public function postWebsiteBuyIpAsyncWithHttpInfo($body, $id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20024';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20025';
         $request = $this->postWebsiteBuyIpRequest($body, $id);
 
         return $this->client
@@ -3155,7 +3192,7 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Interserver\MyAdmin\Model\InlineResponse20024
+     * @return \Interserver\MyAdmin\Model\InlineResponse20025
      */
     public function postWebsiteBuyIp($ips, $id)
     {
@@ -3173,11 +3210,11 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Interserver\MyAdmin\Model\InlineResponse20024, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20025, HTTP status code, HTTP response headers (array of strings)
      */
     public function postWebsiteBuyIpWithHttpInfo($ips, $id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20024';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20025';
         $request = $this->postWebsiteBuyIpRequest($ips, $id);
 
         try {
@@ -3229,7 +3266,7 @@ class WebhostingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Interserver\MyAdmin\Model\InlineResponse20024',
+                        '\Interserver\MyAdmin\Model\InlineResponse20025',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3281,7 +3318,7 @@ class WebhostingApi
      */
     public function postWebsiteBuyIpAsyncWithHttpInfo($ips, $id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20024';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20025';
         $request = $this->postWebsiteBuyIpRequest($ips, $id);
 
         return $this->client
@@ -3458,7 +3495,7 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Interserver\MyAdmin\Model\InlineResponse20025
+     * @return \Interserver\MyAdmin\Model\InlineResponse20026
      */
     public function postWebsiteMigration($body, $id)
     {
@@ -3476,11 +3513,11 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Interserver\MyAdmin\Model\InlineResponse20025, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20026, HTTP status code, HTTP response headers (array of strings)
      */
     public function postWebsiteMigrationWithHttpInfo($body, $id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20025';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20026';
         $request = $this->postWebsiteMigrationRequest($body, $id);
 
         try {
@@ -3532,7 +3569,7 @@ class WebhostingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Interserver\MyAdmin\Model\InlineResponse20025',
+                        '\Interserver\MyAdmin\Model\InlineResponse20026',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3584,7 +3621,7 @@ class WebhostingApi
      */
     public function postWebsiteMigrationAsyncWithHttpInfo($body, $id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20025';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20026';
         $request = $this->postWebsiteMigrationRequest($body, $id);
 
         return $this->client
@@ -3821,7 +3858,7 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Interserver\MyAdmin\Model\InlineResponse20025
+     * @return \Interserver\MyAdmin\Model\InlineResponse20026
      */
     public function postWebsiteMigration($custPortal, $regEmail, $password, $ctrlPanel, $ftpUsername, $ftpPassword, $siteBusyMig, $splReqMig, $domainReg, $dataMig, $domainRegPortal, $domainRegEmail, $domainRegPassword, $id)
     {
@@ -3851,11 +3888,11 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Interserver\MyAdmin\Model\InlineResponse20025, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20026, HTTP status code, HTTP response headers (array of strings)
      */
     public function postWebsiteMigrationWithHttpInfo($custPortal, $regEmail, $password, $ctrlPanel, $ftpUsername, $ftpPassword, $siteBusyMig, $splReqMig, $domainReg, $dataMig, $domainRegPortal, $domainRegEmail, $domainRegPassword, $id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20025';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20026';
         $request = $this->postWebsiteMigrationRequest($custPortal, $regEmail, $password, $ctrlPanel, $ftpUsername, $ftpPassword, $siteBusyMig, $splReqMig, $domainReg, $dataMig, $domainRegPortal, $domainRegEmail, $domainRegPassword, $id);
 
         try {
@@ -3907,7 +3944,7 @@ class WebhostingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Interserver\MyAdmin\Model\InlineResponse20025',
+                        '\Interserver\MyAdmin\Model\InlineResponse20026',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3983,7 +4020,7 @@ class WebhostingApi
      */
     public function postWebsiteMigrationAsyncWithHttpInfo($custPortal, $regEmail, $password, $ctrlPanel, $ftpUsername, $ftpPassword, $siteBusyMig, $splReqMig, $domainReg, $dataMig, $domainRegPortal, $domainRegEmail, $domainRegPassword, $id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20025';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20026';
         $request = $this->postWebsiteMigrationRequest($custPortal, $regEmail, $password, $ctrlPanel, $ftpUsername, $ftpPassword, $siteBusyMig, $splReqMig, $domainReg, $dataMig, $domainRegPortal, $domainRegEmail, $domainRegPassword, $id);
 
         return $this->client
@@ -5126,11 +5163,12 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\SuccessTextResponse
      */
     public function updateWebsiteInfo($id)
     {
-        $this->updateWebsiteInfoWithHttpInfo($id);
+        list($response) = $this->updateWebsiteInfoWithHttpInfo($id);
+        return $response;
     }
 
     /**
@@ -5142,11 +5180,11 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\SuccessTextResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWebsiteInfoWithHttpInfo($id)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateWebsiteInfoRequest($id);
 
         try {
@@ -5177,10 +5215,32 @@ class WebhostingApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5226,14 +5286,28 @@ class WebhostingApi
      */
     public function updateWebsiteInfoAsyncWithHttpInfo($id)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateWebsiteInfoRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -5374,7 +5448,7 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Interserver\MyAdmin\Model\InlineResponse20022
+     * @return \Interserver\MyAdmin\Model\InlineResponse20023
      */
     public function webhostingCancel($id)
     {
@@ -5391,11 +5465,11 @@ class WebhostingApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Interserver\MyAdmin\Model\InlineResponse20022, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20023, HTTP status code, HTTP response headers (array of strings)
      */
     public function webhostingCancelWithHttpInfo($id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20022';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20023';
         $request = $this->webhostingCancelRequest($id);
 
         try {
@@ -5447,7 +5521,7 @@ class WebhostingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Interserver\MyAdmin\Model\InlineResponse20022',
+                        '\Interserver\MyAdmin\Model\InlineResponse20023',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5497,7 +5571,7 @@ class WebhostingApi
      */
     public function webhostingCancelAsyncWithHttpInfo($id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20022';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20023';
         $request = $this->webhostingCancelRequest($id);
 
         return $this->client

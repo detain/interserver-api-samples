@@ -49,11 +49,19 @@ class DomainsApi {
   /// Place Domain Order
   ///
   /// Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
-  Future<void> addDomain() async {
+  Future<ServiceOrderPostResponse?> addDomain() async {
     final response = await addDomainWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ServiceOrderPostResponse',) as ServiceOrderPostResponse;
+    
+    }
+    return null;
   }
 
   /// Add Domain DNSSEC Records
@@ -1537,11 +1545,19 @@ class DomainsApi {
   ///
   /// * [String] id (required):
   ///   The domain service ID. Use `domain_id` from `GET /domains`.
-  Future<void> updateDomainInfo(String id,) async {
+  Future<SuccessTextResponse?> updateDomainInfo(String id,) async {
     final response = await updateDomainInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// Replace Nameserver Set

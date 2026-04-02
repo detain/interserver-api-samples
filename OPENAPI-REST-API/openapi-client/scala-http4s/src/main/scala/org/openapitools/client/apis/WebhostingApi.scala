@@ -24,6 +24,7 @@ import org.openapitools.client.models.PostWebsiteMigrationRequest
 import org.openapitools.client.models.PostWebsiteMigrationRequest1
 import org.openapitools.client.models.ReverseDnsEntries
 import scala.collection.immutable.Seq
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 import org.openapitools.client.models.WebhostingCancel200Response
@@ -36,7 +37,7 @@ import org.openapitools.client.models.*
 
 trait WebhostingApiEndpoints[F[*]] {
 
-  def addWebsite()(using auth: _Authorization.ApiKey): F[Unit]
+  def addWebsite()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def getNewWebsite()(using auth: _Authorization.ApiKey): F[WebsitesOrder]
   def getWebsiteBuyIp(id: Int)(using auth: _Authorization.ApiKey): F[GetWebsiteBuyIp200Response]
   def getWebsiteInfo(id: Int)(using auth: _Authorization.ApiKey): F[Website]
@@ -50,7 +51,7 @@ trait WebhostingApiEndpoints[F[*]] {
   def postWebsiteMigration(id: Int, postWebsiteMigrationRequest: PostWebsiteMigrationRequest)(using auth: _Authorization.ApiKey): F[PostWebsiteMigration200Response]
   def postWebsitesReverseDns(id: Int, reverseDnsEntries: ReverseDnsEntries)(using auth: _Authorization.ApiKey): F[TextResponse]
   def putWebsites()(using auth: _Authorization.ApiKey): F[Unit]
-  def updateWebsiteInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateWebsiteInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def webhostingCancel(id: String)(using auth: _Authorization.ApiKey): F[WebhostingCancel200Response]
 
 }
@@ -65,12 +66,12 @@ class WebhostingApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addWebsite()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def addWebsite()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, ServiceOrderPostResponse](
       method = "POST",
       path = s"/websites/order",
       body = None,
@@ -79,8 +80,8 @@ class WebhostingApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, ServiceOrderPostResponse]("ServiceOrderPostResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -331,12 +332,12 @@ class WebhostingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateWebsiteInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateWebsiteInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/websites/${id}",
       body = None,
@@ -345,8 +346,8 @@ class WebhostingApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

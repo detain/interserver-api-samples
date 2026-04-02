@@ -25,7 +25,7 @@ Spectator.describe "SSLCertificatesApi" do
   # Place SSL Cert Order
   # Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe "add_ssl test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -36,7 +36,7 @@ Spectator.describe "SSLCertificatesApi" do
   # SSL Cert Ordering Information
   # Retrieves available SSL certificate types and pricing for ordering.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [JSON::Any]
   describe "get_new_ssl test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -48,7 +48,7 @@ Spectator.describe "SSLCertificatesApi" do
   # Returns detailed information about a specific SSL certificate including its domain and expiration.
   # @param id SSL certificate ID number.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [JSON::Any]
   describe "get_ssl_info test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -118,7 +118,7 @@ Spectator.describe "SSLCertificatesApi" do
   # Updates settings on an SSL certificate order.
   # @param id SSL certificate ID number.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "update_ssl_info test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

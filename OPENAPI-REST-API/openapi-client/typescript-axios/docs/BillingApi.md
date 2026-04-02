@@ -215,7 +215,7 @@ const { status, data } = await apiInstance.addBillingPrepay(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteAccountCreditCard**
-> deleteAccountCreditCard()
+> string deleteAccountCreditCard()
 
 Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
 
@@ -246,7 +246,7 @@ const { status, data } = await apiInstance.deleteAccountCreditCard(
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -261,8 +261,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Simple string response |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -707,7 +707,7 @@ This endpoint does not have any parameters.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillingCart**
-> getBillingCart()
+> object getBillingCart()
 
 Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
 
@@ -731,7 +731,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -746,8 +746,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Current shopping cart contents and available payment methods. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -901,7 +901,7 @@ This endpoint does not have any parameters.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBillingPrePays**
-> getBillingPrePays()
+> object getBillingPrePays()
 
 Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
 
@@ -925,7 +925,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -940,8 +940,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Prepay balances and metadata. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1117,7 +1117,7 @@ const { status, data } = await apiInstance.postBillingCreditCardVerify(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateAccountCreditCard**
-> updateAccountCreditCard()
+> string updateAccountCreditCard()
 
 Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
 
@@ -1148,7 +1148,7 @@ const { status, data } = await apiInstance.updateAccountCreditCard(
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -1163,8 +1163,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Simple string response |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -11,7 +11,7 @@ void main() {
     //
     // Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
     //
-    //Future addLicense() async
+    //Future<ServiceOrderPostResponse> addLicense() async
     test('test addLicense', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Updates settings on a license service such as its assigned IP.
     //
-    //Future updateLicenseInfo(String id) async
+    //Future<SuccessTextResponse> updateLicenseInfo(String id) async
     test('test updateLicenseInfo', () async {
       // TODO
     });

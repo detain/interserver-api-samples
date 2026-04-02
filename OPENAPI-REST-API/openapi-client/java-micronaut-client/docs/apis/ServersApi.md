@@ -55,7 +55,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="addServer"></a>
 # **addServer**
 ```java
-Mono<Void> ServersApi.addServer()
+Mono<AddServer200Response> ServersApi.addServer()
 ```
 
 Place Server Order
@@ -64,7 +64,8 @@ Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; t
 
 
 
-
+### Return type
+[**AddServer200Response**](AddServer200Response.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -510,7 +511,7 @@ Cancels the dedicated server service. The server will be deprovisioned and billi
 <a id="updateServerInfo"></a>
 # **updateServerInfo**
 ```java
-Mono<Void> ServersApi.updateServerInfo(id)
+Mono<SuccessTextResponse> ServersApi.updateServerInfo(id)
 ```
 
 Update Server Order
@@ -523,7 +524,8 @@ Updates settings on a dedicated server order.
 | **id** | `String`| Server ID number. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

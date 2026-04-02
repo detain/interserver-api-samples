@@ -18,10 +18,11 @@ feature -- Test routines
             --
             -- Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         local
+            l_response: ADD_SERVER_200_RESPONSE
         do
             -- TODO: Initialize required params.
 
-            -- api.add_server
+            -- l_response := api.add_server
             assert ("not_implemented", False)
         end
 
@@ -266,12 +267,13 @@ feature -- Test routines
             --
             -- Updates settings on a dedicated server order.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_server_info(l_id)
+            -- l_response := api.update_server_info(l_id)
             assert ("not_implemented", False)
         end
 

@@ -33,6 +33,7 @@ import io.swagger.client.model.DnsRecord;
 import io.swagger.client.model.DnsRecordType;
 import io.swagger.client.model.DnsUpdateRecord;
 import io.swagger.client.model.InlineResponse401;
+import io.swagger.client.model.SuccessTextResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -146,10 +147,12 @@ public class DnsApi {
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param domain  (required)
      * @param ip  (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addDnsDomain(String domain, String ip) throws ApiException {
-        addDnsDomainWithHttpInfo(domain, ip);
+    public SuccessTextResponse addDnsDomain(String domain, String ip) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = addDnsDomainWithHttpInfo(domain, ip);
+        return resp.getData();
     }
 
     /**
@@ -157,12 +160,13 @@ public class DnsApi {
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param domain  (required)
      * @param ip  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addDnsDomainWithHttpInfo(String domain, String ip) throws ApiException {
+    public ApiResponse<SuccessTextResponse> addDnsDomainWithHttpInfo(String domain, String ip) throws ApiException {
         com.squareup.okhttp.Call call = addDnsDomainValidateBeforeCall(domain, ip, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -174,7 +178,7 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addDnsDomainAsync(String domain, String ip, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addDnsDomainAsync(String domain, String ip, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -196,7 +200,8 @@ public class DnsApi {
         }
 
         com.squareup.okhttp.Call call = addDnsDomainValidateBeforeCall(domain, ip, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -271,22 +276,25 @@ public class DnsApi {
      * Create DNS Domain
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param body  (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addDnsDomain(DnsNewDomain body) throws ApiException {
-        addDnsDomainWithHttpInfo(body);
+    public SuccessTextResponse addDnsDomain(DnsNewDomain body) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = addDnsDomainWithHttpInfo(body);
+        return resp.getData();
     }
 
     /**
      * Create DNS Domain
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      * @param body  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addDnsDomainWithHttpInfo(DnsNewDomain body) throws ApiException {
+    public ApiResponse<SuccessTextResponse> addDnsDomainWithHttpInfo(DnsNewDomain body) throws ApiException {
         com.squareup.okhttp.Call call = addDnsDomainValidateBeforeCall(body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -297,7 +305,7 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addDnsDomainAsync(DnsNewDomain body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addDnsDomainAsync(DnsNewDomain body, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -319,7 +327,8 @@ public class DnsApi {
         }
 
         com.squareup.okhttp.Call call = addDnsDomainValidateBeforeCall(body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -701,22 +710,25 @@ public class DnsApi {
      * Delete DNS Domain
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteDnsDomain(String id) throws ApiException {
-        deleteDnsDomainWithHttpInfo(id);
+    public SuccessTextResponse deleteDnsDomain(String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = deleteDnsDomainWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Delete DNS Domain
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteDnsDomainWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> deleteDnsDomainWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = deleteDnsDomainValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -727,7 +739,7 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteDnsDomainAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteDnsDomainAsync(String id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -749,7 +761,8 @@ public class DnsApi {
         }
 
         com.squareup.okhttp.Call call = deleteDnsDomainValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -832,10 +845,12 @@ public class DnsApi {
      * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteDnsRecord(Integer domainId, Integer recordId) throws ApiException {
-        deleteDnsRecordWithHttpInfo(domainId, recordId);
+    public SuccessTextResponse deleteDnsRecord(Integer domainId, Integer recordId) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = deleteDnsRecordWithHttpInfo(domainId, recordId);
+        return resp.getData();
     }
 
     /**
@@ -843,12 +858,13 @@ public class DnsApi {
      * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteDnsRecordWithHttpInfo(Integer domainId, Integer recordId) throws ApiException {
+    public ApiResponse<SuccessTextResponse> deleteDnsRecordWithHttpInfo(Integer domainId, Integer recordId) throws ApiException {
         com.squareup.okhttp.Call call = deleteDnsRecordValidateBeforeCall(domainId, recordId, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -860,7 +876,7 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteDnsRecordAsync(Integer domainId, Integer recordId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteDnsRecordAsync(Integer domainId, Integer recordId, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -882,7 +898,8 @@ public class DnsApi {
         }
 
         com.squareup.okhttp.Call call = deleteDnsRecordValidateBeforeCall(domainId, recordId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1276,10 +1293,12 @@ public class DnsApi {
      * @param auth  (required)
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateDnsRecord(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, Integer domainId, Integer recordId) throws ApiException {
-        updateDnsRecordWithHttpInfo(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+    public SuccessTextResponse updateDnsRecord(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, Integer domainId, Integer recordId) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateDnsRecordWithHttpInfo(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
+        return resp.getData();
     }
 
     /**
@@ -1295,12 +1314,13 @@ public class DnsApi {
      * @param auth  (required)
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateDnsRecordWithHttpInfo(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, Integer domainId, Integer recordId) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateDnsRecordWithHttpInfo(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, Integer domainId, Integer recordId) throws ApiException {
         com.squareup.okhttp.Call call = updateDnsRecordValidateBeforeCall(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1320,7 +1340,7 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateDnsRecordAsync(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, Integer domainId, Integer recordId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateDnsRecordAsync(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, Integer domainId, Integer recordId, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1342,7 +1362,8 @@ public class DnsApi {
         }
 
         com.squareup.okhttp.Call call = updateDnsRecordValidateBeforeCall(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1431,10 +1452,12 @@ public class DnsApi {
      * @param body The request data to update a dns record. (required)
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateDnsRecord(DnsUpdateRecord body, Integer domainId, Integer recordId) throws ApiException {
-        updateDnsRecordWithHttpInfo(body, domainId, recordId);
+    public SuccessTextResponse updateDnsRecord(DnsUpdateRecord body, Integer domainId, Integer recordId) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateDnsRecordWithHttpInfo(body, domainId, recordId);
+        return resp.getData();
     }
 
     /**
@@ -1443,12 +1466,13 @@ public class DnsApi {
      * @param body The request data to update a dns record. (required)
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. (required)
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateDnsRecordWithHttpInfo(DnsUpdateRecord body, Integer domainId, Integer recordId) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateDnsRecordWithHttpInfo(DnsUpdateRecord body, Integer domainId, Integer recordId) throws ApiException {
         com.squareup.okhttp.Call call = updateDnsRecordValidateBeforeCall(body, domainId, recordId, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1461,7 +1485,7 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateDnsRecordAsync(DnsUpdateRecord body, Integer domainId, Integer recordId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateDnsRecordAsync(DnsUpdateRecord body, Integer domainId, Integer recordId, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1483,7 +1507,8 @@ public class DnsApi {
         }
 
         com.squareup.okhttp.Call call = updateDnsRecordValidateBeforeCall(body, domainId, recordId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

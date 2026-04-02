@@ -27,7 +27,7 @@ Method | HTTP request | Description
 [**update_server_info**](ServersApi.md#update_server_info) | **POST** /servers/{id} | Update Server Order
 
 # **add_server**
-> add_server
+> InlineResponse20019 add_server
 
 Place Server Order
 
@@ -59,7 +59,8 @@ api_instance = SwaggerClient::ServersApi.new
 
 begin
   #Place Server Order
-  api_instance.add_server
+  result = api_instance.add_server
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ServersApi->add_server: #{e}"
 end
@@ -70,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -84,7 +85,7 @@ nil (empty response body)
 
 
 # **buy_it_now_server_order**
-> InlineResponse20026 buy_it_now_server_order
+> InlineResponse20027 buy_it_now_server_order
 
 Get Buy Now Server Options
 
@@ -128,7 +129,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -1209,7 +1210,7 @@ Name | Type | Description  | Notes
 
 
 # **servers_cancel**
-> InlineResponse20019 servers_cancel(id)
+> InlineResponse20020 servers_cancel(id)
 
 Cancel Server Service
 
@@ -1258,7 +1259,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -1272,7 +1273,7 @@ Name | Type | Description  | Notes
 
 
 # **update_server_info**
-> update_server_info(id)
+> SuccessTextResponse update_server_info(id)
 
 Update Server Order
 
@@ -1306,7 +1307,8 @@ id = 'id_example' # String | Server ID number.
 
 begin
   #Update Server Order
-  api_instance.update_server_info(id)
+  result = api_instance.update_server_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ServersApi->update_server_info: #{e}"
 end
@@ -1320,7 +1322,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

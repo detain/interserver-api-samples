@@ -111,8 +111,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.DeleteAccountCreditCard(id);
-            
+            //var response = instance.DeleteAccountCreditCard(id);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
         /// Test DeleteBillingCreditCard
@@ -216,8 +216,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void GetBillingCartTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.GetBillingCart();
-            
+            //var response = instance.GetBillingCart();
+            //Assert.IsInstanceOf<Object> (response, "response is Object");
         }
         /// <summary>
         /// Test GetBillingCreditCardVerify
@@ -258,8 +258,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void GetBillingPrePaysTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.GetBillingPrePays();
-            
+            //var response = instance.GetBillingPrePays();
+            //Assert.IsInstanceOf<Object> (response, "response is Object");
         }
         /// <summary>
         /// Test GetInvoices
@@ -306,8 +306,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
-            //instance.UpdateAccountCreditCard(id);
-            
+            //var response = instance.UpdateAccountCreditCard(id);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
         /// Test UpdateAffiliateDockSetup

@@ -14,6 +14,8 @@ import io.swagger.model.DnsUpdateRecord;
 
 import io.swagger.model.InlineResponse401;
 
+import io.swagger.model.SuccessTextResponse;
+
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.HttpResponse;
 import io.reactivex.rxjava3.core.Single;
@@ -28,13 +30,13 @@ import java.util.Map;
 public class DnsApiController implements DnsApi {
 
     @Override
-    public Single<HttpResponse<Void>> addDnsDomain(@NotNull String domain, @NotNull String ip) {
+    public Single<HttpResponse<SuccessTextResponse>> addDnsDomain(@NotNull String domain, @NotNull String ip) {
         // TODO: Implement me
         return DnsApi.super.addDnsDomain(domain, ip);
     }
 
     @Override
-    public Single<HttpResponse<Void>> addDnsDomain(@NotNull @Valid DnsNewDomain body) {
+    public Single<HttpResponse<SuccessTextResponse>> addDnsDomain(@NotNull @Valid DnsNewDomain body) {
         // TODO: Implement me
         return DnsApi.super.addDnsDomain(body);
     }
@@ -52,13 +54,13 @@ public class DnsApiController implements DnsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> deleteDnsDomain(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> deleteDnsDomain(String id) {
         // TODO: Implement me
         return DnsApi.super.deleteDnsDomain(id);
     }
 
     @Override
-    public Single<HttpResponse<Void>> deleteDnsRecord(Integer domainId, Integer recordId) {
+    public Single<HttpResponse<SuccessTextResponse>> deleteDnsRecord(Integer domainId, Integer recordId) {
         // TODO: Implement me
         return DnsApi.super.deleteDnsRecord(domainId, recordId);
     }
@@ -76,13 +78,13 @@ public class DnsApiController implements DnsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateDnsRecord(@NotNull String name, @NotNull @Valid DnsRecordType type, @NotNull String content, @NotNull String ttl, @NotNull String prio, @NotNull String disabled, @NotNull String ordername, @NotNull String auth, Integer domainId, Integer recordId) {
+    public Single<HttpResponse<SuccessTextResponse>> updateDnsRecord(@NotNull String name, @NotNull @Valid DnsRecordType type, @NotNull String content, @NotNull String ttl, @NotNull String prio, @NotNull String disabled, @NotNull String ordername, @NotNull String auth, Integer domainId, Integer recordId) {
         // TODO: Implement me
         return DnsApi.super.updateDnsRecord(name, type, content, ttl, prio, disabled, ordername, auth, domainId, recordId);
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateDnsRecord(@NotNull @Valid DnsUpdateRecord body, Integer domainId, Integer recordId) {
+    public Single<HttpResponse<SuccessTextResponse>> updateDnsRecord(@NotNull @Valid DnsUpdateRecord body, Integer domainId, Integer recordId) {
         // TODO: Implement me
         return DnsApi.super.updateDnsRecord(body, domainId, recordId);
     }

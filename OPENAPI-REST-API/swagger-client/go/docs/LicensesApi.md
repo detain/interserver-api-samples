@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**UpdateLicenseInfo**](LicensesApi.md#UpdateLicenseInfo) | **Post** /licenses/{id} | Update License
 
 # **AddLicense**
-> AddLicense(ctx, )
+> ServiceOrderPostResponse AddLicense(ctx, )
 Place License Order
 
 Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
@@ -27,7 +27,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateLicenseInfo**
-> UpdateLicenseInfo(ctx, id)
+> SuccessTextResponse UpdateLicenseInfo(ctx, id)
 Update License
 
 Updates settings on a license service such as its assigned IP.
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -18,6 +18,7 @@ import io.swagger.client.model.IpObject
 import io.swagger.client.model.License
 import io.swagger.client.model.LicenseRow
 import io.swagger.client.model.LicensesOrder
+import io.swagger.client.model.ServiceOrderPostResponse
 import io.swagger.client.model.SuccessTextResponse
 import io.swagger.client.model.inline_response_200_4
 import io.swagger.client.model.inline_response_401
@@ -89,9 +90,9 @@ class LicensesApi(
    * Place License Order
    * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
    *
-   * @return void
+   * @return ServiceOrderPostResponse
    */
-  def addLicense() = {
+  def addLicense(): Option[ServiceOrderPostResponse] = {
     val await = Try(Await.result(addLicenseAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -103,9 +104,9 @@ class LicensesApi(
    * Place License Order asynchronously
    * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
    *
-   * @return Future(void)
+   * @return Future(ServiceOrderPostResponse)
    */
-  def addLicenseAsync() = {
+  def addLicenseAsync(): Future[ServiceOrderPostResponse] = {
       helper.addLicense()
   }
 
@@ -346,9 +347,9 @@ class LicensesApi(
    * Updates settings on a license service such as its assigned IP.
    *
    * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateLicenseInfo(id: String) = {
+  def updateLicenseInfo(id: String): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateLicenseInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -361,9 +362,9 @@ class LicensesApi(
    * Updates settings on a license service such as its assigned IP.
    *
    * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateLicenseInfoAsync(id: String) = {
+  def updateLicenseInfoAsync(id: String): Future[SuccessTextResponse] = {
       helper.updateLicenseInfo(id)
   }
 
@@ -371,7 +372,7 @@ class LicensesApi(
 
 class LicensesApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def addLicense()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def addLicense()(implicit reader: ClientResponseReader[ServiceOrderPostResponse]): Future[ServiceOrderPostResponse] = {
     // create path and map variables
     val path = (addFmt("/licenses/order"))
 
@@ -534,7 +535,7 @@ class LicensesApiAsyncHelper(client: TransportClient, config: SwaggerConfig) ext
     }
   }
 
-  def updateLicenseInfo(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateLicenseInfo(id: String)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/licenses/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

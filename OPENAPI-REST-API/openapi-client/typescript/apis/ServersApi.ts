@@ -8,6 +8,7 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { AddServer200Response } from '../models/AddServer200Response';
 import { BuyItNowList } from '../models/BuyItNowList';
 import { BuyItNowServerOrder200Response } from '../models/BuyItNowServerOrder200Response';
 import { ChargeInvoiceRows } from '../models/ChargeInvoiceRows';
@@ -963,8 +964,15 @@ export class ServersApiResponseProcessor {
      * @params response Response returned by the server for a request to addServer
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async addServerWithHttpInfo(response: ResponseContext): Promise<HttpInfo< void>> {
+     public async addServerWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AddServer200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: AddServer200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "AddServer200Response", ""
+            ) as AddServer200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: GetAccountInfo401Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -972,13 +980,14 @@ export class ServersApiResponseProcessor {
             ) as GetAccountInfo401Response;
             throw new ApiException<GetAccountInfo401Response>(response.httpStatusCode, "Unauthorized", body, response.headers);
         }
-        if (isCodeInRange("0", response.httpStatusCode)) {
-            throw new ApiException<undefined>(response.httpStatusCode, "Default response", undefined, response.headers);
-        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: AddServer200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "AddServer200Response", ""
+            ) as AddServer200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
         throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
@@ -1573,8 +1582,15 @@ export class ServersApiResponseProcessor {
      * @params response Response returned by the server for a request to updateServerInfo
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateServerInfoWithHttpInfo(response: ResponseContext): Promise<HttpInfo< void>> {
+     public async updateServerInfoWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SuccessTextResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SuccessTextResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SuccessTextResponse", ""
+            ) as SuccessTextResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
         if (isCodeInRange("401", response.httpStatusCode)) {
             const body: GetAccountInfo401Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1582,13 +1598,14 @@ export class ServersApiResponseProcessor {
             ) as GetAccountInfo401Response;
             throw new ApiException<GetAccountInfo401Response>(response.httpStatusCode, "Unauthorized", body, response.headers);
         }
-        if (isCodeInRange("0", response.httpStatusCode)) {
-            throw new ApiException<undefined>(response.httpStatusCode, "Default response", undefined, response.headers);
-        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: SuccessTextResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SuccessTextResponse", ""
+            ) as SuccessTextResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
         throw new ApiException<string | Buffer | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);

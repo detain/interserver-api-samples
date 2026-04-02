@@ -3,5 +3,4 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **String** |  | [optional] 
-**success** | **Boolean** |  | [optional] 
+**ips** | **{String: String}** | A map of IP addresses to their current reverse DNS hostnames. | [optional] 

@@ -30,8 +30,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AddFloatingIp ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddFloatingIp ();
 
         /// <summary>
         /// Place Floating IP Order
@@ -40,8 +40,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddFloatingIpWithHttpInfo ();
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        ApiResponse<ServiceOrderPostResponse> AddFloatingIpWithHttpInfo ();
         /// <summary>
         /// Cancel Floating IP
         /// </summary>
@@ -71,8 +71,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns></returns>
-        void GetFloatingIpInfo (int? id);
+        /// <returns>Object</returns>
+        Object GetFloatingIpInfo (int? id);
 
         /// <summary>
         /// View Floating IP
@@ -82,7 +82,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
+        /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetFloatingIpInfoWithHttpInfo (int? id);
         /// <summary>
         /// Get Floating IP Invoices
@@ -152,8 +152,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Retrieves available options and pricing for ordering a new Floating IP.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void GetNewFloatingIp ();
+        /// <returns>Object</returns>
+        Object GetNewFloatingIp ();
 
         /// <summary>
         /// Get Floating IP Ordering Information
@@ -162,7 +162,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Retrieves available options and pricing for ordering a new Floating IP.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
+        /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetNewFloatingIpWithHttpInfo ();
         /// <summary>
         /// Change Floating IP Target
@@ -237,8 +237,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns></returns>
-        void UpdateFloatingIpInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateFloatingIpInfo (string id);
 
         /// <summary>
         /// Update Floating IP
@@ -248,8 +248,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateFloatingIpInfoWithHttpInfo (string id);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateFloatingIpInfoWithHttpInfo (string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -259,8 +259,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddFloatingIpAsync ();
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        System.Threading.Tasks.Task<ServiceOrderPostResponse> AddFloatingIpAsync ();
 
         /// <summary>
         /// Place Floating IP Order
@@ -269,8 +269,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddFloatingIpAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddFloatingIpAsyncWithHttpInfo ();
         /// <summary>
         /// Cancel Floating IP
         /// </summary>
@@ -300,8 +300,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetFloatingIpInfoAsync (int? id);
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> GetFloatingIpInfoAsync (int? id);
 
         /// <summary>
         /// View Floating IP
@@ -311,7 +311,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetFloatingIpInfoAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Get Floating IP Invoices
@@ -381,8 +381,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Retrieves available options and pricing for ordering a new Floating IP.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetNewFloatingIpAsync ();
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> GetNewFloatingIpAsync ();
 
         /// <summary>
         /// Get Floating IP Ordering Information
@@ -391,7 +391,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Retrieves available options and pricing for ordering a new Floating IP.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetNewFloatingIpAsyncWithHttpInfo ();
         /// <summary>
         /// Change Floating IP Target
@@ -466,8 +466,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateFloatingIpInfoAsync (string id);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateFloatingIpInfoAsync (string id);
 
         /// <summary>
         /// Update Floating IP
@@ -477,8 +477,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateFloatingIpInfoAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateFloatingIpInfoAsyncWithHttpInfo (string id);
         #endregion Asynchronous Operations
     }
 
@@ -594,18 +594,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place Floating IP Order Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AddFloatingIp ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddFloatingIp ()
         {
-             AddFloatingIpWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = AddFloatingIpWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Place Floating IP Order Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddFloatingIpWithHttpInfo ()
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        public ApiResponse< ServiceOrderPostResponse > AddFloatingIpWithHttpInfo ()
         {
 
             var localVarPath = "/floating_ips/order";
@@ -658,19 +659,20 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
         /// Place Floating IP Order Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddFloatingIpAsync ()
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        public async System.Threading.Tasks.Task<ServiceOrderPostResponse> AddFloatingIpAsync ()
         {
-             await AddFloatingIpAsyncWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = await AddFloatingIpAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -678,8 +680,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place Floating IP Order Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddFloatingIpAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddFloatingIpAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/floating_ips/order";
@@ -732,9 +734,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
@@ -903,10 +905,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns></returns>
-        public void GetFloatingIpInfo (int? id)
+        /// <returns>Object</returns>
+        public Object GetFloatingIpInfo (int? id)
         {
-             GetFloatingIpInfoWithHttpInfo(id);
+             ApiResponse<Object> localVarResponse = GetFloatingIpInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -914,8 +917,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetFloatingIpInfoWithHttpInfo (int? id)
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > GetFloatingIpInfoWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -974,7 +977,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -982,10 +985,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetFloatingIpInfoAsync (int? id)
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> GetFloatingIpInfoAsync (int? id)
         {
-             await GetFloatingIpInfoAsyncWithHttpInfo(id);
+             ApiResponse<Object> localVarResponse = await GetFloatingIpInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -994,7 +998,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetFloatingIpInfoAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
@@ -1054,7 +1058,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1530,18 +1534,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// Get Floating IP Ordering Information Retrieves available options and pricing for ordering a new Floating IP.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GetNewFloatingIp ()
+        /// <returns>Object</returns>
+        public Object GetNewFloatingIp ()
         {
-             GetNewFloatingIpWithHttpInfo();
+             ApiResponse<Object> localVarResponse = GetNewFloatingIpWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get Floating IP Ordering Information Retrieves available options and pricing for ordering a new Floating IP.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetNewFloatingIpWithHttpInfo ()
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > GetNewFloatingIpWithHttpInfo ()
         {
 
             var localVarPath = "/floating_ips/order";
@@ -1596,17 +1601,18 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
         /// Get Floating IP Ordering Information Retrieves available options and pricing for ordering a new Floating IP.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetNewFloatingIpAsync ()
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> GetNewFloatingIpAsync ()
         {
-             await GetNewFloatingIpAsyncWithHttpInfo();
+             ApiResponse<Object> localVarResponse = await GetNewFloatingIpAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -1614,7 +1620,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Get Floating IP Ordering Information Retrieves available options and pricing for ordering a new Floating IP.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetNewFloatingIpAsyncWithHttpInfo ()
         {
 
@@ -1670,7 +1676,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -2193,10 +2199,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateFloatingIpInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateFloatingIpInfo (string id)
         {
-             UpdateFloatingIpInfoWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateFloatingIpInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2204,8 +2211,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateFloatingIpInfoWithHttpInfo (string id)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateFloatingIpInfoWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2262,9 +2269,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -2272,10 +2279,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateFloatingIpInfoAsync (string id)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateFloatingIpInfoAsync (string id)
         {
-             await UpdateFloatingIpInfoAsyncWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateFloatingIpInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -2284,8 +2292,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateFloatingIpInfoAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateFloatingIpInfoAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2342,9 +2350,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
     }

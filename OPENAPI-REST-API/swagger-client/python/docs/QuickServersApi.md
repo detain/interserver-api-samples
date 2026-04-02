@@ -50,7 +50,7 @@ Method | HTTP request | Description
 [**update_qs_info**](QuickServersApi.md#update_qs_info) | **POST** /qs/{id} | Update QuickServer Order
 
 # **add_qs**
-> add_qs()
+> ServiceOrderPostResponse add_qs()
 
 Place QuickServer Order
 
@@ -85,7 +85,8 @@ api_instance = myadmin-client-python.QuickServersApi(myadmin-client-python.ApiCl
 
 try:
     # Place QuickServer Order
-    api_instance.add_qs()
+    api_response = api_instance.add_qs()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling QuickServersApi->add_qs: %s\n" % e)
 ```
@@ -95,7 +96,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2790,7 +2791,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_qs_info**
-> update_qs_info(id)
+> SuccessTextResponse update_qs_info(id)
 
 Update QuickServer Order
 
@@ -2826,7 +2827,8 @@ id = 'id_example' # str | QuickServer ID number.
 
 try:
     # Update QuickServer Order
-    api_instance.update_qs_info(id)
+    api_response = api_instance.update_qs_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling QuickServersApi->update_qs_info: %s\n" % e)
 ```
@@ -2839,7 +2841,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

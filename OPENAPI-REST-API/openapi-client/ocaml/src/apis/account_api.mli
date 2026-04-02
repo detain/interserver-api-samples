@@ -17,8 +17,8 @@ val logout : unit -> Success_text_response.t Lwt.t
 val logout_account_oauth : name:string -> Success_text_response.t Lwt.t
 val update_account_api_key : unit -> Success_text_response.t Lwt.t
 val update_account_features : ?disable_reset:int32 -> ?disable_reinstall:int32 -> unit -> Success_text_response.t Lwt.t
-val update_account_info : name:string -> address:string -> city:string -> state:string -> zip:string -> country:string -> phone:string -> ?company:string -> ?address2:string -> ?locale:string -> ?email_invoices:string -> ?email_abuse:string -> ?disable_reset:bool -> ?disable_reinstall:bool -> ?disable_server_notifications:bool -> ?disable_email_notifications:bool -> ?gstin:string -> unit -> unit Lwt.t
-val update_account_ip_limits : start:string -> _end:string -> unit Lwt.t
+val update_account_info : name:string -> address:string -> city:string -> state:string -> zip:string -> country:string -> phone:string -> ?company:string -> ?address2:string -> ?locale:string -> ?email_invoices:string -> ?email_abuse:string -> ?disable_reset:bool -> ?disable_reinstall:bool -> ?disable_server_notifications:bool -> ?disable_email_notifications:bool -> ?gstin:string -> unit -> Success_text_response.t Lwt.t
+val update_account_ip_limits : start:string -> _end:string -> Success_text_response.t Lwt.t
 val update_account_password : password:string -> Text_response.t Lwt.t
 val update_account_ssh_key : ?ssh_key:string -> unit -> Success_text_response.t Lwt.t
 val update_account_tfa : var_2fa_google_code:string -> Success_text_response.t Lwt.t

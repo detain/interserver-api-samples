@@ -17,6 +17,7 @@ import { Observable, from, of, switchMap } from 'rxjs';
 import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
 import { FloatingIpsCancel200Response } from '../model/floatingIpsCancel200Response';
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { Configuration } from '../configuration';
 import { COLLECTION_FORMATS } from '../variables';
@@ -52,7 +53,7 @@ export class FloatingIPsService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [addFloatingIpOpts.config] Override http request option.
      */
-    public addFloatingIp(addFloatingIpOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public addFloatingIp(addFloatingIpOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ServiceOrderPostResponse>>;
     public addFloatingIp(addFloatingIpOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -87,7 +88,7 @@ export class FloatingIPsService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/floating_ips/order`,
+                return this.httpClient.post<ServiceOrderPostResponse>(`${this.basePath}/floating_ips/order`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -163,7 +164,7 @@ export class FloatingIPsService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getFloatingIpInfoOpts.config] Override http request option.
      */
-    public getFloatingIpInfo(id: number, getFloatingIpInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public getFloatingIpInfo(id: number, getFloatingIpInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<object>>;
     public getFloatingIpInfo(id: number, getFloatingIpInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling getFloatingIpInfo.');
@@ -202,7 +203,7 @@ export class FloatingIPsService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.get<any>(`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`,
+                return this.httpClient.get<object>(`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...getFloatingIpInfoOpts?.config,
@@ -385,7 +386,7 @@ export class FloatingIPsService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [getNewFloatingIpOpts.config] Override http request option.
      */
-    public getNewFloatingIp(getNewFloatingIpOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public getNewFloatingIp(getNewFloatingIpOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<object>>;
     public getNewFloatingIp(getNewFloatingIpOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -420,7 +421,7 @@ export class FloatingIPsService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.get<any>(`${this.basePath}/floating_ips/order`,
+                return this.httpClient.get<object>(`${this.basePath}/floating_ips/order`,
                     {
                         withCredentials: this.configuration.withCredentials,
                         ...getNewFloatingIpOpts?.config,
@@ -572,7 +573,7 @@ export class FloatingIPsService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateFloatingIpInfoOpts.config] Override http request option.
      */
-    public updateFloatingIpInfo(id: string, updateFloatingIpInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateFloatingIpInfo(id: string, updateFloatingIpInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateFloatingIpInfo(id: string, updateFloatingIpInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateFloatingIpInfo.');
@@ -611,7 +612,7 @@ export class FloatingIPsService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/floating_ips/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

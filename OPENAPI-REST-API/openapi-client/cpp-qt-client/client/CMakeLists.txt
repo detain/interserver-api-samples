@@ -30,6 +30,7 @@ add_library(${PROJECT_NAME}
   OAIAccountInfoPost.h
   OAIAccountInfo_oauthproviders.h
   OAIAccountSshKey.h
+  OAIAddServer_200_response.h
   OAIAffiliateBannerRow.h
   OAIAffiliateDockSetup.h
   OAIAffiliatePaymentSetup.h
@@ -364,6 +365,7 @@ add_library(${PROJECT_NAME}
   OAIService.h
   OAIServiceCategories.h
   OAIServiceCategory.h
+  OAIServiceOrderPostResponse.h
   OAIServiceType.h
   OAIServiceTypes.h
   OAIServices.h
@@ -507,6 +509,7 @@ add_library(${PROJECT_NAME}
   OAIAccountInfoPost.cpp
   OAIAccountInfo_oauthproviders.cpp
   OAIAccountSshKey.cpp
+  OAIAddServer_200_response.cpp
   OAIAffiliateBannerRow.cpp
   OAIAffiliateDockSetup.cpp
   OAIAffiliatePaymentSetup.cpp
@@ -841,6 +844,7 @@ add_library(${PROJECT_NAME}
   OAIService.cpp
   OAIServiceCategories.cpp
   OAIServiceCategory.cpp
+  OAIServiceOrderPostResponse.cpp
   OAIServiceType.cpp
   OAIServiceTypes.cpp
   OAIServices.cpp

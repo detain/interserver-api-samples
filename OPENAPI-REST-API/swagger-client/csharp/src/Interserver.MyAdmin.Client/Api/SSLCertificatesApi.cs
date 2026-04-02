@@ -30,8 +30,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AddSsl ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddSsl ();
 
         /// <summary>
         /// Place SSL Cert Order
@@ -40,8 +40,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddSslWithHttpInfo ();
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        ApiResponse<ServiceOrderPostResponse> AddSslWithHttpInfo ();
         /// <summary>
         /// SSL Cert Ordering Information
         /// </summary>
@@ -49,8 +49,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Retrieves available SSL certificate types and pricing for ordering.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void GetNewSsl ();
+        /// <returns>Object</returns>
+        Object GetNewSsl ();
 
         /// <summary>
         /// SSL Cert Ordering Information
@@ -59,7 +59,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Retrieves available SSL certificate types and pricing for ordering.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
+        /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetNewSslWithHttpInfo ();
         /// <summary>
         /// Get SSL Cert Info
@@ -69,8 +69,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns></returns>
-        void GetSslInfo (int? id);
+        /// <returns>Object</returns>
+        Object GetSslInfo (int? id);
 
         /// <summary>
         /// Get SSL Cert Info
@@ -80,7 +80,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
+        /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetSslInfoWithHttpInfo (int? id);
         /// <summary>
         /// Get SSL Cert Invoices
@@ -170,8 +170,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>InlineResponse20020</returns>
-        InlineResponse20020 SslCancel (int? id);
+        /// <returns>InlineResponse20021</returns>
+        InlineResponse20021 SslCancel (int? id);
 
         /// <summary>
         /// Cancel SSL Certificate Service
@@ -181,8 +181,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>ApiResponse of InlineResponse20020</returns>
-        ApiResponse<InlineResponse20020> SslCancelWithHttpInfo (int? id);
+        /// <returns>ApiResponse of InlineResponse20021</returns>
+        ApiResponse<InlineResponse20021> SslCancelWithHttpInfo (int? id);
         /// <summary>
         /// Update SSL Cert Order
         /// </summary>
@@ -191,8 +191,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns></returns>
-        void UpdateSslInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateSslInfo (string id);
 
         /// <summary>
         /// Update SSL Cert Order
@@ -202,8 +202,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateSslInfoWithHttpInfo (string id);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateSslInfoWithHttpInfo (string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -213,8 +213,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddSslAsync ();
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        System.Threading.Tasks.Task<ServiceOrderPostResponse> AddSslAsync ();
 
         /// <summary>
         /// Place SSL Cert Order
@@ -223,8 +223,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddSslAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddSslAsyncWithHttpInfo ();
         /// <summary>
         /// SSL Cert Ordering Information
         /// </summary>
@@ -232,8 +232,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Retrieves available SSL certificate types and pricing for ordering.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetNewSslAsync ();
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> GetNewSslAsync ();
 
         /// <summary>
         /// SSL Cert Ordering Information
@@ -242,7 +242,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Retrieves available SSL certificate types and pricing for ordering.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetNewSslAsyncWithHttpInfo ();
         /// <summary>
         /// Get SSL Cert Info
@@ -252,8 +252,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetSslInfoAsync (int? id);
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> GetSslInfoAsync (int? id);
 
         /// <summary>
         /// Get SSL Cert Info
@@ -263,7 +263,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetSslInfoAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Get SSL Cert Invoices
@@ -353,8 +353,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>Task of InlineResponse20020</returns>
-        System.Threading.Tasks.Task<InlineResponse20020> SslCancelAsync (int? id);
+        /// <returns>Task of InlineResponse20021</returns>
+        System.Threading.Tasks.Task<InlineResponse20021> SslCancelAsync (int? id);
 
         /// <summary>
         /// Cancel SSL Certificate Service
@@ -364,8 +364,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20020)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20020>> SslCancelAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (InlineResponse20021)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20021>> SslCancelAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Update SSL Cert Order
         /// </summary>
@@ -374,8 +374,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateSslInfoAsync (string id);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateSslInfoAsync (string id);
 
         /// <summary>
         /// Update SSL Cert Order
@@ -385,8 +385,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateSslInfoAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateSslInfoAsyncWithHttpInfo (string id);
         #endregion Asynchronous Operations
     }
 
@@ -502,18 +502,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AddSsl ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddSsl ()
         {
-             AddSslWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = AddSslWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddSslWithHttpInfo ()
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        public ApiResponse< ServiceOrderPostResponse > AddSslWithHttpInfo ()
         {
 
             var localVarPath = "/ssl/order";
@@ -566,19 +567,20 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
         /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddSslAsync ()
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        public async System.Threading.Tasks.Task<ServiceOrderPostResponse> AddSslAsync ()
         {
-             await AddSslAsyncWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = await AddSslAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -586,8 +588,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddSslAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddSslAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/ssl/order";
@@ -640,27 +642,28 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
         /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GetNewSsl ()
+        /// <returns>Object</returns>
+        public Object GetNewSsl ()
         {
-             GetNewSslWithHttpInfo();
+             ApiResponse<Object> localVarResponse = GetNewSslWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetNewSslWithHttpInfo ()
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > GetNewSslWithHttpInfo ()
         {
 
             var localVarPath = "/ssl/order";
@@ -715,17 +718,18 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
         /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetNewSslAsync ()
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> GetNewSslAsync ()
         {
-             await GetNewSslAsyncWithHttpInfo();
+             ApiResponse<Object> localVarResponse = await GetNewSslAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -733,7 +737,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetNewSslAsyncWithHttpInfo ()
         {
 
@@ -789,7 +793,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -797,10 +801,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns></returns>
-        public void GetSslInfo (int? id)
+        /// <returns>Object</returns>
+        public Object GetSslInfo (int? id)
         {
-             GetSslInfoWithHttpInfo(id);
+             ApiResponse<Object> localVarResponse = GetSslInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -808,8 +813,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetSslInfoWithHttpInfo (int? id)
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > GetSslInfoWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -868,7 +873,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -876,10 +881,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetSslInfoAsync (int? id)
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> GetSslInfoAsync (int? id)
         {
-             await GetSslInfoAsyncWithHttpInfo(id);
+             ApiResponse<Object> localVarResponse = await GetSslInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -888,7 +894,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetSslInfoAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
@@ -948,7 +954,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -1572,10 +1578,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>InlineResponse20020</returns>
-        public InlineResponse20020 SslCancel (int? id)
+        /// <returns>InlineResponse20021</returns>
+        public InlineResponse20021 SslCancel (int? id)
         {
-             ApiResponse<InlineResponse20020> localVarResponse = SslCancelWithHttpInfo(id);
+             ApiResponse<InlineResponse20021> localVarResponse = SslCancelWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -1584,8 +1590,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>ApiResponse of InlineResponse20020</returns>
-        public ApiResponse< InlineResponse20020 > SslCancelWithHttpInfo (int? id)
+        /// <returns>ApiResponse of InlineResponse20021</returns>
+        public ApiResponse< InlineResponse20021 > SslCancelWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1642,9 +1648,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20020>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20021>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20020) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20020)));
+                (InlineResponse20021) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20021)));
         }
 
         /// <summary>
@@ -1652,10 +1658,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>Task of InlineResponse20020</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20020> SslCancelAsync (int? id)
+        /// <returns>Task of InlineResponse20021</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20021> SslCancelAsync (int? id)
         {
-             ApiResponse<InlineResponse20020> localVarResponse = await SslCancelAsyncWithHttpInfo(id);
+             ApiResponse<InlineResponse20021> localVarResponse = await SslCancelAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -1665,8 +1671,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20020)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20020>> SslCancelAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (InlineResponse20021)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20021>> SslCancelAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1723,9 +1729,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20020>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20021>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20020) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20020)));
+                (InlineResponse20021) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20021)));
         }
 
         /// <summary>
@@ -1733,10 +1739,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns></returns>
-        public void UpdateSslInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateSslInfo (string id)
         {
-             UpdateSslInfoWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateSslInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1744,8 +1751,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateSslInfoWithHttpInfo (string id)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateSslInfoWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1802,9 +1809,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -1812,10 +1819,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateSslInfoAsync (string id)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateSslInfoAsync (string id)
         {
-             await UpdateSslInfoAsyncWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateSslInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -1824,8 +1832,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateSslInfoAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateSslInfoAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1882,9 +1890,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
     }

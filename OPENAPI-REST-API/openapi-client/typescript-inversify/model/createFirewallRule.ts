@@ -24,6 +24,9 @@ export interface CreateFirewallRule {
      */
     xdp_action: CreateFirewallRule.XdpActionEnum;
     destination_port?: number;
+    /**
+     * Source IP address to match. Use \'0.0.0.0\' to match any source.
+     */
     source_ip?: string;
     source_port?: number;
 }

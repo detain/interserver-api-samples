@@ -28,7 +28,7 @@ Method | HTTP request | Description
 //
 // Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
 //
-void WebhostingAPI_addWebsite(apiClient_t *apiClient);
+service_order_post_response_t* WebhostingAPI_addWebsite(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -38,7 +38,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[service_order_post_response_t](service_order_post_response.md) *
+
 
 ### Authorization
 
@@ -459,7 +460,7 @@ void
 //
 // Updates settings on a webhosting order.
 //
-void WebhostingAPI_updateWebsiteInfo(apiClient_t *apiClient, char *id);
+success_text_response_t* WebhostingAPI_updateWebsiteInfo(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -470,7 +471,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

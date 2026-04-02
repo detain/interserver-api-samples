@@ -24,11 +24,12 @@ inherit
 feature -- API Access
 
 
-	add_server 
+	add_server : detachable ADD_SERVER_200_RESPONSE
 			-- Place Server Order
 			-- Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
 			-- 
 			-- 
+			-- Result ADD_SERVER_200_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -46,9 +47,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { ADD_SERVER_200_RESPONSE } l_response.data ({ ADD_SERVER_200_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -629,13 +634,14 @@ feature -- API Access
 			end
 		end
 
-	update_server_info (id: STRING_32)
+	update_server_info (id: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update Server Order
 			-- Updates settings on a dedicated server order.
 			-- 
 			-- argument: id Server ID number. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -654,9 +660,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

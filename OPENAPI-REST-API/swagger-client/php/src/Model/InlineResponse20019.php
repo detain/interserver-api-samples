@@ -56,8 +56,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'success' => 'bool',
-        'text' => 'string'
+        'text' => 'string',
+        'invoice' => 'int',
+        'order' => 'int'
     ];
 
     /**
@@ -66,8 +67,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'success' => null,
-        'text' => null
+        'text' => null,
+        'invoice' => null,
+        'order' => null
     ];
 
     /**
@@ -97,8 +99,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'text' => 'text'
+        'text' => 'text',
+        'invoice' => 'invoice',
+        'order' => 'order'
     ];
 
     /**
@@ -107,8 +110,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'text' => 'setText'
+        'text' => 'setText',
+        'invoice' => 'setInvoice',
+        'order' => 'setOrder'
     ];
 
     /**
@@ -117,8 +121,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'text' => 'getText'
+        'text' => 'getText',
+        'invoice' => 'getInvoice',
+        'order' => 'getOrder'
     ];
 
     /**
@@ -179,8 +184,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['invoice'] = isset($data['invoice']) ? $data['invoice'] : null;
+        $this->container['order'] = isset($data['order']) ? $data['order'] : null;
     }
 
     /**
@@ -192,12 +198,6 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['success'] === null) {
-            $invalidProperties[] = "'success' can't be null";
-        }
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -214,30 +214,6 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets success
-     *
-     * @return bool
-     */
-    public function getSuccess()
-    {
-        return $this->container['success'];
-    }
-
-    /**
-     * Sets success
-     *
-     * @param bool $success success
-     *
-     * @return $this
-     */
-    public function setSuccess($success)
-    {
-        $this->container['success'] = $success;
-
-        return $this;
-    }
-
-    /**
      * Gets text
      *
      * @return string
@@ -250,13 +226,61 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
     /**
      * Sets text
      *
-     * @param string $text text
+     * @param string $text Status message.
      *
      * @return $this
      */
     public function setText($text)
     {
         $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice
+     *
+     * @return int
+     */
+    public function getInvoice()
+    {
+        return $this->container['invoice'];
+    }
+
+    /**
+     * Sets invoice
+     *
+     * @param int $invoice Invoice ID for payment.
+     *
+     * @return $this
+     */
+    public function setInvoice($invoice)
+    {
+        $this->container['invoice'] = $invoice;
+
+        return $this;
+    }
+
+    /**
+     * Gets order
+     *
+     * @return int
+     */
+    public function getOrder()
+    {
+        return $this->container['order'];
+    }
+
+    /**
+     * Sets order
+     *
+     * @param int $order Server order ID.
+     *
+     * @return $this
+     */
+    public function setOrder($order)
+    {
+        $this->container['order'] = $order;
 
         return $this;
     }

@@ -35,6 +35,7 @@ import io.swagger.model.QuickserverOrder;
 import io.swagger.model.QuickserverRow;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.TimezoneUpdate;
@@ -94,8 +95,8 @@ public class QuickServersApiTest {
      */
     @Test
     public void addQsTest() {
-        //api.addQs();
-        
+        //ServiceOrderPostResponse response = api.addQs();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -830,8 +831,8 @@ public class QuickServersApiTest {
     @Test
     public void updateQsInfoTest() {
         String id = null;
-        //api.updateQsInfo(id);
-        
+        //SuccessTextResponse response = api.updateQsInfo(id);
+        //assertNotNull(response);
         // TODO: test validations
         
         

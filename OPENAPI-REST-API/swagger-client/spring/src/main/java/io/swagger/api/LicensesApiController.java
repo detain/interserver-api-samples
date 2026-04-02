@@ -7,6 +7,7 @@ import io.swagger.model.IpObject;
 import io.swagger.model.License;
 import io.swagger.model.LicenseRow;
 import io.swagger.model.LicensesOrder;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -55,9 +56,18 @@ public class LicensesApiController implements LicensesApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> addLicense() {
+    public ResponseEntity<ServiceOrderPostResponse> addLicense() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<ServiceOrderPostResponse>(objectMapper.readValue("{\n  \"continue\" : true,\n  \"errors\" : [ ],\n  \"total_cost\" : \"5.00\",\n  \"iid\" : \"25296600\",\n  \"iids\" : [ \"SERVICE12345\" ],\n  \"real_iids\" : [ \"25296600\" ],\n  \"serviceId\" : 12345,\n  \"invoice_description\" : \"New Service Order\"\n}", ServiceOrderPostResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<License> getLicenseInfo(@Parameter(in = ParameterIn.PATH, description = "The license service ID. Use `license_id` from `GET /licenses`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -175,10 +185,19 @@ public class LicensesApiController implements LicensesApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateLicenseInfo(@Parameter(in = ParameterIn.PATH, description = "The license service ID. Use `license_id` from `GET /licenses`.", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<SuccessTextResponse> updateLicenseInfo(@Parameter(in = ParameterIn.PATH, description = "The license service ID. Use `license_id` from `GET /licenses`.", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

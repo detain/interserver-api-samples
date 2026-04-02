@@ -16,13 +16,9 @@ open class ServersAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addServer(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addServer(completion: @escaping ((_ data: InlineResponse20019?,_ error: Error?) -> Void)) {
         addServerWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -40,10 +36,15 @@ open class ServersAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "text" : "Order Completed",
+  "invoice" : 0,
+  "order" : 6
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<InlineResponse20019> 
      */
-    open class func addServerWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func addServerWithRequestBuilder() -> RequestBuilder<InlineResponse20019> {
         let path = "/servers/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -51,7 +52,7 @@ open class ServersAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20019>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -61,7 +62,7 @@ open class ServersAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func buyItNowServerOrder(completion: @escaping ((_ data: InlineResponse20026?,_ error: Error?) -> Void)) {
+    open class func buyItNowServerOrder(completion: @escaping ((_ data: InlineResponse20027?,_ error: Error?) -> Void)) {
         buyItNowServerOrderWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -141,9 +142,9 @@ open class ServersAPI {
   } ]
 }}]
 
-     - returns: RequestBuilder<InlineResponse20026> 
+     - returns: RequestBuilder<InlineResponse20027> 
      */
-    open class func buyItNowServerOrderWithRequestBuilder() -> RequestBuilder<InlineResponse20026> {
+    open class func buyItNowServerOrderWithRequestBuilder() -> RequestBuilder<InlineResponse20027> {
         let path = "/servers/order/buy_now_server"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -151,7 +152,7 @@ open class ServersAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<InlineResponse20026>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20027>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -1365,7 +1366,7 @@ open class ServersAPI {
      - parameter _id: (path) Server ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20019?,_ error: Error?) -> Void)) {
+    open class func serversCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20020?,_ error: Error?) -> Void)) {
         serversCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -1391,9 +1392,9 @@ open class ServersAPI {
 }}]
      - parameter _id: (path) Server ID number 
 
-     - returns: RequestBuilder<InlineResponse20019> 
+     - returns: RequestBuilder<InlineResponse20020> 
      */
-    open class func serversCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20019> {
+    open class func serversCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20020> {
         var path = "/servers/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1404,7 +1405,7 @@ open class ServersAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<InlineResponse20019>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20020>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -1414,13 +1415,9 @@ open class ServersAPI {
      - parameter _id: (path) Server ID number. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateServerInfo(_id: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateServerInfo(_id: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateServerInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -1438,11 +1435,15 @@ open class ServersAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter _id: (path) Server ID number. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateServerInfoWithRequestBuilder(_id: String) -> RequestBuilder<Void> {
+    open class func updateServerInfoWithRequestBuilder(_id: String) -> RequestBuilder<SuccessTextResponse> {
         var path = "/servers/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1453,7 +1454,7 @@ open class ServersAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

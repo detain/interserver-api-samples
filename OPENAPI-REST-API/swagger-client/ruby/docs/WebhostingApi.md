@@ -25,7 +25,7 @@ Method | HTTP request | Description
 [**webhosting_cancel**](WebhostingApi.md#webhosting_cancel) | **DELETE** /websites/{id} | Cancel Website
 
 # **add_website**
-> add_website
+> ServiceOrderPostResponse add_website
 
 Place Website Order
 
@@ -57,7 +57,8 @@ api_instance = SwaggerClient::WebhostingApi.new
 
 begin
   #Place Website Order
-  api_instance.add_website
+  result = api_instance.add_website
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling WebhostingApi->add_website: #{e}"
 end
@@ -68,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -140,7 +141,7 @@ This endpoint does not need any parameter.
 
 
 # **get_website_buy_ip**
-> InlineResponse20023 get_website_buy_ip(id)
+> InlineResponse20024 get_website_buy_ip(id)
 
 Get Website IP Information
 
@@ -189,7 +190,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -639,7 +640,7 @@ Name | Type | Description  | Notes
 
 
 # **post_website_buy_ip**
-> InlineResponse20024 post_website_buy_ip(bodyid)
+> InlineResponse20025 post_website_buy_ip(bodyid)
 
 Update Website IP DNS
 
@@ -690,7 +691,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -704,7 +705,7 @@ Name | Type | Description  | Notes
 
 
 # **post_website_buy_ip**
-> InlineResponse20024 post_website_buy_ip(ipsid)
+> InlineResponse20025 post_website_buy_ip(ipsid)
 
 Update Website IP DNS
 
@@ -755,7 +756,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -769,7 +770,7 @@ Name | Type | Description  | Notes
 
 
 # **post_website_migration**
-> InlineResponse20025 post_website_migration(bodyid)
+> InlineResponse20026 post_website_migration(bodyid)
 
 Request Website Migration
 
@@ -820,7 +821,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -834,7 +835,7 @@ Name | Type | Description  | Notes
 
 
 # **post_website_migration**
-> InlineResponse20025 post_website_migration(cust_portalreg_emailpasswordctrl_panelftp_usernameftp_passwordsite_busy_migspl_req_migdomain_regdata_migdomain_reg_portaldomain_reg_emaildomain_reg_passwordid)
+> InlineResponse20026 post_website_migration(cust_portalreg_emailpasswordctrl_panelftp_usernameftp_passwordsite_busy_migspl_req_migdomain_regdata_migdomain_reg_portaldomain_reg_emaildomain_reg_passwordid)
 
 Request Website Migration
 
@@ -909,7 +910,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -1110,7 +1111,7 @@ nil (empty response body)
 
 
 # **update_website_info**
-> update_website_info(id)
+> SuccessTextResponse update_website_info(id)
 
 Update Website Order
 
@@ -1144,7 +1145,8 @@ id = 'id_example' # String | The website service ID. Use `website_id` from `GET 
 
 begin
   #Update Website Order
-  api_instance.update_website_info(id)
+  result = api_instance.update_website_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling WebhostingApi->update_website_info: #{e}"
 end
@@ -1158,7 +1160,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1172,7 +1174,7 @@ nil (empty response body)
 
 
 # **webhosting_cancel**
-> InlineResponse20022 webhosting_cancel(id)
+> InlineResponse20023 webhosting_cancel(id)
 
 Cancel Website
 
@@ -1221,7 +1223,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 

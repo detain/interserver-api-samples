@@ -11,6 +11,8 @@
 #include "ChargeInvoiceRows.h"
 #include "Floating_ipsCancel_200_response.h"
 #include "GetAccountInfo_401_response.h"
+#include "Object.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 
 namespace Tiny {
@@ -32,7 +34,7 @@ public:
     * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
     */
     Response<
-            String
+                ServiceOrderPostResponse
         >
     addFloatingIp(
     );
@@ -57,7 +59,7 @@ public:
     * \param id The Floating IP service ID. Use the ID from `GET /floating_ips`. *Required*
     */
     Response<
-            String
+                Object
         >
     getFloatingIpInfo(
             
@@ -108,7 +110,7 @@ public:
     * Retrieves available options and pricing for ordering a new Floating IP.
     */
     Response<
-            String
+                Object
         >
     getNewFloatingIp(
     );
@@ -147,7 +149,7 @@ public:
     * \param id The Floating IP service ID. Use the ID from `GET /floating_ips`. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateFloatingIpInfo(
             

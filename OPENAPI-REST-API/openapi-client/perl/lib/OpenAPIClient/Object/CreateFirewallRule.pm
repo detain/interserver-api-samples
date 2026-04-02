@@ -229,7 +229,7 @@ __PACKAGE__->method_documentation({
     'source_ip' => {
         datatype => 'string',
         base_name => 'source_ip',
-        description => '',
+        description => 'Source IP address to match. Use &#39;0.0.0.0&#39; to match any source.',
         format => '',
         read_only => '',
             },

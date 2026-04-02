@@ -18,6 +18,7 @@ goog.provide('API.Client.DNSApi');
 goog.require('API.Client.DnsListItem');
 goog.require('API.Client.DnsRecord');
 goog.require('API.Client.DnsRecordType');
+goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.getAccountInfo_401_response');
 
 /**
@@ -53,7 +54,7 @@ API.Client.DNSApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * @param {!string} domain The domain name.
  * @param {!string} ip IP Address to point the domain to.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.DNSApi.prototype.addDnsDomain = function(domain, ip, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -173,7 +174,7 @@ API.Client.DNSApi.prototype.addDnsRecord = function(id, name, type, content, opt
  * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
  * @param {!string} id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.DNSApi.prototype.deleteDnsDomain = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -211,7 +212,7 @@ API.Client.DNSApi.prototype.deleteDnsDomain = function(id, opt_extraHttpRequestP
  * @param {!number} domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
  * @param {!number} recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.DNSApi.prototype.deleteDnsRecord = function(domainId, recordId, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -330,7 +331,7 @@ API.Client.DNSApi.prototype.getDnsList = function(opt_extraHttpRequestParams) {
  * @param {!string=} opt_ordername 
  * @param {!string=} opt_auth 
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.DNSApi.prototype.updateDnsRecord = function(domainId, recordId, opt_name, opt_type, opt_content, opt_ttl, opt_prio, opt_disabled, opt_ordername, opt_auth, opt_extraHttpRequestParams) {
   /** @const {string} */

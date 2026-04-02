@@ -178,7 +178,7 @@ Spectator.describe "AccountApi" do
   # @option opts [Bool] :disable_server_notifications Set to &#x60;true&#x60; to disable server notifications, or &#x60;false&#x60; to enable them.
   # @option opts [Bool] :disable_email_notifications Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them.
   # @option opts [String] :gstin Your GST identification number (if applicable).
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "update_account_info test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -191,7 +191,7 @@ Spectator.describe "AccountApi" do
   # @param start The begining (or first) IP address in the range.
   # @param _end The ending (or last) IP address in the range.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "update_account_ip_limits test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

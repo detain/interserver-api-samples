@@ -18,10 +18,11 @@ feature -- Test routines
             --
             -- Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
         local
+            l_response: SERVICE_ORDER_POST_RESPONSE
         do
             -- TODO: Initialize required params.
 
-            -- api.add_qs
+            -- l_response := api.add_qs
             assert ("not_implemented", False)
         end
 
@@ -656,12 +657,13 @@ feature -- Test routines
             --
             -- Updates QuickServer metadata or stored settings associated with the order.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_qs_info(l_id)
+            -- l_response := api.update_qs_info(l_id)
             assert ("not_implemented", False)
         end
 

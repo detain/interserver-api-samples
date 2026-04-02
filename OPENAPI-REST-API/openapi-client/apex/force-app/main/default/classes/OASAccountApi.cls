@@ -311,9 +311,10 @@ public class OASAccountApi {
      * @param disableServerNotifications Set to &#x60;true&#x60; to disable server notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param disableEmailNotifications Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param gstin Your GST identification number (if applicable). (optional)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateAccountInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateAccountInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('name'), 'name');
         client.assertNotNull(params.get('address'), 'address');
         client.assertNotNull(params.get('city'), 'city');
@@ -343,7 +344,7 @@ public class OASAccountApi {
         form.addAll(client.makeParam('disable_email_notifications', (Boolean) params.get('disableEmailNotifications')));
         form.addAll(client.makeParam('gstin', (String) params.get('gstin')));
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/account', '',
             query, form,
             new Map<String, Object>(),
@@ -351,7 +352,7 @@ public class OASAccountApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'multipart/form-data', 'application/json' },
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
     /**
@@ -359,9 +360,10 @@ public class OASAccountApi {
      * Adds an IP address range to the account\&#39;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param start The begining (or first) IP address in the range. (required)
      * @param r_end The ending (or last) IP address in the range. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateAccountIpLimits(Map<String, Object> params) {
+    public OASSuccessTextResponse updateAccountIpLimits(Map<String, Object> params) {
         client.assertNotNull(params.get('start'), 'start');
         client.assertNotNull(params.get('r_end'), 'r_end');
         List<OAS.Param> query = new List<OAS.Param>();
@@ -371,7 +373,7 @@ public class OASAccountApi {
         form.addAll(client.makeParam('start', (String) params.get('start')));
         form.addAll(client.makeParam('end', (String) params.get('r_end')));
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/account/iplimits', '',
             query, form,
             new Map<String, Object>(),
@@ -379,7 +381,7 @@ public class OASAccountApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'multipart/form-data', 'application/json' },
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
     /**

@@ -20,7 +20,8 @@ import { Observable }                                        from 'rxjs';
 import { BuyItNowList } from '../model/buyItNowList';
 import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
 import { InlineResponse20019 } from '../model/inlineResponse20019';
-import { InlineResponse20026 } from '../model/inlineResponse20026';
+import { InlineResponse20020 } from '../model/inlineResponse20020';
+import { InlineResponse20027 } from '../model/inlineResponse20027';
 import { InlineResponse401 } from '../model/inlineResponse401';
 import { OrderBuyNowServerBody } from '../model/orderBuyNowServerBody';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
@@ -77,9 +78,9 @@ export class ServersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addServer(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addServer(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addServer(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addServer(observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20019>;
+    public addServer(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20019>>;
+    public addServer(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20019>>;
     public addServer(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -114,7 +115,7 @@ export class ServersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/servers/order`,
+        return this.httpClient.request<InlineResponse20019>('post',`${this.basePath}/servers/order`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -131,9 +132,9 @@ export class ServersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public buyItNowServerOrder(observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20026>;
-    public buyItNowServerOrder(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20026>>;
-    public buyItNowServerOrder(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20026>>;
+    public buyItNowServerOrder(observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20027>;
+    public buyItNowServerOrder(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20027>>;
+    public buyItNowServerOrder(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20027>>;
     public buyItNowServerOrder(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -168,7 +169,7 @@ export class ServersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<InlineResponse20026>('get',`${this.basePath}/servers/order/buy_now_server`,
+        return this.httpClient.request<InlineResponse20027>('get',`${this.basePath}/servers/order/buy_now_server`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1293,9 +1294,9 @@ export class ServersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public serversCancel(id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20019>;
-    public serversCancel(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20019>>;
-    public serversCancel(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20019>>;
+    public serversCancel(id: number, observe?: 'body', reportProgress?: boolean): Observable<InlineResponse20020>;
+    public serversCancel(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InlineResponse20020>>;
+    public serversCancel(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InlineResponse20020>>;
     public serversCancel(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -1334,7 +1335,7 @@ export class ServersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<InlineResponse20019>('delete',`${this.basePath}/servers/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<InlineResponse20020>('delete',`${this.basePath}/servers/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -1352,9 +1353,9 @@ export class ServersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateServerInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateServerInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateServerInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateServerInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateServerInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateServerInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateServerInfo(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -1393,7 +1394,7 @@ export class ServersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/servers/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/servers/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

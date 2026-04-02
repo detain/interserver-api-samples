@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**update_floating_ip_info**](FloatingIPsApi.md#update_floating_ip_info) | **POST** /floating_ips/{id} | Update Floating IP
 
 # **add_floating_ip**
-> add_floating_ip()
+> ServiceOrderPostResponse add_floating_ip()
 
 Place Floating IP Order
 
@@ -51,7 +51,8 @@ api_instance = myadmin-client-python.FloatingIPsApi(myadmin-client-python.ApiCli
 
 try:
     # Place Floating IP Order
-    api_instance.add_floating_ip()
+    api_response = api_instance.add_floating_ip()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling FloatingIPsApi->add_floating_ip: %s\n" % e)
 ```
@@ -61,7 +62,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -139,7 +140,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_floating_ip_info**
-> get_floating_ip_info(id)
+> object get_floating_ip_info(id)
 
 View Floating IP
 
@@ -175,7 +176,8 @@ id = 56 # int | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 try:
     # View Floating IP
-    api_instance.get_floating_ip_info(id)
+    api_response = api_instance.get_floating_ip_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling FloatingIPsApi->get_floating_ip_info: %s\n" % e)
 ```
@@ -188,7 +190,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -389,7 +391,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_new_floating_ip**
-> get_new_floating_ip()
+> object get_new_floating_ip()
 
 Get Floating IP Ordering Information
 
@@ -424,7 +426,8 @@ api_instance = myadmin-client-python.FloatingIPsApi(myadmin-client-python.ApiCli
 
 try:
     # Get Floating IP Ordering Information
-    api_instance.get_new_floating_ip()
+    api_response = api_instance.get_new_floating_ip()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling FloatingIPsApi->get_new_floating_ip: %s\n" % e)
 ```
@@ -434,7 +437,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -573,7 +576,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_floating_ip_info**
-> update_floating_ip_info(id)
+> SuccessTextResponse update_floating_ip_info(id)
 
 Update Floating IP
 
@@ -609,7 +612,8 @@ id = 'id_example' # str | The Floating IP service ID. Use the ID from `GET /floa
 
 try:
     # Update Floating IP
-    api_instance.update_floating_ip_info(id)
+    api_response = api_instance.update_floating_ip_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling FloatingIPsApi->update_floating_ip_info: %s\n" % e)
 ```
@@ -622,7 +626,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

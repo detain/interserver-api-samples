@@ -15,7 +15,7 @@ package io.swagger.client.models
 /**
  * Create firewall rule for your ip
  * @param destinationPort 
- * @param sourceIp 
+ * @param sourceIp Source IP address to match. Use '0.0.0.0' to match any source.
  * @param sourcePort 
  * @param protocolId 1 = TCP, 2 = UDP
  * @param xdpAction 1 = Block,  0 = Whitelist
@@ -23,6 +23,7 @@ package io.swagger.client.models
 data class CreateFirewallRule (
 
     val destinationPort: kotlin.Int? = null,
+    /* Source IP address to match. Use '0.0.0.0' to match any source. */
     val sourceIp: kotlin.String? = null,
     val sourcePort: kotlin.Int? = null,
     /* 1 = TCP, 2 = UDP */

@@ -21,6 +21,7 @@ public struct CreateFirewallRule: Codable {
 
     public var destinationPort: Int?
 
+    /** Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source. */
     public var sourceIp: String?
 
     public var sourcePort: Int?

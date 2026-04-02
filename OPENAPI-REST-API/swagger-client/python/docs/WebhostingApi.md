@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**webhosting_cancel**](WebhostingApi.md#webhosting_cancel) | **DELETE** /websites/{id} | Cancel Website
 
 # **add_website**
-> add_website()
+> ServiceOrderPostResponse add_website()
 
 Place Website Order
 
@@ -57,7 +57,8 @@ api_instance = myadmin-client-python.WebhostingApi(myadmin-client-python.ApiClie
 
 try:
     # Place Website Order
-    api_instance.add_website()
+    api_response = api_instance.add_website()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling WebhostingApi->add_website: %s\n" % e)
 ```
@@ -67,7 +68,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -141,7 +142,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_website_buy_ip**
-> InlineResponse20023 get_website_buy_ip(id)
+> InlineResponse20024 get_website_buy_ip(id)
 
 Get Website IP Information
 
@@ -191,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20023**](InlineResponse20023.md)
+[**InlineResponse20024**](InlineResponse20024.md)
 
 ### Authorization
 
@@ -649,7 +650,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_website_buy_ip**
-> InlineResponse20024 post_website_buy_ip(body, id)
+> InlineResponse20025 post_website_buy_ip(body, id)
 
 Update Website IP DNS
 
@@ -701,7 +702,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20024**](InlineResponse20024.md)
+[**InlineResponse20025**](InlineResponse20025.md)
 
 ### Authorization
 
@@ -715,7 +716,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_website_migration**
-> InlineResponse20025 post_website_migration(body, id)
+> InlineResponse20026 post_website_migration(body, id)
 
 Request Website Migration
 
@@ -767,7 +768,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20025**](InlineResponse20025.md)
+[**InlineResponse20026**](InlineResponse20026.md)
 
 ### Authorization
 
@@ -906,7 +907,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_website_info**
-> update_website_info(id)
+> SuccessTextResponse update_website_info(id)
 
 Update Website Order
 
@@ -942,7 +943,8 @@ id = 'id_example' # str | The website service ID. Use `website_id` from `GET /we
 
 try:
     # Update Website Order
-    api_instance.update_website_info(id)
+    api_response = api_instance.update_website_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling WebhostingApi->update_website_info: %s\n" % e)
 ```
@@ -955,7 +957,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -969,7 +971,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **webhosting_cancel**
-> InlineResponse20022 webhosting_cancel(id)
+> InlineResponse20023 webhosting_cancel(id)
 
 Cancel Website
 
@@ -1019,7 +1021,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20022**](InlineResponse20022.md)
+[**InlineResponse20023**](InlineResponse20023.md)
 
 ### Authorization
 

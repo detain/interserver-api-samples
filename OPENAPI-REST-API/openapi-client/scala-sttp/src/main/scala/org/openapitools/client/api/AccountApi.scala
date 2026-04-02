@@ -312,9 +312,9 @@ class AccountApi(baseUrl: String) {
    * Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
    *   code 422 : TextResponse (Validation error while updating account data.)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -340,7 +340,7 @@ class AccountApi(baseUrl: String) {
    * @param gstin Your GST identification number (if applicable).
    */
   def updateAccountInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: Option[String] = None, address2: Option[String] = None, locale: Option[String] = None, emailInvoices: Option[String] = None, emailAbuse: Option[String] = None, disableReset: Option[Boolean] = None, disableReinstall: Option[Boolean] = None, disableServerNotifications: Option[Boolean] = None, disableEmailNotifications: Option[Boolean] = None, gstin: Option[String] = None
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], SuccessTextResponse], Any] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/account")
       .contentType("multipart/form-data")
@@ -383,15 +383,15 @@ class AccountApi(baseUrl: String) {
                 gstin.map(multipart("gstin", _))
 
       ).flatten)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
    *   code 422 : TextResponse (IP limit payload contains an invalid address.)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -402,7 +402,7 @@ class AccountApi(baseUrl: String) {
    * @param end The ending (or last) IP address in the range.
    */
   def updateAccountIpLimits(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(start: String, end: String
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], SuccessTextResponse], Any] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/account/iplimits")
       .contentType("multipart/form-data")
@@ -415,7 +415,7 @@ class AccountApi(baseUrl: String) {
                 multipart("end", end)
 
       ).flatten)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
   /**
    * Changes the account login password. The current password must be provided for verification. After a successful change, existing API keys remain valid but active sessions may require re-authentication.

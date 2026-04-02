@@ -35,7 +35,7 @@ describe 'QuickServersApi' do
   # Place QuickServer Order
   # Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe 'add_qs test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -610,7 +610,7 @@ describe 'QuickServersApi' do
   # Updates QuickServer metadata or stored settings associated with the order.
   # @param id QuickServer ID number.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_qs_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

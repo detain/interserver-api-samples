@@ -18,10 +18,11 @@ feature -- Test routines
             --
             -- Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
         local
+            l_response: SERVICE_ORDER_POST_RESPONSE
         do
             -- TODO: Initialize required params.
 
-            -- api.add_domain
+            -- l_response := api.add_domain
             assert ("not_implemented", False)
         end
 
@@ -405,12 +406,13 @@ feature -- Test routines
             --
             -- Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_domain_info(l_id)
+            -- l_response := api.update_domain_info(l_id)
             assert ("not_implemented", False)
         end
 

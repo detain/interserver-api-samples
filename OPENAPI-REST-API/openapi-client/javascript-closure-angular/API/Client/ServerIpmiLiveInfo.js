@@ -1,7 +1,7 @@
 goog.provide('API.Client.ServerIpmiLiveInfo');
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  * @record
  */
 API.Client.ServerIpmiLiveInfo = function() {}

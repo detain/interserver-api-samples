@@ -46,7 +46,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="addSsl"></a>
 # **addSsl**
 ```java
-Mono<Void> SslCertificatesApi.addSsl()
+Mono<ServiceOrderPostResponse> SslCertificatesApi.addSsl()
 ```
 
 Place SSL Cert Order
@@ -55,7 +55,8 @@ Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to val
 
 
 
-
+### Return type
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -69,7 +70,7 @@ Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to val
 <a id="getNewSsl"></a>
 # **getNewSsl**
 ```java
-Mono<Void> SslCertificatesApi.getNewSsl()
+Mono<Object> SslCertificatesApi.getNewSsl()
 ```
 
 SSL Cert Ordering Information
@@ -78,7 +79,8 @@ Retrieves available SSL certificate types and pricing for ordering.
 
 
 
-
+### Return type
+`Object`
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -92,7 +94,7 @@ Retrieves available SSL certificate types and pricing for ordering.
 <a id="getSslInfo"></a>
 # **getSslInfo**
 ```java
-Mono<Void> SslCertificatesApi.getSslInfo(id)
+Mono<Object> SslCertificatesApi.getSslInfo(id)
 ```
 
 Get SSL Cert Info
@@ -105,7 +107,8 @@ Returns detailed information about a specific SSL certificate including its doma
 | **id** | `Integer`| SSL certificate ID number. | |
 
 
-
+### Return type
+`Object`
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -249,7 +252,7 @@ Cancels the SSL certificate service. The certificate will not be renewed and bil
 <a id="updateSslInfo"></a>
 # **updateSslInfo**
 ```java
-Mono<Void> SslCertificatesApi.updateSslInfo(id)
+Mono<SuccessTextResponse> SslCertificatesApi.updateSslInfo(id)
 ```
 
 Update SSL Cert Order
@@ -262,7 +265,8 @@ Updates settings on an SSL certificate order.
 | **id** | `String`| SSL certificate ID number. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

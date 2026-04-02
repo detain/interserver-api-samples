@@ -16,6 +16,7 @@
 #include "QuickserversCancel_200_response.h"
 #include "RestoreRequest.h"
 #include "ReverseDnsEntries.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
 #include "VpsBackupRows.h"
@@ -48,8 +49,8 @@ public:
  */
 bool addQsSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Place QuickServer Order. *Asynchronous*
  *
@@ -60,8 +61,8 @@ bool addQsSync(char * accessToken,
  */
 bool addQsAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Delete QuickServer Backup. *Synchronous*
@@ -1218,8 +1219,8 @@ bool quickserversCancelAsync(char * accessToken,
  */
 bool updateQsInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update QuickServer Order. *Asynchronous*
  *
@@ -1231,8 +1232,8 @@ bool updateQsInfoSync(char * accessToken,
  */
 bool updateQsInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 

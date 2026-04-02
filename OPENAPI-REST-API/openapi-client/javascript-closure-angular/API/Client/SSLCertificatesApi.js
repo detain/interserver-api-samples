@@ -16,6 +16,7 @@
 goog.provide('API.Client.SSLCertificatesApi');
 
 goog.require('API.Client.ChargeInvoiceRows');
+goog.require('API.Client.ServiceOrderPostResponse');
 goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.getAccountInfo_401_response');
 goog.require('API.Client.sslCancel_200_response');
@@ -51,7 +52,7 @@ API.Client.SSLCertificatesApi.$inject = ['$http', '$httpParamSerializer', '$inje
  * Place SSL Cert Order
  * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.ServiceOrderPostResponse>}
  */
 API.Client.SSLCertificatesApi.prototype.addSsl = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -82,7 +83,7 @@ API.Client.SSLCertificatesApi.prototype.addSsl = function(opt_extraHttpRequestPa
  * SSL Cert Ordering Information
  * Retrieves available SSL certificate types and pricing for ordering.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.Object>}
  */
 API.Client.SSLCertificatesApi.prototype.getNewSsl = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -114,7 +115,7 @@ API.Client.SSLCertificatesApi.prototype.getNewSsl = function(opt_extraHttpReques
  * Returns detailed information about a specific SSL certificate including its domain and expiration.
  * @param {!number} id SSL certificate ID number.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.Object>}
  */
 API.Client.SSLCertificatesApi.prototype.getSslInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -324,7 +325,7 @@ API.Client.SSLCertificatesApi.prototype.sslCancel = function(id, opt_extraHttpRe
  * Updates settings on an SSL certificate order.
  * @param {!string} id SSL certificate ID number.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.SSLCertificatesApi.prototype.updateSslInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

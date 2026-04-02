@@ -21,7 +21,7 @@ All URIs are relative to https://my.interserver.net/apiv2, except if the operati
 ## `addFloatingIp()`
 
 ```php
-addFloatingIp()
+addFloatingIp(): \Interserver\MyAdmin\Model\ServiceOrderPostResponse
 ```
 
 Place Floating IP Order
@@ -59,7 +59,8 @@ $apiInstance = new Interserver\MyAdmin\Api\FloatingIPsApi(
 );
 
 try {
-    $apiInstance->addFloatingIp();
+    $result = $apiInstance->addFloatingIp();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FloatingIPsApi->addFloatingIp: ', $e->getMessage(), PHP_EOL;
 }
@@ -71,7 +72,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -161,7 +162,7 @@ try {
 ## `getFloatingIpInfo()`
 
 ```php
-getFloatingIpInfo($id)
+getFloatingIpInfo($id): object
 ```
 
 View Floating IP
@@ -200,7 +201,8 @@ $apiInstance = new Interserver\MyAdmin\Api\FloatingIPsApi(
 $id = 56; // int | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 try {
-    $apiInstance->getFloatingIpInfo($id);
+    $result = $apiInstance->getFloatingIpInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FloatingIPsApi->getFloatingIpInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -214,7 +216,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -444,7 +446,7 @@ try {
 ## `getNewFloatingIp()`
 
 ```php
-getNewFloatingIp()
+getNewFloatingIp(): object
 ```
 
 Get Floating IP Ordering Information
@@ -482,7 +484,8 @@ $apiInstance = new Interserver\MyAdmin\Api\FloatingIPsApi(
 );
 
 try {
-    $apiInstance->getNewFloatingIp();
+    $result = $apiInstance->getNewFloatingIp();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FloatingIPsApi->getNewFloatingIp: ', $e->getMessage(), PHP_EOL;
 }
@@ -494,7 +497,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -654,7 +657,7 @@ void (empty response body)
 ## `updateFloatingIpInfo()`
 
 ```php
-updateFloatingIpInfo($id)
+updateFloatingIpInfo($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update Floating IP
@@ -693,7 +696,8 @@ $apiInstance = new Interserver\MyAdmin\Api\FloatingIPsApi(
 $id = 'id_example'; // string | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 try {
-    $apiInstance->updateFloatingIpInfo($id);
+    $result = $apiInstance->updateFloatingIpInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FloatingIPsApi->updateFloatingIpInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -707,7 +711,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

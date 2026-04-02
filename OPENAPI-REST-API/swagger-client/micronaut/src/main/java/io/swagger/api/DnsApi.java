@@ -12,6 +12,7 @@ import io.swagger.model.DnsRecord;
 import io.swagger.model.DnsRecordType;
 import io.swagger.model.DnsUpdateRecord;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.SuccessTextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.*;
 import io.micronaut.http.annotation.*;
@@ -31,10 +32,10 @@ public interface DnsApi {
 
 
     @Operation(summary = "Create DNS Domain", operationId = "addDnsDomain", description = "Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation." , tags = {"DNS"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/dns", produces = { "application/json" }, consumes = {"multipart/form-data", "application/json"})
-    default Single<HttpResponse<Void>> addDnsDomain(@NotNull @Parameter(description = "") @Body(value = "domain")  String domain,@NotNull @Parameter(description = "") @Body(value = "ip")  String ip) {
+    default Single<HttpResponse<SuccessTextResponse>> addDnsDomain(@NotNull @Parameter(description = "") @Body(value = "domain")  String domain,@NotNull @Parameter(description = "") @Body(value = "ip")  String ip) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -42,10 +43,10 @@ public interface DnsApi {
 
 
     @Operation(summary = "Create DNS Domain", operationId = "addDnsDomain", description = "Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation." , tags = {"DNS"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/dns", produces = { "application/json" }, consumes = {"multipart/form-data", "application/json"})
-    default Single<HttpResponse<Void>> addDnsDomain(@NotNull @Valid @Parameter(description = "") @Body DnsNewDomain body) {
+    default Single<HttpResponse<SuccessTextResponse>> addDnsDomain(@NotNull @Valid @Parameter(description = "") @Body DnsNewDomain body) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -75,10 +76,10 @@ public interface DnsApi {
 
 
     @Operation(summary = "Delete DNS Domain", operationId = "deleteDnsDomain", description = "Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately." , tags = {"DNS"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Delete(value = "/dns/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> deleteDnsDomain(@Parameter(description = "The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.") @PathVariable("id") String id) {
+    default Single<HttpResponse<SuccessTextResponse>> deleteDnsDomain(@Parameter(description = "The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -86,10 +87,10 @@ public interface DnsApi {
 
 
     @Operation(summary = "Delete DNS Record", operationId = "deleteDnsRecord", description = "Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed." , tags = {"DNS"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Delete(value = "/dns/{domainId}/{recordId}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> deleteDnsRecord(@Parameter(description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.") @PathVariable("domainId") Integer domainId,@Parameter(description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.") @PathVariable("recordId") Integer recordId) {
+    default Single<HttpResponse<SuccessTextResponse>> deleteDnsRecord(@Parameter(description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.") @PathVariable("domainId") Integer domainId,@Parameter(description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.") @PathVariable("recordId") Integer recordId) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -119,10 +120,10 @@ public interface DnsApi {
 
 
     @Operation(summary = "Update DNS Record", operationId = "updateDnsRecord", description = "Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately." , tags = {"DNS"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/dns/{domainId}/{recordId}", produces = { "application/json" }, consumes = {"multipart/form-data", "application/json"})
-    default Single<HttpResponse<Void>> updateDnsRecord(@NotNull @Parameter(description = "") @Body(value = "name")  String name,@NotNull @Valid @Parameter(description = "") @Body(value = "type")  DnsRecordType type,@NotNull @Parameter(description = "") @Body(value = "content")  String content,@NotNull @Parameter(description = "") @Body(value = "ttl")  String ttl,@NotNull @Parameter(description = "") @Body(value = "prio")  String prio,@NotNull @Parameter(description = "") @Body(value = "disabled")  String disabled,@NotNull @Parameter(description = "") @Body(value = "ordername")  String ordername,@NotNull @Parameter(description = "") @Body(value = "auth")  String auth,@Parameter(description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.") @PathVariable("domainId") Integer domainId,@Parameter(description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.") @PathVariable("recordId") Integer recordId) {
+    default Single<HttpResponse<SuccessTextResponse>> updateDnsRecord(@NotNull @Parameter(description = "") @Body(value = "name")  String name,@NotNull @Valid @Parameter(description = "") @Body(value = "type")  DnsRecordType type,@NotNull @Parameter(description = "") @Body(value = "content")  String content,@NotNull @Parameter(description = "") @Body(value = "ttl")  String ttl,@NotNull @Parameter(description = "") @Body(value = "prio")  String prio,@NotNull @Parameter(description = "") @Body(value = "disabled")  String disabled,@NotNull @Parameter(description = "") @Body(value = "ordername")  String ordername,@NotNull @Parameter(description = "") @Body(value = "auth")  String auth,@Parameter(description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.") @PathVariable("domainId") Integer domainId,@Parameter(description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.") @PathVariable("recordId") Integer recordId) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -130,10 +131,10 @@ public interface DnsApi {
 
 
     @Operation(summary = "Update DNS Record", operationId = "updateDnsRecord", description = "Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately." , tags = {"DNS"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/dns/{domainId}/{recordId}", produces = { "application/json" }, consumes = {"multipart/form-data", "application/json"})
-    default Single<HttpResponse<Void>> updateDnsRecord(@NotNull @Valid @Parameter(description = "The request data to update a dns record.") @Body DnsUpdateRecord body,@Parameter(description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.") @PathVariable("domainId") Integer domainId,@Parameter(description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.") @PathVariable("recordId") Integer recordId) {
+    default Single<HttpResponse<SuccessTextResponse>> updateDnsRecord(@NotNull @Valid @Parameter(description = "The request data to update a dns record.") @Body DnsUpdateRecord body,@Parameter(description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.") @PathVariable("domainId") Integer domainId,@Parameter(description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.") @PathVariable("recordId") Integer recordId) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

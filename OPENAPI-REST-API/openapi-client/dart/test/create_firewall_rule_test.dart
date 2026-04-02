@@ -33,7 +33,8 @@ void main() {
       // TODO
     });
 
-    // String sourceIp (default value: '0')
+    // Source IP address to match. Use '0.0.0.0' to match any source.
+    // String sourceIp (default value: '0.0.0.0')
     test('to test the property `sourceIp`', () async {
       // TODO
     });

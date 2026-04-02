@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## AddLicense
 
-> AddLicense(ctx).Execute()
+> ServiceOrderPostResponse AddLicense(ctx).Execute()
 
 Place License Order
 
@@ -42,11 +42,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.LicensesAPI.AddLicense(context.Background()).Execute()
+	resp, r, err := apiClient.LicensesAPI.AddLicense(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LicensesAPI.AddLicense``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AddLicense`: ServiceOrderPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `LicensesAPI.AddLicense`: %v\n", resp)
 }
 ```
 
@@ -61,7 +63,7 @@ Other parameters are passed through a pointer to a apiAddLicenseRequest struct v
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -680,7 +682,7 @@ Other parameters are passed through a pointer to a apiPutLicensesRequest struct 
 
 ## UpdateLicenseInfo
 
-> UpdateLicenseInfo(ctx, id).Execute()
+> SuccessTextResponse UpdateLicenseInfo(ctx, id).Execute()
 
 Update License
 
@@ -703,11 +705,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.LicensesAPI.UpdateLicenseInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.LicensesAPI.UpdateLicenseInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LicensesAPI.UpdateLicenseInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateLicenseInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `LicensesAPI.UpdateLicenseInfo`: %v\n", resp)
 }
 ```
 
@@ -730,7 +734,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

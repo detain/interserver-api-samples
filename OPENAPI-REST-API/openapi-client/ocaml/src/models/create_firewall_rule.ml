@@ -30,7 +30,8 @@
                 
                 
                 ; [@key "source_ip"]
-                                              source_port: int32
+                    (** Source IP address to match. Use '0.0.0.0' to match any source. *)
+                                      source_port: int32
                   
                    option [@default None]
                 

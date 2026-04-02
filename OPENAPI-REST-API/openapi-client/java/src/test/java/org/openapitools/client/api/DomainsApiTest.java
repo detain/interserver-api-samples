@@ -29,6 +29,7 @@ import org.openapitools.client.model.DomainRow;
 import org.openapitools.client.model.DomainSearchResponse;
 import org.openapitools.client.model.DomainWhoisPrivacyRequest;
 import org.openapitools.client.model.GetAccountInfo401Response;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.openapitools.client.model.TextResponse;
 import org.junit.jupiter.api.Disabled;
@@ -56,7 +57,7 @@ public class DomainsApiTest {
      */
     @Test
     public void addDomainTest() throws ApiException {
-        api.addDomain();
+        ServiceOrderPostResponse response = api.addDomain();
         // TODO: test validations
     }
 
@@ -422,7 +423,7 @@ public class DomainsApiTest {
     @Test
     public void updateDomainInfoTest() throws ApiException {
         String id = null;
-        api.updateDomainInfo(id);
+        SuccessTextResponse response = api.updateDomainInfo(id);
         // TODO: test validations
     }
 

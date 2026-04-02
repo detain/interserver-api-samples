@@ -5,11 +5,26 @@
  * Place License Order
  * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
  *
- * no response value expected for this operation
+ * returns ServiceOrderPostResponse
  **/
 exports.addLicense = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -371,11 +386,20 @@ exports.putLicenses = function() {
  * Updates settings on a license service such as its assigned IP.
  *
  * id String The license service ID. Use `license_id` from `GET /licenses`.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateLicenseInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

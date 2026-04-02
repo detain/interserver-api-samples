@@ -22,6 +22,7 @@ import PostWebsiteMigration200Response from '../model/PostWebsiteMigration200Res
 import PostWebsiteMigrationRequest from '../model/PostWebsiteMigrationRequest';
 import PostWebsiteMigrationRequest1 from '../model/PostWebsiteMigrationRequest1';
 import ReverseDnsEntries from '../model/ReverseDnsEntries';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 import TextResponse from '../model/TextResponse';
 import WebhostingCancel200Response from '../model/WebhostingCancel200Response';
@@ -54,7 +55,7 @@ export default class WebhostingApi {
      * Callback function to receive the result of the addWebsite operation.
      * @callback module:api/WebhostingApi~addWebsiteCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -62,6 +63,7 @@ export default class WebhostingApi {
      * Place Website Order
      * Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
      * @param {module:api/WebhostingApi~addWebsiteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceOrderPostResponse}
      */
     addWebsite(callback) {
       let postBody = null;
@@ -78,7 +80,7 @@ export default class WebhostingApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
       return this.apiClient.callApi(
         '/websites/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -645,7 +647,7 @@ export default class WebhostingApi {
      * Callback function to receive the result of the updateWebsiteInfo operation.
      * @callback module:api/WebhostingApi~updateWebsiteInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -654,6 +656,7 @@ export default class WebhostingApi {
      * Updates settings on a webhosting order.
      * @param {String} id The website service ID. Use `website_id` from `GET /websites`.
      * @param {module:api/WebhostingApi~updateWebsiteInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateWebsiteInfo(id, callback) {
       let postBody = null;
@@ -675,7 +678,7 @@ export default class WebhostingApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/websites/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

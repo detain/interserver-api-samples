@@ -28,6 +28,7 @@ import org.openapitools.client.api.License
 import org.openapitools.client.api.LicenseRow
 import org.openapitools.client.api.LicensesCancel200Response
 import org.openapitools.client.api.LicensesOrder
+import org.openapitools.client.api.ServiceOrderPostResponse
 import org.openapitools.client.api.SuccessTextResponse
 
 object LicensesApi {
@@ -36,7 +37,9 @@ object LicensesApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addLicense(host: String): Task[Unit] = {
+  def addLicense(host: String): Task[ServiceOrderPostResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
+
     val path = "/licenses/order"
 
     val httpMethod = Method.POST
@@ -50,7 +53,7 @@ object LicensesApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
   }
@@ -240,7 +243,9 @@ object LicensesApi {
     } yield resp
   }
 
-  def updateLicenseInfo(host: String, id: String): Task[Unit] = {
+  def updateLicenseInfo(host: String, id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/licenses/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -254,7 +259,7 @@ object LicensesApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -266,7 +271,9 @@ class HttpServiceLicensesApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addLicense(): Task[Unit] = {
+  def addLicense(): Task[ServiceOrderPostResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
+
     val path = "/licenses/order"
 
     val httpMethod = Method.POST
@@ -280,7 +287,7 @@ class HttpServiceLicensesApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
   }
@@ -470,7 +477,9 @@ class HttpServiceLicensesApi(service: HttpService) {
     } yield resp
   }
 
-  def updateLicenseInfo(id: String): Task[Unit] = {
+  def updateLicenseInfo(id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/licenses/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -484,7 +493,7 @@ class HttpServiceLicensesApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }

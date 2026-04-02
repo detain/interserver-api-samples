@@ -10,9 +10,8 @@
 package myadmin
 
 type InlineResponse20026 struct {
-	Bandwidth []InlineResponse20026Bandwidth `json:"bandwidth,omitempty"`
-	Ips []InlineResponse20026Ips `json:"ips,omitempty"`
-	Os []InlineResponse20026Os `json:"os,omitempty"`
-	Cp []InlineResponse20026Cp `json:"cp,omitempty"`
-	Raid []InlineResponse20026Raid `json:"raid,omitempty"`
+	// Confirmation message.
+	Text string `json:"text,omitempty"`
+	// The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+	Ticket int32 `json:"ticket,omitempty"`
 }

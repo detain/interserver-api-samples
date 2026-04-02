@@ -31,6 +31,7 @@
 #include "QueueResponse.hpp"
 #include "RestoreRequest.hpp"
 #include "ReverseDnsEntries.hpp"
+#include "ServiceOrderPostResponse.hpp"
 #include "SuccessTextResponse.hpp"
 #include "TextResponse.hpp"
 #include "VPSCancel_200_response.hpp"

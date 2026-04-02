@@ -610,7 +610,7 @@ if (disableReinstall != null)
   /// Update Account Information
   ///
   /// Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
-  Future updateAccountInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, bool disableReset, bool disableReinstall, bool disableServerNotifications, bool disableEmailNotifications, String gstin) async {
+  Future<SuccessTextResponse> updateAccountInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, bool disableReset, bool disableReinstall, bool disableServerNotifications, bool disableEmailNotifications, String gstin) async {
     Object postBody = body;
 
     // verify required params are set
@@ -803,15 +803,15 @@ if (gstin != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Add IP Access Restriction
   ///
   /// Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
-  Future updateAccountIpLimits(String start, String end) async {
+  Future<SuccessTextResponse> updateAccountIpLimits(String start, String end) async {
     Object postBody = body;
 
     // verify required params are set
@@ -869,9 +869,9 @@ if (end != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Change Account Password

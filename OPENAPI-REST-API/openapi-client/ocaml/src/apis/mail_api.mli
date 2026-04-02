@@ -5,7 +5,7 @@
  *
  *)
 
-val add_mail : unit -> unit Lwt.t
+val add_mail : unit -> Service_order_post_response.t Lwt.t
 val add_rule : id:int32 -> deny_rule_new_t:Deny_rule_new.t -> Generic_response.t Lwt.t
 val create_mail_alert : id:int32 -> mail_alert_request_t:Mail_alert_request.t -> Success_text_response.t Lwt.t
 val delete_mail_alert : id:int32 -> alert_id:int32 -> Success_text_response.t Lwt.t
@@ -29,5 +29,5 @@ val reset_mail_password : id:int32 -> Success_text_response.t Lwt.t
 val send_adv_mail : id:int32 -> send_mail_adv_t:Send_mail_adv.t -> Generic_response.t Lwt.t
 val send_mail : id:int32 -> send_mail_t:Send_mail.t -> Generic_response.t Lwt.t
 val update_mail_alert : id:int32 -> mail_alert_update_request_t:Mail_alert_update_request.t -> Success_text_response.t Lwt.t
-val update_mail_info : id:string -> unit Lwt.t
+val update_mail_info : id:string -> Success_text_response.t Lwt.t
 val view_mail_log : id:int32 -> ?id2:int64 -> ?origin:string -> ?mx:string -> ?from:string -> ?_to:string -> ?subject:string -> ?mailid:string -> ?message_id:string -> ?replyto:string -> ?headerfrom:string -> ?delivered:Enums.xdp_action -> ?skip:int32 -> ?limit:int32 -> ?start_date:View_mail_log_start_date_parameter.t -> ?end_date:View_mail_log_start_date_parameter.t -> ?sort:Enums.sort -> ?dir:Enums.dir -> ?groupby:Enums.groupby -> unit -> Mail_log.t Lwt.t

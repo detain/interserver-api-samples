@@ -42,6 +42,8 @@ client/OAIAccountInfo_oauthproviders.cpp
 client/OAIAccountInfo_oauthproviders.h
 client/OAIAccountSshKey.cpp
 client/OAIAccountSshKey.h
+client/OAIAddServer_200_response.cpp
+client/OAIAddServer_200_response.h
 client/OAIAffiliateBannerRow.cpp
 client/OAIAffiliateBannerRow.h
 client/OAIAffiliateDockSetup.cpp
@@ -746,6 +748,8 @@ client/OAIServiceCategories.cpp
 client/OAIServiceCategories.h
 client/OAIServiceCategory.cpp
 client/OAIServiceCategory.h
+client/OAIServiceOrderPostResponse.cpp
+client/OAIServiceOrderPostResponse.h
 client/OAIServiceType.cpp
 client/OAIServiceType.h
 client/OAIServiceTypes.cpp

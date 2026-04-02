@@ -21,6 +21,7 @@ docs/AccountInfoOauthConfigProvidersValue.md
 docs/AccountInfoOauthproviders.md
 docs/AccountInfoPost.md
 docs/AccountSshKey.md
+docs/AddServer200Response.md
 docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
@@ -365,6 +366,7 @@ docs/ServersCancel200Response.md
 docs/Service.md
 docs/ServiceCategories.md
 docs/ServiceCategory.md
+docs/ServiceOrderPostResponse.md
 docs/ServiceType.md
 docs/ServiceTypes.md
 docs/Services.md
@@ -524,6 +526,7 @@ src/main/kotlin/org/openapitools/client/models/AccountInfoOauthConfigProvidersVa
 src/main/kotlin/org/openapitools/client/models/AccountInfoOauthproviders.kt
 src/main/kotlin/org/openapitools/client/models/AccountInfoPost.kt
 src/main/kotlin/org/openapitools/client/models/AccountSshKey.kt
+src/main/kotlin/org/openapitools/client/models/AddServer200Response.kt
 src/main/kotlin/org/openapitools/client/models/AffiliateBannerRow.kt
 src/main/kotlin/org/openapitools/client/models/AffiliateDockSetup.kt
 src/main/kotlin/org/openapitools/client/models/AffiliatePaymentSetup.kt
@@ -856,6 +859,7 @@ src/main/kotlin/org/openapitools/client/models/ServersCancel200Response.kt
 src/main/kotlin/org/openapitools/client/models/Service.kt
 src/main/kotlin/org/openapitools/client/models/ServiceCategories.kt
 src/main/kotlin/org/openapitools/client/models/ServiceCategory.kt
+src/main/kotlin/org/openapitools/client/models/ServiceOrderPostResponse.kt
 src/main/kotlin/org/openapitools/client/models/ServiceType.kt
 src/main/kotlin/org/openapitools/client/models/ServiceTypes.kt
 src/main/kotlin/org/openapitools/client/models/Services.kt
@@ -990,6 +994,7 @@ src/test/kotlin/org/openapitools/client/models/AccountInfoOauthprovidersTest.kt
 src/test/kotlin/org/openapitools/client/models/AccountInfoPostTest.kt
 src/test/kotlin/org/openapitools/client/models/AccountInfoTest.kt
 src/test/kotlin/org/openapitools/client/models/AccountSshKeyTest.kt
+src/test/kotlin/org/openapitools/client/models/AddServer200ResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/AffiliateBannerRowTest.kt
 src/test/kotlin/org/openapitools/client/models/AffiliateDockSetupTest.kt
 src/test/kotlin/org/openapitools/client/models/AffiliatePaymentSetupTest.kt
@@ -1321,6 +1326,7 @@ src/test/kotlin/org/openapitools/client/models/ServersBuyNowResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/ServersCancel200ResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/ServiceCategoriesTest.kt
 src/test/kotlin/org/openapitools/client/models/ServiceCategoryTest.kt
+src/test/kotlin/org/openapitools/client/models/ServiceOrderPostResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/ServiceTest.kt
 src/test/kotlin/org/openapitools/client/models/ServiceTypeTest.kt
 src/test/kotlin/org/openapitools/client/models/ServiceTypesTest.kt

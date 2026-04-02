@@ -25,6 +25,7 @@
 #include "OAIQueueResponse.h"
 #include "OAIRestoreRequest.h"
 #include "OAIReverseDnsEntries.h"
+#include "OAIServiceOrderPostResponse.h"
 #include "OAISuccessTextResponse.h"
 #include "OAITextResponse.h"
 #include "OAIVPSCancel_200_response.h"
@@ -384,7 +385,7 @@ private:
 
 Q_SIGNALS:
 
-    void addVpsSignal();
+    void addVpsSignal(OAIServiceOrderPostResponse summary);
     void deleteVpsBackupSignal(OAISuccessTextResponse summary);
     void doVpsBlockSmtpSignal(OAIQueueResponse summary);
     void doVpsDisableCdSignal(OAIQueueResponse summary);
@@ -426,11 +427,11 @@ Q_SIGNALS:
     void postVpsSlicesSignal();
     void postVpsViewDesktopSignal();
     void putVpsSignal(OAIVpsOrderPutResponse summary);
-    void updateVpsInfoSignal();
+    void updateVpsInfoSignal(OAISuccessTextResponse summary);
     void vPSCancelSignal(OAIVPSCancel_200_response summary);
 
 
-    void addVpsSignalFull(OAIHttpRequestWorker *worker);
+    void addVpsSignalFull(OAIHttpRequestWorker *worker, OAIServiceOrderPostResponse summary);
     void deleteVpsBackupSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void doVpsBlockSmtpSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void doVpsDisableCdSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
@@ -472,10 +473,10 @@ Q_SIGNALS:
     void postVpsSlicesSignalFull(OAIHttpRequestWorker *worker);
     void postVpsViewDesktopSignalFull(OAIHttpRequestWorker *worker);
     void putVpsSignalFull(OAIHttpRequestWorker *worker, OAIVpsOrderPutResponse summary);
-    void updateVpsInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateVpsInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void vPSCancelSignalFull(OAIHttpRequestWorker *worker, OAIVPSCancel_200_response summary);
 
-    void addVpsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addVpsSignalError(OAIServiceOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteVpsBackupSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void doVpsBlockSmtpSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void doVpsDisableCdSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -517,7 +518,7 @@ Q_SIGNALS:
     void postVpsSlicesSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsViewDesktopSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void putVpsSignalError(OAIVpsOrderPutResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateVpsInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateVpsInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void vPSCancelSignalError(OAIVPSCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addVpsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

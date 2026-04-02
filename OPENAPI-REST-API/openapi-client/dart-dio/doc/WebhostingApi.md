@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 
 # **addWebsite**
-> addWebsite()
+> ServiceOrderPostResponse addWebsite()
 
 Place Website Order
 
@@ -53,7 +53,8 @@ import 'package:openapi/api.dart';
 final api = Openapi().getWebhostingApi();
 
 try {
-    api.addWebsite();
+    final response = api.addWebsite();
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling WebhostingApi->addWebsite: $e\n');
 }
@@ -64,7 +65,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -786,7 +787,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateWebsiteInfo**
-> updateWebsiteInfo(id)
+> SuccessTextResponse updateWebsiteInfo(id)
 
 Update Website Order
 
@@ -812,7 +813,8 @@ final api = Openapi().getWebhostingApi();
 final String id = id_example; // String | The website service ID. Use `website_id` from `GET /websites`.
 
 try {
-    api.updateWebsiteInfo(id);
+    final response = api.updateWebsiteInfo(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling WebhostingApi->updateWebsiteInfo: $e\n');
 }
@@ -826,7 +828,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

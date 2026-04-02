@@ -56,11 +56,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'bandwidth' => '\Interserver\MyAdmin\Model\InlineResponse20026Bandwidth[]',
-        'ips' => '\Interserver\MyAdmin\Model\InlineResponse20026Ips[]',
-        'os' => '\Interserver\MyAdmin\Model\InlineResponse20026Os[]',
-        'cp' => '\Interserver\MyAdmin\Model\InlineResponse20026Cp[]',
-        'raid' => '\Interserver\MyAdmin\Model\InlineResponse20026Raid[]'
+        'text' => 'string',
+        'ticket' => 'int'
     ];
 
     /**
@@ -69,11 +66,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'bandwidth' => null,
-        'ips' => null,
-        'os' => null,
-        'cp' => null,
-        'raid' => null
+        'text' => null,
+        'ticket' => null
     ];
 
     /**
@@ -103,11 +97,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'bandwidth' => 'bandwidth',
-        'ips' => 'ips',
-        'os' => 'os',
-        'cp' => 'cp',
-        'raid' => 'raid'
+        'text' => 'text',
+        'ticket' => 'ticket'
     ];
 
     /**
@@ -116,11 +107,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'bandwidth' => 'setBandwidth',
-        'ips' => 'setIps',
-        'os' => 'setOs',
-        'cp' => 'setCp',
-        'raid' => 'setRaid'
+        'text' => 'setText',
+        'ticket' => 'setTicket'
     ];
 
     /**
@@ -129,11 +117,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'bandwidth' => 'getBandwidth',
-        'ips' => 'getIps',
-        'os' => 'getOs',
-        'cp' => 'getCp',
-        'raid' => 'getRaid'
+        'text' => 'getText',
+        'ticket' => 'getTicket'
     ];
 
     /**
@@ -194,11 +179,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['bandwidth'] = isset($data['bandwidth']) ? $data['bandwidth'] : null;
-        $this->container['ips'] = isset($data['ips']) ? $data['ips'] : null;
-        $this->container['os'] = isset($data['os']) ? $data['os'] : null;
-        $this->container['cp'] = isset($data['cp']) ? $data['cp'] : null;
-        $this->container['raid'] = isset($data['raid']) ? $data['raid'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['ticket'] = isset($data['ticket']) ? $data['ticket'] : null;
     }
 
     /**
@@ -226,121 +208,49 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets bandwidth
+     * Gets text
      *
-     * @return \Interserver\MyAdmin\Model\InlineResponse20026Bandwidth[]
+     * @return string
      */
-    public function getBandwidth()
+    public function getText()
     {
-        return $this->container['bandwidth'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets bandwidth
+     * Sets text
      *
-     * @param \Interserver\MyAdmin\Model\InlineResponse20026Bandwidth[] $bandwidth bandwidth
+     * @param string $text Confirmation message.
      *
      * @return $this
      */
-    public function setBandwidth($bandwidth)
+    public function setText($text)
     {
-        $this->container['bandwidth'] = $bandwidth;
+        $this->container['text'] = $text;
 
         return $this;
     }
 
     /**
-     * Gets ips
+     * Gets ticket
      *
-     * @return \Interserver\MyAdmin\Model\InlineResponse20026Ips[]
+     * @return int
      */
-    public function getIps()
+    public function getTicket()
     {
-        return $this->container['ips'];
+        return $this->container['ticket'];
     }
 
     /**
-     * Sets ips
+     * Sets ticket
      *
-     * @param \Interserver\MyAdmin\Model\InlineResponse20026Ips[] $ips ips
+     * @param int $ticket The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
      *
      * @return $this
      */
-    public function setIps($ips)
+    public function setTicket($ticket)
     {
-        $this->container['ips'] = $ips;
-
-        return $this;
-    }
-
-    /**
-     * Gets os
-     *
-     * @return \Interserver\MyAdmin\Model\InlineResponse20026Os[]
-     */
-    public function getOs()
-    {
-        return $this->container['os'];
-    }
-
-    /**
-     * Sets os
-     *
-     * @param \Interserver\MyAdmin\Model\InlineResponse20026Os[] $os os
-     *
-     * @return $this
-     */
-    public function setOs($os)
-    {
-        $this->container['os'] = $os;
-
-        return $this;
-    }
-
-    /**
-     * Gets cp
-     *
-     * @return \Interserver\MyAdmin\Model\InlineResponse20026Cp[]
-     */
-    public function getCp()
-    {
-        return $this->container['cp'];
-    }
-
-    /**
-     * Sets cp
-     *
-     * @param \Interserver\MyAdmin\Model\InlineResponse20026Cp[] $cp cp
-     *
-     * @return $this
-     */
-    public function setCp($cp)
-    {
-        $this->container['cp'] = $cp;
-
-        return $this;
-    }
-
-    /**
-     * Gets raid
-     *
-     * @return \Interserver\MyAdmin\Model\InlineResponse20026Raid[]
-     */
-    public function getRaid()
-    {
-        return $this->container['raid'];
-    }
-
-    /**
-     * Sets raid
-     *
-     * @param \Interserver\MyAdmin\Model\InlineResponse20026Raid[] $raid raid
-     *
-     * @return $this
-     */
-    public function setRaid($raid)
-    {
-        $this->container['raid'] = $raid;
+        $this->container['ticket'] = $ticket;
 
         return $this;
     }

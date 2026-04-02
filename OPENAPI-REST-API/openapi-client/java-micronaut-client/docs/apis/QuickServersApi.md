@@ -81,7 +81,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="addQs"></a>
 # **addQs**
 ```java
-Mono<Void> QuickServersApi.addQs()
+Mono<ServiceOrderPostResponse> QuickServersApi.addQs()
 ```
 
 Place QuickServer Order
@@ -90,7 +90,8 @@ Places a QuickServer order. On success, invoices are generated for payment; use 
 
 
 
-
+### Return type
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -1265,7 +1266,7 @@ Cancels the QuickServer service. The server will be deprovisioned and billing wi
 <a id="updateQsInfo"></a>
 # **updateQsInfo**
 ```java
-Mono<Void> QuickServersApi.updateQsInfo(id)
+Mono<SuccessTextResponse> QuickServersApi.updateQsInfo(id)
 ```
 
 Update QuickServer Order
@@ -1278,7 +1279,8 @@ Updates QuickServer metadata or stored settings associated with the order.
 | **id** | `String`| QuickServer ID number. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

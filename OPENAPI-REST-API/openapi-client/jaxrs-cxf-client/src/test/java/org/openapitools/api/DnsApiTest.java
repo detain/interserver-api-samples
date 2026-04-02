@@ -17,6 +17,7 @@ import org.openapitools.model.DnsListItem;
 import org.openapitools.model.DnsRecord;
 import org.openapitools.model.DnsRecordType;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.SuccessTextResponse;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -74,8 +75,8 @@ public class DnsApiTest {
     public void addDnsDomainTest() {
         String domain = null;
         String ip = null;
-        //api.addDnsDomain(domain, ip);
-        
+        //SuccessTextResponse response = api.addDnsDomain(domain, ip);
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -115,8 +116,8 @@ public class DnsApiTest {
     @Test
     public void deleteDnsDomainTest() {
         String id = null;
-        //api.deleteDnsDomain(id);
-        
+        //SuccessTextResponse response = api.deleteDnsDomain(id);
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -134,8 +135,8 @@ public class DnsApiTest {
     public void deleteDnsRecordTest() {
         Integer domainId = null;
         Integer recordId = null;
-        //api.deleteDnsRecord(domainId, recordId);
-        
+        //SuccessTextResponse response = api.deleteDnsRecord(domainId, recordId);
+        //assertNotNull(response);
         // TODO: test validations
 
 
@@ -196,8 +197,8 @@ public class DnsApiTest {
         String disabled = null;
         String ordername = null;
         String auth = null;
-        //api.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
-        
+        //SuccessTextResponse response = api.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
+        //assertNotNull(response);
         // TODO: test validations
 
 

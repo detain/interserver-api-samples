@@ -110,10 +110,10 @@ public interface BillingApi {
 
 
     @Operation(summary = "Get Shopping Cart Contents", operationId = "getBillingCart", description = "Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`." , tags = {"Billing"})
+    @ApiResponse(responseCode = "200", description = "Current shopping cart contents and available payment methods.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Get(value = "/billing/cart", produces = { "application/json" })
-    default Single<HttpResponse<Void>> getBillingCart() {
+    default Single<HttpResponse<Object>> getBillingCart() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -154,10 +154,10 @@ public interface BillingApi {
 
 
     @Operation(summary = "List Prepay Balances", operationId = "getBillingPrePays", description = "Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method." , tags = {"Billing"})
+    @ApiResponse(responseCode = "200", description = "Prepay balances and metadata.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Get(value = "/billing/prepays", produces = { "application/json" })
-    default Single<HttpResponse<Void>> getBillingPrePays() {
+    default Single<HttpResponse<Object>> getBillingPrePays() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

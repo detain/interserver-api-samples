@@ -35,7 +35,7 @@ describe 'WebhostingApi' do
   # Place Website Order
   # Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe 'add_website test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -58,7 +58,7 @@ describe 'WebhostingApi' do
   # Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
   # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20023]
+  # @return [InlineResponse20024]
   describe 'get_website_buy_ip test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -154,7 +154,7 @@ describe 'WebhostingApi' do
   # @param body 
   # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20024]
+  # @return [InlineResponse20025]
   describe 'post_website_buy_ip test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -167,7 +167,7 @@ describe 'WebhostingApi' do
   # @param ips 
   # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20024]
+  # @return [InlineResponse20025]
   describe 'post_website_buy_ip test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -180,7 +180,7 @@ describe 'WebhostingApi' do
   # @param body 
   # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20025]
+  # @return [InlineResponse20026]
   describe 'post_website_migration test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -205,7 +205,7 @@ describe 'WebhostingApi' do
   # @param domain_reg_password 
   # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20025]
+  # @return [InlineResponse20026]
   describe 'post_website_migration test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -254,7 +254,7 @@ describe 'WebhostingApi' do
   # Updates settings on a webhosting order.
   # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_website_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -266,7 +266,7 @@ describe 'WebhostingApi' do
   # Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
   # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20022]
+  # @return [InlineResponse20023]
   describe 'webhosting_cancel test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

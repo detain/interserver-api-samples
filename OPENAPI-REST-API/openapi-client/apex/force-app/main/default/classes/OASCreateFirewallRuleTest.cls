@@ -84,7 +84,7 @@ private class OASCreateFirewallRuleTest {
     private static void defaultValuesPopulated() {
         OASCreateFirewallRule createFirewallRule = new OASCreateFirewallRule();
         System.assertEquals(80, createFirewallRule.destinationPort);
-        System.assertEquals('0', createFirewallRule.sourceIp);
+        System.assertEquals('0.0.0.0', createFirewallRule.sourceIp);
         System.assertEquals(0, createFirewallRule.sourcePort);
         System.assertEquals(null, createFirewallRule.protocolId);
         System.assertEquals(null, createFirewallRule.xdpAction);

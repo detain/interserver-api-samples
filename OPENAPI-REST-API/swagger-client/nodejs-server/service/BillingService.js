@@ -144,11 +144,17 @@ exports.addBillingPrepay = function(body) {
  * Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
  *
  * id String The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
- * no response value expected for this operation
+ * returns String
  **/
 exports.deleteAccountCreditCard = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = "";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -374,11 +380,17 @@ exports.getAffiliateWebTraffic = function() {
  * Get Shopping Cart Contents
  * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
  *
- * no response value expected for this operation
+ * returns Object
  **/
 exports.getBillingCart = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = { };
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -454,11 +466,17 @@ exports.getBillingInvoices = function() {
  * List Prepay Balances
  * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
  *
- * no response value expected for this operation
+ * returns Object
  **/
 exports.getBillingPrePays = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = { };
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -570,11 +588,17 @@ exports.postBillingCreditCardVerify = function(body,id) {
  * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
  *
  * id Integer The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
- * no response value expected for this operation
+ * returns String
  **/
 exports.updateAccountCreditCard = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = "";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

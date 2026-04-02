@@ -20,9 +20,9 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
-@Schema(description = "Information about the IPMI connectioj.")
+@Schema(description = "Information about the IPMI connection.")
 
 public class ServerIpmiLiveInfo   {
   @JsonProperty("text")

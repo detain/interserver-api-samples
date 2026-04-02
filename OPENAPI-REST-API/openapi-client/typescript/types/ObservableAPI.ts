@@ -22,6 +22,7 @@ import { AccountInfoOauthConfigProvidersValue } from '../models/AccountInfoOauth
 import { AccountInfoOauthproviders } from '../models/AccountInfoOauthproviders';
 import { AccountInfoPost } from '../models/AccountInfoPost';
 import { AccountSshKey } from '../models/AccountSshKey';
+import { AddServer200Response } from '../models/AddServer200Response';
 import { AffiliateBannerRow } from '../models/AffiliateBannerRow';
 import { AffiliateDockSetup } from '../models/AffiliateDockSetup';
 import { AffiliatePaymentSetup } from '../models/AffiliatePaymentSetup';
@@ -354,6 +355,7 @@ import { ServersCancel200Response } from '../models/ServersCancel200Response';
 import { Service } from '../models/Service';
 import { ServiceCategories } from '../models/ServiceCategories';
 import { ServiceCategory } from '../models/ServiceCategory';
+import { ServiceOrderPostResponse } from '../models/ServiceOrderPostResponse';
 import { ServiceType } from '../models/ServiceType';
 import { ServiceTypes } from '../models/ServiceTypes';
 import { Services } from '../models/Services';
@@ -883,7 +885,7 @@ export class ObservableAccountApi {
      * @param [disableEmailNotifications] Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them.
      * @param [gstin] Your GST identification number (if applicable).
      */
-    public updateAccountInfoWithHttpInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateAccountInfoWithHttpInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, _config);
@@ -924,8 +926,8 @@ export class ObservableAccountApi {
      * @param [disableEmailNotifications] Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them.
      * @param [gstin] Your GST identification number (if applicable).
      */
-    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateAccountInfoWithHttpInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateAccountInfoWithHttpInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**
@@ -934,7 +936,7 @@ export class ObservableAccountApi {
      * @param start The begining (or first) IP address in the range.
      * @param end The ending (or last) IP address in the range.
      */
-    public updateAccountIpLimitsWithHttpInfo(start: string, end: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateAccountIpLimitsWithHttpInfo(start: string, end: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateAccountIpLimits(start, end, _config);
@@ -960,8 +962,8 @@ export class ObservableAccountApi {
      * @param start The begining (or first) IP address in the range.
      * @param end The ending (or last) IP address in the range.
      */
-    public updateAccountIpLimits(start: string, end: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateAccountIpLimitsWithHttpInfo(start, end, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateAccountIpLimits(start: string, end: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateAccountIpLimitsWithHttpInfo(start, end, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**
@@ -1361,7 +1363,7 @@ export class ObservableBackupsApi {
      * Update Backup Information
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
      */
-    public updateBackupInfoWithHttpInfo(id: number, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateBackupInfoWithHttpInfo(id: number, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateBackupInfo(id, _config);
@@ -1386,8 +1388,8 @@ export class ObservableBackupsApi {
      * Update Backup Information
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
      */
-    public updateBackupInfo(id: number, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateBackupInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateBackupInfo(id: number, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateBackupInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**
@@ -1569,7 +1571,7 @@ export class ObservableBillingApi {
      * Remove Credit Card
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
-    public deleteAccountCreditCardWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteAccountCreditCardWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<string>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.deleteAccountCreditCard(id, _config);
@@ -1594,8 +1596,8 @@ export class ObservableBillingApi {
      * Remove Credit Card
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
-    public deleteAccountCreditCard(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteAccountCreditCardWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteAccountCreditCard(id: string, _options?: ConfigurationOptions): Observable<string> {
+        return this.deleteAccountCreditCardWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<string>) => apiResponse.data));
     }
 
     /**
@@ -1900,7 +1902,7 @@ export class ObservableBillingApi {
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
      * Get Shopping Cart Contents
      */
-    public getBillingCartWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public getBillingCartWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getBillingCart(_config);
@@ -1924,8 +1926,8 @@ export class ObservableBillingApi {
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
      * Get Shopping Cart Contents
      */
-    public getBillingCart(_options?: ConfigurationOptions): Observable<void> {
-        return this.getBillingCartWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getBillingCart(_options?: ConfigurationOptions): Observable<any> {
+        return this.getBillingCartWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
@@ -2032,7 +2034,7 @@ export class ObservableBillingApi {
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
      * List Prepay Balances
      */
-    public getBillingPrePaysWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public getBillingPrePaysWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getBillingPrePays(_config);
@@ -2056,8 +2058,8 @@ export class ObservableBillingApi {
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
      * List Prepay Balances
      */
-    public getBillingPrePays(_options?: ConfigurationOptions): Observable<void> {
-        return this.getBillingPrePaysWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getBillingPrePays(_options?: ConfigurationOptions): Observable<any> {
+        return this.getBillingPrePaysWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
@@ -2175,7 +2177,7 @@ export class ObservableBillingApi {
      * Update Credit Card
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
-    public updateAccountCreditCardWithHttpInfo(id: number, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateAccountCreditCardWithHttpInfo(id: number, _options?: ConfigurationOptions): Observable<HttpInfo<string>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateAccountCreditCard(id, _config);
@@ -2200,8 +2202,8 @@ export class ObservableBillingApi {
      * Update Credit Card
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      */
-    public updateAccountCreditCard(id: number, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateAccountCreditCardWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateAccountCreditCard(id: number, _options?: ConfigurationOptions): Observable<string> {
+        return this.updateAccountCreditCardWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<string>) => apiResponse.data));
     }
 
     /**
@@ -2408,7 +2410,7 @@ export class ObservableDNSApi {
      * @param domain The domain name.
      * @param ip IP Address to point the domain to.
      */
-    public addDnsDomainWithHttpInfo(domain: string, ip: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addDnsDomainWithHttpInfo(domain: string, ip: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addDnsDomain(domain, ip, _config);
@@ -2434,8 +2436,8 @@ export class ObservableDNSApi {
      * @param domain The domain name.
      * @param ip IP Address to point the domain to.
      */
-    public addDnsDomain(domain: string, ip: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.addDnsDomainWithHttpInfo(domain, ip, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addDnsDomain(domain: string, ip: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.addDnsDomainWithHttpInfo(domain, ip, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**
@@ -2487,7 +2489,7 @@ export class ObservableDNSApi {
      * Delete DNS Domain
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      */
-    public deleteDnsDomainWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteDnsDomainWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.deleteDnsDomain(id, _config);
@@ -2512,8 +2514,8 @@ export class ObservableDNSApi {
      * Delete DNS Domain
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      */
-    public deleteDnsDomain(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteDnsDomainWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteDnsDomain(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.deleteDnsDomainWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**
@@ -2522,7 +2524,7 @@ export class ObservableDNSApi {
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
      */
-    public deleteDnsRecordWithHttpInfo(domainId: number, recordId: number, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public deleteDnsRecordWithHttpInfo(domainId: number, recordId: number, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.deleteDnsRecord(domainId, recordId, _config);
@@ -2548,8 +2550,8 @@ export class ObservableDNSApi {
      * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
      */
-    public deleteDnsRecord(domainId: number, recordId: number, _options?: ConfigurationOptions): Observable<void> {
-        return this.deleteDnsRecordWithHttpInfo(domainId, recordId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteDnsRecord(domainId: number, recordId: number, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.deleteDnsRecordWithHttpInfo(domainId, recordId, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**
@@ -2632,7 +2634,7 @@ export class ObservableDNSApi {
      * @param [ordername]
      * @param [auth]
      */
-    public updateDnsRecordWithHttpInfo(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateDnsRecordWithHttpInfo(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, _config);
@@ -2666,8 +2668,8 @@ export class ObservableDNSApi {
      * @param [ordername]
      * @param [auth]
      */
-    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateDnsRecordWithHttpInfo(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateDnsRecordWithHttpInfo(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
 }
@@ -2692,7 +2694,7 @@ export class ObservableDomainsApi {
      * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
      * Place Domain Order
      */
-    public addDomainWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addDomainWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ServiceOrderPostResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addDomain(_config);
@@ -2716,8 +2718,8 @@ export class ObservableDomainsApi {
      * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
      * Place Domain Order
      */
-    public addDomain(_options?: ConfigurationOptions): Observable<void> {
-        return this.addDomainWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addDomain(_options?: ConfigurationOptions): Observable<ServiceOrderPostResponse> {
+        return this.addDomainWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ServiceOrderPostResponse>) => apiResponse.data));
     }
 
     /**
@@ -3579,7 +3581,7 @@ export class ObservableDomainsApi {
      * Update Domain Order
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
      */
-    public updateDomainInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateDomainInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateDomainInfo(id, _config);
@@ -3604,8 +3606,8 @@ export class ObservableDomainsApi {
      * Update Domain Order
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
      */
-    public updateDomainInfo(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateDomainInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateDomainInfo(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateDomainInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**
@@ -3702,7 +3704,7 @@ export class ObservableFloatingIPsApi {
      * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
      * Place Floating IP Order
      */
-    public addFloatingIpWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addFloatingIpWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ServiceOrderPostResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addFloatingIp(_config);
@@ -3726,8 +3728,8 @@ export class ObservableFloatingIPsApi {
      * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
      * Place Floating IP Order
      */
-    public addFloatingIp(_options?: ConfigurationOptions): Observable<void> {
-        return this.addFloatingIpWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addFloatingIp(_options?: ConfigurationOptions): Observable<ServiceOrderPostResponse> {
+        return this.addFloatingIpWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ServiceOrderPostResponse>) => apiResponse.data));
     }
 
     /**
@@ -3769,7 +3771,7 @@ export class ObservableFloatingIPsApi {
      * View Floating IP
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
-    public getFloatingIpInfoWithHttpInfo(id: number, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public getFloatingIpInfoWithHttpInfo(id: number, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getFloatingIpInfo(id, _config);
@@ -3794,8 +3796,8 @@ export class ObservableFloatingIPsApi {
      * View Floating IP
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
-    public getFloatingIpInfo(id: number, _options?: ConfigurationOptions): Observable<void> {
-        return this.getFloatingIpInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getFloatingIpInfo(id: number, _options?: ConfigurationOptions): Observable<any> {
+        return this.getFloatingIpInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
@@ -3902,7 +3904,7 @@ export class ObservableFloatingIPsApi {
      * Retrieves available options and pricing for ordering a new Floating IP.
      * Get Floating IP Ordering Information
      */
-    public getNewFloatingIpWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public getNewFloatingIpWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getNewFloatingIp(_config);
@@ -3926,8 +3928,8 @@ export class ObservableFloatingIPsApi {
      * Retrieves available options and pricing for ordering a new Floating IP.
      * Get Floating IP Ordering Information
      */
-    public getNewFloatingIp(_options?: ConfigurationOptions): Observable<void> {
-        return this.getNewFloatingIpWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getNewFloatingIp(_options?: ConfigurationOptions): Observable<any> {
+        return this.getNewFloatingIpWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
@@ -4003,7 +4005,7 @@ export class ObservableFloatingIPsApi {
      * Update Floating IP
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
-    public updateFloatingIpInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateFloatingIpInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateFloatingIpInfo(id, _config);
@@ -4028,8 +4030,8 @@ export class ObservableFloatingIPsApi {
      * Update Floating IP
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
      */
-    public updateFloatingIpInfo(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateFloatingIpInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateFloatingIpInfo(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateFloatingIpInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
 }
@@ -4054,7 +4056,7 @@ export class ObservableLicensesApi {
      * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
      * Place License Order
      */
-    public addLicenseWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addLicenseWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ServiceOrderPostResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addLicense(_config);
@@ -4078,8 +4080,8 @@ export class ObservableLicensesApi {
      * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
      * Place License Order
      */
-    public addLicense(_options?: ConfigurationOptions): Observable<void> {
-        return this.addLicenseWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addLicense(_options?: ConfigurationOptions): Observable<ServiceOrderPostResponse> {
+        return this.addLicenseWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ServiceOrderPostResponse>) => apiResponse.data));
     }
 
     /**
@@ -4389,7 +4391,7 @@ export class ObservableLicensesApi {
      * Update License
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
      */
-    public updateLicenseInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateLicenseInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateLicenseInfo(id, _config);
@@ -4414,8 +4416,8 @@ export class ObservableLicensesApi {
      * Update License
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
      */
-    public updateLicenseInfo(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateLicenseInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateLicenseInfo(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateLicenseInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
 }
@@ -4440,7 +4442,7 @@ export class ObservableMailApi {
      * Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
      * Place Mail Order
      */
-    public addMailWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addMailWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ServiceOrderPostResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addMail(_config);
@@ -4464,8 +4466,8 @@ export class ObservableMailApi {
      * Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
      * Place Mail Order
      */
-    public addMail(_options?: ConfigurationOptions): Observable<void> {
-        return this.addMailWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addMail(_options?: ConfigurationOptions): Observable<ServiceOrderPostResponse> {
+        return this.addMailWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ServiceOrderPostResponse>) => apiResponse.data));
     }
 
     /**
@@ -5269,7 +5271,7 @@ export class ObservableMailApi {
      * Update Mail Order
      * @param id The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.
      */
-    public updateMailInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateMailInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateMailInfo(id, _config);
@@ -5294,8 +5296,8 @@ export class ObservableMailApi {
      * Update Mail Order
      * @param id The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;.
      */
-    public updateMailInfo(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateMailInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateMailInfo(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateMailInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**
@@ -5309,14 +5311,14 @@ export class ObservableMailApi {
      * @param [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
      * @param [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
      * @param [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-     * @param [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+     * @param [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
      * @param [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
      * @param [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
      * @param [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
      * @param [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
      * @param [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
      * @param [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-     * @param [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+     * @param [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
      * @param [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
      * @param [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
      * @param [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -5352,14 +5354,14 @@ export class ObservableMailApi {
      * @param [to] Filter by SMTP envelope &#x60;RCPT TO&#x60; address (exact match).  This is the delivery address used by the relay and may differ from the &#x60;To:&#x60; header when BCC recipients are involved.
      * @param [subject] Filter by email &#x60;Subject&#x60; header (exact match).  MIME-encoded subjects are decoded automatically in the response.
      * @param [mailid] Filter by the relay-assigned mail ID string (exact match).  This corresponds to the &#x60;id&#x60; field in &#x60;MailLogEntry&#x60; and to the &#x60;text&#x60; value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as &#x60;185997065c60008840&#x60;.
-     * @param [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match.  The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
+     * @param [messageId] Filter by the &#x60;Message-ID&#x60; email header using a substring (case-insensitive) match. The &#x60;Message-ID&#x60; is assigned by the sending mail client and is visible in the &#x60;messageId&#x60; field of &#x60;MailLogEntry&#x60;.
      * @param [replyto] Filter by the &#x60;Reply-To&#x60; message header address (exact match).  Only returns messages where this header was explicitly set.
      * @param [headerfrom] Filter by the &#x60;From&#x60; message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope &#x60;from&#x60; parameter when sending on behalf of another address.
      * @param [delivered] Filter by delivery status.  &#x60;1&#x60; returns only messages that were successfully delivered to the destination MX.  &#x60;0&#x60; returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
      * @param [skip] Number of records to skip for pagination.  Use in combination with &#x60;limit&#x60; to page through large result sets.  Defaults to &#x60;0&#x60; (no skip).
      * @param [limit] Maximum number of records to return per page.  Defaults to &#x60;100&#x60;. Maximum allowed value is &#x60;10000&#x60;.  The response also includes a &#x60;total&#x60; field with the full matched count so you can calculate the number of pages.
      * @param [startDate] Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-15&#x60; or &#x60;last monday&#x60;.  Messages with a &#x60;time&#x60; value **greater than or equal to** this value will be included.
-     * @param [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;.  Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
+     * @param [endDate] Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by &#x60;strtotime()&#x60; such as &#x60;2024-01-31&#x60; or &#x60;yesterday&#x60;. Messages with a &#x60;time&#x60; value **less than or equal to** this value will be included.
      * @param [sort] Field to sort results by.  Currently only &#x60;time&#x60; is supported (sorts by internal row ID which corresponds to chronological order).
      * @param [dir] Sort direction.  &#x60;desc&#x60; returns newest first (default), &#x60;asc&#x60; returns oldest first.
      * @param [groupby] Controls how results are grouped.  &#x60;recipient&#x60; (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own &#x60;recipient&#x60;, &#x60;delivered&#x60;, &#x60;response&#x60;, and delivery metadata.  &#x60;message&#x60; collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The &#x60;total&#x60; count in the response matches the grouping mode.
@@ -5814,7 +5816,7 @@ export class ObservableQuickServersApi {
      * Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
      * Place QuickServer Order
      */
-    public addQsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addQsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ServiceOrderPostResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addQs(_config);
@@ -5838,8 +5840,8 @@ export class ObservableQuickServersApi {
      * Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
      * Place QuickServer Order
      */
-    public addQs(_options?: ConfigurationOptions): Observable<void> {
-        return this.addQsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addQs(_options?: ConfigurationOptions): Observable<ServiceOrderPostResponse> {
+        return this.addQsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ServiceOrderPostResponse>) => apiResponse.data));
     }
 
     /**
@@ -7285,7 +7287,7 @@ export class ObservableQuickServersApi {
      * Update QuickServer Order
      * @param id QuickServer ID number.
      */
-    public updateQsInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateQsInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateQsInfo(id, _config);
@@ -7310,8 +7312,8 @@ export class ObservableQuickServersApi {
      * Update QuickServer Order
      * @param id QuickServer ID number.
      */
-    public updateQsInfo(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateQsInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateQsInfo(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateQsInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
 }
@@ -7336,7 +7338,7 @@ export class ObservableSSLCertificatesApi {
      * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
      * Place SSL Cert Order
      */
-    public addSslWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addSslWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ServiceOrderPostResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addSsl(_config);
@@ -7360,15 +7362,15 @@ export class ObservableSSLCertificatesApi {
      * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
      * Place SSL Cert Order
      */
-    public addSsl(_options?: ConfigurationOptions): Observable<void> {
-        return this.addSslWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addSsl(_options?: ConfigurationOptions): Observable<ServiceOrderPostResponse> {
+        return this.addSslWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ServiceOrderPostResponse>) => apiResponse.data));
     }
 
     /**
      * Retrieves available SSL certificate types and pricing for ordering.
      * SSL Cert Ordering Information
      */
-    public getNewSslWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public getNewSslWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getNewSsl(_config);
@@ -7392,8 +7394,8 @@ export class ObservableSSLCertificatesApi {
      * Retrieves available SSL certificate types and pricing for ordering.
      * SSL Cert Ordering Information
      */
-    public getNewSsl(_options?: ConfigurationOptions): Observable<void> {
-        return this.getNewSslWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getNewSsl(_options?: ConfigurationOptions): Observable<any> {
+        return this.getNewSslWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
@@ -7401,7 +7403,7 @@ export class ObservableSSLCertificatesApi {
      * Get SSL Cert Info
      * @param id SSL certificate ID number.
      */
-    public getSslInfoWithHttpInfo(id: number, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public getSslInfoWithHttpInfo(id: number, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getSslInfo(id, _config);
@@ -7426,8 +7428,8 @@ export class ObservableSSLCertificatesApi {
      * Get SSL Cert Info
      * @param id SSL certificate ID number.
      */
-    public getSslInfo(id: number, _options?: ConfigurationOptions): Observable<void> {
-        return this.getSslInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getSslInfo(id: number, _options?: ConfigurationOptions): Observable<any> {
+        return this.getSslInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
@@ -7601,7 +7603,7 @@ export class ObservableSSLCertificatesApi {
      * Update SSL Cert Order
      * @param id SSL certificate ID number.
      */
-    public updateSslInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateSslInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateSslInfo(id, _config);
@@ -7626,8 +7628,8 @@ export class ObservableSSLCertificatesApi {
      * Update SSL Cert Order
      * @param id SSL certificate ID number.
      */
-    public updateSslInfo(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateSslInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateSslInfo(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateSslInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
 }
@@ -8220,7 +8222,7 @@ export class ObservableServersApi {
      * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
      * Place Server Order
      */
-    public addServerWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addServerWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<AddServer200Response>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addServer(_config);
@@ -8244,8 +8246,8 @@ export class ObservableServersApi {
      * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
      * Place Server Order
      */
-    public addServer(_options?: ConfigurationOptions): Observable<void> {
-        return this.addServerWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addServer(_options?: ConfigurationOptions): Observable<AddServer200Response> {
+        return this.addServerWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<AddServer200Response>) => apiResponse.data));
     }
 
     /**
@@ -8797,7 +8799,7 @@ export class ObservableServersApi {
      * Update Server Order
      * @param id Server ID number.
      */
-    public updateServerInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateServerInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateServerInfo(id, _config);
@@ -8822,8 +8824,8 @@ export class ObservableServersApi {
      * Update Server Order
      * @param id Server ID number.
      */
-    public updateServerInfo(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateServerInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateServerInfo(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateServerInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
 }
@@ -9245,7 +9247,7 @@ export class ObservableVPSApi {
      * Place VPS Order
      * @param [vpsOrderPostRequest]
      */
-    public addVpsWithHttpInfo(vpsOrderPostRequest?: VpsOrderPostRequest, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addVpsWithHttpInfo(vpsOrderPostRequest?: VpsOrderPostRequest, _options?: ConfigurationOptions): Observable<HttpInfo<ServiceOrderPostResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addVps(vpsOrderPostRequest, _config);
@@ -9270,8 +9272,8 @@ export class ObservableVPSApi {
      * Place VPS Order
      * @param [vpsOrderPostRequest]
      */
-    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, _options?: ConfigurationOptions): Observable<void> {
-        return this.addVpsWithHttpInfo(vpsOrderPostRequest, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addVps(vpsOrderPostRequest?: VpsOrderPostRequest, _options?: ConfigurationOptions): Observable<ServiceOrderPostResponse> {
+        return this.addVpsWithHttpInfo(vpsOrderPostRequest, _options).pipe(map((apiResponse: HttpInfo<ServiceOrderPostResponse>) => apiResponse.data));
     }
 
     /**
@@ -10699,7 +10701,7 @@ export class ObservableVPSApi {
      * Update VPS Order
      * @param id VPS ID number.
      */
-    public updateVpsInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateVpsInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateVpsInfo(id, _config);
@@ -10724,8 +10726,8 @@ export class ObservableVPSApi {
      * Update VPS Order
      * @param id VPS ID number.
      */
-    public updateVpsInfo(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateVpsInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateVpsInfo(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateVpsInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**
@@ -10784,7 +10786,7 @@ export class ObservableWebhostingApi {
      * Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
      * Place Website Order
      */
-    public addWebsiteWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public addWebsiteWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ServiceOrderPostResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addWebsite(_config);
@@ -10808,8 +10810,8 @@ export class ObservableWebhostingApi {
      * Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
      * Place Website Order
      */
-    public addWebsite(_options?: ConfigurationOptions): Observable<void> {
-        return this.addWebsiteWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public addWebsite(_options?: ConfigurationOptions): Observable<ServiceOrderPostResponse> {
+        return this.addWebsiteWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ServiceOrderPostResponse>) => apiResponse.data));
     }
 
     /**
@@ -11259,7 +11261,7 @@ export class ObservableWebhostingApi {
      * Update Website Order
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
      */
-    public updateWebsiteInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public updateWebsiteInfoWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<SuccessTextResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.updateWebsiteInfo(id, _config);
@@ -11284,8 +11286,8 @@ export class ObservableWebhostingApi {
      * Update Website Order
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
      */
-    public updateWebsiteInfo(id: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.updateWebsiteInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateWebsiteInfo(id: string, _options?: ConfigurationOptions): Observable<SuccessTextResponse> {
+        return this.updateWebsiteInfoWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<SuccessTextResponse>) => apiResponse.data));
     }
 
     /**

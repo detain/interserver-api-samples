@@ -24,11 +24,12 @@ inherit
 feature -- API Access
 
 
-	add_license 
+	add_license : detachable SERVICE_ORDER_POST_RESPONSE
 			-- Place License Order
 			-- Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
 			-- 
 			-- 
+			-- Result SERVICE_ORDER_POST_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -46,9 +47,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SERVICE_ORDER_POST_RESPONSE } l_response.data ({ SERVICE_ORDER_POST_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -359,13 +364,14 @@ feature -- API Access
 			end
 		end
 
-	update_license_info (id: STRING_32)
+	update_license_info (id: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update License
 			-- Updates settings on a license service such as its assigned IP.
 			-- 
 			-- argument: id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -384,9 +390,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

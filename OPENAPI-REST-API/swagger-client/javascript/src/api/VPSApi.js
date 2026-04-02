@@ -18,12 +18,13 @@ import ChargeInvoiceRows from '../model/ChargeInvoiceRows';
 import HostnameObject from '../model/HostnameObject';
 import IdBackupsBody2 from '../model/IdBackupsBody2';
 import InlineResponse20011 from '../model/InlineResponse20011';
-import InlineResponse20021 from '../model/InlineResponse20021';
+import InlineResponse20022 from '../model/InlineResponse20022';
 import InlineResponse401 from '../model/InlineResponse401';
 import PasswordRequest from '../model/PasswordRequest';
 import QueueResponse from '../model/QueueResponse';
 import RestoreRequest from '../model/RestoreRequest';
 import ReverseDnsEntries from '../model/ReverseDnsEntries';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 import TemplateRequest from '../model/TemplateRequest';
 import TextResponse from '../model/TextResponse';
@@ -62,7 +63,7 @@ export default class VPSApi {
      * Callback function to receive the result of the addVps operation.
      * @callback moduleapi/VPSApi~addVpsCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -83,6 +84,7 @@ export default class VPSApi {
      * @param {String} opts.rootpass 
      * @param {String} opts.comment 
      * @param {module:api/VPSApi~addVpsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addVps(opts, callback) {
       opts = opts || {};
@@ -104,7 +106,7 @@ export default class VPSApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = ['application/json', 'multipart/form-data'];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
 
       return this.apiClient.callApi(
         '/vps/order', 'POST',
@@ -2148,7 +2150,7 @@ export default class VPSApi {
      * Callback function to receive the result of the updateVpsInfo operation.
      * @callback moduleapi/VPSApi~updateVpsInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2157,6 +2159,7 @@ export default class VPSApi {
      * Updates settings on a VPS order.
      * @param {String} id VPS ID number.
      * @param {module:api/VPSApi~updateVpsInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateVpsInfo(id, callback) {
       
@@ -2182,7 +2185,7 @@ export default class VPSApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
 
       return this.apiClient.callApi(
         '/vps/{id}', 'POST',
@@ -2194,7 +2197,7 @@ export default class VPSApi {
      * Callback function to receive the result of the vPSCancel operation.
      * @callback moduleapi/VPSApi~vPSCancelCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20021{ data The data returned by the service call.
+     * @param {module:model/InlineResponse20022{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2229,7 +2232,7 @@ export default class VPSApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse20021;
+      let returnType = InlineResponse20022;
 
       return this.apiClient.callApi(
         '/vps/{id}', 'DELETE',

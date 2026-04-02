@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 <a name="addLicense"></a>
 # **addLicense**
-> addLicense()
+> ServiceOrderPostResponse addLicense()
 
 Place License Order
 
@@ -55,7 +55,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 LicensesApi apiInstance = new LicensesApi();
 try {
-    apiInstance.addLicense();
+    ServiceOrderPostResponse result = apiInstance.addLicense();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LicensesApi#addLicense");
     e.printStackTrace();
@@ -67,7 +68,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -740,7 +741,7 @@ null (empty response body)
 
 <a name="updateLicenseInfo"></a>
 # **updateLicenseInfo**
-> updateLicenseInfo(id)
+> SuccessTextResponse updateLicenseInfo(id)
 
 Update License
 
@@ -778,7 +779,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 LicensesApi apiInstance = new LicensesApi();
 String id = "id_example"; // String | The license service ID. Use `license_id` from `GET /licenses`.
 try {
-    apiInstance.updateLicenseInfo(id);
+    SuccessTextResponse result = apiInstance.updateLicenseInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LicensesApi#updateLicenseInfo");
     e.printStackTrace();
@@ -793,7 +795,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -51,21 +51,48 @@ static gpointer __WebhostingManagerthreadFunc(gpointer data)
 static bool addWebsiteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	= reinterpret_cast<void(*)(ServiceOrderPostResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	ServiceOrderPostResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("ServiceOrderPostResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ServiceOrderPostResponse", "ServiceOrderPostResponse");
+			json_node_free(pJson);
+
+			if ("ServiceOrderPostResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -76,15 +103,15 @@ static bool addWebsiteProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool addWebsiteHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -154,8 +181,8 @@ static bool addWebsiteHelper(char * accessToken,
 
 bool WebhostingManager::addWebsiteAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData)
 {
 	return addWebsiteHelper(accessToken,
 	
@@ -164,8 +191,8 @@ bool WebhostingManager::addWebsiteAsync(char * accessToken,
 
 bool WebhostingManager::addWebsiteSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData)
 {
 	return addWebsiteHelper(accessToken,
 	
@@ -2200,21 +2227,48 @@ bool WebhostingManager::putWebsitesSync(char * accessToken,
 static bool updateWebsiteInfoProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	SuccessTextResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -2225,15 +2279,15 @@ static bool updateWebsiteInfoProcessor(MemoryStruct_s p_chunk, long code, char* 
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool updateWebsiteInfoHelper(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -2309,8 +2363,8 @@ static bool updateWebsiteInfoHelper(char * accessToken,
 
 bool WebhostingManager::updateWebsiteInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateWebsiteInfoHelper(accessToken,
 	id, 
@@ -2319,8 +2373,8 @@ bool WebhostingManager::updateWebsiteInfoAsync(char * accessToken,
 
 bool WebhostingManager::updateWebsiteInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
 {
 	return updateWebsiteInfoHelper(accessToken,
 	id, 

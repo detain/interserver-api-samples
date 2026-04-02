@@ -22,6 +22,7 @@ import HttpResponse from '../HttpResponse';
 
 import { ChargeInvoiceRows } from '../model/chargeInvoiceRows';
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SslCancel200Response } from '../model/sslCancel200Response';
 import { SuccessTextResponse } from '../model/successTextResponse';
 
@@ -44,8 +45,8 @@ export class SSLCertificatesService {
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
      
      */
-    public addSsl(observe?: 'body', headers?: Headers): Observable<any>;
-    public addSsl(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public addSsl(observe?: 'body', headers?: Headers): Observable<ServiceOrderPostResponse>;
+    public addSsl(observe?: 'response', headers?: Headers): Observable<HttpResponse<ServiceOrderPostResponse>>;
     public addSsl(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -58,10 +59,10 @@ export class SSLCertificatesService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/ssl/order`, headers);
+        const response: Observable<HttpResponse<ServiceOrderPostResponse>> = this.httpClient.post(`${this.basePath}/ssl/order`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <ServiceOrderPostResponse>(httpResponse.response))
                );
         }
         return response;
@@ -73,8 +74,8 @@ export class SSLCertificatesService {
      * Retrieves available SSL certificate types and pricing for ordering.
      
      */
-    public getNewSsl(observe?: 'body', headers?: Headers): Observable<any>;
-    public getNewSsl(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public getNewSsl(observe?: 'body', headers?: Headers): Observable<object>;
+    public getNewSsl(observe?: 'response', headers?: Headers): Observable<HttpResponse<object>>;
     public getNewSsl(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (sessionIdCookieAuth) required
         // authentication (apiKeyAuth) required
@@ -87,10 +88,10 @@ export class SSLCertificatesService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.basePath}/ssl/order`, headers);
+        const response: Observable<HttpResponse<object>> = this.httpClient.get(`${this.basePath}/ssl/order`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <object>(httpResponse.response))
                );
         }
         return response;
@@ -103,8 +104,8 @@ export class SSLCertificatesService {
      * @param id SSL certificate ID number.
      
      */
-    public getSslInfo(id: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public getSslInfo(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public getSslInfo(id: number, observe?: 'body', headers?: Headers): Observable<object>;
+    public getSslInfo(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<object>>;
     public getSslInfo(id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling getSslInfo.');
@@ -121,10 +122,10 @@ export class SSLCertificatesService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.basePath}/ssl/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<object>> = this.httpClient.get(`${this.basePath}/ssl/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <object>(httpResponse.response))
                );
         }
         return response;
@@ -297,8 +298,8 @@ export class SSLCertificatesService {
      * @param id SSL certificate ID number.
      
      */
-    public updateSslInfo(id: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateSslInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateSslInfo(id: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateSslInfo(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateSslInfo(id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateSslInfo.');
@@ -315,10 +316,10 @@ export class SSLCertificatesService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/ssl/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/ssl/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

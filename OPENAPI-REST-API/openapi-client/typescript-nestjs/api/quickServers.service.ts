@@ -25,6 +25,7 @@ import { QuickserverRow } from '../model/quickserverRow';
 import { QuickserversCancel200Response } from '../model/quickserversCancel200Response';
 import { RestoreRequest } from '../model/restoreRequest';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 import { VpsBackupRows } from '../model/vpsBackupRows';
@@ -63,7 +64,7 @@ export class QuickServersService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [addQsOpts.config] Override http request option.
      */
-    public addQs(addQsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public addQs(addQsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ServiceOrderPostResponse>>;
     public addQs(addQsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -98,7 +99,7 @@ export class QuickServersService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/qs/order`,
+                return this.httpClient.post<ServiceOrderPostResponse>(`${this.basePath}/qs/order`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -2596,7 +2597,7 @@ export class QuickServersService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateQsInfoOpts.config] Override http request option.
      */
-    public updateQsInfo(id: string, updateQsInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateQsInfo(id: string, updateQsInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateQsInfo(id: string, updateQsInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateQsInfo.');
@@ -2635,7 +2636,7 @@ export class QuickServersService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/qs/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/qs/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

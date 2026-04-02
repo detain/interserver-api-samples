@@ -1019,13 +1019,14 @@ void OAIAccountApi::updateAccountInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateAccountInfoSignal();
-        Q_EMIT updateAccountInfoSignalFull(worker);
+        Q_EMIT updateAccountInfoSignal(output);
+        Q_EMIT updateAccountInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateAccountInfoSignalError(error_type, error_str);
+        Q_EMIT updateAccountInfoSignalError(output, error_type, error_str);
         Q_EMIT updateAccountInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -1078,13 +1079,14 @@ void OAIAccountApi::updateAccountIpLimitsCallback(OAIHttpRequestWorker *worker) 
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateAccountIpLimitsSignal();
-        Q_EMIT updateAccountIpLimitsSignalFull(worker);
+        Q_EMIT updateAccountIpLimitsSignal(output);
+        Q_EMIT updateAccountIpLimitsSignalFull(worker, output);
     } else {
-        Q_EMIT updateAccountIpLimitsSignalError(error_type, error_str);
+        Q_EMIT updateAccountIpLimitsSignalError(output, error_type, error_str);
         Q_EMIT updateAccountIpLimitsSignalErrorFull(worker, error_type, error_str);
     }
 }

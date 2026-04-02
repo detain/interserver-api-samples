@@ -26,9 +26,10 @@ func Test_myadmin_SSLCertificatesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.SSLCertificatesAPI.AddSsl(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SSLCertificatesAPI.AddSsl(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -37,9 +38,10 @@ func Test_myadmin_SSLCertificatesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.SSLCertificatesAPI.GetNewSsl(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SSLCertificatesAPI.GetNewSsl(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -50,9 +52,10 @@ func Test_myadmin_SSLCertificatesAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.SSLCertificatesAPI.GetSslInfo(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SSLCertificatesAPI.GetSslInfo(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -127,9 +130,10 @@ func Test_myadmin_SSLCertificatesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.SSLCertificatesAPI.UpdateSslInfo(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SSLCertificatesAPI.UpdateSslInfo(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

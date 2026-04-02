@@ -2,6 +2,7 @@ package org.openapitools.api;
 
 import org.openapitools.model.ChargeInvoiceRows;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SslCancel200Response;
 import org.openapitools.model.SuccessTextResponse;
 
@@ -37,9 +38,9 @@ public interface SslCertificatesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Place SSL Cert Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void addSsl();
+        @ApiResponse(code = 200, message = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", response = ServiceOrderPostResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public ServiceOrderPostResponse addSsl();
 
     /**
      * SSL Cert Ordering Information
@@ -52,9 +53,9 @@ public interface SslCertificatesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "SSL Cert Ordering Information", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void getNewSsl();
+        @ApiResponse(code = 200, message = "Available SSL certificate types and pricing for ordering.", response = Object.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public Object getNewSsl();
 
     /**
      * Get SSL Cert Info
@@ -67,9 +68,9 @@ public interface SslCertificatesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get SSL Cert Info", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void getSslInfo(@PathParam("id") Integer id);
+        @ApiResponse(code = 200, message = "Detailed SSL certificate information.", response = Object.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public Object getSslInfo(@PathParam("id") Integer id);
 
     /**
      * Get SSL Cert Invoices
@@ -158,7 +159,7 @@ public interface SslCertificatesApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update SSL Cert Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateSslInfo(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateSslInfo(@PathParam("id") String id);
 }

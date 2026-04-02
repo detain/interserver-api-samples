@@ -23,6 +23,7 @@ case class CreateFirewallRule(
   /* 1 = Block,  0 = Whitelist */
   @named("xdp_action") xdp_action: CreateFirewallRuleEnums.XdpAction,
   @named("destination_port") destination_port: Option[Int] = scala.None,
+  /* Source IP address to match. Use '0.0.0.0' to match any source. */
   @named("source_ip") source_ip: Option[String] = scala.None,
   @named("source_port") source_port: Option[Int] = scala.None
 )

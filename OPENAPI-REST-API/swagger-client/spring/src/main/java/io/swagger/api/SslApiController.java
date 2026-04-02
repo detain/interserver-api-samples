@@ -1,8 +1,9 @@
 package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20021;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -51,20 +52,47 @@ public class SslApiController implements SslApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> addSsl() {
+    public ResponseEntity<ServiceOrderPostResponse> addSsl() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<ServiceOrderPostResponse>(objectMapper.readValue("{\n  \"continue\" : true,\n  \"errors\" : [ ],\n  \"total_cost\" : \"5.00\",\n  \"iid\" : \"25296600\",\n  \"iids\" : [ \"SERVICE12345\" ],\n  \"real_iids\" : [ \"25296600\" ],\n  \"serviceId\" : 12345,\n  \"invoice_description\" : \"New Service Order\"\n}", ServiceOrderPostResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> getNewSsl() {
+    public ResponseEntity<Object> getNewSsl() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<Object>(objectMapper.readValue("{ }", Object.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> getSslInfo(@Parameter(in = ParameterIn.PATH, description = "SSL certificate ID number.", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    public ResponseEntity<Object> getSslInfo(@Parameter(in = ParameterIn.PATH, description = "SSL certificate ID number.", required=true, schema=@Schema()) @PathVariable("id") Integer id
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<Object>(objectMapper.readValue("{ }", Object.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<ChargeInvoiceRows> getSslInvoices(@Parameter(in = ParameterIn.PATH, description = "SSL Cert ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -107,25 +135,34 @@ public class SslApiController implements SslApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<InlineResponse20020> sslCancel(@Parameter(in = ParameterIn.PATH, description = "SSL Cert ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    public ResponseEntity<InlineResponse20021> sslCancel(@Parameter(in = ParameterIn.PATH, description = "SSL Cert ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<InlineResponse20020>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"SSL is canceled.\"\n}", InlineResponse20020.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<InlineResponse20021>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"SSL is canceled.\"\n}", InlineResponse20021.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<InlineResponse20020>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<InlineResponse20021>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<InlineResponse20020>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<InlineResponse20021>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateSslInfo(@Parameter(in = ParameterIn.PATH, description = "SSL certificate ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<SuccessTextResponse> updateSslInfo(@Parameter(in = ParameterIn.PATH, description = "SSL certificate ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

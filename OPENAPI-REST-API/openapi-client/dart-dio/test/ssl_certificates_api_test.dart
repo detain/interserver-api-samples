@@ -11,7 +11,7 @@ void main() {
     //
     // Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
     //
-    //Future addSsl() async
+    //Future<ServiceOrderPostResponse> addSsl() async
     test('test addSsl', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Retrieves available SSL certificate types and pricing for ordering.
     //
-    //Future getNewSsl() async
+    //Future<JsonObject> getNewSsl() async
     test('test getNewSsl', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Returns detailed information about a specific SSL certificate including its domain and expiration.
     //
-    //Future getSslInfo(int id) async
+    //Future<JsonObject> getSslInfo(int id) async
     test('test getSslInfo', () async {
       // TODO
     });
@@ -83,7 +83,7 @@ void main() {
     //
     // Updates settings on an SSL certificate order.
     //
-    //Future updateSslInfo(String id) async
+    //Future<SuccessTextResponse> updateSslInfo(String id) async
     test('test updateSslInfo', () async {
       // TODO
     });

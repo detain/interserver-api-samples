@@ -9,22 +9,18 @@ import Foundation
 
 
 open class InlineResponse20026: JSONEncodable {
-    public var bandwidth: [InlineResponse20026Bandwidth]?
-    public var ips: [InlineResponse20026Ips]?
-    public var os: [InlineResponse20026Os]?
-    public var cp: [InlineResponse20026Cp]?
-    public var raid: [InlineResponse20026Raid]?
+    /** Confirmation message. */
+    public var text: String?
+    /** The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. */
+    public var ticket: Int32?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["bandwidth"] = self.bandwidth?.encodeToJSON()
-        nillableDictionary["ips"] = self.ips?.encodeToJSON()
-        nillableDictionary["os"] = self.os?.encodeToJSON()
-        nillableDictionary["cp"] = self.cp?.encodeToJSON()
-        nillableDictionary["raid"] = self.raid?.encodeToJSON()
+        nillableDictionary["text"] = self.text
+        nillableDictionary["ticket"] = self.ticket?.encodeToJSON()
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

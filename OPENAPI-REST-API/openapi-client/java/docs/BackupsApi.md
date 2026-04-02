@@ -671,7 +671,7 @@ This endpoint does not need any parameter.
 
 <a id="updateBackupInfo"></a>
 # **updateBackupInfo**
-> updateBackupInfo(id)
+> SuccessTextResponse updateBackupInfo(id)
 
 Update Backup Information
 
@@ -713,7 +713,8 @@ public class Example {
     BackupsApi apiInstance = new BackupsApi(defaultClient);
     Integer id = 56; // Integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     try {
-      apiInstance.updateBackupInfo(id);
+      SuccessTextResponse result = apiInstance.updateBackupInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling BackupsApi#updateBackupInfo");
       System.err.println("Status code: " + e.getCode());
@@ -733,7 +734,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -747,8 +748,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="validateBackupOrder"></a>
 # **validateBackupOrder**

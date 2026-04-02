@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_account_credit_card**
-> delete_account_credit_card(id => $id)
+> string delete_account_credit_card(id => $id)
 
 Remove Credit Card
 
@@ -261,7 +261,8 @@ my $api_instance = OpenAPIClient::BillingApi->new(
 my $id = "id_example"; # string | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 eval {
-    $api_instance->delete_account_credit_card(id => $id);
+    my $result = $api_instance->delete_account_credit_card(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling BillingApi->delete_account_credit_card: $@\n";
@@ -276,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -805,7 +806,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_billing_cart**
-> get_billing_cart()
+> object get_billing_cart()
 
 Get Shopping Cart Contents
 
@@ -833,7 +834,8 @@ my $api_instance = OpenAPIClient::BillingApi->new(
 
 
 eval {
-    $api_instance->get_billing_cart();
+    my $result = $api_instance->get_billing_cart();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling BillingApi->get_billing_cart: $@\n";
@@ -845,7 +847,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1032,7 +1034,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_billing_pre_pays**
-> get_billing_pre_pays()
+> object get_billing_pre_pays()
 
 List Prepay Balances
 
@@ -1060,7 +1062,8 @@ my $api_instance = OpenAPIClient::BillingApi->new(
 
 
 eval {
-    $api_instance->get_billing_pre_pays();
+    my $result = $api_instance->get_billing_pre_pays();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling BillingApi->get_billing_pre_pays: $@\n";
@@ -1072,7 +1075,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1271,7 +1274,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account_credit_card**
-> update_account_credit_card(id => $id)
+> string update_account_credit_card(id => $id)
 
 Update Credit Card
 
@@ -1300,7 +1303,8 @@ my $api_instance = OpenAPIClient::BillingApi->new(
 my $id = 56; # int | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 eval {
-    $api_instance->update_account_credit_card(id => $id);
+    my $result = $api_instance->update_account_credit_card(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling BillingApi->update_account_credit_card: $@\n";
@@ -1315,7 +1319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

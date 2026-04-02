@@ -23,6 +23,7 @@ docs/AccountInfoOauthConfigProvidersValue.md
 docs/AccountInfoOauthproviders.md
 docs/AccountInfoPost.md
 docs/AccountSshKey.md
+docs/AddServer200Response.md
 docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
@@ -367,6 +368,7 @@ docs/ServersCancel200Response.md
 docs/Service.md
 docs/ServiceCategories.md
 docs/ServiceCategory.md
+docs/ServiceOrderPostResponse.md
 docs/ServiceType.md
 docs/ServiceTypes.md
 docs/Services.md
@@ -509,6 +511,7 @@ src/model/AccountInfoOauthConfigProvidersValue.js
 src/model/AccountInfoOauthproviders.js
 src/model/AccountInfoPost.js
 src/model/AccountSshKey.js
+src/model/AddServer200Response.js
 src/model/AffiliateBannerRow.js
 src/model/AffiliateDockSetup.js
 src/model/AffiliatePaymentSetup.js
@@ -841,6 +844,7 @@ src/model/ServersCancel200Response.js
 src/model/Service.js
 src/model/ServiceCategories.js
 src/model/ServiceCategory.js
+src/model/ServiceOrderPostResponse.js
 src/model/ServiceType.js
 src/model/ServiceTypes.js
 src/model/Services.js
@@ -975,6 +979,7 @@ test/model/AccountInfoOauthConfigProvidersValue.spec.js
 test/model/AccountInfoOauthproviders.spec.js
 test/model/AccountInfoPost.spec.js
 test/model/AccountSshKey.spec.js
+test/model/AddServer200Response.spec.js
 test/model/AffiliateBannerRow.spec.js
 test/model/AffiliateDockSetup.spec.js
 test/model/AffiliatePaymentSetup.spec.js
@@ -1307,6 +1312,7 @@ test/model/ServersCancel200Response.spec.js
 test/model/Service.spec.js
 test/model/ServiceCategories.spec.js
 test/model/ServiceCategory.spec.js
+test/model/ServiceOrderPostResponse.spec.js
 test/model/ServiceType.spec.js
 test/model/ServiceTypes.spec.js
 test/model/Services.spec.js

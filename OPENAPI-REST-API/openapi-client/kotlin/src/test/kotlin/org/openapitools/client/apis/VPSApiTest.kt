@@ -34,6 +34,7 @@ import org.openapitools.client.models.GetAccountInfo401Response
 import org.openapitools.client.models.QueueResponse
 import org.openapitools.client.models.RestoreRequest
 import org.openapitools.client.models.ReverseDnsEntries
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 import org.openapitools.client.models.VPSCancel200Response
@@ -56,7 +57,8 @@ class VPSApiTest : ShouldSpec() {
         should("test addVps") {
             // uncomment below to test addVps
             //val vpsOrderPostRequest : VpsOrderPostRequest =  // VpsOrderPostRequest | 
-            //apiInstance.addVps(vpsOrderPostRequest)
+            //val result : ServiceOrderPostResponse = apiInstance.addVps(vpsOrderPostRequest)
+            //result shouldBe ("TODO")
         }
 
         // to test deleteVpsBackup
@@ -395,7 +397,8 @@ class VPSApiTest : ShouldSpec() {
         should("test updateVpsInfo") {
             // uncomment below to test updateVpsInfo
             //val id : kotlin.String = id_example // kotlin.String | VPS ID number.
-            //apiInstance.updateVpsInfo(id)
+            //val result : SuccessTextResponse = apiInstance.updateVpsInfo(id)
+            //result shouldBe ("TODO")
         }
 
         // to test vPSCancel

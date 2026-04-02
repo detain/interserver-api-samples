@@ -4,6 +4,7 @@ import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.InlineResponse2003;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 
 import java.io.InputStream;
@@ -42,9 +43,9 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Place Floating IP Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void addFloatingIp();
+        @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ServiceOrderPostResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public ServiceOrderPostResponse addFloatingIp();
 
     /**
      * Cancel Floating IP
@@ -72,9 +73,9 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "View Floating IP", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void getFloatingIpInfo(@PathParam("id") Integer id);
+        @ApiResponse(responseCode = "200", description = "Detailed Floating IP service information.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public Object getFloatingIpInfo(@PathParam("id") Integer id);
 
     /**
      * Get Floating IP Invoices
@@ -133,9 +134,9 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Get Floating IP Ordering Information", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void getNewFloatingIp();
+        @ApiResponse(responseCode = "200", description = "Available options and pricing for ordering a Floating IP.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public Object getNewFloatingIp();
 
     /**
      * Change Floating IP Target
@@ -195,7 +196,7 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Update Floating IP", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-        @ApiResponse(responseCode = "200", description = "Default response") })
-    public void updateFloatingIpInfo(@PathParam("id") String id);
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
+    public SuccessTextResponse updateFloatingIpInfo(@PathParam("id") String id);
 }

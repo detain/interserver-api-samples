@@ -17,7 +17,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addSsl"></a>
 # **addSsl**
-> addSsl()
+> ServiceOrderPostResponse addSsl()
 
 Place SSL Cert Order
 
@@ -58,7 +58,8 @@ public class Example {
 
     SslCertificatesApi apiInstance = new SslCertificatesApi(defaultClient);
     try {
-      apiInstance.addSsl();
+      ServiceOrderPostResponse result = apiInstance.addSsl();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SslCertificatesApi#addSsl");
       System.err.println("Status code: " + e.getCode());
@@ -75,7 +76,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -89,12 +90,12 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="getNewSsl"></a>
 # **getNewSsl**
-> getNewSsl()
+> Object getNewSsl()
 
 SSL Cert Ordering Information
 
@@ -135,7 +136,8 @@ public class Example {
 
     SslCertificatesApi apiInstance = new SslCertificatesApi(defaultClient);
     try {
-      apiInstance.getNewSsl();
+      Object result = apiInstance.getNewSsl();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SslCertificatesApi#getNewSsl");
       System.err.println("Status code: " + e.getCode());
@@ -152,7 +154,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -166,12 +168,12 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Available SSL certificate types and pricing for ordering. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="getSslInfo"></a>
 # **getSslInfo**
-> getSslInfo(id)
+> Object getSslInfo(id)
 
 Get SSL Cert Info
 
@@ -213,7 +215,8 @@ public class Example {
     SslCertificatesApi apiInstance = new SslCertificatesApi(defaultClient);
     Integer id = 56; // Integer | SSL certificate ID number.
     try {
-      apiInstance.getSslInfo(id);
+      Object result = apiInstance.getSslInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SslCertificatesApi#getSslInfo");
       System.err.println("Status code: " + e.getCode());
@@ -233,7 +236,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -247,8 +250,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Detailed SSL certificate information. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="getSslInvoices"></a>
 # **getSslInvoices**
@@ -653,7 +656,7 @@ public class Example {
 
 <a id="updateSslInfo"></a>
 # **updateSslInfo**
-> updateSslInfo(id)
+> SuccessTextResponse updateSslInfo(id)
 
 Update SSL Cert Order
 
@@ -695,7 +698,8 @@ public class Example {
     SslCertificatesApi apiInstance = new SslCertificatesApi(defaultClient);
     String id = "id_example"; // String | SSL certificate ID number.
     try {
-      apiInstance.updateSslInfo(id);
+      SuccessTextResponse result = apiInstance.updateSslInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SslCertificatesApi#updateSslInfo");
       System.err.println("Status code: " + e.getCode());
@@ -715,7 +719,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -729,6 +733,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 

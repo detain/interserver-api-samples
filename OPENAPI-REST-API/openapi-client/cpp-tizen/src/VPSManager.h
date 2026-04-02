@@ -12,6 +12,7 @@
 #include "QueueResponse.h"
 #include "RestoreRequest.h"
 #include "ReverseDnsEntries.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
 #include "VPSCancel_200_response.h"
@@ -53,8 +54,8 @@ public:
  */
 bool addVpsSync(char * accessToken,
 	std::shared_ptr<VpsOrderPostRequest> vpsOrderPostRequest, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Place VPS Order. *Asynchronous*
  *
@@ -66,8 +67,8 @@ bool addVpsSync(char * accessToken,
  */
 bool addVpsAsync(char * accessToken,
 	std::shared_ptr<VpsOrderPostRequest> vpsOrderPostRequest, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Delete VPS Backup. *Synchronous*
@@ -1213,8 +1214,8 @@ bool putVpsAsync(char * accessToken,
  */
 bool updateVpsInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update VPS Order. *Asynchronous*
  *
@@ -1226,8 +1227,8 @@ bool updateVpsInfoSync(char * accessToken,
  */
 bool updateVpsInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Cancel VPS Service. *Synchronous*

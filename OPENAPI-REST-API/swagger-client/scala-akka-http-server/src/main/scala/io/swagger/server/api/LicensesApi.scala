@@ -10,6 +10,7 @@ import io.swagger.server.model.IpObject
 import io.swagger.server.model.License
 import io.swagger.server.model.LicenseRow
 import io.swagger.server.model.LicensesOrder
+import io.swagger.server.model.ServiceOrderPostResponse
 import io.swagger.server.model.SuccessTextResponse
 import io.swagger.server.model.inline_response_200_4
 import io.swagger.server.model.inline_response_401
@@ -190,16 +191,16 @@ class LicensesApi(
 
 trait LicensesApiService {
 
+  def addLicense200(responseServiceOrderPostResponse: ServiceOrderPostResponse)(implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse]): Route =
+    complete((200, responseServiceOrderPostResponse))
   def addLicense401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def addLicense0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def addLicense()
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getLicenseInfo200(responseLicense: License)(implicit toEntityMarshallerLicense: ToEntityMarshaller[License]): Route =
     complete((200, responseLicense))
@@ -300,22 +301,24 @@ trait LicensesApiService {
   def putLicenses()
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def updateLicenseInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def updateLicenseInfo401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def updateLicenseInfo0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def updateLicenseInfo(id: String)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
 }
 
 trait LicensesApiMarshaller {
   implicit def fromRequestUnmarshallerIpObject: FromRequestUnmarshaller[IpObject]
 
+
+  implicit def toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -350,6 +353,8 @@ trait LicensesApiMarshaller {
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

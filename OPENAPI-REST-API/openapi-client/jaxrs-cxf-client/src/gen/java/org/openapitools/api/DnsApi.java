@@ -4,6 +4,7 @@ import org.openapitools.model.DnsListItem;
 import org.openapitools.model.DnsRecord;
 import org.openapitools.model.DnsRecordType;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.SuccessTextResponse;
 
 import java.util.List;
 import java.util.Map;
@@ -38,9 +39,9 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create DNS Domain", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void addDnsDomain(@Multipart(value = "domain")  String domain, @Multipart(value = "ip")  String ip);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse addDnsDomain(@Multipart(value = "domain")  String domain, @Multipart(value = "ip")  String ip);
 
     /**
      * Add DNS Record to Domain
@@ -69,9 +70,9 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Delete DNS Domain", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void deleteDnsDomain(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse deleteDnsDomain(@PathParam("id") String id);
 
     /**
      * Delete DNS Record
@@ -84,9 +85,9 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Delete DNS Record", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void deleteDnsRecord(@PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse deleteDnsRecord(@PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId);
 
     /**
      * List Domain DNS Records
@@ -130,7 +131,7 @@ public interface DnsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update DNS Record", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateDnsRecord(@PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId, @Multipart(value = "name", required = false)  String name, @Multipart(value = "type", required = false)  DnsRecordType type, @Multipart(value = "content", required = false)  String content, @Multipart(value = "ttl", required = false)  String ttl, @Multipart(value = "prio", required = false)  String prio, @Multipart(value = "disabled", required = false)  String disabled, @Multipart(value = "ordername", required = false)  String ordername, @Multipart(value = "auth", required = false)  String auth);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateDnsRecord(@PathParam("domainId") Integer domainId, @PathParam("recordId") Integer recordId, @Multipart(value = "name", required = false)  String name, @Multipart(value = "type", required = false)  DnsRecordType type, @Multipart(value = "content", required = false)  String content, @Multipart(value = "ttl", required = false)  String ttl, @Multipart(value = "prio", required = false)  String prio, @Multipart(value = "disabled", required = false)  String disabled, @Multipart(value = "ordername", required = false)  String ordername, @Multipart(value = "auth", required = false)  String auth);
 }

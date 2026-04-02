@@ -714,11 +714,20 @@ exports.updateAccountFeatures = function(body) {
  * Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
  *
  * body AccountInfoPost 
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateAccountInfo = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -728,11 +737,20 @@ exports.updateAccountInfo = function(body) {
  * Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
  *
  * body AccountInfoPost 
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateAccountInfo = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -742,11 +760,20 @@ exports.updateAccountInfo = function(body) {
  * Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
  *
  * body IpLimitRange The lower and upper bounds of an ip range.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateAccountIpLimits = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -756,11 +783,20 @@ exports.updateAccountIpLimits = function(body) {
  * Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
  *
  * body IpLimitRange The lower and upper bounds of an ip range.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateAccountIpLimits = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

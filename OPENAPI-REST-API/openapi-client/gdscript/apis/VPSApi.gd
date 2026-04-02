@@ -62,6 +62,7 @@ func add_vps(
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
+			bzz_response.data = ServiceOrderPostResponse.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):
@@ -2891,6 +2892,7 @@ func update_vps_info(
 	self._bzz_request(
 		bzz_method, bzz_path, bzz_headers, bzz_query, bzz_body,
 		func(bzz_response):
+			bzz_response.data = SuccessTextResponse.bzz_denormalize_single(bzz_response.data)
 			on_success.call(bzz_response)
 			,
 		func(bzz_error):

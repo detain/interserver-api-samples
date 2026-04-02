@@ -20,10 +20,10 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, InterServerManagementAPI.Model.ServiceOrderPostResponse.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec add_floating_ip(Tesla.Env.client, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec add_floating_ip(Tesla.Env.client, keyword()) :: {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:ok, InterServerManagementAPI.Model.ServiceOrderPostResponse.t} | {:error, Tesla.Env.t}
   def add_floating_ip(connection, _opts \\ []) do
     request =
       %{}
@@ -35,8 +35,8 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, InterServerManagementAPI.Model.ServiceOrderPostResponse},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 
@@ -83,10 +83,10 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, map()}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec get_floating_ip_info(Tesla.Env.client, integer(), keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec get_floating_ip_info(Tesla.Env.client, integer(), keyword()) :: {:ok, map()} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
   def get_floating_ip_info(connection, id, _opts \\ []) do
     request =
       %{}
@@ -97,8 +97,8 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, %{}},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 
@@ -206,10 +206,10 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, map()}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec get_new_floating_ip(Tesla.Env.client, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec get_new_floating_ip(Tesla.Env.client, keyword()) :: {:ok, map()} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
   def get_new_floating_ip(connection, _opts \\ []) do
     request =
       %{}
@@ -220,8 +220,8 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, %{}},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 
@@ -301,10 +301,10 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, InterServerManagementAPI.Model.SuccessTextResponse.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec update_floating_ip_info(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec update_floating_ip_info(Tesla.Env.client, String.t, keyword()) :: {:ok, InterServerManagementAPI.Model.SuccessTextResponse.t} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
   def update_floating_ip_info(connection, id, _opts \\ []) do
     request =
       %{}
@@ -316,8 +316,8 @@ defmodule InterServerManagementAPI.Api.FloatingIPs do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, InterServerManagementAPI.Model.SuccessTextResponse},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 end

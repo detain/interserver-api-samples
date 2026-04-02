@@ -27,6 +27,7 @@
 #include "ChargeInvoiceRows.hpp"
 #include "Floating_ipsCancel_200_response.hpp"
 #include "GetAccountInfo_401_response.hpp"
+#include "ServiceOrderPostResponse.hpp"
 #include "SuccessTextResponse.hpp"
 
 #include OATPP_CODEGEN_BEGIN(ApiClient) ///< Begin code-gen section

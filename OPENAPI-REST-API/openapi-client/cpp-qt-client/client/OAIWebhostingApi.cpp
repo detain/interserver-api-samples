@@ -289,13 +289,14 @@ void OAIWebhostingApi::addWebsiteCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIServiceOrderPostResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addWebsiteSignal();
-        Q_EMIT addWebsiteSignalFull(worker);
+        Q_EMIT addWebsiteSignal(output);
+        Q_EMIT addWebsiteSignalFull(worker, output);
     } else {
-        Q_EMIT addWebsiteSignalError(error_type, error_str);
+        Q_EMIT addWebsiteSignalError(output, error_type, error_str);
         Q_EMIT addWebsiteSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -1193,13 +1194,14 @@ void OAIWebhostingApi::updateWebsiteInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateWebsiteInfoSignal();
-        Q_EMIT updateWebsiteInfoSignalFull(worker);
+        Q_EMIT updateWebsiteInfoSignal(output);
+        Q_EMIT updateWebsiteInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateWebsiteInfoSignalError(error_type, error_str);
+        Q_EMIT updateWebsiteInfoSignalError(output, error_type, error_str);
         Q_EMIT updateWebsiteInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

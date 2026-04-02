@@ -5,11 +5,26 @@
  * Place SSL Cert Order
  * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
  *
- * no response value expected for this operation
+ * returns ServiceOrderPostResponse
  **/
 exports.addSsl = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -18,11 +33,17 @@ exports.addSsl = function() {
  * SSL Cert Ordering Information
  * Retrieves available SSL certificate types and pricing for ordering.
  *
- * no response value expected for this operation
+ * returns Object
  **/
 exports.getNewSsl = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = { };
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -32,11 +53,17 @@ exports.getNewSsl = function() {
  * Returns detailed information about a specific SSL certificate including its domain and expiration.
  *
  * id Integer SSL certificate ID number.
- * no response value expected for this operation
+ * returns Object
  **/
 exports.getSslInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = { };
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -153,7 +180,7 @@ exports.putSsl = function() {
  * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
  *
  * id Integer SSL Cert ID number
- * returns inline_response_200_20
+ * returns inline_response_200_21
  **/
 exports.sslCancel = function(id) {
   return new Promise(function(resolve, reject) {
@@ -176,11 +203,20 @@ exports.sslCancel = function(id) {
  * Updates settings on an SSL certificate order.
  *
  * id String SSL certificate ID number.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateSslInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

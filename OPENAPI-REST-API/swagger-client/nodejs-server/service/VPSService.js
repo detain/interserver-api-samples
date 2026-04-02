@@ -6,11 +6,26 @@
  * Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
  *
  * body VpsOrderPostRequest  (optional)
- * no response value expected for this operation
+ * returns ServiceOrderPostResponse
  **/
 exports.addVps = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -20,11 +35,26 @@ exports.addVps = function(body) {
  * Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
  *
  * body VpsOrderPostRequest  (optional)
- * no response value expected for this operation
+ * returns ServiceOrderPostResponse
  **/
 exports.addVps = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -1546,11 +1576,20 @@ exports.putVps = function(body) {
  * Updates settings on a VPS order.
  *
  * id String VPS ID number.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateVpsInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -1560,7 +1599,7 @@ exports.updateVpsInfo = function(id) {
  * Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
  *
  * id Integer VPS ID number
- * returns inline_response_200_21
+ * returns inline_response_200_22
  **/
 exports.vPSCancel = function(id) {
   return new Promise(function(resolve, reject) {

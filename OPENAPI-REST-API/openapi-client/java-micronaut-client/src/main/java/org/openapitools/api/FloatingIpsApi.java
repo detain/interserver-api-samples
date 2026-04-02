@@ -20,6 +20,7 @@ import reactor.core.publisher.Mono;
 import org.openapitools.model.ChargeInvoiceRows;
 import org.openapitools.model.FloatingIpsCancel200Response;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import javax.annotation.Generated;
 import java.util.ArrayList;
@@ -29,17 +30,18 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface FloatingIpsApi {
     /**
      * Place Floating IP Order
      * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
      *
+     * @return ServiceOrderPostResponse
      */
     @Post(uri="/floating_ips/order")
     @Consumes({"application/json"})
-    Mono<Void> addFloatingIp();
+    Mono<ServiceOrderPostResponse> addFloatingIp();
 
     /**
      * Cancel Floating IP
@@ -59,10 +61,11 @@ public interface FloatingIpsApi {
      * Returns detailed information about a specific Floating IP service including its current target IP assignment.
      *
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
+     * @return Object
      */
     @Get(uri="/floating_ips/{id}")
     @Consumes({"application/json"})
-    Mono<Void> getFloatingIpInfo(
+    Mono<Object> getFloatingIpInfo(
         @PathVariable(name="id") @NotNull Integer id
     );
 
@@ -105,10 +108,11 @@ public interface FloatingIpsApi {
      * Get Floating IP Ordering Information
      * Retrieves available options and pricing for ordering a new Floating IP.
      *
+     * @return Object
      */
     @Get(uri="/floating_ips/order")
     @Consumes({"application/json"})
-    Mono<Void> getNewFloatingIp();
+    Mono<Object> getNewFloatingIp();
 
     /**
      * Change Floating IP Target
@@ -140,10 +144,11 @@ public interface FloatingIpsApi {
      * Updates settings on a Floating IP service, such as its label or configuration metadata.
      *
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/floating_ips/{id}")
     @Consumes({"application/json"})
-    Mono<Void> updateFloatingIpInfo(
+    Mono<SuccessTextResponse> updateFloatingIpInfo(
         @PathVariable(name="id") @NotNull String id
     );
 

@@ -22,6 +22,8 @@ import io.swagger.model.RestoreRequest;
 
 import io.swagger.model.ReverseDnsEntries;
 
+import io.swagger.model.ServiceOrderPostResponse;
+
 import io.swagger.model.SuccessTextResponse;
 
 import io.swagger.model.TextResponse;
@@ -46,7 +48,7 @@ import java.util.Map;
 public class QsApiController implements QsApi {
 
     @Override
-    public Single<HttpResponse<Void>> addQs() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addQs() {
         // TODO: Implement me
         return QsApi.super.addQs();
     }
@@ -328,7 +330,7 @@ public class QsApiController implements QsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> updateQsInfo(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateQsInfo(String id) {
         // TODO: Implement me
         return QsApi.super.updateQsInfo(id);
     }

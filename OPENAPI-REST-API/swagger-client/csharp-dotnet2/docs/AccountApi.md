@@ -890,7 +890,7 @@ Name | Type | Description  | Notes
 
 <a name="updateaccountinfo"></a>
 # **UpdateAccountInfo**
-> void UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
+> SuccessTextResponse UpdateAccountInfo (string name, string company, string address, string address2, string city, string state, string zip, string country, string phone, string locale, string emailInvoices, string emailAbuse, bool? disableReset, bool? disableReinstall, bool? disableServerNotifications, bool? disableEmailNotifications, string gstin)
 
 Update Account Information
 
@@ -946,7 +946,8 @@ namespace Example
             try
             {
                 // Update Account Information
-                apiInstance.UpdateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+                SuccessTextResponse result = apiInstance.UpdateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -981,7 +982,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -996,7 +997,7 @@ void (empty response body)
 
 <a name="updateaccountiplimits"></a>
 # **UpdateAccountIpLimits**
-> void UpdateAccountIpLimits (string start, string end)
+> SuccessTextResponse UpdateAccountIpLimits (string start, string end)
 
 Add IP Access Restriction
 
@@ -1037,7 +1038,8 @@ namespace Example
             try
             {
                 // Add IP Access Restriction
-                apiInstance.UpdateAccountIpLimits(start, end);
+                SuccessTextResponse result = apiInstance.UpdateAccountIpLimits(start, end);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1057,7 +1059,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -381,7 +381,7 @@ export default class BackupsApi {
      * Callback function to receive the result of the updateBackupInfo operation.
      * @callback module:api/BackupsApi~updateBackupInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -390,6 +390,7 @@ export default class BackupsApi {
      * Updates backup storage service metadata, such as stored credentials or settings for the order.
      * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
      * @param {module:api/BackupsApi~updateBackupInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateBackupInfo(id, callback) {
       let postBody = null;
@@ -411,7 +412,7 @@ export default class BackupsApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/backups/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

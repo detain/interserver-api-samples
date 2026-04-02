@@ -15,7 +15,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 |[**updateSslInfo**](#updatesslinfo) | **POST** /ssl/{id} | Update SSL Cert Order|
 
 # **addSsl**
-> addSsl()
+> ServiceOrderPostResponse addSsl()
 
 Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
 
@@ -39,7 +39,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-void (empty response body)
+**ServiceOrderPostResponse**
 
 ### Authorization
 
@@ -54,13 +54,13 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getNewSsl**
-> getNewSsl()
+> object getNewSsl()
 
 Retrieves available SSL certificate types and pricing for ordering.
 
@@ -84,7 +84,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -99,13 +99,13 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Available SSL certificate types and pricing for ordering. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSslInfo**
-> getSslInfo()
+> object getSslInfo()
 
 Returns detailed information about a specific SSL certificate including its domain and expiration.
 
@@ -136,7 +136,7 @@ const { status, data } = await apiInstance.getSslInfo(
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -151,8 +151,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | Detailed SSL certificate information. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -404,7 +404,7 @@ const { status, data } = await apiInstance.sslCancel(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateSslInfo**
-> updateSslInfo()
+> SuccessTextResponse updateSslInfo()
 
 Updates settings on an SSL certificate order.
 
@@ -435,7 +435,7 @@ const { status, data } = await apiInstance.updateSslInfo(
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -450,8 +450,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+|**200** | A response indicating the operation completed successfully with a text message. |  -  |
 |**401** | Unauthorized |  -  |
-|**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

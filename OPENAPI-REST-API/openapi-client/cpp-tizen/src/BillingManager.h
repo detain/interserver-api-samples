@@ -146,8 +146,8 @@ bool addBillingPrepayAsync(char * accessToken,
  */
 bool deleteAccountCreditCardSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Remove Credit Card. *Asynchronous*
  *
@@ -159,8 +159,8 @@ bool deleteAccountCreditCardSync(char * accessToken,
  */
 bool deleteAccountCreditCardAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Delete Credit Card. *Synchronous*
@@ -407,8 +407,8 @@ bool getAffiliateWebTrafficAsync(char * accessToken,
  */
 bool getBillingCartSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get Shopping Cart Contents. *Asynchronous*
  *
@@ -419,8 +419,8 @@ bool getBillingCartSync(char * accessToken,
  */
 bool getBillingCartAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get Credit Card Verification Requirements. *Synchronous*
@@ -511,8 +511,8 @@ bool getBillingInvoicesAsync(char * accessToken,
  */
 bool getBillingPrePaysSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief List Prepay Balances. *Asynchronous*
  *
@@ -523,8 +523,8 @@ bool getBillingPrePaysSync(char * accessToken,
  */
 bool getBillingPrePaysAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get Invoices. *Synchronous*
@@ -626,8 +626,8 @@ bool postBillingCreditCardVerifyAsync(char * accessToken,
  */
 bool updateAccountCreditCardSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Update Credit Card. *Asynchronous*
  *
@@ -639,8 +639,8 @@ bool updateAccountCreditCardSync(char * accessToken,
  */
 bool updateAccountCreditCardAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Configure Affiliate Dock Settings. *Synchronous*

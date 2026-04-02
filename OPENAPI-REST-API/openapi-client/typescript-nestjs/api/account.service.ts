@@ -736,7 +736,7 @@ export class AccountService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateAccountInfoOpts.config] Override http request option.
      */
-    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, updateAccountInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, updateAccountInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateAccountInfo(name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company?: string, address2?: string, locale?: string, emailInvoices?: string, emailAbuse?: string, disableReset?: boolean, disableReinstall?: boolean, disableServerNotifications?: boolean, disableEmailNotifications?: boolean, gstin?: string, updateAccountInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (name === null || name === undefined) {
             throw new Error('Required parameter name was null or undefined when calling updateAccountInfo.');
@@ -881,7 +881,7 @@ export class AccountService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/account`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/account`,
                     convertFormParamsToString ? formParams!.toString() : formParams!,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -901,7 +901,7 @@ export class AccountService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateAccountIpLimitsOpts.config] Override http request option.
      */
-    public updateAccountIpLimits(start: string, end: string, updateAccountIpLimitsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateAccountIpLimits(start: string, end: string, updateAccountIpLimitsOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateAccountIpLimits(start: string, end: string, updateAccountIpLimitsOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (start === null || start === undefined) {
             throw new Error('Required parameter start was null or undefined when calling updateAccountIpLimits.');
@@ -966,7 +966,7 @@ export class AccountService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/account/iplimits`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/account/iplimits`,
                     convertFormParamsToString ? formParams!.toString() : formParams!,
                     {
                         withCredentials: this.configuration.withCredentials,

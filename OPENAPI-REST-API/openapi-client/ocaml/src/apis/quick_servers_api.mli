@@ -5,7 +5,7 @@
  *
  *)
 
-val add_qs : unit -> unit Lwt.t
+val add_qs : unit -> Service_order_post_response.t Lwt.t
 val delete_qs_backup : id:int32 -> file:string -> ?all:Enums.xdp_action -> unit -> Success_text_response.t Lwt.t
 val do_qs_block_smtp : id:int32 -> Queue_response.t Lwt.t
 val do_qs_disable_cd : id:int32 -> Queue_response.t Lwt.t
@@ -48,4 +48,4 @@ val post_qs_view_desktop : id:int32 -> unit Lwt.t
 val post_quick_server_restore : id:int32 -> restore_request_t:Restore_request.t -> Queue_response.t Lwt.t
 val put_qs : unit -> unit Lwt.t
 val quickservers_cancel : id:int32 -> Quickservers_cancel_200_response.t Lwt.t
-val update_qs_info : id:string -> unit Lwt.t
+val update_qs_info : id:string -> Success_text_response.t Lwt.t

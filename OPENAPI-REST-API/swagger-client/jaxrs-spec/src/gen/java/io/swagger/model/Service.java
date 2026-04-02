@@ -81,7 +81,7 @@ public class Service   {
   }
 
   
-  @ApiModelProperty(example = "6.0", required = true, value = "")
+  @ApiModelProperty(example = "6", required = true, value = "")
   @JsonProperty("services_cost")
   @NotNull
 

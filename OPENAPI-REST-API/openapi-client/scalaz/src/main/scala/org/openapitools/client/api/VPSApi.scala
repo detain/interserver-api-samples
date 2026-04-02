@@ -28,6 +28,7 @@ import org.openapitools.client.api.GetAccountInfo401Response
 import org.openapitools.client.api.QueueResponse
 import org.openapitools.client.api.RestoreRequest
 import org.openapitools.client.api.ReverseDnsEntries
+import org.openapitools.client.api.ServiceOrderPostResponse
 import org.openapitools.client.api.SuccessTextResponse
 import org.openapitools.client.api.TextResponse
 import org.openapitools.client.api.VPSCancel200Response
@@ -47,7 +48,9 @@ object VPSApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addVps(host: String, VpsOrderPostRequest: VpsOrderPostRequest): Task[Unit] = {
+  def addVps(host: String, VpsOrderPostRequest: VpsOrderPostRequest): Task[ServiceOrderPostResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
+
     val path = "/vps/order"
 
     val httpMethod = Method.POST
@@ -61,7 +64,7 @@ object VPSApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(VpsOrderPostRequest)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
   }
@@ -909,7 +912,9 @@ object VPSApi {
     } yield resp
   }
 
-  def updateVpsInfo(host: String, id: String): Task[Unit] = {
+  def updateVpsInfo(host: String, id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/vps/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -923,7 +928,7 @@ object VPSApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -956,7 +961,9 @@ class HttpServiceVPSApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addVps(VpsOrderPostRequest: VpsOrderPostRequest): Task[Unit] = {
+  def addVps(VpsOrderPostRequest: VpsOrderPostRequest): Task[ServiceOrderPostResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
+
     val path = "/vps/order"
 
     val httpMethod = Method.POST
@@ -970,7 +977,7 @@ class HttpServiceVPSApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(VpsOrderPostRequest)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
   }
@@ -1818,7 +1825,9 @@ class HttpServiceVPSApi(service: HttpService) {
     } yield resp
   }
 
-  def updateVpsInfo(id: String): Task[Unit] = {
+  def updateVpsInfo(id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/vps/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -1832,7 +1841,7 @@ class HttpServiceVPSApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }

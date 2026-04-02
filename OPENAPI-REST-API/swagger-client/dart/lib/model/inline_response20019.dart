@@ -1,28 +1,32 @@
 part of swagger.api;
 
 class InlineResponse20019 {
-  
-  bool success = null;
-
+  /* Status message. */
   String text = null;
+/* Invoice ID for payment. */
+  int invoice = null;
+/* Server order ID. */
+  int order = null;
 
   InlineResponse20019();
 
   @override
   String toString() {
-    return 'InlineResponse20019[success=$success, text=$text, ]';
+    return 'InlineResponse20019[text=$text, invoice=$invoice, order=$order, ]';
   }
 
   InlineResponse20019.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    success = json['success'];
     text = json['text'];
+    invoice = json['invoice'];
+    order = json['order'];
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'success': success,
-      'text': text
+      'text': text,
+      'invoice': invoice,
+      'order': order
      };
   }
 

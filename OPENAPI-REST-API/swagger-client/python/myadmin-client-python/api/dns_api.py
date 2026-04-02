@@ -44,7 +44,7 @@ class DNSApi(object):
         :param async_req bool
         :param str domain: (required)
         :param str ip: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -67,7 +67,7 @@ class DNSApi(object):
         :param async_req bool
         :param str domain: (required)
         :param str ip: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -133,7 +133,7 @@ class DNSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -152,7 +152,7 @@ class DNSApi(object):
 
         :param async_req bool
         :param DnsNewDomain body: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -174,7 +174,7 @@ class DNSApi(object):
 
         :param async_req bool
         :param DnsNewDomain body: (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -236,7 +236,7 @@ class DNSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -513,7 +513,7 @@ class DNSApi(object):
 
         :param async_req bool
         :param str id: The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -535,7 +535,7 @@ class DNSApi(object):
 
         :param async_req bool
         :param str id: The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -589,7 +589,7 @@ class DNSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -609,7 +609,7 @@ class DNSApi(object):
         :param async_req bool
         :param int domain_id: The DNS domain ID. Use the `id` from `GET /dns` to identify the domain. (required)
         :param int record_id: The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -632,7 +632,7 @@ class DNSApi(object):
         :param async_req bool
         :param int domain_id: The DNS domain ID. Use the `id` from `GET /dns` to identify the domain. (required)
         :param int record_id: The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -692,7 +692,7 @@ class DNSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -902,7 +902,7 @@ class DNSApi(object):
         :param str auth: (required)
         :param int domain_id: The DNS domain ID. Use the `id` from `GET /dns` to identify the domain. (required)
         :param int record_id: The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -933,7 +933,7 @@ class DNSApi(object):
         :param str auth: (required)
         :param int domain_id: The DNS domain ID. Use the `id` from `GET /dns` to identify the domain. (required)
         :param int record_id: The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1047,7 +1047,7 @@ class DNSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1068,7 +1068,7 @@ class DNSApi(object):
         :param DnsUpdateRecord body: The request data to update a dns record. (required)
         :param int domain_id: The DNS domain ID. Use the `id` from `GET /dns` to identify the domain. (required)
         :param int record_id: The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1092,7 +1092,7 @@ class DNSApi(object):
         :param DnsUpdateRecord body: The request data to update a dns record. (required)
         :param int domain_id: The DNS domain ID. Use the `id` from `GET /dns` to identify the domain. (required)
         :param int record_id: The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1178,7 +1178,7 @@ class DNSApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

@@ -24,13 +24,14 @@ inherit
 feature -- API Access
 
 
-	add_vps (vps_order_post_request: detachable VPS_ORDER_POST_REQUEST)
+	add_vps (vps_order_post_request: detachable VPS_ORDER_POST_REQUEST): detachable SERVICE_ORDER_POST_RESPONSE
 			-- Place VPS Order
 			-- Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
 			-- 
 			-- argument: vps_order_post_request  (optional)
 			-- 
 			-- 
+			-- Result SERVICE_ORDER_POST_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -48,9 +49,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<"application/json", "multipart/form-data">>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SERVICE_ORDER_POST_RESPONSE } l_response.data ({ SERVICE_ORDER_POST_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
@@ -1057,13 +1062,14 @@ feature -- API Access
 			end
 		end
 
-	update_vps_info (id: STRING_32)
+	update_vps_info (id: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update VPS Order
 			-- Updates settings on a VPS order.
 			-- 
 			-- argument: id VPS ID number. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -1082,9 +1088,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<>>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

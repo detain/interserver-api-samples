@@ -22,7 +22,7 @@ import io.micronaut.core.annotation.*;
 import javax.annotation.Generated;
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 @JsonPropertyOrder({
   ServerIpmiLiveInfo.JSON_PROPERTY_TEXT,
@@ -32,7 +32,7 @@ import javax.annotation.Generated;
   ServerIpmiLiveInfo.JSON_PROPERTY_CLIENT_PASSWORD
 })
 @JsonTypeName("ServerIpmiLiveInfo")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class ServerIpmiLiveInfo {
     public static final String JSON_PROPERTY_TEXT = "text";

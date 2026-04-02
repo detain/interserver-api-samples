@@ -3,12 +3,13 @@ package io.swagger.api;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBuyIpBody;
 import io.swagger.model.IdMigrationBody;
-import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse20023;
 import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse20025;
+import io.swagger.model.InlineResponse20026;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.Website;
@@ -63,9 +64,18 @@ public class WebsitesApiController implements WebsitesApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> addWebsite() {
+    public ResponseEntity<ServiceOrderPostResponse> addWebsite() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<ServiceOrderPostResponse>(objectMapper.readValue("{\n  \"continue\" : true,\n  \"errors\" : [ ],\n  \"total_cost\" : \"5.00\",\n  \"iid\" : \"25296600\",\n  \"iids\" : [ \"SERVICE12345\" ],\n  \"real_iids\" : [ \"25296600\" ],\n  \"serviceId\" : 12345,\n  \"invoice_description\" : \"New Service Order\"\n}", ServiceOrderPostResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<ServiceOrderPostResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<WebsitesOrder> getNewWebsite() {
@@ -82,19 +92,19 @@ public class WebsitesApiController implements WebsitesApi {
         return new ResponseEntity<WebsitesOrder>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<InlineResponse20023> getWebsiteBuyIp(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    public ResponseEntity<InlineResponse20024> getWebsiteBuyIp(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<InlineResponse20023>(objectMapper.readValue("{\n  \"ips\" : {\n    \"key\" : \"ips\"\n  }\n}", InlineResponse20023.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<InlineResponse20024>(objectMapper.readValue("{\n  \"ips\" : {\n    \"key\" : \"ips\"\n  }\n}", InlineResponse20024.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<InlineResponse20023>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<InlineResponse20024>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<InlineResponse20023>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<InlineResponse20024>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<Website> getWebsiteInfo(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -201,29 +211,13 @@ public class WebsitesApiController implements WebsitesApi {
         return new ResponseEntity<ReverseDnsEntries>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<InlineResponse20024> postWebsiteBuyIp(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    public ResponseEntity<InlineResponse20025> postWebsiteBuyIp(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
 ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody IdBuyIpBody body
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<InlineResponse20024>(objectMapper.readValue("{\n  \"success\" : true,\n  \"message\" : \"message\"\n}", InlineResponse20024.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<InlineResponse20024>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<InlineResponse20024>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<InlineResponse20025> postWebsiteMigration(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
-,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody IdMigrationBody body
-) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<InlineResponse20025>(objectMapper.readValue("{\n  \"ticket\" : 0,\n  \"text\" : \"text\"\n}", InlineResponse20025.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<InlineResponse20025>(objectMapper.readValue("{\n  \"success\" : true,\n  \"message\" : \"message\"\n}", InlineResponse20025.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<InlineResponse20025>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -231,6 +225,22 @@ public class WebsitesApiController implements WebsitesApi {
         }
 
         return new ResponseEntity<InlineResponse20025>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<InlineResponse20026> postWebsiteMigration(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
+,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody IdMigrationBody body
+) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<InlineResponse20026>(objectMapper.readValue("{\n  \"ticket\" : 0,\n  \"text\" : \"text\"\n}", InlineResponse20026.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<InlineResponse20026>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<InlineResponse20026>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<TextResponse> postWebsitesReverseDns(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -254,25 +264,34 @@ public class WebsitesApiController implements WebsitesApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateWebsiteInfo(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") String id
-) {
-        String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<InlineResponse20022> webhostingCancel(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<SuccessTextResponse> updateWebsiteInfo(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<InlineResponse20022>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Website is canceled.\"\n}", InlineResponse20022.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<InlineResponse20022>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<InlineResponse20022>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<InlineResponse20023> webhostingCancel(@Parameter(in = ParameterIn.PATH, description = "The website service ID. Use `website_id` from `GET /websites`.", required=true, schema=@Schema()) @PathVariable("id") String id
+) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<InlineResponse20023>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Website is canceled.\"\n}", InlineResponse20023.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<InlineResponse20023>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<InlineResponse20023>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

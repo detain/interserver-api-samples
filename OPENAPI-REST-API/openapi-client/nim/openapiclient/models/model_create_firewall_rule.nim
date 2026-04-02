@@ -26,7 +26,7 @@ type CreateFirewallRule* = object
   protocolId*: ProtocolId ## 1 = TCP, 2 = UDP
   xdpAction*: XdpAction ## 1 = Block,  0 = Whitelist
   destinationPort*: Option[int]
-  sourceIp*: Option[string]
+  sourceIp*: Option[string] ## Source IP address to match. Use '0.0.0.0' to match any source.
   sourcePort*: Option[int]
 
 func `%`*(v: ProtocolId): JsonNode =

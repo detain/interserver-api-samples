@@ -30,6 +30,7 @@ import org.openapitools.client.apis.FloatingIPsApi
 import org.openapitools.client.models.ChargeInvoiceRows
 import org.openapitools.client.models.FloatingIpsCancel200Response
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 
 class FloatingIPsApiTest : ShouldSpec() {
@@ -40,7 +41,8 @@ class FloatingIPsApiTest : ShouldSpec() {
         // to test addFloatingIp
         should("test addFloatingIp") {
             // uncomment below to test addFloatingIp
-            //apiInstance.addFloatingIp()
+            //val result : ServiceOrderPostResponse = apiInstance.addFloatingIp()
+            //result shouldBe ("TODO")
         }
 
         // to test floatingIpsCancel
@@ -55,7 +57,8 @@ class FloatingIPsApiTest : ShouldSpec() {
         should("test getFloatingIpInfo") {
             // uncomment below to test getFloatingIpInfo
             //val id : kotlin.Int = 56 // kotlin.Int | The Floating IP service ID. Use the ID from `GET /floating_ips`.
-            //apiInstance.getFloatingIpInfo(id)
+            //val result : kotlin.Any = apiInstance.getFloatingIpInfo(id)
+            //result shouldBe ("TODO")
         }
 
         // to test getFloatingIpInvoices
@@ -83,7 +86,8 @@ class FloatingIPsApiTest : ShouldSpec() {
         // to test getNewFloatingIp
         should("test getNewFloatingIp") {
             // uncomment below to test getNewFloatingIp
-            //apiInstance.getNewFloatingIp()
+            //val result : kotlin.Any = apiInstance.getNewFloatingIp()
+            //result shouldBe ("TODO")
         }
 
         // to test postFloatingIpsChangeIp
@@ -105,7 +109,8 @@ class FloatingIPsApiTest : ShouldSpec() {
         should("test updateFloatingIpInfo") {
             // uncomment below to test updateFloatingIpInfo
             //val id : kotlin.String = id_example // kotlin.String | The Floating IP service ID. Use the ID from `GET /floating_ips`.
-            //apiInstance.updateFloatingIpInfo(id)
+            //val result : SuccessTextResponse = apiInstance.updateFloatingIpInfo(id)
+            //result shouldBe ("TODO")
         }
 
     }

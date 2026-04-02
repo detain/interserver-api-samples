@@ -12,6 +12,7 @@
 #include "DnsRecord.h"
 #include "DnsRecordType.h"
 #include "GetAccountInfo_401_response.h"
+#include "SuccessTextResponse.h"
 
 namespace Tiny {
 
@@ -34,7 +35,7 @@ public:
     * \param ip IP Address to point the domain to. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     addDnsDomain(
             
@@ -85,7 +86,7 @@ public:
     * \param id The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     deleteDnsDomain(
             
@@ -100,7 +101,7 @@ public:
     * \param recordId The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     deleteDnsRecord(
             
@@ -150,7 +151,7 @@ public:
     * \param auth 
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateDnsRecord(
             

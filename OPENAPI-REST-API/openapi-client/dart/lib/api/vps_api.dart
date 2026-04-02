@@ -57,11 +57,19 @@ class VPSApi {
   /// Parameters:
   ///
   /// * [VpsOrderPostRequest] vpsOrderPostRequest:
-  Future<void> addVps({ VpsOrderPostRequest? vpsOrderPostRequest, }) async {
+  Future<ServiceOrderPostResponse?> addVps({ VpsOrderPostRequest? vpsOrderPostRequest, }) async {
     final response = await addVpsWithHttpInfo( vpsOrderPostRequest: vpsOrderPostRequest, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ServiceOrderPostResponse',) as ServiceOrderPostResponse;
+    
+    }
+    return null;
   }
 
   /// Delete VPS Backup
@@ -2589,11 +2597,19 @@ class VPSApi {
   ///
   /// * [String] id (required):
   ///   VPS ID number.
-  Future<void> updateVpsInfo(String id,) async {
+  Future<SuccessTextResponse?> updateVpsInfo(String id,) async {
     final response = await updateVpsInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// Cancel VPS Service

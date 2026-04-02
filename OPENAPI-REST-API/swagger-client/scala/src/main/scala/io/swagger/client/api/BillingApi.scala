@@ -220,9 +220,9 @@ class BillingApi(
    * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
    *
    * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-   * @return void
+   * @return String
    */
-  def deleteAccountCreditCard(id: String) = {
+  def deleteAccountCreditCard(id: String): Option[String] = {
     val await = Try(Await.result(deleteAccountCreditCardAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -235,9 +235,9 @@ class BillingApi(
    * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
    *
    * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def deleteAccountCreditCardAsync(id: String) = {
+  def deleteAccountCreditCardAsync(id: String): Future[String] = {
       helper.deleteAccountCreditCard(id)
   }
 
@@ -471,9 +471,9 @@ class BillingApi(
    * Get Shopping Cart Contents
    * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
    *
-   * @return void
+   * @return Any
    */
-  def getBillingCart() = {
+  def getBillingCart(): Option[Any] = {
     val await = Try(Await.result(getBillingCartAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -485,9 +485,9 @@ class BillingApi(
    * Get Shopping Cart Contents asynchronously
    * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
    *
-   * @return Future(void)
+   * @return Future(Any)
    */
-  def getBillingCartAsync() = {
+  def getBillingCartAsync(): Future[Any] = {
       helper.getBillingCart()
   }
 
@@ -571,9 +571,9 @@ class BillingApi(
    * List Prepay Balances
    * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
    *
-   * @return void
+   * @return Any
    */
-  def getBillingPrePays() = {
+  def getBillingPrePays(): Option[Any] = {
     val await = Try(Await.result(getBillingPrePaysAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -585,9 +585,9 @@ class BillingApi(
    * List Prepay Balances asynchronously
    * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
    *
-   * @return Future(void)
+   * @return Future(Any)
    */
-  def getBillingPrePaysAsync() = {
+  def getBillingPrePaysAsync(): Future[Any] = {
       helper.getBillingPrePays()
   }
 
@@ -692,9 +692,9 @@ class BillingApi(
    * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
    *
    * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-   * @return void
+   * @return String
    */
-  def updateAccountCreditCard(id: Integer) = {
+  def updateAccountCreditCard(id: Integer): Option[String] = {
     val await = Try(Await.result(updateAccountCreditCardAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -707,9 +707,9 @@ class BillingApi(
    * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
    *
    * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def updateAccountCreditCardAsync(id: Integer) = {
+  def updateAccountCreditCardAsync(id: Integer): Future[String] = {
       helper.updateAccountCreditCard(id)
   }
 
@@ -976,7 +976,7 @@ class BillingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def deleteAccountCreditCard(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def deleteAccountCreditCard(id: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/account/creditcards/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -1142,7 +1142,7 @@ class BillingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getBillingCart()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def getBillingCart()(implicit reader: ClientResponseReader[Any]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/billing/cart"))
 
@@ -1204,7 +1204,7 @@ class BillingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getBillingPrePays()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def getBillingPrePays()(implicit reader: ClientResponseReader[Any]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/billing/prepays"))
 
@@ -1300,7 +1300,7 @@ class BillingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def updateAccountCreditCard(id: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateAccountCreditCard(id: Integer)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/account/creditcards/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

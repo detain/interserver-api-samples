@@ -1840,7 +1840,7 @@ func (r ApiUpdateAccountInfoRequest) Gstin(gstin string) ApiUpdateAccountInfoReq
 	return r
 }
 
-func (r ApiUpdateAccountInfoRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateAccountInfoRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.UpdateAccountInfoExecute(r)
 }
 
@@ -1860,16 +1860,18 @@ func (a *AccountAPIService) UpdateAccountInfo(ctx context.Context) ApiUpdateAcco
 }
 
 // Execute executes the request
-func (a *AccountAPIService) UpdateAccountInfoExecute(r ApiUpdateAccountInfoRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *AccountAPIService) UpdateAccountInfoExecute(r ApiUpdateAccountInfoRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIService.UpdateAccountInfo")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account"
@@ -1878,25 +1880,25 @@ func (a *AccountAPIService) UpdateAccountInfoExecute(r ApiUpdateAccountInfoReque
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.name == nil {
-		return nil, reportError("name is required and must be specified")
+		return localVarReturnValue, nil, reportError("name is required and must be specified")
 	}
 	if r.address == nil {
-		return nil, reportError("address is required and must be specified")
+		return localVarReturnValue, nil, reportError("address is required and must be specified")
 	}
 	if r.city == nil {
-		return nil, reportError("city is required and must be specified")
+		return localVarReturnValue, nil, reportError("city is required and must be specified")
 	}
 	if r.state == nil {
-		return nil, reportError("state is required and must be specified")
+		return localVarReturnValue, nil, reportError("state is required and must be specified")
 	}
 	if r.zip == nil {
-		return nil, reportError("zip is required and must be specified")
+		return localVarReturnValue, nil, reportError("zip is required and must be specified")
 	}
 	if r.country == nil {
-		return nil, reportError("country is required and must be specified")
+		return localVarReturnValue, nil, reportError("country is required and must be specified")
 	}
 	if r.phone == nil {
-		return nil, reportError("phone is required and must be specified")
+		return localVarReturnValue, nil, reportError("phone is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1983,19 +1985,19 @@ func (a *AccountAPIService) UpdateAccountInfoExecute(r ApiUpdateAccountInfoReque
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -2008,27 +2010,35 @@ func (a *AccountAPIService) UpdateAccountInfoExecute(r ApiUpdateAccountInfoReque
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
 			var v TextResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiUpdateAccountIpLimitsRequest struct {
@@ -2050,7 +2060,7 @@ func (r ApiUpdateAccountIpLimitsRequest) End(end string) ApiUpdateAccountIpLimit
 	return r
 }
 
-func (r ApiUpdateAccountIpLimitsRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateAccountIpLimitsRequest) Execute() (*SuccessTextResponse, *http.Response, error) {
 	return r.ApiService.UpdateAccountIpLimitsExecute(r)
 }
 
@@ -2070,16 +2080,18 @@ func (a *AccountAPIService) UpdateAccountIpLimits(ctx context.Context) ApiUpdate
 }
 
 // Execute executes the request
-func (a *AccountAPIService) UpdateAccountIpLimitsExecute(r ApiUpdateAccountIpLimitsRequest) (*http.Response, error) {
+//  @return SuccessTextResponse
+func (a *AccountAPIService) UpdateAccountIpLimitsExecute(r ApiUpdateAccountIpLimitsRequest) (*SuccessTextResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *SuccessTextResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAPIService.UpdateAccountIpLimits")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/iplimits"
@@ -2088,10 +2100,10 @@ func (a *AccountAPIService) UpdateAccountIpLimitsExecute(r ApiUpdateAccountIpLim
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if r.start == nil {
-		return nil, reportError("start is required and must be specified")
+		return localVarReturnValue, nil, reportError("start is required and must be specified")
 	}
 	if r.end == nil {
-		return nil, reportError("end is required and must be specified")
+		return localVarReturnValue, nil, reportError("end is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2143,19 +2155,19 @@ func (a *AccountAPIService) UpdateAccountIpLimitsExecute(r ApiUpdateAccountIpLim
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -2168,27 +2180,35 @@ func (a *AccountAPIService) UpdateAccountIpLimitsExecute(r ApiUpdateAccountIpLim
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
 			var v TextResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiUpdateAccountPasswordRequest struct {

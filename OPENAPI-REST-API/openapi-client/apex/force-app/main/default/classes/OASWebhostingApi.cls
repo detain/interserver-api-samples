@@ -28,13 +28,14 @@ public class OASWebhostingApi {
     /**
      * Place Website Order
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
+     * @return OASServiceOrderPostResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void addWebsite() {
+    public OASServiceOrderPostResponse addWebsite() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASServiceOrderPostResponse) client.invoke(
             'POST', '/websites/order', '',
             query, form,
             new Map<String, Object>(),
@@ -42,7 +43,7 @@ public class OASWebhostingApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASServiceOrderPostResponse.class
         );
     }
     /**
@@ -370,14 +371,15 @@ public class OASWebhostingApi {
      * Update Website Order
      * Updates settings on a webhosting order.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateWebsiteInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateWebsiteInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/websites/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -387,7 +389,7 @@ public class OASWebhostingApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
     /**

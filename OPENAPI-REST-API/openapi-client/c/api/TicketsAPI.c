@@ -163,7 +163,7 @@ TicketsAPI_addNewTicket(apiClient_t *apiClient, ticket_new_t *ticket_new)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","A successful response after creating a ticket");
+    //    printf("%s\n","A successful response after creating a ticket.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 400) {

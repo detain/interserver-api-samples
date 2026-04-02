@@ -413,10 +413,10 @@ defmodule InterServerManagementAPI.Api.Account do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, InterServerManagementAPI.Model.SuccessTextResponse.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec update_account_info(Tesla.Env.client, String.t, String.t, String.t, String.t, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:ok, InterServerManagementAPI.Model.TextResponse.t} | {:error, Tesla.Env.t}
+  @spec update_account_info(Tesla.Env.client, String.t, String.t, String.t, String.t, String.t, String.t, String.t, keyword()) :: {:ok, InterServerManagementAPI.Model.SuccessTextResponse.t} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:ok, InterServerManagementAPI.Model.TextResponse.t} | {:error, Tesla.Env.t}
   def update_account_info(connection, name, address, city, state, zip, country, phone, opts \\ []) do
     optional_params = %{
       :company => :form,
@@ -448,9 +448,9 @@ defmodule InterServerManagementAPI.Api.Account do
     connection
     |> Connection.request(request)
     |> evaluate_response([
+      {200, InterServerManagementAPI.Model.SuccessTextResponse},
       {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {422, InterServerManagementAPI.Model.TextResponse},
-      {:default, false}
+      {422, InterServerManagementAPI.Model.TextResponse}
     ])
   end
 
@@ -467,10 +467,10 @@ defmodule InterServerManagementAPI.Api.Account do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, InterServerManagementAPI.Model.SuccessTextResponse.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec update_account_ip_limits(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:ok, InterServerManagementAPI.Model.TextResponse.t} | {:error, Tesla.Env.t}
+  @spec update_account_ip_limits(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, InterServerManagementAPI.Model.SuccessTextResponse.t} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:ok, InterServerManagementAPI.Model.TextResponse.t} | {:error, Tesla.Env.t}
   def update_account_ip_limits(connection, start, end_var, _opts \\ []) do
     request =
       %{}
@@ -483,9 +483,9 @@ defmodule InterServerManagementAPI.Api.Account do
     connection
     |> Connection.request(request)
     |> evaluate_response([
+      {200, InterServerManagementAPI.Model.SuccessTextResponse},
       {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {422, InterServerManagementAPI.Model.TextResponse},
-      {:default, false}
+      {422, InterServerManagementAPI.Model.TextResponse}
     ])
   end
 

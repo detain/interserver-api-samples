@@ -38,6 +38,7 @@ import org.openapitools.client.models.QuickserverRow
 import org.openapitools.client.models.QuickserversCancel200Response
 import org.openapitools.client.models.RestoreRequest
 import org.openapitools.client.models.ReverseDnsEntries
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 import org.openapitools.client.models.VpsBackupRows
@@ -71,19 +72,20 @@ open class QuickServersApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * POST /qs/order
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
-     * @return void
+     * @return ServiceOrderPostResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun addQs() : Unit {
+    fun addQs() : ServiceOrderPostResponse {
         val localVarResponse = addQsWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -101,15 +103,16 @@ open class QuickServersApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * POST /qs/order
      * Place QuickServer Order
      * Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<ServiceOrderPostResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun addQsWithHttpInfo() : ApiResponse<Unit?> {
+    fun addQsWithHttpInfo() : ApiResponse<ServiceOrderPostResponse?> {
         val localVariableConfig = addQsRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, ServiceOrderPostResponse>(
             localVariableConfig
         )
     }
@@ -3270,19 +3273,20 @@ open class QuickServersApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Update QuickServer Order
      * Updates QuickServer metadata or stored settings associated with the order.
      * @param id QuickServer ID number.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateQsInfo(id: kotlin.String) : Unit {
+    fun updateQsInfo(id: kotlin.String) : SuccessTextResponse {
         val localVarResponse = updateQsInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -3301,15 +3305,16 @@ open class QuickServersApi(basePath: kotlin.String = defaultBasePath, client: Ca
      * Update QuickServer Order
      * Updates QuickServer metadata or stored settings associated with the order.
      * @param id QuickServer ID number.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateQsInfoWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun updateQsInfoWithHttpInfo(id: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateQsInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }

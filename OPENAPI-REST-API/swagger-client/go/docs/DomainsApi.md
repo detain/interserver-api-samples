@@ -35,7 +35,7 @@ Method | HTTP request | Description
 [**UpdateDomainWhoisPrivacy**](DomainsApi.md#UpdateDomainWhoisPrivacy) | **Post** /domains/{id}/whois | Update Whois Privacy
 
 # **AddDomain**
-> AddDomain(ctx, )
+> ServiceOrderPostResponse AddDomain(ctx, )
 Place Domain Order
 
 Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
@@ -45,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -769,7 +769,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateDomainInfo**
-> UpdateDomainInfo(ctx, id)
+> SuccessTextResponse UpdateDomainInfo(ctx, id)
 Update Domain Order
 
 Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
@@ -783,7 +783,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

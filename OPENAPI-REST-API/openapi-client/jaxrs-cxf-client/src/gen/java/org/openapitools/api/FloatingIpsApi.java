@@ -3,6 +3,7 @@ package org.openapitools.api;
 import org.openapitools.model.ChargeInvoiceRows;
 import org.openapitools.model.FloatingIpsCancel200Response;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 
 import java.util.List;
@@ -37,9 +38,9 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Place Floating IP Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void addFloatingIp();
+        @ApiResponse(code = 200, message = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", response = ServiceOrderPostResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public ServiceOrderPostResponse addFloatingIp();
 
     /**
      * Cancel Floating IP
@@ -67,9 +68,9 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "View Floating IP", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void getFloatingIpInfo(@PathParam("id") Integer id);
+        @ApiResponse(code = 200, message = "Detailed Floating IP service information.", response = Object.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public Object getFloatingIpInfo(@PathParam("id") Integer id);
 
     /**
      * Get Floating IP Invoices
@@ -128,9 +129,9 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get Floating IP Ordering Information", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void getNewFloatingIp();
+        @ApiResponse(code = 200, message = "Available options and pricing for ordering a Floating IP.", response = Object.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public Object getNewFloatingIp();
 
     /**
      * Change Floating IP Target
@@ -174,7 +175,7 @@ public interface FloatingIpsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update Floating IP", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateFloatingIpInfo(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateFloatingIpInfo(@PathParam("id") String id);
 }

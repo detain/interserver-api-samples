@@ -1,5 +1,6 @@
 package org.openapitools.api;
 
+import org.openapitools.model.AddServer200Response;
 import org.openapitools.model.BuyItNowList;
 import org.openapitools.model.BuyItNowServerOrder200Response;
 import org.openapitools.model.ChargeInvoiceRows;
@@ -48,9 +49,9 @@ public interface ServersApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Place Server Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void addServer();
+        @ApiResponse(code = 200, message = "Server order placed successfully.", response = AddServer200Response.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public AddServer200Response addServer();
 
     /**
      * Get Buy Now Server Options
@@ -309,7 +310,7 @@ public interface ServersApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update Server Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateServerInfo(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateServerInfo(@PathParam("id") String id);
 }

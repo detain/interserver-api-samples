@@ -16,6 +16,7 @@
 #include "../model/quickservers_cancel_200_response.h"
 #include "../model/restore_request.h"
 #include "../model/reverse_dns_entries.h"
+#include "../model/service_order_post_response.h"
 #include "../model/success_text_response.h"
 #include "../model/text_response.h"
 #include "../model/vps_backup_rows.h"
@@ -35,7 +36,7 @@ typedef enum  { interserver_management_api_getQsBackups_ALL_NULL = 0, interserve
 //
 // Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
 //
-void
+service_order_post_response_t*
 QuickServersAPI_addQs(apiClient_t *apiClient);
 
 
@@ -379,7 +380,7 @@ QuickServersAPI_quickserversCancel(apiClient_t *apiClient, int *id);
 //
 // Updates QuickServer metadata or stored settings associated with the order.
 //
-void
+success_text_response_t*
 QuickServersAPI_updateQsInfo(apiClient_t *apiClient, char *id);
 
 

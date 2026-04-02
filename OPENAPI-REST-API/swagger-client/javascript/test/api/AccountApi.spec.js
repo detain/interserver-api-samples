@@ -277,7 +277,7 @@
       });
       describe('updateAccountInfo', function() {
         it('should call updateAccountInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateAccountInfo call
+          // TODO: uncomment, update parameter values for updateAccountInfo call and complete the assertions
           /*
 
           instance.updateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, body, function(error, data, response) {
@@ -285,6 +285,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });
@@ -295,7 +297,7 @@
       });
       describe('updateAccountIpLimits', function() {
         it('should call updateAccountIpLimits successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateAccountIpLimits call
+          // TODO: uncomment, update parameter values for updateAccountIpLimits call and complete the assertions
           /*
 
           instance.updateAccountIpLimits(start, end, body, function(error, data, response) {
@@ -303,6 +305,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

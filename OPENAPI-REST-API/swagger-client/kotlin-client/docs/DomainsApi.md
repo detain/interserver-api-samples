@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 <a name="addDomain"></a>
 # **addDomain**
-> addDomain()
+> ServiceOrderPostResponse addDomain()
 
 Place Domain Order
 
@@ -50,7 +50,8 @@ Places a new domain registration or transfer order. Use the results from &#x60;/
 
 val apiInstance = DomainsApi()
 try {
-    apiInstance.addDomain()
+    val result : ServiceOrderPostResponse = apiInstance.addDomain()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DomainsApi#addDomain")
     e.printStackTrace()
@@ -65,7 +66,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1426,7 +1427,7 @@ Name | Type | Description  | Notes
 
 <a name="updateDomainInfo"></a>
 # **updateDomainInfo**
-> updateDomainInfo(id)
+> SuccessTextResponse updateDomainInfo(id)
 
 Update Domain Order
 
@@ -1441,7 +1442,8 @@ Updates the domain service record for the order. Use this for account-level chan
 val apiInstance = DomainsApi()
 val id : kotlin.String = id_example // kotlin.String | The domain service ID. Use `domain_id` from `GET /domains`.
 try {
-    apiInstance.updateDomainInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateDomainInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DomainsApi#updateDomainInfo")
     e.printStackTrace()
@@ -1459,7 +1461,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

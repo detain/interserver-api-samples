@@ -200,7 +200,7 @@ trait TicketsApiService {
   def addNewTicket401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: A successful response after creating a ticket, DataType: TicketNewResponse
+   * Code: 200, Message: A successful response after creating a ticket., DataType: TicketNewResponse
    * Code: 400, Message: A successful response after creating a ticket, DataType: TicketNewResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */

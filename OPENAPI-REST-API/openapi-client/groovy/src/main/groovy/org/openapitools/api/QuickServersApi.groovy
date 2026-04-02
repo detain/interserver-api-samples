@@ -12,6 +12,7 @@ import org.openapitools.model.QuickserverRow
 import org.openapitools.model.QuickserversCancel200Response
 import org.openapitools.model.RestoreRequest
 import org.openapitools.model.ReverseDnsEntries
+import org.openapitools.model.ServiceOrderPostResponse
 import org.openapitools.model.SuccessTextResponse
 import org.openapitools.model.TextResponse
 import org.openapitools.model.VpsBackupRows
@@ -41,7 +42,7 @@ class QuickServersApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    ServiceOrderPostResponse.class )
 
     }
 
@@ -1230,7 +1231,7 @@ class QuickServersApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 

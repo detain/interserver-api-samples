@@ -31,49 +31,27 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20026" /> class.
         /// </summary>
-        /// <param name="bandwidth">bandwidth.</param>
-        /// <param name="ips">ips.</param>
-        /// <param name="os">os.</param>
-        /// <param name="cp">cp.</param>
-        /// <param name="raid">raid.</param>
-        public InlineResponse20026(List<InlineResponse20026Bandwidth> bandwidth = default(List<InlineResponse20026Bandwidth>), List<InlineResponse20026Ips> ips = default(List<InlineResponse20026Ips>), List<InlineResponse20026Os> os = default(List<InlineResponse20026Os>), List<InlineResponse20026Cp> cp = default(List<InlineResponse20026Cp>), List<InlineResponse20026Raid> raid = default(List<InlineResponse20026Raid>))
+        /// <param name="text">Confirmation message..</param>
+        /// <param name="ticket">The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress..</param>
+        public InlineResponse20026(string text = default(string), int? ticket = default(int?))
         {
-            this.bandwidth = bandwidth;
-            this.ips = ips;
-            this.os = os;
-            this.cp = cp;
-            this.raid = raid;
+            this.text = text;
+            this.ticket = ticket;
         }
         
         /// <summary>
-        /// Gets or Sets bandwidth
+        /// Confirmation message.
         /// </summary>
-        [DataMember(Name="bandwidth", EmitDefaultValue=false)]
-        public List<InlineResponse20026Bandwidth> bandwidth { get; set; }
+        /// <value>Confirmation message.</value>
+        [DataMember(Name="text", EmitDefaultValue=false)]
+        public string text { get; set; }
 
         /// <summary>
-        /// Gets or Sets ips
+        /// The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.
         /// </summary>
-        [DataMember(Name="ips", EmitDefaultValue=false)]
-        public List<InlineResponse20026Ips> ips { get; set; }
-
-        /// <summary>
-        /// Gets or Sets os
-        /// </summary>
-        [DataMember(Name="os", EmitDefaultValue=false)]
-        public List<InlineResponse20026Os> os { get; set; }
-
-        /// <summary>
-        /// Gets or Sets cp
-        /// </summary>
-        [DataMember(Name="cp", EmitDefaultValue=false)]
-        public List<InlineResponse20026Cp> cp { get; set; }
-
-        /// <summary>
-        /// Gets or Sets raid
-        /// </summary>
-        [DataMember(Name="raid", EmitDefaultValue=false)]
-        public List<InlineResponse20026Raid> raid { get; set; }
+        /// <value>The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.</value>
+        [DataMember(Name="ticket", EmitDefaultValue=false)]
+        public int? ticket { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,11 +61,8 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20026 {\n");
-            sb.Append("  bandwidth: ").Append(bandwidth).Append("\n");
-            sb.Append("  ips: ").Append(ips).Append("\n");
-            sb.Append("  os: ").Append(os).Append("\n");
-            sb.Append("  cp: ").Append(cp).Append("\n");
-            sb.Append("  raid: ").Append(raid).Append("\n");
+            sb.Append("  text: ").Append(text).Append("\n");
+            sb.Append("  ticket: ").Append(ticket).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,34 +98,14 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.bandwidth == input.bandwidth ||
-                    this.bandwidth != null &&
-                    input.bandwidth != null &&
-                    this.bandwidth.SequenceEqual(input.bandwidth)
+                    this.text == input.text ||
+                    (this.text != null &&
+                    this.text.Equals(input.text))
                 ) && 
                 (
-                    this.ips == input.ips ||
-                    this.ips != null &&
-                    input.ips != null &&
-                    this.ips.SequenceEqual(input.ips)
-                ) && 
-                (
-                    this.os == input.os ||
-                    this.os != null &&
-                    input.os != null &&
-                    this.os.SequenceEqual(input.os)
-                ) && 
-                (
-                    this.cp == input.cp ||
-                    this.cp != null &&
-                    input.cp != null &&
-                    this.cp.SequenceEqual(input.cp)
-                ) && 
-                (
-                    this.raid == input.raid ||
-                    this.raid != null &&
-                    input.raid != null &&
-                    this.raid.SequenceEqual(input.raid)
+                    this.ticket == input.ticket ||
+                    (this.ticket != null &&
+                    this.ticket.Equals(input.ticket))
                 );
         }
 
@@ -163,16 +118,10 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.bandwidth != null)
-                    hashCode = hashCode * 59 + this.bandwidth.GetHashCode();
-                if (this.ips != null)
-                    hashCode = hashCode * 59 + this.ips.GetHashCode();
-                if (this.os != null)
-                    hashCode = hashCode * 59 + this.os.GetHashCode();
-                if (this.cp != null)
-                    hashCode = hashCode * 59 + this.cp.GetHashCode();
-                if (this.raid != null)
-                    hashCode = hashCode * 59 + this.raid.GetHashCode();
+                if (this.text != null)
+                    hashCode = hashCode * 59 + this.text.GetHashCode();
+                if (this.ticket != null)
+                    hashCode = hashCode * 59 + this.ticket.GetHashCode();
                 return hashCode;
             }
         }

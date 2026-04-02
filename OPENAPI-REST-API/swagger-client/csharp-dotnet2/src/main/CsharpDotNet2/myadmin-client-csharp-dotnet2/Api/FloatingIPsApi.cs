@@ -14,8 +14,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place Floating IP Order Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        void AddFloatingIp ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddFloatingIp ();
         /// <summary>
         /// Cancel Floating IP Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred.
         /// </summary>
@@ -26,8 +26,8 @@ namespace IO.Swagger.Api
         /// View Floating IP Returns detailed information about a specific Floating IP service including its current target IP assignment.
         /// </summary>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns></returns>
-        void GetFloatingIpInfo (int? id);
+        /// <returns>Object</returns>
+        Object GetFloatingIpInfo (int? id);
         /// <summary>
         /// Get Floating IP Invoices Returns the billing invoices associated with this Floating IP service.
         /// </summary>
@@ -48,8 +48,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get Floating IP Ordering Information Retrieves available options and pricing for ordering a new Floating IP.
         /// </summary>
-        /// <returns></returns>
-        void GetNewFloatingIp ();
+        /// <returns>Object</returns>
+        Object GetNewFloatingIp ();
         /// <summary>
         /// Change Floating IP Target Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use &#x60;GET /floating_ips/{id}&#x60; to view the current target before making changes.
         /// </summary>
@@ -73,8 +73,8 @@ namespace IO.Swagger.Api
         /// Update Floating IP Updates settings on a Floating IP service, such as its label or configuration metadata.
         /// </summary>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns></returns>
-        void UpdateFloatingIpInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateFloatingIpInfo (string id);
     }
   
     /// <summary>
@@ -133,8 +133,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place Floating IP Order Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        public void AddFloatingIp ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddFloatingIp ()
         {
     
             var path = "/floating_ips/order";
@@ -158,7 +158,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddFloatingIp: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (ServiceOrderPostResponse) ApiClient.Deserialize(response.Content, typeof(ServiceOrderPostResponse), response.Headers);
         }
     
         /// <summary>
@@ -200,8 +200,8 @@ namespace IO.Swagger.Api
         /// View Floating IP Returns detailed information about a specific Floating IP service including its current target IP assignment.
         /// </summary>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns></returns>
-        public void GetFloatingIpInfo (int? id)
+        /// <returns>Object</returns>
+        public Object GetFloatingIpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetFloatingIpInfo");
@@ -228,7 +228,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling GetFloatingIpInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Object) ApiClient.Deserialize(response.Content, typeof(Object), response.Headers);
         }
     
         /// <summary>
@@ -335,8 +335,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get Floating IP Ordering Information Retrieves available options and pricing for ordering a new Floating IP.
         /// </summary>
-        /// <returns></returns>
-        public void GetNewFloatingIp ()
+        /// <returns>Object</returns>
+        public Object GetNewFloatingIp ()
         {
     
             var path = "/floating_ips/order";
@@ -360,7 +360,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling GetNewFloatingIp: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Object) ApiClient.Deserialize(response.Content, typeof(Object), response.Headers);
         }
     
         /// <summary>
@@ -476,8 +476,8 @@ namespace IO.Swagger.Api
         /// Update Floating IP Updates settings on a Floating IP service, such as its label or configuration metadata.
         /// </summary>
         /// <param name="id">The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateFloatingIpInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateFloatingIpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateFloatingIpInfo");
@@ -504,7 +504,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateFloatingIpInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
     }

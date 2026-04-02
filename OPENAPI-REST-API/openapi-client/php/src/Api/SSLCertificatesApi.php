@@ -159,11 +159,12 @@ class SSLCertificatesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\ServiceOrderPostResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function addSsl(string $contentType = self::contentTypes['addSsl'][0])
     {
-        $this->addSslWithHttpInfo($contentType);
+        list($response) = $this->addSslWithHttpInfo($contentType);
+        return $response;
     }
 
     /**
@@ -175,7 +176,7 @@ class SSLCertificatesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\ServiceOrderPostResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function addSslWithHttpInfo(string $contentType = self::contentTypes['addSsl'][0])
     {
@@ -204,9 +205,51 @@ class SSLCertificatesApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\ServiceOrderPostResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -254,14 +297,27 @@ class SSLCertificatesApi
      */
     public function addSslAsyncWithHttpInfo(string $contentType = self::contentTypes['addSsl'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\ServiceOrderPostResponse';
         $request = $this->addSslRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -375,11 +431,12 @@ class SSLCertificatesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return object|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function getNewSsl(string $contentType = self::contentTypes['getNewSsl'][0])
     {
-        $this->getNewSslWithHttpInfo($contentType);
+        list($response) = $this->getNewSslWithHttpInfo($contentType);
+        return $response;
     }
 
     /**
@@ -391,7 +448,7 @@ class SSLCertificatesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNewSslWithHttpInfo(string $contentType = self::contentTypes['getNewSsl'][0])
     {
@@ -420,9 +477,51 @@ class SSLCertificatesApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -470,14 +569,27 @@ class SSLCertificatesApi
      */
     public function getNewSslAsyncWithHttpInfo(string $contentType = self::contentTypes['getNewSsl'][0])
     {
-        $returnType = '';
+        $returnType = 'object';
         $request = $this->getNewSslRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -592,11 +704,12 @@ class SSLCertificatesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return object|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function getSslInfo($id, string $contentType = self::contentTypes['getSslInfo'][0])
     {
-        $this->getSslInfoWithHttpInfo($id, $contentType);
+        list($response) = $this->getSslInfoWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -609,7 +722,7 @@ class SSLCertificatesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSslInfoWithHttpInfo($id, string $contentType = self::contentTypes['getSslInfo'][0])
     {
@@ -638,9 +751,51 @@ class SSLCertificatesApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        'object',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                'object',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'object',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -690,14 +845,27 @@ class SSLCertificatesApi
      */
     public function getSslInfoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getSslInfo'][0])
     {
-        $returnType = '';
+        $returnType = 'object';
         $request = $this->getSslInfoRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2136,11 +2304,12 @@ class SSLCertificatesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response
      */
     public function updateSslInfo($id, string $contentType = self::contentTypes['updateSslInfo'][0])
     {
-        $this->updateSslInfoWithHttpInfo($id, $contentType);
+        list($response) = $this->updateSslInfoWithHttpInfo($id, $contentType);
+        return $response;
     }
 
     /**
@@ -2153,7 +2322,7 @@ class SSLCertificatesApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\SuccessTextResponse|\Interserver\MyAdmin\Model\GetAccountInfo401Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateSslInfoWithHttpInfo($id, string $contentType = self::contentTypes['updateSslInfo'][0])
     {
@@ -2182,9 +2351,51 @@ class SSLCertificatesApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Interserver\MyAdmin\Model\GetAccountInfo401Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2234,14 +2445,27 @@ class SSLCertificatesApi
      */
     public function updateSslInfoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['updateSslInfo'][0])
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateSslInfoRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

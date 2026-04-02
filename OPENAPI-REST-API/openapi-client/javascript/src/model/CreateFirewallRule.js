@@ -40,7 +40,7 @@ class CreateFirewallRule {
         obj['protocol_id'] = protocol_id;
         obj['xdp_action'] = xdp_action;
         obj['destination_port'] = 80;
-        obj['source_ip'] = '0';
+        obj['source_ip'] = '0.0.0.0';
         obj['source_port'] = 0;
     }
 
@@ -118,10 +118,11 @@ CreateFirewallRule.prototype['xdp_action'] = undefined;
 CreateFirewallRule.prototype['destination_port'] = 80;
 
 /**
+ * Source IP address to match. Use '0.0.0.0' to match any source.
  * @member {String} source_ip
- * @default '0'
+ * @default '0.0.0.0'
  */
-CreateFirewallRule.prototype['source_ip'] = '0';
+CreateFirewallRule.prototype['source_ip'] = '0.0.0.0';
 
 /**
  * @member {Number} source_port

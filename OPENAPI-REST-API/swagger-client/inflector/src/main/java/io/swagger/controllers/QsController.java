@@ -21,6 +21,7 @@ import io.swagger.model.QuickserverOrder;
 import io.swagger.model.QuickserverRow;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.TimezoneUpdate;

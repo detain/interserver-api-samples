@@ -49,9 +49,9 @@ var api = SSLCertificatesApi.new(config)
 # Invoke an endpoint
 api.add_ssl(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_ssl", response)
-		
+		assert(response.data is ServiceOrderPostResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -95,9 +95,9 @@ var api = SSLCertificatesApi.new(config)
 # Invoke an endpoint
 api.get_new_ssl(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "get_new_ssl", response)
-		
+		assert(response.data is )
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -144,9 +144,9 @@ api.get_ssl_info(
 	# SSL certificate ID number.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "get_ssl_info", response)
-		
+		assert(response.data is )
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -432,9 +432,9 @@ api.update_ssl_info(
 	# SSL certificate ID number.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_ssl_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

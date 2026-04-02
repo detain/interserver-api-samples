@@ -17,6 +17,7 @@ import io.swagger.client.model.ChargeInvoiceRows
 import io.swagger.client.model.IdBuyIpBody
 import io.swagger.client.model.IdMigrationBody
 import io.swagger.client.model.ReverseDnsEntries
+import io.swagger.client.model.ServiceOrderPostResponse
 import io.swagger.client.model.SuccessTextResponse
 import io.swagger.client.model.TextResponse
 import io.swagger.client.model.Website
@@ -24,10 +25,10 @@ import io.swagger.client.model.WebsiteBackups
 import io.swagger.client.model.WebsiteLoginResponse
 import io.swagger.client.model.WebsiteRow
 import io.swagger.client.model.WebsitesOrder
-import io.swagger.client.model.inline_response_200_22
 import io.swagger.client.model.inline_response_200_23
 import io.swagger.client.model.inline_response_200_24
 import io.swagger.client.model.inline_response_200_25
+import io.swagger.client.model.inline_response_200_26
 import io.swagger.client.model.inline_response_401
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -97,9 +98,9 @@ class WebhostingApi(
    * Place Website Order
    * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
    *
-   * @return void
+   * @return ServiceOrderPostResponse
    */
-  def addWebsite() = {
+  def addWebsite(): Option[ServiceOrderPostResponse] = {
     val await = Try(Await.result(addWebsiteAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -111,9 +112,9 @@ class WebhostingApi(
    * Place Website Order asynchronously
    * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
    *
-   * @return Future(void)
+   * @return Future(ServiceOrderPostResponse)
    */
-  def addWebsiteAsync() = {
+  def addWebsiteAsync(): Future[ServiceOrderPostResponse] = {
       helper.addWebsite()
   }
 
@@ -146,9 +147,9 @@ class WebhostingApi(
    * Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
    *
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return inline_response_200_23
+   * @return inline_response_200_24
    */
-  def getWebsiteBuyIp(id: Integer): Option[inline_response_200_23] = {
+  def getWebsiteBuyIp(id: Integer): Option[inline_response_200_24] = {
     val await = Try(Await.result(getWebsiteBuyIpAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -161,9 +162,9 @@ class WebhostingApi(
    * Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
    *
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return Future(inline_response_200_23)
+   * @return Future(inline_response_200_24)
    */
-  def getWebsiteBuyIpAsync(id: Integer): Future[inline_response_200_23] = {
+  def getWebsiteBuyIpAsync(id: Integer): Future[inline_response_200_24] = {
       helper.getWebsiteBuyIp(id)
   }
 
@@ -354,9 +355,9 @@ class WebhostingApi(
    * @param body  
    * @param ips  
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return inline_response_200_24
+   * @return inline_response_200_25
    */
-  def postWebsiteBuyIp(body: IdBuyIpBody, ips: Map[String, String], id: Integer): Option[inline_response_200_24] = {
+  def postWebsiteBuyIp(body: IdBuyIpBody, ips: Map[String, String], id: Integer): Option[inline_response_200_25] = {
     val await = Try(Await.result(postWebsiteBuyIpAsync(body, ips, id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -371,9 +372,9 @@ class WebhostingApi(
    * @param body  
    * @param ips  
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return Future(inline_response_200_24)
+   * @return Future(inline_response_200_25)
    */
-  def postWebsiteBuyIpAsync(body: IdBuyIpBody, ips: Map[String, String], id: Integer): Future[inline_response_200_24] = {
+  def postWebsiteBuyIpAsync(body: IdBuyIpBody, ips: Map[String, String], id: Integer): Future[inline_response_200_25] = {
       helper.postWebsiteBuyIp(body, ips, id)
   }
 
@@ -396,9 +397,9 @@ class WebhostingApi(
    * @param domainRegEmail  
    * @param domainRegPassword  
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return inline_response_200_25
+   * @return inline_response_200_26
    */
-  def postWebsiteMigration(body: IdMigrationBody, custPortal: String, regEmail: String, password: String, ctrlPanel: String, ftpUsername: String, ftpPassword: String, siteBusyMig: String, splReqMig: String, domainReg: String, dataMig: String, domainRegPortal: String, domainRegEmail: String, domainRegPassword: String, id: Integer): Option[inline_response_200_25] = {
+  def postWebsiteMigration(body: IdMigrationBody, custPortal: String, regEmail: String, password: String, ctrlPanel: String, ftpUsername: String, ftpPassword: String, siteBusyMig: String, splReqMig: String, domainReg: String, dataMig: String, domainRegPortal: String, domainRegEmail: String, domainRegPassword: String, id: Integer): Option[inline_response_200_26] = {
     val await = Try(Await.result(postWebsiteMigrationAsync(body, custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -425,9 +426,9 @@ class WebhostingApi(
    * @param domainRegEmail  
    * @param domainRegPassword  
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return Future(inline_response_200_25)
+   * @return Future(inline_response_200_26)
    */
-  def postWebsiteMigrationAsync(body: IdMigrationBody, custPortal: String, regEmail: String, password: String, ctrlPanel: String, ftpUsername: String, ftpPassword: String, siteBusyMig: String, splReqMig: String, domainReg: String, dataMig: String, domainRegPortal: String, domainRegEmail: String, domainRegPassword: String, id: Integer): Future[inline_response_200_25] = {
+  def postWebsiteMigrationAsync(body: IdMigrationBody, custPortal: String, regEmail: String, password: String, ctrlPanel: String, ftpUsername: String, ftpPassword: String, siteBusyMig: String, splReqMig: String, domainReg: String, dataMig: String, domainRegPortal: String, domainRegEmail: String, domainRegPassword: String, id: Integer): Future[inline_response_200_26] = {
       helper.postWebsiteMigration(body, custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id)
   }
 
@@ -490,9 +491,9 @@ class WebhostingApi(
    * Updates settings on a webhosting order.
    *
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateWebsiteInfo(id: String) = {
+  def updateWebsiteInfo(id: String): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateWebsiteInfoAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -505,9 +506,9 @@ class WebhostingApi(
    * Updates settings on a webhosting order.
    *
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateWebsiteInfoAsync(id: String) = {
+  def updateWebsiteInfoAsync(id: String): Future[SuccessTextResponse] = {
       helper.updateWebsiteInfo(id)
   }
 
@@ -516,9 +517,9 @@ class WebhostingApi(
    * Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
    *
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return inline_response_200_22
+   * @return inline_response_200_23
    */
-  def webhostingCancel(id: String): Option[inline_response_200_22] = {
+  def webhostingCancel(id: String): Option[inline_response_200_23] = {
     val await = Try(Await.result(webhostingCancelAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -531,9 +532,9 @@ class WebhostingApi(
    * Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
    *
    * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-   * @return Future(inline_response_200_22)
+   * @return Future(inline_response_200_23)
    */
-  def webhostingCancelAsync(id: String): Future[inline_response_200_22] = {
+  def webhostingCancelAsync(id: String): Future[inline_response_200_23] = {
       helper.webhostingCancel(id)
   }
 
@@ -541,7 +542,7 @@ class WebhostingApi(
 
 class WebhostingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def addWebsite()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def addWebsite()(implicit reader: ClientResponseReader[ServiceOrderPostResponse]): Future[ServiceOrderPostResponse] = {
     // create path and map variables
     val path = (addFmt("/websites/order"))
 
@@ -571,7 +572,7 @@ class WebhostingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) e
     }
   }
 
-  def getWebsiteBuyIp(id: Integer)(implicit reader: ClientResponseReader[inline_response_200_23]): Future[inline_response_200_23] = {
+  def getWebsiteBuyIp(id: Integer)(implicit reader: ClientResponseReader[inline_response_200_24]): Future[inline_response_200_24] = {
     // create path and map variables
     val path = (addFmt("/websites/{id}/buy_ip")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -700,7 +701,7 @@ class WebhostingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) e
 
   def postWebsiteBuyIp(body: IdBuyIpBody,
     ips: Map[String, String],
-    id: Integer)(implicit reader: ClientResponseReader[inline_response_200_24], writer: RequestWriter[IdBuyIpBody]): Future[inline_response_200_24] = {
+    id: Integer)(implicit reader: ClientResponseReader[inline_response_200_25], writer: RequestWriter[IdBuyIpBody]): Future[inline_response_200_25] = {
     // create path and map variables
     val path = (addFmt("/websites/{id}/buy_ip")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -732,7 +733,7 @@ class WebhostingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) e
     domainRegPortal: String,
     domainRegEmail: String,
     domainRegPassword: String,
-    id: Integer)(implicit reader: ClientResponseReader[inline_response_200_25], writer: RequestWriter[IdMigrationBody]): Future[inline_response_200_25] = {
+    id: Integer)(implicit reader: ClientResponseReader[inline_response_200_26], writer: RequestWriter[IdMigrationBody]): Future[inline_response_200_26] = {
     // create path and map variables
     val path = (addFmt("/websites/{id}/migration")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -810,7 +811,7 @@ class WebhostingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) e
     }
   }
 
-  def updateWebsiteInfo(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def updateWebsiteInfo(id: String)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/websites/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -828,7 +829,7 @@ class WebhostingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) e
     }
   }
 
-  def webhostingCancel(id: String)(implicit reader: ClientResponseReader[inline_response_200_22]): Future[inline_response_200_22] = {
+  def webhostingCancel(id: String)(implicit reader: ClientResponseReader[inline_response_200_23]): Future[inline_response_200_23] = {
     // create path and map variables
     val path = (addFmt("/websites/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

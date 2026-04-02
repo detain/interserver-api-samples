@@ -8,6 +8,7 @@ import io.swagger.model.DnsRecord;
 import io.swagger.model.DnsRecordType;
 import io.swagger.model.DnsUpdateRecord;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.SuccessTextResponse;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -34,10 +35,10 @@ public class DnsApiServiceImpl implements DnsApi {
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      *
      */
-    public void addDnsDomain(String domain, String ip) {
+    public SuccessTextResponse addDnsDomain(String domain, String ip) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -46,10 +47,10 @@ public class DnsApiServiceImpl implements DnsApi {
      * Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer&#x27;s DNS servers. Use &#x60;/dns/{id}&#x60; to manage records after creation.
      *
      */
-    public void addDnsDomain(DnsNewDomain body) {
+    public SuccessTextResponse addDnsDomain(DnsNewDomain body) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -82,10 +83,10 @@ public class DnsApiServiceImpl implements DnsApi {
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      *
      */
-    public void deleteDnsDomain(String id) {
+    public SuccessTextResponse deleteDnsDomain(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -94,10 +95,10 @@ public class DnsApiServiceImpl implements DnsApi {
      * Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use &#x60;GET /dns/{id}&#x60; to verify the record has been removed.
      *
      */
-    public void deleteDnsRecord(Integer domainId, Integer recordId) {
+    public SuccessTextResponse deleteDnsRecord(Integer domainId, Integer recordId) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -130,10 +131,10 @@ public class DnsApiServiceImpl implements DnsApi {
      * Updates an existing DNS record with new values. Use &#x60;GET /dns/{id}&#x60; to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
      *
      */
-    public void updateDnsRecord(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, Integer domainId, Integer recordId) {
+    public SuccessTextResponse updateDnsRecord(String name, DnsRecordType type, String content, String ttl, String prio, String disabled, String ordername, String auth, Integer domainId, Integer recordId) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -142,10 +143,10 @@ public class DnsApiServiceImpl implements DnsApi {
      * Updates an existing DNS record with new values. Use &#x60;GET /dns/{id}&#x60; to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
      *
      */
-    public void updateDnsRecord(DnsUpdateRecord body, Integer domainId, Integer recordId) {
+    public SuccessTextResponse updateDnsRecord(DnsUpdateRecord body, Integer domainId, Integer recordId) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

@@ -4,12 +4,13 @@ import io.swagger.api.*;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBuyIpBody;
 import io.swagger.model.IdMigrationBody;
-import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse20023;
 import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse20025;
+import io.swagger.model.InlineResponse20026;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TextResponse;
 import io.swagger.model.Website;
@@ -43,10 +44,10 @@ public class WebhostingApiServiceImpl implements WebhostingApi {
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
      *
      */
-    public void addWebsite() {
+    public ServiceOrderPostResponse addWebsite() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -67,7 +68,7 @@ public class WebhostingApiServiceImpl implements WebhostingApi {
      * Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
      *
      */
-    public InlineResponse20023 getWebsiteBuyIp(Integer id) {
+    public InlineResponse20024 getWebsiteBuyIp(Integer id) {
         // TODO: Implement...
         
         return null;
@@ -163,7 +164,7 @@ public class WebhostingApiServiceImpl implements WebhostingApi {
      * Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
      *
      */
-    public InlineResponse20024 postWebsiteBuyIp(IdBuyIpBody body, Integer id) {
+    public InlineResponse20025 postWebsiteBuyIp(IdBuyIpBody body, Integer id) {
         // TODO: Implement...
         
         return null;
@@ -175,7 +176,7 @@ public class WebhostingApiServiceImpl implements WebhostingApi {
      * Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
      *
      */
-    public InlineResponse20024 postWebsiteBuyIp(Map<String, String> ips, Integer id) {
+    public InlineResponse20025 postWebsiteBuyIp(Map<String, String> ips, Integer id) {
         // TODO: Implement...
         
         return null;
@@ -187,7 +188,7 @@ public class WebhostingApiServiceImpl implements WebhostingApi {
      * Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
      *
      */
-    public InlineResponse20025 postWebsiteMigration(IdMigrationBody body, Integer id) {
+    public InlineResponse20026 postWebsiteMigration(IdMigrationBody body, Integer id) {
         // TODO: Implement...
         
         return null;
@@ -199,7 +200,7 @@ public class WebhostingApiServiceImpl implements WebhostingApi {
      * Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
      *
      */
-    public InlineResponse20025 postWebsiteMigration(String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, Integer id) {
+    public InlineResponse20026 postWebsiteMigration(String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, Integer id) {
         // TODO: Implement...
         
         return null;
@@ -247,10 +248,10 @@ public class WebhostingApiServiceImpl implements WebhostingApi {
      * Updates settings on a webhosting order.
      *
      */
-    public void updateWebsiteInfo(String id) {
+    public SuccessTextResponse updateWebsiteInfo(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -259,7 +260,7 @@ public class WebhostingApiServiceImpl implements WebhostingApi {
      * Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
      *
      */
-    public InlineResponse20022 webhostingCancel(String id) {
+    public InlineResponse20023 webhostingCancel(String id) {
         // TODO: Implement...
         
         return null;

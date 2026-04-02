@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   DnsListItem.JSON_PROPERTY_CONTENT
 })
 @JsonTypeName("DnsListItem")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Introspected
 public class DnsListItem {
     public static final String JSON_PROPERTY_ID = "id";

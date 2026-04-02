@@ -28,7 +28,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  *
  * @param text 
  * @param publicIp 

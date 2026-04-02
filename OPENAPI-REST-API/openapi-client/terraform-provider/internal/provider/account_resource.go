@@ -37,6 +37,18 @@ func (r *AccountResource) Schema(_ context.Context, _ resource.SchemaRequest, re
 	resp.Schema = schema.Schema{
 		Description: "Manages a account resource.",
 		Attributes: map[string]schema.Attribute{
+			"success": schema.BoolAttribute{
+				Required:    true,
+				Description: "Indicates whether or not the command was successful or not.",
+			},
+			"text": schema.StringAttribute{
+				Optional:    true,
+				Description: "Text associated with the response.",
+			},
+			"action": schema.StringAttribute{
+				Optional:    true,
+				Description: "Optional Action relating to the response.",
+			},
 		},
 	}
 }
@@ -74,7 +86,7 @@ func (r *AccountResource) Create(ctx context.Context, req resource.CreateRequest
 		return
 	}
 
-	var result client.
+	var result client.SuccessTextResponse
 	if err := json.Unmarshal(respBody, &result); err != nil {
 		resp.Diagnostics.AddError("Error parsing response", err.Error())
 		return

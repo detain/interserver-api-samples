@@ -393,28 +393,34 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.</remarks>
         /// <param name="body"></param>
+        /// <response code="200">A response indicating the operation completed successfully with a text message.</response>
         /// <response code="401">Unauthorized</response>
         /// <response code="422">Validation error while updating account data.</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/account")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UpdateAccountInfo")]
+        [SwaggerResponse(statusCode: 200, type: typeof(SuccessTextResponse), description: "A response indicating the operation completed successfully with a text message.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         [SwaggerResponse(statusCode: 422, type: typeof(TextResponse), description: "Validation error while updating account data.")]
         public virtual IActionResult UpdateAccountInfo([FromBody]AccountInfoPost body)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(SuccessTextResponse));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
 
             //TODO: Uncomment the next line to return response 422 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(422, default(TextResponse));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<SuccessTextResponse>(exampleJson)
+                        : default(SuccessTextResponse);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -422,28 +428,34 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Adds an IP address range to the account&#x27;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.</remarks>
         /// <param name="body">The lower and upper bounds of an ip range.</param>
+        /// <response code="200">A response indicating the operation completed successfully with a text message.</response>
         /// <response code="401">Unauthorized</response>
         /// <response code="422">IP limit payload contains an invalid address.</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/account/iplimits")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UpdateAccountIpLimits")]
+        [SwaggerResponse(statusCode: 200, type: typeof(SuccessTextResponse), description: "A response indicating the operation completed successfully with a text message.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         [SwaggerResponse(statusCode: 422, type: typeof(TextResponse), description: "IP limit payload contains an invalid address.")]
         public virtual IActionResult UpdateAccountIpLimits([FromBody]IpLimitRange body)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(SuccessTextResponse));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
 
             //TODO: Uncomment the next line to return response 422 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(422, default(TextResponse));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<SuccessTextResponse>(exampleJson)
+                        : default(SuccessTextResponse);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>

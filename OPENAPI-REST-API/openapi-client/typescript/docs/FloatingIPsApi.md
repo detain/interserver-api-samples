@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **addFloatingIp**
-> addFloatingIp()
+> ServiceOrderPostResponse addFloatingIp()
 
 Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
 
@@ -43,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**ServiceOrderPostResponse**
 
 ### Authorization
 
@@ -58,8 +58,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getFloatingIpInfo**
-> getFloatingIpInfo()
+> any getFloatingIpInfo()
 
 Returns detailed information about a specific Floating IP service including its current target IP assignment.
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**any**
 
 ### Authorization
 
@@ -166,8 +166,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Detailed Floating IP service information. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getNewFloatingIp**
-> getNewFloatingIp()
+> any getNewFloatingIp()
 
 Retrieves available options and pricing for ordering a new Floating IP.
 
@@ -354,7 +354,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**any**
 
 ### Authorization
 
@@ -369,8 +369,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Available options and pricing for ordering a Floating IP. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -479,7 +479,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateFloatingIpInfo**
-> updateFloatingIpInfo()
+> SuccessTextResponse updateFloatingIpInfo()
 
 Updates settings on a Floating IP service, such as its label or configuration metadata.
 
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**SuccessTextResponse**
 
 ### Authorization
 
@@ -527,8 +527,8 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | A response indicating the operation completed successfully with a text message. |  -  |
 **401** | Unauthorized |  -  |
-**0** | Default response |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

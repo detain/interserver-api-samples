@@ -30,6 +30,7 @@ import okhttp3.HttpUrl
 import org.openapitools.client.models.ChargeInvoiceRows
 import org.openapitools.client.models.FloatingIpsCancel200Response
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 
 import com.squareup.moshi.Json
@@ -60,19 +61,20 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * POST /floating_ips/order
      * Place Floating IP Order
      * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
-     * @return void
+     * @return ServiceOrderPostResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun addFloatingIp() : Unit {
+    fun addFloatingIp() : ServiceOrderPostResponse {
         val localVarResponse = addFloatingIpWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -90,15 +92,16 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * POST /floating_ips/order
      * Place Floating IP Order
      * Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<ServiceOrderPostResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun addFloatingIpWithHttpInfo() : ApiResponse<Unit?> {
+    fun addFloatingIpWithHttpInfo() : ApiResponse<ServiceOrderPostResponse?> {
         val localVariableConfig = addFloatingIpRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, ServiceOrderPostResponse>(
             localVariableConfig
         )
     }
@@ -202,19 +205,20 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * View Floating IP
      * Returns detailed information about a specific Floating IP service including its current target IP assignment.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
-     * @return void
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getFloatingIpInfo(id: kotlin.Int) : Unit {
+    fun getFloatingIpInfo(id: kotlin.Int) : kotlin.Any {
         val localVarResponse = getFloatingIpInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -233,15 +237,16 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * View Floating IP
      * Returns detailed information about a specific Floating IP service including its current target IP assignment.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getFloatingIpInfoWithHttpInfo(id: kotlin.Int) : ApiResponse<Unit?> {
+    fun getFloatingIpInfoWithHttpInfo(id: kotlin.Int) : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getFloatingIpInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }
@@ -486,19 +491,20 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * GET /floating_ips/order
      * Get Floating IP Ordering Information
      * Retrieves available options and pricing for ordering a new Floating IP.
-     * @return void
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getNewFloatingIp() : Unit {
+    fun getNewFloatingIp() : kotlin.Any {
         val localVarResponse = getNewFloatingIpWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -516,15 +522,16 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * GET /floating_ips/order
      * Get Floating IP Ordering Information
      * Retrieves available options and pricing for ordering a new Floating IP.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getNewFloatingIpWithHttpInfo() : ApiResponse<Unit?> {
+    fun getNewFloatingIpWithHttpInfo() : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getNewFloatingIpRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }
@@ -700,19 +707,20 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Update Floating IP
      * Updates settings on a Floating IP service, such as its label or configuration metadata.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateFloatingIpInfo(id: kotlin.String) : Unit {
+    fun updateFloatingIpInfo(id: kotlin.String) : SuccessTextResponse {
         val localVarResponse = updateFloatingIpInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -731,15 +739,16 @@ open class FloatingIPsApi(basePath: kotlin.String = defaultBasePath, client: Cal
      * Update Floating IP
      * Updates settings on a Floating IP service, such as its label or configuration metadata.
      * @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateFloatingIpInfoWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun updateFloatingIpInfoWithHttpInfo(id: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateFloatingIpInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }

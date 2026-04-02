@@ -303,7 +303,7 @@ class CreateFirewallRule implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('protocolId', $data ?? [], null);
         $this->setIfExists('xdpAction', $data ?? [], null);
         $this->setIfExists('destinationPort', $data ?? [], 80);
-        $this->setIfExists('sourceIp', $data ?? [], '0');
+        $this->setIfExists('sourceIp', $data ?? [], '0.0.0.0');
         $this->setIfExists('sourcePort', $data ?? [], 0);
     }
 
@@ -487,7 +487,7 @@ class CreateFirewallRule implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets sourceIp
      *
-     * @param string|null $sourceIp sourceIp
+     * @param string|null $sourceIp Source IP address to match. Use '0.0.0.0' to match any source.
      *
      * @return self
      */

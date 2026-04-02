@@ -21,6 +21,7 @@ Private/OpenAPIAccountInfoOauthConfigProvidersValue.cpp
 Private/OpenAPIAccountInfoOauthproviders.cpp
 Private/OpenAPIAccountInfoPost.cpp
 Private/OpenAPIAccountSshKey.cpp
+Private/OpenAPIAddServer200Response.cpp
 Private/OpenAPIAffiliateBannerRow.cpp
 Private/OpenAPIAffiliateDockSetup.cpp
 Private/OpenAPIAffiliatePaymentSetup.cpp
@@ -381,6 +382,7 @@ Private/OpenAPIServersCancel200Response.cpp
 Private/OpenAPIService.cpp
 Private/OpenAPIServiceCategories.cpp
 Private/OpenAPIServiceCategory.cpp
+Private/OpenAPIServiceOrderPostResponse.cpp
 Private/OpenAPIServiceType.cpp
 Private/OpenAPIServiceTypes.cpp
 Private/OpenAPIServices.cpp
@@ -507,6 +509,7 @@ Public/OpenAPIAccountInfoOauthConfigProvidersValue.h
 Public/OpenAPIAccountInfoOauthproviders.h
 Public/OpenAPIAccountInfoPost.h
 Public/OpenAPIAccountSshKey.h
+Public/OpenAPIAddServer200Response.h
 Public/OpenAPIAffiliateBannerRow.h
 Public/OpenAPIAffiliateDockSetup.h
 Public/OpenAPIAffiliatePaymentSetup.h
@@ -865,6 +868,7 @@ Public/OpenAPIServersCancel200Response.h
 Public/OpenAPIService.h
 Public/OpenAPIServiceCategories.h
 Public/OpenAPIServiceCategory.h
+Public/OpenAPIServiceOrderPostResponse.h
 Public/OpenAPIServiceType.h
 Public/OpenAPIServiceTypes.h
 Public/OpenAPIServices.h

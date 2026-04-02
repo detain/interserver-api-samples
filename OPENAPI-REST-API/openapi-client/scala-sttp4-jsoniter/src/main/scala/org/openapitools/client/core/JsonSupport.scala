@@ -25,6 +25,7 @@ object JsonSupport extends AdditionalTypeSerializers:
 
   given viewTicketResponseCodec: JsonValueCodec[ViewTicketResponse] = deriveJsonCodec
   given websitesOrderCodec: JsonValueCodec[WebsitesOrder] = deriveJsonCodec
+  given addServer200ResponseCodec: JsonValueCodec[AddServer200Response] = deriveJsonCodec
   given cancelBackup200ResponseCodec: JsonValueCodec[CancelBackup200Response] = deriveJsonCodec
   given billingVerifyCcRequestCodec: JsonValueCodec[BillingVerifyCcRequest] = deriveJsonCodec
   given placeBuyNowServerRequestCodec: JsonValueCodec[PlaceBuyNowServerRequest] = deriveJsonCodec
@@ -49,6 +50,7 @@ object JsonSupport extends AdditionalTypeSerializers:
   given getAccountTfaSetup200ResponseCodec: JsonValueCodec[GetAccountTfaSetup200Response] = deriveJsonCodec
   given updateTicketResponseSchemaCodec: JsonValueCodec[UpdateTicketResponseSchema] = deriveJsonCodec
   given restoreRequestCodec: JsonValueCodec[RestoreRequest] = deriveJsonCodec
+  given serviceOrderPostResponseCodec: JsonValueCodec[ServiceOrderPostResponse] = deriveJsonCodec
   given buyItNowServerOrder200ResponseCodec: JsonValueCodec[BuyItNowServerOrder200Response] = deriveJsonCodec
   given seqStringCodec: JsonValueCodec[Seq[String]] = deriveJsonCodec
   given replyTicketResponseSchemaCodec: JsonValueCodec[ReplyTicketResponseSchema] = deriveJsonCodec

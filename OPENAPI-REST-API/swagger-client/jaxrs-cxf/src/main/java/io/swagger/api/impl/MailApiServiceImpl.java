@@ -25,6 +25,7 @@ import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
 import io.swagger.model.SendMail;
 import io.swagger.model.SendMailAdv;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.StartDate;
 import io.swagger.model.SuccessTextResponse;
 
@@ -53,10 +54,10 @@ public class MailApiServiceImpl implements MailApi {
      * Places a Mail Baby order. On success, invoices are created for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
      *
      */
-    public void addMail() {
+    public ServiceOrderPostResponse addMail() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -425,10 +426,10 @@ public class MailApiServiceImpl implements MailApi {
      * Updates mail service metadata for the order, such as stored settings or account details.
      *
      */
-    public void updateMailInfo(String id) {
+    public SuccessTextResponse updateMailInfo(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**

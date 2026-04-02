@@ -56,7 +56,8 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'ips' => 'map[string,string]'
+        'success' => 'bool',
+        'text' => 'string'
     ];
 
     /**
@@ -65,7 +66,8 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'ips' => null
+        'success' => null,
+        'text' => null
     ];
 
     /**
@@ -95,7 +97,8 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'ips' => 'ips'
+        'success' => 'success',
+        'text' => 'text'
     ];
 
     /**
@@ -104,7 +107,8 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'ips' => 'setIps'
+        'success' => 'setSuccess',
+        'text' => 'setText'
     ];
 
     /**
@@ -113,7 +117,8 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'ips' => 'getIps'
+        'success' => 'getSuccess',
+        'text' => 'getText'
     ];
 
     /**
@@ -174,7 +179,8 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['ips'] = isset($data['ips']) ? $data['ips'] : null;
+        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
     /**
@@ -186,6 +192,12 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['success'] === null) {
+            $invalidProperties[] = "'success' can't be null";
+        }
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -202,25 +214,49 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets ips
+     * Gets success
      *
-     * @return map[string,string]
+     * @return bool
      */
-    public function getIps()
+    public function getSuccess()
     {
-        return $this->container['ips'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets ips
+     * Sets success
      *
-     * @param map[string,string] $ips A map of IP addresses to their current reverse DNS hostnames.
+     * @param bool $success success
      *
      * @return $this
      */
-    public function setIps($ips)
+    public function setSuccess($success)
     {
-        $this->container['ips'] = $ips;
+        $this->container['success'] = $success;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     *
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string $text text
+     *
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
 
         return $this;
     }

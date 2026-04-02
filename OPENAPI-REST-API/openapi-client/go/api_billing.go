@@ -544,7 +544,7 @@ type ApiDeleteAccountCreditCardRequest struct {
 	id string
 }
 
-func (r ApiDeleteAccountCreditCardRequest) Execute() (*http.Response, error) {
+func (r ApiDeleteAccountCreditCardRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.DeleteAccountCreditCardExecute(r)
 }
 
@@ -566,16 +566,18 @@ func (a *BillingAPIService) DeleteAccountCreditCard(ctx context.Context, id stri
 }
 
 // Execute executes the request
-func (a *BillingAPIService) DeleteAccountCreditCardExecute(r ApiDeleteAccountCreditCardRequest) (*http.Response, error) {
+//  @return string
+func (a *BillingAPIService) DeleteAccountCreditCardExecute(r ApiDeleteAccountCreditCardRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.DeleteAccountCreditCard")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/creditcards/{id}"
@@ -632,19 +634,19 @@ func (a *BillingAPIService) DeleteAccountCreditCardExecute(r ApiDeleteAccountCre
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -657,16 +659,24 @@ func (a *BillingAPIService) DeleteAccountCreditCardExecute(r ApiDeleteAccountCre
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiDeleteBillingCreditCardRequest struct {
@@ -1939,7 +1949,7 @@ type ApiGetBillingCartRequest struct {
 	ApiService *BillingAPIService
 }
 
-func (r ApiGetBillingCartRequest) Execute() (*http.Response, error) {
+func (r ApiGetBillingCartRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.GetBillingCartExecute(r)
 }
 
@@ -1959,16 +1969,18 @@ func (a *BillingAPIService) GetBillingCart(ctx context.Context) ApiGetBillingCar
 }
 
 // Execute executes the request
-func (a *BillingAPIService) GetBillingCartExecute(r ApiGetBillingCartRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *BillingAPIService) GetBillingCartExecute(r ApiGetBillingCartRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetBillingCart")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/billing/cart"
@@ -2024,19 +2036,19 @@ func (a *BillingAPIService) GetBillingCartExecute(r ApiGetBillingCartRequest) (*
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -2049,16 +2061,24 @@ func (a *BillingAPIService) GetBillingCartExecute(r ApiGetBillingCartRequest) (*
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetBillingCreditCardVerifyRequest struct {
@@ -2485,7 +2505,7 @@ type ApiGetBillingPrePaysRequest struct {
 	ApiService *BillingAPIService
 }
 
-func (r ApiGetBillingPrePaysRequest) Execute() (*http.Response, error) {
+func (r ApiGetBillingPrePaysRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.GetBillingPrePaysExecute(r)
 }
 
@@ -2505,16 +2525,18 @@ func (a *BillingAPIService) GetBillingPrePays(ctx context.Context) ApiGetBilling
 }
 
 // Execute executes the request
-func (a *BillingAPIService) GetBillingPrePaysExecute(r ApiGetBillingPrePaysRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *BillingAPIService) GetBillingPrePaysExecute(r ApiGetBillingPrePaysRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.GetBillingPrePays")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/billing/prepays"
@@ -2570,19 +2592,19 @@ func (a *BillingAPIService) GetBillingPrePaysExecute(r ApiGetBillingPrePaysReque
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -2595,16 +2617,24 @@ func (a *BillingAPIService) GetBillingPrePaysExecute(r ApiGetBillingPrePaysReque
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetInvoicesRequest struct {
@@ -3088,7 +3118,7 @@ type ApiUpdateAccountCreditCardRequest struct {
 	id int32
 }
 
-func (r ApiUpdateAccountCreditCardRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateAccountCreditCardRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.UpdateAccountCreditCardExecute(r)
 }
 
@@ -3110,16 +3140,18 @@ func (a *BillingAPIService) UpdateAccountCreditCard(ctx context.Context, id int3
 }
 
 // Execute executes the request
-func (a *BillingAPIService) UpdateAccountCreditCardExecute(r ApiUpdateAccountCreditCardRequest) (*http.Response, error) {
+//  @return string
+func (a *BillingAPIService) UpdateAccountCreditCardExecute(r ApiUpdateAccountCreditCardRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BillingAPIService.UpdateAccountCreditCard")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/account/creditcards/{id}"
@@ -3176,19 +3208,19 @@ func (a *BillingAPIService) UpdateAccountCreditCardExecute(r ApiUpdateAccountCre
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -3201,16 +3233,24 @@ func (a *BillingAPIService) UpdateAccountCreditCardExecute(r ApiUpdateAccountCre
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiUpdateAffiliateDockSetupRequest struct {

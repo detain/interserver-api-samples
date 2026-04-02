@@ -151,7 +151,7 @@ public:
     * \param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service. *Required*
     */
     Response<
-            String
+                SuccessTextResponse
         >
     updateBackupInfo(
             

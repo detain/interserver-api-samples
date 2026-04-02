@@ -18,10 +18,11 @@ feature -- Test routines
             --
             -- Places a Mail Baby order. On success, invoices are created for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
         local
+            l_response: SERVICE_ORDER_POST_RESPONSE
         do
             -- TODO: Initialize required params.
 
-            -- api.add_mail
+            -- l_response := api.add_mail
             assert ("not_implemented", False)
         end
 
@@ -386,12 +387,13 @@ feature -- Test routines
             --
             -- Updates mail service metadata for the order, such as stored settings or account details.
         local
+            l_response: SUCCESS_TEXT_RESPONSE
             l_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_id
 
-            -- api.update_mail_info(l_id)
+            -- l_response := api.update_mail_info(l_id)
             assert ("not_implemented", False)
         end
 

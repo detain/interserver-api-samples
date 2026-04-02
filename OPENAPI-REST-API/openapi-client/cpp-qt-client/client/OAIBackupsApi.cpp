@@ -798,13 +798,14 @@ void OAIBackupsApi::updateBackupInfoCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateBackupInfoSignal();
-        Q_EMIT updateBackupInfoSignalFull(worker);
+        Q_EMIT updateBackupInfoSignal(output);
+        Q_EMIT updateBackupInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateBackupInfoSignalError(error_type, error_str);
+        Q_EMIT updateBackupInfoSignalError(output, error_type, error_str);
         Q_EMIT updateBackupInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

@@ -19,6 +19,7 @@ case class CreateFirewallRule (
   /* 1 = Block,  0 = Whitelist */
   xdp_action: CreateFirewallRuleEnums.XdpAction,
   destination_port: Option[Int] = None,
+  /* Source IP address to match. Use '0.0.0.0' to match any source. */
   source_ip: Option[String] = None,
   source_port: Option[Int] = None
 ) extends ApiModel

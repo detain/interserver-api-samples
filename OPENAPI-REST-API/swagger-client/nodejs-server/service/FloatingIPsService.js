@@ -5,11 +5,26 @@
  * Place Floating IP Order
  * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
  *
- * no response value expected for this operation
+ * returns ServiceOrderPostResponse
  **/
 exports.addFloatingIp = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -42,11 +57,17 @@ exports.floating_ipsCancel = function(id) {
  * Returns detailed information about a specific Floating IP service including its current target IP assignment.
  *
  * id Integer The Floating IP service ID. Use the ID from `GET /floating_ips`.
- * no response value expected for this operation
+ * returns Object
  **/
 exports.getFloatingIpInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = { };
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -149,11 +170,17 @@ exports.getFloatingIpsWelcomeEmail = function(id) {
  * Get Floating IP Ordering Information
  * Retrieves available options and pricing for ordering a new Floating IP.
  *
- * no response value expected for this operation
+ * returns Object
  **/
 exports.getNewFloatingIp = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = { };
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -224,11 +251,20 @@ exports.putFloating_ips = function() {
  * Updates settings on a Floating IP service, such as its label or configuration metadata.
  *
  * id String The Floating IP service ID. Use the ID from `GET /floating_ips`.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateFloatingIpInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**update_ssl_info**](SSLCertificatesApi.md#update_ssl_info) | **POST** /ssl/{id} | Update SSL Cert Order
 
 # **add_ssl**
-> add_ssl
+> ServiceOrderPostResponse add_ssl
 
 Place SSL Cert Order
 
@@ -47,7 +47,8 @@ api_instance = SwaggerClient::SSLCertificatesApi.new
 
 begin
   #Place SSL Cert Order
-  api_instance.add_ssl
+  result = api_instance.add_ssl
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->add_ssl: #{e}"
 end
@@ -58,7 +59,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -72,7 +73,7 @@ nil (empty response body)
 
 
 # **get_new_ssl**
-> get_new_ssl
+> Object get_new_ssl
 
 SSL Cert Ordering Information
 
@@ -104,7 +105,8 @@ api_instance = SwaggerClient::SSLCertificatesApi.new
 
 begin
   #SSL Cert Ordering Information
-  api_instance.get_new_ssl
+  result = api_instance.get_new_ssl
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->get_new_ssl: #{e}"
 end
@@ -115,7 +117,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -129,7 +131,7 @@ nil (empty response body)
 
 
 # **get_ssl_info**
-> get_ssl_info(id)
+> Object get_ssl_info(id)
 
 Get SSL Cert Info
 
@@ -163,7 +165,8 @@ id = 56 # Integer | SSL certificate ID number.
 
 begin
   #Get SSL Cert Info
-  api_instance.get_ssl_info(id)
+  result = api_instance.get_ssl_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->get_ssl_info: #{e}"
 end
@@ -177,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -431,7 +434,7 @@ nil (empty response body)
 
 
 # **ssl_cancel**
-> InlineResponse20020 ssl_cancel(id)
+> InlineResponse20021 ssl_cancel(id)
 
 Cancel SSL Certificate Service
 
@@ -480,7 +483,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -494,7 +497,7 @@ Name | Type | Description  | Notes
 
 
 # **update_ssl_info**
-> update_ssl_info(id)
+> SuccessTextResponse update_ssl_info(id)
 
 Update SSL Cert Order
 
@@ -528,7 +531,8 @@ id = 'id_example' # String | SSL certificate ID number.
 
 begin
   #Update SSL Cert Order
-  api_instance.update_ssl_info(id)
+  result = api_instance.update_ssl_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->update_ssl_info: #{e}"
 end
@@ -542,7 +546,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

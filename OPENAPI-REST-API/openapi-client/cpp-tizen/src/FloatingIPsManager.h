@@ -8,6 +8,7 @@
 #include "ChargeInvoiceRows.h"
 #include "Floating_ipsCancel_200_response.h"
 #include "GetAccountInfo_401_response.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include "Error.h"
 
@@ -36,8 +37,8 @@ public:
  */
 bool addFloatingIpSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Place Floating IP Order. *Asynchronous*
  *
@@ -48,8 +49,8 @@ bool addFloatingIpSync(char * accessToken,
  */
 bool addFloatingIpAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Cancel Floating IP. *Synchronous*
@@ -89,8 +90,8 @@ bool floatingIpsCancelAsync(char * accessToken,
  */
 bool getFloatingIpInfoSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief View Floating IP. *Asynchronous*
  *
@@ -102,8 +103,8 @@ bool getFloatingIpInfoSync(char * accessToken,
  */
 bool getFloatingIpInfoAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get Floating IP Invoices. *Synchronous*
@@ -194,8 +195,8 @@ bool getFloatingIpsWelcomeEmailAsync(char * accessToken,
  */
 bool getNewFloatingIpSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get Floating IP Ordering Information. *Asynchronous*
  *
@@ -206,8 +207,8 @@ bool getNewFloatingIpSync(char * accessToken,
  */
 bool getNewFloatingIpAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Change Floating IP Target. *Synchronous*
@@ -274,8 +275,8 @@ bool putFloatingIpsAsync(char * accessToken,
  */
 bool updateFloatingIpInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update Floating IP. *Asynchronous*
  *
@@ -287,8 +288,8 @@ bool updateFloatingIpInfoSync(char * accessToken,
  */
 bool updateFloatingIpInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 

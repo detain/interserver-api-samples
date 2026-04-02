@@ -92,7 +92,7 @@ public class TicketsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A successful response after creating a ticket </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A successful response after creating a ticket. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> A successful response after creating a ticket </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
@@ -164,7 +164,7 @@ public class TicketsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A successful response after creating a ticket </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A successful response after creating a ticket. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> A successful response after creating a ticket </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
@@ -184,7 +184,7 @@ public class TicketsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A successful response after creating a ticket </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A successful response after creating a ticket. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> A successful response after creating a ticket </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>
@@ -206,7 +206,7 @@ public class TicketsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> A successful response after creating a ticket </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A successful response after creating a ticket. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> A successful response after creating a ticket </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
      </table>

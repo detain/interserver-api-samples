@@ -19,15 +19,15 @@ module OpenAPIClient
     end
     # Place VPS Order
     # Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_vps(vps_order_post_request : VpsOrderPostRequest? = nil)
-      add_vps_with_http_info(vps_order_post_request)
-      nil
+      data, _status_code, _headers = add_vps_with_http_info(vps_order_post_request)
+      data
     end
 
     # Place VPS Order
     # Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_vps_with_http_info(vps_order_post_request : VpsOrderPostRequest? = nil)
       if @api_client.config.debugging
         Log.debug {"Calling API: VPSApi.add_vps ..."}
@@ -73,7 +73,7 @@ module OpenAPIClient
         Log.debug {"API called: VPSApi#add_vps\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return ServiceOrderPostResponse.from_json(data), status_code, headers
     end
 
     # Delete VPS Backup
@@ -2746,16 +2746,16 @@ module OpenAPIClient
     # Update VPS Order
     # Updates settings on a VPS order.
     # @param id [String] VPS ID number.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_vps_info(id : String)
-      update_vps_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_vps_info_with_http_info(id)
+      data
     end
 
     # Update VPS Order
     # Updates settings on a VPS order.
     # @param id [String] VPS ID number.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_vps_info_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: VPSApi.update_vps_info ..."}
@@ -2803,7 +2803,7 @@ module OpenAPIClient
         Log.debug {"API called: VPSApi#update_vps_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
 
     # Cancel VPS Service

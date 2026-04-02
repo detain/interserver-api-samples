@@ -24,7 +24,7 @@ service_t* instantiate_service(int include_optional) {
     service = service_create(
       31,
       "OpenVZ VPS Slice",
-      6.0,
+      6,
       "USD",
       1,
       true,
@@ -37,7 +37,7 @@ service_t* instantiate_service(int include_optional) {
     service = service_create(
       31,
       "OpenVZ VPS Slice",
-      6.0,
+      6,
       "USD",
       1,
       true,

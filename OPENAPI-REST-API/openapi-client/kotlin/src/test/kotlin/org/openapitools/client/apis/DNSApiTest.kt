@@ -31,6 +31,7 @@ import org.openapitools.client.models.DnsListItem
 import org.openapitools.client.models.DnsRecord
 import org.openapitools.client.models.DnsRecordType
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.SuccessTextResponse
 
 class DNSApiTest : ShouldSpec() {
     init {
@@ -42,7 +43,8 @@ class DNSApiTest : ShouldSpec() {
             // uncomment below to test addDnsDomain
             //val domain : kotlin.String = domain_example // kotlin.String | The domain name.
             //val ip : kotlin.String = ip_example // kotlin.String | IP Address to point the domain to.
-            //apiInstance.addDnsDomain(domain, ip)
+            //val result : SuccessTextResponse = apiInstance.addDnsDomain(domain, ip)
+            //result shouldBe ("TODO")
         }
 
         // to test addDnsRecord
@@ -61,7 +63,8 @@ class DNSApiTest : ShouldSpec() {
         should("test deleteDnsDomain") {
             // uncomment below to test deleteDnsDomain
             //val id : kotlin.String = id_example // kotlin.String | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
-            //apiInstance.deleteDnsDomain(id)
+            //val result : SuccessTextResponse = apiInstance.deleteDnsDomain(id)
+            //result shouldBe ("TODO")
         }
 
         // to test deleteDnsRecord
@@ -69,7 +72,8 @@ class DNSApiTest : ShouldSpec() {
             // uncomment below to test deleteDnsRecord
             //val domainId : kotlin.Int = 56 // kotlin.Int | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
             //val recordId : kotlin.Int = 56 // kotlin.Int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
-            //apiInstance.deleteDnsRecord(domainId, recordId)
+            //val result : SuccessTextResponse = apiInstance.deleteDnsRecord(domainId, recordId)
+            //result shouldBe ("TODO")
         }
 
         // to test getDnsDomain
@@ -100,7 +104,8 @@ class DNSApiTest : ShouldSpec() {
             //val disabled : kotlin.String = disabled_example // kotlin.String | 
             //val ordername : kotlin.String = ordername_example // kotlin.String | 
             //val auth : kotlin.String = auth_example // kotlin.String | 
-            //apiInstance.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
+            //val result : SuccessTextResponse = apiInstance.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
+            //result shouldBe ("TODO")
         }
 
     }

@@ -16,13 +16,9 @@ open class DNSAPI {
      - parameter domain: (form)       - parameter ip: (form)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addDnsDomain(domain: String, ip: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addDnsDomain(domain: String, ip: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         addDnsDomainWithRequestBuilder(domain: domain, ip: ip).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -40,11 +36,15 @@ open class DNSAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter domain: (form)       - parameter ip: (form)  
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func addDnsDomainWithRequestBuilder(domain: String, ip: String) -> RequestBuilder<Void> {
+    open class func addDnsDomainWithRequestBuilder(domain: String, ip: String) -> RequestBuilder<SuccessTextResponse> {
         let path = "/dns"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -52,7 +52,7 @@ open class DNSAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -62,13 +62,9 @@ open class DNSAPI {
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addDnsDomain(body: DnsNewDomain, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addDnsDomain(body: DnsNewDomain, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         addDnsDomainWithRequestBuilder(body: body).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -86,11 +82,15 @@ open class DNSAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter body: (body)  
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func addDnsDomainWithRequestBuilder(body: DnsNewDomain) -> RequestBuilder<Void> {
+    open class func addDnsDomainWithRequestBuilder(body: DnsNewDomain) -> RequestBuilder<SuccessTextResponse> {
         let path = "/dns"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -98,7 +98,7 @@ open class DNSAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -206,13 +206,9 @@ open class DNSAPI {
      - parameter _id: (path) The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteDnsDomain(_id: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func deleteDnsDomain(_id: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         deleteDnsDomainWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -230,11 +226,15 @@ open class DNSAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter _id: (path) The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func deleteDnsDomainWithRequestBuilder(_id: String) -> RequestBuilder<Void> {
+    open class func deleteDnsDomainWithRequestBuilder(_id: String) -> RequestBuilder<SuccessTextResponse> {
         var path = "/dns/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -245,7 +245,7 @@ open class DNSAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -255,13 +255,9 @@ open class DNSAPI {
      - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.      - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteDnsRecord(domainId: Int, recordId: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func deleteDnsRecord(domainId: Int, recordId: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         deleteDnsRecordWithRequestBuilder(domainId: domainId, recordId: recordId).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -279,11 +275,15 @@ open class DNSAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.      - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func deleteDnsRecordWithRequestBuilder(domainId: Int, recordId: Int) -> RequestBuilder<Void> {
+    open class func deleteDnsRecordWithRequestBuilder(domainId: Int, recordId: Int) -> RequestBuilder<SuccessTextResponse> {
         var path = "/dns/{domainId}/{recordId}"
         let domainIdPreEscape = "\(domainId)"
         let domainIdPostEscape = domainIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -297,7 +297,7 @@ open class DNSAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -425,13 +425,9 @@ open class DNSAPI {
      - parameter name: (form)       - parameter type: (form)       - parameter content: (form)       - parameter ttl: (form)       - parameter prio: (form)       - parameter disabled: (form)       - parameter ordername: (form)       - parameter auth: (form)       - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.      - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateDnsRecord(name: String, type: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String, domainId: Int, recordId: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateDnsRecord(name: String, type: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String, domainId: Int, recordId: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateDnsRecordWithRequestBuilder(name: name, type: type, content: content, ttl: ttl, prio: prio, disabled: disabled, ordername: ordername, auth: auth, domainId: domainId, recordId: recordId).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -449,11 +445,15 @@ open class DNSAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter name: (form)       - parameter type: (form)       - parameter content: (form)       - parameter ttl: (form)       - parameter prio: (form)       - parameter disabled: (form)       - parameter ordername: (form)       - parameter auth: (form)       - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.      - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateDnsRecordWithRequestBuilder(name: String, type: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String, domainId: Int, recordId: Int) -> RequestBuilder<Void> {
+    open class func updateDnsRecordWithRequestBuilder(name: String, type: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String, domainId: Int, recordId: Int) -> RequestBuilder<SuccessTextResponse> {
         var path = "/dns/{domainId}/{recordId}"
         let domainIdPreEscape = "\(domainId)"
         let domainIdPostEscape = domainIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -467,7 +467,7 @@ open class DNSAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -477,13 +477,9 @@ open class DNSAPI {
      - parameter body: (body) The request data to update a dns record.      - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.      - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateDnsRecord(body: DnsUpdateRecord, domainId: Int, recordId: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateDnsRecord(body: DnsUpdateRecord, domainId: Int, recordId: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateDnsRecordWithRequestBuilder(body: body, domainId: domainId, recordId: recordId).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -501,11 +497,15 @@ open class DNSAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter body: (body) The request data to update a dns record.      - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.      - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateDnsRecordWithRequestBuilder(body: DnsUpdateRecord, domainId: Int, recordId: Int) -> RequestBuilder<Void> {
+    open class func updateDnsRecordWithRequestBuilder(body: DnsUpdateRecord, domainId: Int, recordId: Int) -> RequestBuilder<SuccessTextResponse> {
         var path = "/dns/{domainId}/{recordId}"
         let domainIdPreEscape = "\(domainId)"
         let domainIdPostEscape = domainIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -519,7 +519,7 @@ open class DNSAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }

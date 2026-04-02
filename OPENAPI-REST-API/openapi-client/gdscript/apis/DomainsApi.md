@@ -69,9 +69,9 @@ var api = DomainsApi.new(config)
 # Invoke an endpoint
 api.add_domain(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_domain", response)
-		
+		assert(response.data is ServiceOrderPostResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -1352,9 +1352,9 @@ api.update_domain_info(
 	# The domain service ID. Use `domain_id` from `GET /domains`.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_domain_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

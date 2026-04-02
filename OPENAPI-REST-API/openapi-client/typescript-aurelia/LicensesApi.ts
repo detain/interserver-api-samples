@@ -19,6 +19,7 @@ import {
   LicensesOrder,
   IpObject,
   SuccessTextResponse,
+  ServiceOrderPostResponse,
   License,
   LicenseRow,
   LicensesCancel200Response,
@@ -118,7 +119,7 @@ export class LicensesApi extends Api {
    * Place License Order
    * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
    */
-  async addLicense(): Promise<any> {
+  async addLicense(): Promise<ServiceOrderPostResponse> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -442,7 +443,7 @@ export class LicensesApi extends Api {
    * Updates settings on a license service such as its assigned IP.
    * @param params.id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
    */
-  async updateLicenseInfo(params: IUpdateLicenseInfoParams): Promise<any> {
+  async updateLicenseInfo(params: IUpdateLicenseInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateLicenseInfo', params, 'id');
 

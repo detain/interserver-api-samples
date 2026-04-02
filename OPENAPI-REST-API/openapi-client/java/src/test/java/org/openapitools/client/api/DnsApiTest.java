@@ -18,6 +18,7 @@ import org.openapitools.client.model.DnsListItem;
 import org.openapitools.client.model.DnsRecord;
 import org.openapitools.client.model.DnsRecordType;
 import org.openapitools.client.model.GetAccountInfo401Response;
+import org.openapitools.client.model.SuccessTextResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -45,7 +46,7 @@ public class DnsApiTest {
     public void addDnsDomainTest() throws ApiException {
         String domain = null;
         String ip = null;
-        api.addDnsDomain(domain, ip);
+        SuccessTextResponse response = api.addDnsDomain(domain, ip);
         // TODO: test validations
     }
 
@@ -78,7 +79,7 @@ public class DnsApiTest {
     @Test
     public void deleteDnsDomainTest() throws ApiException {
         String id = null;
-        api.deleteDnsDomain(id);
+        SuccessTextResponse response = api.deleteDnsDomain(id);
         // TODO: test validations
     }
 
@@ -93,7 +94,7 @@ public class DnsApiTest {
     public void deleteDnsRecordTest() throws ApiException {
         Integer domainId = null;
         Integer recordId = null;
-        api.deleteDnsRecord(domainId, recordId);
+        SuccessTextResponse response = api.deleteDnsRecord(domainId, recordId);
         // TODO: test validations
     }
 
@@ -143,7 +144,7 @@ public class DnsApiTest {
         String disabled = null;
         String ordername = null;
         String auth = null;
-        api.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
+        SuccessTextResponse response = api.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth);
         // TODO: test validations
     }
 

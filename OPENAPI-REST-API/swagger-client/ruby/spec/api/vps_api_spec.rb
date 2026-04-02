@@ -36,7 +36,7 @@ describe 'VPSApi' do
   # Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
   # @option opts [VpsOrderPostRequest] :body 
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe 'add_vps test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -58,7 +58,7 @@ describe 'VPSApi' do
   # @option opts [String] :coupon 
   # @option opts [String] :rootpass 
   # @option opts [String] :comment 
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe 'add_vps test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -716,7 +716,7 @@ describe 'VPSApi' do
   # Updates settings on a VPS order.
   # @param id VPS ID number.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_vps_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -728,7 +728,7 @@ describe 'VPSApi' do
   # Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
   # @param id VPS ID number
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20021]
+  # @return [InlineResponse20022]
   describe 'v_ps_cancel test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

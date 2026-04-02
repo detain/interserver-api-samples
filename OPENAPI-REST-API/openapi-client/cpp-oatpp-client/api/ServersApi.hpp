@@ -24,6 +24,7 @@
 #include "oatpp/web/protocol/http/outgoing/MultipartBody.hpp"
 #include "oatpp/core/macro/codegen.hpp"
 
+#include "AddServer_200_response.hpp"
 #include "BuyItNowList.hpp"
 #include "BuyItNowServerOrder_200_response.hpp"
 #include "ChargeInvoiceRows.hpp"

@@ -20,8 +20,9 @@ namespace IO.Swagger.Model {
     public int? DestinationPort { get; set; }
 
     /// <summary>
-    /// Gets or Sets SourceIp
+    /// Source IP address to match. Use '0.0.0.0' to match any source.
     /// </summary>
+    /// <value>Source IP address to match. Use '0.0.0.0' to match any source.</value>
     [DataMember(Name="source_ip", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "source_ip")]
     public string SourceIp { get; set; }

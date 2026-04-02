@@ -19,8 +19,10 @@ import typetraits
 import uri
 
 import ../models/model_charge_invoice_rows
+import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_get_account_info401response
+import ../models/model_object
 import ../models/model_ssl_cancel200response
 
 const basepath = "https://my.interserver.net/apiv2"
@@ -38,22 +40,25 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addSsl*(httpClient: HttpClient): Response =
+proc addSsl*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
   ## Place SSL Cert Order
-  httpClient.post(basepath & "/ssl/order")
+
+  let response = httpClient.post(basepath & "/ssl/order")
+  constructResult[ServiceOrderPostResponse](response)
 
 
-
-proc getNewSsl*(httpClient: HttpClient): Response =
+proc getNewSsl*(httpClient: HttpClient): (Option[JsonNode], Response) =
   ## SSL Cert Ordering Information
-  httpClient.get(basepath & "/ssl/order")
+
+  let response = httpClient.get(basepath & "/ssl/order")
+  constructResult[JsonNode](response)
 
 
-
-proc getSslInfo*(httpClient: HttpClient, id: int): Response =
+proc getSslInfo*(httpClient: HttpClient, id: int): (Option[JsonNode], Response) =
   ## Get SSL Cert Info
-  httpClient.get(basepath & fmt"/ssl/{id}")
 
+  let response = httpClient.get(basepath & fmt"/ssl/{id}")
+  constructResult[JsonNode](response)
 
 
 proc getSslInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
@@ -89,8 +94,9 @@ proc sslCancel*(httpClient: HttpClient, id: int): (Option[sslCancel_200_response
   constructResult[sslCancel_200_response](response)
 
 
-proc updateSslInfo*(httpClient: HttpClient, id: string): Response =
+proc updateSslInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Update SSL Cert Order
-  httpClient.post(basepath & fmt"/ssl/{id}")
 
+  let response = httpClient.post(basepath & fmt"/ssl/{id}")
+  constructResult[SuccessTextResponse](response)
 

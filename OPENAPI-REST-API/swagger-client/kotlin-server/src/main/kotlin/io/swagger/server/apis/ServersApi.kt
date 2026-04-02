@@ -37,7 +37,8 @@ import myadmin-client-kotlin-server.infrastructure.ApiPrincipal
 import io.swagger.server.models.BuyItNowList
 import io.swagger.server.models.ChargeInvoiceRows
 import io.swagger.server.models.InlineResponse20019
-import io.swagger.server.models.InlineResponse20026
+import io.swagger.server.models.InlineResponse20020
+import io.swagger.server.models.InlineResponse20027
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.OrderBuyNowServerBody
 import io.swagger.server.models.ReverseDnsEntries
@@ -61,8 +62,18 @@ fun Route.ServersApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "text" : "Order Completed",
+  "invoice" : 0,
+  "order" : 6
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     get<Paths.buyItNowServerOrder> {  _: Paths.buyItNowServerOrder ->
         val principal = call.authentication.principal<ApiPrincipal>()
@@ -765,7 +776,16 @@ fun Route.ServersApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
 }

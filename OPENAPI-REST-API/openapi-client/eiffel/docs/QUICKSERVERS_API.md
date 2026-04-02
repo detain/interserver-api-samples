@@ -51,7 +51,7 @@ Feature | HTTP request | Description
 
 
 # **add_qs**
-> add_qs 
+> add_qs : detachable SERVICE_ORDER_POST_RESPONSE
 
 
 Place QuickServer Order
@@ -64,7 +64,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**SERVICE_ORDER_POST_RESPONSE**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1337,7 +1337,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_qs_info**
-> update_qs_info (id: STRING_32 )
+> update_qs_info (id: STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Update QuickServer Order
@@ -1353,7 +1353,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 

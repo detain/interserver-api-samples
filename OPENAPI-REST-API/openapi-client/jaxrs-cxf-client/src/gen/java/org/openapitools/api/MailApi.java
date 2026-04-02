@@ -20,6 +20,7 @@ import org.openapitools.model.MailSchema;
 import org.openapitools.model.MailStatsType;
 import org.openapitools.model.SendMail;
 import org.openapitools.model.SendMailAdv;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.ViewMailLogStartDateParameter;
 
@@ -55,9 +56,9 @@ public interface MailApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Place Mail Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void addMail();
+        @ApiResponse(code = 200, message = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", response = ServiceOrderPostResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public ServiceOrderPostResponse addMail();
 
     /**
      * Create Deny Rule
@@ -435,9 +436,9 @@ public interface MailApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update Mail Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateMailInfo(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateMailInfo(@PathParam("id") String id);
 
     /**
      * View Mail Log

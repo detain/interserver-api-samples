@@ -12,7 +12,7 @@
 
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  * @param text 
  * @param publicIp 
  * @param allowedIp 

@@ -27,6 +27,7 @@
 #include "OAIPostWebsiteMigration_request.h"
 #include "OAIPostWebsiteMigration_request_1.h"
 #include "OAIReverseDnsEntries.h"
+#include "OAIServiceOrderPostResponse.h"
 #include "OAISuccessTextResponse.h"
 #include "OAITextResponse.h"
 #include "OAIWebhostingCancel_200_response.h"
@@ -198,7 +199,7 @@ private:
 
 Q_SIGNALS:
 
-    void addWebsiteSignal();
+    void addWebsiteSignal(OAIServiceOrderPostResponse summary);
     void getNewWebsiteSignal(OAIWebsitesOrder summary);
     void getWebsiteBuyIpSignal(OAIGetWebsiteBuyIp_200_response summary);
     void getWebsiteInfoSignal(OAIWebsite summary);
@@ -212,11 +213,11 @@ Q_SIGNALS:
     void postWebsiteMigrationSignal(OAIPostWebsiteMigration_200_response summary);
     void postWebsitesReverseDnsSignal(OAITextResponse summary);
     void putWebsitesSignal();
-    void updateWebsiteInfoSignal();
+    void updateWebsiteInfoSignal(OAISuccessTextResponse summary);
     void webhostingCancelSignal(OAIWebhostingCancel_200_response summary);
 
 
-    void addWebsiteSignalFull(OAIHttpRequestWorker *worker);
+    void addWebsiteSignalFull(OAIHttpRequestWorker *worker, OAIServiceOrderPostResponse summary);
     void getNewWebsiteSignalFull(OAIHttpRequestWorker *worker, OAIWebsitesOrder summary);
     void getWebsiteBuyIpSignalFull(OAIHttpRequestWorker *worker, OAIGetWebsiteBuyIp_200_response summary);
     void getWebsiteInfoSignalFull(OAIHttpRequestWorker *worker, OAIWebsite summary);
@@ -230,10 +231,10 @@ Q_SIGNALS:
     void postWebsiteMigrationSignalFull(OAIHttpRequestWorker *worker, OAIPostWebsiteMigration_200_response summary);
     void postWebsitesReverseDnsSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void putWebsitesSignalFull(OAIHttpRequestWorker *worker);
-    void updateWebsiteInfoSignalFull(OAIHttpRequestWorker *worker);
+    void updateWebsiteInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void webhostingCancelSignalFull(OAIHttpRequestWorker *worker, OAIWebhostingCancel_200_response summary);
 
-    void addWebsiteSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void addWebsiteSignalError(OAIServiceOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewWebsiteSignalError(OAIWebsitesOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getWebsiteBuyIpSignalError(OAIGetWebsiteBuyIp_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getWebsiteInfoSignalError(OAIWebsite summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -247,7 +248,7 @@ Q_SIGNALS:
     void postWebsiteMigrationSignalError(OAIPostWebsiteMigration_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postWebsitesReverseDnsSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void putWebsitesSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateWebsiteInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateWebsiteInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void webhostingCancelSignalError(OAIWebhostingCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addWebsiteSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

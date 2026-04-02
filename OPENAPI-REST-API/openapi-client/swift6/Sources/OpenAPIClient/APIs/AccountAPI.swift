@@ -578,9 +578,9 @@ open class AccountAPI {
      - parameter disableEmailNotifications: (form) Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them. (optional)
      - parameter gstin: (form) Your GST identification number (if applicable). (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: SuccessTextResponse
      */
-    open class func updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String? = nil, address2: String? = nil, locale: String? = nil, emailInvoices: String? = nil, emailAbuse: String? = nil, disableReset: Bool? = nil, disableReinstall: Bool? = nil, disableServerNotifications: Bool? = nil, disableEmailNotifications: Bool? = nil, gstin: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String? = nil, address2: String? = nil, locale: String? = nil, emailInvoices: String? = nil, emailAbuse: String? = nil, disableReset: Bool? = nil, disableReinstall: Bool? = nil, disableServerNotifications: Bool? = nil, disableEmailNotifications: Bool? = nil, gstin: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SuccessTextResponse {
         return try await updateAccountInfoWithRequestBuilder(name: name, address: address, city: city, state: state, zip: zip, country: country, phone: phone, company: company, address2: address2, locale: locale, emailInvoices: emailInvoices, emailAbuse: emailAbuse, disableReset: disableReset, disableReinstall: disableReinstall, disableServerNotifications: disableServerNotifications, disableEmailNotifications: disableEmailNotifications, gstin: gstin, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -615,9 +615,9 @@ open class AccountAPI {
      - parameter disableEmailNotifications: (form) Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them. (optional)
      - parameter gstin: (form) Your GST identification number (if applicable). (optional)
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateAccountInfoWithRequestBuilder(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String? = nil, address2: String? = nil, locale: String? = nil, emailInvoices: String? = nil, emailAbuse: String? = nil, disableReset: Bool? = nil, disableReinstall: Bool? = nil, disableServerNotifications: Bool? = nil, disableEmailNotifications: Bool? = nil, gstin: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func updateAccountInfoWithRequestBuilder(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: String? = nil, address2: String? = nil, locale: String? = nil, emailInvoices: String? = nil, emailAbuse: String? = nil, disableReset: Bool? = nil, disableReinstall: Bool? = nil, disableServerNotifications: Bool? = nil, disableEmailNotifications: Bool? = nil, gstin: String? = nil, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<SuccessTextResponse> {
         let localVariablePath = "/account"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableFormParams: [String: (any Sendable)?] = [
@@ -651,7 +651,7 @@ open class AccountAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SuccessTextResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
@@ -662,9 +662,9 @@ open class AccountAPI {
      - parameter start: (form) The begining (or first) IP address in the range. 
      - parameter end: (form) The ending (or last) IP address in the range. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: Void
+     - returns: SuccessTextResponse
      */
-    open class func updateAccountIpLimits(start: String, end: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func updateAccountIpLimits(start: String, end: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) async throws(ErrorResponse) -> SuccessTextResponse {
         return try await updateAccountIpLimitsWithRequestBuilder(start: start, end: end, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -684,9 +684,9 @@ open class AccountAPI {
      - parameter start: (form) The begining (or first) IP address in the range. 
      - parameter end: (form) The ending (or last) IP address in the range. 
      - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateAccountIpLimitsWithRequestBuilder(start: String, end: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<Void> {
+    open class func updateAccountIpLimitsWithRequestBuilder(start: String, end: String, apiConfiguration: OpenAPIClientAPIConfiguration = OpenAPIClientAPIConfiguration.shared) -> RequestBuilder<SuccessTextResponse> {
         let localVariablePath = "/account/iplimits"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableFormParams: [String: (any Sendable)?] = [
@@ -705,7 +705,7 @@ open class AccountAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SuccessTextResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }

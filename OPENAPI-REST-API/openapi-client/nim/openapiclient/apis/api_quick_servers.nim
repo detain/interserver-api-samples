@@ -25,6 +25,7 @@ import ../models/model_quickserver_order
 import ../models/model_quickserver_row
 import ../models/model_restore_request
 import ../models/model_reverse_dns_entries
+import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_text_response
 import ../models/model_vps_backup_rows
@@ -49,10 +50,11 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addQs*(httpClient: HttpClient): Response =
+proc addQs*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
   ## Place QuickServer Order
-  httpClient.post(basepath & "/qs/order")
 
+  let response = httpClient.post(basepath & "/qs/order")
+  constructResult[ServiceOrderPostResponse](response)
 
 
 proc deleteQsBackup*(httpClient: HttpClient, id: int, file: string, all: string): (Option[SuccessTextResponse], Response) =
@@ -358,8 +360,9 @@ proc quickserversCancel*(httpClient: HttpClient, id: int): (Option[quickserversC
   constructResult[quickserversCancel_200_response](response)
 
 
-proc updateQsInfo*(httpClient: HttpClient, id: string): Response =
+proc updateQsInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Update QuickServer Order
-  httpClient.post(basepath & fmt"/qs/{id}")
 
+  let response = httpClient.post(basepath & fmt"/qs/{id}")
+  constructResult[SuccessTextResponse](response)
 

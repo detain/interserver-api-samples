@@ -28,6 +28,7 @@ import {
   DomainLookupResponse,
   DomainSearchResponse,
   DomainOrder,
+  ServiceOrderPostResponse,
   DomainNameserverPutRequest,
   DomainDnssecRequest,
   Domain,
@@ -259,7 +260,7 @@ export class DomainsApi extends Api {
    * Place Domain Order
    * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
    */
-  async addDomain(): Promise<any> {
+  async addDomain(): Promise<ServiceOrderPostResponse> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -1133,7 +1134,7 @@ export class DomainsApi extends Api {
    * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
    * @param params.id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;.
    */
-  async updateDomainInfo(params: IUpdateDomainInfoParams): Promise<any> {
+  async updateDomainInfo(params: IUpdateDomainInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateDomainInfo', params, 'id');
 

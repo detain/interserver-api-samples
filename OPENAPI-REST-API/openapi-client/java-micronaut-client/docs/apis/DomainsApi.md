@@ -66,7 +66,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="addDomain"></a>
 # **addDomain**
 ```java
-Mono<Void> DomainsApi.addDomain()
+Mono<ServiceOrderPostResponse> DomainsApi.addDomain()
 ```
 
 Place Domain Order
@@ -75,7 +75,8 @@ Places a new domain registration or transfer order. Use the results from &#x60;/
 
 
 
-
+### Return type
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -775,7 +776,7 @@ Updates the registrant/admin contact details for the domain. Submit the same fie
 <a id="updateDomainInfo"></a>
 # **updateDomainInfo**
 ```java
-Mono<Void> DomainsApi.updateDomainInfo(id)
+Mono<SuccessTextResponse> DomainsApi.updateDomainInfo(id)
 ```
 
 Update Domain Order
@@ -788,7 +789,8 @@ Updates the domain service record for the order. Use this for account-level chan
 | **id** | `String`| The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

@@ -1,6 +1,7 @@
 package org.openapitools.api;
 
 import org.openapitools.api.ApiUtils
+import org.openapitools.model.AddServer200Response
 import org.openapitools.model.BuyItNowList
 import org.openapitools.model.BuyItNowServerOrder200Response
 import org.openapitools.model.ChargeInvoiceRows
@@ -41,7 +42,7 @@ class ServersApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    AddServer200Response.class )
 
     }
 
@@ -500,7 +501,7 @@ class ServersApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 

@@ -21,7 +21,7 @@ void main() {
     //
     // Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
     //
-    //Future addFloatingIp() async
+    //Future<ServiceOrderPostResponse> addFloatingIp() async
     test('test addFloatingIp', () async {
       // TODO
     });
@@ -39,7 +39,7 @@ void main() {
     //
     // Returns detailed information about a specific Floating IP service including its current target IP assignment.
     //
-    //Future getFloatingIpInfo(int id) async
+    //Future<Object> getFloatingIpInfo(int id) async
     test('test getFloatingIpInfo', () async {
       // TODO
     });
@@ -75,7 +75,7 @@ void main() {
     //
     // Retrieves available options and pricing for ordering a new Floating IP.
     //
-    //Future getNewFloatingIp() async
+    //Future<Object> getNewFloatingIp() async
     test('test getNewFloatingIp', () async {
       // TODO
     });
@@ -102,7 +102,7 @@ void main() {
     //
     // Updates settings on a Floating IP service, such as its label or configuration metadata.
     //
-    //Future updateFloatingIpInfo(String id) async
+    //Future<SuccessTextResponse> updateFloatingIpInfo(String id) async
     test('test updateFloatingIpInfo', () async {
       // TODO
     });

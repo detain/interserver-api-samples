@@ -9,6 +9,7 @@ import org.openapitools.model.PostWebsiteMigration200Response;
 import org.openapitools.model.PostWebsiteMigrationRequest;
 import org.openapitools.model.PostWebsiteMigrationRequest1;
 import org.openapitools.model.ReverseDnsEntries;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import org.openapitools.model.WebhostingCancel200Response;
@@ -50,9 +51,9 @@ public interface WebhostingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Place Website Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void addWebsite();
+        @ApiResponse(code = 200, message = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.", response = ServiceOrderPostResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public ServiceOrderPostResponse addWebsite();
 
     /**
      * Website Ordering Information
@@ -263,9 +264,9 @@ public interface WebhostingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update Website Order", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateWebsiteInfo(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public SuccessTextResponse updateWebsiteInfo(@PathParam("id") String id);
 
     /**
      * Cancel Website

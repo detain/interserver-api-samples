@@ -56,9 +56,9 @@ var api = WebhostingApi.new(config)
 # Invoke an endpoint
 api.add_website(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_website", response)
-		
+		assert(response.data is ServiceOrderPostResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -745,9 +745,9 @@ api.update_website_info(
 	# The website service ID. Use `website_id` from `GET /websites`.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_website_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

@@ -30,8 +30,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AddServer ();
+        /// <returns>InlineResponse20019</returns>
+        InlineResponse20019 AddServer ();
 
         /// <summary>
         /// Place Server Order
@@ -40,8 +40,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddServerWithHttpInfo ();
+        /// <returns>ApiResponse of InlineResponse20019</returns>
+        ApiResponse<InlineResponse20019> AddServerWithHttpInfo ();
         /// <summary>
         /// Get Buy Now Server Options
         /// </summary>
@@ -49,8 +49,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse20026</returns>
-        InlineResponse20026 BuyItNowServerOrder ();
+        /// <returns>InlineResponse20027</returns>
+        InlineResponse20027 BuyItNowServerOrder ();
 
         /// <summary>
         /// Get Buy Now Server Options
@@ -59,8 +59,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse20026</returns>
-        ApiResponse<InlineResponse20026> BuyItNowServerOrderWithHttpInfo ();
+        /// <returns>ApiResponse of InlineResponse20027</returns>
+        ApiResponse<InlineResponse20027> BuyItNowServerOrderWithHttpInfo ();
         /// <summary>
         /// List Marketplace Servers
         /// </summary>
@@ -434,8 +434,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>InlineResponse20019</returns>
-        InlineResponse20019 ServersCancel (int? id);
+        /// <returns>InlineResponse20020</returns>
+        InlineResponse20020 ServersCancel (int? id);
 
         /// <summary>
         /// Cancel Server Service
@@ -445,8 +445,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>ApiResponse of InlineResponse20019</returns>
-        ApiResponse<InlineResponse20019> ServersCancelWithHttpInfo (int? id);
+        /// <returns>ApiResponse of InlineResponse20020</returns>
+        ApiResponse<InlineResponse20020> ServersCancelWithHttpInfo (int? id);
         /// <summary>
         /// Update Server Order
         /// </summary>
@@ -455,8 +455,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
-        /// <returns></returns>
-        void UpdateServerInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateServerInfo (string id);
 
         /// <summary>
         /// Update Server Order
@@ -466,8 +466,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateServerInfoWithHttpInfo (string id);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateServerInfoWithHttpInfo (string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -477,8 +477,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddServerAsync ();
+        /// <returns>Task of InlineResponse20019</returns>
+        System.Threading.Tasks.Task<InlineResponse20019> AddServerAsync ();
 
         /// <summary>
         /// Place Server Order
@@ -487,8 +487,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddServerAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (InlineResponse20019)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20019>> AddServerAsyncWithHttpInfo ();
         /// <summary>
         /// Get Buy Now Server Options
         /// </summary>
@@ -496,8 +496,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse20026</returns>
-        System.Threading.Tasks.Task<InlineResponse20026> BuyItNowServerOrderAsync ();
+        /// <returns>Task of InlineResponse20027</returns>
+        System.Threading.Tasks.Task<InlineResponse20027> BuyItNowServerOrderAsync ();
 
         /// <summary>
         /// Get Buy Now Server Options
@@ -506,8 +506,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse20026)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20026>> BuyItNowServerOrderAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (InlineResponse20027)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20027>> BuyItNowServerOrderAsyncWithHttpInfo ();
         /// <summary>
         /// List Marketplace Servers
         /// </summary>
@@ -881,8 +881,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>Task of InlineResponse20019</returns>
-        System.Threading.Tasks.Task<InlineResponse20019> ServersCancelAsync (int? id);
+        /// <returns>Task of InlineResponse20020</returns>
+        System.Threading.Tasks.Task<InlineResponse20020> ServersCancelAsync (int? id);
 
         /// <summary>
         /// Cancel Server Service
@@ -892,8 +892,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20019)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20019>> ServersCancelAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (InlineResponse20020)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20020>> ServersCancelAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Update Server Order
         /// </summary>
@@ -902,8 +902,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateServerInfoAsync (string id);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateServerInfoAsync (string id);
 
         /// <summary>
         /// Update Server Order
@@ -913,8 +913,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateServerInfoAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateServerInfoAsyncWithHttpInfo (string id);
         #endregion Asynchronous Operations
     }
 
@@ -1030,18 +1030,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AddServer ()
+        /// <returns>InlineResponse20019</returns>
+        public InlineResponse20019 AddServer ()
         {
-             AddServerWithHttpInfo();
+             ApiResponse<InlineResponse20019> localVarResponse = AddServerWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddServerWithHttpInfo ()
+        /// <returns>ApiResponse of InlineResponse20019</returns>
+        public ApiResponse< InlineResponse20019 > AddServerWithHttpInfo ()
         {
 
             var localVarPath = "/servers/order";
@@ -1094,19 +1095,20 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20019>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (InlineResponse20019) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
         }
 
         /// <summary>
         /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddServerAsync ()
+        /// <returns>Task of InlineResponse20019</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20019> AddServerAsync ()
         {
-             await AddServerAsyncWithHttpInfo();
+             ApiResponse<InlineResponse20019> localVarResponse = await AddServerAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -1114,8 +1116,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddServerAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (InlineResponse20019)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20019>> AddServerAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/servers/order";
@@ -1168,19 +1170,19 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20019>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (InlineResponse20019) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
         }
 
         /// <summary>
         /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse20026</returns>
-        public InlineResponse20026 BuyItNowServerOrder ()
+        /// <returns>InlineResponse20027</returns>
+        public InlineResponse20027 BuyItNowServerOrder ()
         {
-             ApiResponse<InlineResponse20026> localVarResponse = BuyItNowServerOrderWithHttpInfo();
+             ApiResponse<InlineResponse20027> localVarResponse = BuyItNowServerOrderWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -1188,8 +1190,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse20026</returns>
-        public ApiResponse< InlineResponse20026 > BuyItNowServerOrderWithHttpInfo ()
+        /// <returns>ApiResponse of InlineResponse20027</returns>
+        public ApiResponse< InlineResponse20027 > BuyItNowServerOrderWithHttpInfo ()
         {
 
             var localVarPath = "/servers/order/buy_now_server";
@@ -1242,19 +1244,19 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20026>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20027>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20026) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20026)));
+                (InlineResponse20027) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20027)));
         }
 
         /// <summary>
         /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse20026</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20026> BuyItNowServerOrderAsync ()
+        /// <returns>Task of InlineResponse20027</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20027> BuyItNowServerOrderAsync ()
         {
-             ApiResponse<InlineResponse20026> localVarResponse = await BuyItNowServerOrderAsyncWithHttpInfo();
+             ApiResponse<InlineResponse20027> localVarResponse = await BuyItNowServerOrderAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -1263,8 +1265,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse20026)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20026>> BuyItNowServerOrderAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (InlineResponse20027)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20027>> BuyItNowServerOrderAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/servers/order/buy_now_server";
@@ -1317,9 +1319,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20026>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20027>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20026) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20026)));
+                (InlineResponse20027) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20027)));
         }
 
         /// <summary>
@@ -4186,10 +4188,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>InlineResponse20019</returns>
-        public InlineResponse20019 ServersCancel (int? id)
+        /// <returns>InlineResponse20020</returns>
+        public InlineResponse20020 ServersCancel (int? id)
         {
-             ApiResponse<InlineResponse20019> localVarResponse = ServersCancelWithHttpInfo(id);
+             ApiResponse<InlineResponse20020> localVarResponse = ServersCancelWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -4198,8 +4200,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>ApiResponse of InlineResponse20019</returns>
-        public ApiResponse< InlineResponse20019 > ServersCancelWithHttpInfo (int? id)
+        /// <returns>ApiResponse of InlineResponse20020</returns>
+        public ApiResponse< InlineResponse20020 > ServersCancelWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4256,9 +4258,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20019>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20020>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20019) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
+                (InlineResponse20020) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20020)));
         }
 
         /// <summary>
@@ -4266,10 +4268,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>Task of InlineResponse20019</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20019> ServersCancelAsync (int? id)
+        /// <returns>Task of InlineResponse20020</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20020> ServersCancelAsync (int? id)
         {
-             ApiResponse<InlineResponse20019> localVarResponse = await ServersCancelAsyncWithHttpInfo(id);
+             ApiResponse<InlineResponse20020> localVarResponse = await ServersCancelAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -4279,8 +4281,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20019)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20019>> ServersCancelAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (InlineResponse20020)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20020>> ServersCancelAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4337,9 +4339,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20019>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20020>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20019) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
+                (InlineResponse20020) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20020)));
         }
 
         /// <summary>
@@ -4347,10 +4349,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
-        /// <returns></returns>
-        public void UpdateServerInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateServerInfo (string id)
         {
-             UpdateServerInfoWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateServerInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -4358,8 +4361,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateServerInfoWithHttpInfo (string id)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateServerInfoWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4416,9 +4419,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -4426,10 +4429,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateServerInfoAsync (string id)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateServerInfoAsync (string id)
         {
-             await UpdateServerInfoAsyncWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateServerInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -4438,8 +4442,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateServerInfoAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateServerInfoAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4496,9 +4500,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
     }

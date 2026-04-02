@@ -34,6 +34,7 @@ import org.openapitools.client.models.GetAccountInfo401Response
 import org.openapitools.client.models.QueueResponse
 import org.openapitools.client.models.RestoreRequest
 import org.openapitools.client.models.ReverseDnsEntries
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 import org.openapitools.client.models.VPSCancel200Response
@@ -76,19 +77,20 @@ open class VPSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Place VPS Order
      * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
      * @param vpsOrderPostRequest  (optional)
-     * @return void
+     * @return ServiceOrderPostResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun addVps(vpsOrderPostRequest: VpsOrderPostRequest? = null) : Unit {
+    fun addVps(vpsOrderPostRequest: VpsOrderPostRequest? = null) : ServiceOrderPostResponse {
         val localVarResponse = addVpsWithHttpInfo(vpsOrderPostRequest = vpsOrderPostRequest)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -107,15 +109,16 @@ open class VPSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Place VPS Order
      * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
      * @param vpsOrderPostRequest  (optional)
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<ServiceOrderPostResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun addVpsWithHttpInfo(vpsOrderPostRequest: VpsOrderPostRequest?) : ApiResponse<Unit?> {
+    fun addVpsWithHttpInfo(vpsOrderPostRequest: VpsOrderPostRequest?) : ApiResponse<ServiceOrderPostResponse?> {
         val localVariableConfig = addVpsRequestConfig(vpsOrderPostRequest = vpsOrderPostRequest)
 
-        return request<VpsOrderPostRequest, Unit>(
+        return request<VpsOrderPostRequest, ServiceOrderPostResponse>(
             localVariableConfig
         )
     }
@@ -3241,19 +3244,20 @@ open class VPSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Update VPS Order
      * Updates settings on a VPS order.
      * @param id VPS ID number.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateVpsInfo(id: kotlin.String) : Unit {
+    fun updateVpsInfo(id: kotlin.String) : SuccessTextResponse {
         val localVarResponse = updateVpsInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -3272,15 +3276,16 @@ open class VPSApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
      * Update VPS Order
      * Updates settings on a VPS order.
      * @param id VPS ID number.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateVpsInfoWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun updateVpsInfoWithHttpInfo(id: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateVpsInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }

@@ -11,7 +11,7 @@ void main() {
     //
     // Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
     //
-    //Future addDomain() async
+    //Future<ServiceOrderPostResponse> addDomain() async
     test('test addDomain', () async {
       // TODO
     });
@@ -245,7 +245,7 @@ void main() {
     //
     // Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
     //
-    //Future updateDomainInfo(String id) async
+    //Future<SuccessTextResponse> updateDomainInfo(String id) async
     test('test updateDomainInfo', () async {
       // TODO
     });

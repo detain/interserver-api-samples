@@ -616,7 +616,7 @@ This endpoint does not need any parameter.
 
 <a name="updateBackupInfo"></a>
 # **updateBackupInfo**
-> updateBackupInfo(id)
+> SuccessTextResponse updateBackupInfo(id)
 
 Update Backup Information
 
@@ -654,7 +654,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 BackupsApi apiInstance = new BackupsApi();
 Integer id = 56; // Integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 try {
-    apiInstance.updateBackupInfo(id);
+    SuccessTextResponse result = apiInstance.updateBackupInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling BackupsApi#updateBackupInfo");
     e.printStackTrace();
@@ -669,7 +670,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

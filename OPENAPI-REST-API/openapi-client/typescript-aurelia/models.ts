@@ -354,6 +354,22 @@ export interface AccountSshKey {
 }
 
 
+export interface AddServer200Response {
+  /**
+   * Status message.
+   */
+  text?: string;
+  /**
+   * Invoice ID for payment.
+   */
+  invoice?: number;
+  /**
+   * Server order ID.
+   */
+  order?: number;
+}
+
+
 /**
  * An affiliate banner image details.
  */
@@ -1246,6 +1262,9 @@ export interface CreateFirewallRule {
    */
   xdp_action: CreateFirewallRuleXdpActionEnum;
   destination_port?: number;
+  /**
+   * Source IP address to match. Use \'0.0.0.0\' to match any source.
+   */
   source_ip?: string;
   source_port?: number;
 }
@@ -5514,7 +5533,7 @@ export interface ServerExtraInfoTables {
 
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 export interface ServerIpmiLiveInfo {
   text?: string;
@@ -6536,6 +6555,45 @@ export interface ServiceCategory {
   category_name: string;
   category_tag: string;
   category_module: string;
+}
+
+
+/**
+ * Generic response returned after placing a service order. Contains invoice IDs for payment and the new service ID.
+ */
+export interface ServiceOrderPostResponse {
+  /**
+   * Whether the order was accepted and can proceed to payment.
+   */
+  _continue?: boolean;
+  /**
+   * List of validation errors (empty on success).
+   */
+  errors?: Array<string>;
+  /**
+   * Total cost of the order.
+   */
+  total_cost?: string;
+  /**
+   * Primary invoice ID for payment.
+   */
+  iid?: string;
+  /**
+   * All invoice identifiers associated with the order.
+   */
+  iids?: Array<string>;
+  /**
+   * Numeric invoice IDs for use with billing endpoints.
+   */
+  real_iids?: Array<string>;
+  /**
+   * The new service ID created by the order.
+   */
+  serviceId?: number;
+  /**
+   * Human-readable description of the invoice.
+   */
+  invoice_description?: string;
 }
 
 

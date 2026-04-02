@@ -52,7 +52,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addVps"></a>
 # **addVps**
-> addVps(vpsOrderPostRequest)
+> ServiceOrderPostResponse addVps(vpsOrderPostRequest)
 
 Place VPS Order
 
@@ -94,7 +94,8 @@ public class Example {
     VpsApi apiInstance = new VpsApi(defaultClient);
     VpsOrderPostRequest vpsOrderPostRequest = new VpsOrderPostRequest(); // VpsOrderPostRequest | 
     try {
-      apiInstance.addVps(vpsOrderPostRequest);
+      ServiceOrderPostResponse result = apiInstance.addVps(vpsOrderPostRequest);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VpsApi#addVps");
       System.err.println("Status code: " + e.getCode());
@@ -114,7 +115,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -128,8 +129,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="deleteVpsBackup"></a>
 # **deleteVpsBackup**
@@ -3509,7 +3510,7 @@ public class Example {
 
 <a id="updateVpsInfo"></a>
 # **updateVpsInfo**
-> updateVpsInfo(id)
+> SuccessTextResponse updateVpsInfo(id)
 
 Update VPS Order
 
@@ -3551,7 +3552,8 @@ public class Example {
     VpsApi apiInstance = new VpsApi(defaultClient);
     String id = "id_example"; // String | VPS ID number.
     try {
-      apiInstance.updateVpsInfo(id);
+      SuccessTextResponse result = apiInstance.updateVpsInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VpsApi#updateVpsInfo");
       System.err.println("Status code: " + e.getCode());
@@ -3571,7 +3573,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -3585,8 +3587,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="vPSCancel"></a>
 # **vPSCancel**

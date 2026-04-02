@@ -40,16 +40,10 @@
         expect(instance).to.be.a(InterServerManagementApi.InlineResponse20024);
       });
 
-      it('should have the property message (base name: "message")', function() {
-        // TODO: update the code to test the property message
-        expect(instance).to.have.property('message');
-        // expect(instance.message).to.be(expectedValueLiteral);
-      });
-
-      it('should have the property success (base name: "success")', function() {
-        // TODO: update the code to test the property success
-        expect(instance).to.have.property('success');
-        // expect(instance.success).to.be(expectedValueLiteral);
+      it('should have the property ips (base name: "ips")', function() {
+        // TODO: update the code to test the property ips
+        expect(instance).to.have.property('ips');
+        // expect(instance.ips).to.be(expectedValueLiteral);
       });
 
     });

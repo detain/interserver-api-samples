@@ -8,7 +8,7 @@
 import Foundation
 
 
-/** Information about the IPMI connectioj. */
+/** Information about the IPMI connection. */
 open class ServerIpmiLiveInfo: JSONEncodable {
     public var text: String?
     public var publicIp: String?

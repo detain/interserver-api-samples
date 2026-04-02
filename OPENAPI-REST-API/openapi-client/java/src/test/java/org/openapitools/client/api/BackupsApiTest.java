@@ -162,7 +162,7 @@ public class BackupsApiTest {
     @Test
     public void updateBackupInfoTest() throws ApiException {
         Integer id = null;
-        api.updateBackupInfo(id);
+        SuccessTextResponse response = api.updateBackupInfo(id);
         // TODO: test validations
     }
 

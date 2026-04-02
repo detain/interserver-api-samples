@@ -507,7 +507,7 @@ export default class AccountApi {
      * Callback function to receive the result of the updateAccountInfo operation.
      * @callback module:api/AccountApi~updateAccountInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -533,6 +533,7 @@ export default class AccountApi {
      * @param {Boolean} [disable_email_notifications] Set to `true` to disable email notifications, or `false` to enable them.
      * @param {String} [gstin] Your GST identification number (if applicable).
      * @param {module:api/AccountApi~updateAccountInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateAccountInfo(name, address, city, state, zip, country, phone, opts, callback) {
       opts = opts || {};
@@ -595,7 +596,7 @@ export default class AccountApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = ['multipart/form-data', 'application/json'];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/account', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -607,7 +608,7 @@ export default class AccountApi {
      * Callback function to receive the result of the updateAccountIpLimits operation.
      * @callback module:api/AccountApi~updateAccountIpLimitsCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -617,6 +618,7 @@ export default class AccountApi {
      * @param {String} start The begining (or first) IP address in the range.
      * @param {String} end The ending (or last) IP address in the range.
      * @param {module:api/AccountApi~updateAccountIpLimitsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateAccountIpLimits(start, end, callback) {
       let postBody = null;
@@ -643,7 +645,7 @@ export default class AccountApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = ['multipart/form-data', 'application/json'];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/account/iplimits', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

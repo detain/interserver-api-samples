@@ -5,7 +5,7 @@ using namespace Tiny;
 
 
         Response<
-            String
+            ServiceOrderPostResponse
         >
         FloatingIPsApi::
         addFloatingIp(
@@ -35,7 +35,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            ServiceOrderPostResponse obj(output_string);
+
+
+            Response<ServiceOrderPostResponse> response(obj, httpCode);
             return response;
         }
 
@@ -91,7 +96,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            Object
         >
         FloatingIPsApi::
         getFloatingIpInfo(
@@ -132,7 +137,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            Object obj(output_string);
+
+
+            Response<Object> response(obj, httpCode);
             return response;
         }
 
@@ -274,7 +284,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            Object
         >
         FloatingIPsApi::
         getNewFloatingIp(
@@ -304,7 +314,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            Object obj(output_string);
+
+
+            Response<Object> response(obj, httpCode);
             return response;
         }
 
@@ -400,7 +415,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            SuccessTextResponse
         >
         FloatingIPsApi::
         updateFloatingIpInfo(
@@ -441,7 +456,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 

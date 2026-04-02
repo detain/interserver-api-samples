@@ -21,7 +21,7 @@ import ApiClient from '../ApiClient';
 class ServerIpmiLiveInfo {
     /**
      * Constructs a new <code>ServerIpmiLiveInfo</code>.
-     * Information about the IPMI connectioj.
+     * Information about the IPMI connection.
      * @alias module:model/ServerIpmiLiveInfo
      */
     constructor() { 

@@ -189,11 +189,12 @@ from myadmin-client-python-flask.models.inline_response20023 import InlineRespon
 from myadmin-client-python-flask.models.inline_response20024 import InlineResponse20024
 from myadmin-client-python-flask.models.inline_response20025 import InlineResponse20025
 from myadmin-client-python-flask.models.inline_response20026 import InlineResponse20026
-from myadmin-client-python-flask.models.inline_response20026_bandwidth import InlineResponse20026Bandwidth
-from myadmin-client-python-flask.models.inline_response20026_cp import InlineResponse20026Cp
-from myadmin-client-python-flask.models.inline_response20026_ips import InlineResponse20026Ips
-from myadmin-client-python-flask.models.inline_response20026_os import InlineResponse20026Os
-from myadmin-client-python-flask.models.inline_response20026_raid import InlineResponse20026Raid
+from myadmin-client-python-flask.models.inline_response20027 import InlineResponse20027
+from myadmin-client-python-flask.models.inline_response20027_bandwidth import InlineResponse20027Bandwidth
+from myadmin-client-python-flask.models.inline_response20027_cp import InlineResponse20027Cp
+from myadmin-client-python-flask.models.inline_response20027_ips import InlineResponse20027Ips
+from myadmin-client-python-flask.models.inline_response20027_os import InlineResponse20027Os
+from myadmin-client-python-flask.models.inline_response20027_raid import InlineResponse20027Raid
 from myadmin-client-python-flask.models.inline_response2003 import InlineResponse2003
 from myadmin-client-python-flask.models.inline_response2004 import InlineResponse2004
 from myadmin-client-python-flask.models.inline_response2005 import InlineResponse2005
@@ -377,6 +378,7 @@ from myadmin-client-python-flask.models.servers_buy_now_response_order_details i
 from myadmin-client-python-flask.models.service import Service
 from myadmin-client-python-flask.models.service_categories import ServiceCategories
 from myadmin-client-python-flask.models.service_category import ServiceCategory
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse
 from myadmin-client-python-flask.models.service_type import ServiceType
 from myadmin-client-python-flask.models.service_types import ServiceTypes
 from myadmin-client-python-flask.models.services import Services

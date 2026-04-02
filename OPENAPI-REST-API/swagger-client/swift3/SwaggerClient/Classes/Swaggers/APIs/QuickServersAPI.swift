@@ -14,9 +14,9 @@ open class QuickServersAPI: APIBase {
      Place QuickServer Order
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addQs(completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func addQs(completion: @escaping ((_ data: ServiceOrderPostResponse?, _ error: ErrorResponse?) -> Void)) {
         addQsWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -32,9 +32,19 @@ open class QuickServersAPI: APIBase {
        - name: sessionIdCookieAuth     - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
-     - returns: RequestBuilder<Void> 
+     - examples: [{contentType=application/json, example={
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}}]
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addQsWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func addQsWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/qs/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -42,7 +52,7 @@ open class QuickServersAPI: APIBase {
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -2400,9 +2410,9 @@ open class QuickServersAPI: APIBase {
      - parameter id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateQsInfo(id: String, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func updateQsInfo(id: String, completion: @escaping ((_ data: SuccessTextResponse?, _ error: ErrorResponse?) -> Void)) {
         updateQsInfoWithRequestBuilder(id: id).execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -2418,10 +2428,14 @@ open class QuickServersAPI: APIBase {
        - name: sessionIdCookieAuth     - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter id: (path) QuickServer ID number. 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateQsInfoWithRequestBuilder(id: String) -> RequestBuilder<Void> {
+    open class func updateQsInfoWithRequestBuilder(id: String) -> RequestBuilder<SuccessTextResponse> {
         var path = "/qs/{id}"
         let idPreEscape = "\(id)"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2432,7 +2446,7 @@ open class QuickServersAPI: APIBase {
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

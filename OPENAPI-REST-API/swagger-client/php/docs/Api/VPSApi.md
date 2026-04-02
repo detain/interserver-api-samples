@@ -50,7 +50,7 @@ Method | HTTP request | Description
 [**vPSCancel**](VPSApi.md#vpscancel) | **DELETE** /vps/{id} | Cancel VPS Service
 
 # **addVps**
-> addVps($body)
+> \Interserver\MyAdmin\Model\ServiceOrderPostResponse addVps($body)
 
 Place VPS Order
 
@@ -80,7 +80,8 @@ $apiInstance = new Interserver\MyAdmin\Api\VPSApi(
 $body = new \Interserver\MyAdmin\Model\VpsOrderPostRequest(); // \Interserver\MyAdmin\Model\VpsOrderPostRequest | 
 
 try {
-    $apiInstance->addVps($body);
+    $result = $apiInstance->addVps($body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSApi->addVps: ', $e->getMessage(), PHP_EOL;
 }
@@ -95,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -109,7 +110,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **addVps**
-> addVps($osDistro, $slices, $vpsPlatform, $controlpanel, $period, $location, $osVersion, $hostname, $coupon, $rootpass, $comment)
+> \Interserver\MyAdmin\Model\ServiceOrderPostResponse addVps($osDistro, $slices, $vpsPlatform, $controlpanel, $period, $location, $osVersion, $hostname, $coupon, $rootpass, $comment)
 
 Place VPS Order
 
@@ -149,7 +150,8 @@ $rootpass = "rootpass_example"; // string |
 $comment = "comment_example"; // string | 
 
 try {
-    $apiInstance->addVps($osDistro, $slices, $vpsPlatform, $controlpanel, $period, $location, $osVersion, $hostname, $coupon, $rootpass, $comment);
+    $result = $apiInstance->addVps($osDistro, $slices, $vpsPlatform, $controlpanel, $period, $location, $osVersion, $hostname, $coupon, $rootpass, $comment);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSApi->addVps: ', $e->getMessage(), PHP_EOL;
 }
@@ -174,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3303,7 +3305,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateVpsInfo**
-> updateVpsInfo($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateVpsInfo($id)
 
 Update VPS Order
 
@@ -3333,7 +3335,8 @@ $apiInstance = new Interserver\MyAdmin\Api\VPSApi(
 $id = "id_example"; // string | VPS ID number.
 
 try {
-    $apiInstance->updateVpsInfo($id);
+    $result = $apiInstance->updateVpsInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VPSApi->updateVpsInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -3348,7 +3351,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 
@@ -3362,7 +3365,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **vPSCancel**
-> \Interserver\MyAdmin\Model\InlineResponse20021 vPSCancel($id)
+> \Interserver\MyAdmin\Model\InlineResponse20022 vPSCancel($id)
 
 Cancel VPS Service
 
@@ -3408,7 +3411,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Interserver\MyAdmin\Model\InlineResponse20021**](../Model/InlineResponse20021.md)
+[**\Interserver\MyAdmin\Model\InlineResponse20022**](../Model/InlineResponse20022.md)
 
 ### Authorization
 

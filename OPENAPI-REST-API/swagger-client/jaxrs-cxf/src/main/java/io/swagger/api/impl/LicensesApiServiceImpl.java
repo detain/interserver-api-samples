@@ -8,6 +8,7 @@ import io.swagger.model.IpObject;
 import io.swagger.model.License;
 import io.swagger.model.LicenseRow;
 import io.swagger.model.LicensesOrder;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 
 import java.io.InputStream;
@@ -35,10 +36,10 @@ public class LicensesApiServiceImpl implements LicensesApi {
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
      *
      */
-    public void addLicense() {
+    public ServiceOrderPostResponse addLicense() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -167,10 +168,10 @@ public class LicensesApiServiceImpl implements LicensesApi {
      * Updates settings on a license service such as its assigned IP.
      *
      */
-    public void updateLicenseInfo(String id) {
+    public SuccessTextResponse updateLicenseInfo(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

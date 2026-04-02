@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 <a name="addVps"></a>
 # **addVps**
-> addVps(opts)
+> ServiceOrderPostResponse addVps(opts)
 
 Place VPS Order
 
@@ -99,7 +99,7 @@ apiInstance.addVps(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2744,7 +2744,7 @@ Name | Type | Description  | Notes
 
 <a name="updateVpsInfo"></a>
 # **updateVpsInfo**
-> updateVpsInfo(id)
+> SuccessTextResponse updateVpsInfo(id)
 
 Update VPS Order
 
@@ -2780,7 +2780,7 @@ apiInstance.updateVpsInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -2793,7 +2793,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -2806,7 +2806,7 @@ null (empty response body)
 
 <a name="vPSCancel"></a>
 # **vPSCancel**
-> InlineResponse20021 vPSCancel(id)
+> InlineResponse20022 vPSCancel(id)
 
 Cancel VPS Service
 
@@ -2855,7 +2855,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](InlineResponse20021.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 ### Authorization
 

@@ -5,11 +5,26 @@
  * Place Website Order
  * Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
  *
- * no response value expected for this operation
+ * returns ServiceOrderPostResponse
  **/
 exports.addWebsite = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -140,7 +155,7 @@ exports.getNewWebsite = function() {
  * Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via `POST /websites/{id}/buy_ip`.
  *
  * id Integer The website service ID. Use `website_id` from `GET /websites`.
- * returns inline_response_200_23
+ * returns inline_response_200_24
  **/
 exports.getWebsiteBuyIp = function(id) {
   return new Promise(function(resolve, reject) {
@@ -451,7 +466,7 @@ exports.gettWebsiteReverseDns = function(id) {
  *
  * body Id_buy_ip_body 
  * id Integer The website service ID. Use `website_id` from `GET /websites`.
- * returns inline_response_200_24
+ * returns inline_response_200_25
  **/
 exports.postWebsiteBuyIp = function(body,id) {
   return new Promise(function(resolve, reject) {
@@ -475,7 +490,7 @@ exports.postWebsiteBuyIp = function(body,id) {
  *
  * body Id_buy_ip_body 
  * id Integer The website service ID. Use `website_id` from `GET /websites`.
- * returns inline_response_200_24
+ * returns inline_response_200_25
  **/
 exports.postWebsiteBuyIp = function(body,id) {
   return new Promise(function(resolve, reject) {
@@ -499,7 +514,7 @@ exports.postWebsiteBuyIp = function(body,id) {
  *
  * body Id_migration_body 
  * id Integer The website service ID. Use `website_id` from `GET /websites`.
- * returns inline_response_200_25
+ * returns inline_response_200_26
  **/
 exports.postWebsiteMigration = function(body,id) {
   return new Promise(function(resolve, reject) {
@@ -523,7 +538,7 @@ exports.postWebsiteMigration = function(body,id) {
  *
  * body Id_migration_body 
  * id Integer The website service ID. Use `website_id` from `GET /websites`.
- * returns inline_response_200_25
+ * returns inline_response_200_26
  **/
 exports.postWebsiteMigration = function(body,id) {
   return new Promise(function(resolve, reject) {
@@ -605,11 +620,20 @@ exports.putWebsites = function() {
  * Updates settings on a webhosting order.
  *
  * id String The website service ID. Use `website_id` from `GET /websites`.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateWebsiteInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -619,7 +643,7 @@ exports.updateWebsiteInfo = function(id) {
  * Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
  *
  * id String The website service ID. Use `website_id` from `GET /websites`.
- * returns inline_response_200_22
+ * returns inline_response_200_23
  **/
 exports.webhostingCancel = function(id) {
   return new Promise(function(resolve, reject) {

@@ -563,7 +563,7 @@ export class AccountApi extends Api {
    * @param params.disableEmailNotifications Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them.
    * @param params.gstin Your GST identification number (if applicable).
    */
-  async updateAccountInfo(params: IUpdateAccountInfoParams): Promise<any> {
+  async updateAccountInfo(params: IUpdateAccountInfoParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateAccountInfo', params, 'name');
     this.ensureParamIsSet('updateAccountInfo', params, 'address');
@@ -623,7 +623,7 @@ export class AccountApi extends Api {
    * @param params.start The begining (or first) IP address in the range.
    * @param params.end The ending (or last) IP address in the range.
    */
-  async updateAccountIpLimits(params: IUpdateAccountIpLimitsParams): Promise<any> {
+  async updateAccountIpLimits(params: IUpdateAccountIpLimitsParams): Promise<SuccessTextResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('updateAccountIpLimits', params, 'start');
     this.ensureParamIsSet('updateAccountIpLimits', params, 'end');

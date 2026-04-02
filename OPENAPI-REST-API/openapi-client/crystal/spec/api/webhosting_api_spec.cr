@@ -25,7 +25,7 @@ Spectator.describe "WebhostingApi" do
   # Place Website Order
   # Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe "add_website test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -193,7 +193,7 @@ Spectator.describe "WebhostingApi" do
   # Updates settings on a webhosting order.
   # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "update_website_info test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

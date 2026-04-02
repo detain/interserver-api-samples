@@ -490,7 +490,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_backup_info**
-> update_backup_info(id => $id)
+> SuccessTextResponse update_backup_info(id => $id)
 
 Update Backup Information
 
@@ -519,7 +519,8 @@ my $api_instance = OpenAPIClient::BackupsApi->new(
 my $id = 56; # int | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 eval {
-    $api_instance->update_backup_info(id => $id);
+    my $result = $api_instance->update_backup_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling BackupsApi->update_backup_info: $@\n";
@@ -534,7 +535,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -458,7 +458,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateBackupInfo**
-> updateBackupInfo(id)
+> SuccessTextResponse updateBackupInfo(id)
 
 Update Backup Information
 
@@ -484,7 +484,8 @@ final api_instance = BackupsApi();
 final id = 56; // int | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 try {
-    api_instance.updateBackupInfo(id);
+    final result = api_instance.updateBackupInfo(id);
+    print(result);
 } catch (e) {
     print('Exception when calling BackupsApi->updateBackupInfo: $e\n');
 }
@@ -498,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.*;
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  **/
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.*;
 
-@Schema(description = "Information about the IPMI connectioj.")
+@Schema(description = "Information about the IPMI connection.")
 
 public class ServerIpmiLiveInfo   {
   private String text = null;

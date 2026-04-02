@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 # **addWebsite**
 ```swift
-    open class func addWebsite(completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func addWebsite(completion: @escaping (_ data: ServiceOrderPostResponse?, _ error: Error?) -> Void)
 ```
 
 Place Website Order
@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-Void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -714,7 +714,7 @@ Void (empty response body)
 
 # **updateWebsiteInfo**
 ```swift
-    open class func updateWebsiteInfo(id: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateWebsiteInfo(id: String, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Update Website Order
@@ -749,7 +749,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

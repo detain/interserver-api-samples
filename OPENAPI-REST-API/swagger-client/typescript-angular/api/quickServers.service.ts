@@ -28,6 +28,7 @@ import { QuickserverOrder } from '../model/quickserverOrder';
 import { QuickserverRow } from '../model/quickserverRow';
 import { RestoreRequest } from '../model/restoreRequest';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 import { TimezoneUpdate } from '../model/timezoneUpdate';
@@ -76,9 +77,9 @@ export class QuickServersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addQs(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addQs(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addQs(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addQs(observe?: 'body', reportProgress?: boolean): Observable<ServiceOrderPostResponse>;
+    public addQs(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addQs(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addQs(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -113,7 +114,7 @@ export class QuickServersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/qs/order`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post',`${this.basePath}/qs/order`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -3006,9 +3007,9 @@ export class QuickServersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateQsInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateQsInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateQsInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateQsInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateQsInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateQsInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateQsInfo(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -3047,7 +3048,7 @@ export class QuickServersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/qs/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/qs/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

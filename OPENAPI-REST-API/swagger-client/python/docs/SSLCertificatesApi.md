@@ -15,7 +15,7 @@ Method | HTTP request | Description
 [**update_ssl_info**](SSLCertificatesApi.md#update_ssl_info) | **POST** /ssl/{id} | Update SSL Cert Order
 
 # **add_ssl**
-> add_ssl()
+> ServiceOrderPostResponse add_ssl()
 
 Place SSL Cert Order
 
@@ -50,7 +50,8 @@ api_instance = myadmin-client-python.SSLCertificatesApi(myadmin-client-python.Ap
 
 try:
     # Place SSL Cert Order
-    api_instance.add_ssl()
+    api_response = api_instance.add_ssl()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling SSLCertificatesApi->add_ssl: %s\n" % e)
 ```
@@ -60,7 +61,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -74,7 +75,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_new_ssl**
-> get_new_ssl()
+> object get_new_ssl()
 
 SSL Cert Ordering Information
 
@@ -109,7 +110,8 @@ api_instance = myadmin-client-python.SSLCertificatesApi(myadmin-client-python.Ap
 
 try:
     # SSL Cert Ordering Information
-    api_instance.get_new_ssl()
+    api_response = api_instance.get_new_ssl()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling SSLCertificatesApi->get_new_ssl: %s\n" % e)
 ```
@@ -119,7 +121,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -133,7 +135,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_ssl_info**
-> get_ssl_info(id)
+> object get_ssl_info(id)
 
 Get SSL Cert Info
 
@@ -169,7 +171,8 @@ id = 56 # int | SSL certificate ID number.
 
 try:
     # Get SSL Cert Info
-    api_instance.get_ssl_info(id)
+    api_response = api_instance.get_ssl_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling SSLCertificatesApi->get_ssl_info: %s\n" % e)
 ```
@@ -182,7 +185,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -442,7 +445,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ssl_cancel**
-> InlineResponse20020 ssl_cancel(id)
+> InlineResponse20021 ssl_cancel(id)
 
 Cancel SSL Certificate Service
 
@@ -492,7 +495,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -506,7 +509,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_ssl_info**
-> update_ssl_info(id)
+> SuccessTextResponse update_ssl_info(id)
 
 Update SSL Cert Order
 
@@ -542,7 +545,8 @@ id = 'id_example' # str | SSL certificate ID number.
 
 try:
     # Update SSL Cert Order
-    api_instance.update_ssl_info(id)
+    api_response = api_instance.update_ssl_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling SSLCertificatesApi->update_ssl_info: %s\n" % e)
 ```
@@ -555,7 +559,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

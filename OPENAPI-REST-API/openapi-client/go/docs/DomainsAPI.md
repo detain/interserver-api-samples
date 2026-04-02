@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 ## AddDomain
 
-> AddDomain(ctx).Execute()
+> ServiceOrderPostResponse AddDomain(ctx).Execute()
 
 Place Domain Order
 
@@ -60,11 +60,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DomainsAPI.AddDomain(context.Background()).Execute()
+	resp, r, err := apiClient.DomainsAPI.AddDomain(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DomainsAPI.AddDomain``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AddDomain`: ServiceOrderPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `DomainsAPI.AddDomain`: %v\n", resp)
 }
 ```
 
@@ -79,7 +81,7 @@ Other parameters are passed through a pointer to a apiAddDomainRequest struct vi
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1816,7 +1818,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDomainInfo
 
-> UpdateDomainInfo(ctx, id).Execute()
+> SuccessTextResponse UpdateDomainInfo(ctx, id).Execute()
 
 Update Domain Order
 
@@ -1839,11 +1841,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DomainsAPI.UpdateDomainInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.DomainsAPI.UpdateDomainInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DomainsAPI.UpdateDomainInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateDomainInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `DomainsAPI.UpdateDomainInfo`: %v\n", resp)
 }
 ```
 
@@ -1866,7 +1870,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -25,8 +25,12 @@ export default class InlineResponse20023 {
    * Constructs a new <code>InlineResponse20023</code>.
    * @alias module:model/InlineResponse20023
    * @class
+   * @param success {Boolean} 
+   * @param text {String} 
    */
-  constructor() {
+  constructor(success, text) {
+    this.success = success;
+    this.text = text;
   }
 
   /**
@@ -39,16 +43,22 @@ export default class InlineResponse20023 {
   static constructFromObject(data, obj) {
     if (data) {
       obj = obj || new InlineResponse20023();
-      if (data.hasOwnProperty('ips'))
-        obj.ips = ApiClient.convertToType(data['ips'], {'String': 'String'});
+      if (data.hasOwnProperty('success'))
+        obj.success = ApiClient.convertToType(data['success'], 'Boolean');
+      if (data.hasOwnProperty('text'))
+        obj.text = ApiClient.convertToType(data['text'], 'String');
     }
     return obj;
   }
 }
 
 /**
- * A map of IP addresses to their current reverse DNS hostnames.
- * @member {Object.<String, String>} ips
+ * @member {Boolean} success
  */
-InlineResponse20023.prototype.ips = undefined;
+InlineResponse20023.prototype.success = undefined;
+
+/**
+ * @member {String} text
+ */
+InlineResponse20023.prototype.text = undefined;
 

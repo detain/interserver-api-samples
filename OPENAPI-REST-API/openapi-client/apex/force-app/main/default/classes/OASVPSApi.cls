@@ -29,13 +29,14 @@ public class OASVPSApi {
      * Place VPS Order
      * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
      * @param oaSVpsOrderPostRequest  (optional)
+     * @return OASServiceOrderPostResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void addVps(Map<String, Object> params) {
+    public OASServiceOrderPostResponse addVps(Map<String, Object> params) {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASServiceOrderPostResponse) client.invoke(
             'POST', '/vps/order',
             (OASVpsOrderPostRequest) params.get('oaSVpsOrderPostRequest'),
             query, form,
@@ -44,7 +45,7 @@ public class OASVPSApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json', 'multipart/form-data' },
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASServiceOrderPostResponse.class
         );
     }
     /**
@@ -1117,14 +1118,15 @@ public class OASVPSApi {
      * Update VPS Order
      * Updates settings on a VPS order.
      * @param id VPS ID number. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateVpsInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateVpsInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/vps/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -1134,7 +1136,7 @@ public class OASVPSApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
     /**

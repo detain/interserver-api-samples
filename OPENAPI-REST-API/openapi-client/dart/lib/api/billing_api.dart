@@ -301,11 +301,19 @@ class BillingApi {
   ///
   /// * [String] id (required):
   ///   The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-  Future<void> deleteAccountCreditCard(String id,) async {
+  Future<String?> deleteAccountCreditCard(String id,) async {
     final response = await deleteAccountCreditCardWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+    
+    }
+    return null;
   }
 
   /// Delete Credit Card
@@ -840,11 +848,19 @@ class BillingApi {
   /// Get Shopping Cart Contents
   ///
   /// Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
-  Future<void> getBillingCart() async {
+  Future<Object?> getBillingCart() async {
     final response = await getBillingCartWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+    
+    }
+    return null;
   }
 
   /// Get Credit Card Verification Requirements
@@ -1046,11 +1062,19 @@ class BillingApi {
   /// List Prepay Balances
   ///
   /// Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
-  Future<void> getBillingPrePays() async {
+  Future<Object?> getBillingPrePays() async {
     final response = await getBillingPrePaysWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+    
+    }
+    return null;
   }
 
   /// Get Invoices
@@ -1309,11 +1333,19 @@ class BillingApi {
   ///
   /// * [int] id (required):
   ///   The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-  Future<void> updateAccountCreditCard(int id,) async {
+  Future<String?> updateAccountCreditCard(int id,) async {
     final response = await updateAccountCreditCardWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'String',) as String;
+    
+    }
+    return null;
   }
 
   /// Configure Affiliate Dock Settings

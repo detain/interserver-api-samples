@@ -19,16 +19,16 @@ module SwaggerClient
     # Place Website Order
     # Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_website(opts = {})
-      add_website_with_http_info(opts)
-      nil
+      data, _status_code, _headers = add_website_with_http_info(opts)
+      data
     end
 
     # Place Website Order
     # Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_website_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhostingApi.add_website ...'
@@ -50,7 +50,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'ServiceOrderPostResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -120,7 +120,7 @@ module SwaggerClient
     # Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via `POST /websites/{id}/buy_ip`.
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20023]
+    # @return [InlineResponse20024]
     def get_website_buy_ip(id, opts = {})
       data, _status_code, _headers = get_website_buy_ip_with_http_info(id, opts)
       data
@@ -130,7 +130,7 @@ module SwaggerClient
     # Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20023, Integer, Hash)>] InlineResponse20023 data, response status code and response headers
+    # @return [Array<(InlineResponse20024, Integer, Hash)>] InlineResponse20024 data, response status code and response headers
     def get_website_buy_ip_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhostingApi.get_website_buy_ip ...'
@@ -156,7 +156,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'InlineResponse20023' 
+      return_type = opts[:return_type] || 'InlineResponse20024' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -563,7 +563,7 @@ module SwaggerClient
     # @param body 
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20024]
+    # @return [InlineResponse20025]
     def post_website_buy_ip(body, id, opts = {})
       data, _status_code, _headers = post_website_buy_ip_with_http_info(body, id, opts)
       data
@@ -574,7 +574,7 @@ module SwaggerClient
     # @param body 
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20024, Integer, Hash)>] InlineResponse20024 data, response status code and response headers
+    # @return [Array<(InlineResponse20025, Integer, Hash)>] InlineResponse20025 data, response status code and response headers
     def post_website_buy_ip_with_http_info(body, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhostingApi.post_website_buy_ip ...'
@@ -607,7 +607,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] || 'InlineResponse20024' 
+      return_type = opts[:return_type] || 'InlineResponse20025' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -628,7 +628,7 @@ module SwaggerClient
     # @param ips 
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20024]
+    # @return [InlineResponse20025]
     def post_website_buy_ip(ips, id, opts = {})
       data, _status_code, _headers = post_website_buy_ip_with_http_info(ips, id, opts)
       data
@@ -639,7 +639,7 @@ module SwaggerClient
     # @param ips 
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20024, Integer, Hash)>] InlineResponse20024 data, response status code and response headers
+    # @return [Array<(InlineResponse20025, Integer, Hash)>] InlineResponse20025 data, response status code and response headers
     def post_website_buy_ip_with_http_info(ips, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhostingApi.post_website_buy_ip ...'
@@ -672,7 +672,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] || 'InlineResponse20024' 
+      return_type = opts[:return_type] || 'InlineResponse20025' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -693,7 +693,7 @@ module SwaggerClient
     # @param body 
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20025]
+    # @return [InlineResponse20026]
     def post_website_migration(body, id, opts = {})
       data, _status_code, _headers = post_website_migration_with_http_info(body, id, opts)
       data
@@ -704,7 +704,7 @@ module SwaggerClient
     # @param body 
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20025, Integer, Hash)>] InlineResponse20025 data, response status code and response headers
+    # @return [Array<(InlineResponse20026, Integer, Hash)>] InlineResponse20026 data, response status code and response headers
     def post_website_migration_with_http_info(body, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhostingApi.post_website_migration ...'
@@ -749,7 +749,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] || 'InlineResponse20025' 
+      return_type = opts[:return_type] || 'InlineResponse20026' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -782,7 +782,7 @@ module SwaggerClient
     # @param domain_reg_password 
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20025]
+    # @return [InlineResponse20026]
     def post_website_migration(cust_portal, reg_email, password, ctrl_panel, ftp_username, ftp_password, site_busy_mig, spl_req_mig, domain_reg, data_mig, domain_reg_portal, domain_reg_email, domain_reg_password, id, opts = {})
       data, _status_code, _headers = post_website_migration_with_http_info(cust_portal, reg_email, password, ctrl_panel, ftp_username, ftp_password, site_busy_mig, spl_req_mig, domain_reg, data_mig, domain_reg_portal, domain_reg_email, domain_reg_password, id, opts)
       data
@@ -805,7 +805,7 @@ module SwaggerClient
     # @param domain_reg_password 
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20025, Integer, Hash)>] InlineResponse20025 data, response status code and response headers
+    # @return [Array<(InlineResponse20026, Integer, Hash)>] InlineResponse20026 data, response status code and response headers
     def post_website_migration_with_http_info(cust_portal, reg_email, password, ctrl_panel, ftp_username, ftp_password, site_busy_mig, spl_req_mig, domain_reg, data_mig, domain_reg_portal, domain_reg_email, domain_reg_password, id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhostingApi.post_website_migration ...'
@@ -898,7 +898,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] || 'InlineResponse20025' 
+      return_type = opts[:return_type] || 'InlineResponse20026' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -1098,17 +1098,17 @@ module SwaggerClient
     # Updates settings on a webhosting order.
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_website_info(id, opts = {})
-      update_website_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_website_info_with_http_info(id, opts)
+      data
     end
 
     # Update Website Order
     # Updates settings on a webhosting order.
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_website_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhostingApi.update_website_info ...'
@@ -1134,7 +1134,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -1154,7 +1154,7 @@ module SwaggerClient
     # Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20022]
+    # @return [InlineResponse20023]
     def webhosting_cancel(id, opts = {})
       data, _status_code, _headers = webhosting_cancel_with_http_info(id, opts)
       data
@@ -1164,7 +1164,7 @@ module SwaggerClient
     # Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
     # @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20022, Integer, Hash)>] InlineResponse20022 data, response status code and response headers
+    # @return [Array<(InlineResponse20023, Integer, Hash)>] InlineResponse20023 data, response status code and response headers
     def webhosting_cancel_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: WebhostingApi.webhosting_cancel ...'
@@ -1190,7 +1190,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'InlineResponse20022' 
+      return_type = opts[:return_type] || 'InlineResponse20023' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,

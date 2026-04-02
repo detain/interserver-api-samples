@@ -18,7 +18,7 @@ Feature | HTTP request | Description
 
 
 # **add_license**
-> add_license 
+> add_license : detachable SERVICE_ORDER_POST_RESPONSE
 
 
 Place License Order
@@ -31,7 +31,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**SERVICE_ORDER_POST_RESPONSE**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -307,7 +307,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_license_info**
-> update_license_info (id: STRING_32 )
+> update_license_info (id: STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Update License
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 

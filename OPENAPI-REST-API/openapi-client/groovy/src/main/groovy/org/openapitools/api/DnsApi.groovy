@@ -5,6 +5,7 @@ import org.openapitools.model.DnsListItem
 import org.openapitools.model.DnsRecord
 import org.openapitools.model.DnsRecordType
 import org.openapitools.model.GetAccountInfo401Response
+import org.openapitools.model.SuccessTextResponse
 
 class DnsApi {
     String basePath = "https://my.interserver.net/apiv2"
@@ -42,7 +43,7 @@ class DnsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 
@@ -115,7 +116,7 @@ class DnsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 
@@ -146,7 +147,7 @@ class DnsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "DELETE", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 
@@ -237,7 +238,7 @@ class DnsApi {
 
         apiUtils.invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams, bodyParams, accept, contentType,
                     "POST", "",
-                    null )
+                    SuccessTextResponse.class )
 
     }
 

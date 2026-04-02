@@ -5,12 +5,13 @@ import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
 import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TemplateRequest;
 import io.swagger.model.TextResponse;
@@ -51,10 +52,10 @@ public class VpsApiServiceImpl implements VpsApi {
      * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
      *
      */
-    public void addVps(VpsOrderPostRequest body) {
+    public ServiceOrderPostResponse addVps(VpsOrderPostRequest body) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -63,10 +64,10 @@ public class VpsApiServiceImpl implements VpsApi {
      * Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
      *
      */
-    public void addVps(String osDistro, Integer slices, String vpsPlatform, String controlpanel, Integer period, Integer location, String osVersion, String hostname, String coupon, String rootpass, String comment) {
+    public ServiceOrderPostResponse addVps(String osDistro, Integer slices, String vpsPlatform, String controlpanel, Integer period, Integer location, String osVersion, String hostname, String coupon, String rootpass, String comment) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -687,10 +688,10 @@ public class VpsApiServiceImpl implements VpsApi {
      * Updates settings on a VPS order.
      *
      */
-    public void updateVpsInfo(String id) {
+    public SuccessTextResponse updateVpsInfo(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -699,7 +700,7 @@ public class VpsApiServiceImpl implements VpsApi {
      * Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
      *
      */
-    public InlineResponse20021 vPSCancel(Integer id) {
+    public InlineResponse20022 vPSCancel(Integer id) {
         // TODO: Implement...
         
         return null;

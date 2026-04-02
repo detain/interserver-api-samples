@@ -314,6 +314,7 @@ use OpenAPIClient::Object::AccountInfoOauthConfigProvidersValue;
 use OpenAPIClient::Object::AccountInfoOauthproviders;
 use OpenAPIClient::Object::AccountInfoPost;
 use OpenAPIClient::Object::AccountSshKey;
+use OpenAPIClient::Object::AddServer200Response;
 use OpenAPIClient::Object::AffiliateBannerRow;
 use OpenAPIClient::Object::AffiliateDockSetup;
 use OpenAPIClient::Object::AffiliatePaymentSetup;
@@ -646,6 +647,7 @@ use OpenAPIClient::Object::ServersCancel200Response;
 use OpenAPIClient::Object::Service;
 use OpenAPIClient::Object::ServiceCategories;
 use OpenAPIClient::Object::ServiceCategory;
+use OpenAPIClient::Object::ServiceOrderPostResponse;
 use OpenAPIClient::Object::ServiceType;
 use OpenAPIClient::Object::ServiceTypes;
 use OpenAPIClient::Object::Services;
@@ -793,6 +795,7 @@ use OpenAPIClient::Object::AccountInfoOauthConfigProvidersValue;
 use OpenAPIClient::Object::AccountInfoOauthproviders;
 use OpenAPIClient::Object::AccountInfoPost;
 use OpenAPIClient::Object::AccountSshKey;
+use OpenAPIClient::Object::AddServer200Response;
 use OpenAPIClient::Object::AffiliateBannerRow;
 use OpenAPIClient::Object::AffiliateDockSetup;
 use OpenAPIClient::Object::AffiliatePaymentSetup;
@@ -1125,6 +1128,7 @@ use OpenAPIClient::Object::ServersCancel200Response;
 use OpenAPIClient::Object::Service;
 use OpenAPIClient::Object::ServiceCategories;
 use OpenAPIClient::Object::ServiceCategory;
+use OpenAPIClient::Object::ServiceOrderPostResponse;
 use OpenAPIClient::Object::ServiceType;
 use OpenAPIClient::Object::ServiceTypes;
 use OpenAPIClient::Object::Services;
@@ -1590,6 +1594,7 @@ Class | Method | HTTP request | Description
  - [OpenAPIClient::Object::AccountInfoOauthproviders](docs/AccountInfoOauthproviders.md)
  - [OpenAPIClient::Object::AccountInfoPost](docs/AccountInfoPost.md)
  - [OpenAPIClient::Object::AccountSshKey](docs/AccountSshKey.md)
+ - [OpenAPIClient::Object::AddServer200Response](docs/AddServer200Response.md)
  - [OpenAPIClient::Object::AffiliateBannerRow](docs/AffiliateBannerRow.md)
  - [OpenAPIClient::Object::AffiliateDockSetup](docs/AffiliateDockSetup.md)
  - [OpenAPIClient::Object::AffiliatePaymentSetup](docs/AffiliatePaymentSetup.md)
@@ -1922,6 +1927,7 @@ Class | Method | HTTP request | Description
  - [OpenAPIClient::Object::Service](docs/Service.md)
  - [OpenAPIClient::Object::ServiceCategories](docs/ServiceCategories.md)
  - [OpenAPIClient::Object::ServiceCategory](docs/ServiceCategory.md)
+ - [OpenAPIClient::Object::ServiceOrderPostResponse](docs/ServiceOrderPostResponse.md)
  - [OpenAPIClient::Object::ServiceType](docs/ServiceType.md)
  - [OpenAPIClient::Object::ServiceTypes](docs/ServiceTypes.md)
  - [OpenAPIClient::Object::Services](docs/Services.md)

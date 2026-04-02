@@ -34,8 +34,9 @@ namespace myadmin-client-aspnetcore.Models
         public int? DestinationPort { get; set; }
 
         /// <summary>
-        /// Gets or Sets SourceIp
+        /// Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source.
         /// </summary>
+        /// <value>Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source.</value>
 
         [DataMember(Name="source_ip")]
         public string SourceIp { get; set; }

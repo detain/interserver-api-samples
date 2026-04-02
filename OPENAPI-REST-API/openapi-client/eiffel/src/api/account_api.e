@@ -436,7 +436,7 @@ feature -- API Access
 			end
 		end
 
-	update_account_info (name: STRING_32; address: STRING_32; city: STRING_32; state: STRING_32; zip: STRING_32; country: STRING_32; phone: STRING_32; company: STRING_32; address2: STRING_32; locale: STRING_32; email_invoices: STRING_32; email_abuse: STRING_32; disable_reset: BOOLEAN; disable_reinstall: BOOLEAN; disable_server_notifications: BOOLEAN; disable_email_notifications: BOOLEAN; gstin: STRING_32)
+	update_account_info (name: STRING_32; address: STRING_32; city: STRING_32; state: STRING_32; zip: STRING_32; country: STRING_32; phone: STRING_32; company: STRING_32; address2: STRING_32; locale: STRING_32; email_invoices: STRING_32; email_abuse: STRING_32; disable_reset: BOOLEAN; disable_reinstall: BOOLEAN; disable_server_notifications: BOOLEAN; disable_email_notifications: BOOLEAN; gstin: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Update Account Information
 			-- Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
 			-- 
@@ -475,6 +475,7 @@ feature -- API Access
 			-- argument: gstin Your GST identification number (if applicable). (optional, default to null)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -543,13 +544,17 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<"multipart/form-data", "application/json">>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 
-	update_account_ip_limits (start: STRING_32; var_end: STRING_32)
+	update_account_ip_limits (start: STRING_32; var_end: STRING_32): detachable SUCCESS_TEXT_RESPONSE
 			-- Add IP Access Restriction
 			-- Adds an IP address range to the account&#39;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
 			-- 
@@ -558,6 +563,7 @@ feature -- API Access
 			-- argument: var_end The ending (or last) IP address in the range. (required)
 			-- 
 			-- 
+			-- Result SUCCESS_TEXT_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -581,9 +587,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type ({ARRAY [STRING]}<<"multipart/form-data", "application/json">>),"Content-Type")
 			l_request.set_auth_names ({ARRAY [STRING]}<<"sessionIdCookieAuth", "apiKeyAuth", "sessionIdHeaderAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { SUCCESS_TEXT_RESPONSE } l_response.data ({ SUCCESS_TEXT_RESPONSE }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end
 

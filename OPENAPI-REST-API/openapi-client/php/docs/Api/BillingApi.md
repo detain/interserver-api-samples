@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\BillingApi
 
-Billing related items
+Invoices, shopping cart, prepay balances, credit cards, and payment processing. Use &#x60;/pay/{method}/{invoices}&#x60; to complete payment for outstanding invoices.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -270,7 +270,7 @@ try {
 ## `deleteAccountCreditCard()`
 
 ```php
-deleteAccountCreditCard($id)
+deleteAccountCreditCard($id): string
 ```
 
 Remove Credit Card
@@ -309,7 +309,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BillingApi(
 $id = 'id_example'; // string | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 try {
-    $apiInstance->deleteAccountCreditCard($id);
+    $result = $apiInstance->deleteAccountCreditCard($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->deleteAccountCreditCard: ', $e->getMessage(), PHP_EOL;
 }
@@ -323,7 +324,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -977,7 +978,7 @@ This endpoint does not need any parameter.
 ## `getBillingCart()`
 
 ```php
-getBillingCart()
+getBillingCart(): object
 ```
 
 Get Shopping Cart Contents
@@ -1015,7 +1016,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BillingApi(
 );
 
 try {
-    $apiInstance->getBillingCart();
+    $result = $apiInstance->getBillingCart();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->getBillingCart: ', $e->getMessage(), PHP_EOL;
 }
@@ -1027,7 +1029,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1258,7 +1260,7 @@ This endpoint does not need any parameter.
 ## `getBillingPrePays()`
 
 ```php
-getBillingPrePays()
+getBillingPrePays(): object
 ```
 
 List Prepay Balances
@@ -1296,7 +1298,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BillingApi(
 );
 
 try {
-    $apiInstance->getBillingPrePays();
+    $result = $apiInstance->getBillingPrePays();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->getBillingPrePays: ', $e->getMessage(), PHP_EOL;
 }
@@ -1308,7 +1311,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -1550,7 +1553,7 @@ try {
 ## `updateAccountCreditCard()`
 
 ```php
-updateAccountCreditCard($id)
+updateAccountCreditCard($id): string
 ```
 
 Update Credit Card
@@ -1589,7 +1592,8 @@ $apiInstance = new Interserver\MyAdmin\Api\BillingApi(
 $id = 56; // int | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
 
 try {
-    $apiInstance->updateAccountCreditCard($id);
+    $result = $apiInstance->updateAccountCreditCard($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->updateAccountCreditCard: ', $e->getMessage(), PHP_EOL;
 }
@@ -1603,7 +1607,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

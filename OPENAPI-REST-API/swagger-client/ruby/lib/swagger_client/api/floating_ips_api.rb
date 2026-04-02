@@ -19,16 +19,16 @@ module SwaggerClient
     # Place Floating IP Order
     # Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_floating_ip(opts = {})
-      add_floating_ip_with_http_info(opts)
-      nil
+      data, _status_code, _headers = add_floating_ip_with_http_info(opts)
+      data
     end
 
     # Place Floating IP Order
     # Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_floating_ip_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FloatingIPsApi.add_floating_ip ...'
@@ -50,7 +50,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'ServiceOrderPostResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -126,17 +126,17 @@ module SwaggerClient
     # Returns detailed information about a specific Floating IP service including its current target IP assignment.
     # @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Object]
     def get_floating_ip_info(id, opts = {})
-      get_floating_ip_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = get_floating_ip_info_with_http_info(id, opts)
+      data
     end
 
     # View Floating IP
     # Returns detailed information about a specific Floating IP service including its current target IP assignment.
     # @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def get_floating_ip_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FloatingIPsApi.get_floating_ip_info ...'
@@ -162,7 +162,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'Object' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -343,16 +343,16 @@ module SwaggerClient
     # Get Floating IP Ordering Information
     # Retrieves available options and pricing for ordering a new Floating IP.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Object]
     def get_new_floating_ip(opts = {})
-      get_new_floating_ip_with_http_info(opts)
-      nil
+      data, _status_code, _headers = get_new_floating_ip_with_http_info(opts)
+      data
     end
 
     # Get Floating IP Ordering Information
     # Retrieves available options and pricing for ordering a new Floating IP.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def get_new_floating_ip_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FloatingIPsApi.get_new_floating_ip ...'
@@ -374,7 +374,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'Object' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -574,17 +574,17 @@ module SwaggerClient
     # Updates settings on a Floating IP service, such as its label or configuration metadata.
     # @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_floating_ip_info(id, opts = {})
-      update_floating_ip_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_floating_ip_info_with_http_info(id, opts)
+      data
     end
 
     # Update Floating IP
     # Updates settings on a Floating IP service, such as its label or configuration metadata.
     # @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_floating_ip_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FloatingIPsApi.update_floating_ip_info ...'
@@ -610,7 +610,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

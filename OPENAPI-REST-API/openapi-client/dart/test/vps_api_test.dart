@@ -21,7 +21,7 @@ void main() {
     //
     // Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
     //
-    //Future addVps({ VpsOrderPostRequest vpsOrderPostRequest }) async
+    //Future<ServiceOrderPostResponse> addVps({ VpsOrderPostRequest vpsOrderPostRequest }) async
     test('test addVps', () async {
       // TODO
     });
@@ -399,7 +399,7 @@ void main() {
     //
     // Updates settings on a VPS order.
     //
-    //Future updateVpsInfo(String id) async
+    //Future<SuccessTextResponse> updateVpsInfo(String id) async
     test('test updateVpsInfo', () async {
       // TODO
     });

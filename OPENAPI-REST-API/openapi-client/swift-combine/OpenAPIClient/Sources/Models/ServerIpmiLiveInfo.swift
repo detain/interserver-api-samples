@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Information about the IPMI connectioj. 
+/// Information about the IPMI connection. 
 public struct ServerIpmiLiveInfo: Codable {
     public var text: String?
     public var publicIp: String?

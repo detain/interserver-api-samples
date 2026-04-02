@@ -14,6 +14,8 @@ private class OASFloatingIPsApiTest {
 
         OASClient client;
         OASFloatingIPsApi api;
+        OASServiceOrderPostResponse response;
+        OASServiceOrderPostResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -21,33 +23,57 @@ private class OASFloatingIPsApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.addFloatingIp();
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addFloatingIp();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addFloatingIp();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.addFloatingIp();
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addFloatingIp();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addFloatingIp();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.addFloatingIp();
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addFloatingIp();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASServiceOrderPostResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASServiceOrderPostResponse.getExample();
+        response = (OASServiceOrderPostResponse) api.addFloatingIp();
         System.assertEquals(expectedResponse, response);
     }
 
@@ -150,6 +176,8 @@ private class OASFloatingIPsApiTest {
 
         OASClient client;
         OASFloatingIPsApi api;
+        Object response;
+        Object expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -157,33 +185,33 @@ private class OASFloatingIPsApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getFloatingIpInfo(params);
+        expectedResponse = null;
+        response = (Object) api.getFloatingIpInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getFloatingIpInfo(params);
+        expectedResponse = null;
+        response = (Object) api.getFloatingIpInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getFloatingIpInfo(params);
+        expectedResponse = null;
+        response = (Object) api.getFloatingIpInfo(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -414,6 +442,8 @@ private class OASFloatingIPsApiTest {
 
         OASClient client;
         OASFloatingIPsApi api;
+        Object response;
+        Object expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -421,33 +451,33 @@ private class OASFloatingIPsApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getNewFloatingIp();
+        expectedResponse = null;
+        response = (Object) api.getNewFloatingIp();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getNewFloatingIp();
+        expectedResponse = null;
+        response = (Object) api.getNewFloatingIp();
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(null);
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.getNewFloatingIp();
+        expectedResponse = null;
+        response = (Object) api.getNewFloatingIp();
         System.assertEquals(expectedResponse, response);
     }
 
@@ -602,6 +632,8 @@ private class OASFloatingIPsApiTest {
 
         OASClient client;
         OASFloatingIPsApi api;
+        OASSuccessTextResponse response;
+        OASSuccessTextResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -609,33 +641,57 @@ private class OASFloatingIPsApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateFloatingIpInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateFloatingIpInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateFloatingIpInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateFloatingIpInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateFloatingIpInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateFloatingIpInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASFloatingIPsApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateFloatingIpInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateFloatingIpInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateFloatingIpInfo(params);
         System.assertEquals(expectedResponse, response);
     }
 }

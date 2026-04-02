@@ -69,8 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddServerTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AddServer();
-            
+            //var response = instance.AddServer();
+            //Assert.IsInstanceOf<InlineResponse20019> (response, "response is InlineResponse20019");
         }
         /// <summary>
         /// Test BuyItNowServerOrder
@@ -80,7 +80,7 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.BuyItNowServerOrder();
-            //Assert.IsInstanceOf<InlineResponse20026> (response, "response is InlineResponse20026");
+            //Assert.IsInstanceOf<InlineResponse20027> (response, "response is InlineResponse20027");
         }
         /// <summary>
         /// Test GetMPServers
@@ -246,7 +246,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.ServersCancel(id);
-            //Assert.IsInstanceOf<InlineResponse20019> (response, "response is InlineResponse20019");
+            //Assert.IsInstanceOf<InlineResponse20020> (response, "response is InlineResponse20020");
         }
         /// <summary>
         /// Test UpdateServerInfo
@@ -256,8 +256,8 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
-            //instance.UpdateServerInfo(id);
-            
+            //var response = instance.UpdateServerInfo(id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
     }
 

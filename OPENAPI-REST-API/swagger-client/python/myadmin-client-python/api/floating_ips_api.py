@@ -42,7 +42,7 @@ class FloatingIPsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class FloatingIPsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: ServiceOrderPostResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -111,7 +111,7 @@ class FloatingIPsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='ServiceOrderPostResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -225,7 +225,7 @@ class FloatingIPsApi(object):
 
         :param async_req bool
         :param int id: The Floating IP service ID. Use the ID from `GET /floating_ips`. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -247,7 +247,7 @@ class FloatingIPsApi(object):
 
         :param async_req bool
         :param int id: The Floating IP service ID. Use the ID from `GET /floating_ips`. (required)
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -301,7 +301,7 @@ class FloatingIPsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -596,7 +596,7 @@ class FloatingIPsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -617,7 +617,7 @@ class FloatingIPsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -665,7 +665,7 @@ class FloatingIPsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -989,7 +989,7 @@ class FloatingIPsApi(object):
 
         :param async_req bool
         :param str id: The Floating IP service ID. Use the ID from `GET /floating_ips`. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1011,7 +1011,7 @@ class FloatingIPsApi(object):
 
         :param async_req bool
         :param str id: The Floating IP service ID. Use the ID from `GET /floating_ips`. (required)
-        :return: None
+        :return: SuccessTextResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1065,7 +1065,7 @@ class FloatingIPsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='SuccessTextResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

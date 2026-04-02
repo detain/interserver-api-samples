@@ -30,6 +30,7 @@
 #include "OpenAPIDomainSearchResponse.h"
 #include "OpenAPIDomainWhoisPrivacyRequest.h"
 #include "OpenAPIGetAccountInfo401Response.h"
+#include "OpenAPIServiceOrderPostResponse.h"
 #include "OpenAPISuccessTextResponse.h"
 #include "OpenAPITextResponse.h"
 
@@ -56,7 +57,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPIServiceOrderPostResponse Content;
 };
 
 /* Add Domain DNSSEC Records
@@ -707,7 +708,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 /* Replace Nameserver Set

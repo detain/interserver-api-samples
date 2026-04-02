@@ -8,7 +8,8 @@
 
 #' InlineResponse20023 Class
 #'
-#' @field ips 
+#' @field success 
+#' @field text 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -16,37 +17,51 @@
 InlineResponse20023 <- R6::R6Class(
   'InlineResponse20023',
   public = list(
-    `ips` = NULL,
-    initialize = function(`ips`){
-      if (!missing(`ips`)) {
-        self$`ips` <- `ips`
+    `success` = NULL,
+    `text` = NULL,
+    initialize = function(`success`, `text`){
+      if (!missing(`success`)) {
+        self$`success` <- `success`
+      }
+      if (!missing(`text`)) {
+        stopifnot(is.character(`text`), length(`text`) == 1)
+        self$`text` <- `text`
       }
     },
     toJSON = function() {
       InlineResponse20023Object <- list()
-      if (!is.null(self$`ips`)) {
-        InlineResponse20023Object[['ips']] <- self$`ips`
+      if (!is.null(self$`success`)) {
+        InlineResponse20023Object[['success']] <- self$`success`
+      }
+      if (!is.null(self$`text`)) {
+        InlineResponse20023Object[['text']] <- self$`text`
       }
 
       InlineResponse20023Object
     },
     fromJSON = function(InlineResponse20023Json) {
       InlineResponse20023Object <- jsonlite::fromJSON(InlineResponse20023Json)
-      if (!is.null(InlineResponse20023Object$`ips`)) {
-        self$`ips` <- InlineResponse20023Object$`ips`
+      if (!is.null(InlineResponse20023Object$`success`)) {
+        self$`success` <- InlineResponse20023Object$`success`
+      }
+      if (!is.null(InlineResponse20023Object$`text`)) {
+        self$`text` <- InlineResponse20023Object$`text`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "ips": %s
+           "success": %s,
+           "text": %s
         }',
-        self$`ips`
+        self$`success`,
+        self$`text`
       )
     },
     fromJSONString = function(InlineResponse20023Json) {
       InlineResponse20023Object <- jsonlite::fromJSON(InlineResponse20023Json)
-      self$`ips` <- InlineResponse20023Object$`ips`
+      self$`success` <- InlineResponse20023Object$`success`
+      self$`text` <- InlineResponse20023Object$`text`
     }
   )
 )

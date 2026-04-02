@@ -13,6 +13,7 @@ package org.openapitools.client.api
 
 import org.openapitools.client.model.ChargeInvoiceRows
 import org.openapitools.client.model.GetAccountInfo401Response
+import org.openapitools.client.model.ServiceOrderPostResponse
 import org.openapitools.client.model.SslCancel200Response
 import org.openapitools.client.model.SuccessTextResponse
 import org.openapitools.client.core.JsonSupport._
@@ -29,50 +30,50 @@ class SSLCertificatesApi(baseUrl: String) {
    * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
    * 
    * Expected answers:
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def addSsl(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(): Request[Either[ResponseException[String, Exception], Unit]] =
+  def addSsl(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(): Request[Either[ResponseException[String, Exception], ServiceOrderPostResponse]] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/ssl/order")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[ServiceOrderPostResponse])
 
   /**
    * Retrieves available SSL certificate types and pricing for ordering.
    * 
    * Expected answers:
+   *   code 200 : Any (Available SSL certificate types and pricing for ordering.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
    */
-  def getNewSsl(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(): Request[Either[ResponseException[String, Exception], Unit]] =
+  def getNewSsl(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(): Request[Either[ResponseException[String, Exception], Any]] =
     basicRequest
       .method(Method.GET, uri"$baseUrl/ssl/order")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[Any])
 
   /**
    * Returns detailed information about a specific SSL certificate including its domain and expiration.
    * 
    * Expected answers:
+   *   code 200 : Any (Detailed SSL certificate information.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -81,14 +82,14 @@ class SSLCertificatesApi(baseUrl: String) {
    * 
    * @param id SSL certificate ID number.
    */
-  def getSslInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: Int): Request[Either[ResponseException[String, Exception], Unit]] =
+  def getSslInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: Int): Request[Either[ResponseException[String, Exception], Any]] =
     basicRequest
       .method(Method.GET, uri"$baseUrl/ssl/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[Any])
 
   /**
    * Returns the billing invoices associated with this SSL certificate.
@@ -206,8 +207,8 @@ class SSLCertificatesApi(baseUrl: String) {
    * Updates settings on an SSL certificate order.
    * 
    * Expected answers:
+   *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -216,13 +217,13 @@ class SSLCertificatesApi(baseUrl: String) {
    * 
    * @param id SSL certificate ID number.
    */
-  def updateSslInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String): Request[Either[ResponseException[String, Exception], Unit]] =
+  def updateSslInfo(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String): Request[Either[ResponseException[String, Exception], SuccessTextResponse]] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/ssl/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[SuccessTextResponse])
 
 }

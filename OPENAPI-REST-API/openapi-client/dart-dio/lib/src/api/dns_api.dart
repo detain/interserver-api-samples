@@ -14,6 +14,7 @@ import 'package:openapi/src/model/dns_list_item.dart';
 import 'package:openapi/src/model/dns_record.dart';
 import 'package:openapi/src/model/dns_record_type.dart';
 import 'package:openapi/src/model/get_account_info401_response.dart';
+import 'package:openapi/src/model/success_text_response.dart';
 
 class DNSApi {
 
@@ -36,9 +37,9 @@ class DNSApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [SuccessTextResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> addDnsDomain({ 
+  Future<Response<SuccessTextResponse>> addDnsDomain({ 
     required String domain,
     required String ip,
     CancelToken? cancelToken,
@@ -108,7 +109,35 @@ class DNSApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    SuccessTextResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SuccessTextResponse),
+      ) as SuccessTextResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<SuccessTextResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Add DNS Record to Domain
@@ -222,9 +251,9 @@ class DNSApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [SuccessTextResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteDnsDomain({ 
+  Future<Response<SuccessTextResponse>> deleteDnsDomain({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -271,7 +300,35 @@ class DNSApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    SuccessTextResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SuccessTextResponse),
+      ) as SuccessTextResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<SuccessTextResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Delete DNS Record
@@ -287,9 +344,9 @@ class DNSApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [SuccessTextResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteDnsRecord({ 
+  Future<Response<SuccessTextResponse>> deleteDnsRecord({ 
     required int domainId,
     required int recordId,
     CancelToken? cancelToken,
@@ -337,7 +394,35 @@ class DNSApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    SuccessTextResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SuccessTextResponse),
+      ) as SuccessTextResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<SuccessTextResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// List Domain DNS Records
@@ -543,9 +628,9 @@ class DNSApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [SuccessTextResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> updateDnsRecord({ 
+  Future<Response<SuccessTextResponse>> updateDnsRecord({ 
     required int domainId,
     required int recordId,
     String? name,
@@ -629,7 +714,35 @@ class DNSApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    SuccessTextResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SuccessTextResponse),
+      ) as SuccessTextResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<SuccessTextResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
 }

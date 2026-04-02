@@ -1,12 +1,5 @@
 package io.swagger.model;
 
-import io.swagger.model.InlineResponse20026Bandwidth;
-import io.swagger.model.InlineResponse20026Cp;
-import io.swagger.model.InlineResponse20026Ips;
-import io.swagger.model.InlineResponse20026Os;
-import io.swagger.model.InlineResponse20026Raid;
-import java.util.ArrayList;
-import java.util.List;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -23,137 +16,52 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse20026   {
   
-  @Schema(description = "")
-  private List<InlineResponse20026Bandwidth> bandwidth = null;
+  @Schema(description = "Confirmation message.")
+ /**
+   * Confirmation message.  
+  **/
+  private String text = null;
   
-  @Schema(description = "")
-  private List<InlineResponse20026Ips> ips = null;
-  
-  @Schema(description = "")
-  private List<InlineResponse20026Os> os = null;
-  
-  @Schema(description = "")
-  private List<InlineResponse20026Cp> cp = null;
-  
-  @Schema(description = "")
-  private List<InlineResponse20026Raid> raid = null;
+  @Schema(description = "The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.")
  /**
-   * Get bandwidth
-   * @return bandwidth
+   * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  
   **/
-  @JsonProperty("bandwidth")
+  private Integer ticket = null;
+ /**
+   * Confirmation message.
+   * @return text
+  **/
+  @JsonProperty("text")
   @NotNull
-  public List<InlineResponse20026Bandwidth> getBandwidth() {
-    return bandwidth;
+  public String getText() {
+    return text;
   }
 
-  public void setBandwidth(List<InlineResponse20026Bandwidth> bandwidth) {
-    this.bandwidth = bandwidth;
+  public void setText(String text) {
+    this.text = text;
   }
 
-  public InlineResponse20026 bandwidth(List<InlineResponse20026Bandwidth> bandwidth) {
-    this.bandwidth = bandwidth;
-    return this;
-  }
-
-  public InlineResponse20026 addBandwidthItem(InlineResponse20026Bandwidth bandwidthItem) {
-    this.bandwidth.add(bandwidthItem);
+  public InlineResponse20026 text(String text) {
+    this.text = text;
     return this;
   }
 
  /**
-   * Get ips
-   * @return ips
+   * The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.
+   * @return ticket
   **/
-  @JsonProperty("ips")
+  @JsonProperty("ticket")
   @NotNull
-  public List<InlineResponse20026Ips> getIps() {
-    return ips;
+  public Integer getTicket() {
+    return ticket;
   }
 
-  public void setIps(List<InlineResponse20026Ips> ips) {
-    this.ips = ips;
+  public void setTicket(Integer ticket) {
+    this.ticket = ticket;
   }
 
-  public InlineResponse20026 ips(List<InlineResponse20026Ips> ips) {
-    this.ips = ips;
-    return this;
-  }
-
-  public InlineResponse20026 addIpsItem(InlineResponse20026Ips ipsItem) {
-    this.ips.add(ipsItem);
-    return this;
-  }
-
- /**
-   * Get os
-   * @return os
-  **/
-  @JsonProperty("os")
-  @NotNull
-  public List<InlineResponse20026Os> getOs() {
-    return os;
-  }
-
-  public void setOs(List<InlineResponse20026Os> os) {
-    this.os = os;
-  }
-
-  public InlineResponse20026 os(List<InlineResponse20026Os> os) {
-    this.os = os;
-    return this;
-  }
-
-  public InlineResponse20026 addOsItem(InlineResponse20026Os osItem) {
-    this.os.add(osItem);
-    return this;
-  }
-
- /**
-   * Get cp
-   * @return cp
-  **/
-  @JsonProperty("cp")
-  @NotNull
-  public List<InlineResponse20026Cp> getCp() {
-    return cp;
-  }
-
-  public void setCp(List<InlineResponse20026Cp> cp) {
-    this.cp = cp;
-  }
-
-  public InlineResponse20026 cp(List<InlineResponse20026Cp> cp) {
-    this.cp = cp;
-    return this;
-  }
-
-  public InlineResponse20026 addCpItem(InlineResponse20026Cp cpItem) {
-    this.cp.add(cpItem);
-    return this;
-  }
-
- /**
-   * Get raid
-   * @return raid
-  **/
-  @JsonProperty("raid")
-  @NotNull
-  public List<InlineResponse20026Raid> getRaid() {
-    return raid;
-  }
-
-  public void setRaid(List<InlineResponse20026Raid> raid) {
-    this.raid = raid;
-  }
-
-  public InlineResponse20026 raid(List<InlineResponse20026Raid> raid) {
-    this.raid = raid;
-    return this;
-  }
-
-  public InlineResponse20026 addRaidItem(InlineResponse20026Raid raidItem) {
-    this.raid.add(raidItem);
+  public InlineResponse20026 ticket(Integer ticket) {
+    this.ticket = ticket;
     return this;
   }
 
@@ -163,11 +71,8 @@ public class InlineResponse20026   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20026 {\n");
     
-    sb.append("    bandwidth: ").append(toIndentedString(bandwidth)).append("\n");
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
-    sb.append("    os: ").append(toIndentedString(os)).append("\n");
-    sb.append("    cp: ").append(toIndentedString(cp)).append("\n");
-    sb.append("    raid: ").append(toIndentedString(raid)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    ticket: ").append(toIndentedString(ticket)).append("\n");
     sb.append("}");
     return sb.toString();
   }

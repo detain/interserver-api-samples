@@ -50,9 +50,9 @@ var api = FloatingIPsApi.new(config)
 # Invoke an endpoint
 api.add_floating_ip(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_floating_ip", response)
-		
+		assert(response.data is ServiceOrderPostResponse)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -148,9 +148,9 @@ api.get_floating_ip_info(
 	# The Floating IP service ID. Use the ID from `GET /floating_ips`.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "get_floating_ip_info", response)
-		
+		assert(response.data is )
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -338,9 +338,9 @@ var api = FloatingIPsApi.new(config)
 # Invoke an endpoint
 api.get_new_floating_ip(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "get_new_floating_ip", response)
-		
+		assert(response.data is )
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -485,9 +485,9 @@ api.update_floating_ip_info(
 	# The Floating IP service ID. Use the ID from `GET /floating_ips`.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_floating_ip_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

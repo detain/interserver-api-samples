@@ -30,8 +30,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AddLicense ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddLicense ();
 
         /// <summary>
         /// Place License Order
@@ -40,8 +40,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AddLicenseWithHttpInfo ();
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        ApiResponse<ServiceOrderPostResponse> AddLicenseWithHttpInfo ();
         /// <summary>
         /// Get License
         /// </summary>
@@ -258,8 +258,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns></returns>
-        void UpdateLicenseInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateLicenseInfo (string id);
 
         /// <summary>
         /// Update License
@@ -269,8 +269,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateLicenseInfoWithHttpInfo (string id);
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        ApiResponse<SuccessTextResponse> UpdateLicenseInfoWithHttpInfo (string id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -280,8 +280,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AddLicenseAsync ();
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        System.Threading.Tasks.Task<ServiceOrderPostResponse> AddLicenseAsync ();
 
         /// <summary>
         /// Place License Order
@@ -290,8 +290,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AddLicenseAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddLicenseAsyncWithHttpInfo ();
         /// <summary>
         /// Get License
         /// </summary>
@@ -508,8 +508,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateLicenseInfoAsync (string id);
+        /// <returns>Task of SuccessTextResponse</returns>
+        System.Threading.Tasks.Task<SuccessTextResponse> UpdateLicenseInfoAsync (string id);
 
         /// <summary>
         /// Update License
@@ -519,8 +519,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateLicenseInfoAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateLicenseInfoAsyncWithHttpInfo (string id);
         #endregion Asynchronous Operations
     }
 
@@ -636,18 +636,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place License Order Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AddLicense ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddLicense ()
         {
-             AddLicenseWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = AddLicenseWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Place License Order Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AddLicenseWithHttpInfo ()
+        /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
+        public ApiResponse< ServiceOrderPostResponse > AddLicenseWithHttpInfo ()
         {
 
             var localVarPath = "/licenses/order";
@@ -700,19 +701,20 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
         /// Place License Order Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AddLicenseAsync ()
+        /// <returns>Task of ServiceOrderPostResponse</returns>
+        public async System.Threading.Tasks.Task<ServiceOrderPostResponse> AddLicenseAsync ()
         {
-             await AddLicenseAsyncWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = await AddLicenseAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -720,8 +722,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Place License Order Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AddLicenseAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddLicenseAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/licenses/order";
@@ -774,9 +776,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServiceOrderPostResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServiceOrderPostResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServiceOrderPostResponse)));
         }
 
         /// <summary>
@@ -2400,10 +2402,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateLicenseInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateLicenseInfo (string id)
         {
-             UpdateLicenseInfoWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = UpdateLicenseInfoWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2411,8 +2414,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateLicenseInfoWithHttpInfo (string id)
+        /// <returns>ApiResponse of SuccessTextResponse</returns>
+        public ApiResponse< SuccessTextResponse > UpdateLicenseInfoWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2469,9 +2472,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
         /// <summary>
@@ -2479,10 +2482,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateLicenseInfoAsync (string id)
+        /// <returns>Task of SuccessTextResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessTextResponse> UpdateLicenseInfoAsync (string id)
         {
-             await UpdateLicenseInfoAsyncWithHttpInfo(id);
+             ApiResponse<SuccessTextResponse> localVarResponse = await UpdateLicenseInfoAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -2491,8 +2495,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateLicenseInfoAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> UpdateLicenseInfoAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2549,9 +2553,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<SuccessTextResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (SuccessTextResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SuccessTextResponse)));
         }
 
     }

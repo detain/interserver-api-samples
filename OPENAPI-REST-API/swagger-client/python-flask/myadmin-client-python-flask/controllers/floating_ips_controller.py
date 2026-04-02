@@ -5,6 +5,7 @@ from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoice
 from myadmin-client-python-flask.models.inline_response2003 import InlineResponse2003  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.ip_object import IpObject  # noqa: E501
+from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask import util
 
@@ -15,7 +16,7 @@ def add_floating_ip():  # noqa: E501
     Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first. # noqa: E501
 
 
-    :rtype: None
+    :rtype: ServiceOrderPostResponse
     """
     return 'do some magic!'
 
@@ -41,7 +42,7 @@ def get_floating_ip_info(id):  # noqa: E501
     :param id: The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
     :type id: int
 
-    :rtype: None
+    :rtype: object
     """
     return 'do some magic!'
 
@@ -89,7 +90,7 @@ def get_new_floating_ip():  # noqa: E501
     Retrieves available options and pricing for ordering a new Floating IP. # noqa: E501
 
 
-    :rtype: None
+    :rtype: object
     """
     return 'do some magic!'
 
@@ -145,6 +146,6 @@ def update_floating_ip_info(id):  # noqa: E501
     :param id: The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
     :type id: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'

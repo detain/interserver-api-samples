@@ -936,19 +936,20 @@ open class AccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * @param disableServerNotifications Set to &#x60;true&#x60; to disable server notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param disableEmailNotifications Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param gstin Your GST identification number (if applicable). (optional)
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateAccountInfo(name: kotlin.String, address: kotlin.String, city: kotlin.String, state: kotlin.String, zip: kotlin.String, country: kotlin.String, phone: kotlin.String, company: kotlin.String? = null, address2: kotlin.String? = null, locale: kotlin.String? = null, emailInvoices: kotlin.String? = null, emailAbuse: kotlin.String? = null, disableReset: kotlin.Boolean? = null, disableReinstall: kotlin.Boolean? = null, disableServerNotifications: kotlin.Boolean? = null, disableEmailNotifications: kotlin.Boolean? = null, gstin: kotlin.String? = null) : Unit {
+    fun updateAccountInfo(name: kotlin.String, address: kotlin.String, city: kotlin.String, state: kotlin.String, zip: kotlin.String, country: kotlin.String, phone: kotlin.String, company: kotlin.String? = null, address2: kotlin.String? = null, locale: kotlin.String? = null, emailInvoices: kotlin.String? = null, emailAbuse: kotlin.String? = null, disableReset: kotlin.Boolean? = null, disableReinstall: kotlin.Boolean? = null, disableServerNotifications: kotlin.Boolean? = null, disableEmailNotifications: kotlin.Boolean? = null, gstin: kotlin.String? = null) : SuccessTextResponse {
         val localVarResponse = updateAccountInfoWithHttpInfo(name = name, address = address, city = city, state = state, zip = zip, country = country, phone = phone, company = company, address2 = address2, locale = locale, emailInvoices = emailInvoices, emailAbuse = emailAbuse, disableReset = disableReset, disableReinstall = disableReinstall, disableServerNotifications = disableServerNotifications, disableEmailNotifications = disableEmailNotifications, gstin = gstin)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -983,15 +984,16 @@ open class AccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * @param disableServerNotifications Set to &#x60;true&#x60; to disable server notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param disableEmailNotifications Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param gstin Your GST identification number (if applicable). (optional)
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateAccountInfoWithHttpInfo(name: kotlin.String, address: kotlin.String, city: kotlin.String, state: kotlin.String, zip: kotlin.String, country: kotlin.String, phone: kotlin.String, company: kotlin.String?, address2: kotlin.String?, locale: kotlin.String?, emailInvoices: kotlin.String?, emailAbuse: kotlin.String?, disableReset: kotlin.Boolean?, disableReinstall: kotlin.Boolean?, disableServerNotifications: kotlin.Boolean?, disableEmailNotifications: kotlin.Boolean?, gstin: kotlin.String?) : ApiResponse<Unit?> {
+    fun updateAccountInfoWithHttpInfo(name: kotlin.String, address: kotlin.String, city: kotlin.String, state: kotlin.String, zip: kotlin.String, country: kotlin.String, phone: kotlin.String, company: kotlin.String?, address2: kotlin.String?, locale: kotlin.String?, emailInvoices: kotlin.String?, emailAbuse: kotlin.String?, disableReset: kotlin.Boolean?, disableReinstall: kotlin.Boolean?, disableServerNotifications: kotlin.Boolean?, disableEmailNotifications: kotlin.Boolean?, gstin: kotlin.String?) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateAccountInfoRequestConfig(name = name, address = address, city = city, state = state, zip = zip, country = country, phone = phone, company = company, address2 = address2, locale = locale, emailInvoices = emailInvoices, emailAbuse = emailAbuse, disableReset = disableReset, disableReinstall = disableReinstall, disableServerNotifications = disableServerNotifications, disableEmailNotifications = disableEmailNotifications, gstin = gstin)
 
-        return request<Map<String, PartConfig<*>>, Unit>(
+        return request<Map<String, PartConfig<*>>, SuccessTextResponse>(
             localVariableConfig
         )
     }
@@ -1057,19 +1059,20 @@ open class AccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Adds an IP address range to the account&#39;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param start The begining (or first) IP address in the range.
      * @param end The ending (or last) IP address in the range.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateAccountIpLimits(start: kotlin.String, end: kotlin.String) : Unit {
+    fun updateAccountIpLimits(start: kotlin.String, end: kotlin.String) : SuccessTextResponse {
         val localVarResponse = updateAccountIpLimitsWithHttpInfo(start = start, end = end)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1089,15 +1092,16 @@ open class AccountApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Adds an IP address range to the account&#39;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param start The begining (or first) IP address in the range.
      * @param end The ending (or last) IP address in the range.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateAccountIpLimitsWithHttpInfo(start: kotlin.String, end: kotlin.String) : ApiResponse<Unit?> {
+    fun updateAccountIpLimitsWithHttpInfo(start: kotlin.String, end: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateAccountIpLimitsRequestConfig(start = start, end = end)
 
-        return request<Map<String, PartConfig<*>>, Unit>(
+        return request<Map<String, PartConfig<*>>, SuccessTextResponse>(
             localVariableConfig
         )
     }

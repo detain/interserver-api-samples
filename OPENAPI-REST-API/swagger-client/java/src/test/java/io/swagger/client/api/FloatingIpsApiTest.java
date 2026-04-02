@@ -16,6 +16,7 @@ import io.swagger.client.model.ChargeInvoiceRows;
 import io.swagger.client.model.InlineResponse2003;
 import io.swagger.client.model.InlineResponse401;
 import io.swagger.client.model.IpObject;
+import io.swagger.client.model.ServiceOrderPostResponse;
 import io.swagger.client.model.SuccessTextResponse;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -45,7 +46,7 @@ public class FloatingIpsApiTest {
      */
     @Test
     public void addFloatingIpTest() throws Exception {
-        api.addFloatingIp();
+        ServiceOrderPostResponse response = api.addFloatingIp();
 
         // TODO: test validations
     }
@@ -75,7 +76,7 @@ public class FloatingIpsApiTest {
     @Test
     public void getFloatingIpInfoTest() throws Exception {
         Integer id = null;
-        api.getFloatingIpInfo(id);
+        Object response = api.getFloatingIpInfo(id);
 
         // TODO: test validations
     }
@@ -133,7 +134,7 @@ public class FloatingIpsApiTest {
      */
     @Test
     public void getNewFloatingIpTest() throws Exception {
-        api.getNewFloatingIp();
+        Object response = api.getNewFloatingIp();
 
         // TODO: test validations
     }
@@ -178,7 +179,7 @@ public class FloatingIpsApiTest {
     @Test
     public void updateFloatingIpInfoTest() throws Exception {
         String id = null;
-        api.updateFloatingIpInfo(id);
+        SuccessTextResponse response = api.updateFloatingIpInfo(id);
 
         // TODO: test validations
     }

@@ -31,23 +31,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// Place Server Order
         /// </summary>
         /// <remarks>Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.</remarks>
+        /// <response code="200">Server order placed successfully.</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/servers/order")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AddServer")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20019), description: "Server order placed successfully.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult AddServer()
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(InlineResponse20019));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"text\" : \"Order Completed\",\n  \"invoice\" : 0,\n  \"order\" : 6\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<InlineResponse20019>(exampleJson)
+                        : default(InlineResponse20019);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -61,12 +67,12 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("BuyItNowServerOrder")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20026), description: "Available server configurations with pricing and hardware options.")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20027), description: "Available server configurations with pricing and hardware options.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult BuyItNowServerOrder()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20026));
+            // return StatusCode(200, default(InlineResponse20027));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -74,8 +80,8 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"os\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"5\",\n    \"short_desc\" : \"FreeBSD\",\n    \"long_desc\" : \"Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"5\",\n    \"short_desc\" : \"FreeBSD\",\n    \"long_desc\" : \"Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>\"\n  } ],\n  \"bandwidth\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"10\",\n    \"short_desc\" : \"1GBPS Unmetered\",\n    \"long_desc\" : \"\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"10\",\n    \"short_desc\" : \"1GBPS Unmetered\",\n    \"long_desc\" : \"\"\n  } ],\n  \"ips\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"9\",\n    \"short_desc\" : \"1 Vlan Ip (/30)\",\n    \"long_desc\" : \"1 IP In personal Vlan\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"9\",\n    \"short_desc\" : \"1 Vlan Ip (/30)\",\n    \"long_desc\" : \"1 IP In personal Vlan\"\n  } ],\n  \"cp\" : [ {\n    \"monthly_price\" : \"0\",\n    \"os_type\" : \"\",\n    \"id\" : \"1\",\n    \"short_desc\" : \"None\",\n    \"long_desc\" : \"\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"os_type\" : \"\",\n    \"id\" : \"1\",\n    \"short_desc\" : \"None\",\n    \"long_desc\" : \"\"\n  } ],\n  \"raid\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"0\",\n    \"short_desc\" : \"No Raid\",\n    \"long_desc\" : \"No Raid\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"0\",\n    \"short_desc\" : \"No Raid\",\n    \"long_desc\" : \"No Raid\"\n  } ]\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20026>(exampleJson)
-                        : default(InlineResponse20026);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20027>(exampleJson)
+                        : default(InlineResponse20027);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -513,12 +519,12 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ServersCancel")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20019), description: "Servers Cancel")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20020), description: "Servers Cancel")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult ServersCancel([FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20019));
+            // return StatusCode(200, default(InlineResponse20020));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -526,8 +532,8 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Servers is canceled.\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20019>(exampleJson)
-                        : default(InlineResponse20019);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20020>(exampleJson)
+                        : default(InlineResponse20020);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -536,23 +542,29 @@ namespace myadmin-client-aspnetcore.Controllers
         /// </summary>
         /// <remarks>Updates settings on a dedicated server order.</remarks>
         /// <param name="id">Server ID number.</param>
+        /// <response code="200">A response indicating the operation completed successfully with a text message.</response>
         /// <response code="401">Unauthorized</response>
-        /// <response code="0">Default response</response>
         [HttpPost]
         [Route("/apiv2/servers/{id}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UpdateServerInfo")]
+        [SwaggerResponse(statusCode: 200, type: typeof(SuccessTextResponse), description: "A response indicating the operation completed successfully with a text message.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult UpdateServerInfo([FromRoute][Required]string id)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(SuccessTextResponse));
+
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0);
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<SuccessTextResponse>(exampleJson)
+                        : default(SuccessTextResponse);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
     }
 }

@@ -9,7 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(description="Information about the IPMI connectioj.")
+@Schema(description="Information about the IPMI connection.")
 
 public class ServerIpmiLiveInfo   {
   private String text = null;  private String publicIp = null;  private String allowedIp = null;  private String clientUsername = null;  private String clientPassword = null;

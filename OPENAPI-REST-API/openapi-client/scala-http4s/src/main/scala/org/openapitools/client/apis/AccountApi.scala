@@ -38,8 +38,8 @@ trait AccountApiEndpoints[F[*]] {
   def logoutAccountOauth(name: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def updateAccountApiKey()(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def updateAccountFeatures(disableReset: Option[Int] = None, disableReinstall: Option[Int] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: Option[String] = None, address2: Option[String] = None, locale: Option[String] = None, emailInvoices: Option[String] = None, emailAbuse: Option[String] = None, disableReset: Option[Boolean] = None, disableReinstall: Option[Boolean] = None, disableServerNotifications: Option[Boolean] = None, disableEmailNotifications: Option[Boolean] = None, gstin: Option[String] = None)(using auth: _Authorization.ApiKey): F[Unit]
-  def updateAccountIpLimits(start: String, end: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: Option[String] = None, address2: Option[String] = None, locale: Option[String] = None, emailInvoices: Option[String] = None, emailAbuse: Option[String] = None, disableReset: Option[Boolean] = None, disableReinstall: Option[Boolean] = None, disableServerNotifications: Option[Boolean] = None, disableEmailNotifications: Option[Boolean] = None, gstin: Option[String] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
+  def updateAccountIpLimits(start: String, end: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def updateAccountPassword(password: String)(using auth: _Authorization.ApiKey): F[TextResponse]
   def updateAccountSshKey(sshKey: Option[String] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def updateAccountTfa(`2faGoogleCode`: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
@@ -290,7 +290,7 @@ class AccountApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: Option[String] = None, address2: Option[String] = None, locale: Option[String] = None, emailInvoices: Option[String] = None, emailAbuse: Option[String] = None, disableReset: Option[Boolean] = None, disableReinstall: Option[Boolean] = None, disableServerNotifications: Option[Boolean] = None, disableEmailNotifications: Option[Boolean] = None, gstin: Option[String] = None)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateAccountInfo(name: String, address: String, city: String, state: String, zip: String, country: String, phone: String, company: Option[String] = None, address2: Option[String] = None, locale: Option[String] = None, emailInvoices: Option[String] = None, emailAbuse: Option[String] = None, disableReset: Option[Boolean] = None, disableReinstall: Option[Boolean] = None, disableServerNotifications: Option[Boolean] = None, disableEmailNotifications: Option[Boolean] = None, gstin: Option[String] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "multipart/form-data")
     ).flatten
@@ -314,7 +314,7 @@ class AccountApiEndpointsImpl[F[*]: Concurrent](
       gstin.map("gstin" -> _).map(Seq(_))
     ).toSeq.flatten)
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/account",
       body = None,
@@ -323,13 +323,13 @@ class AccountApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
         case r if r.status.code == 422 => parseJson[F, TextResponse]("TextResponse", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
-  override def updateAccountIpLimits(start: String, end: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateAccountIpLimits(start: String, end: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "multipart/form-data")
     ).flatten
@@ -338,7 +338,7 @@ class AccountApiEndpointsImpl[F[*]: Concurrent](
       Some(Seq("end" -> end))
     ).toSeq.flatten)
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/account/iplimits",
       body = None,
@@ -347,9 +347,9 @@ class AccountApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
         case r if r.status.code == 422 => parseJson[F, TextResponse]("TextResponse", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

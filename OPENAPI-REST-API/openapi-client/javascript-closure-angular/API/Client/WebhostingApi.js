@@ -19,6 +19,7 @@ goog.require('API.Client.ChargeInvoiceRows');
 goog.require('API.Client.PostWebsiteBuyIpRequest');
 goog.require('API.Client.PostWebsiteMigrationRequest');
 goog.require('API.Client.ReverseDnsEntries');
+goog.require('API.Client.ServiceOrderPostResponse');
 goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.TextResponse');
 goog.require('API.Client.Website');
@@ -66,7 +67,7 @@ API.Client.WebhostingApi.$inject = ['$http', '$httpParamSerializer', '$injector'
  * Place Website Order
  * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.ServiceOrderPostResponse>}
  */
 API.Client.WebhostingApi.prototype.addWebsite = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -579,7 +580,7 @@ API.Client.WebhostingApi.prototype.putWebsites = function(opt_extraHttpRequestPa
  * Updates settings on a webhosting order.
  * @param {!string} id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.WebhostingApi.prototype.updateWebsiteInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

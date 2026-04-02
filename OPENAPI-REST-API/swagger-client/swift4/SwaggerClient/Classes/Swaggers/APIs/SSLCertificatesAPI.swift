@@ -16,13 +16,9 @@ open class SSLCertificatesAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addSsl(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addSsl(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
         addSslWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -40,10 +36,20 @@ open class SSLCertificatesAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addSslWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func addSslWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/ssl/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -51,7 +57,7 @@ open class SSLCertificatesAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -61,13 +67,9 @@ open class SSLCertificatesAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getNewSsl(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func getNewSsl(completion: @escaping ((_ data: Any?,_ error: Error?) -> Void)) {
         getNewSslWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -85,10 +87,11 @@ open class SSLCertificatesAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={ }}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<Any> 
      */
-    open class func getNewSslWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func getNewSslWithRequestBuilder() -> RequestBuilder<Any> {
         let path = "/ssl/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -96,7 +99,7 @@ open class SSLCertificatesAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<Any>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -106,13 +109,9 @@ open class SSLCertificatesAPI {
      - parameter _id: (path) SSL certificate ID number. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getSslInfo(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func getSslInfo(_id: Int, completion: @escaping ((_ data: Any?,_ error: Error?) -> Void)) {
         getSslInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -130,11 +129,12 @@ open class SSLCertificatesAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={ }}]
      - parameter _id: (path) SSL certificate ID number. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<Any> 
      */
-    open class func getSslInfoWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+    open class func getSslInfoWithRequestBuilder(_id: Int) -> RequestBuilder<Any> {
         var path = "/ssl/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -145,7 +145,7 @@ open class SSLCertificatesAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<Any>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -378,7 +378,7 @@ open class SSLCertificatesAPI {
      - parameter _id: (path) SSL Cert ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func sslCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20020?,_ error: Error?) -> Void)) {
+    open class func sslCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20021?,_ error: Error?) -> Void)) {
         sslCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -404,9 +404,9 @@ open class SSLCertificatesAPI {
 }}]
      - parameter _id: (path) SSL Cert ID number 
 
-     - returns: RequestBuilder<InlineResponse20020> 
+     - returns: RequestBuilder<InlineResponse20021> 
      */
-    open class func sslCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20020> {
+    open class func sslCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20021> {
         var path = "/ssl/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -417,7 +417,7 @@ open class SSLCertificatesAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<InlineResponse20020>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20021>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -427,13 +427,9 @@ open class SSLCertificatesAPI {
      - parameter _id: (path) SSL certificate ID number. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateSslInfo(_id: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateSslInfo(_id: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateSslInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -451,11 +447,15 @@ open class SSLCertificatesAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter _id: (path) SSL certificate ID number. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateSslInfoWithRequestBuilder(_id: String) -> RequestBuilder<Void> {
+    open class func updateSslInfoWithRequestBuilder(_id: String) -> RequestBuilder<SuccessTextResponse> {
         var path = "/ssl/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -466,7 +466,7 @@ open class SSLCertificatesAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

@@ -180,7 +180,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            std::string
         >
         BillingApi::
         deleteAccountCreditCard(
@@ -221,7 +221,14 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+            bourne::json jsonPayload(output_string);
+            std::string obj;
+            jsonToValue(&obj, jsonPayload, "std::string");
+
+
+
+            Response<std::string> response(obj, httpCode);
             return response;
         }
 
@@ -667,7 +674,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            Object
         >
         BillingApi::
         getBillingCart(
@@ -697,7 +704,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            Object obj(output_string);
+
+
+            Response<Object> response(obj, httpCode);
             return response;
         }
 
@@ -844,7 +856,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            Object
         >
         BillingApi::
         getBillingPrePays(
@@ -874,7 +886,12 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            Object obj(output_string);
+
+
+            Response<Object> response(obj, httpCode);
             return response;
         }
 
@@ -1073,7 +1090,7 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            std::string
         >
         BillingApi::
         updateAccountCreditCard(
@@ -1114,7 +1131,14 @@ using namespace Tiny;
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+            bourne::json jsonPayload(output_string);
+            std::string obj;
+            jsonToValue(&obj, jsonPayload, "std::string");
+
+
+
+            Response<std::string> response(obj, httpCode);
             return response;
         }
 

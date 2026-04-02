@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## AddFloatingIp
 
-> AddFloatingIp(ctx).Execute()
+> ServiceOrderPostResponse AddFloatingIp(ctx).Execute()
 
 Place Floating IP Order
 
@@ -41,11 +41,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FloatingIPsAPI.AddFloatingIp(context.Background()).Execute()
+	resp, r, err := apiClient.FloatingIPsAPI.AddFloatingIp(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FloatingIPsAPI.AddFloatingIp``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `AddFloatingIp`: ServiceOrderPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `FloatingIPsAPI.AddFloatingIp`: %v\n", resp)
 }
 ```
 
@@ -60,7 +62,7 @@ Other parameters are passed through a pointer to a apiAddFloatingIpRequest struc
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -148,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## GetFloatingIpInfo
 
-> GetFloatingIpInfo(ctx, id).Execute()
+> map[string]interface{} GetFloatingIpInfo(ctx, id).Execute()
 
 View Floating IP
 
@@ -171,11 +173,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FloatingIPsAPI.GetFloatingIpInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.FloatingIPsAPI.GetFloatingIpInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FloatingIPsAPI.GetFloatingIpInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetFloatingIpInfo`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `FloatingIPsAPI.GetFloatingIpInfo`: %v\n", resp)
 }
 ```
 
@@ -198,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -415,7 +419,7 @@ Name | Type | Description  | Notes
 
 ## GetNewFloatingIp
 
-> GetNewFloatingIp(ctx).Execute()
+> map[string]interface{} GetNewFloatingIp(ctx).Execute()
 
 Get Floating IP Ordering Information
 
@@ -437,11 +441,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FloatingIPsAPI.GetNewFloatingIp(context.Background()).Execute()
+	resp, r, err := apiClient.FloatingIPsAPI.GetNewFloatingIp(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FloatingIPsAPI.GetNewFloatingIp``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetNewFloatingIp`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `FloatingIPsAPI.GetNewFloatingIp`: %v\n", resp)
 }
 ```
 
@@ -456,7 +462,7 @@ Other parameters are passed through a pointer to a apiGetNewFloatingIpRequest st
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -605,7 +611,7 @@ Other parameters are passed through a pointer to a apiPutFloatingIpsRequest stru
 
 ## UpdateFloatingIpInfo
 
-> UpdateFloatingIpInfo(ctx, id).Execute()
+> SuccessTextResponse UpdateFloatingIpInfo(ctx, id).Execute()
 
 Update Floating IP
 
@@ -628,11 +634,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FloatingIPsAPI.UpdateFloatingIpInfo(context.Background(), id).Execute()
+	resp, r, err := apiClient.FloatingIPsAPI.UpdateFloatingIpInfo(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FloatingIPsAPI.UpdateFloatingIpInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateFloatingIpInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `FloatingIPsAPI.UpdateFloatingIpInfo`: %v\n", resp)
 }
 ```
 
@@ -655,7 +663,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

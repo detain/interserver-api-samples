@@ -12,6 +12,7 @@ import io.swagger.model.IpObject;
 import io.swagger.model.License;
 import io.swagger.model.LicenseRow;
 import io.swagger.model.LicensesOrder;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.*;
@@ -32,10 +33,10 @@ public interface LicensesApi {
 
 
     @Operation(summary = "Place License Order", operationId = "addLicense", description = "Places an order for a new software license. Use `PUT /licenses/order` to validate the order first." , tags = {"Licenses"})
+    @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/licenses/order", produces = { "application/json" })
-    default Single<HttpResponse<Void>> addLicense() {
+    default Single<HttpResponse<ServiceOrderPostResponse>> addLicense() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -153,10 +154,10 @@ public interface LicensesApi {
 
 
     @Operation(summary = "Update License", operationId = "updateLicenseInfo", description = "Updates settings on a license service such as its assigned IP." , tags = {"Licenses"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/licenses/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateLicenseInfo(@Parameter(description = "The license service ID. Use `license_id` from `GET /licenses`.") @PathVariable("id") String id) {
+    default Single<HttpResponse<SuccessTextResponse>> updateLicenseInfo(@Parameter(description = "The license service ID. Use `license_id` from `GET /licenses`.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

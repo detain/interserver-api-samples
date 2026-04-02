@@ -23,6 +23,7 @@ doc/AccountInfoOauthConfigProvidersValue.md
 doc/AccountInfoOauthproviders.md
 doc/AccountInfoPost.md
 doc/AccountSshKey.md
+doc/AddServer200Response.md
 doc/AffiliateBannerRow.md
 doc/AffiliateDockSetup.md
 doc/AffiliatePaymentSetup.md
@@ -367,6 +368,7 @@ doc/ServersCancel200Response.md
 doc/Service.md
 doc/ServiceCategories.md
 doc/ServiceCategory.md
+doc/ServiceOrderPostResponse.md
 doc/ServiceType.md
 doc/ServiceTypes.md
 doc/Services.md
@@ -514,6 +516,7 @@ lib/model/account_info_oauth_config_providers_value.dart
 lib/model/account_info_oauthproviders.dart
 lib/model/account_info_post.dart
 lib/model/account_ssh_key.dart
+lib/model/add_server200_response.dart
 lib/model/affiliate_banner_row.dart
 lib/model/affiliate_dock_setup.dart
 lib/model/affiliate_payment_setup.dart
@@ -846,6 +849,7 @@ lib/model/servers_cancel200_response.dart
 lib/model/service.dart
 lib/model/service_categories.dart
 lib/model/service_category.dart
+lib/model/service_order_post_response.dart
 lib/model/service_type.dart
 lib/model/service_types.dart
 lib/model/services.dart
@@ -966,6 +970,7 @@ test/account_info_oauthproviders_test.dart
 test/account_info_post_test.dart
 test/account_info_test.dart
 test/account_ssh_key_test.dart
+test/add_server200_response_test.dart
 test/affiliate_banner_row_test.dart
 test/affiliate_dock_setup_test.dart
 test/affiliate_payment_setup_test.dart
@@ -1308,6 +1313,7 @@ test/servers_buy_now_response_test.dart
 test/servers_cancel200_response_test.dart
 test/service_categories_test.dart
 test/service_category_test.dart
+test/service_order_post_response_test.dart
 test/service_test.dart
 test/service_type_test.dart
 test/service_types_test.dart

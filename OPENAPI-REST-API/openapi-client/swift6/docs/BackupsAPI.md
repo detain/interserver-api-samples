@@ -414,7 +414,7 @@ This endpoint does not need any parameter.
 
 # **updateBackupInfo**
 ```swift
-    open class func updateBackupInfo(id: Int, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateBackupInfo(id: Int, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Update Backup Information
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -19,16 +19,16 @@ module SwaggerClient
     # Place SSL Cert Order
     # Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_ssl(opts = {})
-      add_ssl_with_http_info(opts)
-      nil
+      data, _status_code, _headers = add_ssl_with_http_info(opts)
+      data
     end
 
     # Place SSL Cert Order
     # Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_ssl_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SSLCertificatesApi.add_ssl ...'
@@ -50,7 +50,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'ServiceOrderPostResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -69,16 +69,16 @@ module SwaggerClient
     # SSL Cert Ordering Information
     # Retrieves available SSL certificate types and pricing for ordering.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Object]
     def get_new_ssl(opts = {})
-      get_new_ssl_with_http_info(opts)
-      nil
+      data, _status_code, _headers = get_new_ssl_with_http_info(opts)
+      data
     end
 
     # SSL Cert Ordering Information
     # Retrieves available SSL certificate types and pricing for ordering.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def get_new_ssl_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SSLCertificatesApi.get_new_ssl ...'
@@ -100,7 +100,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'Object' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -120,17 +120,17 @@ module SwaggerClient
     # Returns detailed information about a specific SSL certificate including its domain and expiration.
     # @param id SSL certificate ID number.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [Object]
     def get_ssl_info(id, opts = {})
-      get_ssl_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = get_ssl_info_with_http_info(id, opts)
+      data
     end
 
     # Get SSL Cert Info
     # Returns detailed information about a specific SSL certificate including its domain and expiration.
     # @param id SSL certificate ID number.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def get_ssl_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SSLCertificatesApi.get_ssl_info ...'
@@ -156,7 +156,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'Object' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -388,7 +388,7 @@ module SwaggerClient
     # Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
     # @param id SSL Cert ID number
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse20020]
+    # @return [InlineResponse20021]
     def ssl_cancel(id, opts = {})
       data, _status_code, _headers = ssl_cancel_with_http_info(id, opts)
       data
@@ -398,7 +398,7 @@ module SwaggerClient
     # Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
     # @param id SSL Cert ID number
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse20020, Integer, Hash)>] InlineResponse20020 data, response status code and response headers
+    # @return [Array<(InlineResponse20021, Integer, Hash)>] InlineResponse20021 data, response status code and response headers
     def ssl_cancel_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SSLCertificatesApi.ssl_cancel ...'
@@ -424,7 +424,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'InlineResponse20020' 
+      return_type = opts[:return_type] || 'InlineResponse20021' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
@@ -444,17 +444,17 @@ module SwaggerClient
     # Updates settings on an SSL certificate order.
     # @param id SSL certificate ID number.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_ssl_info(id, opts = {})
-      update_ssl_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_ssl_info_with_http_info(id, opts)
+      data
     end
 
     # Update SSL Cert Order
     # Updates settings on an SSL certificate order.
     # @param id SSL certificate ID number.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_ssl_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SSLCertificatesApi.update_ssl_info ...'
@@ -480,7 +480,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

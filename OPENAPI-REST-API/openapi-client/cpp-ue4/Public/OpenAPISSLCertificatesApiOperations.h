@@ -17,6 +17,7 @@
 
 #include "OpenAPIChargeInvoiceRows.h"
 #include "OpenAPIGetAccountInfo401Response.h"
+#include "OpenAPIServiceOrderPostResponse.h"
 #include "OpenAPISslCancel200Response.h"
 #include "OpenAPISuccessTextResponse.h"
 
@@ -43,7 +44,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPIServiceOrderPostResponse Content;
 };
 
 /* SSL Cert Ordering Information
@@ -66,7 +67,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    TSharedPtr<FJsonObject> Content;
 };
 
 /* Get SSL Cert Info
@@ -91,7 +92,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    TSharedPtr<FJsonObject> Content;
 };
 
 /* Get SSL Cert Invoices
@@ -237,7 +238,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonValue) final;
 
-    
+    OpenAPISuccessTextResponse Content;
 };
 
 }

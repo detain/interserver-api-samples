@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 
 # **addServer**
-> addServer()
+> AddServer200Response addServer()
 
 Place Server Order
 
@@ -55,7 +55,8 @@ import 'package:openapi/api.dart';
 final api_instance = ServersApi();
 
 try {
-    api_instance.addServer();
+    final result = api_instance.addServer();
+    print(result);
 } catch (e) {
     print('Exception when calling ServersApi->addServer: $e\n');
 }
@@ -66,7 +67,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**AddServer200Response**](AddServer200Response.md)
 
 ### Authorization
 
@@ -949,7 +950,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateServerInfo**
-> updateServerInfo(id)
+> SuccessTextResponse updateServerInfo(id)
 
 Update Server Order
 
@@ -975,7 +976,8 @@ final api_instance = ServersApi();
 final id = id_example; // String | Server ID number.
 
 try {
-    api_instance.updateServerInfo(id);
+    final result = api_instance.updateServerInfo(id);
+    print(result);
 } catch (e) {
     print('Exception when calling ServersApi->updateServerInfo: $e\n');
 }
@@ -989,7 +991,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

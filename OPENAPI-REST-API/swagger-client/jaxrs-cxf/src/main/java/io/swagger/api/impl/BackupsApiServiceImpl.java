@@ -146,10 +146,10 @@ public class BackupsApiServiceImpl implements BackupsApi {
      * Updates backup storage service metadata, such as stored credentials or settings for the order.
      *
      */
-    public void updateBackupInfo(Integer id) {
+    public SuccessTextResponse updateBackupInfo(Integer id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**

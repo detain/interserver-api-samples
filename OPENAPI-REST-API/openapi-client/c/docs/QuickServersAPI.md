@@ -56,7 +56,7 @@ Method | HTTP request | Description
 //
 // Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
 //
-void QuickServersAPI_addQs(apiClient_t *apiClient);
+service_order_post_response_t* QuickServersAPI_addQs(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -66,7 +66,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[service_order_post_response_t](service_order_post_response.md) *
+
 
 ### Authorization
 
@@ -1384,7 +1385,7 @@ Name | Type | Description  | Notes
 //
 // Updates QuickServer metadata or stored settings associated with the order.
 //
-void QuickServersAPI_updateQsInfo(apiClient_t *apiClient, char *id);
+success_text_response_t* QuickServersAPI_updateQsInfo(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -1395,7 +1396,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

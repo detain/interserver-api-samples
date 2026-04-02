@@ -323,8 +323,8 @@ export class BackupsService {
      * @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
      
      */
-    public updateBackupInfo(id: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateBackupInfo(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateBackupInfo(id: number, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateBackupInfo(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateBackupInfo(id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling updateBackupInfo.');
@@ -341,10 +341,10 @@ export class BackupsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/backups/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/backups/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

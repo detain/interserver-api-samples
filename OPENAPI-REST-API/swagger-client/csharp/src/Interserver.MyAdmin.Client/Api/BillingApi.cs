@@ -193,8 +193,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns></returns>
-        void DeleteAccountCreditCard (string id);
+        /// <returns>string</returns>
+        string DeleteAccountCreditCard (string id);
 
         /// <summary>
         /// Remove Credit Card
@@ -204,8 +204,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteAccountCreditCardWithHttpInfo (string id);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DeleteAccountCreditCardWithHttpInfo (string id);
         /// <summary>
         /// Delete Credit Card
         /// </summary>
@@ -394,8 +394,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void GetBillingCart ();
+        /// <returns>Object</returns>
+        Object GetBillingCart ();
 
         /// <summary>
         /// Get Shopping Cart Contents
@@ -404,7 +404,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
+        /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetBillingCartWithHttpInfo ();
         /// <summary>
         /// Get Credit Card Verification Requirements
@@ -474,8 +474,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void GetBillingPrePays ();
+        /// <returns>Object</returns>
+        Object GetBillingPrePays ();
 
         /// <summary>
         /// List Prepay Balances
@@ -484,7 +484,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
+        /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetBillingPrePaysWithHttpInfo ();
         /// <summary>
         /// Get Invoices
@@ -596,8 +596,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns></returns>
-        void UpdateAccountCreditCard (int? id);
+        /// <returns>string</returns>
+        string UpdateAccountCreditCard (int? id);
 
         /// <summary>
         /// Update Credit Card
@@ -607,8 +607,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateAccountCreditCardWithHttpInfo (int? id);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> UpdateAccountCreditCardWithHttpInfo (int? id);
         /// <summary>
         /// Configure Affiliate Dock Settings
         /// </summary>
@@ -982,8 +982,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteAccountCreditCardAsync (string id);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DeleteAccountCreditCardAsync (string id);
 
         /// <summary>
         /// Remove Credit Card
@@ -993,8 +993,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccountCreditCardAsyncWithHttpInfo (string id);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DeleteAccountCreditCardAsyncWithHttpInfo (string id);
         /// <summary>
         /// Delete Credit Card
         /// </summary>
@@ -1183,8 +1183,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetBillingCartAsync ();
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> GetBillingCartAsync ();
 
         /// <summary>
         /// Get Shopping Cart Contents
@@ -1193,7 +1193,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetBillingCartAsyncWithHttpInfo ();
         /// <summary>
         /// Get Credit Card Verification Requirements
@@ -1263,8 +1263,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetBillingPrePaysAsync ();
+        /// <returns>Task of Object</returns>
+        System.Threading.Tasks.Task<Object> GetBillingPrePaysAsync ();
 
         /// <summary>
         /// List Prepay Balances
@@ -1273,7 +1273,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetBillingPrePaysAsyncWithHttpInfo ();
         /// <summary>
         /// Get Invoices
@@ -1385,8 +1385,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateAccountCreditCardAsync (int? id);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> UpdateAccountCreditCardAsync (int? id);
 
         /// <summary>
         /// Update Credit Card
@@ -1396,8 +1396,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountCreditCardAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> UpdateAccountCreditCardAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Configure Affiliate Dock Settings
         /// </summary>
@@ -2963,10 +2963,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns></returns>
-        public void DeleteAccountCreditCard (string id)
+        /// <returns>string</returns>
+        public string DeleteAccountCreditCard (string id)
         {
-             DeleteAccountCreditCardWithHttpInfo(id);
+             ApiResponse<string> localVarResponse = DeleteAccountCreditCardWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2974,8 +2975,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteAccountCreditCardWithHttpInfo (string id)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DeleteAccountCreditCardWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3032,9 +3033,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3042,10 +3043,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteAccountCreditCardAsync (string id)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DeleteAccountCreditCardAsync (string id)
         {
-             await DeleteAccountCreditCardAsyncWithHttpInfo(id);
+             ApiResponse<string> localVarResponse = await DeleteAccountCreditCardAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -3054,8 +3056,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAccountCreditCardAsyncWithHttpInfo (string id)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DeleteAccountCreditCardAsyncWithHttpInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3112,9 +3114,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -4510,18 +4512,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// Get Shopping Cart Contents Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GetBillingCart ()
+        /// <returns>Object</returns>
+        public Object GetBillingCart ()
         {
-             GetBillingCartWithHttpInfo();
+             ApiResponse<Object> localVarResponse = GetBillingCartWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get Shopping Cart Contents Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetBillingCartWithHttpInfo ()
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > GetBillingCartWithHttpInfo ()
         {
 
             var localVarPath = "/billing/cart";
@@ -4576,17 +4579,18 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
         /// Get Shopping Cart Contents Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetBillingCartAsync ()
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> GetBillingCartAsync ()
         {
-             await GetBillingCartAsyncWithHttpInfo();
+             ApiResponse<Object> localVarResponse = await GetBillingCartAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -4594,7 +4598,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// Get Shopping Cart Contents Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetBillingCartAsyncWithHttpInfo ()
         {
 
@@ -4650,7 +4654,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -5128,18 +5132,19 @@ namespace Interserver.MyAdmin.Client.Api
         /// List Prepay Balances Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void GetBillingPrePays ()
+        /// <returns>Object</returns>
+        public Object GetBillingPrePays ()
         {
-             GetBillingPrePaysWithHttpInfo();
+             ApiResponse<Object> localVarResponse = GetBillingPrePaysWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// List Prepay Balances Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetBillingPrePaysWithHttpInfo ()
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse< Object > GetBillingPrePaysWithHttpInfo ()
         {
 
             var localVarPath = "/billing/prepays";
@@ -5194,17 +5199,18 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
         /// List Prepay Balances Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetBillingPrePaysAsync ()
+        /// <returns>Task of Object</returns>
+        public async System.Threading.Tasks.Task<Object> GetBillingPrePaysAsync ()
         {
-             await GetBillingPrePaysAsyncWithHttpInfo();
+             ApiResponse<Object> localVarResponse = await GetBillingPrePaysAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -5212,7 +5218,7 @@ namespace Interserver.MyAdmin.Client.Api
         /// List Prepay Balances Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
+        /// <returns>Task of ApiResponse (Object)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Object>> GetBillingPrePaysAsyncWithHttpInfo ()
         {
 
@@ -5268,7 +5274,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -6032,10 +6038,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns></returns>
-        public void UpdateAccountCreditCard (int? id)
+        /// <returns>string</returns>
+        public string UpdateAccountCreditCard (int? id)
         {
-             UpdateAccountCreditCardWithHttpInfo(id);
+             ApiResponse<string> localVarResponse = UpdateAccountCreditCardWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -6043,8 +6050,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateAccountCreditCardWithHttpInfo (int? id)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > UpdateAccountCreditCardWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6101,9 +6108,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -6111,10 +6118,11 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateAccountCreditCardAsync (int? id)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> UpdateAccountCreditCardAsync (int? id)
         {
-             await UpdateAccountCreditCardAsyncWithHttpInfo(id);
+             ApiResponse<string> localVarResponse = await UpdateAccountCreditCardAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -6123,8 +6131,8 @@ namespace Interserver.MyAdmin.Client.Api
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateAccountCreditCardAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> UpdateAccountCreditCardAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6181,9 +6189,9 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>

@@ -11,7 +11,7 @@ void main() {
     //
     // Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
     //
-    //Future addServer() async
+    //Future<AddServer200Response> addServer() async
     test('test addServer', () async {
       // TODO
     });
@@ -164,7 +164,7 @@ void main() {
     //
     // Updates settings on a dedicated server order.
     //
-    //Future updateServerInfo(String id) async
+    //Future<SuccessTextResponse> updateServerInfo(String id) async
     test('test updateServerInfo', () async {
       // TODO
     });

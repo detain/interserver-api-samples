@@ -33,6 +33,7 @@ import 'package:openapi/src/model/account_info_oauth_config_providers_value.dart
 import 'package:openapi/src/model/account_info_oauthproviders.dart';
 import 'package:openapi/src/model/account_info_post.dart';
 import 'package:openapi/src/model/account_ssh_key.dart';
+import 'package:openapi/src/model/add_server200_response.dart';
 import 'package:openapi/src/model/affiliate_banner_row.dart';
 import 'package:openapi/src/model/affiliate_dock_setup.dart';
 import 'package:openapi/src/model/affiliate_payment_setup.dart';
@@ -365,6 +366,7 @@ import 'package:openapi/src/model/servers_cancel200_response.dart';
 import 'package:openapi/src/model/service.dart';
 import 'package:openapi/src/model/service_categories.dart';
 import 'package:openapi/src/model/service_category.dart';
+import 'package:openapi/src/model/service_order_post_response.dart';
 import 'package:openapi/src/model/service_type.dart';
 import 'package:openapi/src/model/service_types.dart';
 import 'package:openapi/src/model/services.dart';
@@ -487,6 +489,7 @@ part 'serializers.g.dart';
   AccountInfoOauthproviders,
   AccountInfoPost,
   AccountSshKey,
+  AddServer200Response,
   AffiliateBannerRow,
   AffiliateDockSetup,
   AffiliatePaymentSetup,
@@ -819,6 +822,7 @@ part 'serializers.g.dart';
   Service,
   ServiceCategories,
   ServiceCategory,
+  ServiceOrderPostResponse,
   ServiceType,
   ServiceTypes,
   Services,

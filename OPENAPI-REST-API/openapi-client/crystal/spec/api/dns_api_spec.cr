@@ -27,7 +27,7 @@ Spectator.describe "DNSApi" do
   # @param domain The domain name.
   # @param ip IP Address to point the domain to.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "add_dns_domain test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -56,7 +56,7 @@ Spectator.describe "DNSApi" do
   # Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
   # @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "delete_dns_domain test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -69,7 +69,7 @@ Spectator.describe "DNSApi" do
   # @param domain_id The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
   # @param record_id The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "delete_dns_record test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -113,7 +113,7 @@ Spectator.describe "DNSApi" do
   # @option opts [String] :disabled 
   # @option opts [String] :ordername 
   # @option opts [String] :auth 
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "update_dns_record test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

@@ -16,7 +16,7 @@ public class CreateFirewallRule   {
 
   private @Valid Integer destinationPort = 80;
 
-  private @Valid String sourceIp = "0";
+  private @Valid String sourceIp = "0.0.0.0";
 
   private @Valid Integer sourcePort = 0;
 
@@ -106,6 +106,7 @@ public enum XdpActionEnum {
   }
 
   /**
+   * Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source.
    **/
   public CreateFirewallRule sourceIp(String sourceIp) {
     this.sourceIp = sourceIp;
@@ -113,7 +114,7 @@ public enum XdpActionEnum {
   }
 
   
-  @ApiModelProperty(example = "1.2.4.5", value = "")
+  @ApiModelProperty(example = "1.2.4.5", value = "Source IP address to match. Use '0.0.0.0' to match any source.")
   @JsonProperty("source_ip")
   @NotNull
 

@@ -142,8 +142,8 @@ class BillingApi(baseUrl: String) {
    * Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
    * 
    * Expected answers:
+   *   code 200 : String (Simple string response)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -153,14 +153,14 @@ class BillingApi(baseUrl: String) {
    * @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
    */
   def deleteAccountCreditCard(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: String
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], String], Any] =
     basicRequest
       .method(Method.DELETE, uri"$baseUrl/account/creditcards/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[String])
 
   /**
    * Removes the selected credit card from the account. Use `/billing/payment_method` to select a new default payment method after deleting a card.
@@ -374,8 +374,8 @@ class BillingApi(baseUrl: String) {
    * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
    * 
    * Expected answers:
+   *   code 200 : Any (Current shopping cart contents and available payment methods.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -383,14 +383,14 @@ class BillingApi(baseUrl: String) {
    *   sessionIdHeaderAuth (apiKey)
    */
   def getBillingCart(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], Any], Any] =
     basicRequest
       .method(Method.GET, uri"$baseUrl/billing/cart")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[Any])
 
   /**
    * Retrieves the verification requirements for a newly added credit card. The response indicates whether the card requires micro-charge amount confirmation or CVV validation. Use this before presenting a verification form to the user.
@@ -466,8 +466,8 @@ class BillingApi(baseUrl: String) {
    * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
    * 
    * Expected answers:
+   *   code 200 : Any (Prepay balances and metadata.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -475,14 +475,14 @@ class BillingApi(baseUrl: String) {
    *   sessionIdHeaderAuth (apiKey)
    */
   def getBillingPrePays(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], Any], Any] =
     basicRequest
       .method(Method.GET, uri"$baseUrl/billing/prepays")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[Any])
 
   /**
    * Returns a paginated list of invoices for the authenticated account. Each invoice includes the invoice number, date, total amount, and payment status. Use the optional `searchString` parameter to filter results and `skip`/`limit` for pagination.
@@ -567,8 +567,8 @@ class BillingApi(baseUrl: String) {
    * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
    * 
    * Expected answers:
+   *   code 200 : String (Simple string response)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
-   *   code 0 :  (Default response)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
@@ -578,14 +578,14 @@ class BillingApi(baseUrl: String) {
    * @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
    */
   def updateAccountCreditCard(apiKeyCookie: String, apiKeyHeader: String, apiKeyHeader: String)(id: Int
-): Request[Either[ResponseException[String, Exception], Unit], Any] =
+): Request[Either[ResponseException[String, Exception], String], Any] =
     basicRequest
       .method(Method.POST, uri"$baseUrl/account/creditcards/${id}")
       .contentType("application/json")
       .cookie("sessionid", apiKeyCookie)
       .header("X-API-KEY", apiKeyHeader)
       .header("sessionid", apiKeyHeader)
-      .response(asString.mapWithMetadata(ResponseAs.deserializeRightWithError(_ => Right(()))))
+      .response(asJson[String])
 
   /**
    * Updates the affiliate dock settings including the referral coupon and marketing copy. The dock is the branded landing page shown to visitors arriving via your affiliate link. Use this to customize the coupon code and promotional text.

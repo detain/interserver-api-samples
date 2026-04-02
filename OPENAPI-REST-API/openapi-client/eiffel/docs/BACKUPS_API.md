@@ -253,7 +253,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_backup_info**
-> update_backup_info (id: INTEGER_32 )
+> update_backup_info (id: INTEGER_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Update Backup Information
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 

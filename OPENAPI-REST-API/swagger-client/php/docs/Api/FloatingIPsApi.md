@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**updateFloatingIpInfo**](FloatingIPsApi.md#updatefloatingipinfo) | **POST** /floating_ips/{id} | Update Floating IP
 
 # **addFloatingIp**
-> addFloatingIp()
+> \Interserver\MyAdmin\Model\ServiceOrderPostResponse addFloatingIp()
 
 Place Floating IP Order
 
@@ -45,7 +45,8 @@ $apiInstance = new Interserver\MyAdmin\Api\FloatingIPsApi(
 );
 
 try {
-    $apiInstance->addFloatingIp();
+    $result = $apiInstance->addFloatingIp();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FloatingIPsApi->addFloatingIp: ', $e->getMessage(), PHP_EOL;
 }
@@ -57,7 +58,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -131,7 +132,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getFloatingIpInfo**
-> getFloatingIpInfo($id)
+> object getFloatingIpInfo($id)
 
 View Floating IP
 
@@ -161,7 +162,8 @@ $apiInstance = new Interserver\MyAdmin\Api\FloatingIPsApi(
 $id = 56; // int | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 try {
-    $apiInstance->getFloatingIpInfo($id);
+    $result = $apiInstance->getFloatingIpInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FloatingIPsApi->getFloatingIpInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -176,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -365,7 +367,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getNewFloatingIp**
-> getNewFloatingIp()
+> object getNewFloatingIp()
 
 Get Floating IP Ordering Information
 
@@ -394,7 +396,8 @@ $apiInstance = new Interserver\MyAdmin\Api\FloatingIPsApi(
 );
 
 try {
-    $apiInstance->getNewFloatingIp();
+    $result = $apiInstance->getNewFloatingIp();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FloatingIPsApi->getNewFloatingIp: ', $e->getMessage(), PHP_EOL;
 }
@@ -406,7 +409,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -599,7 +602,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateFloatingIpInfo**
-> updateFloatingIpInfo($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateFloatingIpInfo($id)
 
 Update Floating IP
 
@@ -629,7 +632,8 @@ $apiInstance = new Interserver\MyAdmin\Api\FloatingIPsApi(
 $id = "id_example"; // string | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 try {
-    $apiInstance->updateFloatingIpInfo($id);
+    $result = $apiInstance->updateFloatingIpInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FloatingIPsApi->updateFloatingIpInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -644,7 +648,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

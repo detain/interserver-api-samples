@@ -35,7 +35,7 @@ describe 'FloatingIPsApi' do
   # Place Floating IP Order
   # Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe 'add_floating_ip test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -59,7 +59,7 @@ describe 'FloatingIPsApi' do
   # Returns detailed information about a specific Floating IP service including its current target IP assignment.
   # @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Object]
   describe 'get_floating_ip_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -105,7 +105,7 @@ describe 'FloatingIPsApi' do
   # Get Floating IP Ordering Information
   # Retrieves available options and pricing for ordering a new Floating IP.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Object]
   describe 'get_new_floating_ip test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -154,7 +154,7 @@ describe 'FloatingIPsApi' do
   # Updates settings on a Floating IP service, such as its label or configuration metadata.
   # @param id The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_floating_ip_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

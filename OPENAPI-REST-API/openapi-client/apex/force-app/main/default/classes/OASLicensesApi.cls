@@ -28,13 +28,14 @@ public class OASLicensesApi {
     /**
      * Place License Order
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
+     * @return OASServiceOrderPostResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void addLicense() {
+    public OASServiceOrderPostResponse addLicense() {
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASServiceOrderPostResponse) client.invoke(
             'POST', '/licenses/order', '',
             query, form,
             new Map<String, Object>(),
@@ -42,7 +43,7 @@ public class OASLicensesApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASServiceOrderPostResponse.class
         );
     }
     /**
@@ -263,14 +264,15 @@ public class OASLicensesApi {
      * Update License
      * Updates settings on a license service such as its assigned IP.
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. (required)
+     * @return OASSuccessTextResponse
      * @throws OAS.ApiException if fails to make API call
      */
-    public void updateLicenseInfo(Map<String, Object> params) {
+    public OASSuccessTextResponse updateLicenseInfo(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<OAS.Param> query = new List<OAS.Param>();
         List<OAS.Param> form = new List<OAS.Param>();
 
-        client.invoke(
+        return (OASSuccessTextResponse) client.invoke(
             'POST', '/licenses/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -280,7 +282,7 @@ public class OASLicensesApi {
             new List<String>{ 'application/json' },
             new List<String>(),
             new List<String> { 'sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth' },
-            null
+            OASSuccessTextResponse.class
         );
     }
 }

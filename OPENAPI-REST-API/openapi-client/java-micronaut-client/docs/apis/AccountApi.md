@@ -355,7 +355,7 @@ Updates account-level feature flags that control service capabilities. These fla
 <a id="updateAccountInfo"></a>
 # **updateAccountInfo**
 ```java
-Mono<Void> AccountApi.updateAccountInfo(nameaddresscitystatezipcountryphonecompanyaddress2localeemailInvoicesemailAbusedisableResetdisableReinstalldisableServerNotificationsdisableEmailNotificationsgstin)
+Mono<SuccessTextResponse> AccountApi.updateAccountInfo(nameaddresscitystatezipcountryphonecompanyaddress2localeemailInvoicesemailAbusedisableResetdisableReinstalldisableServerNotificationsdisableEmailNotificationsgstin)
 ```
 
 Update Account Information
@@ -384,7 +384,8 @@ Updates the stored contact and billing information on your account. Submit only 
 | **gstin** | `String`| Your GST identification number (if applicable). | [optional parameter] |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -398,7 +399,7 @@ Updates the stored contact and billing information on your account. Submit only 
 <a id="updateAccountIpLimits"></a>
 # **updateAccountIpLimits**
 ```java
-Mono<Void> AccountApi.updateAccountIpLimits(startend)
+Mono<SuccessTextResponse> AccountApi.updateAccountIpLimits(startend)
 ```
 
 Add IP Access Restriction
@@ -412,7 +413,8 @@ Adds an IP address range to the account&#39;s access restriction list. Once IP l
 | **end** | `String`| The ending (or last) IP address in the range. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

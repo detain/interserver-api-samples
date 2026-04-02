@@ -12,6 +12,7 @@
 #include "LicenseRow.h"
 #include "LicensesCancel_200_response.h"
 #include "LicensesOrder.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include <list>
 #include "Error.h"
@@ -41,8 +42,8 @@ public:
  */
 bool addLicenseSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Place License Order. *Asynchronous*
  *
@@ -53,8 +54,8 @@ bool addLicenseSync(char * accessToken,
  */
 bool addLicenseAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get License. *Synchronous*
@@ -306,8 +307,8 @@ bool putLicensesAsync(char * accessToken,
  */
 bool updateLicenseInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update License. *Asynchronous*
  *
@@ -319,8 +320,8 @@ bool updateLicenseInfoSync(char * accessToken,
  */
 bool updateLicenseInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 

@@ -27,6 +27,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.ServersApi
+import org.openapitools.client.models.AddServer200Response
 import org.openapitools.client.models.BuyItNowList
 import org.openapitools.client.models.BuyItNowServerOrder200Response
 import org.openapitools.client.models.ChargeInvoiceRows
@@ -51,7 +52,8 @@ class ServersApiTest : ShouldSpec() {
         // to test addServer
         should("test addServer") {
             // uncomment below to test addServer
-            //apiInstance.addServer()
+            //val result : AddServer200Response = apiInstance.addServer()
+            //result shouldBe ("TODO")
         }
 
         // to test buyItNowServerOrder
@@ -185,7 +187,8 @@ class ServersApiTest : ShouldSpec() {
         should("test updateServerInfo") {
             // uncomment below to test updateServerInfo
             //val id : kotlin.String = id_example // kotlin.String | Server ID number.
-            //apiInstance.updateServerInfo(id)
+            //val result : SuccessTextResponse = apiInstance.updateServerInfo(id)
+            //result shouldBe ("TODO")
         }
 
     }

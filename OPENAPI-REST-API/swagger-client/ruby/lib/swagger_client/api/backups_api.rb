@@ -534,17 +534,17 @@ module SwaggerClient
     # Updates backup storage service metadata, such as stored credentials or settings for the order.
     # @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_backup_info(id, opts = {})
-      update_backup_info_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = update_backup_info_with_http_info(id, opts)
+      data
     end
 
     # Update Backup Information
     # Updates backup storage service metadata, such as stored credentials or settings for the order.
     # @param id The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_backup_info_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BackupsApi.update_backup_info ...'
@@ -570,7 +570,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'SuccessTextResponse' 
 
       auth_names = opts[:auth_names] || ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

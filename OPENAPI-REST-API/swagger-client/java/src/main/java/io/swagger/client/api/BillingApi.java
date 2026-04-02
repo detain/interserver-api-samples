@@ -1096,22 +1096,25 @@ public class BillingApi {
      * Remove Credit Card
      * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteAccountCreditCard(String id) throws ApiException {
-        deleteAccountCreditCardWithHttpInfo(id);
+    public String deleteAccountCreditCard(String id) throws ApiException {
+        ApiResponse<String> resp = deleteAccountCreditCardWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Remove Credit Card
      * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteAccountCreditCardWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<String> deleteAccountCreditCardWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = deleteAccountCreditCardValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1122,7 +1125,7 @@ public class BillingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteAccountCreditCardAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteAccountCreditCardAsync(String id, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1144,7 +1147,8 @@ public class BillingApi {
         }
 
         com.squareup.okhttp.Call call = deleteAccountCreditCardValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -2323,21 +2327,24 @@ public class BillingApi {
     /**
      * Get Shopping Cart Contents
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getBillingCart() throws ApiException {
-        getBillingCartWithHttpInfo();
+    public Object getBillingCart() throws ApiException {
+        ApiResponse<Object> resp = getBillingCartWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Get Shopping Cart Contents
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getBillingCartWithHttpInfo() throws ApiException {
+    public ApiResponse<Object> getBillingCartWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getBillingCartValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2347,7 +2354,7 @@ public class BillingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getBillingCartAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call getBillingCartAsync(final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2369,7 +2376,8 @@ public class BillingApi {
         }
 
         com.squareup.okhttp.Call call = getBillingCartValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -2813,21 +2821,24 @@ public class BillingApi {
     /**
      * List Prepay Balances
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getBillingPrePays() throws ApiException {
-        getBillingPrePaysWithHttpInfo();
+    public Object getBillingPrePays() throws ApiException {
+        ApiResponse<Object> resp = getBillingPrePaysWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * List Prepay Balances
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getBillingPrePaysWithHttpInfo() throws ApiException {
+    public ApiResponse<Object> getBillingPrePaysWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getBillingPrePaysValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2837,7 +2848,7 @@ public class BillingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getBillingPrePaysAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call getBillingPrePaysAsync(final ApiCallback<Object> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2859,7 +2870,8 @@ public class BillingApi {
         }
 
         com.squareup.okhttp.Call call = getBillingPrePaysValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -3523,22 +3535,25 @@ public class BillingApi {
      * Update Credit Card
      * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateAccountCreditCard(Integer id) throws ApiException {
-        updateAccountCreditCardWithHttpInfo(id);
+    public String updateAccountCreditCard(Integer id) throws ApiException {
+        ApiResponse<String> resp = updateAccountCreditCardWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update Credit Card
      * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateAccountCreditCardWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<String> updateAccountCreditCardWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = updateAccountCreditCardValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -3549,7 +3564,7 @@ public class BillingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateAccountCreditCardAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateAccountCreditCardAsync(Integer id, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3571,7 +3586,8 @@ public class BillingApi {
         }
 
         com.squareup.okhttp.Call call = updateAccountCreditCardValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**

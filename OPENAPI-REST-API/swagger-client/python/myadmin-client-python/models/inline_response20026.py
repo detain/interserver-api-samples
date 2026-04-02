@@ -28,144 +28,70 @@ class InlineResponse20026(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'bandwidth': 'list[InlineResponse20026Bandwidth]',
-        'ips': 'list[InlineResponse20026Ips]',
-        'os': 'list[InlineResponse20026Os]',
-        'cp': 'list[InlineResponse20026Cp]',
-        'raid': 'list[InlineResponse20026Raid]'
+        'text': 'str',
+        'ticket': 'int'
     }
 
     attribute_map = {
-        'bandwidth': 'bandwidth',
-        'ips': 'ips',
-        'os': 'os',
-        'cp': 'cp',
-        'raid': 'raid'
+        'text': 'text',
+        'ticket': 'ticket'
     }
 
-    def __init__(self, bandwidth=None, ips=None, os=None, cp=None, raid=None):  # noqa: E501
+    def __init__(self, text=None, ticket=None):  # noqa: E501
         """InlineResponse20026 - a model defined in Swagger"""  # noqa: E501
-        self._bandwidth = None
-        self._ips = None
-        self._os = None
-        self._cp = None
-        self._raid = None
+        self._text = None
+        self._ticket = None
         self.discriminator = None
-        if bandwidth is not None:
-            self.bandwidth = bandwidth
-        if ips is not None:
-            self.ips = ips
-        if os is not None:
-            self.os = os
-        if cp is not None:
-            self.cp = cp
-        if raid is not None:
-            self.raid = raid
+        if text is not None:
+            self.text = text
+        if ticket is not None:
+            self.ticket = ticket
 
     @property
-    def bandwidth(self):
-        """Gets the bandwidth of this InlineResponse20026.  # noqa: E501
+    def text(self):
+        """Gets the text of this InlineResponse20026.  # noqa: E501
 
+        Confirmation message.  # noqa: E501
 
-        :return: The bandwidth of this InlineResponse20026.  # noqa: E501
-        :rtype: list[InlineResponse20026Bandwidth]
+        :return: The text of this InlineResponse20026.  # noqa: E501
+        :rtype: str
         """
-        return self._bandwidth
+        return self._text
 
-    @bandwidth.setter
-    def bandwidth(self, bandwidth):
-        """Sets the bandwidth of this InlineResponse20026.
+    @text.setter
+    def text(self, text):
+        """Sets the text of this InlineResponse20026.
 
+        Confirmation message.  # noqa: E501
 
-        :param bandwidth: The bandwidth of this InlineResponse20026.  # noqa: E501
-        :type: list[InlineResponse20026Bandwidth]
+        :param text: The text of this InlineResponse20026.  # noqa: E501
+        :type: str
         """
 
-        self._bandwidth = bandwidth
+        self._text = text
 
     @property
-    def ips(self):
-        """Gets the ips of this InlineResponse20026.  # noqa: E501
+    def ticket(self):
+        """Gets the ticket of this InlineResponse20026.  # noqa: E501
 
+        The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  # noqa: E501
 
-        :return: The ips of this InlineResponse20026.  # noqa: E501
-        :rtype: list[InlineResponse20026Ips]
+        :return: The ticket of this InlineResponse20026.  # noqa: E501
+        :rtype: int
         """
-        return self._ips
+        return self._ticket
 
-    @ips.setter
-    def ips(self, ips):
-        """Sets the ips of this InlineResponse20026.
+    @ticket.setter
+    def ticket(self, ticket):
+        """Sets the ticket of this InlineResponse20026.
 
+        The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  # noqa: E501
 
-        :param ips: The ips of this InlineResponse20026.  # noqa: E501
-        :type: list[InlineResponse20026Ips]
-        """
-
-        self._ips = ips
-
-    @property
-    def os(self):
-        """Gets the os of this InlineResponse20026.  # noqa: E501
-
-
-        :return: The os of this InlineResponse20026.  # noqa: E501
-        :rtype: list[InlineResponse20026Os]
-        """
-        return self._os
-
-    @os.setter
-    def os(self, os):
-        """Sets the os of this InlineResponse20026.
-
-
-        :param os: The os of this InlineResponse20026.  # noqa: E501
-        :type: list[InlineResponse20026Os]
+        :param ticket: The ticket of this InlineResponse20026.  # noqa: E501
+        :type: int
         """
 
-        self._os = os
-
-    @property
-    def cp(self):
-        """Gets the cp of this InlineResponse20026.  # noqa: E501
-
-
-        :return: The cp of this InlineResponse20026.  # noqa: E501
-        :rtype: list[InlineResponse20026Cp]
-        """
-        return self._cp
-
-    @cp.setter
-    def cp(self, cp):
-        """Sets the cp of this InlineResponse20026.
-
-
-        :param cp: The cp of this InlineResponse20026.  # noqa: E501
-        :type: list[InlineResponse20026Cp]
-        """
-
-        self._cp = cp
-
-    @property
-    def raid(self):
-        """Gets the raid of this InlineResponse20026.  # noqa: E501
-
-
-        :return: The raid of this InlineResponse20026.  # noqa: E501
-        :rtype: list[InlineResponse20026Raid]
-        """
-        return self._raid
-
-    @raid.setter
-    def raid(self, raid):
-        """Sets the raid of this InlineResponse20026.
-
-
-        :param raid: The raid of this InlineResponse20026.  # noqa: E501
-        :type: list[InlineResponse20026Raid]
-        """
-
-        self._raid = raid
+        self._ticket = ticket
 
     def to_dict(self):
         """Returns the model properties as a dict"""

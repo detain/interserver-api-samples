@@ -56,8 +56,8 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'text' => 'string',
-        'ticket' => 'int'
+        'message' => 'string',
+        'success' => 'bool'
     ];
 
     /**
@@ -66,8 +66,8 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'text' => null,
-        'ticket' => null
+        'message' => null,
+        'success' => null
     ];
 
     /**
@@ -97,8 +97,8 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'text' => 'text',
-        'ticket' => 'ticket'
+        'message' => 'message',
+        'success' => 'success'
     ];
 
     /**
@@ -107,8 +107,8 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'text' => 'setText',
-        'ticket' => 'setTicket'
+        'message' => 'setMessage',
+        'success' => 'setSuccess'
     ];
 
     /**
@@ -117,8 +117,8 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'text' => 'getText',
-        'ticket' => 'getTicket'
+        'message' => 'getMessage',
+        'success' => 'getSuccess'
     ];
 
     /**
@@ -179,8 +179,8 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
-        $this->container['ticket'] = isset($data['ticket']) ? $data['ticket'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
     }
 
     /**
@@ -208,49 +208,49 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets text
+     * Gets message
      *
      * @return string
      */
-    public function getText()
+    public function getMessage()
     {
-        return $this->container['text'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets text
+     * Sets message
      *
-     * @param string $text Confirmation message.
+     * @param string $message message
      *
      * @return $this
      */
-    public function setText($text)
+    public function setMessage($message)
     {
-        $this->container['text'] = $text;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets ticket
+     * Gets success
      *
-     * @return int
+     * @return bool
      */
-    public function getTicket()
+    public function getSuccess()
     {
-        return $this->container['ticket'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets ticket
+     * Sets success
      *
-     * @param int $ticket The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+     * @param bool $success success
      *
      * @return $this
      */
-    public function setTicket($ticket)
+    public function setSuccess($success)
     {
-        $this->container['ticket'] = $ticket;
+        $this->container['success'] = $success;
 
         return $this;
     }

@@ -5,11 +5,26 @@
  * Place Domain Order
  * Places a new domain registration or transfer order. Use the results from `/domains/lookup/{name}` or `/domains/order/{domain}/{regType}` to populate the required domain fields before submitting the order.
  *
- * no response value expected for this operation
+ * returns ServiceOrderPostResponse
  **/
 exports.addDomain = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -937,11 +952,20 @@ exports.updateDomainContact = function(body,id) {
  * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
  *
  * id String The domain service ID. Use `domain_id` from `GET /domains`.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateDomainInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

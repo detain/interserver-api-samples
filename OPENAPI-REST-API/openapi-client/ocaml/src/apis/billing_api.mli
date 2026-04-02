@@ -8,7 +8,7 @@
 val add_account_credit_card : ?name:string -> ?address:string -> ?city:string -> ?state:string -> ?country:string -> ?zip:string -> ?cc:string -> ?cc_exp:string -> ?cc_ccv2:string -> unit -> Success_text_response.t Lwt.t
 val add_billing_credit_card : billing_add_cc_request_t:Billing_add_cc_request.t -> Success_text_response.t Lwt.t
 val add_billing_prepay : billing_prepay_request_t:Billing_prepay_request.t -> Success_text_response.t Lwt.t
-val delete_account_credit_card : id:string -> unit Lwt.t
+val delete_account_credit_card : id:string -> string Lwt.t
 val delete_billing_credit_card : id:int32 -> Success_text_response.t Lwt.t
 val delete_billing_invoice : id:int32 -> Success_text_response.t Lwt.t
 val delete_billing_prepay : id:int32 -> Success_text_response.t Lwt.t
@@ -18,15 +18,15 @@ val get_affiliate_sales_graph : ?days:int32 -> unit -> Status_monthly_breakdown.
 val get_affiliate_sales_report : unit -> Text_response.t Lwt.t
 val get_affiliate_traffic_graph : ?days:int32 -> unit -> Monthly_counts.t Lwt.t
 val get_affiliate_web_traffic : unit -> Affiliate_traffic_row.t list Lwt.t
-val get_billing_cart : unit -> unit Lwt.t
+val get_billing_cart : unit -> Yojson.Safe.t Lwt.t
 val get_billing_credit_card_verify : id:int32 -> Success_text_response.t Lwt.t
 val get_billing_invoice : id:int32 -> Billing_invoice_detail.t Lwt.t
 val get_billing_invoices : unit -> Billing_invoice_list.t Lwt.t
-val get_billing_pre_pays : unit -> unit Lwt.t
+val get_billing_pre_pays : unit -> Yojson.Safe.t Lwt.t
 val get_invoices : ?search_string:string -> ?skip:int32 -> ?limit:int32 -> unit -> Invoice.t list Lwt.t
 val initiate_payment : _method:Enums.method_0 -> invoices:string -> Initiate_payment_200_response.t Lwt.t
 val post_billing_credit_card_verify : id:int32 -> billing_verify_cc_request_t:Billing_verify_cc_request.t -> Success_text_response.t Lwt.t
-val update_account_credit_card : id:int32 -> unit Lwt.t
+val update_account_credit_card : id:int32 -> string Lwt.t
 val update_affiliate_dock_setup : ?affiliate_dock_title:string -> ?affiliate_dock_description:string -> ?referrer_coupon:string -> unit -> Text_response.t Lwt.t
 val update_affiliate_landing_page : ?affiliate_dock_title:string -> ?affiliate_dock_description:string -> ?referrer_coupon:string -> unit -> Text_response.t Lwt.t
 val update_affiliate_payment_setup : ?affiliate_paypal:string -> ?affiliate_payment_method:string -> unit -> Text_response.t Lwt.t

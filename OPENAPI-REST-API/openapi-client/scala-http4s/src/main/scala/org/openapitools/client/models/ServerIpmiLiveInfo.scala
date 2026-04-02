@@ -16,7 +16,7 @@ import io.circe.{Decoder, DecodingFailure, Encoder}
 import cats.syntax.functor.*
 
 
-/** Information about the IPMI connectioj.
+/** Information about the IPMI connection.
   * @param text 
   * @param public_ip 
   * @param allowed_ip 

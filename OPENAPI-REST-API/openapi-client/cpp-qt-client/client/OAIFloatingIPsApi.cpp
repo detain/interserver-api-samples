@@ -277,13 +277,14 @@ void OAIFloatingIPsApi::addFloatingIpCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIServiceOrderPostResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addFloatingIpSignal();
-        Q_EMIT addFloatingIpSignalFull(worker);
+        Q_EMIT addFloatingIpSignal(output);
+        Q_EMIT addFloatingIpSignalFull(worker, output);
     } else {
-        Q_EMIT addFloatingIpSignalError(error_type, error_str);
+        Q_EMIT addFloatingIpSignalError(output, error_type, error_str);
         Q_EMIT addFloatingIpSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -408,13 +409,14 @@ void OAIFloatingIPsApi::getFloatingIpInfoCallback(OAIHttpRequestWorker *worker) 
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIObject output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getFloatingIpInfoSignal();
-        Q_EMIT getFloatingIpInfoSignalFull(worker);
+        Q_EMIT getFloatingIpInfoSignal(output);
+        Q_EMIT getFloatingIpInfoSignalFull(worker, output);
     } else {
-        Q_EMIT getFloatingIpInfoSignalError(error_type, error_str);
+        Q_EMIT getFloatingIpInfoSignalError(output, error_type, error_str);
         Q_EMIT getFloatingIpInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -642,13 +644,14 @@ void OAIFloatingIPsApi::getNewFloatingIpCallback(OAIHttpRequestWorker *worker) {
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIObject output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getNewFloatingIpSignal();
-        Q_EMIT getNewFloatingIpSignalFull(worker);
+        Q_EMIT getNewFloatingIpSignal(output);
+        Q_EMIT getNewFloatingIpSignalFull(worker, output);
     } else {
-        Q_EMIT getNewFloatingIpSignalError(error_type, error_str);
+        Q_EMIT getNewFloatingIpSignalError(output, error_type, error_str);
         Q_EMIT getNewFloatingIpSignalErrorFull(worker, error_type, error_str);
     }
 }
@@ -828,13 +831,14 @@ void OAIFloatingIPsApi::updateFloatingIpInfoCallback(OAIHttpRequestWorker *worke
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAISuccessTextResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateFloatingIpInfoSignal();
-        Q_EMIT updateFloatingIpInfoSignalFull(worker);
+        Q_EMIT updateFloatingIpInfoSignal(output);
+        Q_EMIT updateFloatingIpInfoSignalFull(worker, output);
     } else {
-        Q_EMIT updateFloatingIpInfoSignalError(error_type, error_str);
+        Q_EMIT updateFloatingIpInfoSignalError(output, error_type, error_str);
         Q_EMIT updateFloatingIpInfoSignalErrorFull(worker, error_type, error_str);
     }
 }

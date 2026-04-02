@@ -19,6 +19,7 @@ import io.swagger.client.model.DnsNewRecord
 import io.swagger.client.model.DnsRecord
 import io.swagger.client.model.DnsRecordType
 import io.swagger.client.model.DnsUpdateRecord
+import io.swagger.client.model.SuccessTextResponse
 import io.swagger.client.model.inline_response_401
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -91,9 +92,9 @@ class DNSApi(
    * @param domain  
    * @param ip  
    * @param body  
-   * @return void
+   * @return SuccessTextResponse
    */
-  def addDnsDomain(domain: String, ip: String, body: DnsNewDomain) = {
+  def addDnsDomain(domain: String, ip: String, body: DnsNewDomain): Option[SuccessTextResponse] = {
     val await = Try(Await.result(addDnsDomainAsync(domain, ip, body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -108,9 +109,9 @@ class DNSApi(
    * @param domain  
    * @param ip  
    * @param body  
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def addDnsDomainAsync(domain: String, ip: String, body: DnsNewDomain) = {
+  def addDnsDomainAsync(domain: String, ip: String, body: DnsNewDomain): Future[SuccessTextResponse] = {
       helper.addDnsDomain(domain, ip, body)
   }
 
@@ -157,9 +158,9 @@ class DNSApi(
    * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
    *
    * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def deleteDnsDomain(id: String) = {
+  def deleteDnsDomain(id: String): Option[SuccessTextResponse] = {
     val await = Try(Await.result(deleteDnsDomainAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -172,9 +173,9 @@ class DNSApi(
    * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
    *
    * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def deleteDnsDomainAsync(id: String) = {
+  def deleteDnsDomainAsync(id: String): Future[SuccessTextResponse] = {
       helper.deleteDnsDomain(id)
   }
 
@@ -184,9 +185,9 @@ class DNSApi(
    *
    * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
    * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def deleteDnsRecord(domainId: Integer, recordId: Integer) = {
+  def deleteDnsRecord(domainId: Integer, recordId: Integer): Option[SuccessTextResponse] = {
     val await = Try(Await.result(deleteDnsRecordAsync(domainId, recordId), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -200,9 +201,9 @@ class DNSApi(
    *
    * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
    * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def deleteDnsRecordAsync(domainId: Integer, recordId: Integer) = {
+  def deleteDnsRecordAsync(domainId: Integer, recordId: Integer): Future[SuccessTextResponse] = {
       helper.deleteDnsRecord(domainId, recordId)
   }
 
@@ -271,9 +272,9 @@ class DNSApi(
    * @param body The request data to update a dns record. 
    * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
    * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
-   * @return void
+   * @return SuccessTextResponse
    */
-  def updateDnsRecord(name: String, &#x60;type&#x60;: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String, body: DnsUpdateRecord, domainId: Integer, recordId: Integer) = {
+  def updateDnsRecord(name: String, &#x60;type&#x60;: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String, body: DnsUpdateRecord, domainId: Integer, recordId: Integer): Option[SuccessTextResponse] = {
     val await = Try(Await.result(updateDnsRecordAsync(name, &#x60;type&#x60;, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -296,9 +297,9 @@ class DNSApi(
    * @param body The request data to update a dns record. 
    * @param domainId The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
    * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
-   * @return Future(void)
+   * @return Future(SuccessTextResponse)
    */
-  def updateDnsRecordAsync(name: String, &#x60;type&#x60;: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String, body: DnsUpdateRecord, domainId: Integer, recordId: Integer) = {
+  def updateDnsRecordAsync(name: String, &#x60;type&#x60;: DnsRecordType, content: String, ttl: String, prio: String, disabled: String, ordername: String, auth: String, body: DnsUpdateRecord, domainId: Integer, recordId: Integer): Future[SuccessTextResponse] = {
       helper.updateDnsRecord(name, &#x60;type&#x60;, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId)
   }
 
@@ -308,7 +309,7 @@ class DNSApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
 
   def addDnsDomain(domain: String,
     ip: String,
-    body: DnsNewDomain)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[DnsNewDomain]): Future[Unit] = {
+    body: DnsNewDomain)(implicit reader: ClientResponseReader[SuccessTextResponse], writer: RequestWriter[DnsNewDomain]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/dns"))
 
@@ -358,7 +359,7 @@ class DNSApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
     }
   }
 
-  def deleteDnsDomain(id: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def deleteDnsDomain(id: String)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/dns/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -377,7 +378,7 @@ class DNSApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
   }
 
   def deleteDnsRecord(domainId: Integer,
-    recordId: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    recordId: Integer)(implicit reader: ClientResponseReader[SuccessTextResponse]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/dns/{domainId}/{recordId}")
       replaceAll("\\{" + "domainId" + "\\}", domainId.toString)
@@ -435,7 +436,7 @@ class DNSApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
     auth: String,
     body: DnsUpdateRecord,
     domainId: Integer,
-    recordId: Integer)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[DnsUpdateRecord]): Future[Unit] = {
+    recordId: Integer)(implicit reader: ClientResponseReader[SuccessTextResponse], writer: RequestWriter[DnsUpdateRecord]): Future[SuccessTextResponse] = {
     // create path and map variables
     val path = (addFmt("/dns/{domainId}/{recordId}")
       replaceAll("\\{" + "domainId" + "\\}", domainId.toString)

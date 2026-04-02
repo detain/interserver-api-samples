@@ -26,9 +26,10 @@ func Test_myadmin_LicensesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.LicensesAPI.AddLicense(context.Background()).Execute()
+		resp, httpRes, err := apiClient.LicensesAPI.AddLicense(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -157,9 +158,10 @@ func Test_myadmin_LicensesAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.LicensesAPI.UpdateLicenseInfo(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.LicensesAPI.UpdateLicenseInfo(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

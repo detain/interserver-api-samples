@@ -14,14 +14,12 @@ package io.swagger.client.models
 
 /**
  * 
- * @param text Confirmation message.
- * @param ticket The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+ * @param message 
+ * @param success 
  */
 data class InlineResponse20025 (
 
-    /* Confirmation message. */
-    val text: kotlin.String? = null,
-    /* The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress. */
-    val ticket: kotlin.Int? = null
+    val message: kotlin.String? = null,
+    val success: kotlin.Boolean? = null
 ) {
 }

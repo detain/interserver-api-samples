@@ -21,7 +21,7 @@ Method | HTTP request | Description
 //
 // Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
 //
-void SSLCertificatesAPI_addSsl(apiClient_t *apiClient);
+service_order_post_response_t* SSLCertificatesAPI_addSsl(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -31,7 +31,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[service_order_post_response_t](service_order_post_response.md) *
+
 
 ### Authorization
 
@@ -50,7 +51,7 @@ void
 //
 // Retrieves available SSL certificate types and pricing for ordering.
 //
-void SSLCertificatesAPI_getNewSsl(apiClient_t *apiClient);
+object_t* SSLCertificatesAPI_getNewSsl(apiClient_t *apiClient);
 ```
 
 ### Parameters
@@ -60,7 +61,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[object_t](object.md) *
+
 
 ### Authorization
 
@@ -79,7 +81,7 @@ void
 //
 // Returns detailed information about a specific SSL certificate including its domain and expiration.
 //
-void SSLCertificatesAPI_getSslInfo(apiClient_t *apiClient, int *id);
+object_t* SSLCertificatesAPI_getSslInfo(apiClient_t *apiClient, int *id);
 ```
 
 ### Parameters
@@ -90,7 +92,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[object_t](object.md) *
+
 
 ### Authorization
 
@@ -260,7 +263,7 @@ Name | Type | Description  | Notes
 //
 // Updates settings on an SSL certificate order.
 //
-void SSLCertificatesAPI_updateSslInfo(apiClient_t *apiClient, char *id);
+success_text_response_t* SSLCertificatesAPI_updateSslInfo(apiClient_t *apiClient, char *id);
 ```
 
 ### Parameters
@@ -271,7 +274,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void
+[success_text_response_t](success_text_response.md) *
+
 
 ### Authorization
 

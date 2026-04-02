@@ -58,9 +58,9 @@ var api = ServersApi.new(config)
 # Invoke an endpoint
 api.add_server(
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "add_server", response)
-		
+		assert(response.data is addServer_200_response)
 		pass  # do things, make stuff
 		,
 	# On Error
@@ -893,9 +893,9 @@ api.update_server_info(
 	# Server ID number.
 	id,
 	# On Success
-	func(response):
+	func(response):  # response is ApiResponse
 		prints("Success!", "update_server_info", response)
-		
+		assert(response.data is SuccessTextResponse)
 		pass  # do things, make stuff
 		,
 	# On Error

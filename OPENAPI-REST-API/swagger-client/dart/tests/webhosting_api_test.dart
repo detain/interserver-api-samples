@@ -11,7 +11,7 @@ void main() {
     //
     // Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
     //
-    //Future addWebsite() async
+    //Future<ServiceOrderPostResponse> addWebsite() async
     test('test addWebsite', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via `POST /websites/{id}/buy_ip`.
     //
-    //Future<InlineResponse20023> getWebsiteBuyIp(int id) async
+    //Future<InlineResponse20024> getWebsiteBuyIp(int id) async
     test('test getWebsiteBuyIp', () async {
       // TODO
     });
@@ -101,7 +101,7 @@ void main() {
     //
     // Updates the reverse DNS hostnames for the website's IP addresses. Provide an `ips` object mapping each IP address to its desired hostname.
     //
-    //Future<InlineResponse20024> postWebsiteBuyIp(IdBuyIpBody body, Map<String, String> ips, int id) async
+    //Future<InlineResponse20025> postWebsiteBuyIp(IdBuyIpBody body, Map<String, String> ips, int id) async
     test('test postWebsiteBuyIp', () async {
       // TODO
     });
@@ -110,7 +110,7 @@ void main() {
     //
     // Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned `ticket` ID with `/tickets/{id}` to monitor status.
     //
-    //Future<InlineResponse20025> postWebsiteMigration(IdMigrationBody body, String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, int id) async
+    //Future<InlineResponse20026> postWebsiteMigration(IdMigrationBody body, String custPortal, String regEmail, String password, String ctrlPanel, String ftpUsername, String ftpPassword, String siteBusyMig, String splReqMig, String domainReg, String dataMig, String domainRegPortal, String domainRegEmail, String domainRegPassword, int id) async
     test('test postWebsiteMigration', () async {
       // TODO
     });
@@ -137,7 +137,7 @@ void main() {
     //
     // Updates settings on a webhosting order.
     //
-    //Future updateWebsiteInfo(String id) async
+    //Future<SuccessTextResponse> updateWebsiteInfo(String id) async
     test('test updateWebsiteInfo', () async {
       // TODO
     });
@@ -146,7 +146,7 @@ void main() {
     //
     // Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
     //
-    //Future<InlineResponse20022> webhostingCancel(String id) async
+    //Future<InlineResponse20023> webhostingCancel(String id) async
     test('test webhostingCancel', () async {
       // TODO
     });

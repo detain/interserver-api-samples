@@ -3,8 +3,5 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bandwidth** | [**kotlin.Array&lt;InlineResponse20026Bandwidth&gt;**](InlineResponse20026Bandwidth.md) |  |  [optional]
-**ips** | [**kotlin.Array&lt;InlineResponse20026Ips&gt;**](InlineResponse20026Ips.md) |  |  [optional]
-**os** | [**kotlin.Array&lt;InlineResponse20026Os&gt;**](InlineResponse20026Os.md) |  |  [optional]
-**cp** | [**kotlin.Array&lt;InlineResponse20026Cp&gt;**](InlineResponse20026Cp.md) |  |  [optional]
-**raid** | [**kotlin.Array&lt;InlineResponse20026Raid&gt;**](InlineResponse20026Raid.md) |  |  [optional]
+**text** | [**kotlin.String**](.md) | Confirmation message. |  [optional]
+**ticket** | [**kotlin.Int**](.md) | The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. |  [optional]

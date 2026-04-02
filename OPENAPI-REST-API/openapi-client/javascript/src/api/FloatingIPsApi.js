@@ -16,6 +16,7 @@ import ApiClient from "../ApiClient";
 import ChargeInvoiceRows from '../model/ChargeInvoiceRows';
 import FloatingIpsCancel200Response from '../model/FloatingIpsCancel200Response';
 import GetAccountInfo401Response from '../model/GetAccountInfo401Response';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 
 /**
@@ -41,7 +42,7 @@ export default class FloatingIPsApi {
      * Callback function to receive the result of the addFloatingIp operation.
      * @callback module:api/FloatingIPsApi~addFloatingIpCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -49,6 +50,7 @@ export default class FloatingIPsApi {
      * Place Floating IP Order
      * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
      * @param {module:api/FloatingIPsApi~addFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ServiceOrderPostResponse}
      */
     addFloatingIp(callback) {
       let postBody = null;
@@ -65,7 +67,7 @@ export default class FloatingIPsApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
       return this.apiClient.callApi(
         '/floating_ips/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -120,7 +122,7 @@ export default class FloatingIPsApi {
      * Callback function to receive the result of the getFloatingIpInfo operation.
      * @callback module:api/FloatingIPsApi~getFloatingIpInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Object} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -129,6 +131,7 @@ export default class FloatingIPsApi {
      * Returns detailed information about a specific Floating IP service including its current target IP assignment.
      * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
      * @param {module:api/FloatingIPsApi~getFloatingIpInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Object}
      */
     getFloatingIpInfo(id, callback) {
       let postBody = null;
@@ -150,7 +153,7 @@ export default class FloatingIPsApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = Object;
       return this.apiClient.callApi(
         '/floating_ips/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -284,7 +287,7 @@ export default class FloatingIPsApi {
      * Callback function to receive the result of the getNewFloatingIp operation.
      * @callback module:api/FloatingIPsApi~getNewFloatingIpCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Object} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -292,6 +295,7 @@ export default class FloatingIPsApi {
      * Get Floating IP Ordering Information
      * Retrieves available options and pricing for ordering a new Floating IP.
      * @param {module:api/FloatingIPsApi~getNewFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Object}
      */
     getNewFloatingIp(callback) {
       let postBody = null;
@@ -308,7 +312,7 @@ export default class FloatingIPsApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = Object;
       return this.apiClient.callApi(
         '/floating_ips/order', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -405,7 +409,7 @@ export default class FloatingIPsApi {
      * Callback function to receive the result of the updateFloatingIpInfo operation.
      * @callback module:api/FloatingIPsApi~updateFloatingIpInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -414,6 +418,7 @@ export default class FloatingIPsApi {
      * Updates settings on a Floating IP service, such as its label or configuration metadata.
      * @param {String} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
      * @param {module:api/FloatingIPsApi~updateFloatingIpInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateFloatingIpInfo(id, callback) {
       let postBody = null;
@@ -435,7 +440,7 @@ export default class FloatingIPsApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/floating_ips/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

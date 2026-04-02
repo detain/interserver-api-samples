@@ -18,6 +18,7 @@ import io.swagger.client.models.IpObject
 import io.swagger.client.models.License
 import io.swagger.client.models.LicenseRow
 import io.swagger.client.models.LicensesOrder
+import io.swagger.client.models.ServiceOrderPostResponse
 import io.swagger.client.models.SuccessTextResponse
 
 import myadmin-client-kotlin-client.infrastructure.*
@@ -27,21 +28,22 @@ class LicensesApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") 
     /**
      * Place License Order
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
-     * @return void
+     * @return ServiceOrderPostResponse
      */
-    fun addLicense(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addLicense(): ServiceOrderPostResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/licenses/order", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<ServiceOrderPostResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -315,21 +317,22 @@ class LicensesApi(basePath: kotlin.String = "https://my.interserver.net/apiv2") 
      * Update License
      * Updates settings on a license service such as its assigned IP.
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateLicenseInfo(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateLicenseInfo(id: kotlin.String): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/licenses/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

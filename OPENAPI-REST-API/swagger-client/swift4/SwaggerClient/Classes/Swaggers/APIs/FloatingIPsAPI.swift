@@ -16,13 +16,9 @@ open class FloatingIPsAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addFloatingIp(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func addFloatingIp(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
         addFloatingIpWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -40,10 +36,20 @@ open class FloatingIPsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "continue" : true,
+  "errors" : [ ],
+  "total_cost" : "5.00",
+  "iid" : "25296600",
+  "iids" : [ "SERVICE12345" ],
+  "real_iids" : [ "25296600" ],
+  "serviceId" : 12345,
+  "invoice_description" : "New Service Order"
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addFloatingIpWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func addFloatingIpWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/floating_ips/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -51,7 +57,7 @@ open class FloatingIPsAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -110,13 +116,9 @@ open class FloatingIPsAPI {
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getFloatingIpInfo(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func getFloatingIpInfo(_id: Int, completion: @escaping ((_ data: Any?,_ error: Error?) -> Void)) {
         getFloatingIpInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -134,11 +136,12 @@ open class FloatingIPsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={ }}]
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<Any> 
      */
-    open class func getFloatingIpInfoWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+    open class func getFloatingIpInfoWithRequestBuilder(_id: Int) -> RequestBuilder<Any> {
         var path = "/floating_ips/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -149,7 +152,7 @@ open class FloatingIPsAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<Any>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -337,13 +340,9 @@ open class FloatingIPsAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getNewFloatingIp(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func getNewFloatingIp(completion: @escaping ((_ data: Any?,_ error: Error?) -> Void)) {
         getNewFloatingIpWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -361,10 +360,11 @@ open class FloatingIPsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={ }}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<Any> 
      */
-    open class func getNewFloatingIpWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func getNewFloatingIpWithRequestBuilder() -> RequestBuilder<Any> {
         let path = "/floating_ips/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -372,7 +372,7 @@ open class FloatingIPsAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<Any>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -525,13 +525,9 @@ open class FloatingIPsAPI {
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateFloatingIpInfo(_id: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func updateFloatingIpInfo(_id: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateFloatingIpInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -549,11 +545,15 @@ open class FloatingIPsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateFloatingIpInfoWithRequestBuilder(_id: String) -> RequestBuilder<Void> {
+    open class func updateFloatingIpInfoWithRequestBuilder(_id: String) -> RequestBuilder<SuccessTextResponse> {
         var path = "/floating_ips/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -564,7 +564,7 @@ open class FloatingIPsAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

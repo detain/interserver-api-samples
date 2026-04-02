@@ -49,11 +49,19 @@ class ServersApi {
   /// Place Server Order
   ///
   /// Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
-  Future<void> addServer() async {
+  Future<AddServer200Response?> addServer() async {
     final response = await addServerWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AddServer200Response',) as AddServer200Response;
+    
+    }
+    return null;
   }
 
   /// Get Buy Now Server Options
@@ -1035,10 +1043,18 @@ class ServersApi {
   ///
   /// * [String] id (required):
   ///   Server ID number.
-  Future<void> updateServerInfo(String id,) async {
+  Future<SuccessTextResponse?> updateServerInfo(String id,) async {
     final response = await updateServerInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 }

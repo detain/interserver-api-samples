@@ -17,7 +17,7 @@ Feature | HTTP request | Description
 
 
 # **add_floating_ip**
-> add_floating_ip 
+> add_floating_ip : detachable SERVICE_ORDER_POST_RESPONSE
 
 
 Place Floating IP Order
@@ -30,7 +30,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**SERVICE_ORDER_POST_RESPONSE**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **floating_ip_info**
-> floating_ip_info (id: INTEGER_32 )
+> floating_ip_info (id: INTEGER_32 ): detachable ANY
 
 
 View Floating IP
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**ANY**](ANY.md)
 
 ### Authorization
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **new_floating_ip**
-> new_floating_ip 
+> new_floating_ip : detachable ANY
 
 
 Get Floating IP Ordering Information
@@ -204,7 +204,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**ANY**](ANY.md)
 
 ### Authorization
 
@@ -276,7 +276,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_floating_ip_info**
-> update_floating_ip_info (id: STRING_32 )
+> update_floating_ip_info (id: STRING_32 ): detachable SUCCESS_TEXT_RESPONSE
 
 
 Update Floating IP
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**SUCCESS_TEXT_RESPONSE**](SuccessTextResponse.md)
 
 ### Authorization
 

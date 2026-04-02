@@ -35,7 +35,7 @@ describe 'ServersApi' do
   # Place Server Order
   # Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [InlineResponse20019]
   describe 'add_server test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -46,7 +46,7 @@ describe 'ServersApi' do
   # Get Buy Now Server Options
   # Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20026]
+  # @return [InlineResponse20027]
   describe 'buy_it_now_server_order test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -266,7 +266,7 @@ describe 'ServersApi' do
   # Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
   # @param id Server ID number
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20019]
+  # @return [InlineResponse20020]
   describe 'servers_cancel test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -278,7 +278,7 @@ describe 'ServersApi' do
   # Updates settings on a dedicated server order.
   # @param id Server ID number.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_server_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

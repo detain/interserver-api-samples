@@ -138,10 +138,10 @@ defmodule InterServerManagementAPI.Api.Billing do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, String.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec delete_account_credit_card(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec delete_account_credit_card(Tesla.Env.client, String.t, keyword()) :: {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:ok, String.t} | {:error, Tesla.Env.t}
   def delete_account_credit_card(connection, id, _opts \\ []) do
     request =
       %{}
@@ -152,8 +152,8 @@ defmodule InterServerManagementAPI.Api.Billing do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, false},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 
@@ -453,10 +453,10 @@ defmodule InterServerManagementAPI.Api.Billing do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, map()}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec get_billing_cart(Tesla.Env.client, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec get_billing_cart(Tesla.Env.client, keyword()) :: {:ok, map()} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
   def get_billing_cart(connection, _opts \\ []) do
     request =
       %{}
@@ -467,8 +467,8 @@ defmodule InterServerManagementAPI.Api.Billing do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, %{}},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 
@@ -575,10 +575,10 @@ defmodule InterServerManagementAPI.Api.Billing do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, map()}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec get_billing_pre_pays(Tesla.Env.client, keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec get_billing_pre_pays(Tesla.Env.client, keyword()) :: {:ok, map()} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
   def get_billing_pre_pays(connection, _opts \\ []) do
     request =
       %{}
@@ -589,8 +589,8 @@ defmodule InterServerManagementAPI.Api.Billing do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, %{}},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 
@@ -713,10 +713,10 @@ defmodule InterServerManagementAPI.Api.Billing do
 
   ### Returns
 
-  - `{:ok, nil}` on success
+  - `{:ok, String.t}` on success
   - `{:error, Tesla.Env.t}` on failure
   """
-  @spec update_account_credit_card(Tesla.Env.client, integer(), keyword()) :: {:ok, nil} | {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:error, Tesla.Env.t}
+  @spec update_account_credit_card(Tesla.Env.client, integer(), keyword()) :: {:ok, InterServerManagementAPI.Model.GetAccountInfo401Response.t} | {:ok, String.t} | {:error, Tesla.Env.t}
   def update_account_credit_card(connection, id, _opts \\ []) do
     request =
       %{}
@@ -728,8 +728,8 @@ defmodule InterServerManagementAPI.Api.Billing do
     connection
     |> Connection.request(request)
     |> evaluate_response([
-      {401, InterServerManagementAPI.Model.GetAccountInfo401Response},
-      {:default, false}
+      {200, false},
+      {401, InterServerManagementAPI.Model.GetAccountInfo401Response}
     ])
   end
 

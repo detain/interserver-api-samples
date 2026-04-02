@@ -2,7 +2,7 @@
 /*
  * ServerIpmiLiveInfo.h
  *
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 
 #ifndef TINY_CPP_CLIENT_ServerIpmiLiveInfo_H_
@@ -16,7 +16,7 @@
 namespace Tiny {
 
 
-/*! \brief Information about the IPMI connectioj.
+/*! \brief Information about the IPMI connection.
  *
  *  \ingroup Models
  *

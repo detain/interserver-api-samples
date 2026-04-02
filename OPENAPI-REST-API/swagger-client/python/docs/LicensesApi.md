@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**update_license_info**](LicensesApi.md#update_license_info) | **POST** /licenses/{id} | Update License
 
 # **add_license**
-> add_license()
+> ServiceOrderPostResponse add_license()
 
 Place License Order
 
@@ -52,7 +52,8 @@ api_instance = myadmin-client-python.LicensesApi(myadmin-client-python.ApiClient
 
 try:
     # Place License Order
-    api_instance.add_license()
+    api_response = api_instance.add_license()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling LicensesApi->add_license: %s\n" % e)
 ```
@@ -62,7 +63,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -640,7 +641,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_license_info**
-> update_license_info(id)
+> SuccessTextResponse update_license_info(id)
 
 Update License
 
@@ -676,7 +677,8 @@ id = 'id_example' # str | The license service ID. Use `license_id` from `GET /li
 
 try:
     # Update License
-    api_instance.update_license_info(id)
+    api_response = api_instance.update_license_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling LicensesApi->update_license_info: %s\n" % e)
 ```
@@ -689,7 +691,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -14,11 +14,6 @@
  *
  */
 import ApiClient from '../ApiClient';
-import InlineResponse20026Bandwidth from './InlineResponse20026Bandwidth';
-import InlineResponse20026Cp from './InlineResponse20026Cp';
-import InlineResponse20026Ips from './InlineResponse20026Ips';
-import InlineResponse20026Os from './InlineResponse20026Os';
-import InlineResponse20026Raid from './InlineResponse20026Raid';
 
 /**
  * The InlineResponse20026 model module.
@@ -44,43 +39,24 @@ export default class InlineResponse20026 {
   static constructFromObject(data, obj) {
     if (data) {
       obj = obj || new InlineResponse20026();
-      if (data.hasOwnProperty('bandwidth'))
-        obj.bandwidth = ApiClient.convertToType(data['bandwidth'], [InlineResponse20026Bandwidth]);
-      if (data.hasOwnProperty('ips'))
-        obj.ips = ApiClient.convertToType(data['ips'], [InlineResponse20026Ips]);
-      if (data.hasOwnProperty('os'))
-        obj.os = ApiClient.convertToType(data['os'], [InlineResponse20026Os]);
-      if (data.hasOwnProperty('cp'))
-        obj.cp = ApiClient.convertToType(data['cp'], [InlineResponse20026Cp]);
-      if (data.hasOwnProperty('raid'))
-        obj.raid = ApiClient.convertToType(data['raid'], [InlineResponse20026Raid]);
+      if (data.hasOwnProperty('text'))
+        obj.text = ApiClient.convertToType(data['text'], 'String');
+      if (data.hasOwnProperty('ticket'))
+        obj.ticket = ApiClient.convertToType(data['ticket'], 'Number');
     }
     return obj;
   }
 }
 
 /**
- * @member {Array.<module:model/InlineResponse20026Bandwidth>} bandwidth
+ * Confirmation message.
+ * @member {String} text
  */
-InlineResponse20026.prototype.bandwidth = undefined;
+InlineResponse20026.prototype.text = undefined;
 
 /**
- * @member {Array.<module:model/InlineResponse20026Ips>} ips
+ * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+ * @member {Number} ticket
  */
-InlineResponse20026.prototype.ips = undefined;
-
-/**
- * @member {Array.<module:model/InlineResponse20026Os>} os
- */
-InlineResponse20026.prototype.os = undefined;
-
-/**
- * @member {Array.<module:model/InlineResponse20026Cp>} cp
- */
-InlineResponse20026.prototype.cp = undefined;
-
-/**
- * @member {Array.<module:model/InlineResponse20026Raid>} raid
- */
-InlineResponse20026.prototype.raid = undefined;
+InlineResponse20026.prototype.ticket = undefined;
 

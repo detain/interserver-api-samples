@@ -196,7 +196,7 @@ public class BackupsApiTest {
         Integer id = 56;
 
         // when
-        api.updateBackupInfo(id).block();
+        SuccessTextResponse body = api.updateBackupInfo(id).block();
 
         // then
         // TODO implement the updateBackupInfoTest()

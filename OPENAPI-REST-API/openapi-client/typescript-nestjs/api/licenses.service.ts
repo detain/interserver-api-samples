@@ -21,6 +21,7 @@ import { License } from '../model/license';
 import { LicenseRow } from '../model/licenseRow';
 import { LicensesCancel200Response } from '../model/licensesCancel200Response';
 import { LicensesOrder } from '../model/licensesOrder';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { Configuration } from '../configuration';
 import { COLLECTION_FORMATS } from '../variables';
@@ -56,7 +57,7 @@ export class LicensesService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [addLicenseOpts.config] Override http request option.
      */
-    public addLicense(addLicenseOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public addLicense(addLicenseOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ServiceOrderPostResponse>>;
     public addLicense(addLicenseOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -91,7 +92,7 @@ export class LicensesService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/licenses/order`,
+                return this.httpClient.post<ServiceOrderPostResponse>(`${this.basePath}/licenses/order`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -621,7 +622,7 @@ export class LicensesService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateLicenseInfoOpts.config] Override http request option.
      */
-    public updateLicenseInfo(id: string, updateLicenseInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateLicenseInfo(id: string, updateLicenseInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateLicenseInfo(id: string, updateLicenseInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateLicenseInfo.');
@@ -660,7 +661,7 @@ export class LicensesService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/licenses/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/licenses/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

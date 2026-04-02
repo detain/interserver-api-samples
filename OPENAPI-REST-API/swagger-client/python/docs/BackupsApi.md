@@ -524,7 +524,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_backup_info**
-> update_backup_info(id)
+> SuccessTextResponse update_backup_info(id)
 
 Update Backup Information
 
@@ -560,7 +560,8 @@ id = 56 # int | The backup service ID. Use the `backup_id` from `GET /backups` t
 
 try:
     # Update Backup Information
-    api_instance.update_backup_info(id)
+    api_response = api_instance.update_backup_info(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling BackupsApi->update_backup_info: %s\n" % e)
 ```
@@ -573,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

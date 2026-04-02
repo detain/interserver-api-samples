@@ -23,10 +23,11 @@ public struct CreateFirewallRule: Sendable, Codable, Hashable {
     /** 1 = Block,  0 = Whitelist */
     public var xdpAction: XdpAction
     public var destinationPort: Int? = 80
-    public var sourceIp: String? = "0"
+    /** Source IP address to match. Use '0.0.0.0' to match any source. */
+    public var sourceIp: String? = "0.0.0.0"
     public var sourcePort: Int? = 0
 
-    public init(protocolId: ProtocolId, xdpAction: XdpAction, destinationPort: Int? = 80, sourceIp: String? = "0", sourcePort: Int? = 0) {
+    public init(protocolId: ProtocolId, xdpAction: XdpAction, destinationPort: Int? = 80, sourceIp: String? = "0.0.0.0", sourcePort: Int? = 0) {
         self.protocolId = protocolId
         self.xdpAction = xdpAction
         self.destinationPort = destinationPort

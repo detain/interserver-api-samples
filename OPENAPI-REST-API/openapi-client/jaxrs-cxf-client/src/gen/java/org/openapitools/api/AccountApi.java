@@ -226,10 +226,10 @@ public interface AccountApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update Account Information", tags={  })
     @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 422, message = "Validation error while updating account data.", response = TextResponse.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateAccountInfo(@Multipart(value = "name")  String name, @Multipart(value = "address")  String address, @Multipart(value = "city")  String city, @Multipart(value = "state")  String state, @Multipart(value = "zip")  String zip, @Multipart(value = "country")  String country, @Multipart(value = "phone")  String phone, @Multipart(value = "company", required = false)  String company, @Multipart(value = "address2", required = false)  String address2, @Multipart(value = "locale", required = false)  String locale, @Multipart(value = "email_invoices", required = false)  String emailInvoices, @Multipart(value = "email_abuse", required = false)  String emailAbuse, @Multipart(value = "disable_reset", required = false)  Boolean disableReset, @Multipart(value = "disable_reinstall", required = false)  Boolean disableReinstall, @Multipart(value = "disable_server_notifications", required = false)  Boolean disableServerNotifications, @Multipart(value = "disable_email_notifications", required = false)  Boolean disableEmailNotifications, @Multipart(value = "gstin", required = false)  String gstin);
+        @ApiResponse(code = 422, message = "Validation error while updating account data.", response = TextResponse.class) })
+    public SuccessTextResponse updateAccountInfo(@Multipart(value = "name")  String name, @Multipart(value = "address")  String address, @Multipart(value = "city")  String city, @Multipart(value = "state")  String state, @Multipart(value = "zip")  String zip, @Multipart(value = "country")  String country, @Multipart(value = "phone")  String phone, @Multipart(value = "company", required = false)  String company, @Multipart(value = "address2", required = false)  String address2, @Multipart(value = "locale", required = false)  String locale, @Multipart(value = "email_invoices", required = false)  String emailInvoices, @Multipart(value = "email_abuse", required = false)  String emailAbuse, @Multipart(value = "disable_reset", required = false)  Boolean disableReset, @Multipart(value = "disable_reinstall", required = false)  Boolean disableReinstall, @Multipart(value = "disable_server_notifications", required = false)  Boolean disableServerNotifications, @Multipart(value = "disable_email_notifications", required = false)  Boolean disableEmailNotifications, @Multipart(value = "gstin", required = false)  String gstin);
 
     /**
      * Add IP Access Restriction
@@ -243,10 +243,10 @@ public interface AccountApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Add IP Access Restriction", tags={  })
     @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "A response indicating the operation completed successfully with a text message.", response = SuccessTextResponse.class),
         @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 422, message = "IP limit payload contains an invalid address.", response = TextResponse.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateAccountIpLimits(@Multipart(value = "start")  String start, @Multipart(value = "end")  String end);
+        @ApiResponse(code = 422, message = "IP limit payload contains an invalid address.", response = TextResponse.class) })
+    public SuccessTextResponse updateAccountIpLimits(@Multipart(value = "start")  String start, @Multipart(value = "end")  String end);
 
     /**
      * Change Account Password

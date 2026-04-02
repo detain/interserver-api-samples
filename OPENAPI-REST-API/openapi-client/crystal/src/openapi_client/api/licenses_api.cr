@@ -19,15 +19,15 @@ module OpenAPIClient
     end
     # Place License Order
     # Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_license()
-      add_license_with_http_info()
-      nil
+      data, _status_code, _headers = add_license_with_http_info()
+      data
     end
 
     # Place License Order
     # Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_license_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: LicensesApi.add_license ..."}
@@ -71,7 +71,7 @@ module OpenAPIClient
         Log.debug {"API called: LicensesApi#add_license\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return ServiceOrderPostResponse.from_json(data), status_code, headers
     end
 
     # Get License
@@ -634,16 +634,16 @@ module OpenAPIClient
     # Update License
     # Updates settings on a license service such as its assigned IP.
     # @param id [String] The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_license_info(id : String)
-      update_license_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_license_info_with_http_info(id)
+      data
     end
 
     # Update License
     # Updates settings on a license service such as its assigned IP.
     # @param id [String] The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_license_info_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: LicensesApi.update_license_info ..."}
@@ -691,7 +691,7 @@ module OpenAPIClient
         Log.debug {"API called: LicensesApi#update_license_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
   end
 end

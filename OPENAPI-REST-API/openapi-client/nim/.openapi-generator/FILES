@@ -37,6 +37,7 @@ openapiclient/models/model_account_info_oauth_config_providers_value.nim
 openapiclient/models/model_account_info_oauthproviders.nim
 openapiclient/models/model_account_info_post.nim
 openapiclient/models/model_account_ssh_key.nim
+openapiclient/models/model_add_server200response.nim
 openapiclient/models/model_affiliate_banner_row.nim
 openapiclient/models/model_affiliate_dock_setup.nim
 openapiclient/models/model_affiliate_payment_setup.nim
@@ -371,6 +372,7 @@ openapiclient/models/model_servers_cancel200response.nim
 openapiclient/models/model_service.nim
 openapiclient/models/model_service_categories.nim
 openapiclient/models/model_service_category.nim
+openapiclient/models/model_service_order_post_response.nim
 openapiclient/models/model_service_type.nim
 openapiclient/models/model_service_types.nim
 openapiclient/models/model_services.nim

@@ -99,7 +99,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -305,7 +305,7 @@ export default function() {
             let request = http.post(url, JSON.stringify(body), params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.": (r) => r.status === 200
             });
         }
     });
@@ -326,7 +326,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Simple string response": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -346,7 +346,7 @@ export default function() {
             let request = http.del(url, {} , params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Simple string response": (r) => r.status === 200
             });
         }
     });
@@ -470,7 +470,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -617,7 +617,7 @@ export default function() {
             let request = http.get(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Available SSL certificate types and pricing for ordering.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -655,7 +655,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.": (r) => r.status === 200
             });
         }
     });
@@ -717,7 +717,7 @@ export default function() {
             let request = http.del(url, {} , params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
         }
     });
@@ -1024,7 +1024,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.": (r) => r.status === 200
             });
         }
     });
@@ -1069,7 +1069,7 @@ export default function() {
             let request = http.post(url, JSON.stringify(body), params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -1174,7 +1174,7 @@ export default function() {
             let request = http.get(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Prepay balances and metadata.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -1572,7 +1572,7 @@ export default function() {
             let request = http.get(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Detailed SSL certificate information.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -1591,7 +1591,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -1713,7 +1713,7 @@ export default function() {
             let request = http.post(url, JSON.stringify(body), params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
         }
     });
@@ -2340,7 +2340,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.": (r) => r.status === 200
             });
         }
     });
@@ -2618,7 +2618,7 @@ export default function() {
             let request = http.post(url, JSON.stringify(body), params);
 
             check(request, {
-                "A successful response after creating a ticket": (r) => r.status === 200
+                "A successful response after creating a ticket.": (r) => r.status === 200
             });
         }
     });
@@ -2658,7 +2658,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -2865,7 +2865,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -2943,7 +2943,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Server order placed successfully.": (r) => r.status === 200
             });
         }
     });
@@ -3344,7 +3344,7 @@ export default function() {
             let request = http.get(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Detailed Floating IP service information.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -3363,7 +3363,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -3634,7 +3634,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -3712,7 +3712,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.": (r) => r.status === 200
             });
         }
     });
@@ -3896,7 +3896,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -3957,7 +3957,7 @@ export default function() {
             let request = http.post(url, JSON.stringify(body), params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
         }
     });
@@ -3981,7 +3981,7 @@ export default function() {
             let request = http.post(url, JSON.stringify(body), params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -4001,7 +4001,7 @@ export default function() {
             let request = http.del(url, {} , params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
         }
     });
@@ -4697,7 +4697,7 @@ export default function() {
             let request = http.get(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Current shopping cart contents and available payment methods.": (r) => r.status === 200
             });
         }
     });
@@ -4822,7 +4822,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -4985,7 +4985,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -5152,7 +5152,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "A response indicating the operation completed successfully with a text message.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -6014,7 +6014,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.": (r) => r.status === 200
             });
         }
     });
@@ -6313,7 +6313,7 @@ export default function() {
             let request = http.get(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Available options and pricing for ordering a Floating IP.": (r) => r.status === 200
             });
 
             sleep(SLEEP_DURATION);
@@ -6351,7 +6351,7 @@ export default function() {
             let request = http.post(url, params);
 
             check(request, {
-                "Default response": (r) => r.status === 200
+                "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.": (r) => r.status === 200
             });
         }
     });

@@ -17,6 +17,7 @@ import DnsListItem from '../model/DnsListItem';
 import DnsRecord from '../model/DnsRecord';
 import DnsRecordType from '../model/DnsRecordType';
 import GetAccountInfo401Response from '../model/GetAccountInfo401Response';
+import SuccessTextResponse from '../model/SuccessTextResponse';
 
 /**
 * DNS service.
@@ -41,7 +42,7 @@ export default class DNSApi {
      * Callback function to receive the result of the addDnsDomain operation.
      * @callback module:api/DNSApi~addDnsDomainCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -51,6 +52,7 @@ export default class DNSApi {
      * @param {String} domain The domain name.
      * @param {String} ip IP Address to point the domain to.
      * @param {module:api/DNSApi~addDnsDomainCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     addDnsDomain(domain, ip, callback) {
       let postBody = null;
@@ -77,7 +79,7 @@ export default class DNSApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = ['multipart/form-data', 'application/json'];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/dns', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -155,7 +157,7 @@ export default class DNSApi {
      * Callback function to receive the result of the deleteDnsDomain operation.
      * @callback module:api/DNSApi~deleteDnsDomainCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -164,6 +166,7 @@ export default class DNSApi {
      * Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
      * @param {String} id The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
      * @param {module:api/DNSApi~deleteDnsDomainCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     deleteDnsDomain(id, callback) {
       let postBody = null;
@@ -185,7 +188,7 @@ export default class DNSApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/dns/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -197,7 +200,7 @@ export default class DNSApi {
      * Callback function to receive the result of the deleteDnsRecord operation.
      * @callback module:api/DNSApi~deleteDnsRecordCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -207,6 +210,7 @@ export default class DNSApi {
      * @param {Number} domainId The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
      * @param {Number} recordId The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
      * @param {module:api/DNSApi~deleteDnsRecordCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     deleteDnsRecord(domainId, recordId, callback) {
       let postBody = null;
@@ -233,7 +237,7 @@ export default class DNSApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/dns/{domainId}/{recordId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -325,7 +329,7 @@ export default class DNSApi {
      * Callback function to receive the result of the updateDnsRecord operation.
      * @callback module:api/DNSApi~updateDnsRecordCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -344,6 +348,7 @@ export default class DNSApi {
      * @param {String} [ordername] 
      * @param {String} [auth] 
      * @param {module:api/DNSApi~updateDnsRecordCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/SuccessTextResponse}
      */
     updateDnsRecord(domainId, recordId, opts, callback) {
       opts = opts || {};
@@ -379,7 +384,7 @@ export default class DNSApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = ['multipart/form-data', 'application/json'];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
       return this.apiClient.callApi(
         '/dns/{domainId}/{recordId}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

@@ -34,6 +34,7 @@ import org.openapitools.client.models.License
 import org.openapitools.client.models.LicenseRow
 import org.openapitools.client.models.LicensesCancel200Response
 import org.openapitools.client.models.LicensesOrder
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 
 import com.squareup.moshi.Json
@@ -64,19 +65,20 @@ open class LicensesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * POST /licenses/order
      * Place License Order
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
-     * @return void
+     * @return ServiceOrderPostResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun addLicense() : Unit {
+    fun addLicense() : ServiceOrderPostResponse {
         val localVarResponse = addLicenseWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -94,15 +96,16 @@ open class LicensesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * POST /licenses/order
      * Place License Order
      * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<ServiceOrderPostResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun addLicenseWithHttpInfo() : ApiResponse<Unit?> {
+    fun addLicenseWithHttpInfo() : ApiResponse<ServiceOrderPostResponse?> {
         val localVariableConfig = addLicenseRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, ServiceOrderPostResponse>(
             localVariableConfig
         )
     }
@@ -781,19 +784,20 @@ open class LicensesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * Update License
      * Updates settings on a license service such as its assigned IP.
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateLicenseInfo(id: kotlin.String) : Unit {
+    fun updateLicenseInfo(id: kotlin.String) : SuccessTextResponse {
         val localVarResponse = updateLicenseInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -812,15 +816,16 @@ open class LicensesApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * Update License
      * Updates settings on a license service such as its assigned IP.
      * @param id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateLicenseInfoWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun updateLicenseInfoWithHttpInfo(id: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateLicenseInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }

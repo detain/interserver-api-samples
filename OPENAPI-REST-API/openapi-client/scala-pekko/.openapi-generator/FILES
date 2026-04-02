@@ -21,6 +21,7 @@ docs/AccountInfoOauthConfigProvidersValue.md
 docs/AccountInfoOauthproviders.md
 docs/AccountInfoPost.md
 docs/AccountSshKey.md
+docs/AddServer200Response.md
 docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
@@ -365,6 +366,7 @@ docs/ServersCancel200Response.md
 docs/Service.md
 docs/ServiceCategories.md
 docs/ServiceCategory.md
+docs/ServiceOrderPostResponse.md
 docs/ServiceType.md
 docs/ServiceTypes.md
 docs/Services.md
@@ -511,6 +513,7 @@ src/main/scala/org/openapitools/client/model/AccountInfoOauthConfigProvidersValu
 src/main/scala/org/openapitools/client/model/AccountInfoOauthproviders.scala
 src/main/scala/org/openapitools/client/model/AccountInfoPost.scala
 src/main/scala/org/openapitools/client/model/AccountSshKey.scala
+src/main/scala/org/openapitools/client/model/AddServer200Response.scala
 src/main/scala/org/openapitools/client/model/AffiliateBannerRow.scala
 src/main/scala/org/openapitools/client/model/AffiliateDockSetup.scala
 src/main/scala/org/openapitools/client/model/AffiliatePaymentSetup.scala
@@ -843,6 +846,7 @@ src/main/scala/org/openapitools/client/model/ServersCancel200Response.scala
 src/main/scala/org/openapitools/client/model/Service.scala
 src/main/scala/org/openapitools/client/model/ServiceCategories.scala
 src/main/scala/org/openapitools/client/model/ServiceCategory.scala
+src/main/scala/org/openapitools/client/model/ServiceOrderPostResponse.scala
 src/main/scala/org/openapitools/client/model/ServiceType.scala
 src/main/scala/org/openapitools/client/model/ServiceTypes.scala
 src/main/scala/org/openapitools/client/model/Services.scala

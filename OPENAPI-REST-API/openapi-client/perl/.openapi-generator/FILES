@@ -24,6 +24,7 @@ docs/AccountInfoOauthConfigProvidersValue.md
 docs/AccountInfoOauthproviders.md
 docs/AccountInfoPost.md
 docs/AccountSshKey.md
+docs/AddServer200Response.md
 docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
@@ -368,6 +369,7 @@ docs/ServersCancel200Response.md
 docs/Service.md
 docs/ServiceCategories.md
 docs/ServiceCategory.md
+docs/ServiceOrderPostResponse.md
 docs/ServiceType.md
 docs/ServiceTypes.md
 docs/Services.md
@@ -501,6 +503,7 @@ lib/OpenAPIClient/Object/AccountInfoOauthConfigProvidersValue.pm
 lib/OpenAPIClient/Object/AccountInfoOauthproviders.pm
 lib/OpenAPIClient/Object/AccountInfoPost.pm
 lib/OpenAPIClient/Object/AccountSshKey.pm
+lib/OpenAPIClient/Object/AddServer200Response.pm
 lib/OpenAPIClient/Object/AffiliateBannerRow.pm
 lib/OpenAPIClient/Object/AffiliateDockSetup.pm
 lib/OpenAPIClient/Object/AffiliatePaymentSetup.pm
@@ -833,6 +836,7 @@ lib/OpenAPIClient/Object/ServersCancel200Response.pm
 lib/OpenAPIClient/Object/Service.pm
 lib/OpenAPIClient/Object/ServiceCategories.pm
 lib/OpenAPIClient/Object/ServiceCategory.pm
+lib/OpenAPIClient/Object/ServiceOrderPostResponse.pm
 lib/OpenAPIClient/Object/ServiceType.pm
 lib/OpenAPIClient/Object/ServiceTypes.pm
 lib/OpenAPIClient/Object/Services.pm
@@ -962,6 +966,7 @@ t/AccountInfoOauthprovidersTest.t
 t/AccountInfoPostTest.t
 t/AccountInfoTest.t
 t/AccountSshKeyTest.t
+t/AddServer200ResponseTest.t
 t/AffiliateBannerRowTest.t
 t/AffiliateDockSetupTest.t
 t/AffiliatePaymentSetupTest.t
@@ -1305,6 +1310,7 @@ t/ServersBuyNowResponseTest.t
 t/ServersCancel200ResponseTest.t
 t/ServiceCategoriesTest.t
 t/ServiceCategoryTest.t
+t/ServiceOrderPostResponseTest.t
 t/ServiceTest.t
 t/ServiceTypeTest.t
 t/ServiceTypesTest.t

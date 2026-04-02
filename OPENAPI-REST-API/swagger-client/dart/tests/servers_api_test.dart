@@ -11,7 +11,7 @@ void main() {
     //
     // Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
     //
-    //Future addServer() async
+    //Future<InlineResponse20019> addServer() async
     test('test addServer', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.
     //
-    //Future<InlineResponse20026> buyItNowServerOrder() async
+    //Future<InlineResponse20027> buyItNowServerOrder() async
     test('test buyItNowServerOrder', () async {
       // TODO
     });
@@ -155,7 +155,7 @@ void main() {
     //
     // Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
     //
-    //Future<InlineResponse20019> serversCancel(int id) async
+    //Future<InlineResponse20020> serversCancel(int id) async
     test('test serversCancel', () async {
       // TODO
     });
@@ -164,7 +164,7 @@ void main() {
     //
     // Updates settings on a dedicated server order.
     //
-    //Future updateServerInfo(String id) async
+    //Future<SuccessTextResponse> updateServerInfo(String id) async
     test('test updateServerInfo', () async {
       // TODO
     });

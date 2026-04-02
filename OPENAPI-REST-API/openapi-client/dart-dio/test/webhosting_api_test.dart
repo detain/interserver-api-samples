@@ -11,7 +11,7 @@ void main() {
     //
     // Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
     //
-    //Future addWebsite() async
+    //Future<ServiceOrderPostResponse> addWebsite() async
     test('test addWebsite', () async {
       // TODO
     });
@@ -137,7 +137,7 @@ void main() {
     //
     // Updates settings on a webhosting order.
     //
-    //Future updateWebsiteInfo(String id) async
+    //Future<SuccessTextResponse> updateWebsiteInfo(String id) async
     test('test updateWebsiteInfo', () async {
       // TODO
     });

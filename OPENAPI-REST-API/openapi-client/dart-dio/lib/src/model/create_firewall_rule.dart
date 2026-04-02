@@ -15,7 +15,7 @@ part 'create_firewall_rule.g.dart';
 /// * [protocolId] - 1 = TCP, 2 = UDP
 /// * [xdpAction] - 1 = Block,  0 = Whitelist
 /// * [destinationPort] 
-/// * [sourceIp] 
+/// * [sourceIp] - Source IP address to match. Use '0.0.0.0' to match any source.
 /// * [sourcePort] 
 @BuiltValue()
 abstract class CreateFirewallRule implements Built<CreateFirewallRule, CreateFirewallRuleBuilder> {
@@ -32,6 +32,7 @@ abstract class CreateFirewallRule implements Built<CreateFirewallRule, CreateFir
   @BuiltValueField(wireName: r'destination_port')
   int? get destinationPort;
 
+  /// Source IP address to match. Use '0.0.0.0' to match any source.
   @BuiltValueField(wireName: r'source_ip')
   String? get sourceIp;
 
@@ -45,7 +46,7 @@ abstract class CreateFirewallRule implements Built<CreateFirewallRule, CreateFir
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateFirewallRuleBuilder b) => b
       ..destinationPort = 80
-      ..sourceIp = '0'
+      ..sourceIp = '0.0.0.0'
       ..sourcePort = 0;
 
   @BuiltValueSerializer(custom: true)

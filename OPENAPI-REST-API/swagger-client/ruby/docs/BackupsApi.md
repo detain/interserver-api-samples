@@ -579,7 +579,7 @@ This endpoint does not need any parameter.
 
 
 # **update_backup_info**
-> update_backup_info(id)
+> SuccessTextResponse update_backup_info(id)
 
 Update Backup Information
 
@@ -613,7 +613,8 @@ id = 56 # Integer | The backup service ID. Use the `backup_id` from `GET /backup
 
 begin
   #Update Backup Information
-  api_instance.update_backup_info(id)
+  result = api_instance.update_backup_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BackupsApi->update_backup_info: #{e}"
 end
@@ -627,7 +628,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

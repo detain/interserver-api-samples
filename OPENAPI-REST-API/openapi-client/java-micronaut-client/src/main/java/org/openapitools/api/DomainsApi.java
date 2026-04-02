@@ -32,6 +32,7 @@ import org.openapitools.model.DomainRow;
 import org.openapitools.model.DomainSearchResponse;
 import org.openapitools.model.DomainWhoisPrivacyRequest;
 import org.openapitools.model.GetAccountInfo401Response;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.TextResponse;
 import javax.annotation.Generated;
@@ -42,17 +43,18 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface DomainsApi {
     /**
      * Place Domain Order
      * Places a new domain registration or transfer order. Use the results from &#x60;/domains/lookup/{name}&#x60; or &#x60;/domains/order/{domain}/{regType}&#x60; to populate the required domain fields before submitting the order.
      *
+     * @return ServiceOrderPostResponse
      */
     @Post(uri="/domains/order")
     @Consumes({"application/json"})
-    Mono<Void> addDomain();
+    Mono<ServiceOrderPostResponse> addDomain();
 
     /**
      * Add Domain DNSSEC Records
@@ -383,10 +385,11 @@ public interface DomainsApi {
      * Updates the domain service record for the order. Use this for account-level changes such as updating stored registration metadata or transfer attributes.
      *
      * @param id The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/domains/{id}")
     @Consumes({"application/json"})
-    Mono<Void> updateDomainInfo(
+    Mono<SuccessTextResponse> updateDomainInfo(
         @PathVariable(name="id") @NotNull String id
     );
 

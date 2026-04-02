@@ -2,7 +2,8 @@ package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.InlineResponse20019;
-import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20027;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OrderBuyNowServerBody;
 import io.swagger.model.ReverseDnsEntries;
@@ -63,23 +64,32 @@ public class ServersApiController implements ServersApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> addServer() {
-        String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<InlineResponse20026> buyItNowServerOrder() {
+    public ResponseEntity<InlineResponse20019> addServer() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<InlineResponse20026>(objectMapper.readValue("{\n  \"os\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"5\",\n    \"short_desc\" : \"FreeBSD\",\n    \"long_desc\" : \"Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"5\",\n    \"short_desc\" : \"FreeBSD\",\n    \"long_desc\" : \"Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>\"\n  } ],\n  \"bandwidth\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"10\",\n    \"short_desc\" : \"1GBPS Unmetered\",\n    \"long_desc\" : \"\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"10\",\n    \"short_desc\" : \"1GBPS Unmetered\",\n    \"long_desc\" : \"\"\n  } ],\n  \"ips\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"9\",\n    \"short_desc\" : \"1 Vlan Ip (/30)\",\n    \"long_desc\" : \"1 IP In personal Vlan\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"9\",\n    \"short_desc\" : \"1 Vlan Ip (/30)\",\n    \"long_desc\" : \"1 IP In personal Vlan\"\n  } ],\n  \"cp\" : [ {\n    \"monthly_price\" : \"0\",\n    \"os_type\" : \"\",\n    \"id\" : \"1\",\n    \"short_desc\" : \"None\",\n    \"long_desc\" : \"\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"os_type\" : \"\",\n    \"id\" : \"1\",\n    \"short_desc\" : \"None\",\n    \"long_desc\" : \"\"\n  } ],\n  \"raid\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"0\",\n    \"short_desc\" : \"No Raid\",\n    \"long_desc\" : \"No Raid\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"0\",\n    \"short_desc\" : \"No Raid\",\n    \"long_desc\" : \"No Raid\"\n  } ]\n}", InlineResponse20026.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<InlineResponse20019>(objectMapper.readValue("{\n  \"text\" : \"Order Completed\",\n  \"invoice\" : 0,\n  \"order\" : 6\n}", InlineResponse20019.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<InlineResponse20026>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<InlineResponse20019>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<InlineResponse20026>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<InlineResponse20019>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<InlineResponse20027> buyItNowServerOrder() {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<InlineResponse20027>(objectMapper.readValue("{\n  \"os\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"5\",\n    \"short_desc\" : \"FreeBSD\",\n    \"long_desc\" : \"Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"5\",\n    \"short_desc\" : \"FreeBSD\",\n    \"long_desc\" : \"Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>\"\n  } ],\n  \"bandwidth\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"10\",\n    \"short_desc\" : \"1GBPS Unmetered\",\n    \"long_desc\" : \"\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"10\",\n    \"short_desc\" : \"1GBPS Unmetered\",\n    \"long_desc\" : \"\"\n  } ],\n  \"ips\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"9\",\n    \"short_desc\" : \"1 Vlan Ip (/30)\",\n    \"long_desc\" : \"1 IP In personal Vlan\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"9\",\n    \"short_desc\" : \"1 Vlan Ip (/30)\",\n    \"long_desc\" : \"1 IP In personal Vlan\"\n  } ],\n  \"cp\" : [ {\n    \"monthly_price\" : \"0\",\n    \"os_type\" : \"\",\n    \"id\" : \"1\",\n    \"short_desc\" : \"None\",\n    \"long_desc\" : \"\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"os_type\" : \"\",\n    \"id\" : \"1\",\n    \"short_desc\" : \"None\",\n    \"long_desc\" : \"\"\n  } ],\n  \"raid\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"0\",\n    \"short_desc\" : \"No Raid\",\n    \"long_desc\" : \"No Raid\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"0\",\n    \"short_desc\" : \"No Raid\",\n    \"long_desc\" : \"No Raid\"\n  } ]\n}", InlineResponse20027.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<InlineResponse20027>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<InlineResponse20027>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<ServerOrder> getNewServer() {
@@ -271,25 +281,34 @@ public class ServersApiController implements ServersApi {
         return new ResponseEntity<TextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<InlineResponse20019> serversCancel(@Parameter(in = ParameterIn.PATH, description = "Server ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    public ResponseEntity<InlineResponse20020> serversCancel(@Parameter(in = ParameterIn.PATH, description = "Server ID number", required=true, schema=@Schema()) @PathVariable("id") Integer id
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<InlineResponse20019>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Servers is canceled.\"\n}", InlineResponse20019.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<InlineResponse20020>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Servers is canceled.\"\n}", InlineResponse20020.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<InlineResponse20019>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<InlineResponse20020>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<InlineResponse20019>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<InlineResponse20020>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateServerInfo(@Parameter(in = ParameterIn.PATH, description = "Server ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<SuccessTextResponse> updateServerInfo(@Parameter(in = ParameterIn.PATH, description = "Server ID number.", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

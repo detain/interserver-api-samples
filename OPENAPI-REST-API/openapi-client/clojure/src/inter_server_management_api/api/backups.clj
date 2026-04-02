@@ -188,6 +188,7 @@
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
             [inter-server-management-api.specs.license :refer :all]
+            [inter-server-management-api.specs.add-server-200-response :refer :all]
             [inter-server-management-api.specs.post-oauth-callback-request :refer :all]
             [inter-server-management-api.specs.mail-alert-update-request :refer :all]
             [inter-server-management-api.specs.billing-prepay-request :refer :all]
@@ -304,6 +305,7 @@
             [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
+            [inter-server-management-api.specs.service-order-post-response :refer :all]
             [inter-server-management-api.specs.vps-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-network-info-switchports :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types :refer :all]
@@ -663,13 +665,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec update-backup-info any?
+(defn-spec update-backup-info success-text-response-spec
   "Update Backup Information
   Updates backup storage service metadata, such as stored credentials or settings for the order."
   [id int?]
   (let [res (:data (update-backup-info-with-http-info id))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode success-text-response-spec res st/string-transformer)
        res)))
 
 

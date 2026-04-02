@@ -783,7 +783,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAccountInfo
 
-> UpdateAccountInfo(ctx).Name(name).Address(address).City(city).State(state).Zip(zip).Country(country).Phone(phone).Company(company).Address2(address2).Locale(locale).EmailInvoices(emailInvoices).EmailAbuse(emailAbuse).DisableReset(disableReset).DisableReinstall(disableReinstall).DisableServerNotifications(disableServerNotifications).DisableEmailNotifications(disableEmailNotifications).Gstin(gstin).Execute()
+> SuccessTextResponse UpdateAccountInfo(ctx).Name(name).Address(address).City(city).State(state).Zip(zip).Country(country).Phone(phone).Company(company).Address2(address2).Locale(locale).EmailInvoices(emailInvoices).EmailAbuse(emailAbuse).DisableReset(disableReset).DisableReinstall(disableReinstall).DisableServerNotifications(disableServerNotifications).DisableEmailNotifications(disableEmailNotifications).Gstin(gstin).Execute()
 
 Update Account Information
 
@@ -822,11 +822,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AccountAPI.UpdateAccountInfo(context.Background()).Name(name).Address(address).City(city).State(state).Zip(zip).Country(country).Phone(phone).Company(company).Address2(address2).Locale(locale).EmailInvoices(emailInvoices).EmailAbuse(emailAbuse).DisableReset(disableReset).DisableReinstall(disableReinstall).DisableServerNotifications(disableServerNotifications).DisableEmailNotifications(disableEmailNotifications).Gstin(gstin).Execute()
+	resp, r, err := apiClient.AccountAPI.UpdateAccountInfo(context.Background()).Name(name).Address(address).City(city).State(state).Zip(zip).Country(country).Phone(phone).Company(company).Address2(address2).Locale(locale).EmailInvoices(emailInvoices).EmailAbuse(emailAbuse).DisableReset(disableReset).DisableReinstall(disableReinstall).DisableServerNotifications(disableServerNotifications).DisableEmailNotifications(disableEmailNotifications).Gstin(gstin).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.UpdateAccountInfo``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateAccountInfo`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `AccountAPI.UpdateAccountInfo`: %v\n", resp)
 }
 ```
 
@@ -861,7 +863,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -879,7 +881,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAccountIpLimits
 
-> UpdateAccountIpLimits(ctx).Start(start).End(end).Execute()
+> SuccessTextResponse UpdateAccountIpLimits(ctx).Start(start).End(end).Execute()
 
 Add IP Access Restriction
 
@@ -903,11 +905,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AccountAPI.UpdateAccountIpLimits(context.Background()).Start(start).End(end).Execute()
+	resp, r, err := apiClient.AccountAPI.UpdateAccountIpLimits(context.Background()).Start(start).End(end).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.UpdateAccountIpLimits``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `UpdateAccountIpLimits`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `AccountAPI.UpdateAccountIpLimits`: %v\n", resp)
 }
 ```
 
@@ -927,7 +931,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

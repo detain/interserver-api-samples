@@ -26,6 +26,7 @@ docs/AccountInfoOauthConfigProvidersValue.md
 docs/AccountInfoOauthproviders.md
 docs/AccountInfoPost.md
 docs/AccountSshKey.md
+docs/AddServer200Response.md
 docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
@@ -369,6 +370,7 @@ docs/ServersCancel200Response.md
 docs/Service.md
 docs/ServiceCategories.md
 docs/ServiceCategory.md
+docs/ServiceOrderPostResponse.md
 docs/ServiceType.md
 docs/ServiceTypes.md
 docs/Services.md
@@ -534,6 +536,7 @@ src/main/java/org/openapitools/client/model/AccountInfoOauthConfigProvidersValue
 src/main/java/org/openapitools/client/model/AccountInfoOauthproviders.java
 src/main/java/org/openapitools/client/model/AccountInfoPost.java
 src/main/java/org/openapitools/client/model/AccountSshKey.java
+src/main/java/org/openapitools/client/model/AddServer200Response.java
 src/main/java/org/openapitools/client/model/AffiliateBannerRow.java
 src/main/java/org/openapitools/client/model/AffiliateDockSetup.java
 src/main/java/org/openapitools/client/model/AffiliatePaymentSetup.java
@@ -866,6 +869,7 @@ src/main/java/org/openapitools/client/model/ServersCancel200Response.java
 src/main/java/org/openapitools/client/model/Service.java
 src/main/java/org/openapitools/client/model/ServiceCategories.java
 src/main/java/org/openapitools/client/model/ServiceCategory.java
+src/main/java/org/openapitools/client/model/ServiceOrderPostResponse.java
 src/main/java/org/openapitools/client/model/ServiceType.java
 src/main/java/org/openapitools/client/model/ServiceTypes.java
 src/main/java/org/openapitools/client/model/Services.java
@@ -1000,6 +1004,7 @@ src/test/java/org/openapitools/client/model/AccountInfoOauthprovidersTest.java
 src/test/java/org/openapitools/client/model/AccountInfoPostTest.java
 src/test/java/org/openapitools/client/model/AccountInfoTest.java
 src/test/java/org/openapitools/client/model/AccountSshKeyTest.java
+src/test/java/org/openapitools/client/model/AddServer200ResponseTest.java
 src/test/java/org/openapitools/client/model/AffiliateBannerRowTest.java
 src/test/java/org/openapitools/client/model/AffiliateDockSetupTest.java
 src/test/java/org/openapitools/client/model/AffiliatePaymentSetupTest.java
@@ -1331,6 +1336,7 @@ src/test/java/org/openapitools/client/model/ServersBuyNowResponseTest.java
 src/test/java/org/openapitools/client/model/ServersCancel200ResponseTest.java
 src/test/java/org/openapitools/client/model/ServiceCategoriesTest.java
 src/test/java/org/openapitools/client/model/ServiceCategoryTest.java
+src/test/java/org/openapitools/client/model/ServiceOrderPostResponseTest.java
 src/test/java/org/openapitools/client/model/ServiceTest.java
 src/test/java/org/openapitools/client/model/ServiceTypeTest.java
 src/test/java/org/openapitools/client/model/ServiceTypesTest.java

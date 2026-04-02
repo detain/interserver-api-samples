@@ -56,7 +56,7 @@ Method | HTTP request | Description
 
 
 # **addVps**
-> addVps(vpsOrderPostRequest)
+> ServiceOrderPostResponse addVps(vpsOrderPostRequest)
 
 Place VPS Order
 
@@ -82,7 +82,8 @@ final api = Openapi().getVPSApi();
 final VpsOrderPostRequest vpsOrderPostRequest = ; // VpsOrderPostRequest | 
 
 try {
-    api.addVps(vpsOrderPostRequest);
+    final response = api.addVps(vpsOrderPostRequest);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling VPSApi->addVps: $e\n');
 }
@@ -96,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2378,7 +2379,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateVpsInfo**
-> updateVpsInfo(id)
+> SuccessTextResponse updateVpsInfo(id)
 
 Update VPS Order
 
@@ -2404,7 +2405,8 @@ final api = Openapi().getVPSApi();
 final String id = id_example; // String | VPS ID number.
 
 try {
-    api.updateVpsInfo(id);
+    final response = api.updateVpsInfo(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling VPSApi->updateVpsInfo: $e\n');
 }
@@ -2418,7 +2420,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

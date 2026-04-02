@@ -29,7 +29,8 @@ import java.io.IOException;
 import io.swagger.client.model.BuyItNowList;
 import io.swagger.client.model.ChargeInvoiceRows;
 import io.swagger.client.model.InlineResponse20019;
-import io.swagger.client.model.InlineResponse20026;
+import io.swagger.client.model.InlineResponse20020;
+import io.swagger.client.model.InlineResponse20027;
 import io.swagger.client.model.InlineResponse401;
 import io.swagger.client.model.OrderBuyNowServerBody;
 import io.swagger.client.model.ReverseDnsEntries;
@@ -140,21 +141,24 @@ public class ServersApi {
     /**
      * Place Server Order
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+     * @return InlineResponse20019
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void addServer() throws ApiException {
-        addServerWithHttpInfo();
+    public InlineResponse20019 addServer() throws ApiException {
+        ApiResponse<InlineResponse20019> resp = addServerWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Place Server Order
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;InlineResponse20019&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> addServerWithHttpInfo() throws ApiException {
+    public ApiResponse<InlineResponse20019> addServerWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = addServerValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<InlineResponse20019>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -164,7 +168,7 @@ public class ServersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call addServerAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call addServerAsync(final ApiCallback<InlineResponse20019> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -186,7 +190,8 @@ public class ServersApi {
         }
 
         com.squareup.okhttp.Call call = addServerValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<InlineResponse20019>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -255,23 +260,23 @@ public class ServersApi {
     /**
      * Get Buy Now Server Options
      * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
-     * @return InlineResponse20026
+     * @return InlineResponse20027
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20026 buyItNowServerOrder() throws ApiException {
-        ApiResponse<InlineResponse20026> resp = buyItNowServerOrderWithHttpInfo();
+    public InlineResponse20027 buyItNowServerOrder() throws ApiException {
+        ApiResponse<InlineResponse20027> resp = buyItNowServerOrderWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get Buy Now Server Options
      * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
-     * @return ApiResponse&lt;InlineResponse20026&gt;
+     * @return ApiResponse&lt;InlineResponse20027&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20026> buyItNowServerOrderWithHttpInfo() throws ApiException {
+    public ApiResponse<InlineResponse20027> buyItNowServerOrderWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = buyItNowServerOrderValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -282,7 +287,7 @@ public class ServersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call buyItNowServerOrderAsync(final ApiCallback<InlineResponse20026> callback) throws ApiException {
+    public com.squareup.okhttp.Call buyItNowServerOrderAsync(final ApiCallback<InlineResponse20027> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -304,7 +309,7 @@ public class ServersApi {
         }
 
         com.squareup.okhttp.Call call = buyItNowServerOrderValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20026>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20027>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2586,11 +2591,11 @@ public class ServersApi {
      * Cancel Server Service
      * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
      * @param id Server ID number (required)
-     * @return InlineResponse20019
+     * @return InlineResponse20020
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InlineResponse20019 serversCancel(Integer id) throws ApiException {
-        ApiResponse<InlineResponse20019> resp = serversCancelWithHttpInfo(id);
+    public InlineResponse20020 serversCancel(Integer id) throws ApiException {
+        ApiResponse<InlineResponse20020> resp = serversCancelWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -2598,12 +2603,12 @@ public class ServersApi {
      * Cancel Server Service
      * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
      * @param id Server ID number (required)
-     * @return ApiResponse&lt;InlineResponse20019&gt;
+     * @return ApiResponse&lt;InlineResponse20020&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InlineResponse20019> serversCancelWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<InlineResponse20020> serversCancelWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = serversCancelValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<InlineResponse20019>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2615,7 +2620,7 @@ public class ServersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call serversCancelAsync(Integer id, final ApiCallback<InlineResponse20019> callback) throws ApiException {
+    public com.squareup.okhttp.Call serversCancelAsync(Integer id, final ApiCallback<InlineResponse20020> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2637,7 +2642,7 @@ public class ServersApi {
         }
 
         com.squareup.okhttp.Call call = serversCancelValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InlineResponse20019>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse20020>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2714,22 +2719,25 @@ public class ServersApi {
      * Update Server Order
      * Updates settings on a dedicated server order.
      * @param id Server ID number. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void updateServerInfo(String id) throws ApiException {
-        updateServerInfoWithHttpInfo(id);
+    public SuccessTextResponse updateServerInfo(String id) throws ApiException {
+        ApiResponse<SuccessTextResponse> resp = updateServerInfoWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Update Server Order
      * Updates settings on a dedicated server order.
      * @param id Server ID number. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> updateServerInfoWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateServerInfoWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = updateServerInfoValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2740,7 +2748,7 @@ public class ServersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateServerInfoAsync(String id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateServerInfoAsync(String id, final ApiCallback<SuccessTextResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2762,7 +2770,8 @@ public class ServersApi {
         }
 
         com.squareup.okhttp.Call call = updateServerInfoValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

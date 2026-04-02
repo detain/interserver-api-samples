@@ -25,7 +25,7 @@ Spectator.describe "ServersApi" do
   # Place Server Order
   # Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [AddServer200Response]
   describe "add_server test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html
@@ -229,7 +229,7 @@ Spectator.describe "ServersApi" do
   # Updates settings on a dedicated server order.
   # @param id Server ID number.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe "update_server_info test" do
     skip "should work" do
       # assertion here. ref: https://crystal-lang.org/reference/guides/testing.html

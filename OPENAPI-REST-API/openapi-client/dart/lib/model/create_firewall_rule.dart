@@ -16,7 +16,7 @@ class CreateFirewallRule {
     required this.protocolId,
     required this.xdpAction,
     this.destinationPort = 80,
-    this.sourceIp = '0',
+    this.sourceIp = '0.0.0.0',
     this.sourcePort = 0,
   });
 
@@ -28,6 +28,7 @@ class CreateFirewallRule {
 
   int destinationPort;
 
+  /// Source IP address to match. Use '0.0.0.0' to match any source.
   String sourceIp;
 
   int sourcePort;
@@ -84,7 +85,7 @@ class CreateFirewallRule {
         protocolId: CreateFirewallRuleProtocolIdEnum.fromJson(json[r'protocol_id'])!,
         xdpAction: CreateFirewallRuleXdpActionEnum.fromJson(json[r'xdp_action'])!,
         destinationPort: mapValueOfType<int>(json, r'destination_port') ?? 80,
-        sourceIp: mapValueOfType<String>(json, r'source_ip') ?? '0',
+        sourceIp: mapValueOfType<String>(json, r'source_ip') ?? '0.0.0.0',
         sourcePort: mapValueOfType<int>(json, r'source_port') ?? 0,
       );
     }

@@ -3,14 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.InlineResponse20026Bandwidth;
-import io.swagger.model.InlineResponse20026Cp;
-import io.swagger.model.InlineResponse20026Ips;
-import io.swagger.model.InlineResponse20026Os;
-import io.swagger.model.InlineResponse20026Raid;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.ArrayList;
-import java.util.List;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.validation.Validated;
 import javax.validation.Valid;
@@ -23,164 +16,50 @@ import javax.validation.constraints.*;
 @Introspected
 
 public class InlineResponse20026   {
-  @JsonProperty("bandwidth")
-  @Valid
-  private List<InlineResponse20026Bandwidth> bandwidth = null;
+  @JsonProperty("text")
+  private String text = null;
 
-  @JsonProperty("ips")
-  @Valid
-  private List<InlineResponse20026Ips> ips = null;
+  @JsonProperty("ticket")
+  private Integer ticket = null;
 
-  @JsonProperty("os")
-  @Valid
-  private List<InlineResponse20026Os> os = null;
-
-  @JsonProperty("cp")
-  @Valid
-  private List<InlineResponse20026Cp> cp = null;
-
-  @JsonProperty("raid")
-  @Valid
-  private List<InlineResponse20026Raid> raid = null;
-
-  public InlineResponse20026 bandwidth(List<InlineResponse20026Bandwidth> bandwidth) {
-    this.bandwidth = bandwidth;
-    return this;
-  }
-
-  public InlineResponse20026 addBandwidthItem(InlineResponse20026Bandwidth bandwidthItem) {
-    if (this.bandwidth == null) {
-      this.bandwidth = new ArrayList<InlineResponse20026Bandwidth>();
-    }
-    this.bandwidth.add(bandwidthItem);
+  public InlineResponse20026 text(String text) {
+    this.text = text;
     return this;
   }
 
   /**
-   * Get bandwidth
-   * @return bandwidth
+   * Confirmation message.
+   * @return text
   **/
-  @Schema(description = "")
+  @Schema(description = "Confirmation message.")
   @NotNull
-  @Valid
-  public List<InlineResponse20026Bandwidth> getBandwidth() {
-    return bandwidth;
+
+  public String getText() {
+    return text;
   }
 
-  public void setBandwidth(List<InlineResponse20026Bandwidth> bandwidth) {
-    this.bandwidth = bandwidth;
+  public void setText(String text) {
+    this.text = text;
   }
 
-  public InlineResponse20026 ips(List<InlineResponse20026Ips> ips) {
-    this.ips = ips;
-    return this;
-  }
-
-  public InlineResponse20026 addIpsItem(InlineResponse20026Ips ipsItem) {
-    if (this.ips == null) {
-      this.ips = new ArrayList<InlineResponse20026Ips>();
-    }
-    this.ips.add(ipsItem);
+  public InlineResponse20026 ticket(Integer ticket) {
+    this.ticket = ticket;
     return this;
   }
 
   /**
-   * Get ips
-   * @return ips
+   * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+   * @return ticket
   **/
-  @Schema(description = "")
+  @Schema(description = "The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.")
   @NotNull
-  @Valid
-  public List<InlineResponse20026Ips> getIps() {
-    return ips;
+
+  public Integer getTicket() {
+    return ticket;
   }
 
-  public void setIps(List<InlineResponse20026Ips> ips) {
-    this.ips = ips;
-  }
-
-  public InlineResponse20026 os(List<InlineResponse20026Os> os) {
-    this.os = os;
-    return this;
-  }
-
-  public InlineResponse20026 addOsItem(InlineResponse20026Os osItem) {
-    if (this.os == null) {
-      this.os = new ArrayList<InlineResponse20026Os>();
-    }
-    this.os.add(osItem);
-    return this;
-  }
-
-  /**
-   * Get os
-   * @return os
-  **/
-  @Schema(description = "")
-  @NotNull
-  @Valid
-  public List<InlineResponse20026Os> getOs() {
-    return os;
-  }
-
-  public void setOs(List<InlineResponse20026Os> os) {
-    this.os = os;
-  }
-
-  public InlineResponse20026 cp(List<InlineResponse20026Cp> cp) {
-    this.cp = cp;
-    return this;
-  }
-
-  public InlineResponse20026 addCpItem(InlineResponse20026Cp cpItem) {
-    if (this.cp == null) {
-      this.cp = new ArrayList<InlineResponse20026Cp>();
-    }
-    this.cp.add(cpItem);
-    return this;
-  }
-
-  /**
-   * Get cp
-   * @return cp
-  **/
-  @Schema(description = "")
-  @NotNull
-  @Valid
-  public List<InlineResponse20026Cp> getCp() {
-    return cp;
-  }
-
-  public void setCp(List<InlineResponse20026Cp> cp) {
-    this.cp = cp;
-  }
-
-  public InlineResponse20026 raid(List<InlineResponse20026Raid> raid) {
-    this.raid = raid;
-    return this;
-  }
-
-  public InlineResponse20026 addRaidItem(InlineResponse20026Raid raidItem) {
-    if (this.raid == null) {
-      this.raid = new ArrayList<InlineResponse20026Raid>();
-    }
-    this.raid.add(raidItem);
-    return this;
-  }
-
-  /**
-   * Get raid
-   * @return raid
-  **/
-  @Schema(description = "")
-  @NotNull
-  @Valid
-  public List<InlineResponse20026Raid> getRaid() {
-    return raid;
-  }
-
-  public void setRaid(List<InlineResponse20026Raid> raid) {
-    this.raid = raid;
+  public void setTicket(Integer ticket) {
+    this.ticket = ticket;
   }
 
 
@@ -193,16 +72,13 @@ public class InlineResponse20026   {
       return false;
     }
     InlineResponse20026 inlineResponse20026 = (InlineResponse20026) o;
-    return Objects.equals(this.bandwidth, inlineResponse20026.bandwidth) &&
-        Objects.equals(this.ips, inlineResponse20026.ips) &&
-        Objects.equals(this.os, inlineResponse20026.os) &&
-        Objects.equals(this.cp, inlineResponse20026.cp) &&
-        Objects.equals(this.raid, inlineResponse20026.raid);
+    return Objects.equals(this.text, inlineResponse20026.text) &&
+        Objects.equals(this.ticket, inlineResponse20026.ticket);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bandwidth, ips, os, cp, raid);
+    return Objects.hash(text, ticket);
   }
 
   @Override
@@ -210,11 +86,8 @@ public class InlineResponse20026   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20026 {\n");
     
-    sb.append("    bandwidth: ").append(toIndentedString(bandwidth)).append("\n");
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
-    sb.append("    os: ").append(toIndentedString(os)).append("\n");
-    sb.append("    cp: ").append(toIndentedString(cp)).append("\n");
-    sb.append("    raid: ").append(toIndentedString(raid)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    ticket: ").append(toIndentedString(ticket)).append("\n");
     sb.append("}");
     return sb.toString();
   }

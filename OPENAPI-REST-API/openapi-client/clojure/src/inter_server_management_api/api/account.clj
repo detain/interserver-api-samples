@@ -188,6 +188,7 @@
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
             [inter-server-management-api.specs.license :refer :all]
+            [inter-server-management-api.specs.add-server-200-response :refer :all]
             [inter-server-management-api.specs.post-oauth-callback-request :refer :all]
             [inter-server-management-api.specs.mail-alert-update-request :refer :all]
             [inter-server-management-api.specs.billing-prepay-request :refer :all]
@@ -304,6 +305,7 @@
             [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
+            [inter-server-management-api.specs.service-order-post-response :refer :all]
             [inter-server-management-api.specs.vps-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-network-info-switchports :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types :refer :all]
@@ -753,14 +755,14 @@
               :accepts       ["application/json"]
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
-(defn-spec update-account-info any?
+(defn-spec update-account-info success-text-response-spec
   "Update Account Information
   Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages."
   ([name string?, address string?, city string?, state string?, zip string?, country string?, phone string?, ] (update-account-info name address city state zip country phone nil))
   ([name string?, address string?, city string?, state string?, zip string?, country string?, phone string?, optional-params any?]
    (let [res (:data (update-account-info-with-http-info name address city state zip country phone optional-params))]
      (if (:decode-models *api-context*)
-        (st/decode any? res st/string-transformer)
+        (st/decode success-text-response-spec res st/string-transformer)
         res))))
 
 
@@ -778,13 +780,13 @@
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec update-account-ip-limits any?
+(defn-spec update-account-ip-limits success-text-response-spec
   "Add IP Access Restriction
   Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation."
   [start string?, end string?]
   (let [res (:data (update-account-ip-limits-with-http-info start end))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode success-text-response-spec res st/string-transformer)
        res)))
 
 

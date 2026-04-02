@@ -36,6 +36,7 @@ import ../models/model_mail_schema
 import ../models/model_mail_stats_type
 import ../models/model_send_mail
 import ../models/model_send_mail_adv
+import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_view_mail_log_start_date_parameter
 import ../models/model_get_account_info401response
@@ -56,10 +57,11 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addMail*(httpClient: HttpClient): Response =
+proc addMail*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
   ## Place Mail Order
-  httpClient.post(basepath & "/mail/order")
 
+  let response = httpClient.post(basepath & "/mail/order")
+  constructResult[ServiceOrderPostResponse](response)
 
 
 proc addRule*(httpClient: HttpClient, id: int, denyRuleNew: DenyRuleNew): (Option[GenericResponse], Response) =
@@ -239,10 +241,11 @@ proc updateMailAlert*(httpClient: HttpClient, id: int, mailAlertUpdateRequest: M
   constructResult[SuccessTextResponse](response)
 
 
-proc updateMailInfo*(httpClient: HttpClient, id: string): Response =
+proc updateMailInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
   ## Update Mail Order
-  httpClient.post(basepath & fmt"/mail/{id}")
 
+  let response = httpClient.post(basepath & fmt"/mail/{id}")
+  constructResult[SuccessTextResponse](response)
 
 
 proc viewMailLog*(httpClient: HttpClient, id: int, id2: int64, origin: string, mx: string, `from`: string, to: string, subject: string, mailid: string, messageId: string, replyto: string, headerfrom: string, delivered: Delivered, skip: int, limit: int, startDate: ViewMailLogStartDateParameter, endDate: ViewMailLogStartDateParameter, sort: string, dir: string, groupby: string): (Option[MailLog], Response) =

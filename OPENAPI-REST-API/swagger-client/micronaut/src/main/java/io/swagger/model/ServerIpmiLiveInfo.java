@@ -10,9 +10,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
-@Schema(description = "Information about the IPMI connectioj.")
+@Schema(description = "Information about the IPMI connection.")
 @Validated
 @Introspected
 

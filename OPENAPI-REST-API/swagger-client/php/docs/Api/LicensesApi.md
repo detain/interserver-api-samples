@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**updateLicenseInfo**](LicensesApi.md#updatelicenseinfo) | **POST** /licenses/{id} | Update License
 
 # **addLicense**
-> addLicense()
+> \Interserver\MyAdmin\Model\ServiceOrderPostResponse addLicense()
 
 Place License Order
 
@@ -46,7 +46,8 @@ $apiInstance = new Interserver\MyAdmin\Api\LicensesApi(
 );
 
 try {
-    $apiInstance->addLicense();
+    $result = $apiInstance->addLicense();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LicensesApi->addLicense: ', $e->getMessage(), PHP_EOL;
 }
@@ -58,7 +59,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -662,7 +663,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateLicenseInfo**
-> updateLicenseInfo($id)
+> \Interserver\MyAdmin\Model\SuccessTextResponse updateLicenseInfo($id)
 
 Update License
 
@@ -692,7 +693,8 @@ $apiInstance = new Interserver\MyAdmin\Api\LicensesApi(
 $id = "id_example"; // string | The license service ID. Use `license_id` from `GET /licenses`.
 
 try {
-    $apiInstance->updateLicenseInfo($id);
+    $result = $apiInstance->updateLicenseInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LicensesApi->updateLicenseInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -707,7 +709,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

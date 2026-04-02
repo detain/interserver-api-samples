@@ -362,7 +362,7 @@ ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
 ## deleteAccountCreditCard
 
-> deleteAccountCreditCard(deleteAccountCreditCardRequest): ApiRequest[Unit]
+> deleteAccountCreditCard(deleteAccountCreditCardRequest): ApiRequest[String]
 
 Remove Credit Card
 
@@ -406,6 +406,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling BillingApi#deleteAccountCreditCard")
@@ -430,8 +431,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[**String**]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -445,8 +446,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Simple string response |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## deleteBillingCreditCard
@@ -1250,7 +1251,7 @@ ApiRequest[[**Seq[AffiliateTrafficRow]**](AffiliateTrafficRow.md)]
 
 ## getBillingCart
 
-> getBillingCart(): ApiRequest[Unit]
+> getBillingCart(): ApiRequest[Any]
 
 Get Shopping Cart Contents
 
@@ -1292,6 +1293,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling BillingApi#getBillingCart")
@@ -1313,8 +1315,8 @@ This endpoint does not need any parameter.
 
 ### Return type
 
+ApiRequest[**Any**]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -1328,8 +1330,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Current shopping cart contents and available payment methods. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## getBillingCreditCardVerify
@@ -1602,7 +1604,7 @@ ApiRequest[[**BillingInvoiceList**](BillingInvoiceList.md)]
 
 ## getBillingPrePays
 
-> getBillingPrePays(): ApiRequest[Unit]
+> getBillingPrePays(): ApiRequest[Any]
 
 List Prepay Balances
 
@@ -1644,6 +1646,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling BillingApi#getBillingPrePays")
@@ -1665,8 +1668,8 @@ This endpoint does not need any parameter.
 
 ### Return type
 
+ApiRequest[**Any**]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -1680,8 +1683,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Prepay balances and metadata. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## getInvoices
@@ -1974,7 +1977,7 @@ ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
 ## updateAccountCreditCard
 
-> updateAccountCreditCard(updateAccountCreditCardRequest): ApiRequest[Unit]
+> updateAccountCreditCard(updateAccountCreditCardRequest): ApiRequest[String]
 
 Update Credit Card
 
@@ -2018,6 +2021,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling BillingApi#updateAccountCreditCard")
@@ -2042,8 +2046,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[**String**]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -2057,8 +2061,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Simple string response |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## updateAffiliateDockSetup

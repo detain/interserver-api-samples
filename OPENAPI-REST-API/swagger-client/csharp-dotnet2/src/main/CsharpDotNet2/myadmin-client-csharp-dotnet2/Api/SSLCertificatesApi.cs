@@ -14,19 +14,19 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        void AddSsl ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddSsl ();
         /// <summary>
         /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
         /// </summary>
-        /// <returns></returns>
-        void GetNewSsl ();
+        /// <returns>Object</returns>
+        Object GetNewSsl ();
         /// <summary>
         /// Get SSL Cert Info Returns detailed information about a specific SSL certificate including its domain and expiration.
         /// </summary>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns></returns>
-        void GetSslInfo (int? id);
+        /// <returns>Object</returns>
+        Object GetSslInfo (int? id);
         /// <summary>
         /// Get SSL Cert Invoices Returns the billing invoices associated with this SSL certificate.
         /// </summary>
@@ -53,14 +53,14 @@ namespace IO.Swagger.Api
         /// Cancel SSL Certificate Service Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
         /// </summary>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>InlineResponse20020</returns>
-        InlineResponse20020 SslCancel (int? id);
+        /// <returns>InlineResponse20021</returns>
+        InlineResponse20021 SslCancel (int? id);
         /// <summary>
         /// Update SSL Cert Order Updates settings on an SSL certificate order.
         /// </summary>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns></returns>
-        void UpdateSslInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateSslInfo (string id);
     }
   
     /// <summary>
@@ -119,8 +119,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
         /// </summary>
-        /// <returns></returns>
-        public void AddSsl ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddSsl ()
         {
     
             var path = "/ssl/order";
@@ -144,14 +144,14 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddSsl: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (ServiceOrderPostResponse) ApiClient.Deserialize(response.Content, typeof(ServiceOrderPostResponse), response.Headers);
         }
     
         /// <summary>
         /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
         /// </summary>
-        /// <returns></returns>
-        public void GetNewSsl ()
+        /// <returns>Object</returns>
+        public Object GetNewSsl ()
         {
     
             var path = "/ssl/order";
@@ -175,15 +175,15 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling GetNewSsl: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Object) ApiClient.Deserialize(response.Content, typeof(Object), response.Headers);
         }
     
         /// <summary>
         /// Get SSL Cert Info Returns detailed information about a specific SSL certificate including its domain and expiration.
         /// </summary>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns></returns>
-        public void GetSslInfo (int? id)
+        /// <returns>Object</returns>
+        public Object GetSslInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling GetSslInfo");
@@ -210,7 +210,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling GetSslInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (Object) ApiClient.Deserialize(response.Content, typeof(Object), response.Headers);
         }
     
         /// <summary>
@@ -349,8 +349,8 @@ namespace IO.Swagger.Api
         /// Cancel SSL Certificate Service Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
         /// </summary>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>InlineResponse20020</returns>
-        public InlineResponse20020 SslCancel (int? id)
+        /// <returns>InlineResponse20021</returns>
+        public InlineResponse20021 SslCancel (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling SslCancel");
@@ -377,15 +377,15 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SslCancel: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20020) ApiClient.Deserialize(response.Content, typeof(InlineResponse20020), response.Headers);
+            return (InlineResponse20021) ApiClient.Deserialize(response.Content, typeof(InlineResponse20021), response.Headers);
         }
     
         /// <summary>
         /// Update SSL Cert Order Updates settings on an SSL certificate order.
         /// </summary>
         /// <param name="id">SSL certificate ID number.</param>
-        /// <returns></returns>
-        public void UpdateSslInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateSslInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateSslInfo");
@@ -412,7 +412,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateSslInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
     }

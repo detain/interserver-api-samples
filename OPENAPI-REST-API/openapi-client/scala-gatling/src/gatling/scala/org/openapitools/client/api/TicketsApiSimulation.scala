@@ -155,9 +155,9 @@ class TicketsApiSimulation extends Simulation {
         .feed(getTicketsListQUERYFeeder)
         .exec(http("getTicketsList")
         .httpRequest("GET","/tickets")
-        .queryParam("page","${page}")
-        .queryParam("period","${period}")
         .queryParam("view","${view}")
+        .queryParam("period","${period}")
+        .queryParam("page","${page}")
 )
 
     // Run scngetTicketsList with warm up and reach a constant rate for entire duration

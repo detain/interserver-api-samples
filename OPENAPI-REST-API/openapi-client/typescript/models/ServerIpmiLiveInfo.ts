@@ -13,7 +13,7 @@
 import { HttpFile } from '../http/http';
 
 /**
-* Information about the IPMI connectioj.
+* Information about the IPMI connection.
 */
 export class ServerIpmiLiveInfo {
     'text'?: string;

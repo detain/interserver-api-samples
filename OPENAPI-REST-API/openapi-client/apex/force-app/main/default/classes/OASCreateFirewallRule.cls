@@ -49,7 +49,7 @@ public class OASCreateFirewallRule implements OAS.MappedProperties {
     public Integer destinationPort { get; set; }
 
     /**
-     * Get sourceIp
+     * Source IP address to match. Use \'0.0.0.0\' to match any source.
      * @return sourceIp
      */
     public String sourceIp { get; set; }
@@ -122,7 +122,7 @@ public class OASCreateFirewallRule implements OAS.MappedProperties {
 
     public OASCreateFirewallRule() {
         destinationPort = 80;
-        sourceIp = '0';
+        sourceIp = '0.0.0.0';
         sourcePort = 0;
     }
 

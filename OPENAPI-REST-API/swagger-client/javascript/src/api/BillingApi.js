@@ -301,7 +301,7 @@ export default class BillingApi {
      * Callback function to receive the result of the deleteAccountCreditCard operation.
      * @callback moduleapi/BillingApi~deleteAccountCreditCardCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -310,6 +310,7 @@ export default class BillingApi {
      * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
      * @param {String} id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      * @param {module:api/BillingApi~deleteAccountCreditCardCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteAccountCreditCard(id, callback) {
       
@@ -335,7 +336,7 @@ export default class BillingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = 'String';
 
       return this.apiClient.callApi(
         '/account/creditcards/{id}', 'DELETE',
@@ -744,7 +745,7 @@ export default class BillingApi {
      * Callback function to receive the result of the getBillingCart operation.
      * @callback moduleapi/BillingApi~getBillingCartCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Object{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -752,6 +753,7 @@ export default class BillingApi {
      * Get Shopping Cart Contents
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
      * @param {module:api/BillingApi~getBillingCartCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getBillingCart(callback) {
       
@@ -773,7 +775,7 @@ export default class BillingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = Object;
 
       return this.apiClient.callApi(
         '/billing/cart', 'GET',
@@ -921,7 +923,7 @@ export default class BillingApi {
      * Callback function to receive the result of the getBillingPrePays operation.
      * @callback moduleapi/BillingApi~getBillingPrePaysCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {Object{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -929,6 +931,7 @@ export default class BillingApi {
      * List Prepay Balances
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
      * @param {module:api/BillingApi~getBillingPrePaysCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getBillingPrePays(callback) {
       
@@ -950,7 +953,7 @@ export default class BillingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = Object;
 
       return this.apiClient.callApi(
         '/billing/prepays', 'GET',
@@ -1137,7 +1140,7 @@ export default class BillingApi {
      * Callback function to receive the result of the updateAccountCreditCard operation.
      * @callback moduleapi/BillingApi~updateAccountCreditCardCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -1146,6 +1149,7 @@ export default class BillingApi {
      * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
      * @param {Number} id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
      * @param {module:api/BillingApi~updateAccountCreditCardCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateAccountCreditCard(id, callback) {
       
@@ -1171,7 +1175,7 @@ export default class BillingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = 'String';
 
       return this.apiClient.callApi(
         '/account/creditcards/{id}', 'POST',

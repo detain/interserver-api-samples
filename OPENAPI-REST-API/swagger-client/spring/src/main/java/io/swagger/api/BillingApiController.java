@@ -131,9 +131,18 @@ public class BillingApiController implements BillingApi {
         return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> getBillingCart() {
+    public ResponseEntity<Object> getBillingCart() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<Object>(objectMapper.readValue("{ }", Object.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<SuccessTextResponse> getBillingCreditCardVerify(@Parameter(in = ParameterIn.PATH, description = "The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.", required=true, schema=@Schema()) @PathVariable("id") Integer id
@@ -180,9 +189,18 @@ public class BillingApiController implements BillingApi {
         return new ResponseEntity<BillingInvoiceList>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> getBillingPrePays() {
+    public ResponseEntity<Object> getBillingPrePays() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<Object>(objectMapper.readValue("{ }", Object.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<Object>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<SuccessTextResponse> postBillingCreditCardVerify(@Parameter(in = ParameterIn.PATH, description = "The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.", required=true, schema=@Schema()) @PathVariable("id") Integer id

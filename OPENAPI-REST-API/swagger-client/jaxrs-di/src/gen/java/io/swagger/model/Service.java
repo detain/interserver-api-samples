@@ -106,7 +106,7 @@ public class Service   {
    * @return servicesCost
    **/
   @JsonProperty("services_cost")
-  @Schema(example = "6.0", required = true, description = "")
+  @Schema(example = "6", required = true, description = "")
   @NotNull
   @Valid
   public BigDecimal getServicesCost() {

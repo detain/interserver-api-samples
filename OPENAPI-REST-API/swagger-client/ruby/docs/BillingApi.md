@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 
 # **delete_account_credit_card**
-> delete_account_credit_card(id)
+> String delete_account_credit_card(id)
 
 Remove Credit Card
 
@@ -489,7 +489,8 @@ id = 'id_example' # String | The credit card ID. Use the card ID returned from `
 
 begin
   #Remove Credit Card
-  api_instance.delete_account_credit_card(id)
+  result = api_instance.delete_account_credit_card(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BillingApi->delete_account_credit_card: #{e}"
 end
@@ -503,7 +504,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -1066,7 +1067,7 @@ This endpoint does not need any parameter.
 
 
 # **get_billing_cart**
-> get_billing_cart
+> Object get_billing_cart
 
 Get Shopping Cart Contents
 
@@ -1098,7 +1099,8 @@ api_instance = SwaggerClient::BillingApi.new
 
 begin
   #Get Shopping Cart Contents
-  api_instance.get_billing_cart
+  result = api_instance.get_billing_cart
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BillingApi->get_billing_cart: #{e}"
 end
@@ -1109,7 +1111,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1307,7 +1309,7 @@ This endpoint does not need any parameter.
 
 
 # **get_billing_pre_pays**
-> get_billing_pre_pays
+> Object get_billing_pre_pays
 
 List Prepay Balances
 
@@ -1339,7 +1341,8 @@ api_instance = SwaggerClient::BillingApi.new
 
 begin
   #List Prepay Balances
-  api_instance.get_billing_pre_pays
+  result = api_instance.get_billing_pre_pays
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BillingApi->get_billing_pre_pays: #{e}"
 end
@@ -1350,7 +1353,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -1635,7 +1638,7 @@ Name | Type | Description  | Notes
 
 
 # **update_account_credit_card**
-> update_account_credit_card(id)
+> String update_account_credit_card(id)
 
 Update Credit Card
 
@@ -1669,7 +1672,8 @@ id = 56 # Integer | The credit card ID. Use the card ID returned from `POST /acc
 
 begin
   #Update Credit Card
-  api_instance.update_account_credit_card(id)
+  result = api_instance.update_account_credit_card(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling BillingApi->update_account_credit_card: #{e}"
 end
@@ -1683,7 +1687,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

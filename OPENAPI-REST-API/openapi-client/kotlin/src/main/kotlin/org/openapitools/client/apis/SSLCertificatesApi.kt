@@ -29,6 +29,7 @@ import okhttp3.HttpUrl
 
 import org.openapitools.client.models.ChargeInvoiceRows
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SslCancel200Response
 import org.openapitools.client.models.SuccessTextResponse
 
@@ -60,19 +61,20 @@ open class SSLCertificatesApi(basePath: kotlin.String = defaultBasePath, client:
      * POST /ssl/order
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
-     * @return void
+     * @return ServiceOrderPostResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun addSsl() : Unit {
+    fun addSsl() : ServiceOrderPostResponse {
         val localVarResponse = addSslWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -90,15 +92,16 @@ open class SSLCertificatesApi(basePath: kotlin.String = defaultBasePath, client:
      * POST /ssl/order
      * Place SSL Cert Order
      * Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<ServiceOrderPostResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun addSslWithHttpInfo() : ApiResponse<Unit?> {
+    fun addSslWithHttpInfo() : ApiResponse<ServiceOrderPostResponse?> {
         val localVariableConfig = addSslRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, ServiceOrderPostResponse>(
             localVariableConfig
         )
     }
@@ -128,19 +131,20 @@ open class SSLCertificatesApi(basePath: kotlin.String = defaultBasePath, client:
      * GET /ssl/order
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
-     * @return void
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getNewSsl() : Unit {
+    fun getNewSsl() : kotlin.Any {
         val localVarResponse = getNewSslWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -158,15 +162,16 @@ open class SSLCertificatesApi(basePath: kotlin.String = defaultBasePath, client:
      * GET /ssl/order
      * SSL Cert Ordering Information
      * Retrieves available SSL certificate types and pricing for ordering.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getNewSslWithHttpInfo() : ApiResponse<Unit?> {
+    fun getNewSslWithHttpInfo() : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getNewSslRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }
@@ -197,19 +202,20 @@ open class SSLCertificatesApi(basePath: kotlin.String = defaultBasePath, client:
      * Get SSL Cert Info
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param id SSL certificate ID number.
-     * @return void
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getSslInfo(id: kotlin.Int) : Unit {
+    fun getSslInfo(id: kotlin.Int) : kotlin.Any {
         val localVarResponse = getSslInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -228,15 +234,16 @@ open class SSLCertificatesApi(basePath: kotlin.String = defaultBasePath, client:
      * Get SSL Cert Info
      * Returns detailed information about a specific SSL certificate including its domain and expiration.
      * @param id SSL certificate ID number.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getSslInfoWithHttpInfo(id: kotlin.Int) : ApiResponse<Unit?> {
+    fun getSslInfoWithHttpInfo(id: kotlin.Int) : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getSslInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }
@@ -623,19 +630,20 @@ open class SSLCertificatesApi(basePath: kotlin.String = defaultBasePath, client:
      * Update SSL Cert Order
      * Updates settings on an SSL certificate order.
      * @param id SSL certificate ID number.
-     * @return void
+     * @return SuccessTextResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateSslInfo(id: kotlin.String) : Unit {
+    fun updateSslInfo(id: kotlin.String) : SuccessTextResponse {
         val localVarResponse = updateSslInfoWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -654,15 +662,16 @@ open class SSLCertificatesApi(basePath: kotlin.String = defaultBasePath, client:
      * Update SSL Cert Order
      * Updates settings on an SSL certificate order.
      * @param id SSL certificate ID number.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<SuccessTextResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateSslInfoWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun updateSslInfoWithHttpInfo(id: kotlin.String) : ApiResponse<SuccessTextResponse?> {
         val localVariableConfig = updateSslInfoRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, SuccessTextResponse>(
             localVariableConfig
         )
     }

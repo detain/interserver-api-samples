@@ -14,12 +14,13 @@ package io.swagger.client.apis
 import io.swagger.client.models.ChargeInvoiceRows
 import io.swagger.client.models.IdBuyIpBody
 import io.swagger.client.models.IdMigrationBody
-import io.swagger.client.models.InlineResponse20022
 import io.swagger.client.models.InlineResponse20023
 import io.swagger.client.models.InlineResponse20024
 import io.swagger.client.models.InlineResponse20025
+import io.swagger.client.models.InlineResponse20026
 import io.swagger.client.models.InlineResponse401
 import io.swagger.client.models.ReverseDnsEntries
+import io.swagger.client.models.ServiceOrderPostResponse
 import io.swagger.client.models.SuccessTextResponse
 import io.swagger.client.models.TextResponse
 import io.swagger.client.models.Website
@@ -35,21 +36,22 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
     /**
      * Place Website Order
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
-     * @return void
+     * @return ServiceOrderPostResponse
      */
-    fun addWebsite(): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun addWebsite(): ServiceOrderPostResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/websites/order", query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<ServiceOrderPostResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as ServiceOrderPostResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -85,22 +87,22 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
      * Get Website IP Information
      * Returns the IP addresses assigned to the website along with their current reverse DNS hostnames. Use this information to review assignments before updating reverse DNS via &#x60;POST /websites/{id}/buy_ip&#x60;.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-     * @return InlineResponse20023
+     * @return InlineResponse20024
      */
     @Suppress("UNCHECKED_CAST")
-    fun getWebsiteBuyIp(id: kotlin.Int): InlineResponse20023 {
+    fun getWebsiteBuyIp(id: kotlin.Int): InlineResponse20024 {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/websites/{id}/buy_ip".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<InlineResponse20023>(
+        val response = request<InlineResponse20024>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20023
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20024
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -293,10 +295,10 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
      * Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
      * @param body  
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-     * @return InlineResponse20024
+     * @return InlineResponse20025
      */
     @Suppress("UNCHECKED_CAST")
-    fun postWebsiteBuyIp(body: IdBuyIpBody, id: kotlin.Int): InlineResponse20024 {
+    fun postWebsiteBuyIp(body: IdBuyIpBody, id: kotlin.Int): InlineResponse20025 {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -306,12 +308,12 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
                 RequestMethod.POST,
                 "/websites/{id}/buy_ip".replace("{" + "id" + "}", "$id"), query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<InlineResponse20024>(
+        val response = request<InlineResponse20025>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20024
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20025
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -323,10 +325,10 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
      * Updates the reverse DNS hostnames for the website&#x27;s IP addresses. Provide an &#x60;ips&#x60; object mapping each IP address to its desired hostname.
      * @param ips  
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-     * @return InlineResponse20024
+     * @return InlineResponse20025
      */
     @Suppress("UNCHECKED_CAST")
-    fun postWebsiteBuyIp(ips: kotlin.collections.Map<kotlin.String, kotlin.String>, id: kotlin.Int): InlineResponse20024 {
+    fun postWebsiteBuyIp(ips: kotlin.collections.Map<kotlin.String, kotlin.String>, id: kotlin.Int): InlineResponse20025 {
         val localVariableBody: kotlin.Any? = mapOf("ips" to "$ips")
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -336,12 +338,12 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
                 RequestMethod.POST,
                 "/websites/{id}/buy_ip".replace("{" + "id" + "}", "$id"), query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<InlineResponse20024>(
+        val response = request<InlineResponse20025>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20024
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20025
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -353,10 +355,10 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
      * Submits a website migration request from your current hosting provider to InterServer. Provide the credentials and details for your current host so our team can perform the migration. A support ticket is created to track the migration progress; use the returned &#x60;ticket&#x60; ID with &#x60;/tickets/{id}&#x60; to monitor status.
      * @param body  
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-     * @return InlineResponse20025
+     * @return InlineResponse20026
      */
     @Suppress("UNCHECKED_CAST")
-    fun postWebsiteMigration(body: IdMigrationBody, id: kotlin.Int): InlineResponse20025 {
+    fun postWebsiteMigration(body: IdMigrationBody, id: kotlin.Int): InlineResponse20026 {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -366,12 +368,12 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
                 RequestMethod.POST,
                 "/websites/{id}/migration".replace("{" + "id" + "}", "$id"), query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<InlineResponse20025>(
+        val response = request<InlineResponse20026>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20025
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20026
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -395,10 +397,10 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
      * @param domainRegEmail  
      * @param domainRegPassword  
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-     * @return InlineResponse20025
+     * @return InlineResponse20026
      */
     @Suppress("UNCHECKED_CAST")
-    fun postWebsiteMigration(custPortal: kotlin.String, regEmail: kotlin.String, password: kotlin.String, ctrlPanel: kotlin.String, ftpUsername: kotlin.String, ftpPassword: kotlin.String, siteBusyMig: kotlin.String, splReqMig: kotlin.String, domainReg: kotlin.String, dataMig: kotlin.String, domainRegPortal: kotlin.String, domainRegEmail: kotlin.String, domainRegPassword: kotlin.String, id: kotlin.Int): InlineResponse20025 {
+    fun postWebsiteMigration(custPortal: kotlin.String, regEmail: kotlin.String, password: kotlin.String, ctrlPanel: kotlin.String, ftpUsername: kotlin.String, ftpPassword: kotlin.String, siteBusyMig: kotlin.String, splReqMig: kotlin.String, domainReg: kotlin.String, dataMig: kotlin.String, domainRegPortal: kotlin.String, domainRegEmail: kotlin.String, domainRegPassword: kotlin.String, id: kotlin.Int): InlineResponse20026 {
         val localVariableBody: kotlin.Any? = mapOf("custPortal" to "$custPortal", "regEmail" to "$regEmail", "password" to "$password", "ctrlPanel" to "$ctrlPanel", "ftpUsername" to "$ftpUsername", "ftpPassword" to "$ftpPassword", "siteBusyMig" to "$siteBusyMig", "splReqMig" to "$splReqMig", "domainReg" to "$domainReg", "dataMig" to "$dataMig", "domainRegPortal" to "$domainRegPortal", "domainRegEmail" to "$domainRegEmail", "domainRegPassword" to "$domainRegPassword")
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
@@ -408,12 +410,12 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
                 RequestMethod.POST,
                 "/websites/{id}/migration".replace("{" + "id" + "}", "$id"), query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<InlineResponse20025>(
+        val response = request<InlineResponse20026>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20025
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20026
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -508,21 +510,22 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
      * Update Website Order
      * Updates settings on a webhosting order.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-     * @return void
+     * @return SuccessTextResponse
      */
-    fun updateWebsiteInfo(id: kotlin.String): Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun updateWebsiteInfo(id: kotlin.String): SuccessTextResponse {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/websites/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<Any?>(
+        val response = request<SuccessTextResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as SuccessTextResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -533,22 +536,22 @@ class WebhostingApi(basePath: kotlin.String = "https://my.interserver.net/apiv2"
      * Cancel Website
      * Cancels a webhosting service. The service will be scheduled for termination and all hosted content will be removed. This action cannot be undone.
      * @param id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;. 
-     * @return InlineResponse20022
+     * @return InlineResponse20023
      */
     @Suppress("UNCHECKED_CAST")
-    fun webhostingCancel(id: kotlin.String): InlineResponse20022 {
+    fun webhostingCancel(id: kotlin.String): InlineResponse20023 {
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>().apply {
         }
         val localVariableConfig = RequestConfig(
                 RequestMethod.DELETE,
                 "/websites/{id}".replace("{" + "id" + "}", "$id"), query = localVariableQuery
         )
-        val response = request<InlineResponse20022>(
+        val response = request<InlineResponse20023>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as InlineResponse20022
+            ResponseType.Success -> (response as Success<*>).data as InlineResponse20023
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

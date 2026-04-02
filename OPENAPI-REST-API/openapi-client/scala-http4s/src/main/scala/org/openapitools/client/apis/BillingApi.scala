@@ -26,6 +26,7 @@ import org.openapitools.client.models.GetAccountInfo401Response
 import org.openapitools.client.models.InitiatePayment200Response
 import org.openapitools.client.models.InitiatePaymentMethodParameter
 import org.openapitools.client.models.Invoice
+import io.circe.Json
 import org.openapitools.client.models.MonthlyCounts
 import scala.collection.immutable.Seq
 import org.openapitools.client.models.StatusMonthlyBreakdown
@@ -38,7 +39,7 @@ trait BillingApiEndpoints[F[*]] {
   def addAccountCreditCard(name: Option[String] = None, address: Option[String] = None, city: Option[String] = None, state: Option[String] = None, country: Option[String] = None, zip: Option[String] = None, cc: Option[String] = None, ccExp: Option[String] = None, ccCcv2: Option[String] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def addBillingCreditCard(billingAddCcRequest: BillingAddCcRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def addBillingPrepay(billingPrepayRequest: BillingPrepayRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def deleteAccountCreditCard(id: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def deleteAccountCreditCard(id: String)(using auth: _Authorization.ApiKey): F[String]
   def deleteBillingCreditCard(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteBillingInvoice(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteBillingPrepay(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
@@ -48,15 +49,15 @@ trait BillingApiEndpoints[F[*]] {
   def getAffiliateSalesReport()(using auth: _Authorization.ApiKey): F[TextResponse]
   def getAffiliateTrafficGraph(days: Option[Int] = None)(using auth: _Authorization.ApiKey): F[MonthlyCounts]
   def getAffiliateWebTraffic()(using auth: _Authorization.ApiKey): F[Seq[AffiliateTrafficRow]]
-  def getBillingCart()(using auth: _Authorization.ApiKey): F[Unit]
+  def getBillingCart()(using auth: _Authorization.ApiKey): F[Json]
   def getBillingCreditCardVerify(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def getBillingInvoice(id: Int)(using auth: _Authorization.ApiKey): F[BillingInvoiceDetail]
   def getBillingInvoices()(using auth: _Authorization.ApiKey): F[BillingInvoiceList]
-  def getBillingPrePays()(using auth: _Authorization.ApiKey): F[Unit]
+  def getBillingPrePays()(using auth: _Authorization.ApiKey): F[Json]
   def getInvoices(searchString: Option[String] = None, skip: Option[Int] = None, limit: Option[Int] = None)(using auth: _Authorization.ApiKey): F[Seq[Invoice]]
   def initiatePayment(method: InitiatePaymentMethodParameter, invoices: String)(using auth: _Authorization.ApiKey): F[InitiatePayment200Response]
   def postBillingCreditCardVerify(id: Int, billingVerifyCcRequest: BillingVerifyCcRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def updateAccountCreditCard(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateAccountCreditCard(id: Int)(using auth: _Authorization.ApiKey): F[String]
   def updateAffiliateDockSetup(affiliateDockTitle: Option[String] = None, affiliateDockDescription: Option[String] = None, referrerCoupon: Option[String] = None)(using auth: _Authorization.ApiKey): F[TextResponse]
   def updateAffiliateLandingPage(affiliateDockTitle: Option[String] = None, affiliateDockDescription: Option[String] = None, referrerCoupon: Option[String] = None)(using auth: _Authorization.ApiKey): F[TextResponse]
   def updateAffiliatePaymentSetup(affiliatePaypal: Option[String] = None, affiliatePaymentMethod: Option[String] = None)(using auth: _Authorization.ApiKey): F[TextResponse]
@@ -143,12 +144,12 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def deleteAccountCreditCard(id: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def deleteAccountCreditCard(id: String)(using auth: _Authorization.ApiKey): F[String] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, String](
       method = "DELETE",
       path = s"/account/creditcards/${id}",
       body = None,
@@ -157,8 +158,8 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, String]("String", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -339,12 +340,12 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def getBillingCart()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def getBillingCart()(using auth: _Authorization.ApiKey): F[Json] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, Json](
       method = "GET",
       path = s"/billing/cart",
       body = None,
@@ -353,8 +354,8 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, Json]("Json", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -415,12 +416,12 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def getBillingPrePays()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def getBillingPrePays()(using auth: _Authorization.ApiKey): F[Json] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, Json](
       method = "GET",
       path = s"/billing/prepays",
       body = None,
@@ -429,8 +430,8 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, Json]("Json", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -498,12 +499,12 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateAccountCreditCard(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateAccountCreditCard(id: Int)(using auth: _Authorization.ApiKey): F[String] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, String](
       method = "POST",
       path = s"/account/creditcards/${id}",
       body = None,
@@ -512,8 +513,8 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, String]("String", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

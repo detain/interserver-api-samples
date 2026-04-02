@@ -25,6 +25,7 @@ import org.openapitools.client.model.QuickserverRow;
 import org.openapitools.client.model.QuickserversCancel200Response;
 import org.openapitools.client.model.RestoreRequest;
 import org.openapitools.client.model.ReverseDnsEntries;
+import org.openapitools.client.model.ServiceOrderPostResponse;
 import org.openapitools.client.model.SuccessTextResponse;
 import org.openapitools.client.model.TextResponse;
 import org.openapitools.client.model.VpsBackupRows;
@@ -54,7 +55,7 @@ public class QuickServersApiTest {
      */
     @Test
     public void addQsTest() throws ApiException {
-        api.addQs();
+        ServiceOrderPostResponse response = api.addQs();
         // TODO: test validations
     }
 
@@ -661,7 +662,7 @@ public class QuickServersApiTest {
     @Test
     public void updateQsInfoTest() throws ApiException {
         String id = null;
-        api.updateQsInfo(id);
+        SuccessTextResponse response = api.updateQsInfo(id);
         // TODO: test validations
     }
 

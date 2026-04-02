@@ -373,11 +373,20 @@ exports.getNewBackup = function() {
  * Updates backup storage service metadata, such as stored credentials or settings for the order.
  *
  * id Integer The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
- * no response value expected for this operation
+ * returns SuccessTextResponse
  **/
 exports.updateBackupInfo = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "success" : true,
+  "text" : "Ok"
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

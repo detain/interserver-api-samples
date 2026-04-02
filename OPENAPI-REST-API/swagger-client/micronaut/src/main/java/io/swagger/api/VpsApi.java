@@ -9,12 +9,13 @@ import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
 import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20022;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.RestoreRequest;
 import io.swagger.model.ReverseDnsEntries;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import io.swagger.model.TemplateRequest;
 import io.swagger.model.TextResponse;
@@ -48,10 +49,10 @@ public interface VpsApi {
 
 
     @Operation(summary = "Place VPS Order", operationId = "addVps", description = "Places an order for a new VPS. Use `PUT /vps/order` to validate the order first." , tags = {"VPS"})
+    @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/vps/order", produces = { "application/json" }, consumes = {"application/json", "multipart/form-data"})
-    default Single<HttpResponse<Void>> addVps(@Nullable @Valid @Parameter(description = "") @Body VpsOrderPostRequest body) {
+    default Single<HttpResponse<ServiceOrderPostResponse>> addVps(@Nullable @Valid @Parameter(description = "") @Body VpsOrderPostRequest body) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -59,10 +60,10 @@ public interface VpsApi {
 
 
     @Operation(summary = "Place VPS Order", operationId = "addVps", description = "Places an order for a new VPS. Use `PUT /vps/order` to validate the order first." , tags = {"VPS"})
+    @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/vps/order", produces = { "application/json" }, consumes = {"application/json", "multipart/form-data"})
-    default Single<HttpResponse<Void>> addVps(@Nullable @Parameter(description = "") @Body(value = "osDistro")  String osDistro,@Nullable @Min(1) @Max(32) @Parameter(description = "") @Body(value = "slices")  Integer slices,@Nullable @Parameter(description = "") @Body(value = "vpsPlatform")  String vpsPlatform,@Nullable @Parameter(description = "") @Body(value = "controlpanel")  String controlpanel,@Nullable @Min(1) @Max(12) @Parameter(description = "") @Body(value = "period")  Integer period,@Nullable @Min(1) @Max(3) @Parameter(description = "") @Body(value = "location")  Integer location,@Nullable @Parameter(description = "") @Body(value = "osVersion")  String osVersion,@Nullable @Parameter(description = "") @Body(value = "hostname")  String hostname,@Nullable @Parameter(description = "") @Body(value = "coupon")  String coupon,@Nullable @Parameter(description = "") @Body(value = "rootpass")  String rootpass,@Nullable @Parameter(description = "") @Body(value = "comment")  String comment) {
+    default Single<HttpResponse<ServiceOrderPostResponse>> addVps(@Nullable @Parameter(description = "") @Body(value = "osDistro")  String osDistro,@Nullable @Min(1) @Max(32) @Parameter(description = "") @Body(value = "slices")  Integer slices,@Nullable @Parameter(description = "") @Body(value = "vpsPlatform")  String vpsPlatform,@Nullable @Parameter(description = "") @Body(value = "controlpanel")  String controlpanel,@Nullable @Min(1) @Max(12) @Parameter(description = "") @Body(value = "period")  Integer period,@Nullable @Min(1) @Max(3) @Parameter(description = "") @Body(value = "location")  Integer location,@Nullable @Parameter(description = "") @Body(value = "osVersion")  String osVersion,@Nullable @Parameter(description = "") @Body(value = "hostname")  String hostname,@Nullable @Parameter(description = "") @Body(value = "coupon")  String coupon,@Nullable @Parameter(description = "") @Body(value = "rootpass")  String rootpass,@Nullable @Parameter(description = "") @Body(value = "comment")  String comment) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -633,10 +634,10 @@ public interface VpsApi {
 
 
     @Operation(summary = "Update VPS Order", operationId = "updateVpsInfo", description = "Updates settings on a VPS order." , tags = {"VPS"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/vps/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateVpsInfo(@Parameter(description = "VPS ID number.") @PathVariable("id") String id) {
+    default Single<HttpResponse<SuccessTextResponse>> updateVpsInfo(@Parameter(description = "VPS ID number.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -647,7 +648,7 @@ public interface VpsApi {
     @ApiResponse(responseCode = "200", description = "VPS Cancel")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
     @Delete(value = "/vps/{id}", produces = { "application/json" })
-    default Single<HttpResponse<InlineResponse20021>> vPSCancel(@Parameter(description = "VPS ID number") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<InlineResponse20022>> vPSCancel(@Parameter(description = "VPS ID number") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

@@ -50,7 +50,7 @@ Method | HTTP request | Description
 [**VPSCancel**](VPSApi.md#VPSCancel) | **Delete** /vps/{id} | Cancel VPS Service
 
 # **AddVps**
-> AddVps(ctx, optional)
+> ServiceOrderPostResponse AddVps(ctx, optional)
 Place VPS Order
 
 Places an order for a new VPS. Use `PUT /vps/order` to validate the order first.
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1301,7 +1301,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateVpsInfo**
-> UpdateVpsInfo(ctx, id)
+> SuccessTextResponse UpdateVpsInfo(ctx, id)
 Update VPS Order
 
 Updates settings on a VPS order.
@@ -1315,7 +1315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1329,7 +1329,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **VPSCancel**
-> InlineResponse20021 VPSCancel(ctx, id)
+> InlineResponse20022 VPSCancel(ctx, id)
 Cancel VPS Service
 
 Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
@@ -1343,7 +1343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20021**](inline_response_200_21.md)
+[**InlineResponse20022**](inline_response_200_22.md)
 
 ### Authorization
 

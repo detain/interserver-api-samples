@@ -14,6 +14,7 @@
 #include "../model/post_website_migration_request.h"
 #include "../model/post_website_migration_request_1.h"
 #include "../model/reverse_dns_entries.h"
+#include "../model/service_order_post_response.h"
 #include "../model/success_text_response.h"
 #include "../model/text_response.h"
 #include "../model/webhosting_cancel_200_response.h"
@@ -28,7 +29,7 @@
 //
 // Places an order for a new webhosting package. Use `PUT /websites/order` to validate the order first.
 //
-void
+service_order_post_response_t*
 WebhostingAPI_addWebsite(apiClient_t *apiClient);
 
 
@@ -140,7 +141,7 @@ WebhostingAPI_putWebsites(apiClient_t *apiClient);
 //
 // Updates settings on a webhosting order.
 //
-void
+success_text_response_t*
 WebhostingAPI_updateWebsiteInfo(apiClient_t *apiClient, char *id);
 
 

@@ -17,6 +17,7 @@ import io.micronaut.core.annotation.*;
 import io.micronaut.http.client.annotation.Client;
 import io.micronaut.core.convert.format.Format;
 import reactor.core.publisher.Mono;
+import org.openapitools.model.AddServer200Response;
 import org.openapitools.model.BuyItNowList;
 import org.openapitools.model.BuyItNowServerOrder200Response;
 import org.openapitools.model.ChargeInvoiceRows;
@@ -40,17 +41,18 @@ import java.util.Map;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-03-25T16:38:58.640178313-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T06:50:57.553290059-04:00[America/New_York]", comments = "Generator version: 7.21.0")
 @Client("${openapi-micronaut-client-base-path}")
 public interface ServersApi {
     /**
      * Place Server Order
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
      *
+     * @return AddServer200Response
      */
     @Post(uri="/servers/order")
     @Consumes({"application/json"})
-    Mono<Void> addServer();
+    Mono<AddServer200Response> addServer();
 
     /**
      * Get Buy Now Server Options
@@ -263,10 +265,11 @@ public interface ServersApi {
      * Updates settings on a dedicated server order.
      *
      * @param id Server ID number. (required)
+     * @return SuccessTextResponse
      */
     @Post(uri="/servers/{id}")
     @Consumes({"application/json"})
-    Mono<Void> updateServerInfo(
+    Mono<SuccessTextResponse> updateServerInfo(
         @PathVariable(name="id") @NotNull String id
     );
 

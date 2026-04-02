@@ -81,7 +81,7 @@ More information can be found inside [Inversion of Control guide section](https:
 <a id="addVps"></a>
 # **addVps**
 ```java
-Mono<Void> VpsApi.addVps(vpsOrderPostRequest)
+Mono<ServiceOrderPostResponse> VpsApi.addVps(vpsOrderPostRequest)
 ```
 
 Place VPS Order
@@ -94,7 +94,8 @@ Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the or
 | **vpsOrderPostRequest** | [**VpsOrderPostRequest**](VpsOrderPostRequest.md)|  | [optional parameter] |
 
 
-
+### Return type
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**
@@ -1254,7 +1255,7 @@ Validates a VPS order before placing it. Returns cost breakdown and any validati
 <a id="updateVpsInfo"></a>
 # **updateVpsInfo**
 ```java
-Mono<Void> VpsApi.updateVpsInfo(id)
+Mono<SuccessTextResponse> VpsApi.updateVpsInfo(id)
 ```
 
 Update VPS Order
@@ -1267,7 +1268,8 @@ Updates settings on a VPS order.
 | **id** | `String`| VPS ID number. | |
 
 
-
+### Return type
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 * **[sessionIdCookieAuth](auth.md#sessionIdCookieAuth)**

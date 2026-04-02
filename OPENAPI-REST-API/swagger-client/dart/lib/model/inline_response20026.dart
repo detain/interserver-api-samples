@@ -1,40 +1,28 @@
 part of swagger.api;
 
 class InlineResponse20026 {
-  
-  List<InlineResponse20026Bandwidth> bandwidth = [];
-
-  List<InlineResponse20026Ips> ips = [];
-
-  List<InlineResponse20026Os> os = [];
-
-  List<InlineResponse20026Cp> cp = [];
-
-  List<InlineResponse20026Raid> raid = [];
+  /* Confirmation message. */
+  String text = null;
+/* The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress. */
+  int ticket = null;
 
   InlineResponse20026();
 
   @override
   String toString() {
-    return 'InlineResponse20026[bandwidth=$bandwidth, ips=$ips, os=$os, cp=$cp, raid=$raid, ]';
+    return 'InlineResponse20026[text=$text, ticket=$ticket, ]';
   }
 
   InlineResponse20026.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    bandwidth = InlineResponse20026Bandwidth.listFromJson(json['bandwidth']);
-    ips = InlineResponse20026Ips.listFromJson(json['ips']);
-    os = InlineResponse20026Os.listFromJson(json['os']);
-    cp = InlineResponse20026Cp.listFromJson(json['cp']);
-    raid = InlineResponse20026Raid.listFromJson(json['raid']);
+    text = json['text'];
+    ticket = json['ticket'];
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'bandwidth': bandwidth,
-      'ips': ips,
-      'os': os,
-      'cp': cp,
-      'raid': raid
+      'text': text,
+      'ticket': ticket
      };
   }
 

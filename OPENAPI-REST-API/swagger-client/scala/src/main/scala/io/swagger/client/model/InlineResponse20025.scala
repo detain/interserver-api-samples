@@ -13,11 +13,11 @@ package io.swagger.client.model
 
 
 /**
- * @param text Confirmation message.
- * @param ticket The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+ * @param message 
+ * @param success 
  */
 case class InlineResponse20025 (
-  text: Option[String] = None,
-  ticket: Option[Integer] = None
+  message: Option[String] = None,
+  success: Option[Boolean] = None
 )
 

@@ -97,7 +97,7 @@ Method | HTTP request | Description
 
 ## addQs
 
-> addQs(): ApiRequest[Unit]
+> addQs(): ApiRequest[ServiceOrderPostResponse]
 
 Place QuickServer Order
 
@@ -107,6 +107,7 @@ Places a QuickServer order. On success, invoices are generated for payment; use 
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -139,6 +140,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling QuickServersApi#addQs")
@@ -160,8 +162,8 @@ This endpoint does not need any parameter.
 
 ### Return type
 
+ApiRequest[[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -175,8 +177,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## deleteQsBackup
@@ -3994,7 +3996,7 @@ ApiRequest[[**QuickserversCancel200Response**](QuickserversCancel200Response.md)
 
 ## updateQsInfo
 
-> updateQsInfo(updateQsInfoRequest): ApiRequest[Unit]
+> updateQsInfo(updateQsInfoRequest): ApiRequest[SuccessTextResponse]
 
 Update QuickServer Order
 
@@ -4004,6 +4006,7 @@ Updates QuickServer metadata or stored settings associated with the order.
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -4038,6 +4041,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling QuickServersApi#updateQsInfo")
@@ -4062,8 +4066,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -4077,6 +4081,6 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 

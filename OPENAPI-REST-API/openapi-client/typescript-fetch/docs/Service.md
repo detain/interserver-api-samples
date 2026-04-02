@@ -27,7 +27,7 @@ import type { Service } from ''
 const example = {
   "services_id": 31,
   "services_name": OpenVZ VPS Slice,
-  "services_cost": 6.0,
+  "services_cost": 6,
   "services_currency": USD,
   "services_category": 1,
   "services_buyable": true,

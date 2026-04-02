@@ -1604,9 +1604,9 @@ public class AccountApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation error while updating account data. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateAccountInfoCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String address, @javax.annotation.Nonnull String city, @javax.annotation.Nonnull String state, @javax.annotation.Nonnull String zip, @javax.annotation.Nonnull String country, @javax.annotation.Nonnull String phone, @javax.annotation.Nullable String company, @javax.annotation.Nullable String address2, @javax.annotation.Nullable String locale, @javax.annotation.Nullable String emailInvoices, @javax.annotation.Nullable String emailAbuse, @javax.annotation.Nullable Boolean disableReset, @javax.annotation.Nullable Boolean disableReinstall, @javax.annotation.Nullable Boolean disableServerNotifications, @javax.annotation.Nullable Boolean disableEmailNotifications, @javax.annotation.Nullable String gstin, final ApiCallback _callback) throws ApiException {
@@ -1784,18 +1784,20 @@ public class AccountApi {
      * @param disableServerNotifications Set to &#x60;true&#x60; to disable server notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param disableEmailNotifications Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param gstin Your GST identification number (if applicable). (optional)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation error while updating account data. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void updateAccountInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String address, @javax.annotation.Nonnull String city, @javax.annotation.Nonnull String state, @javax.annotation.Nonnull String zip, @javax.annotation.Nonnull String country, @javax.annotation.Nonnull String phone, @javax.annotation.Nullable String company, @javax.annotation.Nullable String address2, @javax.annotation.Nullable String locale, @javax.annotation.Nullable String emailInvoices, @javax.annotation.Nullable String emailAbuse, @javax.annotation.Nullable Boolean disableReset, @javax.annotation.Nullable Boolean disableReinstall, @javax.annotation.Nullable Boolean disableServerNotifications, @javax.annotation.Nullable Boolean disableEmailNotifications, @javax.annotation.Nullable String gstin) throws ApiException {
-        updateAccountInfoWithHttpInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+    public SuccessTextResponse updateAccountInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String address, @javax.annotation.Nonnull String city, @javax.annotation.Nonnull String state, @javax.annotation.Nonnull String zip, @javax.annotation.Nonnull String country, @javax.annotation.Nonnull String phone, @javax.annotation.Nullable String company, @javax.annotation.Nullable String address2, @javax.annotation.Nullable String locale, @javax.annotation.Nullable String emailInvoices, @javax.annotation.Nullable String emailAbuse, @javax.annotation.Nullable Boolean disableReset, @javax.annotation.Nullable Boolean disableReinstall, @javax.annotation.Nullable Boolean disableServerNotifications, @javax.annotation.Nullable Boolean disableEmailNotifications, @javax.annotation.Nullable String gstin) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = updateAccountInfoWithHttpInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+        return localVarResp.getData();
     }
 
     /**
@@ -1818,20 +1820,21 @@ public class AccountApi {
      * @param disableServerNotifications Set to &#x60;true&#x60; to disable server notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param disableEmailNotifications Set to &#x60;true&#x60; to disable email notifications, or &#x60;false&#x60; to enable them. (optional)
      * @param gstin Your GST identification number (if applicable). (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation error while updating account data. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateAccountInfoWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String address, @javax.annotation.Nonnull String city, @javax.annotation.Nonnull String state, @javax.annotation.Nonnull String zip, @javax.annotation.Nonnull String country, @javax.annotation.Nonnull String phone, @javax.annotation.Nullable String company, @javax.annotation.Nullable String address2, @javax.annotation.Nullable String locale, @javax.annotation.Nullable String emailInvoices, @javax.annotation.Nullable String emailAbuse, @javax.annotation.Nullable Boolean disableReset, @javax.annotation.Nullable Boolean disableReinstall, @javax.annotation.Nullable Boolean disableServerNotifications, @javax.annotation.Nullable Boolean disableEmailNotifications, @javax.annotation.Nullable String gstin) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateAccountInfoWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String address, @javax.annotation.Nonnull String city, @javax.annotation.Nonnull String state, @javax.annotation.Nonnull String zip, @javax.annotation.Nonnull String country, @javax.annotation.Nonnull String phone, @javax.annotation.Nullable String company, @javax.annotation.Nullable String address2, @javax.annotation.Nullable String locale, @javax.annotation.Nullable String emailInvoices, @javax.annotation.Nullable String emailAbuse, @javax.annotation.Nullable Boolean disableReset, @javax.annotation.Nullable Boolean disableReinstall, @javax.annotation.Nullable Boolean disableServerNotifications, @javax.annotation.Nullable Boolean disableEmailNotifications, @javax.annotation.Nullable String gstin) throws ApiException {
         okhttp3.Call localVarCall = updateAccountInfoValidateBeforeCall(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -1861,15 +1864,16 @@ public class AccountApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> Validation error while updating account data. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAccountInfoAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String address, @javax.annotation.Nonnull String city, @javax.annotation.Nonnull String state, @javax.annotation.Nonnull String zip, @javax.annotation.Nonnull String country, @javax.annotation.Nonnull String phone, @javax.annotation.Nullable String company, @javax.annotation.Nullable String address2, @javax.annotation.Nullable String locale, @javax.annotation.Nullable String emailInvoices, @javax.annotation.Nullable String emailAbuse, @javax.annotation.Nullable Boolean disableReset, @javax.annotation.Nullable Boolean disableReinstall, @javax.annotation.Nullable Boolean disableServerNotifications, @javax.annotation.Nullable Boolean disableEmailNotifications, @javax.annotation.Nullable String gstin, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateAccountInfoAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String address, @javax.annotation.Nonnull String city, @javax.annotation.Nonnull String state, @javax.annotation.Nonnull String zip, @javax.annotation.Nonnull String country, @javax.annotation.Nonnull String phone, @javax.annotation.Nullable String company, @javax.annotation.Nullable String address2, @javax.annotation.Nullable String locale, @javax.annotation.Nullable String emailInvoices, @javax.annotation.Nullable String emailAbuse, @javax.annotation.Nullable Boolean disableReset, @javax.annotation.Nullable Boolean disableReinstall, @javax.annotation.Nullable Boolean disableServerNotifications, @javax.annotation.Nullable Boolean disableEmailNotifications, @javax.annotation.Nullable String gstin, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAccountInfoValidateBeforeCall(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1883,9 +1887,9 @@ public class AccountApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> IP limit payload contains an invalid address. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call updateAccountIpLimitsCall(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, final ApiCallback _callback) throws ApiException {
@@ -1963,18 +1967,20 @@ public class AccountApi {
      * Adds an IP address range to the account&#39;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param start The begining (or first) IP address in the range. (required)
      * @param end The ending (or last) IP address in the range. (required)
+     * @return SuccessTextResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> IP limit payload contains an invalid address. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public void updateAccountIpLimits(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end) throws ApiException {
-        updateAccountIpLimitsWithHttpInfo(start, end);
+    public SuccessTextResponse updateAccountIpLimits(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end) throws ApiException {
+        ApiResponse<SuccessTextResponse> localVarResp = updateAccountIpLimitsWithHttpInfo(start, end);
+        return localVarResp.getData();
     }
 
     /**
@@ -1982,20 +1988,21 @@ public class AccountApi {
      * Adds an IP address range to the account&#39;s access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
      * @param start The begining (or first) IP address in the range. (required)
      * @param end The ending (or last) IP address in the range. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;SuccessTextResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> IP limit payload contains an invalid address. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> updateAccountIpLimitsWithHttpInfo(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end) throws ApiException {
+    public ApiResponse<SuccessTextResponse> updateAccountIpLimitsWithHttpInfo(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end) throws ApiException {
         okhttp3.Call localVarCall = updateAccountIpLimitsValidateBeforeCall(start, end, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -2010,15 +2017,16 @@ public class AccountApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> A response indicating the operation completed successfully with a text message. </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
         <tr><td> 422 </td><td> IP limit payload contains an invalid address. </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Default response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateAccountIpLimitsAsync(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call updateAccountIpLimitsAsync(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, final ApiCallback<SuccessTextResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateAccountIpLimitsValidateBeforeCall(start, end, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<SuccessTextResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

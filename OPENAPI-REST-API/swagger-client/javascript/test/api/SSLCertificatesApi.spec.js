@@ -37,7 +37,7 @@
     describe('SSLCertificatesApi', function() {
       describe('addSsl', function() {
         it('should call addSsl successfully', function(done) {
-          // TODO: uncomment addSsl call
+          // TODO: uncomment addSsl call and complete the assertions
           /*
 
           instance.addSsl(function(error, data, response) {
@@ -45,6 +45,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.ServiceOrderPostResponse);
 
             done();
           });
@@ -55,7 +57,7 @@
       });
       describe('getNewSsl', function() {
         it('should call getNewSsl successfully', function(done) {
-          // TODO: uncomment getNewSsl call
+          // TODO: uncomment getNewSsl call and complete the assertions
           /*
 
           instance.getNewSsl(function(error, data, response) {
@@ -63,6 +65,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(Object);
+            // expect(data).to.be(null);
 
             done();
           });
@@ -73,7 +78,7 @@
       });
       describe('getSslInfo', function() {
         it('should call getSslInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for getSslInfo call
+          // TODO: uncomment, update parameter values for getSslInfo call and complete the assertions
           /*
 
           instance.getSslInfo(id, function(error, data, response) {
@@ -81,6 +86,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(Object);
+            // expect(data).to.be(null);
 
             done();
           });
@@ -176,7 +184,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(InterServerManagementApi.InlineResponse20020);
+            expect(data).to.be.a(InterServerManagementApi.InlineResponse20021);
 
             done();
           });
@@ -187,7 +195,7 @@
       });
       describe('updateSslInfo', function() {
         it('should call updateSslInfo successfully', function(done) {
-          // TODO: uncomment, update parameter values for updateSslInfo call
+          // TODO: uncomment, update parameter values for updateSslInfo call and complete the assertions
           /*
 
           instance.updateSslInfo(id, function(error, data, response) {
@@ -195,6 +203,8 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a(InterServerManagementApi.SuccessTextResponse);
 
             done();
           });

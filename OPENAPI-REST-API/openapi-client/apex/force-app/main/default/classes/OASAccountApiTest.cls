@@ -1019,6 +1019,8 @@ private class OASAccountApiTest {
 
         OASClient client;
         OASAccountApi api;
+        OASSuccessTextResponse response;
+        OASSuccessTextResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -1026,57 +1028,81 @@ private class OASAccountApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountInfo(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAccountApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountInfo(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountInfo(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAccountApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountInfo(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountInfo(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountInfo(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountInfo(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -1099,6 +1125,8 @@ private class OASAccountApiTest {
 
         OASClient client;
         OASAccountApi api;
+        OASSuccessTextResponse response;
+        OASSuccessTextResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
@@ -1106,57 +1134,81 @@ private class OASAccountApiTest {
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdCookieAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountIpLimits(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountIpLimits(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountIpLimits(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountIpLimits(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountIpLimits(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAccountApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('apiKeyAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountIpLimits(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountIpLimits(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountIpLimits(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountIpLimits(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountIpLimits(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAccountApi(client);
         ((OAS.ApiKeyAuth)client.getAuthentication('sessionIdHeaderAuth')).setApiKey('foo-bar-api-key');
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountIpLimits(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountIpLimits(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.updateAccountIpLimits(params);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountIpLimits(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSuccessTextResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSuccessTextResponse.getExample();
+        response = (OASSuccessTextResponse) api.updateAccountIpLimits(params);
         System.assertEquals(expectedResponse, response);
     }
 

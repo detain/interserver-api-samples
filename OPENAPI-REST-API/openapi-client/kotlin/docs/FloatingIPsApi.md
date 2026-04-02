@@ -18,7 +18,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addFloatingIp"></a>
 # **addFloatingIp**
-> addFloatingIp()
+> ServiceOrderPostResponse addFloatingIp()
 
 Place Floating IP Order
 
@@ -32,7 +32,8 @@ Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order
 
 val apiInstance = FloatingIPsApi()
 try {
-    apiInstance.addFloatingIp()
+    val result : ServiceOrderPostResponse = apiInstance.addFloatingIp()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling FloatingIPsApi#addFloatingIp")
     e.printStackTrace()
@@ -47,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -124,7 +125,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="getFloatingIpInfo"></a>
 # **getFloatingIpInfo**
-> getFloatingIpInfo(id)
+> kotlin.Any getFloatingIpInfo(id)
 
 View Floating IP
 
@@ -139,7 +140,8 @@ Returns detailed information about a specific Floating IP service including its 
 val apiInstance = FloatingIPsApi()
 val id : kotlin.Int = 56 // kotlin.Int | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 try {
-    apiInstance.getFloatingIpInfo(id)
+    val result : kotlin.Any = apiInstance.getFloatingIpInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling FloatingIPsApi#getFloatingIpInfo")
     e.printStackTrace()
@@ -156,7 +158,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**kotlin.Any**](kotlin.Any.md)
 
 ### Authorization
 
@@ -339,7 +341,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="getNewFloatingIp"></a>
 # **getNewFloatingIp**
-> getNewFloatingIp()
+> kotlin.Any getNewFloatingIp()
 
 Get Floating IP Ordering Information
 
@@ -353,7 +355,8 @@ Retrieves available options and pricing for ordering a new Floating IP.
 
 val apiInstance = FloatingIPsApi()
 try {
-    apiInstance.getNewFloatingIp()
+    val result : kotlin.Any = apiInstance.getNewFloatingIp()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling FloatingIPsApi#getNewFloatingIp")
     e.printStackTrace()
@@ -368,7 +371,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**kotlin.Any**](kotlin.Any.md)
 
 ### Authorization
 
@@ -498,7 +501,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateFloatingIpInfo"></a>
 # **updateFloatingIpInfo**
-> updateFloatingIpInfo(id)
+> SuccessTextResponse updateFloatingIpInfo(id)
 
 Update Floating IP
 
@@ -513,7 +516,8 @@ Updates settings on a Floating IP service, such as its label or configuration me
 val apiInstance = FloatingIPsApi()
 val id : kotlin.String = id_example // kotlin.String | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 try {
-    apiInstance.updateFloatingIpInfo(id)
+    val result : SuccessTextResponse = apiInstance.updateFloatingIpInfo(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling FloatingIPsApi#updateFloatingIpInfo")
     e.printStackTrace()
@@ -530,7 +534,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

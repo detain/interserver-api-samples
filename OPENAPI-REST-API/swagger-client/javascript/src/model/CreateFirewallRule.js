@@ -66,10 +66,11 @@ export default class CreateFirewallRule {
 CreateFirewallRule.prototype.destination_port = 80;
 
 /**
+ * Source IP address to match. Use '0.0.0.0' to match any source.
  * @member {String} source_ip
- * @default '0'
+ * @default '0.0.0.0'
  */
-CreateFirewallRule.prototype.source_ip = '0';
+CreateFirewallRule.prototype.source_ip = '0.0.0.0';
 
 /**
  * @member {Number} source_port

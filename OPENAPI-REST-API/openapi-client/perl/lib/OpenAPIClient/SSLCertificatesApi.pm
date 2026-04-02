@@ -59,10 +59,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'add_ssl' } = {
         summary => 'Place SSL Cert Order',
         params => $params,
-        returns => undef,
+        returns => 'ServiceOrderPostResponse',
         };
 }
-# @return void
+# @return ServiceOrderPostResponse
 #
 sub add_ssl {
     my ($self, %args) = @_;
@@ -87,10 +87,14 @@ sub add_ssl {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ServiceOrderPostResponse', $response);
+    return $_response_object;
 }
 
 #
@@ -104,10 +108,10 @@ sub add_ssl {
     __PACKAGE__->method_documentation->{ 'get_new_ssl' } = {
         summary => 'SSL Cert Ordering Information',
         params => $params,
-        returns => undef,
+        returns => 'object',
         };
 }
-# @return void
+# @return object
 #
 sub get_new_ssl {
     my ($self, %args) = @_;
@@ -132,10 +136,14 @@ sub get_new_ssl {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
 }
 
 #
@@ -155,10 +163,10 @@ sub get_new_ssl {
     __PACKAGE__->method_documentation->{ 'get_ssl_info' } = {
         summary => 'Get SSL Cert Info',
         params => $params,
-        returns => undef,
+        returns => 'object',
         };
 }
-# @return void
+# @return object
 #
 sub get_ssl_info {
     my ($self, %args) = @_;
@@ -195,10 +203,14 @@ sub get_ssl_info {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
 }
 
 #
@@ -509,10 +521,10 @@ sub ssl_cancel {
     __PACKAGE__->method_documentation->{ 'update_ssl_info' } = {
         summary => 'Update SSL Cert Order',
         params => $params,
-        returns => undef,
+        returns => 'SuccessTextResponse',
         };
 }
-# @return void
+# @return SuccessTextResponse
 #
 sub update_ssl_info {
     my ($self, %args) = @_;
@@ -549,10 +561,14 @@ sub update_ssl_info {
     my $auth_settings = [qw(sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SuccessTextResponse', $response);
+    return $_response_object;
 }
 
 1;

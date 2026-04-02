@@ -977,7 +977,7 @@ public class Example {
 
 <a id="updateAccountInfo"></a>
 # **updateAccountInfo**
-> updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
+> SuccessTextResponse updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin)
 
 Update Account Information
 
@@ -1035,7 +1035,8 @@ public class Example {
     Boolean disableEmailNotifications = true; // Boolean | Set to `true` to disable email notifications, or `false` to enable them.
     String gstin = "gstin_example"; // String | Your GST identification number (if applicable).
     try {
-      apiInstance.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+      SuccessTextResponse result = apiInstance.updateAccountInfo(name, address, city, state, zip, country, phone, company, address2, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AccountApi#updateAccountInfo");
       System.err.println("Status code: " + e.getCode());
@@ -1071,7 +1072,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1085,13 +1086,13 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
 | **422** | Validation error while updating account data. |  -  |
-| **0** | Default response |  -  |
 
 <a id="updateAccountIpLimits"></a>
 # **updateAccountIpLimits**
-> updateAccountIpLimits(start, end)
+> SuccessTextResponse updateAccountIpLimits(start, end)
 
 Add IP Access Restriction
 
@@ -1134,7 +1135,8 @@ public class Example {
     String start = "start_example"; // String | The begining (or first) IP address in the range.
     String end = "end_example"; // String | The ending (or last) IP address in the range.
     try {
-      apiInstance.updateAccountIpLimits(start, end);
+      SuccessTextResponse result = apiInstance.updateAccountIpLimits(start, end);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AccountApi#updateAccountIpLimits");
       System.err.println("Status code: " + e.getCode());
@@ -1155,7 +1157,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1169,9 +1171,9 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
 | **422** | IP limit payload contains an invalid address. |  -  |
-| **0** | Default response |  -  |
 
 <a id="updateAccountPassword"></a>
 # **updateAccountPassword**

@@ -106,7 +106,9 @@ object BillingApi {
     } yield resp
   }
 
-  def deleteAccountCreditCard(host: String, id: String): Task[Unit] = {
+  def deleteAccountCreditCard(host: String, id: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/account/creditcards/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.DELETE
@@ -120,7 +122,7 @@ object BillingApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -314,7 +316,9 @@ object BillingApi {
     } yield resp
   }
 
-  def getBillingCart(host: String): Task[Unit] = {
+  def getBillingCart(host: String): Task[Any] = {
+    implicit val returnTypeDecoder: EntityDecoder[Any] = jsonOf[Any]
+
     val path = "/billing/cart"
 
     val httpMethod = Method.GET
@@ -328,7 +332,7 @@ object BillingApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[Any](req)
 
     } yield resp
   }
@@ -396,7 +400,9 @@ object BillingApi {
     } yield resp
   }
 
-  def getBillingPrePays(host: String): Task[Unit] = {
+  def getBillingPrePays(host: String): Task[Any] = {
+    implicit val returnTypeDecoder: EntityDecoder[Any] = jsonOf[Any]
+
     val path = "/billing/prepays"
 
     val httpMethod = Method.GET
@@ -410,7 +416,7 @@ object BillingApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[Any](req)
 
     } yield resp
   }
@@ -478,7 +484,9 @@ object BillingApi {
     } yield resp
   }
 
-  def updateAccountCreditCard(host: String, id: Integer): Task[Unit] = {
+  def updateAccountCreditCard(host: String, id: Integer): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/account/creditcards/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -492,7 +500,7 @@ object BillingApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -672,7 +680,9 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def deleteAccountCreditCard(id: String): Task[Unit] = {
+  def deleteAccountCreditCard(id: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/account/creditcards/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.DELETE
@@ -686,7 +696,7 @@ class HttpServiceBillingApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -880,7 +890,9 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def getBillingCart(): Task[Unit] = {
+  def getBillingCart(): Task[Any] = {
+    implicit val returnTypeDecoder: EntityDecoder[Any] = jsonOf[Any]
+
     val path = "/billing/cart"
 
     val httpMethod = Method.GET
@@ -894,7 +906,7 @@ class HttpServiceBillingApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[Any](req)
 
     } yield resp
   }
@@ -962,7 +974,9 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def getBillingPrePays(): Task[Unit] = {
+  def getBillingPrePays(): Task[Any] = {
+    implicit val returnTypeDecoder: EntityDecoder[Any] = jsonOf[Any]
+
     val path = "/billing/prepays"
 
     val httpMethod = Method.GET
@@ -976,7 +990,7 @@ class HttpServiceBillingApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[Any](req)
 
     } yield resp
   }
@@ -1044,7 +1058,9 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def updateAccountCreditCard(id: Integer): Task[Unit] = {
+  def updateAccountCreditCard(id: Integer): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/account/creditcards/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -1058,7 +1074,7 @@ class HttpServiceBillingApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }

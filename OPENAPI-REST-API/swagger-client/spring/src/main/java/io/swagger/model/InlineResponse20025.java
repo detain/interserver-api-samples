@@ -22,63 +22,63 @@ import javax.validation.constraints.*;
 
 
 public class InlineResponse20025   {
-  @JsonProperty("text")
+  @JsonProperty("message")
 
   @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
   @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private String text = null;
+  private String message = null;
 
-  @JsonProperty("ticket")
+  @JsonProperty("success")
 
   @JsonInclude(JsonInclude.Include.NON_ABSENT)  // Exclude from JSON if absent
   @JsonSetter(nulls = Nulls.FAIL)    // FAIL setting if the value is null
-  private Integer ticket = null;
+  private Boolean success = null;
 
 
-  public InlineResponse20025 text(String text) { 
+  public InlineResponse20025 message(String message) { 
 
-    this.text = text;
+    this.message = message;
     return this;
   }
 
   /**
-   * Confirmation message.
-   * @return text
+   * Get message
+   * @return message
    **/
   
-  @Schema(description = "Confirmation message.")
+  @Schema(description = "")
   
-  public String getText() {  
-    return text;
+  public String getMessage() {  
+    return message;
   }
 
 
 
-  public void setText(String text) { 
-    this.text = text;
+  public void setMessage(String message) { 
+    this.message = message;
   }
 
-  public InlineResponse20025 ticket(Integer ticket) { 
+  public InlineResponse20025 success(Boolean success) { 
 
-    this.ticket = ticket;
+    this.success = success;
     return this;
   }
 
   /**
-   * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
-   * @return ticket
+   * Get success
+   * @return success
    **/
   
-  @Schema(description = "The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.")
+  @Schema(description = "")
   
-  public Integer getTicket() {  
-    return ticket;
+  public Boolean isSuccess() {  
+    return success;
   }
 
 
 
-  public void setTicket(Integer ticket) { 
-    this.ticket = ticket;
+  public void setSuccess(Boolean success) { 
+    this.success = success;
   }
 
   @Override
@@ -90,13 +90,13 @@ public class InlineResponse20025   {
       return false;
     }
     InlineResponse20025 inlineResponse20025 = (InlineResponse20025) o;
-    return Objects.equals(this.text, inlineResponse20025.text) &&
-        Objects.equals(this.ticket, inlineResponse20025.ticket);
+    return Objects.equals(this.message, inlineResponse20025.message) &&
+        Objects.equals(this.success, inlineResponse20025.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, ticket);
+    return Objects.hash(message, success);
   }
 
   @Override
@@ -104,8 +104,8 @@ public class InlineResponse20025   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20025 {\n");
     
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    ticket: ").append(toIndentedString(ticket)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

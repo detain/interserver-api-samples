@@ -134,9 +134,10 @@ func Test_myadmin_BackupsAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.BackupsAPI.UpdateBackupInfo(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BackupsAPI.UpdateBackupInfo(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

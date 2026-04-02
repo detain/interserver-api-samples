@@ -23,6 +23,7 @@ import { PostWebsiteMigration200Response } from '../model/postWebsiteMigration20
 import { PostWebsiteMigrationRequest } from '../model/postWebsiteMigrationRequest';
 import { PostWebsiteMigrationRequest1 } from '../model/postWebsiteMigrationRequest1';
 import { ReverseDnsEntries } from '../model/reverseDnsEntries';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 import { WebhostingCancel200Response } from '../model/webhostingCancel200Response';
@@ -65,7 +66,7 @@ export class WebhostingService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [addWebsiteOpts.config] Override http request option.
      */
-    public addWebsite(addWebsiteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public addWebsite(addWebsiteOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<ServiceOrderPostResponse>>;
     public addWebsite(addWebsiteOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         let headers = {...this.defaultHeaders};
 
@@ -100,7 +101,7 @@ export class WebhostingService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/websites/order`,
+                return this.httpClient.post<ServiceOrderPostResponse>(`${this.basePath}/websites/order`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,
@@ -883,7 +884,7 @@ export class WebhostingService {
      * @param reportProgress flag to report request and response progress.
      * @param {*} [updateWebsiteInfoOpts.config] Override http request option.
      */
-    public updateWebsiteInfo(id: string, updateWebsiteInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<any>>;
+    public updateWebsiteInfo(id: string, updateWebsiteInfoOpts?: { config?: AxiosRequestConfig }): Observable<AxiosResponse<SuccessTextResponse>>;
     public updateWebsiteInfo(id: string, updateWebsiteInfoOpts?: { config?: AxiosRequestConfig }): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateWebsiteInfo.');
@@ -922,7 +923,7 @@ export class WebhostingService {
                     headers['Authorization'] = `Bearer ${accessToken}`;
                 }
 
-                return this.httpClient.post<any>(`${this.basePath}/websites/${encodeURIComponent(String(id))}`,
+                return this.httpClient.post<SuccessTextResponse>(`${this.basePath}/websites/${encodeURIComponent(String(id))}`,
                     null,
                     {
                         withCredentials: this.configuration.withCredentials,

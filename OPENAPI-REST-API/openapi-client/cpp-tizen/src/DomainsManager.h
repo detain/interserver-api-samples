@@ -20,6 +20,7 @@
 #include "DomainSearchResponse.h"
 #include "DomainWhoisPrivacyRequest.h"
 #include "GetAccountInfo_401_response.h"
+#include "ServiceOrderPostResponse.h"
 #include "SuccessTextResponse.h"
 #include "TextResponse.h"
 #include <list>
@@ -50,8 +51,8 @@ public:
  */
 bool addDomainSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Place Domain Order. *Asynchronous*
  *
@@ -62,8 +63,8 @@ bool addDomainSync(char * accessToken,
  */
 bool addDomainAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(ServiceOrderPostResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Add Domain DNSSEC Records. *Synchronous*
@@ -755,8 +756,8 @@ bool updateDomainContactAsync(char * accessToken,
  */
 bool updateDomainInfoSync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 /*! \brief Update Domain Order. *Asynchronous*
  *
@@ -768,8 +769,8 @@ bool updateDomainInfoSync(char * accessToken,
  */
 bool updateDomainInfoAsync(char * accessToken,
 	std::string id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData);
 
 
 /*! \brief Replace Nameserver Set. *Synchronous*

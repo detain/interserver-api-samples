@@ -19,15 +19,15 @@ module OpenAPIClient
     end
     # Place Server Order
     # Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
-    # @return [nil]
+    # @return [AddServer200Response]
     def add_server()
-      add_server_with_http_info()
-      nil
+      data, _status_code, _headers = add_server_with_http_info()
+      data
     end
 
     # Place Server Order
     # Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(AddServer200Response, Integer, Hash)>] AddServer200Response data, response status code and response headers
     def add_server_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: ServersApi.add_server ..."}
@@ -71,7 +71,7 @@ module OpenAPIClient
         Log.debug {"API called: ServersApi#add_server\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return AddServer200Response.from_json(data), status_code, headers
     end
 
     # Get Buy Now Server Options
@@ -1084,16 +1084,16 @@ module OpenAPIClient
     # Update Server Order
     # Updates settings on a dedicated server order.
     # @param id [String] Server ID number.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_server_info(id : String)
-      update_server_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_server_info_with_http_info(id)
+      data
     end
 
     # Update Server Order
     # Updates settings on a dedicated server order.
     # @param id [String] Server ID number.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_server_info_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: ServersApi.update_server_info ..."}
@@ -1141,7 +1141,7 @@ module OpenAPIClient
         Log.debug {"API called: ServersApi#update_server_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
   end
 end

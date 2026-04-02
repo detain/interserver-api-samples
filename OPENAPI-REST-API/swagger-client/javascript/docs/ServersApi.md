@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="addServer"></a>
 # **addServer**
-> addServer()
+> InlineResponse20019 addServer()
 
 Place Server Order
 
@@ -59,7 +59,7 @@ apiInstance.addServer((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**InlineResponse20019**](InlineResponse20019.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ null (empty response body)
 
 <a name="buyItNowServerOrder"></a>
 # **buyItNowServerOrder**
-> InlineResponse20026 buyItNowServerOrder()
+> InlineResponse20027 buyItNowServerOrder()
 
 Get Buy Now Server Options
 
@@ -126,7 +126,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse20026**](InlineResponse20026.md)
+[**InlineResponse20027**](InlineResponse20027.md)
 
 ### Authorization
 
@@ -1004,7 +1004,7 @@ Name | Type | Description  | Notes
 
 <a name="serversCancel"></a>
 # **serversCancel**
-> InlineResponse20019 serversCancel(id)
+> InlineResponse20020 serversCancel(id)
 
 Cancel Server Service
 
@@ -1053,7 +1053,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20019**](InlineResponse20019.md)
+[**InlineResponse20020**](InlineResponse20020.md)
 
 ### Authorization
 
@@ -1066,7 +1066,7 @@ Name | Type | Description  | Notes
 
 <a name="updateServerInfo"></a>
 # **updateServerInfo**
-> updateServerInfo(id)
+> SuccessTextResponse updateServerInfo(id)
 
 Update Server Order
 
@@ -1102,7 +1102,7 @@ apiInstance.updateServerInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -1115,7 +1115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

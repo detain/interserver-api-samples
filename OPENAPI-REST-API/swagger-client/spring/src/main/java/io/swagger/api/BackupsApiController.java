@@ -178,10 +178,19 @@ public class BackupsApiController implements BackupsApi {
         return new ResponseEntity<BackupsOrder>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> updateBackupInfo(@Parameter(in = ParameterIn.PATH, description = "The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.", required=true, schema=@Schema()) @PathVariable("id") Integer id
+    public ResponseEntity<SuccessTextResponse> updateBackupInfo(@Parameter(in = ParameterIn.PATH, description = "The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.", required=true, schema=@Schema()) @PathVariable("id") Integer id
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<SuccessTextResponse>(objectMapper.readValue("{\n  \"success\" : true,\n  \"text\" : \"Ok\"\n}", SuccessTextResponse.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<SuccessTextResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<SuccessTextResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<BackupOrderPutResponse> validateBackupOrder(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="validateOnly", required=true)  Boolean validateOnly

@@ -78,11 +78,19 @@ class DNSApi {
   ///
   /// * [String] ip (required):
   ///   IP Address to point the domain to.
-  Future<void> addDnsDomain(String domain, String ip,) async {
+  Future<SuccessTextResponse?> addDnsDomain(String domain, String ip,) async {
     final response = await addDnsDomainWithHttpInfo(domain, ip,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// Add DNS Record to Domain
@@ -233,11 +241,19 @@ class DNSApi {
   ///
   /// * [String] id (required):
   ///   The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
-  Future<void> deleteDnsDomain(String id,) async {
+  Future<SuccessTextResponse?> deleteDnsDomain(String id,) async {
     final response = await deleteDnsDomainWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// Delete DNS Record
@@ -291,11 +307,19 @@ class DNSApi {
   ///
   /// * [int] recordId (required):
   ///   The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
-  Future<void> deleteDnsRecord(int domainId, int recordId,) async {
+  Future<SuccessTextResponse?> deleteDnsRecord(int domainId, int recordId,) async {
     final response = await deleteDnsRecordWithHttpInfo(domainId, recordId,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 
   /// List Domain DNS Records
@@ -531,10 +555,18 @@ class DNSApi {
   /// * [String] ordername:
   ///
   /// * [String] auth:
-  Future<void> updateDnsRecord(int domainId, int recordId, { String? name, DnsRecordType? type, String? content, String? ttl, String? prio, String? disabled, String? ordername, String? auth, }) async {
+  Future<SuccessTextResponse?> updateDnsRecord(int domainId, int recordId, { String? name, DnsRecordType? type, String? content, String? ttl, String? prio, String? disabled, String? ordername, String? auth, }) async {
     final response = await updateDnsRecordWithHttpInfo(domainId, recordId,  name: name, type: type, content: content, ttl: ttl, prio: prio, disabled: disabled, ordername: ordername, auth: auth, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 }

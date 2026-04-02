@@ -370,6 +370,33 @@ package .Models is
                           Value : in out AccountSshKey_Type_Vectors.Vector);
 
 
+
+   type AddServer200Response_Type is
+     record
+       Text : Swagger.Nullable_UString;
+       Invoice : Swagger.Nullable_Integer;
+       Order : Swagger.Nullable_Integer;
+     end record;
+
+
+   package AddServer200Response_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.AddServer200Response_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.AddServer200Response_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in AddServer200Response_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.AddServer200Response_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out AddServer200Response_Type_Vectors.Vector);
+
+
    --  ------------------------------
    --  AffiliateBannerRow
    --  An affiliate banner image details.
@@ -6371,7 +6398,7 @@ package .Models is
 
    --  ------------------------------
    --  Root Type for ServerIpmiLiveInfo
-   --  Information about the IPMI connectioj.
+   --  Information about the IPMI connection.
    --  ------------------------------
    type ServerIpmiLiveInfo_Type is
      record
@@ -7003,6 +7030,41 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : in out ServiceCategory_Type_Vectors.Vector);
+
+
+   --  ------------------------------
+   --  ServiceOrderPostResponse
+   --  Generic response returned after placing a service order. Contains invoice IDs for payment and the new service ID.
+   --  ------------------------------
+   type ServiceOrderPostResponse_Type is
+     record
+       Continue : Swagger.Nullable_Boolean;
+       Errors : Swagger.UString_Vectors.Vector;
+       Total_Cost : Swagger.Nullable_UString;
+       Iid : Swagger.Nullable_UString;
+       Iids : Swagger.UString_Vectors.Vector;
+       Real_Iids : Swagger.UString_Vectors.Vector;
+       Service_Id : Swagger.Nullable_Integer;
+       Invoice_Description : Swagger.Nullable_UString;
+     end record;
+
+
+   package ServiceOrderPostResponse_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => .Models.ServiceOrderPostResponse_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in .Models.ServiceOrderPostResponse_Type);
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in ServiceOrderPostResponse_Type_Vectors.Vector);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out .Models.ServiceOrderPostResponse_Type);
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : in out ServiceOrderPostResponse_Type_Vectors.Vector);
 
 
    --  ------------------------------

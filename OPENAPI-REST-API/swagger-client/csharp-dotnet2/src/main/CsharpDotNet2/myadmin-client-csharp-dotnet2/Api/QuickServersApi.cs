@@ -14,8 +14,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place QuickServer Order Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
         /// </summary>
-        /// <returns></returns>
-        void AddQs ();
+        /// <returns>ServiceOrderPostResponse</returns>
+        ServiceOrderPostResponse AddQs ();
         /// <summary>
         /// Delete QuickServer Backup Permanently removes the specified backup file from storage. Use &#x60;GET /qs/{id}/backups&#x60; to list available backup filenames before deleting.
         /// </summary>
@@ -307,8 +307,8 @@ namespace IO.Swagger.Api
         /// Update QuickServer Order Updates QuickServer metadata or stored settings associated with the order.
         /// </summary>
         /// <param name="id">QuickServer ID number.</param>
-        /// <returns></returns>
-        void UpdateQsInfo (string id);
+        /// <returns>SuccessTextResponse</returns>
+        SuccessTextResponse UpdateQsInfo (string id);
     }
   
     /// <summary>
@@ -367,8 +367,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Place QuickServer Order Places a QuickServer order. On success, invoices are generated for payment; use &#x60;/billing/invoices/{id}&#x60; or &#x60;/pay/{method}/{invoices}&#x60; to complete payment.
         /// </summary>
-        /// <returns></returns>
-        public void AddQs ()
+        /// <returns>ServiceOrderPostResponse</returns>
+        public ServiceOrderPostResponse AddQs ()
         {
     
             var path = "/qs/order";
@@ -392,7 +392,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AddQs: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (ServiceOrderPostResponse) ApiClient.Deserialize(response.Content, typeof(ServiceOrderPostResponse), response.Headers);
         }
     
         /// <summary>
@@ -2045,8 +2045,8 @@ if (password != null) formParams.Add("password", ApiClient.ParameterToString(pas
         /// Update QuickServer Order Updates QuickServer metadata or stored settings associated with the order.
         /// </summary>
         /// <param name="id">QuickServer ID number.</param>
-        /// <returns></returns>
-        public void UpdateQsInfo (string id)
+        /// <returns>SuccessTextResponse</returns>
+        public SuccessTextResponse UpdateQsInfo (string id)
         {
             // verify the required parameter 'id' is set
             if (id == null) throw new ApiException(400, "Missing required parameter 'id' when calling UpdateQsInfo");
@@ -2073,7 +2073,7 @@ if (password != null) formParams.Add("password", ApiClient.ParameterToString(pas
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UpdateQsInfo: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (SuccessTextResponse) ApiClient.Deserialize(response.Content, typeof(SuccessTextResponse), response.Headers);
         }
     
     }

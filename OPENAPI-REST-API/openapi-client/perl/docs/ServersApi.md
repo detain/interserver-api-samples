@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 
 # **add_server**
-> add_server()
+> AddServer200Response add_server()
 
 Place Server Order
 
@@ -58,7 +58,8 @@ my $api_instance = OpenAPIClient::ServersApi->new(
 
 
 eval {
-    $api_instance->add_server();
+    my $result = $api_instance->add_server();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ServersApi->add_server: $@\n";
@@ -70,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**AddServer200Response**](AddServer200Response.md)
 
 ### Authorization
 
@@ -1017,7 +1018,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_server_info**
-> update_server_info(id => $id)
+> SuccessTextResponse update_server_info(id => $id)
 
 Update Server Order
 
@@ -1046,7 +1047,8 @@ my $api_instance = OpenAPIClient::ServersApi->new(
 my $id = "id_example"; # string | Server ID number.
 
 eval {
-    $api_instance->update_server_info(id => $id);
+    my $result = $api_instance->update_server_info(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ServersApi->update_server_info: $@\n";
@@ -1061,7 +1063,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

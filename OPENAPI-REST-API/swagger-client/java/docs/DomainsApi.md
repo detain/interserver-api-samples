@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 <a name="addDomain"></a>
 # **addDomain**
-> addDomain()
+> ServiceOrderPostResponse addDomain()
 
 Place Domain Order
 
@@ -73,7 +73,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 DomainsApi apiInstance = new DomainsApi();
 try {
-    apiInstance.addDomain();
+    ServiceOrderPostResponse result = apiInstance.addDomain();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DomainsApi#addDomain");
     e.printStackTrace();
@@ -85,7 +86,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -2006,7 +2007,7 @@ Name | Type | Description  | Notes
 
 <a name="updateDomainInfo"></a>
 # **updateDomainInfo**
-> updateDomainInfo(id)
+> SuccessTextResponse updateDomainInfo(id)
 
 Update Domain Order
 
@@ -2044,7 +2045,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 DomainsApi apiInstance = new DomainsApi();
 String id = "id_example"; // String | The domain service ID. Use `domain_id` from `GET /domains`.
 try {
-    apiInstance.updateDomainInfo(id);
+    SuccessTextResponse result = apiInstance.updateDomainInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DomainsApi#updateDomainInfo");
     e.printStackTrace();
@@ -2059,7 +2061,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

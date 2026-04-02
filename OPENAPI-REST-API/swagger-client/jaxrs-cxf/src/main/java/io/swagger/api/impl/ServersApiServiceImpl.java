@@ -4,7 +4,8 @@ import io.swagger.api.*;
 import io.swagger.model.BuyItNowList;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.InlineResponse20019;
-import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20027;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OrderBuyNowServerBody;
 import io.swagger.model.ReverseDnsEntries;
@@ -44,10 +45,10 @@ public class ServersApiServiceImpl implements ServersApi {
      * Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
      *
      */
-    public void addServer() {
+    public InlineResponse20019 addServer() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -56,7 +57,7 @@ public class ServersApiServiceImpl implements ServersApi {
      * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
      *
      */
-    public InlineResponse20026 buyItNowServerOrder() {
+    public InlineResponse20027 buyItNowServerOrder() {
         // TODO: Implement...
         
         return null;
@@ -272,7 +273,7 @@ public class ServersApiServiceImpl implements ServersApi {
      * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
      *
      */
-    public InlineResponse20019 serversCancel(Integer id) {
+    public InlineResponse20020 serversCancel(Integer id) {
         // TODO: Implement...
         
         return null;
@@ -284,10 +285,10 @@ public class ServersApiServiceImpl implements ServersApi {
      * Updates settings on a dedicated server order.
      *
      */
-    public void updateServerInfo(String id) {
+    public SuccessTextResponse updateServerInfo(String id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

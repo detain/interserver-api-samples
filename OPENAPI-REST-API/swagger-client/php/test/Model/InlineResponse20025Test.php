@@ -78,16 +78,16 @@ class InlineResponse20025Test extends TestCase
     }
 
     /**
-     * Test attribute "text"
+     * Test attribute "message"
      */
-    public function testPropertyText()
+    public function testPropertyMessage()
     {
     }
 
     /**
-     * Test attribute "ticket"
+     * Test attribute "success"
      */
-    public function testPropertyTicket()
+    public function testPropertySuccess()
     {
     }
 }

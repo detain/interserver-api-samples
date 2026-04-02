@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **destinationPort** | [**kotlin.Int**](.md) |  |  [optional]
-**sourceIp** | [**kotlin.String**](.md) |  |  [optional]
+**sourceIp** | [**kotlin.String**](.md) | Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source. |  [optional]
 **sourcePort** | [**kotlin.Int**](.md) |  |  [optional]
 **protocolId** | [**inline**](#ProtocolId) | 1 &#x3D; TCP, 2 &#x3D; UDP | 
 **xdpAction** | [**inline**](#XdpAction) | 1 &#x3D; Block,  0 &#x3D; Whitelist | 

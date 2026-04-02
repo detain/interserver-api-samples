@@ -14,7 +14,7 @@
 
 import { mapValues } from '../runtime';
 /**
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  * @export
  * @interface ServerIpmiLiveInfo
  */

@@ -248,7 +248,7 @@ public class OASService implements OAS.MappedProperties {
         OASService service = new OASService();
           service.servicesId = 31;
           service.servicesName = 'OpenVZ VPS Slice';
-          service.servicesCost = 6.0;
+          service.servicesCost = 6;
           service.servicesCurrency = 'USD';
           service.servicesCategory = 1;
           service.servicesBuyable = true;

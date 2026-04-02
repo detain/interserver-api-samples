@@ -805,7 +805,7 @@ Name | Type | Description  | Notes
 
 
 # **update_account_info**
-> update_account_info(namecompanyaddressaddress2citystatezipcountryphonelocaleemail_invoicesemail_abusedisable_resetdisable_reinstalldisable_server_notificationsdisable_email_notificationsgstin)
+> SuccessTextResponse update_account_info(namecompanyaddressaddress2citystatezipcountryphonelocaleemail_invoicesemail_abusedisable_resetdisable_reinstalldisable_server_notificationsdisable_email_notificationsgstin)
 
 Update Account Information
 
@@ -855,7 +855,8 @@ gstin = 'gstin_example' # String |
 
 begin
   #Update Account Information
-  api_instance.update_account_info(namecompanyaddressaddress2citystatezipcountryphonelocaleemail_invoicesemail_abusedisable_resetdisable_reinstalldisable_server_notificationsdisable_email_notificationsgstin)
+  result = api_instance.update_account_info(namecompanyaddressaddress2citystatezipcountryphonelocaleemail_invoicesemail_abusedisable_resetdisable_reinstalldisable_server_notificationsdisable_email_notificationsgstin)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_info: #{e}"
 end
@@ -885,7 +886,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -899,7 +900,7 @@ nil (empty response body)
 
 
 # **update_account_info**
-> update_account_info(body)
+> SuccessTextResponse update_account_info(body)
 
 Update Account Information
 
@@ -933,7 +934,8 @@ body = SwaggerClient::AccountInfoPost.new # AccountInfoPost |
 
 begin
   #Update Account Information
-  api_instance.update_account_info(body)
+  result = api_instance.update_account_info(body)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_info: #{e}"
 end
@@ -947,7 +949,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -961,7 +963,7 @@ nil (empty response body)
 
 
 # **update_account_ip_limits**
-> update_account_ip_limits(start_end)
+> SuccessTextResponse update_account_ip_limits(start_end)
 
 Add IP Access Restriction
 
@@ -996,7 +998,8 @@ _end = '_end_example' # String |
 
 begin
   #Add IP Access Restriction
-  api_instance.update_account_ip_limits(start_end)
+  result = api_instance.update_account_ip_limits(start_end)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_ip_limits: #{e}"
 end
@@ -1011,7 +1014,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1025,7 +1028,7 @@ nil (empty response body)
 
 
 # **update_account_ip_limits**
-> update_account_ip_limits(body)
+> SuccessTextResponse update_account_ip_limits(body)
 
 Add IP Access Restriction
 
@@ -1059,7 +1062,8 @@ body = SwaggerClient::IpLimitRange.new # IpLimitRange | The lower and upper boun
 
 begin
   #Add IP Access Restriction
-  api_instance.update_account_ip_limits(body)
+  result = api_instance.update_account_ip_limits(body)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_ip_limits: #{e}"
 end
@@ -1073,7 +1077,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

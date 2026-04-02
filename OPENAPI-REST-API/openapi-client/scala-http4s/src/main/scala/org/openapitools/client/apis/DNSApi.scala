@@ -19,17 +19,18 @@ import org.openapitools.client.models.DnsRecord
 import org.openapitools.client.models.DnsRecordType
 import org.openapitools.client.models.GetAccountInfo401Response
 import scala.collection.immutable.Seq
+import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.*
 
 trait DNSApiEndpoints[F[*]] {
 
-  def addDnsDomain(domain: String, ip: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def addDnsDomain(domain: String, ip: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def addDnsRecord(id: String, name: String, `type`: DnsRecordType, content: String, ttl: Option[Int] = None, prio: Option[Int] = None)(using auth: _Authorization.ApiKey): F[Unit]
-  def deleteDnsDomain(id: String)(using auth: _Authorization.ApiKey): F[Unit]
-  def deleteDnsRecord(domainId: Int, recordId: Int)(using auth: _Authorization.ApiKey): F[Unit]
+  def deleteDnsDomain(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
+  def deleteDnsRecord(domainId: Int, recordId: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def getDnsDomain(id: Int)(using auth: _Authorization.ApiKey): F[Seq[DnsRecord]]
   def getDnsList()(using auth: _Authorization.ApiKey): F[Seq[DnsListItem]]
-  def updateDnsRecord(domainId: Int, recordId: Int, name: Option[String] = None, `type`: Option[DnsRecordType] = None, content: Option[String] = None, ttl: Option[String] = None, prio: Option[String] = None, disabled: Option[String] = None, ordername: Option[String] = None, auth: Option[String] = None)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateDnsRecord(domainId: Int, recordId: Int, name: Option[String] = None, `type`: Option[DnsRecordType] = None, content: Option[String] = None, ttl: Option[String] = None, prio: Option[String] = None, disabled: Option[String] = None, ordername: Option[String] = None, auth: Option[String] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
 }
 
@@ -43,7 +44,7 @@ class DNSApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addDnsDomain(domain: String, ip: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def addDnsDomain(domain: String, ip: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "multipart/form-data")
     ).flatten
@@ -52,7 +53,7 @@ class DNSApiEndpointsImpl[F[*]: Concurrent](
       Some(Seq("ip" -> ip))
     ).toSeq.flatten)
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/dns",
       body = None,
@@ -61,8 +62,8 @@ class DNSApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -92,12 +93,12 @@ class DNSApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def deleteDnsDomain(id: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def deleteDnsDomain(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "DELETE",
       path = s"/dns/${id}",
       body = None,
@@ -106,17 +107,17 @@ class DNSApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
-  override def deleteDnsRecord(domainId: Int, recordId: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def deleteDnsRecord(domainId: Int, recordId: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "DELETE",
       path = s"/dns/${domainId}/${recordId}",
       body = None,
@@ -125,8 +126,8 @@ class DNSApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -168,7 +169,7 @@ class DNSApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateDnsRecord(domainId: Int, recordId: Int, name: Option[String] = None, `type`: Option[DnsRecordType] = None, content: Option[String] = None, ttl: Option[String] = None, prio: Option[String] = None, disabled: Option[String] = None, ordername: Option[String] = None, auth: Option[String] = None)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateDnsRecord(domainId: Int, recordId: Int, name: Option[String] = None, `type`: Option[DnsRecordType] = None, content: Option[String] = None, ttl: Option[String] = None, prio: Option[String] = None, disabled: Option[String] = None, ordername: Option[String] = None, auth: Option[String] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "multipart/form-data")
     ).flatten
@@ -183,7 +184,7 @@ class DNSApiEndpointsImpl[F[*]: Concurrent](
       auth.map("auth" -> _).map(Seq(_))
     ).toSeq.flatten)
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/dns/${domainId}/${recordId}",
       body = None,
@@ -192,8 +193,8 @@ class DNSApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

@@ -12,6 +12,7 @@ import io.swagger.model.DnsRecord;
 import io.swagger.model.DnsRecordType;
 import io.swagger.model.DnsUpdateRecord;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.SuccessTextResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -47,14 +48,14 @@ public interface DnsApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "DNS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/dns",
         produces = { "application/json" }, 
         consumes = { "multipart/form-data", "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> addDnsDomain(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="domain", required=true)  String domain
+    ResponseEntity<SuccessTextResponse> addDnsDomain(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="domain", required=true)  String domain
 , @Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="ip", required=true)  String ip
 );
 
@@ -85,13 +86,13 @@ public interface DnsApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "DNS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/dns/{id}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteDnsDomain(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("id") String id
+    ResponseEntity<SuccessTextResponse> deleteDnsDomain(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("id") String id
 );
 
 
@@ -100,13 +101,13 @@ public interface DnsApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "DNS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/dns/{domainId}/{recordId}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("domainId") Integer domainId
+    ResponseEntity<SuccessTextResponse> deleteDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("domainId") Integer domainId
 , @Parameter(in = ParameterIn.PATH, description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.", required=true, schema=@Schema()) @PathVariable("recordId") Integer recordId
 );
 
@@ -145,14 +146,14 @@ public interface DnsApi {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "DNS" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
         
-        @ApiResponse(responseCode = "200", description = "Default response") })
+        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))) })
     @RequestMapping(value = "/dns/{domainId}/{recordId}",
         produces = { "application/json" }, 
         consumes = { "multipart/form-data", "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> updateDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("domainId") Integer domainId
+    ResponseEntity<SuccessTextResponse> updateDnsRecord(@Parameter(in = ParameterIn.PATH, description = "The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.", required=true, schema=@Schema()) @PathVariable("domainId") Integer domainId
 , @Parameter(in = ParameterIn.PATH, description = "The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.", required=true, schema=@Schema()) @PathVariable("recordId") Integer recordId
 , @Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="name", required=true)  String name
 , @Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestPart(value="type", required=true)  DnsRecordType type

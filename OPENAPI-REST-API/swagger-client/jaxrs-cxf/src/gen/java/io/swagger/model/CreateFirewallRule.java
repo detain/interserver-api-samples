@@ -24,8 +24,11 @@ public class CreateFirewallRule   {
   @Schema(example = "22", description = "")
   private Integer destinationPort = 80;
   
-  @Schema(example = "1.2.4.5", description = "")
-  private String sourceIp = "0";
+  @Schema(example = "1.2.4.5", description = "Source IP address to match. Use '0.0.0.0' to match any source.")
+ /**
+   * Source IP address to match. Use '0.0.0.0' to match any source.  
+  **/
+  private String sourceIp = "0.0.0.0";
   
   @Schema(example = "1302", description = "")
   private Integer sourcePort = 0;
@@ -115,7 +118,7 @@ public class CreateFirewallRule   {
   }
 
  /**
-   * Get sourceIp
+   * Source IP address to match. Use &#x27;0.0.0.0&#x27; to match any source.
    * @return sourceIp
   **/
   @JsonProperty("source_ip")

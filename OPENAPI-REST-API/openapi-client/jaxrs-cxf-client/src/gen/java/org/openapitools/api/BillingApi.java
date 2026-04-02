@@ -96,9 +96,9 @@ public interface BillingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Remove Credit Card", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void deleteAccountCreditCard(@PathParam("id") String id);
+        @ApiResponse(code = 200, message = "Simple string response", response = String.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public String deleteAccountCreditCard(@PathParam("id") String id);
 
     /**
      * Delete Credit Card
@@ -246,9 +246,9 @@ public interface BillingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get Shopping Cart Contents", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void getBillingCart();
+        @ApiResponse(code = 200, message = "Current shopping cart contents and available payment methods.", response = Object.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public Object getBillingCart();
 
     /**
      * Get Credit Card Verification Requirements
@@ -306,9 +306,9 @@ public interface BillingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List Prepay Balances", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void getBillingPrePays();
+        @ApiResponse(code = 200, message = "Prepay balances and metadata.", response = Object.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public Object getBillingPrePays();
 
     /**
      * Get Invoices
@@ -369,9 +369,9 @@ public interface BillingApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Update Credit Card", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class),
-        @ApiResponse(code = 200, message = "Default response") })
-    public void updateAccountCreditCard(@PathParam("id") Integer id);
+        @ApiResponse(code = 200, message = "Simple string response", response = String.class),
+        @ApiResponse(code = 401, message = "Unauthorized", response = GetAccountInfo401Response.class) })
+    public String updateAccountCreditCard(@PathParam("id") Integer id);
 
     /**
      * Configure Affiliate Dock Settings

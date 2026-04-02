@@ -28,66 +28,42 @@ class InlineResponse20024(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'message': 'str',
-        'success': 'bool'
+        'ips': 'dict(str, str)'
     }
 
     attribute_map = {
-        'message': 'message',
-        'success': 'success'
+        'ips': 'ips'
     }
 
-    def __init__(self, message=None, success=None):  # noqa: E501
+    def __init__(self, ips=None):  # noqa: E501
         """InlineResponse20024 - a model defined in Swagger"""  # noqa: E501
-        self._message = None
-        self._success = None
+        self._ips = None
         self.discriminator = None
-        if message is not None:
-            self.message = message
-        if success is not None:
-            self.success = success
+        if ips is not None:
+            self.ips = ips
 
     @property
-    def message(self):
-        """Gets the message of this InlineResponse20024.  # noqa: E501
+    def ips(self):
+        """Gets the ips of this InlineResponse20024.  # noqa: E501
 
+        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :return: The message of this InlineResponse20024.  # noqa: E501
-        :rtype: str
+        :return: The ips of this InlineResponse20024.  # noqa: E501
+        :rtype: dict(str, str)
         """
-        return self._message
+        return self._ips
 
-    @message.setter
-    def message(self, message):
-        """Sets the message of this InlineResponse20024.
+    @ips.setter
+    def ips(self, ips):
+        """Sets the ips of this InlineResponse20024.
 
+        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :param message: The message of this InlineResponse20024.  # noqa: E501
-        :type: str
-        """
-
-        self._message = message
-
-    @property
-    def success(self):
-        """Gets the success of this InlineResponse20024.  # noqa: E501
-
-
-        :return: The success of this InlineResponse20024.  # noqa: E501
-        :rtype: bool
-        """
-        return self._success
-
-    @success.setter
-    def success(self, success):
-        """Sets the success of this InlineResponse20024.
-
-
-        :param success: The success of this InlineResponse20024.  # noqa: E501
-        :type: bool
+        :param ips: The ips of this InlineResponse20024.  # noqa: E501
+        :type: dict(str, str)
         """
 
-        self._success = success
+        self._ips = ips
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -9,6 +9,7 @@ import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.InlineResponse2003;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
+import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.*;
@@ -29,10 +30,10 @@ public interface FloatingIpsApi {
 
 
     @Operation(summary = "Place Floating IP Order", operationId = "addFloatingIp", description = "Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first." , tags = {"Floating_IPs"})
+    @ApiResponse(responseCode = "200", description = "Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/floating_ips/order", produces = { "application/json" })
-    default Single<HttpResponse<Void>> addFloatingIp() {
+    default Single<HttpResponse<ServiceOrderPostResponse>> addFloatingIp() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -51,10 +52,10 @@ public interface FloatingIpsApi {
 
 
     @Operation(summary = "View Floating IP", operationId = "getFloatingIpInfo", description = "Returns detailed information about a specific Floating IP service including its current target IP assignment." , tags = {"Floating_IPs"})
+    @ApiResponse(responseCode = "200", description = "Detailed Floating IP service information.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Get(value = "/floating_ips/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> getFloatingIpInfo(@Parameter(description = "The Floating IP service ID. Use the ID from `GET /floating_ips`.") @PathVariable("id") Integer id) {
+    default Single<HttpResponse<Object>> getFloatingIpInfo(@Parameter(description = "The Floating IP service ID. Use the ID from `GET /floating_ips`.") @PathVariable("id") Integer id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -96,10 +97,10 @@ public interface FloatingIpsApi {
 
 
     @Operation(summary = "Get Floating IP Ordering Information", operationId = "getNewFloatingIp", description = "Retrieves available options and pricing for ordering a new Floating IP." , tags = {"Floating_IPs"})
+    @ApiResponse(responseCode = "200", description = "Available options and pricing for ordering a Floating IP.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Get(value = "/floating_ips/order", produces = { "application/json" })
-    default Single<HttpResponse<Void>> getNewFloatingIp() {
+    default Single<HttpResponse<Object>> getNewFloatingIp() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -140,10 +141,10 @@ public interface FloatingIpsApi {
 
 
     @Operation(summary = "Update Floating IP", operationId = "updateFloatingIpInfo", description = "Updates settings on a Floating IP service, such as its label or configuration metadata." , tags = {"Floating_IPs"})
+    @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.")
     @ApiResponse(responseCode = "401", description = "Unauthorized")
-    @ApiResponse(responseCode = "200", description = "Default response")
     @Post(value = "/floating_ips/{id}", produces = { "application/json" })
-    default Single<HttpResponse<Void>> updateFloatingIpInfo(@Parameter(description = "The Floating IP service ID. Use the ID from `GET /floating_ips`.") @PathVariable("id") String id) {
+    default Single<HttpResponse<SuccessTextResponse>> updateFloatingIpInfo(@Parameter(description = "The Floating IP service ID. Use the ID from `GET /floating_ips`.") @PathVariable("id") String id) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

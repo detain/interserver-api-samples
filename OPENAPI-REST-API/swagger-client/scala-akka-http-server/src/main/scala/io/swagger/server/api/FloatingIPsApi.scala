@@ -7,6 +7,7 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
 import io.swagger.server.model.ChargeInvoiceRows
 import io.swagger.server.model.IpObject
+import io.swagger.server.model.ServiceOrderPostResponse
 import io.swagger.server.model.SuccessTextResponse
 import io.swagger.server.model.inline_response_200_3
 import io.swagger.server.model.inline_response_401
@@ -172,16 +173,16 @@ class FloatingIPsApi(
 
 trait FloatingIPsApiService {
 
+  def addFloatingIp200(responseServiceOrderPostResponse: ServiceOrderPostResponse)(implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse]): Route =
+    complete((200, responseServiceOrderPostResponse))
   def addFloatingIp401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def addFloatingIp0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def addFloatingIp()
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def floatingIpsCancel200(responseinline_response_200_3: inline_response_200_3)(implicit toEntityMarshallerinline_response_200_3: ToEntityMarshaller[inline_response_200_3]): Route =
     complete((200, responseinline_response_200_3))
@@ -194,13 +195,13 @@ trait FloatingIPsApiService {
   def floatingIpsCancel(id: Int)
       (implicit toEntityMarshallerinline_response_200_3: ToEntityMarshaller[inline_response_200_3], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def getFloatingIpInfo200(responseObject: Object): Route =
+    complete((200, responseObject))
   def getFloatingIpInfo401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def getFloatingIpInfo0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Detailed Floating IP service information., DataType: Object
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def getFloatingIpInfo(id: Int)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
@@ -241,13 +242,13 @@ trait FloatingIPsApiService {
   def getFloatingIpsWelcomeEmail(id: Int)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def getNewFloatingIp200(responseObject: Object): Route =
+    complete((200, responseObject))
   def getNewFloatingIp401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def getNewFloatingIp0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: Available options and pricing for ordering a Floating IP., DataType: Object
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def getNewFloatingIp()
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
@@ -274,22 +275,24 @@ trait FloatingIPsApiService {
   def putFloatingIps()
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def updateFloatingIpInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
   def updateFloatingIpInfo401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
-  def updateFloatingIpInfo0: Route =
-    complete((0, "Default response"))
   /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 0, Message: Default response
    */
   def updateFloatingIpInfo(id: String)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
 }
 
 trait FloatingIPsApiMarshaller {
   implicit def fromRequestUnmarshallerIpObject: FromRequestUnmarshaller[IpObject]
 
+
+  implicit def toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -316,6 +319,8 @@ trait FloatingIPsApiMarshaller {
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

@@ -17,12 +17,13 @@ import ApiClient from "../ApiClient";
 import ChargeInvoiceRows from '../model/ChargeInvoiceRows';
 import IdBuyIpBody from '../model/IdBuyIpBody';
 import IdMigrationBody from '../model/IdMigrationBody';
-import InlineResponse20022 from '../model/InlineResponse20022';
 import InlineResponse20023 from '../model/InlineResponse20023';
 import InlineResponse20024 from '../model/InlineResponse20024';
 import InlineResponse20025 from '../model/InlineResponse20025';
+import InlineResponse20026 from '../model/InlineResponse20026';
 import InlineResponse401 from '../model/InlineResponse401';
 import ReverseDnsEntries from '../model/ReverseDnsEntries';
+import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 import TextResponse from '../model/TextResponse';
 import Website from '../model/Website';
@@ -54,7 +55,7 @@ export default class WebhostingApi {
      * Callback function to receive the result of the addWebsite operation.
      * @callback moduleapi/WebhostingApi~addWebsiteCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/ServiceOrderPostResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -62,6 +63,7 @@ export default class WebhostingApi {
      * Place Website Order
      * Places an order for a new webhosting package. Use &#x60;PUT /websites/order&#x60; to validate the order first.
      * @param {module:api/WebhostingApi~addWebsiteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addWebsite(callback) {
       
@@ -83,7 +85,7 @@ export default class WebhostingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServiceOrderPostResponse;
 
       return this.apiClient.callApi(
         '/websites/order', 'POST',
@@ -137,7 +139,7 @@ export default class WebhostingApi {
      * Callback function to receive the result of the getWebsiteBuyIp operation.
      * @callback moduleapi/WebhostingApi~getWebsiteBuyIpCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20023{ data The data returned by the service call.
+     * @param {module:model/InlineResponse20024{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -172,7 +174,7 @@ export default class WebhostingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse20023;
+      let returnType = InlineResponse20024;
 
       return this.apiClient.callApi(
         '/websites/{id}/buy_ip', 'GET',
@@ -508,7 +510,7 @@ export default class WebhostingApi {
      * Callback function to receive the result of the postWebsiteBuyIp operation.
      * @callback moduleapi/WebhostingApi~postWebsiteBuyIpCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20024{ data The data returned by the service call.
+     * @param {module:model/InlineResponse20025{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -553,7 +555,7 @@ export default class WebhostingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = ['application/json', 'multipart/form-data'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse20024;
+      let returnType = InlineResponse20025;
 
       return this.apiClient.callApi(
         '/websites/{id}/buy_ip', 'POST',
@@ -565,7 +567,7 @@ export default class WebhostingApi {
      * Callback function to receive the result of the postWebsiteMigration operation.
      * @callback moduleapi/WebhostingApi~postWebsiteMigrationCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20025{ data The data returned by the service call.
+     * @param {module:model/InlineResponse20026{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -670,7 +672,7 @@ export default class WebhostingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = ['application/json', 'multipart/form-data'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse20025;
+      let returnType = InlineResponse20026;
 
       return this.apiClient.callApi(
         '/websites/{id}/migration', 'POST',
@@ -780,7 +782,7 @@ export default class WebhostingApi {
      * Callback function to receive the result of the updateWebsiteInfo operation.
      * @callback moduleapi/WebhostingApi~updateWebsiteInfoCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {module:model/SuccessTextResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -789,6 +791,7 @@ export default class WebhostingApi {
      * Updates settings on a webhosting order.
      * @param {String} id The website service ID. Use &#x60;website_id&#x60; from &#x60;GET /websites&#x60;.
      * @param {module:api/WebhostingApi~updateWebsiteInfoCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateWebsiteInfo(id, callback) {
       
@@ -814,7 +817,7 @@ export default class WebhostingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = SuccessTextResponse;
 
       return this.apiClient.callApi(
         '/websites/{id}', 'POST',
@@ -826,7 +829,7 @@ export default class WebhostingApi {
      * Callback function to receive the result of the webhostingCancel operation.
      * @callback moduleapi/WebhostingApi~webhostingCancelCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse20022{ data The data returned by the service call.
+     * @param {module:model/InlineResponse20023{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -861,7 +864,7 @@ export default class WebhostingApi {
       let authNames = ['apiKeyAuth', 'sessionIdCookieAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse20022;
+      let returnType = InlineResponse20023;
 
       return this.apiClient.callApi(
         '/websites/{id}', 'DELETE',

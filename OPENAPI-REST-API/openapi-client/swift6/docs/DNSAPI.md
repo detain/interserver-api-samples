@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **addDnsDomain**
 ```swift
-    open class func addDnsDomain(domain: String, ip: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func addDnsDomain(domain: String, ip: String, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Create DNS Domain
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ Void (empty response body)
 
 # **deleteDnsDomain**
 ```swift
-    open class func deleteDnsDomain(id: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func deleteDnsDomain(id: String, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Delete DNS Domain
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -177,7 +177,7 @@ Void (empty response body)
 
 # **deleteDnsRecord**
 ```swift
-    open class func deleteDnsRecord(domainId: Int, recordId: Int, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func deleteDnsRecord(domainId: Int, recordId: Int, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Delete DNS Record
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -325,7 +325,7 @@ This endpoint does not need any parameter.
 
 # **updateDnsRecord**
 ```swift
-    open class func updateDnsRecord(domainId: Int, recordId: Int, name: String? = nil, type: DnsRecordType? = nil, content: String? = nil, ttl: String? = nil, prio: String? = nil, disabled: String? = nil, ordername: String? = nil, auth: String? = nil, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func updateDnsRecord(domainId: Int, recordId: Int, name: String? = nil, type: DnsRecordType? = nil, content: String? = nil, ttl: String? = nil, prio: String? = nil, disabled: String? = nil, ordername: String? = nil, auth: String? = nil, completion: @escaping (_ data: SuccessTextResponse?, _ error: Error?) -> Void)
 ```
 
 Update DNS Record
@@ -378,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

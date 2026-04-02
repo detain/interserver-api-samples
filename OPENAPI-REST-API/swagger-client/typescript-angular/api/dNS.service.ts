@@ -24,6 +24,7 @@ import { DnsRecord } from '../model/dnsRecord';
 import { DnsRecordType } from '../model/dnsRecordType';
 import { DnsUpdateRecord } from '../model/dnsUpdateRecord';
 import { InlineResponse401 } from '../model/inlineResponse401';
+import { SuccessTextResponse } from '../model/successTextResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -69,9 +70,9 @@ export class DNSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addDnsDomainForm(domain: string, ip: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addDnsDomainForm(domain: string, ip: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addDnsDomainForm(domain: string, ip: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addDnsDomainForm(domain: string, ip: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public addDnsDomainForm(domain: string, ip: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public addDnsDomainForm(domain: string, ip: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public addDnsDomainForm(domain: string, ip: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (domain === null || domain === undefined) {
@@ -134,7 +135,7 @@ export class DNSService {
             formParams = formParams.append('ip', <any>ip) as any || formParams;
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/dns`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/dns`,
             {
                 body: convertFormParamsToString ? formParams.toString() : formParams,
                 params: queryParameters,
@@ -153,9 +154,9 @@ export class DNSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addDnsDomain(body: DnsNewDomain, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addDnsDomain(body: DnsNewDomain, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addDnsDomain(body: DnsNewDomain, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addDnsDomain(body: DnsNewDomain, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public addDnsDomain(body: DnsNewDomain, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public addDnsDomain(body: DnsNewDomain, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public addDnsDomain(body: DnsNewDomain, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -200,7 +201,7 @@ export class DNSService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/dns`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/dns`,
             {
                 body: body,
                 params: queryParameters,
@@ -404,9 +405,9 @@ export class DNSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteDnsDomain(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteDnsDomain(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteDnsDomain(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteDnsDomain(id: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public deleteDnsDomain(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public deleteDnsDomain(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public deleteDnsDomain(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -445,7 +446,7 @@ export class DNSService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/dns/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('delete',`${this.basePath}/dns/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -464,9 +465,9 @@ export class DNSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public deleteDnsRecord(domainId: number, recordId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (domainId === null || domainId === undefined) {
@@ -509,7 +510,7 @@ export class DNSService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
+        return this.httpClient.request<SuccessTextResponse>('delete',`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -649,9 +650,9 @@ export class DNSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateDnsRecordForm(name: string, type: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string, domainId: number, recordId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateDnsRecordForm(name: string, type: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string, domainId: number, recordId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateDnsRecordForm(name: string, type: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string, domainId: number, recordId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateDnsRecordForm(name: string, type: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string, domainId: number, recordId: number, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateDnsRecordForm(name: string, type: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string, domainId: number, recordId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateDnsRecordForm(name: string, type: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string, domainId: number, recordId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateDnsRecordForm(name: string, type: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string, domainId: number, recordId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (name === null || name === undefined) {
@@ -764,7 +765,7 @@ export class DNSService {
             formParams = formParams.append('auth', <any>auth) as any || formParams;
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
             {
                 body: convertFormParamsToString ? formParams.toString() : formParams,
                 params: queryParameters,
@@ -785,9 +786,9 @@ export class DNSService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateDnsRecord(body: DnsUpdateRecord, domainId: number, recordId: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateDnsRecord(body: DnsUpdateRecord, domainId: number, recordId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateDnsRecord(body: DnsUpdateRecord, domainId: number, recordId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateDnsRecord(body: DnsUpdateRecord, domainId: number, recordId: number, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateDnsRecord(body: DnsUpdateRecord, domainId: number, recordId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateDnsRecord(body: DnsUpdateRecord, domainId: number, recordId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateDnsRecord(body: DnsUpdateRecord, domainId: number, recordId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -840,7 +841,7 @@ export class DNSService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`,
             {
                 body: body,
                 params: queryParameters,

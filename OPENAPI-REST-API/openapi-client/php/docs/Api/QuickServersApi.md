@@ -1,6 +1,6 @@
 # Interserver\MyAdmin\QuickServersApi
 
-Rapid Deploy Servers related services
+Rapid Deploy Servers (QuickServers) — pre-configured dedicated servers available for fast provisioning with OS reinstall, backup, and VNC capabilities.
 
 All URIs are relative to https://my.interserver.net/apiv2, except if the operation defines another base path.
 
@@ -55,7 +55,7 @@ All URIs are relative to https://my.interserver.net/apiv2, except if the operati
 ## `addQs()`
 
 ```php
-addQs()
+addQs(): \Interserver\MyAdmin\Model\ServiceOrderPostResponse
 ```
 
 Place QuickServer Order
@@ -93,7 +93,8 @@ $apiInstance = new Interserver\MyAdmin\Api\QuickServersApi(
 );
 
 try {
-    $apiInstance->addQs();
+    $result = $apiInstance->addQs();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuickServersApi->addQs: ', $e->getMessage(), PHP_EOL;
 }
@@ -105,7 +106,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\ServiceOrderPostResponse**](../Model/ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3143,7 +3144,7 @@ try {
 ## `updateQsInfo()`
 
 ```php
-updateQsInfo($id)
+updateQsInfo($id): \Interserver\MyAdmin\Model\SuccessTextResponse
 ```
 
 Update QuickServer Order
@@ -3182,7 +3183,8 @@ $apiInstance = new Interserver\MyAdmin\Api\QuickServersApi(
 $id = 'id_example'; // string | QuickServer ID number.
 
 try {
-    $apiInstance->updateQsInfo($id);
+    $result = $apiInstance->updateQsInfo($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuickServersApi->updateQsInfo: ', $e->getMessage(), PHP_EOL;
 }
@@ -3196,7 +3198,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Interserver\MyAdmin\Model\SuccessTextResponse**](../Model/SuccessTextResponse.md)
 
 ### Authorization
 

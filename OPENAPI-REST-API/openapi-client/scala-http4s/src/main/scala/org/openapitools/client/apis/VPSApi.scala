@@ -23,6 +23,7 @@ import org.openapitools.client.models.QueueResponse
 import org.openapitools.client.models.RestoreRequest
 import org.openapitools.client.models.ReverseDnsEntries
 import scala.collection.immutable.Seq
+import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.TextResponse
 import org.openapitools.client.models.VPSCancel200Response
@@ -39,7 +40,7 @@ import org.openapitools.client.models.*
 
 trait VPSApiEndpoints[F[*]] {
 
-  def addVps(vpsOrderPostRequest: Option[VpsOrderPostRequest] = None)(using auth: _Authorization.ApiKey): F[Unit]
+  def addVps(vpsOrderPostRequest: Option[VpsOrderPostRequest] = None)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def deleteVpsBackup(id: Int, file: String, all: Option[GetQsBackupsAllParameter] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def doVpsBlockSmtp(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def doVpsDisableCd(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
@@ -81,7 +82,7 @@ trait VPSApiEndpoints[F[*]] {
   def postVpsSlices(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def postVpsViewDesktop(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def putVps(vpsOrderPutRequest: Option[VpsOrderPutRequest] = None)(using auth: _Authorization.ApiKey): F[VpsOrderPutResponse]
-  def updateVpsInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit]
+  def updateVpsInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def vPSCancel(id: Int)(using auth: _Authorization.ApiKey): F[VPSCancel200Response]
 
 }
@@ -96,12 +97,12 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addVps(vpsOrderPostRequest: Option[VpsOrderPostRequest] = None)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def addVps(vpsOrderPostRequest: Option[VpsOrderPostRequest] = None)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[VpsOrderPostRequest, Unit](
+    _executeRequest[VpsOrderPostRequest, ServiceOrderPostResponse](
       method = "POST",
       path = s"/vps/order",
       body = vpsOrderPostRequest,
@@ -110,8 +111,8 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, ServiceOrderPostResponse]("ServiceOrderPostResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 
@@ -925,12 +926,12 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateVpsInfo(id: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def updateVpsInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[Unit, SuccessTextResponse](
       method = "POST",
       path = s"/vps/${id}",
       body = None,
@@ -939,8 +940,8 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
     }
   }
 

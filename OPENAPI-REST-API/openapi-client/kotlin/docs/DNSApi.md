@@ -15,7 +15,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addDnsDomain"></a>
 # **addDnsDomain**
-> addDnsDomain(domain, ip)
+> SuccessTextResponse addDnsDomain(domain, ip)
 
 Create DNS Domain
 
@@ -31,7 +31,8 @@ val apiInstance = DNSApi()
 val domain : kotlin.String = domain_example // kotlin.String | The domain name.
 val ip : kotlin.String = ip_example // kotlin.String | IP Address to point the domain to.
 try {
-    apiInstance.addDnsDomain(domain, ip)
+    val result : SuccessTextResponse = apiInstance.addDnsDomain(domain, ip)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DNSApi#addDnsDomain")
     e.printStackTrace()
@@ -49,7 +50,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -135,7 +136,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="deleteDnsDomain"></a>
 # **deleteDnsDomain**
-> deleteDnsDomain(id)
+> SuccessTextResponse deleteDnsDomain(id)
 
 Delete DNS Domain
 
@@ -150,7 +151,8 @@ Deletes a DNS domain and all of its associated records from the DNS servers. Thi
 val apiInstance = DNSApi()
 val id : kotlin.String = id_example // kotlin.String | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 try {
-    apiInstance.deleteDnsDomain(id)
+    val result : SuccessTextResponse = apiInstance.deleteDnsDomain(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DNSApi#deleteDnsDomain")
     e.printStackTrace()
@@ -167,7 +169,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -189,7 +191,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="deleteDnsRecord"></a>
 # **deleteDnsRecord**
-> deleteDnsRecord(domainId, recordId)
+> SuccessTextResponse deleteDnsRecord(domainId, recordId)
 
 Delete DNS Record
 
@@ -205,7 +207,8 @@ val apiInstance = DNSApi()
 val domainId : kotlin.Int = 56 // kotlin.Int | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 val recordId : kotlin.Int = 56 // kotlin.Int | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 try {
-    apiInstance.deleteDnsRecord(domainId, recordId)
+    val result : SuccessTextResponse = apiInstance.deleteDnsRecord(domainId, recordId)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DNSApi#deleteDnsRecord")
     e.printStackTrace()
@@ -223,7 +226,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -352,7 +355,7 @@ Configure sessionIdHeaderAuth:
 
 <a id="updateDnsRecord"></a>
 # **updateDnsRecord**
-> updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
+> SuccessTextResponse updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
 
 Update DNS Record
 
@@ -376,7 +379,8 @@ val disabled : kotlin.String = disabled_example // kotlin.String |
 val ordername : kotlin.String = ordername_example // kotlin.String | 
 val auth : kotlin.String = auth_example // kotlin.String | 
 try {
-    apiInstance.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
+    val result : SuccessTextResponse = apiInstance.updateDnsRecord(domainId, recordId, name, type, content, ttl, prio, disabled, ordername, auth)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DNSApi#updateDnsRecord")
     e.printStackTrace()
@@ -402,7 +406,7 @@ try {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

@@ -54,7 +54,7 @@ Method | HTTP request | Description
 [**update_qs_info**](QuickServersApi.md#update_qs_info) | **POST** /qs/{id} | Update QuickServer Order
 
 # **add_qs**
-> add_qs
+> ServiceOrderPostResponse add_qs
 
 Place QuickServer Order
 
@@ -86,7 +86,8 @@ api_instance = SwaggerClient::QuickServersApi.new
 
 begin
   #Place QuickServer Order
-  api_instance.add_qs
+  result = api_instance.add_qs
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling QuickServersApi->add_qs: #{e}"
 end
@@ -97,7 +98,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3015,7 +3016,7 @@ Name | Type | Description  | Notes
 
 
 # **update_qs_info**
-> update_qs_info(id)
+> SuccessTextResponse update_qs_info(id)
 
 Update QuickServer Order
 
@@ -3049,7 +3050,8 @@ id = 'id_example' # String | QuickServer ID number.
 
 begin
   #Update QuickServer Order
-  api_instance.update_qs_info(id)
+  result = api_instance.update_qs_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling QuickServersApi->update_qs_info: #{e}"
 end
@@ -3063,7 +3065,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

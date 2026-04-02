@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**update_floating_ip_info**](FloatingIPsApi.md#update_floating_ip_info) | **POST** /floating_ips/{id} | Update Floating IP
 
 # **add_floating_ip**
-> add_floating_ip
+> ServiceOrderPostResponse add_floating_ip
 
 Place Floating IP Order
 
@@ -49,7 +49,8 @@ api_instance = SwaggerClient::FloatingIPsApi.new
 
 begin
   #Place Floating IP Order
-  api_instance.add_floating_ip
+  result = api_instance.add_floating_ip
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->add_floating_ip: #{e}"
 end
@@ -60,7 +61,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -137,7 +138,7 @@ Name | Type | Description  | Notes
 
 
 # **get_floating_ip_info**
-> get_floating_ip_info(id)
+> Object get_floating_ip_info(id)
 
 View Floating IP
 
@@ -171,7 +172,8 @@ id = 56 # Integer | The Floating IP service ID. Use the ID from `GET /floating_i
 
 begin
   #View Floating IP
-  api_instance.get_floating_ip_info(id)
+  result = api_instance.get_floating_ip_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_floating_ip_info: #{e}"
 end
@@ -185,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -382,7 +384,7 @@ Name | Type | Description  | Notes
 
 
 # **get_new_floating_ip**
-> get_new_floating_ip
+> Object get_new_floating_ip
 
 Get Floating IP Ordering Information
 
@@ -414,7 +416,8 @@ api_instance = SwaggerClient::FloatingIPsApi.new
 
 begin
   #Get Floating IP Ordering Information
-  api_instance.get_new_floating_ip
+  result = api_instance.get_new_floating_ip
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_new_floating_ip: #{e}"
 end
@@ -425,7 +428,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**Object**
 
 ### Authorization
 
@@ -626,7 +629,7 @@ nil (empty response body)
 
 
 # **update_floating_ip_info**
-> update_floating_ip_info(id)
+> SuccessTextResponse update_floating_ip_info(id)
 
 Update Floating IP
 
@@ -660,7 +663,8 @@ id = 'id_example' # String | The Floating IP service ID. Use the ID from `GET /f
 
 begin
   #Update Floating IP
-  api_instance.update_floating_ip_info(id)
+  result = api_instance.update_floating_ip_info(id)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->update_floating_ip_info: #{e}"
 end
@@ -674,7 +678,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

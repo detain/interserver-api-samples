@@ -4,7 +4,8 @@ import six
 from myadmin-client-python-flask.models.buy_it_now_list import BuyItNowList  # noqa: E501
 from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoiceRows  # noqa: E501
 from myadmin-client-python-flask.models.inline_response20019 import InlineResponse20019  # noqa: E501
-from myadmin-client-python-flask.models.inline_response20026 import InlineResponse20026  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20020 import InlineResponse20020  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20027 import InlineResponse20027  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.order_buy_now_server_body import OrderBuyNowServerBody  # noqa: E501
 from myadmin-client-python-flask.models.reverse_dns_entries import ReverseDnsEntries  # noqa: E501
@@ -27,7 +28,7 @@ def add_server():  # noqa: E501
     Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first. # noqa: E501
 
 
-    :rtype: None
+    :rtype: InlineResponse20019
     """
     return 'do some magic!'
 
@@ -38,7 +39,7 @@ def buy_it_now_server_order():  # noqa: E501
     Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;. # noqa: E501
 
 
-    :rtype: InlineResponse20026
+    :rtype: InlineResponse20027
     """
     return 'do some magic!'
 
@@ -288,7 +289,7 @@ def servers_cancel(id):  # noqa: E501
     :param id: Server ID number
     :type id: int
 
-    :rtype: InlineResponse20019
+    :rtype: InlineResponse20020
     """
     return 'do some magic!'
 
@@ -301,6 +302,6 @@ def update_server_info(id):  # noqa: E501
     :param id: Server ID number.
     :type id: str
 
-    :rtype: None
+    :rtype: SuccessTextResponse
     """
     return 'do some magic!'

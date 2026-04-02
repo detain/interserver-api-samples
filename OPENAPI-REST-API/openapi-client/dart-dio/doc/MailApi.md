@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 
 # **addMail**
-> addMail()
+> ServiceOrderPostResponse addMail()
 
 Place Mail Order
 
@@ -63,7 +63,8 @@ import 'package:openapi/api.dart';
 final api = Openapi().getMailApi();
 
 try {
-    api.addMail();
+    final response = api.addMail();
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling MailApi->addMail: $e\n');
 }
@@ -74,7 +75,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -1360,7 +1361,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateMailInfo**
-> updateMailInfo(id)
+> SuccessTextResponse updateMailInfo(id)
 
 Update Mail Order
 
@@ -1386,7 +1387,8 @@ final api = Openapi().getMailApi();
 final String id = id_example; // String | The mail service ID. Use `mail_id` from `GET /mail`.
 
 try {
-    api.updateMailInfo(id);
+    final response = api.updateMailInfo(id);
+    print(response);
 } on DioException catch (e) {
     print('Exception when calling MailApi->updateMailInfo: $e\n');
 }
@@ -1400,7 +1402,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -1445,14 +1447,14 @@ final String from = me@sender.com; // String | Filter by SMTP envelope `MAIL FRO
 final String to = you@receiver.com; // String | Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
 final String subject = Your order has shipped; // String | Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
 final String mailid = 185997065c60008840; // String | Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
-final String messageId = <abc123@yourdomain.com>; // String | Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+final String messageId = <abc123@yourdomain.com>; // String | Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
 final String replyto = replies@sender.com; // String | Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
 final String headerfrom = newsletter@sender.com; // String | Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
 final int delivered = 1; // int | Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
 final int skip = 0; // int | Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
 final int limit = 100; // int | Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
 final ViewMailLogStartDateParameter startDate = 1641781008; // ViewMailLogStartDateParameter | Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
-final ViewMailLogStartDateParameter endDate = 1673317008; // ViewMailLogStartDateParameter | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+final ViewMailLogStartDateParameter endDate = 1673317008; // ViewMailLogStartDateParameter | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
 final String sort = time; // String | Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
 final String dir = desc; // String | Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
 final String groupby = recipient; // String | Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.
@@ -1477,14 +1479,14 @@ Name | Type | Description  | Notes
  **to** | **String**| Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved. | [optional] 
  **subject** | **String**| Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response. | [optional] 
  **mailid** | **String**| Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`. | [optional] 
- **messageId** | **String**| Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`. | [optional] 
+ **messageId** | **String**| Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`. | [optional] 
  **replyto** | **String**| Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set. | [optional] 
  **headerfrom** | **String**| Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address. | [optional] 
  **delivered** | **int**| Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status. | [optional] 
  **skip** | **int**| Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip). | [optional] [default to 0]
  **limit** | **int**| Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages. | [optional] [default to 100]
  **startDate** | [**ViewMailLogStartDateParameter**](.md)| Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included. | [optional] 
- **endDate** | [**ViewMailLogStartDateParameter**](.md)| Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included. | [optional] 
+ **endDate** | [**ViewMailLogStartDateParameter**](.md)| Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included. | [optional] 
  **sort** | **String**| Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order). | [optional] [default to 'time']
  **dir** | **String**| Sort direction.  `desc` returns newest first (default), `asc` returns oldest first. | [optional] [default to 'desc']
  **groupby** | **String**| Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode. | [optional] [default to 'recipient']

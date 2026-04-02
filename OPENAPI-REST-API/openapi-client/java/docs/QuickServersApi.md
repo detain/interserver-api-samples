@@ -52,7 +52,7 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 <a id="addQs"></a>
 # **addQs**
-> addQs()
+> ServiceOrderPostResponse addQs()
 
 Place QuickServer Order
 
@@ -93,7 +93,8 @@ public class Example {
 
     QuickServersApi apiInstance = new QuickServersApi(defaultClient);
     try {
-      apiInstance.addQs();
+      ServiceOrderPostResponse result = apiInstance.addQs();
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling QuickServersApi#addQs");
       System.err.println("Status code: " + e.getCode());
@@ -110,7 +111,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -124,8 +125,8 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 <a id="deleteQsBackup"></a>
 # **deleteQsBackup**
@@ -3567,7 +3568,7 @@ public class Example {
 
 <a id="updateQsInfo"></a>
 # **updateQsInfo**
-> updateQsInfo(id)
+> SuccessTextResponse updateQsInfo(id)
 
 Update QuickServer Order
 
@@ -3609,7 +3610,8 @@ public class Example {
     QuickServersApi apiInstance = new QuickServersApi(defaultClient);
     String id = "id_example"; // String | QuickServer ID number.
     try {
-      apiInstance.updateQsInfo(id);
+      SuccessTextResponse result = apiInstance.updateQsInfo(id);
+      System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling QuickServersApi#updateQsInfo");
       System.err.println("Status code: " + e.getCode());
@@ -3629,7 +3631,7 @@ public class Example {
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -3643,6 +3645,6 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 

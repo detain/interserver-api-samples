@@ -16,6 +16,7 @@ module SwaggerClient
   class CreateFirewallRule
     attr_accessor :destination_port
 
+    # Source IP address to match. Use '0.0.0.0' to match any source.
     attr_accessor :source_ip
 
     attr_accessor :source_port
@@ -100,7 +101,7 @@ module SwaggerClient
       if attributes.key?(:'source_ip')
         self.source_ip = attributes[:'source_ip']
       else
-        self.source_ip = '0'
+        self.source_ip = '0.0.0.0'
       end
 
       if attributes.key?(:'source_port')

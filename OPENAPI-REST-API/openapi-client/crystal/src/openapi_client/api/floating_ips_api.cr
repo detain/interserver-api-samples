@@ -19,15 +19,15 @@ module OpenAPIClient
     end
     # Place Floating IP Order
     # Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_floating_ip()
-      add_floating_ip_with_http_info()
-      nil
+      data, _status_code, _headers = add_floating_ip_with_http_info()
+      data
     end
 
     # Place Floating IP Order
     # Places an order for a new Floating IP service. Use &#x60;PUT /floating_ips/order&#x60; to validate the order first.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_floating_ip_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: FloatingIPsApi.add_floating_ip ..."}
@@ -71,7 +71,7 @@ module OpenAPIClient
         Log.debug {"API called: FloatingIPsApi#add_floating_ip\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return ServiceOrderPostResponse.from_json(data), status_code, headers
     end
 
     # Cancel Floating IP
@@ -140,16 +140,16 @@ module OpenAPIClient
     # View Floating IP
     # Returns detailed information about a specific Floating IP service including its current target IP assignment.
     # @param id [Int32] The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
-    # @return [nil]
+    # @return [JSON::Any]
     def get_floating_ip_info(id : Int32)
-      get_floating_ip_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = get_floating_ip_info_with_http_info(id)
+      data
     end
 
     # View Floating IP
     # Returns detailed information about a specific Floating IP service including its current target IP assignment.
     # @param id [Int32] The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(JSON::Any, Integer, Hash)>] JSON::Any data, response status code and response headers
     def get_floating_ip_info_with_http_info(id : Int32)
       if @api_client.config.debugging
         Log.debug {"Calling API: FloatingIPsApi.get_floating_ip_info ..."}
@@ -197,7 +197,7 @@ module OpenAPIClient
         Log.debug {"API called: FloatingIPsApi#get_floating_ip_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return JSON::Any.from_json(data), status_code, headers
     end
 
     # Get Floating IP Invoices
@@ -385,15 +385,15 @@ module OpenAPIClient
 
     # Get Floating IP Ordering Information
     # Retrieves available options and pricing for ordering a new Floating IP.
-    # @return [nil]
+    # @return [JSON::Any]
     def get_new_floating_ip()
-      get_new_floating_ip_with_http_info()
-      nil
+      data, _status_code, _headers = get_new_floating_ip_with_http_info()
+      data
     end
 
     # Get Floating IP Ordering Information
     # Retrieves available options and pricing for ordering a new Floating IP.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(JSON::Any, Integer, Hash)>] JSON::Any data, response status code and response headers
     def get_new_floating_ip_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: FloatingIPsApi.get_new_floating_ip ..."}
@@ -437,7 +437,7 @@ module OpenAPIClient
         Log.debug {"API called: FloatingIPsApi#get_new_floating_ip\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return JSON::Any.from_json(data), status_code, headers
     end
 
     # Change Floating IP Target
@@ -572,16 +572,16 @@ module OpenAPIClient
     # Update Floating IP
     # Updates settings on a Floating IP service, such as its label or configuration metadata.
     # @param id [String] The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_floating_ip_info(id : String)
-      update_floating_ip_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_floating_ip_info_with_http_info(id)
+      data
     end
 
     # Update Floating IP
     # Updates settings on a Floating IP service, such as its label or configuration metadata.
     # @param id [String] The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_floating_ip_info_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: FloatingIPsApi.update_floating_ip_info ..."}
@@ -629,7 +629,7 @@ module OpenAPIClient
         Log.debug {"API called: FloatingIPsApi#update_floating_ip_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
   end
 end

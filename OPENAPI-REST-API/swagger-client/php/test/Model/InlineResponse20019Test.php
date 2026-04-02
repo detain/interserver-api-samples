@@ -78,16 +78,23 @@ class InlineResponse20019Test extends TestCase
     }
 
     /**
-     * Test attribute "success"
+     * Test attribute "text"
      */
-    public function testPropertySuccess()
+    public function testPropertyText()
     {
     }
 
     /**
-     * Test attribute "text"
+     * Test attribute "invoice"
      */
-    public function testPropertyText()
+    public function testPropertyInvoice()
+    {
+    }
+
+    /**
+     * Test attribute "order"
+     */
+    public function testPropertyOrder()
     {
     }
 }

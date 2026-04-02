@@ -94,11 +94,12 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\InlineResponse20019
      */
     public function addServer()
     {
-        $this->addServerWithHttpInfo();
+        list($response) = $this->addServerWithHttpInfo();
+        return $response;
     }
 
     /**
@@ -109,11 +110,11 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20019, HTTP status code, HTTP response headers (array of strings)
      */
     public function addServerWithHttpInfo()
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20019';
         $request = $this->addServerRequest();
 
         try {
@@ -144,10 +145,32 @@ class ServersApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\InlineResponse20019',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -191,14 +214,28 @@ class ServersApi
      */
     public function addServerAsyncWithHttpInfo()
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20019';
         $request = $this->addServerRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -323,7 +360,7 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Interserver\MyAdmin\Model\InlineResponse20026
+     * @return \Interserver\MyAdmin\Model\InlineResponse20027
      */
     public function buyItNowServerOrder()
     {
@@ -339,11 +376,11 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Interserver\MyAdmin\Model\InlineResponse20026, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20027, HTTP status code, HTTP response headers (array of strings)
      */
     public function buyItNowServerOrderWithHttpInfo()
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20026';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20027';
         $request = $this->buyItNowServerOrderRequest();
 
         try {
@@ -395,7 +432,7 @@ class ServersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Interserver\MyAdmin\Model\InlineResponse20026',
+                        '\Interserver\MyAdmin\Model\InlineResponse20027',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -443,7 +480,7 @@ class ServersApi
      */
     public function buyItNowServerOrderAsyncWithHttpInfo()
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20026';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20027';
         $request = $this->buyItNowServerOrderRequest();
 
         return $this->client
@@ -5465,7 +5502,7 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Interserver\MyAdmin\Model\InlineResponse20019
+     * @return \Interserver\MyAdmin\Model\InlineResponse20020
      */
     public function serversCancel($id)
     {
@@ -5482,11 +5519,11 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Interserver\MyAdmin\Model\InlineResponse20019, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\InlineResponse20020, HTTP status code, HTTP response headers (array of strings)
      */
     public function serversCancelWithHttpInfo($id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20019';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20020';
         $request = $this->serversCancelRequest($id);
 
         try {
@@ -5538,7 +5575,7 @@ class ServersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Interserver\MyAdmin\Model\InlineResponse20019',
+                        '\Interserver\MyAdmin\Model\InlineResponse20020',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5588,7 +5625,7 @@ class ServersApi
      */
     public function serversCancelAsyncWithHttpInfo($id)
     {
-        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20019';
+        $returnType = '\Interserver\MyAdmin\Model\InlineResponse20020';
         $request = $this->serversCancelRequest($id);
 
         return $this->client
@@ -5750,11 +5787,12 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Interserver\MyAdmin\Model\SuccessTextResponse
      */
     public function updateServerInfo($id)
     {
-        $this->updateServerInfoWithHttpInfo($id);
+        list($response) = $this->updateServerInfoWithHttpInfo($id);
+        return $response;
     }
 
     /**
@@ -5766,11 +5804,11 @@ class ServersApi
      *
      * @throws \Interserver\MyAdmin\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Interserver\MyAdmin\Model\SuccessTextResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateServerInfoWithHttpInfo($id)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateServerInfoRequest($id);
 
         try {
@@ -5801,10 +5839,32 @@ class ServersApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Interserver\MyAdmin\Model\SuccessTextResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5850,14 +5910,28 @@ class ServersApi
      */
     public function updateServerInfoAsyncWithHttpInfo($id)
     {
-        $returnType = '';
+        $returnType = '\Interserver\MyAdmin\Model\SuccessTextResponse';
         $request = $this->updateServerInfoRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

@@ -18,7 +18,7 @@ import (
 // checks if the ServerIpmiLiveInfo type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerIpmiLiveInfo{}
 
-// ServerIpmiLiveInfo Information about the IPMI connectioj.
+// ServerIpmiLiveInfo Information about the IPMI connection.
 type ServerIpmiLiveInfo struct {
 	Text *string `json:"text,omitempty"`
 	PublicIp *string `json:"public_ip,omitempty"`

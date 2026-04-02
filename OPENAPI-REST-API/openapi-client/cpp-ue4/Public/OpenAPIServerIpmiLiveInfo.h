@@ -20,7 +20,7 @@ namespace OpenAPI
 /*
  * OpenAPIServerIpmiLiveInfo
  *
- * Information about the IPMI connectioj.
+ * Information about the IPMI connection.
  */
 class OPENAPI_API OpenAPIServerIpmiLiveInfo : public Model
 {

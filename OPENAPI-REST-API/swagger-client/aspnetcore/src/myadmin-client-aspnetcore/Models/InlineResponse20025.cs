@@ -27,20 +27,18 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20025 : IEquatable<InlineResponse20025>
     { 
         /// <summary>
-        /// Confirmation message.
+        /// Gets or Sets Message
         /// </summary>
-        /// <value>Confirmation message.</value>
 
-        [DataMember(Name="text")]
-        public string Text { get; set; }
+        [DataMember(Name="message")]
+        public string Message { get; set; }
 
         /// <summary>
-        /// The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.
+        /// Gets or Sets Success
         /// </summary>
-        /// <value>The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.</value>
 
-        [DataMember(Name="ticket")]
-        public int? Ticket { get; set; }
+        [DataMember(Name="success")]
+        public bool? Success { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,8 +48,8 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20025 {\n");
-            sb.Append("  Text: ").Append(Text).Append("\n");
-            sb.Append("  Ticket: ").Append(Ticket).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,14 +87,14 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
+                    Message == other.Message ||
+                    Message != null &&
+                    Message.Equals(other.Message)
                 ) && 
                 (
-                    Ticket == other.Ticket ||
-                    Ticket != null &&
-                    Ticket.Equals(other.Ticket)
+                    Success == other.Success ||
+                    Success != null &&
+                    Success.Equals(other.Success)
                 );
         }
 
@@ -110,10 +108,10 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Text != null)
-                    hashCode = hashCode * 59 + Text.GetHashCode();
-                    if (Ticket != null)
-                    hashCode = hashCode * 59 + Ticket.GetHashCode();
+                    if (Message != null)
+                    hashCode = hashCode * 59 + Message.GetHashCode();
+                    if (Success != null)
+                    hashCode = hashCode * 59 + Success.GetHashCode();
                 return hashCode;
             }
         }

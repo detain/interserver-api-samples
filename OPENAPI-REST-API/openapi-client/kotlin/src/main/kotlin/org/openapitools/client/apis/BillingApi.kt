@@ -326,19 +326,20 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Remove Credit Card
      * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
-     * @return void
+     * @return kotlin.String
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun deleteAccountCreditCard(id: kotlin.String) : Unit {
+    fun deleteAccountCreditCard(id: kotlin.String) : kotlin.String {
         val localVarResponse = deleteAccountCreditCardWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.String
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -357,15 +358,16 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Remove Credit Card
      * Removes a credit card from the account. If this is the default payment method, select a new default via &#x60;/billing/payment_method&#x60; afterward.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.String?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun deleteAccountCreditCardWithHttpInfo(id: kotlin.String) : ApiResponse<Unit?> {
+    fun deleteAccountCreditCardWithHttpInfo(id: kotlin.String) : ApiResponse<kotlin.String?> {
         val localVariableConfig = deleteAccountCreditCardRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.String>(
             localVariableConfig
         )
     }
@@ -1051,19 +1053,20 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * GET /billing/cart
      * Get Shopping Cart Contents
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
-     * @return void
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getBillingCart() : Unit {
+    fun getBillingCart() : kotlin.Any {
         val localVarResponse = getBillingCartWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1081,15 +1084,16 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * GET /billing/cart
      * Get Shopping Cart Contents
      * Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to &#x60;/pay/{method}/{invoices}&#x60;.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getBillingCartWithHttpInfo() : ApiResponse<Unit?> {
+    fun getBillingCartWithHttpInfo() : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getBillingCartRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }
@@ -1335,19 +1339,20 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * GET /billing/prepays
      * List Prepay Balances
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
-     * @return void
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getBillingPrePays() : Unit {
+    fun getBillingPrePays() : kotlin.Any {
         val localVarResponse = getBillingPrePaysWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1365,15 +1370,16 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * GET /billing/prepays
      * List Prepay Balances
      * Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting &#x60;prepay&#x60; as a payment method.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getBillingPrePaysWithHttpInfo() : ApiResponse<Unit?> {
+    fun getBillingPrePaysWithHttpInfo() : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getBillingPrePaysRequestConfig()
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }
@@ -1671,19 +1677,20 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Update Credit Card
      * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
-     * @return void
+     * @return kotlin.String
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
      * @throws ClientException If the API returns a client error response
      * @throws ServerException If the API returns a server error response
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun updateAccountCreditCard(id: kotlin.Int) : Unit {
+    fun updateAccountCreditCard(id: kotlin.Int) : kotlin.String {
         val localVarResponse = updateAccountCreditCardWithHttpInfo(id = id)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.String
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1702,15 +1709,16 @@ open class BillingApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * Update Credit Card
      * Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
      * @param id The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;.
-     * @return ApiResponse<Unit?>
+     * @return ApiResponse<kotlin.String?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
+    @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun updateAccountCreditCardWithHttpInfo(id: kotlin.Int) : ApiResponse<Unit?> {
+    fun updateAccountCreditCardWithHttpInfo(id: kotlin.Int) : ApiResponse<kotlin.String?> {
         val localVariableConfig = updateAccountCreditCardRequestConfig(id = id)
 
-        return request<Unit, Unit>(
+        return request<Unit, kotlin.String>(
             localVariableConfig
         )
     }

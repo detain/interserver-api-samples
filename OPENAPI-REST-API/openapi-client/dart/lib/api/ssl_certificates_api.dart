@@ -49,11 +49,19 @@ class SSLCertificatesApi {
   /// Place SSL Cert Order
   ///
   /// Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
-  Future<void> addSsl() async {
+  Future<ServiceOrderPostResponse?> addSsl() async {
     final response = await addSslWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ServiceOrderPostResponse',) as ServiceOrderPostResponse;
+    
+    }
+    return null;
   }
 
   /// SSL Cert Ordering Information
@@ -89,11 +97,19 @@ class SSLCertificatesApi {
   /// SSL Cert Ordering Information
   ///
   /// Retrieves available SSL certificate types and pricing for ordering.
-  Future<void> getNewSsl() async {
+  Future<Object?> getNewSsl() async {
     final response = await getNewSslWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+    
+    }
+    return null;
   }
 
   /// Get SSL Cert Info
@@ -140,11 +156,19 @@ class SSLCertificatesApi {
   ///
   /// * [int] id (required):
   ///   SSL certificate ID number.
-  Future<void> getSslInfo(int id,) async {
+  Future<Object?> getSslInfo(int id,) async {
     final response = await getSslInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+    
+    }
+    return null;
   }
 
   /// Get SSL Cert Invoices
@@ -448,10 +472,18 @@ class SSLCertificatesApi {
   ///
   /// * [String] id (required):
   ///   SSL certificate ID number.
-  Future<void> updateSslInfo(String id,) async {
+  Future<SuccessTextResponse?> updateSslInfo(String id,) async {
     final response = await updateSslInfoWithHttpInfo(id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuccessTextResponse',) as SuccessTextResponse;
+    
+    }
+    return null;
   }
 }

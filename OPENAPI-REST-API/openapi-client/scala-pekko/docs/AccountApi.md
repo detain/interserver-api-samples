@@ -1096,7 +1096,7 @@ ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
 ## updateAccountInfo
 
-> updateAccountInfo(updateAccountInfoRequest): ApiRequest[Unit]
+> updateAccountInfo(updateAccountInfoRequest): ApiRequest[SuccessTextResponse]
 
 Update Account Information
 
@@ -1106,6 +1106,7 @@ Updates the stored contact and billing information on your account. Submit only 
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -1173,6 +1174,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling AccountApi#updateAccountInfo")
@@ -1213,8 +1215,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -1228,14 +1230,14 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
 | **422** | Validation error while updating account data. |  -  |
-| **0** | Default response |  -  |
 
 
 ## updateAccountIpLimits
 
-> updateAccountIpLimits(updateAccountIpLimitsRequest): ApiRequest[Unit]
+> updateAccountIpLimits(updateAccountIpLimitsRequest): ApiRequest[SuccessTextResponse]
 
 Add IP Access Restriction
 
@@ -1245,6 +1247,7 @@ Adds an IP address range to the account&#39;s access restriction list. Once IP l
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -1282,6 +1285,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling AccountApi#updateAccountIpLimits")
@@ -1307,8 +1311,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -1322,9 +1326,9 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
 | **422** | IP limit payload contains an invalid address. |  -  |
-| **0** | Default response |  -  |
 
 
 ## updateAccountPassword

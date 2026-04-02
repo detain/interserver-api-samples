@@ -39,6 +39,7 @@
 #include "DomainSearchResponse.hpp"
 #include "DomainWhoisPrivacyRequest.hpp"
 #include "GetAccountInfo_401_response.hpp"
+#include "ServiceOrderPostResponse.hpp"
 #include "SuccessTextResponse.hpp"
 #include "TextResponse.hpp"
 

@@ -27,7 +27,7 @@ let add_vps ~vps_order_post_request_t () =
  vps_order_post_request_t
     in
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Service_order_post_response.of_yojson) resp body
 
 let delete_vps_backup ~id ~file ?all () =
     let open Lwt.Infix in
@@ -1206,7 +1206,7 @@ let update_vps_info ~id =
         
  id in
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let v_ps_cancel ~id =
     let open Lwt.Infix in

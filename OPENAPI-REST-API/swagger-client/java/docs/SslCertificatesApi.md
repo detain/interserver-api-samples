@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="addSsl"></a>
 # **addSsl**
-> addSsl()
+> ServiceOrderPostResponse addSsl()
 
 Place SSL Cert Order
 
@@ -53,7 +53,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 SslCertificatesApi apiInstance = new SslCertificatesApi();
 try {
-    apiInstance.addSsl();
+    ServiceOrderPostResponse result = apiInstance.addSsl();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SslCertificatesApi#addSsl");
     e.printStackTrace();
@@ -65,7 +66,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -78,7 +79,7 @@ null (empty response body)
 
 <a name="getNewSsl"></a>
 # **getNewSsl**
-> getNewSsl()
+> Object getNewSsl()
 
 SSL Cert Ordering Information
 
@@ -115,7 +116,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 SslCertificatesApi apiInstance = new SslCertificatesApi();
 try {
-    apiInstance.getNewSsl();
+    Object result = apiInstance.getNewSsl();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SslCertificatesApi#getNewSsl");
     e.printStackTrace();
@@ -127,7 +129,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -140,7 +142,7 @@ null (empty response body)
 
 <a name="getSslInfo"></a>
 # **getSslInfo**
-> getSslInfo(id)
+> Object getSslInfo(id)
 
 Get SSL Cert Info
 
@@ -178,7 +180,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 SslCertificatesApi apiInstance = new SslCertificatesApi();
 Integer id = 56; // Integer | SSL certificate ID number.
 try {
-    apiInstance.getSslInfo(id);
+    Object result = apiInstance.getSslInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SslCertificatesApi#getSslInfo");
     e.printStackTrace();
@@ -193,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -464,7 +467,7 @@ null (empty response body)
 
 <a name="sslCancel"></a>
 # **sslCancel**
-> InlineResponse20020 sslCancel(id)
+> InlineResponse20021 sslCancel(id)
 
 Cancel SSL Certificate Service
 
@@ -502,7 +505,7 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 SslCertificatesApi apiInstance = new SslCertificatesApi();
 Integer id = 56; // Integer | SSL Cert ID number
 try {
-    InlineResponse20020 result = apiInstance.sslCancel(id);
+    InlineResponse20021 result = apiInstance.sslCancel(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SslCertificatesApi#sslCancel");
@@ -518,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse20020**](InlineResponse20020.md)
+[**InlineResponse20021**](InlineResponse20021.md)
 
 ### Authorization
 
@@ -531,7 +534,7 @@ Name | Type | Description  | Notes
 
 <a name="updateSslInfo"></a>
 # **updateSslInfo**
-> updateSslInfo(id)
+> SuccessTextResponse updateSslInfo(id)
 
 Update SSL Cert Order
 
@@ -569,7 +572,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 SslCertificatesApi apiInstance = new SslCertificatesApi();
 String id = "id_example"; // String | SSL certificate ID number.
 try {
-    apiInstance.updateSslInfo(id);
+    SuccessTextResponse result = apiInstance.updateSslInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SslCertificatesApi#updateSslInfo");
     e.printStackTrace();
@@ -584,7 +588,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

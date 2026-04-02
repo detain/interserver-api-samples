@@ -10,7 +10,7 @@ class VPSApi {
   /// Place VPS Order
   ///
   /// Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first.
-  Future addVps({ VpsOrderPostRequest body }) async {
+  Future<ServiceOrderPostResponse> addVps({ VpsOrderPostRequest body }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -116,9 +116,9 @@ if (comment != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'ServiceOrderPostResponse') as ServiceOrderPostResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Delete VPS Backup
@@ -2390,7 +2390,7 @@ if (comment != null)
   /// Update VPS Order
   ///
   /// Updates settings on a VPS order.
-  Future updateVpsInfo(String id) async {
+  Future<SuccessTextResponse> updateVpsInfo(String id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -2433,15 +2433,15 @@ if (comment != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          ;
+          apiClient.deserialize(response.body, 'SuccessTextResponse') as SuccessTextResponse ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Cancel VPS Service
   ///
   /// Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
-  Future<InlineResponse20021> vPSCancel(int id) async {
+  Future<InlineResponse20022> vPSCancel(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -2484,7 +2484,7 @@ if (comment != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'InlineResponse20021') as InlineResponse20021 ;
+          apiClient.deserialize(response.body, 'InlineResponse20022') as InlineResponse20022 ;
     } else {
       return null;
     }

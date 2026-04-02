@@ -20,6 +20,7 @@ import org.openapitools.model.MailSchema;
 import org.openapitools.model.MailStatsType;
 import org.openapitools.model.SendMail;
 import org.openapitools.model.SendMailAdv;
+import org.openapitools.model.ServiceOrderPostResponse;
 import org.openapitools.model.SuccessTextResponse;
 import org.openapitools.model.ViewMailLogStartDateParameter;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -55,7 +56,7 @@ public class MailApiTest {
         // given
 
         // when
-        api.addMail().block();
+        ServiceOrderPostResponse body = api.addMail().block();
 
         // then
         // TODO implement the addMailTest()
@@ -518,7 +519,7 @@ public class MailApiTest {
         String id = "example";
 
         // when
-        api.updateMailInfo(id).block();
+        SuccessTextResponse body = api.updateMailInfo(id).block();
 
         // then
         // TODO implement the updateMailInfoTest()

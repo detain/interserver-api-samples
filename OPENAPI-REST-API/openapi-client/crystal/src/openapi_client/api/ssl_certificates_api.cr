@@ -19,15 +19,15 @@ module OpenAPIClient
     end
     # Place SSL Cert Order
     # Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
-    # @return [nil]
+    # @return [ServiceOrderPostResponse]
     def add_ssl()
-      add_ssl_with_http_info()
-      nil
+      data, _status_code, _headers = add_ssl_with_http_info()
+      data
     end
 
     # Place SSL Cert Order
     # Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ServiceOrderPostResponse, Integer, Hash)>] ServiceOrderPostResponse data, response status code and response headers
     def add_ssl_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: SSLCertificatesApi.add_ssl ..."}
@@ -71,20 +71,20 @@ module OpenAPIClient
         Log.debug {"API called: SSLCertificatesApi#add_ssl\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return ServiceOrderPostResponse.from_json(data), status_code, headers
     end
 
     # SSL Cert Ordering Information
     # Retrieves available SSL certificate types and pricing for ordering.
-    # @return [nil]
+    # @return [JSON::Any]
     def get_new_ssl()
-      get_new_ssl_with_http_info()
-      nil
+      data, _status_code, _headers = get_new_ssl_with_http_info()
+      data
     end
 
     # SSL Cert Ordering Information
     # Retrieves available SSL certificate types and pricing for ordering.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(JSON::Any, Integer, Hash)>] JSON::Any data, response status code and response headers
     def get_new_ssl_with_http_info()
       if @api_client.config.debugging
         Log.debug {"Calling API: SSLCertificatesApi.get_new_ssl ..."}
@@ -128,22 +128,22 @@ module OpenAPIClient
         Log.debug {"API called: SSLCertificatesApi#get_new_ssl\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return JSON::Any.from_json(data), status_code, headers
     end
 
     # Get SSL Cert Info
     # Returns detailed information about a specific SSL certificate including its domain and expiration.
     # @param id [Int32] SSL certificate ID number.
-    # @return [nil]
+    # @return [JSON::Any]
     def get_ssl_info(id : Int32)
-      get_ssl_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = get_ssl_info_with_http_info(id)
+      data
     end
 
     # Get SSL Cert Info
     # Returns detailed information about a specific SSL certificate including its domain and expiration.
     # @param id [Int32] SSL certificate ID number.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(JSON::Any, Integer, Hash)>] JSON::Any data, response status code and response headers
     def get_ssl_info_with_http_info(id : Int32)
       if @api_client.config.debugging
         Log.debug {"Calling API: SSLCertificatesApi.get_ssl_info ..."}
@@ -191,7 +191,7 @@ module OpenAPIClient
         Log.debug {"API called: SSLCertificatesApi#get_ssl_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return JSON::Any.from_json(data), status_code, headers
     end
 
     # Get SSL Cert Invoices
@@ -500,16 +500,16 @@ module OpenAPIClient
     # Update SSL Cert Order
     # Updates settings on an SSL certificate order.
     # @param id [String] SSL certificate ID number.
-    # @return [nil]
+    # @return [SuccessTextResponse]
     def update_ssl_info(id : String)
-      update_ssl_info_with_http_info(id)
-      nil
+      data, _status_code, _headers = update_ssl_info_with_http_info(id)
+      data
     end
 
     # Update SSL Cert Order
     # Updates settings on an SSL certificate order.
     # @param id [String] SSL certificate ID number.
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SuccessTextResponse, Integer, Hash)>] SuccessTextResponse data, response status code and response headers
     def update_ssl_info_with_http_info(id : String)
       if @api_client.config.debugging
         Log.debug {"Calling API: SSLCertificatesApi.update_ssl_info ..."}
@@ -557,7 +557,7 @@ module OpenAPIClient
         Log.debug {"API called: SSLCertificatesApi#update_ssl_info\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"}
       end
 
-      return nil, status_code, headers
+      return SuccessTextResponse.from_json(data), status_code, headers
     end
   end
 end

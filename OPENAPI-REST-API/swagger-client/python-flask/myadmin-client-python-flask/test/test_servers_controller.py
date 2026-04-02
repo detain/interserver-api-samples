@@ -8,7 +8,8 @@ from six import BytesIO
 from myadmin-client-python-flask.models.buy_it_now_list import BuyItNowList  # noqa: E501
 from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoiceRows  # noqa: E501
 from myadmin-client-python-flask.models.inline_response20019 import InlineResponse20019  # noqa: E501
-from myadmin-client-python-flask.models.inline_response20026 import InlineResponse20026  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20020 import InlineResponse20020  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20027 import InlineResponse20027  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.order_buy_now_server_body import OrderBuyNowServerBody  # noqa: E501
 from myadmin-client-python-flask.models.reverse_dns_entries import ReverseDnsEntries  # noqa: E501

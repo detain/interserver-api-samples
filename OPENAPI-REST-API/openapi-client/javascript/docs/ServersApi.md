@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 ## addServer
 
-> addServer()
+> AddServer200Response addServer()
 
 Place Server Order
 
@@ -59,7 +59,7 @@ apiInstance.addServer((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -70,7 +70,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**AddServer200Response**](AddServer200Response.md)
 
 ### Authorization
 
@@ -1056,7 +1056,7 @@ Name | Type | Description  | Notes
 
 ## updateServerInfo
 
-> updateServerInfo(id)
+> SuccessTextResponse updateServerInfo(id)
 
 Update Server Order
 
@@ -1089,7 +1089,7 @@ apiInstance.updateServerInfo(id, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 });
 ```
@@ -1103,7 +1103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

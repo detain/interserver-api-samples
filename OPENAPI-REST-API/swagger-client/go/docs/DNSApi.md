@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**UpdateDnsRecord**](DNSApi.md#UpdateDnsRecord) | **Post** /dns/{domainId}/{recordId} | Update DNS Record
 
 # **AddDnsDomain**
-> AddDnsDomain(ctx, domain, ip, body)
+> SuccessTextResponse AddDnsDomain(ctx, domain, ip, body)
 Create DNS Domain
 
 Creates a new DNS domain and assigns an initial A record pointing to the supplied IP address. The domain is immediately available on InterServer's DNS servers. Use `/dns/{id}` to manage records after creation.
@@ -29,7 +29,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteDnsDomain**
-> DeleteDnsDomain(ctx, id)
+> SuccessTextResponse DeleteDnsDomain(ctx, id)
 Delete DNS Domain
 
 Deletes a DNS domain and all of its associated records from the DNS servers. This action is permanent and cannot be undone. Any services relying on these DNS records will be affected immediately.
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteDnsRecord**
-> DeleteDnsRecord(ctx, domainId, recordId)
+> SuccessTextResponse DeleteDnsRecord(ctx, domainId, recordId)
 Delete DNS Record
 
 Removes a DNS record from the specified domain. The deletion takes effect on the DNS servers immediately. Use `GET /dns/{id}` to verify the record has been removed.
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 
@@ -186,7 +186,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateDnsRecord**
-> UpdateDnsRecord(ctx, name, type_, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId)
+> SuccessTextResponse UpdateDnsRecord(ctx, name, type_, content, ttl, prio, disabled, ordername, auth, body, domainId, recordId)
 Update DNS Record
 
 Updates an existing DNS record with new values. Use `GET /dns/{id}` to list records and retrieve the record IDs before updating. Changes propagate to the DNS servers immediately.
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

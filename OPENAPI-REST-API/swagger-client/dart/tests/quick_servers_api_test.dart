@@ -11,7 +11,7 @@ void main() {
     //
     // Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
     //
-    //Future addQs() async
+    //Future<ServiceOrderPostResponse> addQs() async
     test('test addQs', () async {
       // TODO
     });
@@ -398,7 +398,7 @@ void main() {
     //
     // Updates QuickServer metadata or stored settings associated with the order.
     //
-    //Future updateQsInfo(String id) async
+    //Future<SuccessTextResponse> updateQsInfo(String id) async
     test('test updateQsInfo', () async {
       // TODO
     });

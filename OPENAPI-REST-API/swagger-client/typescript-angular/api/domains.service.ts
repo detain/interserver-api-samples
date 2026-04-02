@@ -32,6 +32,7 @@ import { DomainSearchResponse } from '../model/domainSearchResponse';
 import { DomainWhoisPrivacyRequest } from '../model/domainWhoisPrivacyRequest';
 import { InlineResponse2002 } from '../model/inlineResponse2002';
 import { InlineResponse401 } from '../model/inlineResponse401';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 import { TextResponse } from '../model/textResponse';
 
@@ -77,9 +78,9 @@ export class DomainsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addDomain(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addDomain(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addDomain(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addDomain(observe?: 'body', reportProgress?: boolean): Observable<ServiceOrderPostResponse>;
+    public addDomain(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addDomain(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addDomain(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -114,7 +115,7 @@ export class DomainsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/domains/order`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post',`${this.basePath}/domains/order`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -2034,9 +2035,9 @@ export class DomainsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateDomainInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateDomainInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateDomainInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateDomainInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateDomainInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateDomainInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateDomainInfo(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -2075,7 +2076,7 @@ export class DomainsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/domains/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/domains/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

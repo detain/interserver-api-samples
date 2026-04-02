@@ -21,6 +21,7 @@ import scalaz.concurrent.Task
 
 import HelperCodecs._
 
+import org.openapitools.client.api.AddServer200Response
 import org.openapitools.client.api.BuyItNowList
 import org.openapitools.client.api.BuyItNowServerOrder200Response
 import org.openapitools.client.api.ChargeInvoiceRows
@@ -43,7 +44,9 @@ object ServersApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addServer(host: String): Task[Unit] = {
+  def addServer(host: String): Task[AddServer200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AddServer200Response] = jsonOf[AddServer200Response]
+
     val path = "/servers/order"
 
     val httpMethod = Method.POST
@@ -57,7 +60,7 @@ object ServersApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[AddServer200Response](req)
 
     } yield resp
   }
@@ -396,7 +399,9 @@ object ServersApi {
     } yield resp
   }
 
-  def updateServerInfo(host: String, id: String): Task[Unit] = {
+  def updateServerInfo(host: String, id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/servers/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -410,7 +415,7 @@ object ServersApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -422,7 +427,9 @@ class HttpServiceServersApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addServer(): Task[Unit] = {
+  def addServer(): Task[AddServer200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[AddServer200Response] = jsonOf[AddServer200Response]
+
     val path = "/servers/order"
 
     val httpMethod = Method.POST
@@ -436,7 +443,7 @@ class HttpServiceServersApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[AddServer200Response](req)
 
     } yield resp
   }
@@ -775,7 +782,9 @@ class HttpServiceServersApi(service: HttpService) {
     } yield resp
   }
 
-  def updateServerInfo(id: String): Task[Unit] = {
+  def updateServerInfo(id: String): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
     val path = "/servers/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
     val httpMethod = Method.POST
@@ -789,7 +798,7 @@ class HttpServiceServersApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }

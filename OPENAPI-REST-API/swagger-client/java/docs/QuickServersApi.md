@@ -51,7 +51,7 @@ Method | HTTP request | Description
 
 <a name="addQs"></a>
 # **addQs**
-> addQs()
+> ServiceOrderPostResponse addQs()
 
 Place QuickServer Order
 
@@ -88,7 +88,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 
 QuickServersApi apiInstance = new QuickServersApi();
 try {
-    apiInstance.addQs();
+    ServiceOrderPostResponse result = apiInstance.addQs();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling QuickServersApi#addQs");
     e.printStackTrace();
@@ -100,7 +101,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**ServiceOrderPostResponse**](ServiceOrderPostResponse.md)
 
 ### Authorization
 
@@ -3200,7 +3201,7 @@ Name | Type | Description  | Notes
 
 <a name="updateQsInfo"></a>
 # **updateQsInfo**
-> updateQsInfo(id)
+> SuccessTextResponse updateQsInfo(id)
 
 Update QuickServer Order
 
@@ -3238,7 +3239,8 @@ sessionIdHeaderAuth.setApiKey("YOUR API KEY");
 QuickServersApi apiInstance = new QuickServersApi();
 String id = "id_example"; // String | QuickServer ID number.
 try {
-    apiInstance.updateQsInfo(id);
+    SuccessTextResponse result = apiInstance.updateQsInfo(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling QuickServersApi#updateQsInfo");
     e.printStackTrace();
@@ -3253,7 +3255,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**SuccessTextResponse**](SuccessTextResponse.md)
 
 ### Authorization
 

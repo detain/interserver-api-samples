@@ -20,6 +20,7 @@ goog.require('API.Client.IpObject');
 goog.require('API.Client.License');
 goog.require('API.Client.LicenseRow');
 goog.require('API.Client.LicensesOrder');
+goog.require('API.Client.ServiceOrderPostResponse');
 goog.require('API.Client.SuccessTextResponse');
 goog.require('API.Client.getAccountInfo_401_response');
 goog.require('API.Client.licensesCancel_200_response');
@@ -55,7 +56,7 @@ API.Client.LicensesApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * Place License Order
  * Places an order for a new software license. Use &#x60;PUT /licenses/order&#x60; to validate the order first.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.ServiceOrderPostResponse>}
  */
 API.Client.LicensesApi.prototype.addLicense = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -408,7 +409,7 @@ API.Client.LicensesApi.prototype.putLicenses = function(opt_extraHttpRequestPara
  * Updates settings on a license service such as its assigned IP.
  * @param {!string} id The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!API.Client.SuccessTextResponse>}
  */
 API.Client.LicensesApi.prototype.updateLicenseInfo = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

@@ -24,6 +24,7 @@ import { DnsListItem } from '../model/dnsListItem';
 import { DnsRecord } from '../model/dnsRecord';
 import { DnsRecordType } from '../model/dnsRecordType';
 import { GetAccountInfo401Response } from '../model/getAccountInfo401Response';
+import { SuccessTextResponse } from '../model/successTextResponse';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -46,8 +47,8 @@ export class DNSService {
      * @param ip IP Address to point the domain to.
      
      */
-    public addDnsDomain(domain: string, ip: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public addDnsDomain(domain: string, ip: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public addDnsDomain(domain: string, ip: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public addDnsDomain(domain: string, ip: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public addDnsDomain(domain: string, ip: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (domain === null || domain === undefined){
             throw new Error('Required parameter domain was null or undefined when calling addDnsDomain.');
@@ -77,10 +78,10 @@ export class DNSService {
             formData.append('ip', <any>ip);
         }
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/dns`, formData, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/dns`, formData, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;
@@ -162,8 +163,8 @@ export class DNSService {
      * @param id The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain.
      
      */
-    public deleteDnsDomain(id: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public deleteDnsDomain(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public deleteDnsDomain(id: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public deleteDnsDomain(id: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public deleteDnsDomain(id: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (id === null || id === undefined){
             throw new Error('Required parameter id was null or undefined when calling deleteDnsDomain.');
@@ -180,10 +181,10 @@ export class DNSService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.delete(`${this.basePath}/dns/${encodeURIComponent(String(id))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.delete(`${this.basePath}/dns/${encodeURIComponent(String(id))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;
@@ -197,8 +198,8 @@ export class DNSService {
      * @param recordId The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record.
      
      */
-    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public deleteDnsRecord(domainId: number, recordId: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public deleteDnsRecord(domainId: number, recordId: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (domainId === null || domainId === undefined){
             throw new Error('Required parameter domainId was null or undefined when calling deleteDnsRecord.');
@@ -219,10 +220,10 @@ export class DNSService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.delete(`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.delete(`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;
@@ -307,8 +308,8 @@ export class DNSService {
      * @param auth 
      
      */
-    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'body', headers?: Headers): Observable<SuccessTextResponse>;
+    public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<SuccessTextResponse>>;
     public updateDnsRecord(domainId: number, recordId: number, name?: string, type?: DnsRecordType, content?: string, ttl?: string, prio?: string, disabled?: string, ordername?: string, auth?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (domainId === null || domainId === undefined){
             throw new Error('Required parameter domainId was null or undefined when calling updateDnsRecord.');
@@ -356,10 +357,10 @@ export class DNSService {
             formData.append('auth', <any>auth);
         }
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`, formData, headers);
+        const response: Observable<HttpResponse<SuccessTextResponse>> = this.httpClient.post(`${this.basePath}/dns/${encodeURIComponent(String(domainId))}/${encodeURIComponent(String(recordId))}`, formData, headers);
         if (observe === 'body') {
                return response.pipe(
-                   map((httpResponse: HttpResponse) => <any>(httpResponse.response))
+                   map((httpResponse: HttpResponse) => <SuccessTextResponse>(httpResponse.response))
                );
         }
         return response;

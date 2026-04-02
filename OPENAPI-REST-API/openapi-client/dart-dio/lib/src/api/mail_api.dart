@@ -30,6 +30,7 @@ import 'package:openapi/src/model/mail_schema.dart';
 import 'package:openapi/src/model/mail_stats_type.dart';
 import 'package:openapi/src/model/send_mail.dart';
 import 'package:openapi/src/model/send_mail_adv.dart';
+import 'package:openapi/src/model/service_order_post_response.dart';
 import 'package:openapi/src/model/success_text_response.dart';
 import 'package:openapi/src/model/view_mail_log_start_date_parameter.dart';
 
@@ -52,9 +53,9 @@ class MailApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [ServiceOrderPostResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> addMail({ 
+  Future<Response<ServiceOrderPostResponse>> addMail({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -100,7 +101,35 @@ class MailApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    ServiceOrderPostResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ServiceOrderPostResponse),
+      ) as ServiceOrderPostResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ServiceOrderPostResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// Create Deny Rule
@@ -2368,9 +2397,9 @@ class MailApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [SuccessTextResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> updateMailInfo({ 
+  Future<Response<SuccessTextResponse>> updateMailInfo({ 
     required String id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2417,7 +2446,35 @@ class MailApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    SuccessTextResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SuccessTextResponse),
+      ) as SuccessTextResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<SuccessTextResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
   /// View Mail Log
@@ -2432,14 +2489,14 @@ class MailApi {
   /// * [to] - Filter by SMTP envelope `RCPT TO` address (exact match).  This is the delivery address used by the relay and may differ from the `To:` header when BCC recipients are involved.
   /// * [subject] - Filter by email `Subject` header (exact match).  MIME-encoded subjects are decoded automatically in the response.
   /// * [mailid] - Filter by the relay-assigned mail ID string (exact match).  This corresponds to the `id` field in `MailLogEntry` and to the `text` value returned by the sending endpoints on success.  Format is an 18-19 character hexadecimal string such as `185997065c60008840`.
-  /// * [messageId] - Filter by the `Message-ID` email header using a substring (case-insensitive) match.  The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
+  /// * [messageId] - Filter by the `Message-ID` email header using a substring (case-insensitive) match. The `Message-ID` is assigned by the sending mail client and is visible in the `messageId` field of `MailLogEntry`.
   /// * [replyto] - Filter by the `Reply-To` message header address (exact match).  Only returns messages where this header was explicitly set.
   /// * [headerfrom] - Filter by the `From` message header address (exact match).  This is the human-visible sender address and may differ from the SMTP envelope `from` parameter when sending on behalf of another address.
   /// * [delivered] - Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
   /// * [skip] - Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
   /// * [limit] - Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
   /// * [startDate] - Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
-  /// * [endDate] - Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`.  Messages with a `time` value **less than or equal to** this value will be included.
+  /// * [endDate] - Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
   /// * [sort] - Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
   /// * [dir] - Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
   /// * [groupby] - Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.

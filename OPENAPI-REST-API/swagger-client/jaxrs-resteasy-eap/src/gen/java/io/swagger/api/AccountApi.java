@@ -100,8 +100,8 @@ public interface AccountApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Billing" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-                @ApiResponse(responseCode = "200", description = "Default response")
+        @ApiResponse(responseCode = "200", description = "Simple string response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+                @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class)))
          })
     Response deleteAccountCreditCard( @PathParam("id") String id,@Context SecurityContext securityContext);
 
@@ -239,8 +239,8 @@ public interface AccountApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Billing" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-                @ApiResponse(responseCode = "200", description = "Default response")
+        @ApiResponse(responseCode = "200", description = "Simple string response", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+                @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class)))
          })
     Response updateAccountCreditCard( @PathParam("id") Integer id,@Context SecurityContext securityContext);
 
@@ -283,9 +283,9 @@ public interface AccountApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Account" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-                @ApiResponse(responseCode = "422", description = "Validation error while updating account data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))),
-                @ApiResponse(responseCode = "200", description = "Default response")
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+                @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+                @ApiResponse(responseCode = "422", description = "Validation error while updating account data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class)))
          })
     Response updateAccountInfo(MultipartFormDataInput input,@Parameter(description = "", required=true)@FormParam("name")  String name,@Parameter(description = "", required=true)@FormParam("company")  String company,@Parameter(description = "", required=true)@FormParam("address")  String address,@Parameter(description = "", required=true)@FormParam("address2")  String address2,@Parameter(description = "", required=true)@FormParam("city")  String city,@Parameter(description = "", required=true)@FormParam("state")  String state,@Parameter(description = "", required=true)@FormParam("zip")  String zip,@Parameter(description = "", required=true)@FormParam("country")  String country,@Parameter(description = "", required=true)@FormParam("phone")  String phone,@Parameter(description = "", required=true)@FormParam("locale")  String locale,@Parameter(description = "", required=true)@FormParam("email_invoices")  String emailInvoices,@Parameter(description = "", required=true)@FormParam("email_abuse")  String emailAbuse,@Parameter(description = "", required=true)@FormParam("disable_reset")  Boolean disableReset,@Parameter(description = "", required=true)@FormParam("disable_reinstall")  Boolean disableReinstall,@Parameter(description = "", required=true)@FormParam("disable_server_notifications")  Boolean disableServerNotifications,@Parameter(description = "", required=true)@FormParam("disable_email_notifications")  Boolean disableEmailNotifications,@Parameter(description = "", required=true)@FormParam("gstin")  String gstin,@Context SecurityContext securityContext);
 
@@ -298,9 +298,9 @@ public interface AccountApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Account" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-                @ApiResponse(responseCode = "422", description = "Validation error while updating account data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))),
-                @ApiResponse(responseCode = "200", description = "Default response")
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+                @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+                @ApiResponse(responseCode = "422", description = "Validation error while updating account data.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class)))
          })
     Response updateAccountInfo(MultipartFormDataInput input,@Parameter(description = "" ,required=true) AccountInfoPost body,@Context SecurityContext securityContext);
 
@@ -313,9 +313,9 @@ public interface AccountApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Account" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-                @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))),
-                @ApiResponse(responseCode = "200", description = "Default response")
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+                @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+                @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class)))
          })
     Response updateAccountIpLimits(MultipartFormDataInput input,@Parameter(description = "", required=true)@FormParam("start")  String start,@Parameter(description = "", required=true)@FormParam("end")  String end,@Context SecurityContext securityContext);
 
@@ -328,9 +328,9 @@ public interface AccountApi  {
 @SecurityRequirement(name = "sessionIdCookieAuth"),
 @SecurityRequirement(name = "sessionIdHeaderAuth")    }, tags={ "Account" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
-                @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class))),
-                @ApiResponse(responseCode = "200", description = "Default response")
+        @ApiResponse(responseCode = "200", description = "A response indicating the operation completed successfully with a text message.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SuccessTextResponse.class))),
+                @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InlineResponse401.class))),
+                @ApiResponse(responseCode = "422", description = "IP limit payload contains an invalid address.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TextResponse.class)))
          })
     Response updateAccountIpLimits(MultipartFormDataInput input,@Parameter(description = "The lower and upper bounds of an ip range." ,required=true) IpLimitRange body,@Context SecurityContext securityContext);
 

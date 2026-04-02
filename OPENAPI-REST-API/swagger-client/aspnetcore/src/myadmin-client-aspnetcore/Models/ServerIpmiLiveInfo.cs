@@ -21,7 +21,7 @@ using Newtonsoft.Json;
 namespace myadmin-client-aspnetcore.Models
 {
     /// <summary>
-    /// Information about the IPMI connectioj.
+    /// Information about the IPMI connection.
     /// </summary>
     [DataContract]
     public partial class ServerIpmiLiveInfo : IEquatable<ServerIpmiLiveInfo>

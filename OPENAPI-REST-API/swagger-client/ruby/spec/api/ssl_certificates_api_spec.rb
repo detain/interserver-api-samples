@@ -35,7 +35,7 @@ describe 'SSLCertificatesApi' do
   # Place SSL Cert Order
   # Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [ServiceOrderPostResponse]
   describe 'add_ssl test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -46,7 +46,7 @@ describe 'SSLCertificatesApi' do
   # SSL Cert Ordering Information
   # Retrieves available SSL certificate types and pricing for ordering.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Object]
   describe 'get_new_ssl test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -58,7 +58,7 @@ describe 'SSLCertificatesApi' do
   # Returns detailed information about a specific SSL certificate including its domain and expiration.
   # @param id SSL certificate ID number.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [Object]
   describe 'get_ssl_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -116,7 +116,7 @@ describe 'SSLCertificatesApi' do
   # Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
   # @param id SSL Cert ID number
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse20020]
+  # @return [InlineResponse20021]
   describe 'ssl_cancel test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -128,7 +128,7 @@ describe 'SSLCertificatesApi' do
   # Updates settings on an SSL certificate order.
   # @param id SSL certificate ID number.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SuccessTextResponse]
   describe 'update_ssl_info test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

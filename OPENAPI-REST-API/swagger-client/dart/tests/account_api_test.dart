@@ -119,7 +119,7 @@ void main() {
     //
     // Updates the stored contact and billing information on your account. Submit only the fields you want to change. Validation errors are returned as a 422 response with field-level messages.
     //
-    //Future updateAccountInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, bool disableReset, bool disableReinstall, bool disableServerNotifications, bool disableEmailNotifications, String gstin, AccountInfoPost body) async
+    //Future<SuccessTextResponse> updateAccountInfo(String name, String company, String address, String address2, String city, String state, String zip, String country, String phone, String locale, String emailInvoices, String emailAbuse, bool disableReset, bool disableReinstall, bool disableServerNotifications, bool disableEmailNotifications, String gstin, AccountInfoPost body) async
     test('test updateAccountInfo', () async {
       // TODO
     });
@@ -128,7 +128,7 @@ void main() {
     //
     // Adds an IP address range to the account's access restriction list. Once IP limiting is active, only requests originating from allowed ranges can access the account. Provide the start and end of the range in dotted-quad notation.
     //
-    //Future updateAccountIpLimits(String start, String end, IpLimitRange body) async
+    //Future<SuccessTextResponse> updateAccountIpLimits(String start, String end, IpLimitRange body) async
     test('test updateAccountIpLimits', () async {
       // TODO
     });

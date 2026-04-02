@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## addDnsDomain
 
-> addDnsDomain(addDnsDomainRequest): ApiRequest[Unit]
+> addDnsDomain(addDnsDomainRequest): ApiRequest[SuccessTextResponse]
 
 Create DNS Domain
 
@@ -33,6 +33,7 @@ Creates a new DNS domain and assigns an initial A record pointing to the supplie
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -69,6 +70,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling DNSApi#addDnsDomain")
@@ -94,8 +96,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -109,8 +111,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## addDnsRecord
@@ -220,7 +222,7 @@ ApiRequest[Unit] (empty response body)
 
 ## deleteDnsDomain
 
-> deleteDnsDomain(deleteDnsDomainRequest): ApiRequest[Unit]
+> deleteDnsDomain(deleteDnsDomainRequest): ApiRequest[SuccessTextResponse]
 
 Delete DNS Domain
 
@@ -230,6 +232,7 @@ Deletes a DNS domain and all of its associated records from the DNS servers. Thi
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -264,6 +267,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling DNSApi#deleteDnsDomain")
@@ -288,8 +292,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -303,13 +307,13 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## deleteDnsRecord
 
-> deleteDnsRecord(deleteDnsRecordRequest): ApiRequest[Unit]
+> deleteDnsRecord(deleteDnsRecordRequest): ApiRequest[SuccessTextResponse]
 
 Delete DNS Record
 
@@ -319,6 +323,7 @@ Removes a DNS record from the specified domain. The deletion takes effect on the
 
 ```scala
 // Import classes:
+import 
 import 
 import org.openapitools.client.core._
 import org.openapitools.client.core.CollectionFormats._
@@ -355,6 +360,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling DNSApi#deleteDnsRecord")
@@ -380,8 +386,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -395,8 +401,8 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 
 
 ## getDnsDomain
@@ -578,7 +584,7 @@ ApiRequest[[**Seq[DnsListItem]**](DnsListItem.md)]
 
 ## updateDnsRecord
 
-> updateDnsRecord(updateDnsRecordRequest): ApiRequest[Unit]
+> updateDnsRecord(updateDnsRecordRequest): ApiRequest[SuccessTextResponse]
 
 Update DNS Record
 
@@ -588,6 +594,7 @@ Updates an existing DNS record with new values. Use &#x60;GET /dns/{id}&#x60; to
 
 ```scala
 // Import classes:
+import 
 import 
 import 
 import org.openapitools.client.core._
@@ -641,6 +648,7 @@ object Example extends App {
         case Success(ApiResponse(code, content, headers)) =>
             System.out.println(s"Status code: $code}")
             System.out.println(s"Response headers: ${headers.mkString(", ")}")
+            System.out.println(s"Response body: $content")
         
         case Failure(error @ ApiError(code, message, responseContent, cause, headers)) =>
             System.err.println("Exception when calling DNSApi#updateDnsRecord")
@@ -674,8 +682,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
+ApiRequest[[**SuccessTextResponse**](SuccessTextResponse.md)]
 
-ApiRequest[Unit] (empty response body)
 
 ### Authorization
 
@@ -689,6 +697,6 @@ ApiRequest[Unit] (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **200** | A response indicating the operation completed successfully with a text message. |  -  |
 | **401** | Unauthorized |  -  |
-| **0** | Default response |  -  |
 

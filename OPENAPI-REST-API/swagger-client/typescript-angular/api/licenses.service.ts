@@ -24,6 +24,7 @@ import { IpObject } from '../model/ipObject';
 import { License } from '../model/license';
 import { LicenseRow } from '../model/licenseRow';
 import { LicensesOrder } from '../model/licensesOrder';
+import { ServiceOrderPostResponse } from '../model/serviceOrderPostResponse';
 import { SuccessTextResponse } from '../model/successTextResponse';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -68,9 +69,9 @@ export class LicensesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public addLicense(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public addLicense(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public addLicense(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public addLicense(observe?: 'body', reportProgress?: boolean): Observable<ServiceOrderPostResponse>;
+    public addLicense(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ServiceOrderPostResponse>>;
+    public addLicense(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ServiceOrderPostResponse>>;
     public addLicense(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
@@ -105,7 +106,7 @@ export class LicensesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/licenses/order`,
+        return this.httpClient.request<ServiceOrderPostResponse>('post',`${this.basePath}/licenses/order`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -733,9 +734,9 @@ export class LicensesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public updateLicenseInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public updateLicenseInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public updateLicenseInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public updateLicenseInfo(id: string, observe?: 'body', reportProgress?: boolean): Observable<SuccessTextResponse>;
+    public updateLicenseInfo(id: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<SuccessTextResponse>>;
+    public updateLicenseInfo(id: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<SuccessTextResponse>>;
     public updateLicenseInfo(id: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -774,7 +775,7 @@ export class LicensesService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('post',`${this.basePath}/licenses/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<SuccessTextResponse>('post',`${this.basePath}/licenses/${encodeURIComponent(String(id))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
